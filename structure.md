@@ -2,4 +2,9 @@
 
 # 폴더 구조와 설명
 
-src 폴더
+- public/
+    - index.html
+    - favicon.ico
+- src/
+    - components/
+    - styles/
