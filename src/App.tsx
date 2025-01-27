@@ -4,6 +4,11 @@ import LoginTest from './LoginTest';
 import Posttest from './Posttest';
 import { fetchVaccinationDiseaseList } from './api-data/vaccinationDiseaseList';
 import { fetchVaccinationInfo } from './api-data/vaccinationDiseaseInfo';
+import {
+    fetchProvince,
+    fetchCity,
+    fetchVaccinationCenters,
+} from './api-data/vaccinationCenters';
 
 export interface UserData {
     userid: number;
@@ -26,15 +31,33 @@ function App() {
             });
 
         // API 데이터 가져오기 확인
-        fetchVaccinationDiseaseList().then((list) => {
-            console.log(list);
-        });
-        fetchVaccinationInfo(3).then((list) => {
-            console.log(list);
+        // fetchVaccinationDiseaseList().then((list) => {
+        //     console.log(list);
+        // });
+        // fetchVaccinationInfo(10).then((list) => {
+        //     console.log(list);
+        // });
+        // fetchProvince().then((list) => {
+        //     console.log(list);
+        // });
+        // fetchCity(1100000000).then((list) => {
+        //     console.log(list);
+        // });
+        const pagenumber = 1;
+        const province = 1100000000;
+        const city = 11110;
+        const searchType = 'ORG'; // 'ADDR'
+        const searchWord = '서울';
+        fetchVaccinationCenters(
+            pagenumber,
+            province,
+            city,
+            searchType,
+            searchWord
+        ).then((list) => {
+            console.log('병원정보', list);
         });
     }, []);
-
-    useEffect(() => {}, []);
 
     return (
         <div className="App">

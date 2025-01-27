@@ -12,13 +12,13 @@ export async function fetchVaccinationInfo(cd: number) {
         const xmlData = await getData(vaccinationDiseaseInfoApi(cd));
         if (xmlData) {
             const jsonData = convertToJson(xmlData); // XML -> JSON 변환
-            return jsonData.response.body.items.item; // vaccinationDiseaseList 반환
+            return jsonData.response.body.items.item;
         } else {
             console.error('API 호출 실패');
-            return [];
+            return {};
         }
     } catch (error) {
         console.error('데이터 가져오는 중 오류 발생:', error);
-        return [];
+        return {};
     }
 }

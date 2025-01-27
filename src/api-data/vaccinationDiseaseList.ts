@@ -10,7 +10,7 @@ export async function fetchVaccinationDiseaseList() {
         const xmlData = await getData(vaccinationDiseaseListApi);
         if (xmlData) {
             const jsonData = convertToJson(xmlData); // XML -> JSON 변환
-            return jsonData.response.body.items.item; // vaccinationDiseaseList 반환
+            return jsonData.response.body.items.item;
         } else {
             console.error('API 호출 실패');
             return [];
