@@ -8,7 +8,10 @@
 // npm i cors >> mysql에 읽기쓰기 같은거 명령어 전달하게 해주는 라이브러리...? 쨋든 필수
 // npm i mysql >> mysql관련 메서드 사용할라면 써야됨
 // npm i axios  >> http 통신하게 할려고 했던거 같음
+<<<<<<< HEAD
 //
+=======
+>>>>>>> 1c1eac25ec4236bf5003ee1f17ff927f1bc247dc
 // 위에꺼 다하고 node server.js 입력
 //
 // 서버가 http://localhost:5001에서 실행 중입니다.
@@ -24,7 +27,10 @@ const app = express();
 const port = 5001;
 
 // CORS 설정
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1c1eac25ec4236bf5003ee1f17ff927f1bc247dc
 app.use(cors());
 app.use(json()); // JSON 형식의 요청 본문을 파싱하는 미들웨어 추가
 app.use(urlencoded({ extended: true }));
@@ -76,6 +82,7 @@ app.post('/api/getPosts', (req, res) => {
             console.error('userInfo 조회 실패:', err);
             return res.status(500).json({ error: 'Database error' });
         }
+<<<<<<< HEAD
 
         if (result.length === 0) {
             return res.status(404).json({ error: 'User not found' });
@@ -95,6 +102,11 @@ app.post('/api/getPosts', (req, res) => {
 
             res.json(posts); // 게시글 데이터를 클라이언트로 반환
         });
+=======
+        console.log('posts >>>>>>',posts)
+        res.json(posts);  // 게시글 데이터를 클라이언트로 반환
+      });
+>>>>>>> 1c1eac25ec4236bf5003ee1f17ff927f1bc247dc
     });
 });
 
