@@ -2,13 +2,19 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import LoginTest from './LoginTest';
 import Posttest from './Posttest';
-import { fetchVaccinationDiseaseList } from './api-data/vaccinationDiseaseList';
-import { fetchVaccinationInfo } from './api-data/vaccinationDiseaseInfo';
+import {
+    fetchVaccinationDiseaseList,
+    fetchVaccinationInfo,
+} from './api-data/vaccinationDisease';
 import {
     fetchProvince,
     fetchCity,
     fetchVaccinationCenters,
 } from './api-data/vaccinationCenters';
+import {
+    fetchGrowthChartLms,
+    fetchGrowthChartPercentile,
+} from './api-data/growthChart';
 
 export interface UserData {
     userid: number;
@@ -30,33 +36,44 @@ function App() {
                 console.error('데이터 가져오기 오류:', error);
             });
 
+        //////////////////////////////////////////////////////////
         // API 데이터 가져오기 확인
+
         // fetchVaccinationDiseaseList().then((list) => {
         //     console.log(list);
         // });
         // fetchVaccinationInfo(10).then((list) => {
         //     console.log(list);
         // });
+
         // fetchProvince().then((list) => {
         //     console.log(list);
         // });
         // fetchCity(1100000000).then((list) => {
         //     console.log(list);
         // });
-        const pagenumber = 1;
-        const province = 1100000000;
-        const city = 11110;
-        const searchType = 'ORG'; // 'ADDR'
-        const searchWord = '서울';
-        fetchVaccinationCenters(
-            pagenumber,
-            province,
-            city,
-            searchType,
-            searchWord
-        ).then((list) => {
-            console.log('병원정보', list);
+        // const pagenumber = 1;
+        // const province = 1100000000;
+        // const city = 11110;
+        // const searchType = 'ORG'; // 'ADDR'
+        // const searchWord = '서울';
+        // fetchVaccinationCenters(
+        //     pagenumber,
+        //     province,
+        //     city,
+        //     searchType,
+        //     searchWord
+        // ).then((list) => {
+        //     console.log('병원정보', list);
+        // });
+
+        // fetchGrowthChartLms().then((list) => {
+        //     console.log('fetchGrowthChartLms', list);
+        // });
+        fetchGrowthChartPercentile().then((list) => {
+            console.log('fetchGrowthChartPercentile', list);
         });
+        //////////////////////////////////////////////////////////
     }, []);
 
     return (
