@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { UserData, findUsersByName } from '../services/userService';
+import { UserDataset, findUsersByName } from '../services/userService';
 
 interface LoginTestProps {
-    data: UserData[];
+    data: UserDataset[];
 }
 
 const LoginTest: React.FC<LoginTestProps> = ({ data }) => {
     const [inputName, setInputName] = useState<string>('');
-    const [filteredUsers, setFilteredUsers] = useState<UserData[]>([]);
+    const [filteredUsers, setFilteredUsers] = useState<UserDataset[]>([]);
 
     // 이름 검색 함수
     const handleSearch = () => {
