@@ -18,6 +18,7 @@ import {
     fetchGrowthChartLms,
     fetchGrowthChartPercentile,
 } from './api-data/growthChart';
+import { VaccinationPage } from './pages/VaccinationPage';
 
 export interface UserData {
     userid: number;
@@ -73,9 +74,9 @@ function App() {
         // fetchGrowthChartLms().then((list) => {
         //     console.log('fetchGrowthChartLms', list);
         // });
-        fetchGrowthChartPercentile().then((list) => {
-            console.log('fetchGrowthChartPercentile', list);
-        });
+        // fetchGrowthChartPercentile().then((list) => {
+        //     console.log('fetchGrowthChartPercentile', list);
+        // });
         //////////////////////////////////////////////////////////
     }, []);
 
@@ -94,11 +95,15 @@ function App() {
             <hr />
             <Posttest />
             <a href={getKakaoLoginUrl()}>
-        <img src="img/kakaoLoginImg.png" alt="카카오 로그인" />
-      </a>
-      <KakaoLogin></KakaoLogin>
+                <img src="img/kakaoLoginImg.png" alt="카카오 로그인" />
+            </a>
+            <KakaoLogin></KakaoLogin>
+
+            {/* 페이지 확인 */}
+            <hr />
+            <VaccinationPage></VaccinationPage>
         </div>
     );
-};
+}
 
-export default App
+export default App;
