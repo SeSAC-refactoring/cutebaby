@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import LoginTest from './LoginTest';
-import Posttest from './Posttest';
+import { fetchUsers, UserDataset } from './services/userService';
+import LoginTest from './pages/LoginTest';
+import Posttest from './pages/Posttest';
+import KakaoLogin from './pages/KakaoLogin';
+import { getKakaoLoginUrl } from './services/kakaoService';
 import {
     fetchVaccinationDiseaseList,
     fetchVaccinationInfo,
@@ -24,11 +27,11 @@ export interface UserData {
 
 function App() {
     // 데이터의 타입을 UserData 배열로 설정
-    const [data, setData] = useState<UserData[]>([]);
+    const [data, setData] = useState<UserDataset[]>([]);
 
     useEffect(() => {
         axios
-            .get<UserData[]>('http://localhost:5001/api/user')
+            .get<UserDataset[]>('http://localhost:5001/api/user')
             .then((response) => {
                 setData(response.data);
             })
@@ -90,8 +93,12 @@ function App() {
             <LoginTest data={data} />
             <hr />
             <Posttest />
+            <a href={getKakaoLoginUrl()}>
+        <img src="img/kakaoLoginImg.png" alt="카카오 로그인" />
+      </a>
+      <KakaoLogin></KakaoLogin>
         </div>
     );
-}
+};
 
-export default App;
+export default App
