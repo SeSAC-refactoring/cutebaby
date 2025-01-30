@@ -1,5 +1,5 @@
-import { getUserById } from '../models/User.js';
-import { getPostsByUserNumber } from '../models/Post.js';
+import { getUserById } from '../model/User.js';
+import { getPostsByUserNumber } from '../model/Post.js';
 
 export const getUserPosts = (req, res) => {
   const { userid } = req.body;
