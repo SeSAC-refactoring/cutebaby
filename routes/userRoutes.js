@@ -1,8 +1,9 @@
 import express from 'express';
-import { getUserInfo } from '../controller/userController.js';
+import { getUserInfoByEmail } from '../controller/userController.js';
 
 const router = express.Router();
 
-router.post('/getUser', getUserInfo);
+// 이메일로 사용자 정보 조회
+router.post('/user', getUserInfoByEmail);  
 
 export default router;
