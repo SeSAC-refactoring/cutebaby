@@ -4,7 +4,7 @@ const serviceKey =
     'aBW%2F97Bvvsc8asD9I8qq50bFJd%2BMkvUNbeUhxpW%2FFLTUBWclU%2BXPryRrW4tHSEeH%2Fui5x%2BmnZtb4dp%2BKVY3EyQ%3D%3D';
 
 // 영유아성장도표 LMS기준
-const growthChartLmsApi = `https://api.odcloud.kr/api/15133061/v1/uddi:eac44a07-6bc4-418a-9bcc-a3f359dbee0f?&serviceKey=${serviceKey}`;
+const growthChartLmsApi = `https://api.odcloud.kr/api/15133061/v1/uddi:eac44a07-6bc4-418a-9bcc-a3f359dbee0f?page=1&perPage=626&serviceKey=${serviceKey}`;
 
 export async function fetchGrowthChartLms() {
     try {
@@ -19,7 +19,10 @@ export async function fetchGrowthChartLms() {
             return [];
         }
     } catch (error) {
-        console.error('데이터 가져오는 중 오류 발생:', error);
+        console.error(
+            '영유아성장도표 LMS기준 데이터 가져오는 중 오류 발생:',
+            error
+        );
         return [];
     }
 }
@@ -37,7 +40,10 @@ export async function fetchGrowthChartPercentile() {
             return [];
         }
     } catch (error) {
-        console.error('데이터 가져오는 중 오류 발생:', error);
+        console.error(
+            '영유아성장도표 백분위수기준 데이터 가져오는 중 오류 발생:',
+            error
+        );
         return [];
     }
 }
