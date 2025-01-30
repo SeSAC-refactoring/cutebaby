@@ -4,7 +4,7 @@ import axios, { AxiosError } from 'axios';
 // 사용자 정보 인터페이스 정의
 interface UserInfo {
   username: string;
-  email: string;
+  userid: string;
 }
 
 const LoginTest: React.FC = () => {
@@ -57,7 +57,7 @@ const LoginTest: React.FC = () => {
         <div>
           <h2>사용자 정보</h2>
           <p>이름: {userInfo.username}</p>
-          <p>이메일: {userInfo.email}</p>
+          <p>이메일: {userInfo.userid}</p>
         </div>
       )}
     </div>
