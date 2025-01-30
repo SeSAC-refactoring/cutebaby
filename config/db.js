@@ -1,3 +1,5 @@
+//수정금지~~ 나중에 console.log 삭제예정
+
 import mysql from 'mysql2';
 
 const db = mysql.createConnection({
