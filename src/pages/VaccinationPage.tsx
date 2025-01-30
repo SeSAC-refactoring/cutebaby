@@ -56,7 +56,6 @@ export const VaccinationPage = () => {
                 const info: DiseaseInfo = await fetchVaccinationInfo(cd);
                 setDiseaseInfo((prev) => ({ ...prev, [cd]: info })); // 데이터 저장
                 setExpandItems((prev) => ({ ...prev, [cd]: true })); // 데이터를 불러온 후 상태 변경
-                console.log(diseaseInfo);
             } catch (error) {
                 console.error(`Error fetching info for disease ${cd}:`, error);
             }

@@ -19,6 +19,7 @@ import {
     fetchGrowthChartPercentile,
 } from './api-data/growthChart';
 import { VaccinationPage } from './pages/VaccinationPage';
+import { GrowthDiaryPage } from './pages/growth-diary-page/GrowthDiaryPage';
 
 export interface UserData {
     userid: number;
@@ -101,7 +102,8 @@ function App() {
 
             {/* 페이지 확인 */}
             <hr />
-            <VaccinationPage></VaccinationPage>
+            {/* <VaccinationPage></VaccinationPage> */}
+            <GrowthDiaryPage></GrowthDiaryPage>
         </div>
     );
 }
