@@ -1,4 +1,4 @@
-import { getUserById } from '../models/User.js';
+import { getUserById } from '../model/User.js';
 
 export const getUserInfo = (req, res) => {
   const { userid } = req.body;

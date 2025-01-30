@@ -31,7 +31,7 @@ function App() {
 
     useEffect(() => {
         axios
-            .get<UserDataset[]>('http://localhost:5001/api/user')
+            .get<UserDataset[]>('http://localhost:5001/api/user/getUser')
             .then((response) => {
                 setData(response.data);
             })
