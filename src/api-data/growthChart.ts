@@ -19,7 +19,10 @@ export async function fetchGrowthChartLms() {
             return [];
         }
     } catch (error) {
-        console.error('데이터 가져오는 중 오류 발생:', error);
+        console.error(
+            '영유아성장도표 LMS기준 데이터 가져오는 중 오류 발생:',
+            error
+        );
         return [];
     }
 }
@@ -37,7 +40,10 @@ export async function fetchGrowthChartPercentile() {
             return [];
         }
     } catch (error) {
-        console.error('데이터 가져오는 중 오류 발생:', error);
+        console.error(
+            '영유아성장도표 백분위수기준 데이터 가져오는 중 오류 발생:',
+            error
+        );
         return [];
     }
 }
