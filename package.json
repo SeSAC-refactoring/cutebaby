@@ -2,10 +2,12 @@
   "name": "baby",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "axios": "^1.7.9",
+    "axois": "^0.0.1-security",
     "chart.js": "^4.4.7",
     "cors": "^2.8.5",
     "cra-template-typescript": "1.2.0",
