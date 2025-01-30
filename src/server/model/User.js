@@ -1,8 +1,12 @@
-import db from '../config/db.js';
+import db from '../config/db.js';  // MySQL 연결 객체
 
-export const getUserById = (userid, callback) => {
-  const query = 'SELECT usernumber FROM userinfo WHERE userid = ?';
-  db.query(query, [userid], (err, result) => {
-    callback(err, result);
+// 특정 이메일로 사용자 조회하는 함수
+export const getUserByEmail = (email) => {
+  return new Promise((resolve, reject) => {
+    const query = 'SELECT * FROM userinfo WHERE userid = ?';  // 이메일로 사용자 정보 조회
+    db.query(query, [email], (err, result) => {
+      if (err) reject(err);
+      else resolve(result);
+    });
   });
 };

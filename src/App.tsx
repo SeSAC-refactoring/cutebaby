@@ -28,17 +28,19 @@ export interface UserData {
 
 function App() {
     // 데이터의 타입을 UserData 배열로 설정
-    const [data, setData] = useState<UserDataset[]>([]);
+    // const [data, setData] = useState<UserDataset[]>([]);
 
-    useEffect(() => {
-        axios
-            .get<UserDataset[]>('http://localhost:5001/api/user')
-            .then((response) => {
-                setData(response.data);
-            })
-            .catch((error) => {
-                console.error('데이터 가져오기 오류:', error);
-            });
+
+
+    // useEffect(() => {
+    //     axios
+    //         .post<UserDataset[]>('http://localhost:5001/api/user/getUser')
+    //         .then((response) => {
+    //             setData(response.data);
+    //         })
+    //         .catch((error) => {
+    //             console.error('데이터 가져오기 오류:', error);
+    //         });
 
         //////////////////////////////////////////////////////////
         // API 데이터 가져오기 확인
@@ -78,22 +80,20 @@ function App() {
         //     console.log('fetchGrowthChartPercentile', list);
         // });
         //////////////////////////////////////////////////////////
-    }, []);
+    // }, []);
 
     return (
         <div className="App">
             <h1>MySQL 데이터 test</h1>
             <hr />
-            <h2>sql에 저장된 계정들</h2>
-            <ul>
+            {/* <ul>
                 {data.map((item, index) => (
                     <li key={index}>{JSON.stringify(item)}</li>
                 ))}
-            </ul>
+            </ul> */}
+            <LoginTest />
             <hr />
-            <LoginTest data={data} />
-            <hr />
-            <Posttest />
+            {/* <Posttest /> */}
             <a href={getKakaoLoginUrl()}>
                 <img src="img/kakaoLoginImg.png" alt="카카오 로그인" />
             </a>
