@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { fetchUsers, UserDataset } from './services/userService';
 import LoginTest from './pages/LoginTest';
-import Posttest from './pages/Posttest';
 import KakaoLogin from './pages/KakaoLogin';
 import { getKakaoLoginUrl } from './services/kakaoService';
 import {
