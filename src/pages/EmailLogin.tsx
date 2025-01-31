@@ -7,16 +7,20 @@ interface UserInfo {
   userid: string;
 }
 
-const LoginTest: React.FC = () => {
+const EmailLogin: React.FC = () => {
   const [email, setEmail] = useState<string>('');  // 이메일 상태관리하기
+  const [password, setPassword] = useState<string>('') //비밀번호 상태관리하기
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);  // 사용자 정보 상태관리하기
   const [error, setError] = useState<string>('');  // 에러 상태
 
-  // 이메일 입력값 처리 함수
+  // 이메일 입력값 처리 함수 설정
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value); //입력받은거 email변수에 저장하기
   };
-
+ // 비밀번호 입력값 처리 함수 설정
+  const handleInputPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value)
+  }
   // 이메일로 사용자 정보 조회
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); // 페이지 전체 새로고침되는거 막는거
@@ -38,6 +42,11 @@ const LoginTest: React.FC = () => {
       }
       setUserInfo(null);  // 오류 발생 시 사용자 정보 초기화
     }
+    try{//비밀번호 부분
+
+    }catch{
+
+    }
   };
 
   return (
@@ -48,6 +57,12 @@ const LoginTest: React.FC = () => {
           value={email}
           onChange={handleInputChange}
           placeholder="이메일을 입력하세요"
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={handleInputPassword}
+          placeholder="비밀번호를 입력하세요"
         />
         <button type="submit">로그인</button>
       </form>
@@ -65,4 +80,4 @@ const LoginTest: React.FC = () => {
   );
 };
 
-export default LoginTest;
+export default EmailLogin;

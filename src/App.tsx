@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { fetchUsers, UserDataset } from './services/userService';
+// import { fetchUsers, UserDataset } from './services/userService';
 import LoginTest from './pages/LoginTest';
 import KakaoLogin from './pages/KakaoLogin';
 import { getKakaoLoginUrl } from './services/kakaoService';
@@ -19,6 +19,8 @@ import {
 } from './api-data/growthChart';
 import { VaccinationPage } from './pages/VaccinationPage';
 import { GrowthDiaryPage } from './pages/growth-diary-page/GrowthDiaryPage';
+import Signup from './pages/Signup';
+import EmailLogin from './pages/EmailLogin';
 
 export interface UserData {
     userid: number;
@@ -90,6 +92,8 @@ function App() {
             </ul> */}
             <LoginTest />
             <hr />
+            <EmailLogin></EmailLogin>
+            <hr />
             {/* <Posttest /> */}
             <a href={getKakaoLoginUrl()}>
                 <img src="img/kakaoLoginImg.png" alt="카카오 로그인" />
@@ -100,6 +104,9 @@ function App() {
             <hr />
             {/* <VaccinationPage></VaccinationPage> */}
             <GrowthDiaryPage></GrowthDiaryPage>
+
+            <hr />
+            <Signup></Signup>
         </div>
     );
 }
