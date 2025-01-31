@@ -9,7 +9,6 @@ const growthChartLmsApi = `https://api.odcloud.kr/api/15133061/v1/uddi:eac44a07-
 export async function fetchGrowthChartLms() {
     try {
         const jsonData = await getData(growthChartLmsApi); // JSON 데이터 받기
-        console.log('jsonData:', jsonData);
 
         if (jsonData) {
             // 필요한 데이터를 찾아서 return 해야함

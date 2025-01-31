@@ -1,121 +1,37 @@
-import React, {
-    useCallback,
-    useEffect,
-    useMemo,
-    useRef,
-    useState,
-} from 'react';
-import {
-    fetchGrowthChartLms,
-    fetchGrowthChartPercentile,
-} from '../../api-data/growthChart';
-
+import { useState } from 'react';
 import { ChartComponent } from './ChartComponent';
 import { ChildData } from './types';
-import { Line } from 'react-chartjs-2';
-import DatePicker from 'react-datepicker';
+import { handleShowChart } from './handleShowChart';
+import { useFetchData } from './hooks/useFetchData';
+import { useCalculateMonths } from './hooks/useCalculateMonths';
+import { useHandleInputChange } from './hooks/useHandleInputChange';
+import { useRefs } from './hooks/useRefs';
+import { useChildData } from './hooks/useChildData';
+import { useShowChart } from './hooks/useShowChart';
 
 export const GrowthDiaryPage = () => {
-    // 상태 관리
-    const [growthData, setGrowthData] = useState([]); // 입력값에 따른 z-score
-    const [percentileData, setPercentileData] = useState([]); // 퍼센타일
-    const [childData, setChildData] = useState<ChildData>({
-        gender: 'male',
-        birthDate: new Date('2025-01-23'),
-        measurementDate: null,
-        height: null,
-        weight: null,
-        headCircumference: null,
-    });
-    const [showChart, setShowChart] = useState<boolean>(false); // 차트 표시 여부
-    const [isLoading, setIsLoading] = useState<boolean>(false); // 로딩 상태
-
-    // 입력 필드 ref
-    const measurementDateRef = useRef<HTMLInputElement>(null);
-    const heightRef = useRef<HTMLInputElement>(null);
-    const weightRef = useRef<HTMLInputElement>(null);
-    const headCircumferenceRef = useRef<HTMLInputElement>(null);
-
-    // 개월 수 계산 // useMemo()로 최적화
-    const months = useMemo(() => {
-        if (!childData.birthDate || !childData.measurementDate) return null;
-
-        const yearsDiff =
-            childData.measurementDate.getFullYear() -
-            childData.birthDate.getFullYear();
-        const monthsDiff =
-            childData.measurementDate.getMonth() -
-            childData.birthDate.getMonth();
-
-        return yearsDiff * 12 + monthsDiff;
-    }, [childData.measurementDate]); // measurementDate 변경 시에만 실행
-
-    // lms api 가져오기 // childData 변경 시 실행, showChart가 true일 때 실행 // useCallback()으로 최적화
-    const fetchLmsData = useCallback(async () => {
-        if (!showChart) return; // 차트보기를 안눌렀다면 실행 안함
-        if (!months || !childData.gender) return; // 필수 정보가 없으면 실행 안함
-        setIsLoading(true);
-
-        try {
-            const data = await fetchGrowthChartLms();
-            setGrowthData(data);
-        } catch (error) {
-            console.error('Error fetching LMS data:', error);
-        } finally {
-            setIsLoading(false); // 로딩 종료
-        }
-    }, [childData, showChart]);
-    useEffect(() => {
-        fetchLmsData();
-    }, [fetchLmsData]);
-
-    // percentile api 가져오기 // 버튼 클릭 후 최초 1회만 실행
-    useEffect(() => {
-        const fetchPercentileData = async () => {
-            if (showChart && percentileData.length === 0) {
-                setIsLoading(true);
-                try {
-                    const data = await fetchGrowthChartPercentile();
-                    setPercentileData(data);
-                } catch (error) {
-                    console.error('Error fetching percentile data:', error);
-                } finally {
-                    setIsLoading(false); // 로딩 종료
-                }
-            }
-        };
-        fetchPercentileData();
-    }, [showChart]); // showChart가 true로 변경될 때 실행
-
-    // 입력값 변경 (입력 필드 업데이트)
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setChildData((prev) => ({
-            ...prev,
-            [name]: value ? parseFloat(value) : null, // string -> number로 형변환하여 저장
-        }));
-    };
-
-    // 차트를 보는 버튼 클릭 시
-    const handleShowChart = () => {
-        // 측정일 값 없으면 input focus
-        if (!childData.measurementDate) {
-            measurementDateRef.current?.focus();
-            return;
-        }
-
-        // 신장, 몸무게, 머리둘레 값이 모두 없으면 input focus
-        if (
-            !childData.height &&
-            !childData.weight &&
-            !childData.headCircumference
-        ) {
-            heightRef.current?.focus();
-            return;
-        }
-
-        setShowChart(!showChart);
-    };
+    // customHook 가져오기
+    const {
+        childData,
+        setChildData,
+    }: {
+        childData: ChildData;
+        setChildData: React.Dispatch<React.SetStateAction<ChildData>>;
+    } = useChildData();
+    const {
+        showChart,
+        setShowChart,
+    }: {
+        showChart: boolean;
+        setShowChart: React.Dispatch<React.SetStateAction<boolean>>;
+    } = useShowChart();
+    const { lmsData, percentileData, isLoading } = useFetchData(
+        childData,
+        showChart
+    );
+    const handleInputChange = useHandleInputChange(setChildData);
+    const refs = useRefs();
+    useCalculateMonths(childData, setChildData);
 
     return (
         <div>
@@ -141,7 +57,7 @@ export const GrowthDiaryPage = () => {
                     <input
                         type="date"
                         name="measurementDate"
-                        ref={measurementDateRef}
+                        ref={refs.measurementDate}
                         value={
                             childData.measurementDate
                                 ? childData.measurementDate
@@ -165,7 +81,7 @@ export const GrowthDiaryPage = () => {
                     <input
                         type="number"
                         name="height"
-                        ref={heightRef}
+                        ref={refs.height}
                         value={childData.height ?? ''}
                         onChange={handleInputChange}
                         placeholder="신장 입력"
@@ -177,7 +93,7 @@ export const GrowthDiaryPage = () => {
                     <input
                         type="number"
                         name="weight"
-                        ref={weightRef}
+                        ref={refs.headCircumference}
                         value={childData.weight ?? ''}
                         onChange={handleInputChange}
                         placeholder="체중 입력"
@@ -189,7 +105,7 @@ export const GrowthDiaryPage = () => {
                     <input
                         type="number"
                         name="headCircumference"
-                        ref={headCircumferenceRef}
+                        ref={refs.headCircumference}
                         value={childData.headCircumference ?? ''}
                         onChange={handleInputChange}
                         placeholder="머리둘레 입력"
@@ -197,7 +113,11 @@ export const GrowthDiaryPage = () => {
                 </div>
 
                 {/* 차트 */}
-                <button onClick={handleShowChart}>
+                <button
+                    onClick={() =>
+                        handleShowChart(childData, refs, setShowChart)
+                    }
+                >
                     {showChart ? '차트 숨기기' : '차트 보기'}
                 </button>
                 {/* 로딩 중일 경우 */}
@@ -207,7 +127,7 @@ export const GrowthDiaryPage = () => {
                 {showChart && !isLoading && (
                     <ChartComponent
                         childData={childData}
-                        growthData={growthData}
+                        lmsData={lmsData}
                         percentileData={percentileData}
                     />
                 )}

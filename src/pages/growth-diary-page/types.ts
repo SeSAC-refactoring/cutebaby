@@ -3,6 +3,7 @@ export interface ChildData {
     birthDate: Date; // 생년월일 ("YYYY-MM-DD" 형식)
 
     measurementDate: Date | null; // 측정일 ("YYYY-MM-DD" 형식)
+    months: number | null;
     height: number | null;
     weight: number | null;
     headCircumference: number | null;
@@ -10,6 +11,6 @@ export interface ChildData {
 
 export interface ChartComponentProps {
     childData: ChildData;
-    growthData: any[]; // API에서 가져온 데이터 배열
+    lmsData: any[]; // API에서 가져온 데이터 배열
     percentileData: any[]; // API에서 가져온 데이터 배열
 }

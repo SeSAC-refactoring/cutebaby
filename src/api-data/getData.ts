@@ -2,7 +2,6 @@ import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
 
 export default async function getData(apiUrl: string) {
-    console.log('data fetching...');
     try {
         const res = await axios.get(`${apiUrl}`);
         return res.data;
