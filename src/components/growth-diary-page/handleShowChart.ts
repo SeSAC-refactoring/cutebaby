@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { ChildData } from './types';
+import { ChildData } from '../types';
 
 // 차트를 보는 버튼 클릭 시
 export const handleShowChart = (

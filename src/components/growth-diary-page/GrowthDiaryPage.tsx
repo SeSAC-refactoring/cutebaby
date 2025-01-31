@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { ChartComponent } from './ChartComponent';
-import { ChildData } from './types';
+import { ChildData } from '../types';
 import { handleShowChart } from './handleShowChart';
 import { useFetchData } from './hooks/useFetchData';
-import { useCalculateMonths } from './hooks/useCalculateMonths';
+import { useCalculateMonths } from '../hooks/useCalculateMonths';
 import { useHandleInputChange } from './hooks/useHandleInputChange';
-import { useRefs } from './hooks/useRefs';
-import { useChildData } from './hooks/useChildData';
-import { useShowChart } from './hooks/useShowChart';
+import { useRefs } from '../hooks/useRefs';
+import { useChildData } from '../hooks/useChildData';
+import { useShowChart } from '../hooks/useShowChart';
 
 export const GrowthDiaryPage = () => {
     // customHook 가져오기

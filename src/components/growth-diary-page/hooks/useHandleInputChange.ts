@@ -1,5 +1,6 @@
-import { ChildData } from '../types';
+import { ChildData } from '../../types';
 
+// growthDiaryPage에서 측정일/키/체중/머리둘레 입력값 변할 시
 export const useHandleInputChange = (
     setChildData: React.Dispatch<React.SetStateAction<ChildData>>
 ) => {

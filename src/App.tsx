@@ -4,6 +4,9 @@ import TestMain from './components/TestMain';
 import EmailLogin from './components/EmailLogin';
 import Signup from './pages/Signup';
 import { Route, Routes } from 'react-router-dom';
+import GrowthDiary from './pages/GrowthDiary';
+import { GrowthDiaryPage } from './components/growth-diary-page/GrowthDiaryPage';
+import { AiChatComponent } from './components/home-page/AiChatComponent';
 // import GrowthDiary from "./components/GrowthDiary";
 
 export interface UserData {
@@ -21,9 +24,9 @@ function App() {
                 <Route path="/" element={<EmailLogin />} />
                 <Route path="/TestMain" element={<TestMain />} />
             </Routes>
-
+            <AiChatComponent></AiChatComponent>
             <Signup></Signup>
-
+            {/* <GrowthDiaryPage></GrowthDiaryPage> */}
             {/* <hr />
       <Login />
 

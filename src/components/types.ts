@@ -14,3 +14,5 @@ export interface ChartComponentProps {
     lmsData: any[]; // API에서 가져온 데이터 배열
     percentileData: any[]; // API에서 가져온 데이터 배열
 }
+
+export type Message = { role: 'user' | 'assistant'; content: string };

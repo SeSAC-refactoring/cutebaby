@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChartComponentProps } from './types';
+import { ChartComponentProps } from '../types';
 import { Line } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
