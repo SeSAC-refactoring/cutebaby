@@ -1,0 +1,57 @@
+.background {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+}
+.title {
+  font-size: 25px;
+}
+.gray_box {
+  margin-top: 30px;
+  background-color: rgb(213, 206, 206);
+  width: 800px;
+  font-size: 22px;
+  padding: 10px 20px;
+}
+.input_set {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+}
+.a {
+  font-size: 16px;
+}
+.input {
+  height: 50px;
+}
+.gray_text {
+  color: rgb(176, 167, 167);
+  width: 600px;
+  margin-top: 30px;
+}
+.checkBox {
+  background-color: rgb(213, 206, 206);
+  width: 600px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+.checkBox_row {
+  display: flex;
+  justify-content: space-around;
+}
+.checkBox_unit {
+  font-size: 25px;
+  width: 30%;
+  text-align: center;
+}
+.button {
+  width: 250px;
+  background-color: rgb(213, 206, 206);
+  border: none;
+  height: 40px;
+  margin: 50px 0px;
+}
