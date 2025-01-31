@@ -1,114 +1,139 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import axios from "axios";
 // import { fetchUsers, UserDataset } from './services/userService';
-import LoginTest from './pages/LoginTest';
-import KakaoLogin from './pages/KakaoLogin';
-import { getKakaoLoginUrl } from './services/kakaoService';
+import LoginTest from "./pages/LoginTest";
+import KakaoLogin from "./pages/KakaoLogin";
+import { getKakaoLoginUrl } from "./services/kakaoService";
 import {
-    fetchVaccinationDiseaseList,
-    fetchVaccinationInfo,
-} from './api-data/vaccinationDisease';
+  fetchVaccinationDiseaseList,
+  fetchVaccinationInfo,
+} from "./api-data/vaccinationDisease";
 import {
-    fetchProvince,
-    fetchCity,
-    fetchVaccinationCenters,
-} from './api-data/vaccinationCenters';
+  fetchProvince,
+  fetchCity,
+  fetchVaccinationCenters,
+} from "./api-data/vaccinationCenters";
 import {
-    fetchGrowthChartLms,
-    fetchGrowthChartPercentile,
-} from './api-data/growthChart';
-import { VaccinationPage } from './pages/VaccinationPage';
-import { GrowthDiaryPage } from './pages/growth-diary-page/GrowthDiaryPage';
-import Signup from './pages/Signup';
-import EmailLogin from './pages/EmailLogin';
+  fetchGrowthChartLms,
+  fetchGrowthChartPercentile,
+} from "./api-data/growthChart";
+import { VaccinationPage } from "./pages/VaccinationPage";
+import { GrowthDiaryPage } from "./pages/growth-diary-page/GrowthDiaryPage";
+// import Signup from "./pages/Signup";
+import EmailLogin from "./pages/EmailLogin";
+import GrowthDiary from "./components/GrowthDiary";
+import Signup from "./components/Signup";
+import Home from "./components/Home";
+import Vaccination from "./components/Vaccination";
+import Mypage from "./components/Mypage";
+import Login from "./components/Login";
+// import GrowthDiary from "./components/GrowthDiary";
 
 export interface UserData {
-    userid: number;
-    username: string;
-    email: string;
+  userid: number;
+  username: string;
+  email: string;
 }
 
 function App() {
-    // 데이터의 타입을 UserData 배열로 설정
-    // const [data, setData] = useState<UserDataset[]>([]);
+  // 데이터의 타입을 UserData 배열로 설정
+  // const [data, setData] = useState<UserDataset[]>([]);
 
-    // useEffect(() => {
-    //     axios
-    //         .post<UserDataset[]>('http://localhost:5001/api/user/getUser')
-    //         .then((response) => {
-    //             setData(response.data);
-    //         })
-    //         .catch((error) => {
-    //             console.error('데이터 가져오기 오류:', error);
-    //         });
+  // useEffect(() => {
+  //     axios
+  //         .post<UserDataset[]>('http://localhost:5001/api/user/getUser')
+  //         .then((response) => {
+  //             setData(response.data);
+  //         })
+  //         .catch((error) => {
+  //             console.error('데이터 가져오기 오류:', error);
+  //         });
 
-    //////////////////////////////////////////////////////////
-    // API 데이터 가져오기 확인
-    // fetchVaccinationDiseaseList().then((list) => {
-    //     console.log(list);
-    // });
-    // fetchVaccinationInfo(10).then((list) => {
-    //     console.log(list);
-    // });
+  //////////////////////////////////////////////////////////
+  // API 데이터 가져오기 확인
+  // fetchVaccinationDiseaseList().then((list) => {
+  //     console.log(list);
+  // });
+  // fetchVaccinationInfo(10).then((list) => {
+  //     console.log(list);
+  // });
 
-    // fetchProvince().then((list) => {
-    //     console.log(list);
-    // });
-    // fetchCity(1100000000).then((list) => {
-    //     console.log(list);
-    // });
-    // const pagenumber = 1;
-    // const province = 1100000000;
-    // const city = 11110;
-    // const searchType = 'ORG'; // 'ADDR'
-    // const searchWord = '서울';
-    // fetchVaccinationCenters(
-    //     pagenumber,
-    //     province,
-    //     city,
-    //     searchType,
-    //     searchWord
-    // ).then((list) => {
-    //     console.log('병원정보', list);
-    // });
+  // fetchProvince().then((list) => {
+  //     console.log(list);
+  // });
+  // fetchCity(1100000000).then((list) => {
+  //     console.log(list);
+  // });
+  // const pagenumber = 1;
+  // const province = 1100000000;
+  // const city = 11110;
+  // const searchType = 'ORG'; // 'ADDR'
+  // const searchWord = '서울';
+  // fetchVaccinationCenters(
+  //     pagenumber,
+  //     province,
+  //     city,
+  //     searchType,
+  //     searchWord
+  // ).then((list) => {
+  //     console.log('병원정보', list);
+  // });
 
-    // fetchGrowthChartLms().then((list) => {
-    //     console.log('fetchGrowthChartLms', list);
-    // });
-    // fetchGrowthChartPercentile().then((list) => {
-    //     console.log('fetchGrowthChartPercentile', list);
-    // });
-    //////////////////////////////////////////////////////////
-    // }, []);
+  // fetchGrowthChartLms().then((list) => {
+  //     console.log('fetchGrowthChartLms', list);
+  // });
+  // fetchGrowthChartPercentile().then((list) => {
+  //     console.log('fetchGrowthChartPercentile', list);
+  // });
+  //////////////////////////////////////////////////////////
+  // }, []);
 
-    return (
-        <div className="App">
-            <h1>MySQL 데이터 test</h1>
-            <hr />
-            {/* <ul>
+  return (
+    <div className="App">
+      <h1>MySQL 데이터 test</h1>
+      <hr />
+      {/* <ul>
                 {data.map((item, index) => (
                     <li key={index}>{JSON.stringify(item)}</li>
                 ))}
             </ul> */}
-            <LoginTest />
-            <hr />
-            <EmailLogin></EmailLogin>
-            <hr />
-            {/* <Posttest /> */}
-            <a href={getKakaoLoginUrl()}>
-                <img src="img/kakaoLoginImg.png" alt="카카오 로그인" />
-            </a>
-            <KakaoLogin></KakaoLogin>
+      <LoginTest />
+      <hr />
+      <EmailLogin></EmailLogin>
+      <hr />
+      {/* <Posttest /> */}
+      <a href={getKakaoLoginUrl()}>
+        <img src="img/kakaoLoginImg.png" alt="카카오 로그인" />
+      </a>
+      <KakaoLogin></KakaoLogin>
 
-            {/* 페이지 확인 */}
-            <hr />
-            {/* <VaccinationPage></VaccinationPage> */}
-            <GrowthDiaryPage></GrowthDiaryPage>
+      {/* 페이지 확인 */}
+      <hr />
+      {/* <VaccinationPage></VaccinationPage> */}
+      <GrowthDiaryPage></GrowthDiaryPage>
 
-            <hr />
-            <Signup></Signup>
-        </div>
-    );
+      <hr />
+      {/* <Signup></Signup> */}
+
+      {/* <hr />
+      <Login />
+
+      <hr />
+      <Signup />
+
+      <hr />
+      <Home />
+
+      <hr />
+      <Vaccination />
+
+      <hr />
+      <GrowthDiary />
+
+      <hr />
+      <Mypage /> */}
+    </div>
+  );
 }
 
 export default App;

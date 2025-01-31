@@ -1,0 +1,82 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+}
+.image_box {
+  width: 200px;
+  height: 200px;
+  background-color: rgb(208, 206, 206);
+  position: relative;
+  top: 180px;
+  right: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.invisible {
+  width: 200px;
+  height: 200px;
+}
+.background {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 30px;
+  align-items: center;
+}
+.title {
+  font-size: 30px;
+  font-weight: 700;
+}
+.user_list {
+  margin-top: 40px;
+  background-color: rgb(241, 237, 237);
+  width: 600px;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.user_wrap {
+  display: flex;
+  justify-content: space-around;
+  width: 400px;
+}
+.enroll {
+  border: none;
+}
+.small_title {
+  width: 600px;
+  font-size: 23px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+.info_box {
+  margin-top: 40px;
+  width: 600px;
+  background-color: rgb(208, 206, 206);
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  padding-left: 40px;
+  margin-bottom: 10px;
+}
+.info_title {
+  margin-bottom: 20px;
+}
+.info_content {
+  display: flex;
+  margin-bottom: 30px;
+}
+.info_a {
+  width: 120px;
+}
+.info_b {
+}
+.edit_btn {
+  background-color: rgb(208, 206, 206);
+  margin-top: 20px;
+  width: 60px;
+  border: none;
+}
