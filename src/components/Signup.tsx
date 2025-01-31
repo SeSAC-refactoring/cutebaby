@@ -1,48 +1,24 @@
-import styles from '../styles/Signup.module.scss';
+import React from 'react'
 
 export default function Signup() {
+
+
   return (
-    <>
-      <div className={styles.background}>
-        <div className={styles.title}>회원가입</div>
-        <div className={styles.gray_box}>1. 보호자님 정보를 적어주세요.</div>
-        <div className={styles.input_set}>
-          <div className={styles.a}>이메일 *</div>
-          <input className={styles.input}></input>
-        </div>
-        <div className={styles.input_set}>
-          <div className={styles.a}>비밀번호 *</div>
-          <input className={styles.input}></input>
-        </div>
-        <div className={styles.input_set}>
-          <div className={styles.a}>비밀번호 확인 *</div>
-          <input className={styles.input}></input>
-        </div>
-        <div className={styles.input_set}>
-          <div className={styles.a}>이름 *</div>
-          <input className={styles.input}></input>
-        </div>
-        <div className={styles.gray_box}>2. 아기의 정보를 적어주세요.</div>
-        <div className={styles.input_set}>
-          <div className={styles.a}>이름 *</div>
-          <input className={styles.input}></input>
-        </div>
-        <div className={styles.input_set}>
-          <div className={styles.a}>생년월일 *</div>
-          <input className={styles.input}></input>
-        </div>
-        <div className={styles.gray_text}>
-          이미 접종한 회차를 모두 체크해주세요.
-        </div>
-        <div className={styles.checkBox}>
-          <div className={styles.checkBox_row}>
-            <div className={styles.checkBox_unit}>예방 접종명</div>
-            <div className={styles.checkBox_unit}>백신명</div>
-            <div className={styles.checkBox_unit}>횟수</div>
-          </div>
-        </div>
-        <button className={styles.button}>완료</button>
-      </div>
-    </>
-  );
+    <div>
+        <h1>회원가입</h1>
+        <section>
+            <h2>1. 보호자님 정보를 적어주세요</h2>
+                 <input type="email" placeholder='이메일을 입력해주세요'/>
+                 <input type="password" placeholder='비밀번호를 입력해주세요'/>
+                 <input type="password" placeholder='비밀번호를 한번더 입력해주세요'/>
+        <button>회원가입</button>
+        </section>
+        <section>
+            <h2>2. 아기의 정보를 적어주세요</h2>
+            <input type="text" placeholder='아기의 이름을 입력해주세요'/>
+            <input type="date" placeholder='아기의 생일을 입력해주세요'/>
+
+        </section>
+    </div>
+  )
 }
