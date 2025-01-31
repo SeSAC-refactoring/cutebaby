@@ -101,39 +101,33 @@ export default function Signup() {
   }
   return (
     <>
-    <form onSubmit={infoSubmit}>
       <div className={styles.background}>
         <div className={styles.title}>회원가입</div>
         <div className={styles.gray_box}>1. 보호자님 정보를 적어주세요.</div>
         <div className={styles.input_set}>
           <div className={styles.a}>이메일 *</div>
-          <input className={styles.input}type='email' value={inputEmail} onChange={setEmail}></input>
-          {emailMessage?<p>{emailMessage}</p>:''}
+          <input className={styles.input}></input>
         </div>
         <div className={styles.input_set}>
-          <div className={styles.a} >비밀번호 *</div>
-          <input className={styles.input} type='password' value={inputPassword} onChange={setPassword}></input>
-          {passwordMessage?<p>{passwordMessage}</p>:''}
+          <div className={styles.a}>비밀번호 *</div>
+          <input className={styles.input}></input>
         </div>
         <div className={styles.input_set}>
           <div className={styles.a}>비밀번호 확인 *</div>
-          <input className={styles.input} type='password' value={checkPassword} onChange={setCheck}></input>
-          {rePassMessage?<p>{rePassMessage}</p>:''}
+          <input className={styles.input}></input>
         </div>
         <div className={styles.input_set}>
           <div className={styles.a}>이름 *</div>
-          <input className={styles.input} type='text' value={inputname} onChange={setUserName}></input>
-          {nameMessage?<p>{nameMessage}</p>:''}
+          <input className={styles.input}></input>
         </div>
         <div className={styles.gray_box}>2. 아기의 정보를 적어주세요.</div>
         <div className={styles.input_set}>
           <div className={styles.a}>이름 *</div>
-          <input className={styles.input} type='text' value={inputBaby} onChange={setBabyName}></input>
-          {babyMessage?<p>{babyMessage}</p>:''}
+          <input className={styles.input}></input>
         </div>
         <div className={styles.input_set}>
           <div className={styles.a}>생년월일 *</div>
-          <input className={styles.input} type='date'></input>
+          <input className={styles.input}></input>
         </div>
         <div className={styles.gray_text}>
           이미 접종한 회차를 모두 체크해주세요.
@@ -145,9 +139,8 @@ export default function Signup() {
             <div className={styles.checkBox_unit}>횟수</div>
           </div>
         </div>
-        <button className={styles.button} type='submit'>완료</button>
+        <button className={styles.button}>완료</button>
       </div>
-      </form>
     </>
   );
 }
