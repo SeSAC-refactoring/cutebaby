@@ -5,6 +5,12 @@ import userRoutes from './routes/userRoutes.js';
 const app = express();
 const port = 5001;
 
+
+// ✅ JSON과 URL-encoded 데이터를 처리하는 미들웨어 설정
+app.use(express.json());  
+app.use(express.urlencoded({ extended: true }));  
+
+
 app.use(cors({
   origin: 'http://localhost:3000', // React 앱 주소
   credentials: true
