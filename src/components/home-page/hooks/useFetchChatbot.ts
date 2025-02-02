@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { useLoading } from '../../hooks/useLoading';
+import { useLoading } from '../../../hooks/useLoading';
 import { Message } from '../../types';
 import { fetchChatGPT } from '../fetchChatGPT';
 

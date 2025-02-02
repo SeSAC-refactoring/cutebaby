@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { ChildData } from '../types';
+import { ChildData } from '../components/types';
 
+// childData useState
 export const useChildData = () => {
     const [childData, setChildData] = useState<ChildData>({
         gender: 'male',

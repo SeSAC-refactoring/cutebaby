@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-// 입력 필드 ref
+// ref 설정
 export const useRefs = () => {
     return {
         measurementDate: useRef<HTMLInputElement>(null),

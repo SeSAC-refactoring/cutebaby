@@ -1,8 +1,8 @@
 // import { fetchUsers, UserDataset } from './services/userService';
 import TestMain from './components/TestMain';
 // import Signup from "./components/Signup";
-import EmailLogin from './components/EmailLogin';
-import Signup from './pages/Signup';
+import EmailLogin from './components/login-page/EmailLogin';
+import Signup from './pages/SignUp';
 import { Route, Routes } from 'react-router-dom';
 import GrowthDiary from './pages/GrowthDiary';
 import { GrowthDiaryPage } from './components/growth-diary-page/GrowthDiaryPage';
@@ -27,9 +27,10 @@ function App() {
                 <Route path="/Mypage" element={<Mypage />} />
                 <Route path="/oauth/callback/kakao" element={<KakaoLogin />} />
             </Routes>
-            <AiChatComponent></AiChatComponent>
+
             <Signup></Signup>
-            {/* <GrowthDiaryPage></GrowthDiaryPage> */}
+            <GrowthDiaryPage></GrowthDiaryPage>
+            {/* <AiChatComponent></AiChatComponent> */}
             {/* <hr />
       <Login />
 

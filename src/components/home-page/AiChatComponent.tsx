@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useChatbot } from './hooks/useFetchChatbot';
 import { useHandleKeyDown } from './useHandleKeyDown';
-import { useInput } from '../hooks/useInput';
+import { useInput } from '../../hooks/useInput';
 
 export const AiChatComponent = () => {
     const { input, setInput, handleInputChange } = useInput('');
