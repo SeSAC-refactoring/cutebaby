@@ -3,8 +3,8 @@ import { ChildData } from '../../types';
 import {
     fetchGrowthChartLms,
     fetchGrowthChartPercentile,
-} from '../../../api-data/growthChart';
-import { useLoading } from '../../hooks/useLoading';
+} from '../../api-data/growthChart';
+import { useLoading } from '../../../hooks/useLoading';
 
 // LMS와 퍼센타일 api 가져오기
 export const useFetchData = (childData: ChildData, showChart: boolean) => {

@@ -3,11 +3,11 @@ import { ChartComponent } from './ChartComponent';
 import { ChildData } from '../types';
 import { handleShowChart } from './handleShowChart';
 import { useFetchData } from './hooks/useFetchData';
-import { useCalculateMonths } from '../hooks/useCalculateMonths';
+import { useCalculateMonths } from '../../hooks/useCalculateMonths';
 import { useHandleInputChange } from './hooks/useHandleInputChange';
-import { useRefs } from '../hooks/useRefs';
-import { useChildData } from '../hooks/useChildData';
-import { useShowChart } from '../hooks/useShowChart';
+import { useRefs } from '../../hooks/useRefs';
+import { useChildData } from '../../hooks/useChildData';
+import { useShow } from '../../hooks/useShow';
 
 export const GrowthDiaryPage = () => {
     // customHook 가져오기
@@ -19,15 +19,15 @@ export const GrowthDiaryPage = () => {
         setChildData: React.Dispatch<React.SetStateAction<ChildData>>;
     } = useChildData();
     const {
-        showChart,
-        setShowChart,
+        show,
+        setShow,
     }: {
-        showChart: boolean;
-        setShowChart: React.Dispatch<React.SetStateAction<boolean>>;
-    } = useShowChart();
+        show: boolean;
+        setShow: React.Dispatch<React.SetStateAction<boolean>>;
+    } = useShow();
     const { lmsData, percentileData, isLoading } = useFetchData(
         childData,
-        showChart
+        show
     );
     const handleInputChange = useHandleInputChange(setChildData);
     const refs = useRefs();
@@ -114,17 +114,15 @@ export const GrowthDiaryPage = () => {
 
                 {/* 차트 */}
                 <button
-                    onClick={() =>
-                        handleShowChart(childData, refs, setShowChart)
-                    }
+                    onClick={() => handleShowChart(childData, refs, setShow)}
                 >
-                    {showChart ? '차트 숨기기' : '차트 보기'}
+                    {show ? '차트 숨기기' : '차트 보기'}
                 </button>
                 {/* 로딩 중일 경우 */}
                 {isLoading && <p>로딩 중...</p>}
 
                 {/* 차트 표시 여부에 따라 렌더링 */}
-                {showChart && !isLoading && (
+                {show && !isLoading && (
                     <ChartComponent
                         childData={childData}
                         lmsData={lmsData}

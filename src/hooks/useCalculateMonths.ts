@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { ChildData } from '../types';
+import { ChildData } from '../components/types';
 
 // 개월 수 계산하여 childData 업데이트
 export const useCalculateMonths = (
