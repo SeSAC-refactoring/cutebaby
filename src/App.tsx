@@ -7,6 +7,8 @@ import { Route, Routes } from 'react-router-dom';
 import GrowthDiary from './pages/GrowthDiary';
 import { GrowthDiaryPage } from './components/growth-diary-page/GrowthDiaryPage';
 import { AiChatComponent } from './components/home-page/AiChatComponent';
+import Mypage from './pages/Mypage';
+import KakaoLogin from './components/KakaoLogin';
 // import GrowthDiary from "./components/GrowthDiary";
 
 export interface UserData {
@@ -22,7 +24,8 @@ function App() {
             <hr />
             <Routes>
                 <Route path="/" element={<EmailLogin />} />
-                <Route path="/TestMain" element={<TestMain />} />
+                <Route path="/Mypage" element={<Mypage />} />
+                <Route path="/oauth/callback/kakao" element={<KakaoLogin />} />
             </Routes>
 
             <Signup></Signup>

@@ -33,14 +33,16 @@ export const getKakaoToken = async (code: string) => {
 
 // 카카오 사용자 정보 가져오기
 export const getKakaoUserInfo = async (accessToken: string) => {
+
   try {
     const response = await axios.get(KAKAO_USER_INFO_URL, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-    });
 
+      
+    });
     return response.data;
   } catch (error) {
     console.error('카카오 사용자 정보 요청 실패:', error);
