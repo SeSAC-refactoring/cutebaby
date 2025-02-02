@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import {
     fetchVaccinationDiseaseList,
     fetchVaccinationInfo,
-} from './api-data/vaccinationDisease';
+} from '../api-data/vaccinationDisease';
 
 interface DiseaseList {
     cd: number;
