@@ -126,6 +126,8 @@ import axios,{AxiosError} from 'axios';
         if (error instanceof AxiosError) {
           if (error.response?.status === 409) {
             alert("이미 사용 중인 이메일입니다. 다른 이메일을 사용해 주세요.");
+            inputRef.current.email?.scrollIntoView({ behavior: 'smooth' });
+            inputRef.current.email?.focus();
           } else {
             console.error("회원가입 중 오류 발생:", error.response?.data);
             alert("서버와의 연결에 문제가 발생했습니다. 다시 시도해주세요.");

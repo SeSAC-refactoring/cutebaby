@@ -1,6 +1,7 @@
 import express from 'express';
 import { getUserInfoByEmail } from '../controller/userController.js';
 import { signupCon } from '../controller/signupCon.js';
+import { kakaoCon } from '../controller/kakaoCon.js';
 
 
 const router = express.Router();
@@ -9,5 +10,6 @@ const router = express.Router();
 router.post('/user', getUserInfoByEmail);  
 // 이메일로 회원가입
 router.post('/signup' , signupCon);
+router.post('/kakaosignup', kakaoCon);
 
 export default router;

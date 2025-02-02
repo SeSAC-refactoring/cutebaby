@@ -15,6 +15,11 @@ const EmailLogin: React.FC = () => {
   const [inputpassword, setinputPassword] = useState<string>('') //비밀번호 상태관리하기
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);  // 사용자 정보 상태관리하기
   const [error, setError] = useState<string>('');  // 에러 상태
+
+  const gotoTestMain = ()=>{
+    navigate("./Mypage", {state : userInfo}) 
+    window.location.reload();
+  }
   useEffect(() => {
     if (userInfo) {
       gotoTestMain(); // 로그인 성공 시 자동 이동
@@ -65,10 +70,7 @@ const EmailLogin: React.FC = () => {
   };
   const navigate = useNavigate();
 
-  const gotoTestMain = ()=>{
-    navigate("./TestMain", {state : userInfo}) 
-    window.location.reload();
-  }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>

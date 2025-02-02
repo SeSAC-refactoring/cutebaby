@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { getKakaoToken, getKakaoUserInfo } from '../services/kakaoService';
+import axios, { AxiosError } from 'axios';
 
-const KakaoLogin: React.FC = () => {
+
+const KakaoLogin = (): React.ReactElement => {
   const [searchParams] = useSearchParams();
   const [userInfo, setUserInfo] = useState<any>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const code = searchParams.get('code'); // URL에서 "code" 파라미터 가져오기
     if (code) {
-      handleKakaoLogin(code);
+      handleKakaoLogin(code); // 카카오 로그인 함수 호출
     }
   }, [searchParams]);
 
@@ -18,25 +21,25 @@ const KakaoLogin: React.FC = () => {
       const accessToken = await getKakaoToken(code);
       const userData = await getKakaoUserInfo(accessToken);
       setUserInfo(userData);
-      console.log('카카오 로그인 성공:', userData);
+      // console.log('카카오 로그인 성공:', userData); // 로그인 성공 시 출력
+      const response = await axios.post('http://localhost:5001/api/kakaosignup', {userData});
+      console.log('response >>' , response)
+      if (response.data.success) {
+        console.log("회원가입 성공:", response.data.message);
+        alert("회원가입이 완료되었습니다!");
+      } else {
+        console.log("회원가입 실패:", response.data.message);
+        alert(response.data.message);
+      }
+      // 로그인 후 Mypage로 이동
+      console.log('Navigating to Mypage...');
+      navigate('/Mypage', { state: userData });
     } catch (error) {
       console.error('카카오 로그인 실패:', error);
     }
   };
 
-  return (
-    <div>
-      <h2>카카오 로그인</h2>
-      {userInfo ? (
-        <div>
-          <h3>환영합니다, {userInfo.kakao_account.profile.nickname}님!</h3>
-          <img src={userInfo.kakao_account.profile.thumbnail_image_url} alt="Profile" />
-        </div>
-      ) : (
-        <p>카카오 로그인을 진행 중...</p>
-      )}
-    </div>
-  );
+  return <div></div>; // 실제 UI는 없으므로 빈 div 반환
 };
 
 export default KakaoLogin;
