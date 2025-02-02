@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useChatbot } from './hooks/useFetchChatbot';
-import { useHandleKeyDown } from './useHandleKeyDown';
+import { useHandleKeyDown } from './hooks/useHandleKeyDown';
 import { useInput } from '../../hooks/useInput';
 
 export const AiChatComponent = () => {
