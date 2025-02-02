@@ -4,6 +4,7 @@ import userRoutes from './routes/userRoutes.js';
 
 const app = express();
 const port = 5001;
+app.use(cors()); 
 
 
 // ✅ JSON과 URL-encoded 데이터를 처리하는 미들웨어 설정
