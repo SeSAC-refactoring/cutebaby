@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Logout from "./login-page/Logout";
 
 export default function Header() {
   return (
@@ -21,7 +22,8 @@ export default function Header() {
         {" "}
         <Link to="/Signup">회원가입</Link>
       </div>
-      
+      <button onClick={Logout}>로그아웃</button>
+
     </>
   );
 }

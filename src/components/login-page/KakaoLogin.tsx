@@ -27,7 +27,7 @@ const KakaoLogin = (): React.ReactElement => {
       console.log('response >>' , response)
       if (response.data.success) {
         console.log("회원가입 성공:", response.data.message);
-        alert("회원가입이 완료되었습니다!");
+        alert("로그인되었습니다!");
       } else {
         console.log("회원가입 실패:", response.data.message);
         alert(response.data.message);

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/Signup.module.scss";
 import axios, { AxiosError } from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup: React.FC = () => {
   // 입력값 상태
@@ -30,13 +30,20 @@ const Signup: React.FC = () => {
     name: null as HTMLInputElement | null,
     babyName: null as HTMLInputElement | null,
   });
+  const navigate = useNavigate();
+
+  const gotoMypage = ()=>{
+    navigate("/Mypage", {state : formData}) 
+    window.location.reload();
+  }
+
 
   // 입력값 변경 핸들러
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
+ 
   // 이메일 유효성 검사
   useEffect(() => {
     if (!formData.email.trim())
@@ -134,7 +141,12 @@ const Signup: React.FC = () => {
         console.log("response >>", response);
         if (response.data.success) {
           console.log("회원가입 성공:", response.data.message);
+          const user = formData;
+          sessionStorage.setItem('user', JSON.stringify(user)); 
+
           alert("회원가입이 완료되었습니다!");
+          gotoMypage();
+
         } else {
           console.log("회원가입 실패:", response.data.message);
           alert(response.data.message);
@@ -259,7 +271,7 @@ const Signup: React.FC = () => {
         </div>
 
         <button className={styles.button} type="submit">
-          <Link to="/Home">완료</Link>
+          완료
         </button>
       </div>
     </form>
