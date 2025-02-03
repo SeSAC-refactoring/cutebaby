@@ -1,5 +1,6 @@
-import styles from '../styles/Vaccination.module.scss';
-import VacUnit from './vac_unit';
+import { Link } from "react-router-dom";
+import styles from "../styles/Vaccination.module.scss";
+import VacUnit from "./vac_unit";
 
 export default function Vaccination() {
   return (
@@ -20,8 +21,12 @@ export default function Vaccination() {
           <option>2</option>
         </select>
         <div className={styles.button_wrap}>
-          <button className={styles.small_btn}>위탁의료기관 찾기</button>
-          <button className={styles.small_btn}>예방접종 일정표</button>
+          <button className={styles.small_btn}>
+            <Link to="/VaccinationDetail">예방접종 상세설명</Link>
+          </button>
+          <button className={styles.small_btn}>
+            <Link to="/VaccinationHospital">위탁의료기관 찾기</Link>
+          </button>
         </div>
         <div className={styles.vac_list}>
           <VacUnit />

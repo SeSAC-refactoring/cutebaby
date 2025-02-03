@@ -1,4 +1,4 @@
-import styles from '../styles/Mypage.module.scss';
+import styles from "../styles/Mypage.module.scss";
 
 export default function Mypage() {
   return (
