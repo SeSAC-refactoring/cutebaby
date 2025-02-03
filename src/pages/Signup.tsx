@@ -13,7 +13,7 @@ const Signup: React.FC = () => {
     babyName: "",
     babyBirthday: "",
   });
-
+  const [emailbtn , setEmailCheck] = useState<boolean>(false)
   // 메시지 상태
   const [messages, setMessages] = useState({
     email: "",
@@ -46,15 +46,34 @@ const Signup: React.FC = () => {
  
   // 이메일 유효성 검사
   useEffect(() => {
+
     if (!formData.email.trim())
       return setMessages((prev) => ({ ...prev, email: "" }));
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    setMessages((prev) => ({
-      ...prev,
-      email: emailRegex.test(formData.email)
-        ? "사용가능한 아이디입니다!"
-        : "이메일 형식에 맞게 입력해 주세요!",
-    }));
+    console.log(emailbtn)
+    if(emailbtn){
+      setMessages((prev) => ({
+      
+        ...prev,
+        email: emailRegex.test(formData.email)
+          ? "사용가능한 이메일 입니다!"
+          : "이메일 형식에 맞게 입력해 주세요!",
+      }));
+  
+    }else{
+      setMessages((prev) => ({
+      
+        ...prev,
+        email: emailRegex.test(formData.email)
+          ? "중복체크를 눌러주세요!"
+          : "이메일 형식에 맞게 입력해 주세요!",
+      }));
+      setEmailCheck(false)
+    }
+
+   
+    
+
   }, [formData.email]);
 
   // 비밀번호 유효성 검사
@@ -127,6 +146,24 @@ const Signup: React.FC = () => {
       return false;
     } else return true;
   };
+  const inputEmail = formData.email
+  console.log('inputEmail>>>>',inputEmail)
+  const emailCheck = async(e: React.FormEvent)=>{
+    e.preventDefault();
+    const response = await axios.post("http://localhost:5001/api/emailCheck",{inputEmail});
+    console.log(response)
+    if(!inputEmail.trim()){
+      setEmailCheck(false)
+
+    }else if(response){
+      console.log('response>>>',response.data.message)
+      // inputRef.current.email?.scrollIntoView({ behavior: "smooth" });
+      inputRef.current.email?.focus();
+     setMessages((prev) => ({ ...prev, email: response.data.message }));
+      // return setEmailCheck(true)
+    }
+
+  }
 
   // 폼 제출 핸들러
   const handleSubmit = async (e: React.FormEvent) => {
@@ -154,7 +191,8 @@ const Signup: React.FC = () => {
       } catch (error: unknown) {
         if (error instanceof AxiosError) {
           if (error.response?.status === 409) {
-            alert("이미 사용 중인 이메일입니다. 다른 이메일을 사용해 주세요.");
+            alert("이미 사용 중인 이메일입니다. 중복검사를 진행해주세요.");
+            setEmailCheck(false)
             inputRef.current.email?.scrollIntoView({ behavior: "smooth" });
             inputRef.current.email?.focus();
           } else {
@@ -167,10 +205,17 @@ const Signup: React.FC = () => {
         }
       }
     }
-  };
+//  else{
+//     alert('이메일 중복체크를 눌러주세요!');
+//     inputRef.current.email?.scrollIntoView({ behavior: "smooth" });
+//     e.preventDefault();
+//     setEmailCheck(false)
+//   }
+
+};
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form >
       <div className={styles.background}>
         <h2 className={styles.title}>회원가입</h2>
 
@@ -178,6 +223,7 @@ const Signup: React.FC = () => {
 
         <div className={styles.input_set}>
           <label className={styles.a}>이메일 *</label>
+          <div>
           <input
             className={styles.input}
             type="email"
@@ -188,7 +234,10 @@ const Signup: React.FC = () => {
               inputRef.current.email = el;
             }}
           />
+           <button onClick={emailCheck}>중복체크</button>
+           </div>
           {messages.email && <p>{messages.email}</p>}
+          
         </div>
 
         <div className={styles.input_set}>
@@ -270,7 +319,7 @@ const Signup: React.FC = () => {
           </div>
         </div>
 
-        <button className={styles.button} type="submit">
+        <button className={styles.button} onClick={handleSubmit}>
           완료
         </button>
       </div>
