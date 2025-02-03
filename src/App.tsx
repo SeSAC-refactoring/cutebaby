@@ -1,6 +1,5 @@
 // import { fetchUsers, UserDataset } from './services/userService';
 // import Signup from "./components/Signup";
-import EmailLogin from "./components/login-page/EmailLogin";
 import Signup from "./pages/Signup";
 import { Route, Routes } from "react-router-dom";
 import GrowthDiary from "./pages/GrowthDiary";
@@ -14,6 +13,8 @@ import Vaccination from "./pages/Vaccination";
 import Header from "./components/Header";
 import VaccinationHospital from "./pages/VaccinationHospital";
 import VaccinationDetail from "./pages/VaccinationDetail";
+import { useEffect } from "react";
+import { loadKakaoSDK } from "./services/loadKakaoSDK";
 // import GrowthDiary from "./components/GrowthDiary";
 
 export interface UserData {
@@ -23,9 +24,14 @@ export interface UserData {
 }
 
 function App() {
+    useEffect(() => {
+        loadKakaoSDK()
+          .then(() => console.log("Kakao SDK 준비 완료"))
+          .catch((error) => console.error("Kakao SDK 로드 실패:", error));
+      }, []);
   return (
     <div className="App">
-      <h1>MySQL 데이터 test</h1>
+      <h1>꼬물꼬물</h1>
       <hr />
       {/* <Routes>
         <Route path="/" element={<EmailLogin />} />

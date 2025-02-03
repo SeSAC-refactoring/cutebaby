@@ -99,5 +99,9 @@
         /* Completeness */
         // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
         "skipLibCheck": true /* Skip type checking all .d.ts files. */
-    }
+    },
+    "include": [
+        "src/**/*",
+        "src/styles/**/*.scss"  // 이 항목을 추가합니다
+      ]
 }
