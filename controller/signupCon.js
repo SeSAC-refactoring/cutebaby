@@ -16,7 +16,7 @@ export const signupCon = async (req, res) => {
       // 이메일이 이미 존재하면 중복 이메일 처리
       return res.status(409).json({
         success: false,
-        message: "이미 사용 중인 이메일입니다. 다른 이메일을 사용해 주세요.",
+        message: "이미 사용 중인 이메일입니다. 아이디 중복검사를 진행해주세요",
       });
     }
 
