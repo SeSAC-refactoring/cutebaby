@@ -1,8 +1,8 @@
 import { getUserByEmail } from '../model/User.js';
 // 사용자 정보 조회 처리
 export const getUserInfoByEmail = async (req, res) => {
-  console.log(req.body.email)
-  const { email , password} = req.body;  // 클라이언트에서 받은 이메일
+  console.log(req.body)
+  const { email } = req.body;  // 클라이언트에서 받은 이메일
   console.log('Received email:', email);  // 로그 출력
   
   try {
