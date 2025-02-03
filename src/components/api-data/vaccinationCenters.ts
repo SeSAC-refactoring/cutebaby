@@ -44,7 +44,8 @@ export async function fetchCity(cd: number) {
 // `https://apis.data.go.kr/1790387/orglist3/getOrgList3?serviceKey=aBW%2F97Bvvsc8asD9I8qq50bFJd%2BMkvUNbeUhxpW%2FFLTUBWclU%2BXPryRrW4tHSEeH%2Fui5x%2BmnZtb4dp%2BKVY3EyQ%3D%3D&pageNo=${페이지수}&numOfRows=${한 페이지당 표출 데이터 수}&brtcCd=${시도}&sggCd=${시군구}&searchTpcd=${ORG / ADDR}&searchWord=${searchWord}`
 
 const vaccinationDiseaseInfoApi = (
-    pagenumber: number,
+    pageNo: number,
+    numOfRows: number,
     province: number,
     city: number,
     searchType: string = '',
@@ -55,11 +56,12 @@ const vaccinationDiseaseInfoApi = (
         searchType && searchWord
             ? `&searchTpcd=${searchType}&searchWord=${searchWord}`
             : '';
-    return `https://apis.data.go.kr/1790387/orglist3/getOrgList3?serviceKey=aBW%2F97Bvvsc8asD9I8qq50bFJd%2BMkvUNbeUhxpW%2FFLTUBWclU%2BXPryRrW4tHSEeH%2Fui5x%2BmnZtb4dp%2BKVY3EyQ%3D%3D&pageNo=${pagenumber}&numOfRows=10&brtcCd=${province}&sggCd=${city}${searchParams}`;
+    return `https://apis.data.go.kr/1790387/orglist3/getOrgList3?serviceKey=aBW%2F97Bvvsc8asD9I8qq50bFJd%2BMkvUNbeUhxpW%2FFLTUBWclU%2BXPryRrW4tHSEeH%2Fui5x%2BmnZtb4dp%2BKVY3EyQ%3D%3D&pageNo=${pageNo}&numOfRows=${numOfRows}&brtcCd=${province}&sggCd=${city}${searchParams}`;
 };
 
 export async function fetchVaccinationCenters(
-    pagenumber: number,
+    pageNo: number,
+    numOfRows: number,
     province: number,
     city: number,
     searchType: string = '',
@@ -68,7 +70,8 @@ export async function fetchVaccinationCenters(
     try {
         const xmlData = await getData(
             vaccinationDiseaseInfoApi(
-                pagenumber,
+                pageNo,
+                numOfRows,
                 province,
                 city,
                 searchType,
@@ -78,7 +81,7 @@ export async function fetchVaccinationCenters(
 
         if (xmlData) {
             const jsonData = convertToJson(xmlData); // XML -> JSON 변환
-            return jsonData.response.body.items.item;
+            return jsonData.response.body;
         } else {
             console.error('API 호출 실패');
             return {};

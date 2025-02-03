@@ -8,7 +8,8 @@ import { GrowthDiaryPage } from './components/growth-diary-page/GrowthDiaryPage'
 import { AiChatComponent } from './components/home-page/AiChatComponent';
 import Mypage from './pages/Mypage';
 import KakaoLogin from './components/KakaoLogin';
-// import GrowthDiary from "./components/GrowthDiary";
+import { VaccineDetails } from './components/vaccination-page/VaccineDetails';
+import { VaccinationCenters } from './components/vaccination-page/VaccinationCenters';
 
 export interface UserData {
     userid: number;
@@ -28,8 +29,8 @@ function App() {
             </Routes>
 
             <Signup></Signup>
-            <GrowthDiaryPage></GrowthDiaryPage>
-            {/* <AiChatComponent></AiChatComponent> */}
+            <VaccinationCenters />
+
             {/* <hr />
       <Login />
 

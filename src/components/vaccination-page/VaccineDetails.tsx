@@ -14,7 +14,7 @@ interface DiseaseInfo {
     title: string;
 }
 
-export const VaccinationPage = () => {
+export const VaccineDetails = () => {
     const [diseaseList, setDiseaseList] = useState<DiseaseList[]>([]);
     const [diseaseInfo, setDiseaseInfo] = useState<{
         [key: number]: DiseaseInfo;
@@ -65,7 +65,6 @@ export const VaccinationPage = () => {
 
     return (
         <div>
-            <h1>VaccinationPage</h1>
             <ul>
                 {diseaseList.map((disease) => (
                     <li key={disease.cd}>
@@ -77,9 +76,8 @@ export const VaccinationPage = () => {
                             <div className="disease-info">
                                 <h3>{diseaseInfo[disease.cd].title}</h3>
                                 <p>
-                                    {/* 줄바꿈을 적용 */}
                                     {diseaseInfo[disease.cd].message
-                                        .split('\n')
+                                        .split('\n') // 줄바꿈 적용
                                         .map((line, i) => (
                                             <span key={i}>
                                                 {line}

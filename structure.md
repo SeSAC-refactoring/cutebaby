@@ -8,14 +8,15 @@
 
 # 폴더 구조와 설명
 
+- .evn : 환경변수 관리 파일. 챗봇 서비스 관련 open AI의 인증키. github에 이 파일이 올라가면 안됨 -> gitignore에 등록함. (github에 올라가면 보안문제로 인증키 사용이 제한되어 재발급 필요.) 배포시에도 인증키가 유출되지 않아야 함. <br/><br/>
 - public/
     - index.html
     - favicon.ico
     - img/ <br/><br/>
-- index.tsx
-- App.tsx
-- global.d.ts <br/><br/>
 - src/
+    - index.tsx
+    - App.tsx <br/><br/>
+    - global.d.ts : 전역 타입 정의 <br/><br/>
     - pages/
         - GrowthDiary.tsx
         - Home.tsx
