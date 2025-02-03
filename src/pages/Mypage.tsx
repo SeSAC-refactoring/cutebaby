@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import BabyInfo from "../components/My-page/BabyInfo";
 import BabyInput from "../components/My-page/BabyInput";
 import styles from "../styles/Mypage.module.scss";
 import { useNavigate } from "react-router-dom";
@@ -23,11 +22,10 @@ export default function Mypage() {
       {openModal && <NeedLoginModal modalState={() => setOpenModal(false)} />} 
 
       <div className={styles.pageContent}>
-        <div className={styles.icon}>수정 아이콘</div>
+        {/* <div className={styles.icon}>수정 아이콘</div> */}
         <div className={styles.background}>
-          <div className={styles.title}>마이페이지</div>
+          <h1 className={styles.title}>마이페이지</h1>
           <BabyInput />
-          <BabyInfo />
         </div>
         <div className={styles.invisible}></div>
       </div>
