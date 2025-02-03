@@ -3,6 +3,7 @@ import axios, { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { getKakaoLoginUrl } from '../services/kakaoService';
 import styles from "../styles/Login.module.scss";
+import { Session } from 'inspector/promises';
 
 // 사용자 정보 인터페이스 정의
 interface UserInfo {
@@ -41,10 +42,14 @@ const EmailLogin: React.FC = () => {
         try {
             const emailPost = await axios.post(
                 'http://localhost:5001/api/user',
-                { email }
+                { email ,inputpassword}
             );
             console.log('response >>>', emailPost.data[0]);
-
+            if (emailPost.data.length > 0) {
+              const user = emailPost.data[0];
+              sessionStorage.setItem('user', JSON.stringify(user)); // 사용자 정보를 sessionStorage에 저장
+              setError(''); // 에러 초기화
+            } 
             if (emailPost.data[0].password !== inputpassword) {
                 setError('비밀번호가 일치하지 않습니다.');
             } else {

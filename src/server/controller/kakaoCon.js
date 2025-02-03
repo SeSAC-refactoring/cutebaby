@@ -13,22 +13,29 @@ export const kakaoCon = async (req, res) => {
     console.log('컨트롤러에서 이메일 >>',userData.id)
     const user = await getUserByEmail(email);
     console.log('컨트롤러에서 user >>',user)
-    // if (user.length > 0) {
-    //   // 이메일이 이미 존재하면 중복 이메일 처리
-    //   return res.status(409).json({
-    //     success: false,
-    //     message: "이미 사용 중인 이메일입니다. 다른 이메일을 사용해 주세요.",
-    //   });
-    // }
+    if (user.length > 0) {
+      // 이메일이 이미 존재하면 중복 이메일 처리
 
-    // 2. 이메일이 중복되지 않으면 사용자 정보 삽입
-    const newUser = await kakaoModel(userData);
+      
+      return res.json({
+        success: true,
+        message: "기존사용자입니다~ 환영합니다",
+      });
+
+    
+    }else{
+      // 2. 이메일이 중복되지 않으면 사용자 정보 삽입
+       const newUser = await kakaoModel(userData);
+       res.json({
+        success: true,
+        message: "회원가입이 완료되었습니다.",
+      });
+    }
+
+   
 
     // 회원가입 성공 시
-    res.json({
-      success: true,
-      message: "회원가입이 완료되었습니다.",
-    });
+   
   } catch (err) {
     console.error("회원가입 오류:", err);
     res.status(500).json({

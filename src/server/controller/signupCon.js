@@ -5,7 +5,6 @@ import { getUserByEmail } from "../model/User.js";
 export const signupCon = async (req, res) => {
   const { formData } = req.body;  // 클라이언트에서 받은 formData (이메일, 비밀번호 등)
   console.log("Received request body:", req.body); // 요청 데이터 확인
-
   try {
     // 1. 이메일 중복 검사
 
