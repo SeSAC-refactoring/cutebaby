@@ -3,6 +3,7 @@ import { getUserInfoByEmail } from '../controller/userController.js';
 import { signupCon } from '../controller/signupCon.js';
 import { kakaoCon } from '../controller/kakaoCon.js';
 import { emailCheck } from '../controller/emailCheck.js';
+import { babyinfo } from '../controller/babyinfo.js';
 
 
 const router = express.Router();
@@ -13,5 +14,6 @@ router.post('/user', getUserInfoByEmail);
 router.post('/signup' , signupCon);
 router.post('/kakaosignup', kakaoCon);
 router.post('/emailCheck', emailCheck)
+router.post('/babyinfo',babyinfo)
 
 export default router;

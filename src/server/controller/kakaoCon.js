@@ -12,7 +12,8 @@ export const kakaoCon = async (req, res) => {
     const email = userData.id
     console.log('컨트롤러에서 이메일 >>',userData.id)
     const user = await getUserByEmail(email);
-    console.log('컨트롤러에서 user >>',user)
+    console.log('컨트롤러에서 usernumber >>',user)
+    
     if (user.length > 0) {
       // 이메일이 이미 존재하면 중복 이메일 처리
 
@@ -20,6 +21,7 @@ export const kakaoCon = async (req, res) => {
       return res.json({
         success: true,
         message: "기존사용자입니다~ 환영합니다",
+        usernumber: userData.usernumber
       });
 
     
@@ -29,6 +31,8 @@ export const kakaoCon = async (req, res) => {
        res.json({
         success: true,
         message: "회원가입이 완료되었습니다.",
+        usernumber: userData.usernumber
+
       });
     }
 
@@ -41,6 +45,8 @@ export const kakaoCon = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "서버 오류가 발생했습니다. 다시 시도해주세요.",
+      usernumber: userData.usernumber
+
     });
   }
 };

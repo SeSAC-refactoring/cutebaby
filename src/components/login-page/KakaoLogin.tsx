@@ -23,7 +23,6 @@ const KakaoLogin = (): React.ReactElement => {
       setUserInfo(userData);
       // console.log('카카오 로그인 성공:', userData); // 로그인 성공 시 출력
       const response = await axios.post('http://localhost:5001/api/kakaosignup', {userData});
-      
       console.log('response >>' , response)
       if (response.data.success) {
         console.log("회원가입 성공:", response.data.message);
@@ -34,7 +33,8 @@ const KakaoLogin = (): React.ReactElement => {
       }
       const user = userData
       console.log('user >>>', user)
-      sessionStorage.setItem('user', JSON.stringify(user)); // sessionStorage에 사용자 정보 저장 >>세션 유지!!
+      sessionStorage.setItem('user', JSON.stringify(user));
+      sessionStorage.setItem("usernumber", response.data.usernumber.toString()); // sessionStorage에 사용자 정보 저장 >>세션 유지!!
       // 로그인 후 Mypage로 이동
       console.log('Navigating to Mypage...');
       navigate('/Mypage', { state: userData });

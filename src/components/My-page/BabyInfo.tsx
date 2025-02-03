@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from '../../styles/Mypage.module.scss'
+import axios from 'axios';
 
 export default function BabyInfo() {
+    const user = sessionStorage.getItem("user"); // 세션에 담긴거가져오기
+    // console.log(user.usernumber)
+    useEffect(()=>{
+        babycall()
+    })
+
+    const babycall =async ()=>{
+        const response =  await axios.post("http://localhost:5001/api/babyinfo",{user});
+
+    }
   return (
     <>
            <div className={styles.info_box}>
@@ -26,9 +37,10 @@ export default function BabyInfo() {
             <div className={styles.info_a}>머리둘레</div>
             <div className={styles.info_b}>30cm</div>
           </div>
-          <button className={styles.edit_btn}>수정</button>
 
         </div>
+        <button className={styles.edit_btn}>수정</button>
+
     </>
 
 )
