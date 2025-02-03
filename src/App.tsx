@@ -7,7 +7,7 @@ import GrowthDiary from './pages/GrowthDiary';
 import { GrowthDiaryPage } from './components/growth-diary-page/GrowthDiaryPage';
 import { AiChatComponent } from './components/home-page/AiChatComponent';
 import Mypage from './pages/Mypage';
-import KakaoLogin from './components/KakaoLogin';
+import KakaoLogin from './components/login-page/KakaoLogin';
 // import GrowthDiary from "./components/GrowthDiary";
 
 export interface UserData {
