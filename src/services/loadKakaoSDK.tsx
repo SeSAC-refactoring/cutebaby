@@ -36,3 +36,14 @@ export const loadKakaoSDK = () => {
     document.body.appendChild(script);
   });
 };
+export const handleKakaoLogout = ():void=> {
+  if (window.Kakao) {
+    window.Kakao.Auth.logout(() => {
+      console.log('카카오 로그아웃 완료');
+      // 로그아웃 후 처리할 추가 로직 작성
+      // 예를 들어, 사용자 정보를 초기화하거나 로그인 페이지로 리디렉션
+    });
+  } else {
+    console.error('카카오 SDK가 로드되지 않았습니다.');
+  }
+};

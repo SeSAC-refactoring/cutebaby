@@ -21,6 +21,7 @@ export default function Header() {
         {" "}
         <Link to="/Signup">회원가입</Link>
       </div>
+      
     </>
   );
 }
