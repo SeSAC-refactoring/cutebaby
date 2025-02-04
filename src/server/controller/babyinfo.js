@@ -1,12 +1,12 @@
 import { getUserByEmail } from '../model/User.js';
 // 사용자 정보 조회 처리
-export const getUserInfoByEmail = async (req, res) => {
+export const babyinfo = async (req, res) => {
   console.log(req.body)
-  const { email } = req.body;  // 클라이언트에서 받은 이메일
-  console.log('Received email:', email);  // 로그 출력
+  const { user } = req.body;  // 클라이언트에서 받은 이메일
+  console.log('Received email:', user);  // 로그 출력
   
   try {
-    const user = await getUserByEmail(email);
+    const user = await babyinfoModel(email);
     
     if (user.length > 0) {
       // 일치하는 사용자가 있으면 정보 반환
