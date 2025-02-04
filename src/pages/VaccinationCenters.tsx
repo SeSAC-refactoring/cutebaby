@@ -26,14 +26,6 @@ export default function VaccinationCenters() {
     const { provinces, cities, isFirstLoading } =
         useFetchLocation(selectedLocation);
 
-    const { startPage, endPage, handlePageChange } = usePagenation(
-        currentPage,
-        setCurrentPage,
-        totalPages,
-        setTotalPages,
-        searchCenters
-    );
-
     const {
         hasSearched,
         provinceRef,
@@ -41,7 +33,17 @@ export default function VaccinationCenters() {
         inputAddress,
         setInputAddress,
         handleSearch,
+        savedAddress,
     } = useHandleSearch(selectedLocation, setCurrentPage, searchCenters);
+
+    const { startPage, endPage, handlePageChange } = usePagenation(
+        currentPage,
+        setCurrentPage,
+        totalPages,
+        setTotalPages,
+        searchCenters,
+        savedAddress
+    );
 
     return (
         <div>

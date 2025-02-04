@@ -6,10 +6,9 @@ export const usePagenation = (
     setCurrentPage: (page: number) => void,
     totalPages: number,
     setTotalPages: (page: number) => void,
-    searchCenters: (page: number, inputAddress: string) => void
+    searchCenters: (page: number, inputAddress: string) => void,
+    savedAddress: string
 ) => {
-    const [savedAddress, setSavedAddress] = useState<string>(''); // 검색 후 페이지 이동 시 저장된 주소 유지
-
     // 페이지 그룹의 범위 계산
     const { startPage, endPage } = useMemo(() => {
         const pageGroup = Math.ceil(currentPage / 5); // 현재 페이지가 속한 그룹
@@ -26,8 +25,7 @@ export const usePagenation = (
         (newPage: number, inputAddress: string) => {
             if (newPage >= 1 && newPage <= totalPages) {
                 setCurrentPage(newPage);
-                setSavedAddress(inputAddress || savedAddress);
-                searchCenters(newPage, inputAddress || savedAddress);
+                searchCenters(newPage, savedAddress); // 항상 저장된 검색어 사용 // 페이지를 넘길때는 inputAdress가 바뀌어도 이전의 검색어로 사용
             }
         },
         [totalPages, searchCenters, savedAddress]

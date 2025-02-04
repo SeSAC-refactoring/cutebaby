@@ -47,10 +47,10 @@ export const useSearchCenters = (
                 );
 
                 if (data) {
-                    // data.items.item이 배열인지 확인 후 변환
+                    // data.items.item이 배열인지 확인 (데이터가 1개이면 객체로 반환됨)
                     const centersArrary = Array.isArray(data.items.item)
                         ? data.items.item
-                        : [data.items.item]; // 단일 객체를 배열로 변환
+                        : [data.items.item]; // 배열이 아니라면 객체를 배열로 변환
 
                     setCenters(centersArrary);
                     setTotalPages(data.maxPage); // 전체 페이지 설정

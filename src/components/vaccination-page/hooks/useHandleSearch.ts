@@ -12,8 +12,9 @@ export const useHandleSearch = (
     // 드롭다운에 대한 ref 생성 // 입력하지 않았을 시 focus
     const provinceRef = useRef<HTMLSelectElement>(null);
     const cityRef = useRef<HTMLSelectElement>(null);
-    // 주소 입력값 상태관리
-    const [inputAddress, setInputAddress] = useState<string>('');
+
+    const [inputAddress, setInputAddress] = useState<string>(''); // 주소 입력값 상태관리
+    const [savedAddress, setSavedAddress] = useState<string>(''); // 검색 후 페이지 이동 시 저장된 주소 유지
 
     const handleSearch = useCallback(() => {
         hasSearched.current = true; // 검색 수행 여부를 true로 변경
@@ -26,6 +27,7 @@ export const useHandleSearch = (
             return;
         }
         setCurrentPage(1);
+        setSavedAddress(inputAddress.trim());
         searchCenters(1, inputAddress.trim());
     }, [
         selectedLocation.province,
@@ -41,5 +43,6 @@ export const useHandleSearch = (
         inputAddress,
         setInputAddress,
         handleSearch,
+        savedAddress,
     };
 };
