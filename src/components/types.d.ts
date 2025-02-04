@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-// growth-diary-page
+// # growth-diary-page
 export interface ChildData {
     gender: 'male' | 'female';
     birthDate: Date; // 생년월일 ("YYYY-MM-DD" 형식)
@@ -18,7 +18,7 @@ export interface ChartComponentProps {
 }
 
 ////////////////////////////////////////////////////////////////////////////
-// home-page // 챗봇 기능
+// # home-page // 챗봇 기능
 
 export interface Message {
     role: 'user' | 'assistant';
@@ -26,7 +26,20 @@ export interface Message {
 }
 
 ////////////////////////////////////////////////////////////////////////////
-// vaccination-page // 위탁의료기관 찾기
+// # vaccination-page
+
+// ## vaccinationDetails
+interface DiseaseList {
+    cd: number;
+    cdNm: string;
+}
+
+interface DiseaseInfo {
+    message: string;
+    title: string;
+}
+
+// ## vaccinationCenters
 
 // - 지역(시/도), 도시(시/군/구) api data type
 export interface Location {

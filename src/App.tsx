@@ -12,7 +12,8 @@ import Header from './components/Header';
 import { useEffect } from 'react';
 import { loadKakaoSDK } from './services/loadKakaoSDK';
 import VaccinationCenters from './pages/VaccinationCenters';
-import { VaccinationDetails } from './components/vaccination-page/VaccinationDetails';
+import VaccinationDetails from './pages/VaccinationDetails';
+
 // import GrowthDiary from "./components/GrowthDiary";
 
 export interface UserData {

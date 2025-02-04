@@ -6,7 +6,6 @@ import { useSearchCenters } from '../components/vaccination-page/hooks/useSearch
 import { PagenationBtns } from '../components/vaccination-page/PagenationBtns';
 import { CenterList } from '../components/vaccination-page/CenterList';
 import { useHandleSearch } from '../components/vaccination-page/hooks/useHandleSearch';
-import { useRefs } from '../hooks/useRefs';
 
 export default function VaccinationCenters() {
     // hook 사용
@@ -35,10 +34,14 @@ export default function VaccinationCenters() {
         searchCenters
     );
 
-    const { hasSearched, provinceRef, cityRef, handleSearch } = useHandleSearch(
-        selectedLocation,
-        searchCenters
-    );
+    const {
+        hasSearched,
+        provinceRef,
+        cityRef,
+        inputAddress,
+        setInputAddress,
+        handleSearch,
+    } = useHandleSearch(selectedLocation, setCurrentPage, searchCenters);
 
     return (
         <div>
@@ -88,7 +91,17 @@ export default function VaccinationCenters() {
                 ))}
             </select>
 
-            <input type="text" placeholder="주소" />
+            <input
+                type="text"
+                value={inputAddress}
+                placeholder="주소"
+                onChange={(e) => setInputAddress(e.target.value)}
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                        handleSearch();
+                    }
+                }}
+            />
 
             {/* 검색 버튼 */}
             <button onClick={handleSearch}>병원 검색</button>
@@ -114,7 +127,9 @@ export default function VaccinationCenters() {
                             totalPages={totalPages}
                             startPage={startPage}
                             endPage={endPage}
-                            handlePageChange={handlePageChange}
+                            handlePageChange={(page) =>
+                                handlePageChange(page, inputAddress)
+                            }
                         />
                     </div>
                 ) : (

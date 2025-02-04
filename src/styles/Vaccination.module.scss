@@ -1,72 +1,80 @@
 .background {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-top: 70px;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 70px;
+    align-items: center;
+
+    .title {
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    .text {
+        margin-top: 5px;
+        font-size: 15px;
+    }
+
+    .user_list {
+        margin-top: 5px;
+        background-color: rgb(241, 237, 237);
+        width: 600px;
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .select {
+        padding-left: 10px;
+        width: 100px;
+        height: 30px;
+    }
+
+    .button_wrap {
+        width: 1100px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+
+        .small_btn {
+            border: none;
+            font-size: 8px;
+            width: 80px;
+            height: 20px;
+            margin-left: 10px;
+        }
+    }
+
+    .vac_list {
+        background-color: rgb(214, 213, 213);
+        margin-top: 10px;
+        width: 1100px;
+        height: 500px;
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
-.title {
-  font-size: 30px;
-  font-weight: 700;
-}
-.text {
-  margin-top: 5px;
-  font-size: 15px;
-}
-.user_list {
-  margin-top: 5px;
-  background-color: rgb(241, 237, 237);
-  width: 600px;
-  height: 50px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-}
-.select {
-  padding-left: 10px;
-  width: 100px;
-  height: 30px;
-}
-.button_wrap {
-  width: 1100px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-.small_btn {
-  border: none;
-  font-size: 8px;
-  width: 80px;
-  height: 20px;
-  margin-left: 10px;
-}
-.vac_list {
-  background-color: rgb(214, 213, 213);
-  margin-top: 10px;
-  width: 1100px;
-  height: 500px;
-  display: flex;
-  flex-wrap: wrap;
-}
+
 .enter_btn {
-  background-color: rgb(214, 213, 213);
-  width: 40px;
-  border: none;
+    background-color: rgb(214, 213, 213);
+    width: 40px;
+    border: none;
 }
 .search_wrap {
-  margin-top: 30px;
-  width: 500px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    margin-top: 30px;
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .search_date {
-  width: 340px;
-  height: 30px;
+    width: 340px;
+    height: 30px;
 }
 .search_btn {
-  border: none;
-  height: 30px;
-  width: 50px;
+    border: none;
+    height: 30px;
+    width: 50px;
 }
