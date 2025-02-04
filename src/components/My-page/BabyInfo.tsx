@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react'
 import styles from '../../styles/Mypage.module.scss'
-import axios from 'axios';
 
-export default function BabyInfo() {
-    const user = sessionStorage.getItem("user"); // 세션에 담긴거가져오기
-    // console.log(user.usernumber)
-    useEffect(()=>{
-        babycall()
-    })
 
-    const babycall =async ()=>{
-        const response =  await axios.post("http://localhost:5001/api/babyinfo",{user});
 
-    }
+
+export default function BabyInfo({}) {
+  
+ 
+
+    
   return (
     <>
            <div className={styles.info_box}>
