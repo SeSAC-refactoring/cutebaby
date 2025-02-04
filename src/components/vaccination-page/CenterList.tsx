@@ -1,6 +1,6 @@
 import React from 'react';
 import { Centers } from '../types';
-import { VaccineListComponent } from './VaccineListComponent';
+import { VaccineList } from './VaccineList';
 
 interface CenterListProps {
     centers: Centers[];
@@ -31,7 +31,7 @@ export const CenterList: React.FC<CenterListProps> = ({
 
                     {/* 선택된 병원의 백신 목록 표시 */}
                     {showVaccineList[center.orgcd] && (
-                        <VaccineListComponent center={center} />
+                        <VaccineList center={center} />
                     )}
                 </li>
             ))}

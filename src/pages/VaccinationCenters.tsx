@@ -1,12 +1,13 @@
-import { useFetchLocation } from './hooks/useFetchLocation';
-import { useLocationSelect } from './hooks/useLocationSelect';
-import { useToggleVaccineList } from './hooks/useToggleVaccineList';
-import { usePagenation } from './hooks/usePagenation';
-import { useSearchCenters } from './hooks/useSearchCenters';
-import { PagenationBtns } from './PagenationBtns';
-import { CenterList } from './CenterList';
+import { useFetchLocation } from '../components/vaccination-page/hooks/useFetchLocation';
+import { useLocationSelect } from '../components/vaccination-page/hooks/useLocationSelect';
+import { useToggleVaccineList } from '../components/vaccination-page/hooks/useToggleVaccineList';
+import { usePagenation } from '../components/vaccination-page/hooks/usePagenation';
+import { useSearchCenters } from '../components/vaccination-page/hooks/useSearchCenters';
+import { PagenationBtns } from '../components/vaccination-page/PagenationBtns';
+import { CenterList } from '../components/vaccination-page/CenterList';
+import { useRef } from 'react';
 
-export const VaccinationCenters = () => {
+export default function VaccinationCenters() {
     // hook 사용
     const {
         currentPage,
@@ -22,7 +23,8 @@ export const VaccinationCenters = () => {
     const { isLoading, centers, totalPages, setTotalPages, searchCenters } =
         useSearchCenters(selectedLocation, setShowVaccineList);
 
-    const { provinces, cities } = useFetchLocation(selectedLocation);
+    const { provinces, cities, isFirstLoading } =
+        useFetchLocation(selectedLocation);
 
     const { startPage, endPage, handlePageChange } = usePagenation(
         currentPage,
@@ -32,13 +34,35 @@ export const VaccinationCenters = () => {
         searchCenters
     );
 
+    // 검색을 한 적이 있는지 추적 (useRef 사용)
+    const hasSearched = useRef(false);
+    const handleSearch = () => {
+        hasSearched.current = true; // 검색 수행 여부를 true로 변경
+        searchCenters(1);
+    };
+
     return (
         <div>
+            {/* 처음 데이터를 불러오는 동안 */}
+            {isFirstLoading && (
+                <div
+                    style={{
+                        backgroundColor: 'black',
+                        color: 'white',
+                        padding: '10px',
+                        textAlign: 'center',
+                    }}
+                >
+                    <p>데이터를 불러오는 중...</p>
+                </div>
+            )}
+
             <h2>위탁의료기관 찾기</h2>
 
             {/* 지역(시/도) 선택 드롭다운 */}
             <select
                 value={selectedLocation.province}
+                disabled={!hasSearched}
                 onChange={handleProvinceSelect}
             >
                 <option value="">시/도</option>
@@ -67,16 +91,18 @@ export const VaccinationCenters = () => {
 
             {/* 검색 버튼 */}
             <button
-                onClick={() => searchCenters(1)}
+                onClick={handleSearch}
                 disabled={!selectedLocation.province || !selectedLocation.city}
             >
                 병원 검색
             </button>
 
-            {/* 병원 리스트 표시 */}
+            {/* 검색 결과(병원 리스트) 표시 */}
             <div>
                 <h3>병원 목록</h3>
-                {isLoading ? (
+                {!hasSearched.current ? (
+                    <p>병원을 찾아보세요</p> // 검색 전 표시 문구
+                ) : isLoading ? (
                     <p>병원 정보를 불러오는 중...</p>
                 ) : centers.length > 0 ? (
                     <div>
@@ -101,4 +127,4 @@ export const VaccinationCenters = () => {
             </div>
         </div>
     );
-};
+}

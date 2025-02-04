@@ -3,18 +3,16 @@
 import Signup from './pages/Signup';
 import { Route, Routes } from 'react-router-dom';
 import GrowthDiary from './pages/GrowthDiary';
-import { GrowthDiaryPage } from './components/growth-diary-page/GrowthDiaryPage';
-import { AiChatComponent } from './components/home-page/AiChatComponent';
 import Mypage from './pages/Mypage';
 import KakaoLogin from './components/login-page/KakaoLogin';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Vaccination from './pages/Vaccination';
 import Header from './components/Header';
-import VaccinationHospital from './pages/VaccinationHospital';
-import VaccinationDetail from './pages/VaccinationDetail';
 import { useEffect } from 'react';
 import { loadKakaoSDK } from './services/loadKakaoSDK';
+import VaccinationCenters from './pages/VaccinationCenters';
+import { VaccinationDetails } from './components/vaccination-page/VaccinationDetails';
 // import GrowthDiary from "./components/GrowthDiary";
 
 export interface UserData {
@@ -38,7 +36,6 @@ function App() {
         <Route path="/Mypage" element={<Mypage />} />
         <Route path="/oauth/callback/kakao" element={<KakaoLogin />} />
       </Routes> */}
-
             <Routes>
                 <Route path="/oauth/callback/kakao" element={<KakaoLogin />} />
                 <Route path="/GrowthDiary" element={<GrowthDiary />} />
@@ -48,15 +45,17 @@ function App() {
                 <Route path="/Signup" element={<Signup />} />
                 <Route path="/Vaccination" element={<Vaccination />} />
                 <Route
-                    path="/VaccinationDetail"
-                    element={<VaccinationDetail />}
+                    path="/VaccinationDetails"
+                    element={<VaccinationDetails />}
                 />
                 <Route
-                    path="/VaccinationHospital"
-                    element={<VaccinationHospital />}
+                    path="/VaccinationCenters"
+                    element={<VaccinationCenters />}
                 />
             </Routes>
-
-
+            /<Header></Header>
+        </div>
+    );
+}
 
 export default App;

@@ -6,15 +6,19 @@ export const useFetchLocation = (selectedLocation: SelectedLocation) => {
     // 지역, 도시 선택 상태 관리
     const [provinces, setProvinces] = useState<Location[]>([]); // 지역(시/도) 목록
     const [cities, setCities] = useState<Location[]>([]); // 도시(시/군/구) 목록
+    const [isFirstLoading, setIsFirstLoading] = useState(false); // 첫 화면에서 시/군/구 로딩 상태 확인
 
     // API 호출: 지역(시/군)
     useEffect(() => {
         const loadProvinces = async () => {
             try {
+                setIsFirstLoading(true);
                 const list = await fetchProvince();
                 setProvinces(list);
             } catch (error) {
                 console.error('지역 정보를 불러오는 중 오류 발생:', error);
+            } finally {
+                setIsFirstLoading(false);
             }
         };
         loadProvinces();
@@ -39,5 +43,5 @@ export const useFetchLocation = (selectedLocation: SelectedLocation) => {
         loadCities();
     }, [selectedLocation.province]);
 
-    return { provinces, cities };
+    return { provinces, cities, isFirstLoading };
 };

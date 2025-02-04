@@ -14,7 +14,7 @@ interface DiseaseInfo {
     title: string;
 }
 
-export const VaccineDetails = () => {
+export const VaccinationDetails = () => {
     const [diseaseList, setDiseaseList] = useState<DiseaseList[]>([]);
     const [diseaseInfo, setDiseaseInfo] = useState<{
         [key: number]: DiseaseInfo;

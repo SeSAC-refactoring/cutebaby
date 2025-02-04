@@ -5,7 +5,7 @@ interface VaccineListProps {
     center: Centers;
 }
 
-export const VaccineListComponent = ({ center }: VaccineListProps) => {
+export const VaccineList = ({ center }: VaccineListProps) => {
     return (
         <ul>
             {/* 데이터가 여러개면 (배열이면) */}
