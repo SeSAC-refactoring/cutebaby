@@ -1,4 +1,4 @@
-import styles from '../styles/Home.module.scss';
+import styles from "../styles/Home.module.scss";
 
 export default function Home() {
   return (
@@ -22,10 +22,13 @@ export default function Home() {
             <div className={styles.small_title}>우리 땡땡이는?</div>
             <div className={styles.user_info}></div>
           </div>
+          <div className={styles.banner_wrap}>
+            <div className={styles.banner}></div>
+            <div className={styles.banner}></div>
+          </div>
         </div>
         <div className={styles.block_chatbot}>
-          <div className={styles.chatbot_title}>AI 챗봇</div>
-          <div className={styles.chatbot}></div>
+          <div className={styles.chatbot}>도움이 필요하신가요?</div>
         </div>
       </div>
     </>

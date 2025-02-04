@@ -57,14 +57,6 @@ function App() {
                 />
             </Routes>
 
-            {/* <Vaccination></Vaccination> */}
-            {/* <Signup></Signup> */}
-            {/* <GrowthDiaryPage></GrowthDiaryPage> */}
-            <Header></Header>
-            {/* <AiChatComponent></AiChatComponent> */}
-            {/* <Login></Login> */}
-        </div>
-    );
-}
+
 
 export default App;

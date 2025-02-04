@@ -25,8 +25,7 @@
 }
 .select {
   padding-left: 10px;
-  margin-top: 10px;
-  width: 650px;
+  width: 100px;
   height: 30px;
 }
 .button_wrap {
@@ -43,73 +42,31 @@
   margin-left: 10px;
 }
 .vac_list {
+  background-color: rgb(214, 213, 213);
   margin-top: 10px;
-  // width: 1100px;
+  width: 1100px;
+  height: 500px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-}
-.vac_content {
-  padding: 12px;
-  width: 260px;
-  height: 200px;
-  background-color: rgb(241, 237, 237);
-  margin-right: 20px;
-  margin-bottom: 20px;
-}
-.vac_content:nth-child(4n) {
-  margin: 0;
-}
-.title_block {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.vac_title_block {
-  width: 90px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.vac_title {
-  font-size: 15px;
-  font-weight: 700;
-}
-.vir_title {
-  font-size: 12px;
-}
-.info {
-  width: 50px;
-  border: none;
-  font-size: 10px;
-  background-color: rgb(214, 213, 213);
-}
-.vac_table {
-  display: flex;
-  margin-top: 5px;
-  justify-content: space-between;
-}
-.table_col {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 9px;
-  height: 90px;
-}
-.table_a {
-  text-align: center;
-}
-.table_col_title {
-  font-size: 12px;
-  padding-top: 31px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 .enter_btn {
   background-color: rgb(214, 213, 213);
   width: 40px;
   border: none;
+}
+.search_wrap {
+  margin-top: 30px;
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search_date {
+  width: 340px;
+  height: 30px;
+}
+.search_btn {
+  border: none;
+  height: 30px;
+  width: 50px;
 }
