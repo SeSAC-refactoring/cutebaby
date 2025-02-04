@@ -45,12 +45,14 @@ function App() {
         <Route path="/VaccinationHospital" element={<VaccinationHospital />} />
       </Routes>
 
-      {/* <Vaccination></Vaccination> */}
+      {/* <Mypage /> */}
       {/* <Signup></Signup> */}
       {/* <GrowthDiaryPage></GrowthDiaryPage> */}
       <Header></Header>
       {/* <AiChatComponent></AiChatComponent> */}
       {/* <Login></Login> */}
+      {/* <VaccinationDetail></VaccinationDetail> */}
+      {/* <Home></Home> */}
     </div>
   );
 }

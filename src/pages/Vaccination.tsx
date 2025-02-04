@@ -15,11 +15,6 @@ export default function Vaccination() {
           <div className={styles.user}>김두리</div>
           <div className={styles.user}>김세찌</div>
         </div>
-        <select className={styles.select}>
-          <option>전체</option>
-          <option>1</option>
-          <option>2</option>
-        </select>
         <div className={styles.button_wrap}>
           <button className={styles.small_btn}>
             <Link to="/VaccinationDetail">예방접종 상세설명</Link>
@@ -28,16 +23,7 @@ export default function Vaccination() {
             <Link to="/VaccinationHospital">위탁의료기관 찾기</Link>
           </button>
         </div>
-        <div className={styles.vac_list}>
-          <VacUnit />
-          <VacUnit />
-          <VacUnit />
-          <VacUnit />
-          <VacUnit />
-          <VacUnit />
-          <VacUnit />
-          <VacUnit />
-        </div>
+        <div className={styles.vac_list}></div>
       </div>
     </>
   );
