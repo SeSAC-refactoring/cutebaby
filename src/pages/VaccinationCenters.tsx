@@ -5,7 +5,8 @@ import { usePagenation } from '../components/vaccination-page/hooks/usePagenatio
 import { useSearchCenters } from '../components/vaccination-page/hooks/useSearchCenters';
 import { PagenationBtns } from '../components/vaccination-page/PagenationBtns';
 import { CenterList } from '../components/vaccination-page/CenterList';
-import { useRef } from 'react';
+import { useHandleSearch } from '../components/vaccination-page/hooks/useHandleSearch';
+import { useRefs } from '../hooks/useRefs';
 
 export default function VaccinationCenters() {
     // hook 사용
@@ -34,12 +35,10 @@ export default function VaccinationCenters() {
         searchCenters
     );
 
-    // 검색을 한 적이 있는지 추적 (useRef 사용)
-    const hasSearched = useRef(false);
-    const handleSearch = () => {
-        hasSearched.current = true; // 검색 수행 여부를 true로 변경
-        searchCenters(1);
-    };
+    const { hasSearched, provinceRef, cityRef, handleSearch } = useHandleSearch(
+        selectedLocation,
+        searchCenters
+    );
 
     return (
         <div>
@@ -61,8 +60,9 @@ export default function VaccinationCenters() {
 
             {/* 지역(시/도) 선택 드롭다운 */}
             <select
+                ref={provinceRef}
                 value={selectedLocation.province}
-                disabled={!hasSearched}
+                disabled={isFirstLoading} // 데이터 불러오는 동안은 드롭다운으로 지역 선택 불가
                 onChange={handleProvinceSelect}
             >
                 <option value="">시/도</option>
@@ -75,6 +75,7 @@ export default function VaccinationCenters() {
 
             {/* 도시(시/군/구) 선택 드롭다운 (지역이 선택되지 않으면 disabled) */}
             <select
+                ref={cityRef}
                 value={selectedLocation.city}
                 disabled={!selectedLocation.province}
                 onChange={handleCitySelect}
@@ -90,12 +91,7 @@ export default function VaccinationCenters() {
             <input type="text" placeholder="주소" />
 
             {/* 검색 버튼 */}
-            <button
-                onClick={handleSearch}
-                disabled={!selectedLocation.province || !selectedLocation.city}
-            >
-                병원 검색
-            </button>
+            <button onClick={handleSearch}>병원 검색</button>
 
             {/* 검색 결과(병원 리스트) 표시 */}
             <div>
