@@ -8,7 +8,6 @@ import { babyinfo } from '../components/types';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../store';
 import { fetchBabyInfo } from '../store/babySlice';
-import { userInfo } from 'os';
 
 export default function Mypage() {
     const dispatch = useDispatch<AppDispatch>();
@@ -26,7 +25,6 @@ export default function Mypage() {
             dispatch(fetchBabyInfo());
         }
     }, [dispatch, user]);
-    console.log('reduxer에서 받아왔는지? ?', babyInfo);
 
     return (
         <div className={styles.wrap}>

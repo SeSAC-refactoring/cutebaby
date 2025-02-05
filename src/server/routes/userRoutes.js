@@ -4,6 +4,7 @@ import { signupCon } from '../controller/signupCon.js';
 import { kakaoCon } from '../controller/kakaoCon.js';
 import { emailCheck } from '../controller/emailCheck.js';
 import { babyinfo } from '../controller/babyinfo.js';
+import { babygrow } from '../controller/babygrow.js';
 
 
 const router = express.Router();
@@ -15,5 +16,6 @@ router.post('/signup' , signupCon);
 router.post('/kakaosignup', kakaoCon);
 router.post('/emailCheck', emailCheck)
 router.post('/babyinfo',babyinfo)
+router.post('/babygrow',babygrow)
 
 export default router;
