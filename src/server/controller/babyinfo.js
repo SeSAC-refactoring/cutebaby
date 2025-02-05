@@ -6,7 +6,7 @@ export const babyinfo = async (req, res) => {
     const { user } = req.body;  // 클라이언트에서 받은 이메일
     const babyFalse = false
   console.log(req.body)
-  console.log('Received email:', user);  // 로그 출력
+  console.log('babyinfo > Received email:', user);  // 로그 출력
   
   try {
     const baby = await babyinfoModel(user);
