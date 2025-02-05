@@ -3,16 +3,11 @@ import styles from "../../styles/Mypage.module.scss";
 import {BabyInfo} from "./BabyInfo";
 import { BabyInputPlus } from './BabyInputPlus';
 import { NothingBaby } from './NothingBaby';
+import { babyinfo } from '../types';
 
-interface Baby {
-    babyname: string;
-    birthday: string;
-    gender: string;
-    picture: string | null; // picture가 null일 수도 있으므로
-  }
-  
+
   interface BabyInputProps {
-    babyInfo: Baby[];  // babyInfo는 배열 형식임
+    babyInfo: babyinfo[];  // babyInfo는 배열 형식임
     nothingBaby : boolean
   }
 
@@ -43,7 +38,7 @@ interface Baby {
     <>
     <div className={styles.user_list}>
           <div className={styles.user_wrap}>
-            {nothingBaby?babyInfo.map((baby:Baby , index:number)=>(
+            {nothingBaby?babyInfo.map((baby:babyinfo , index:number)=>(
                   <div key={index} className={styles.user}>{baby.babyname}</div>
             )):'등록된 아이가 없습니다!' }
             {}

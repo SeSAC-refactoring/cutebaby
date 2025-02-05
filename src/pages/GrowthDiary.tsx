@@ -7,6 +7,8 @@ export default function GrowthDiary() {
         <div className={styles.title}>성장기록</div>
         <div className={styles.text}>우리 아이의 성정을 기록해보세요 😀</div>
         <div className={styles.user_list}>
+        {/* <BabyList babyInfo={babyInfo} nothingBaby={nothingBaby} /> */}
+
           <div className={styles.user}>김하나</div>
           <div className={styles.user}>김두리</div>
           <div className={styles.user}>김세찌</div>

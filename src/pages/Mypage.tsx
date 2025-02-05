@@ -4,50 +4,30 @@ import styles from '../styles/Mypage.module.scss';
 import { NeedLoginModal } from '../components/NeedLoginModal'; // 모달 import
 import axios from 'axios';
 import { log } from 'console';
+import { babyinfo } from '../components/types';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../store';
+import { fetchBabyInfo } from '../store/babySlice';
+import { userInfo } from 'os';
 
-interface babyinfo {
-    babyname: string;
-    birthday: string;
-    gender: string;
-    picture: string | null;
-}
+
 
 export default function Mypage() {
-    const user = JSON.parse(sessionStorage.getItem('usernumber') || '{}'); // 세션에 담긴거가져오기
-    const [babyInfo, setBabyInfo] = useState<babyinfo[]>([]); // 여러 아기 정보를 다룰 수 있도록 배열로 초기화
-    const [nothingBaby, setNothing] = useState<boolean>(false);
-    //모달관리
-    const [openModal, setOpenModal] = useState(false);
-    //페이지 시작할때 세션확인
+    const dispatch = useDispatch<AppDispatch>();
+    const [openModal, setOpenModal] = useState<boolean>(false);
+    const { babyInfo, nothingBaby, loading, error } = useSelector((state: RootState) => state.baby);
+    const user = sessionStorage.getItem("user");
+
+    // 세션 확인 및 데이터 요청
     useEffect(() => {
-        const user = sessionStorage.getItem('user'); // 세션에 담긴거가져오기
         if (!user) {
-            // 비었다면 밑에 실행
             setOpenModal(true);
-        }
-    }, []);
-
-    useEffect(() => {
-        babycall();
-    }, []);
-
-    const babycall = async () => {
-        const response = await axios.post(
-            'http://localhost:5001/api/babyinfo',
-            { user }
-        );
-        console.log('qwerqwer', response);
-
-        if (!response.data) {
-            setNothing(false);
-            console.log('response.data >>>',response);
-            setBabyInfo([])
         } else {
-            console.log('babycall', response.data);
-            setNothing(true);
-            setBabyInfo(response.data);
+            dispatch(fetchBabyInfo());
         }
-    };
+    }, [dispatch, user]);
+    console.log('reduxer에서 받아왔는지? ?',babyInfo)
+
     return (
         <div className={styles.wrap}>
             {/* openMoal이 트루면 모달 실행 */}

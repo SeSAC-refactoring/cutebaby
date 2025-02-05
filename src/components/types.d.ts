@@ -67,4 +67,19 @@ export interface SelectedLocation {
     city: string;
 }
 
+export interface babyinfo {
+    babyname: string;
+    birthday: string;
+    gender: string;
+    picture: string | null;
+}
+
+export interface BabyState {
+    babyInfo: babyinfo[];
+    nothingBaby: boolean;
+    loading: boolean;
+    error: string | null;
+}
+
+
 //
