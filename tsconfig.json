@@ -102,6 +102,6 @@
     },
     "include": [
         "src/**/*",
-        "src/styles/**/*.scss"  // 이 항목을 추가합니다
-      ]
+        "src/styles/**/*.scss" // 이 항목을 추가합니다
+    ]
 }

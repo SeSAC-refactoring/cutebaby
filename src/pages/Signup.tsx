@@ -271,9 +271,7 @@ const Signup: React.FC = () => {
           />
           {messages.name && <p>{messages.name}</p>}
         </div>
-        <button className={styles.button} onClick={handleSubmit}>
-          <Link to="/Home">완료</Link>
-        </button>
+        <button className={styles.button} onClick={handleSubmit}></button>
       </div>
     </form>
   );

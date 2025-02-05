@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useLoading } from '../../../hooks/useLoading';
 import { Message } from '../../types';
-import { fetchChatGPT } from '../fetchChatGPT';
+import { fetchGemini } from '../fetchChatGPT';
 
 export const useChatbot = () => {
     const [messages, setMessages] = useState<Message[]>([]);
@@ -18,22 +18,28 @@ export const useChatbot = () => {
                 role: 'user',
                 content: input,
             };
-            setMessages((prev) => [...prev, userMessage]);
+            setMessages((prev) => [...prev, userMessage]); // 사용자 입력 메시지 추가
             setInput('');
             startLoading();
 
             try {
-                const response: string = await fetchChatGPT(input);
+                const response = await fetchGemini(input);
+                if (!response) {
+                    throw new Error('Gemini API 응답 없음');
+                }
                 const chatbotMessage: Message = {
                     role: 'assistant',
                     content: response,
                 };
-                setMessages((prev) => [...prev, chatbotMessage]);
+                setMessages((prev) => [...prev, chatbotMessage]); // Gemini 응답 추가
             } catch (error) {
-                console.error('ChatGPT 응답 처리 중 오류 발생', error);
+                console.error('Gemini 응답 처리 중 오류 발생', error);
                 setMessages((prev) => [
                     ...prev,
-                    { role: 'assistant', content: '❗오류 발생' },
+                    {
+                        role: 'assistant',
+                        content: '❗오류 발생: 응답이 없습니다.',
+                    },
                 ]);
             } finally {
                 stopLoading(); // 로딩 종료
