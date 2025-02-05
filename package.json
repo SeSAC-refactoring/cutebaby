@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@reduxjs/toolkit": "^2.5.1",
     "@google/generative-ai": "^0.21.0",
+    "@reduxjs/toolkit": "^2.5.1",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "axios": "^1.7.9",

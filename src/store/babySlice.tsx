@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { babyinfo, BabyState } from '../components/types';
+import { response } from 'express';
 
 export const initialState: BabyState = {
     babyInfo: [],
@@ -13,7 +14,7 @@ export const fetchBabyInfo = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const user = sessionStorage.getItem('usernumber');
-            console.log('reduxer >>>>>', user);
+            console.log('user number redux에 전달 >>>>>', user);
             const response = await axios.post(
                 'http://localhost:5001/api/babyinfo',
                 { user }
@@ -21,14 +22,14 @@ export const fetchBabyInfo = createAsyncThunk(
             console.log('reduxer 안에 reponse >>', response);
             if (!response.data || response.data.length === 0) {
                 return [];
+            }else{
+                return response.data;
             }
-            return response.data;
         } catch (error: any) {
             return rejectWithValue(error.message);
         }
     }
 );
-
 const babySlice = createSlice({
     name: 'baby',
     initialState,
@@ -50,7 +51,10 @@ const babySlice = createSlice({
                     state.loading = false;
                     state.babyInfo = action.payload;
                     state.nothingBaby = action.payload.length > 0;
+                    console.log('🎯 Redux fulfilled 실행됨, payload:', action.payload);
+
                 }
+                
             )
             .addCase(fetchBabyInfo.rejected, (state, action) => {
                 state.loading = false;

@@ -5,6 +5,10 @@ import { getKakaoLoginUrl } from '../services/kakaoService';
 import styles from '../styles/Login.module.scss';
 import { Session } from 'inspector/promises';
 import { Input } from '../components/commons/Input';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchBabyInfo } from '../store/babySlice';
+import { AppDispatch, RootState } from '../store';
+
 // 사용자 정보 인터페이스 정의
 interface UserInfo {
     username: string;
@@ -12,18 +16,26 @@ interface UserInfo {
     password: string;
 }
 const EmailLogin: React.FC = () => {
+    const dispatch = useDispatch<AppDispatch>();
     const [email, setEmail] = useState<string>(''); // 이메일 상태관리하기
     const [inputpassword, setinputPassword] = useState<string>(''); // 비밀번호 상태관리하기
     const [userInfo, setUserInfo] = useState<UserInfo | null>(null); // 사용자 정보 상태관리하기
     const [error, setError] = useState<string>(''); // 에러 상태
     const navigate = useNavigate();
+    const {babyInfo} = useSelector(
+        (state: RootState) => state.baby
+    );
+
     useEffect(() => {
         if (userInfo) {
+
+            dispatch(fetchBabyInfo());
             gotoTestMain(); // 로그인 성공 시 자동 이동
+        
+
         }
-
-
     }, [userInfo]);
+
     // 이메일 입력값 처리 함수 설정
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
@@ -34,6 +46,7 @@ const EmailLogin: React.FC = () => {
     };
     // 이메일로 사용자 정보 조회
     const handleSubmit = async (e: React.FormEvent) => {
+   
         e.preventDefault(); // 페이지 새로 고침 방지
         try {
             const emailPost = await axios.post(
@@ -51,6 +64,7 @@ const EmailLogin: React.FC = () => {
                     'usernumber',
                     JSON.stringify(emailPost.data[0].usernumber)
                 );
+                
                 setError(''); // 에러 초기화
             }
             if (emailPost.data[0].password !== inputpassword) {
@@ -73,7 +87,7 @@ const EmailLogin: React.FC = () => {
         }
     };
     const gotoTestMain = () => {
-        navigate('/Mypage', { state: userInfo }); // Mypage로 이동
+        navigate('/Home', { state: userInfo }); // Mypage로 이동
     };
     return (
         <div>
