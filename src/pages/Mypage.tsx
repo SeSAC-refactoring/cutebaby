@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BabyList } from '../components/my-page/BabyList';
+import { MypageBabyList } from '../components/my-page/MypageBabyList';
 import styles from '../styles/Mypage.module.scss';
 import { NeedLoginModal } from '../components/NeedLoginModal'; // 모달 import
 import axios from 'axios';
@@ -10,13 +10,13 @@ import { AppDispatch, RootState } from '../store';
 import { fetchBabyInfo } from '../store/babySlice';
 import { userInfo } from 'os';
 
-
-
 export default function Mypage() {
     const dispatch = useDispatch<AppDispatch>();
     const [openModal, setOpenModal] = useState<boolean>(false);
-    const { babyInfo, nothingBaby, loading, error } = useSelector((state: RootState) => state.baby);
-    const user = sessionStorage.getItem("user");
+    const { babyInfo, nothingBaby, loading, error } = useSelector(
+        (state: RootState) => state.baby
+    );
+    const user = sessionStorage.getItem('user');
 
     // 세션 확인 및 데이터 요청
     useEffect(() => {
@@ -26,7 +26,7 @@ export default function Mypage() {
             dispatch(fetchBabyInfo());
         }
     }, [dispatch, user]);
-    console.log('reduxer에서 받아왔는지? ?',babyInfo)
+    console.log('reduxer에서 받아왔는지? ?', babyInfo);
 
     return (
         <div className={styles.wrap}>
@@ -39,7 +39,10 @@ export default function Mypage() {
                 {/* <div className={styles.icon}>수정 아이콘</div> */}
                 <div className={styles.background}>
                     <h1 className={styles.title}>마이페이지</h1>
-                    <BabyList babyInfo={babyInfo} nothingBaby={nothingBaby} />
+                    <MypageBabyList
+                        babyInfo={babyInfo}
+                        nothingBaby={nothingBaby}
+                    />
                     {/* {message.trim()
           ?
           :<BabyInput message={message} />} */}

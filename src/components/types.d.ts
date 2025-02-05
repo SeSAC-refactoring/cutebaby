@@ -4,7 +4,7 @@ export interface ChildData {
     gender: 'male' | 'female';
     birthDate: Date; // 생년월일 ("YYYY-MM-DD" 형식)
 
-    measurementDate: Date | null; // 측정일 ("YYYY-MM-DD" 형식)
+    measurementDate: Date | null; // 측정 ("YYYY-MM-DD" 형식)
     months: number | null;
     height: number | null;
     weight: number | null;
@@ -30,6 +30,19 @@ export interface Message {
 
 ////////////////////////////////////////////////////////////////////////////
 // # my-page
+export interface babyinfo {
+    babyname: string;
+    birthday: string;
+    gender: string;
+    picture: string | null;
+}
+
+export interface BabyState {
+    babyInfo: babyinfo[];
+    nothingBaby: boolean;
+    loading: boolean;
+    error: string | null;
+}
 
 ////////////////////////////////////////////////////////////////////////////
 // # sign-up-page
@@ -75,20 +88,5 @@ export interface SelectedLocation {
     province: string;
     city: string;
 }
-
-export interface babyinfo {
-    babyname: string;
-    birthday: string;
-    gender: string;
-    picture: string | null;
-}
-
-export interface BabyState {
-    babyInfo: babyinfo[];
-    nothingBaby: boolean;
-    loading: boolean;
-    error: string | null;
-}
-
 
 //

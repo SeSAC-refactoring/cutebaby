@@ -26,7 +26,7 @@ ChartJS.register(
 );
 
 // 버튼 클릭 시 보여지는 차트 컴포넌트 (입력값에 따라 차트 변경)
-export const ChartComponent = ({
+export const CalculateChart = ({
     childData,
     lmsData,
     percentileData,
