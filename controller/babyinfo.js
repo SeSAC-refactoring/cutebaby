@@ -13,7 +13,7 @@ export const babyinfo = async (req, res) => {
     console.log('babyinfo에 baby 내용 >>>',baby)
     if (baby.length > 0) {
         res.json(baby);
-
+        // sessionStorage.setItem("babyid", JSON.stringify(babyids));
     } else {
       res.json(babyFalse);  // 사용자 없으면 404 반환
     }
