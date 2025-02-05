@@ -16,11 +16,15 @@ interface Baby {
     nothingBaby : boolean
   }
 
+  
+
  export const BabyList: React.FC<BabyInputProps> = ({ babyInfo ,nothingBaby}) => {
     const [babyPlus , setBabyPlus] = useState<boolean>(false)
     console.log('=====',nothingBaby);
     
-    console.log('>>>>>>>',babyInfo)
+    console.log('babyinfo >>>>>>>',babyInfo)
+
+    
     const Plus = ()=>{
         if(!babyPlus){
             setBabyPlus(true)

@@ -38,9 +38,10 @@ export default function Mypage() {
         );
         console.log('qwerqwer', response);
 
-        if (!response) {
+        if (!response.data) {
             setNothing(false);
-            console.log('asdfsadf');
+            console.log('response.data >>>',response);
+            setBabyInfo([])
         } else {
             console.log('babycall', response.data);
             setNothing(true);
