@@ -1,13 +1,13 @@
 import { useRef } from 'react';
 
 export type RefsType = {
-    measurementDate: React.RefObject<HTMLInputElement>;
-    height: React.RefObject<HTMLInputElement>;
-    weight: React.RefObject<HTMLInputElement>;
-    headCircumference: React.RefObject<HTMLInputElement>;
+    measurementDate: React.RefObject<HTMLInputElement | null>;
+    height: React.RefObject<HTMLInputElement | null>;
+    weight: React.RefObject<HTMLInputElement | null>;
+    headCircumference: React.RefObject<HTMLInputElement | null>;
 
-    province: React.RefObject<HTMLSelectElement>;
-    city: React.RefObject<HTMLSelectElement>;
+    province: React.RefObject<HTMLSelectElement | null>;
+    city: React.RefObject<HTMLSelectElement | null>;
 };
 
 // ref 설정
