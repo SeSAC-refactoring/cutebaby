@@ -16,6 +16,7 @@ export const MypageBabyList: React.FC<BabyInputProps> = ({
     nothingBaby,
 }) => {
     const [babyPlus, setBabyPlus] = useState<boolean>(false);
+    const [selectedBabyId, setSelectedBabyId] = useState<number | null>(null);
     console.log('=====', nothingBaby);
 
     console.log('babyinfo >>>>>>>', babyInfo);
@@ -35,7 +36,7 @@ export const MypageBabyList: React.FC<BabyInputProps> = ({
     return (
         <>
             <div className={styles.user_list}>
-                <BabyList />
+                <BabyList babyInfo={babyInfo} nothingBaby={nothingBaby} />
                 <button onClick={Plus} className={styles.enroll}>
                     {!babyPlus ? '아기등록' : '아기정보'}
                 </button>

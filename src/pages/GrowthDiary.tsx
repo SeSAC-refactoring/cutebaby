@@ -1,10 +1,11 @@
-import { useSelector } from 'react-redux';
 import { DiaryChart } from '../components/growth-diary-page/DiaryChart';
 import { GrowthCalculate } from '../components/growth-diary-page/GrowthCalculate';
 import { DiaryTable } from '../components/growth-diary-page/DiaryTable';
-import { RootState } from '../store';
 import { BabyList } from '../components/commons/BabyList';
 import { DiaryInputArea } from '../components/growth-diary-page/DiaryInputArea';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store';
+import { useEffect, useState } from 'react';
 
 export default function GrowthDiary() {
     const { babyInfo, nothingBaby } = useSelector(
@@ -16,19 +17,28 @@ export default function GrowthDiary() {
             <div>
                 <div>
                     <p>성장기록</p>
-                    <p>우리 아이의 성장을 기록하고 상태를 확인해보세요:)</p>
+                    <p>우리 아이의 성장을 기록하고 상태를 확인해보세요 :)</p>
                 </div>
                 <button>성장상태 계산</button>
             </div>
             <div>
-                <BabyList />
+                <BabyList
+                    babyInfo={babyInfo}
+                    nothingBaby={nothingBaby}
+                    handleSelectBaby={handleSelectBaby}
+                    selectedBabyId={selectedBabyId}
+                />
                 <div>
                     <div>
                         <DiaryInputArea />
                         <button>+ 기록추가</button>
                     </div>
 
-                    <DiaryTable />
+                    <DiaryTable
+                        babyInfo={babyInfo}
+                        nothingBaby={nothingBaby}
+                        selectedBabyId={selectedBabyId}
+                    />
                     <DiaryChart />
                 </div>
             </div>

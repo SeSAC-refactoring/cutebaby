@@ -31,6 +31,7 @@ export interface Message {
 ////////////////////////////////////////////////////////////////////////////
 // # my-page
 export interface babyinfo {
+    babyid: number;
     babyname: string;
     birthday: string;
     gender: string;
