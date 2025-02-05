@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { getKakaoLoginUrl } from "../services/kakaoService";
 import styles from "../styles/Login.module.scss";
 import { Session } from "inspector/promises";
+import { Input } from "../components/commons/Input";
 // 사용자 정보 인터페이스 정의
 interface UserInfo {
   username: string;
@@ -70,34 +71,43 @@ const EmailLogin: React.FC = () => {
     navigate("/Mypage", { state: userInfo }); // Mypage로 이동
   };
   return (
-    <div className={styles.background}>
-      <h1>로그인</h1>
-      <div>이미지</div>
-      <form onSubmit={handleSubmit}>
-        <label>이메일*</label>
-        <input
-          type="email"
-          value={email}
-          onChange={handleInputChange}
-          placeholder="이메일을 입력하세요"
-        />
-        <label>비밀번호*</label>
-        <input
-          type="password"
-          value={inputpassword}
-          onChange={handleInputPassword}
-          placeholder="비밀번호를 입력하세요"
-        />
-        <button className={styles.btn} type="submit">
-          로그인
-        </button>
-      </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <hr />
-      <a href={getKakaoLoginUrl()}>
-        <img src="img/kakaoLoginImg.png" alt="카카오 로그인" />
-      </a>
-    </div>
+    <body>
+      <div className={styles.background}>
+        <div className={styles.title}>이메일로 로그인하기</div>
+        <form className={styles.container} onSubmit={handleSubmit}>
+          <Input
+            label="이메일*"
+            type="email"
+            value={email}
+            onChange={handleInputChange}
+            placeholder="이메일을 입력해주세요."
+          />
+          <Input
+            label="비밀번호*"
+            type="password"
+            value={inputpassword}
+            onChange={handleInputPassword}
+            placeholder="비밀번호를 입력해주세요."
+          />
+          <div className={styles.button_container}>
+            <button className={`${styles.btn} ${styles.cancel_button}`}>
+              취소
+            </button>
+            <button
+              className={`${styles.btn} ${styles.done_button}`}
+              type="submit"
+            >
+              완료
+            </button>
+          </div>
+        </form>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        {/* <hr /> */}
+        {/* <a href={getKakaoLoginUrl()}>
+          <img src="img/kakaoLoginImg.png" alt="카카오 로그인" />
+        </a> */}
+      </div>
+    </body>
   );
 };
 export default EmailLogin;

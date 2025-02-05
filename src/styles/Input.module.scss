@@ -1,12 +1,14 @@
 .input {
   color: #3b3b41;
-  width: 342px;
+  // width: 342px;
+  width: 432px;
   height: 64px;
   background-color: #fef9f1;
   border-radius: 16px;
   outline: none;
   padding-left: 24px;
   font-size: 22px;
+  margin-bottom: 24px;
 }
 
 .input_default {
@@ -27,6 +29,13 @@
   border: none;
 }
 
-.red {
-  background-color: red;
+.background {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 18px;
+  font-weight: bold;
 }
