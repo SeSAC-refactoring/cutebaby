@@ -71,7 +71,7 @@ const EmailLogin: React.FC = () => {
     navigate("/Mypage", { state: userInfo }); // Mypage로 이동
   };
   return (
-    <body>
+    <div>
       <div className={styles.background}>
         <div className={styles.title}>이메일로 로그인하기</div>
         <form className={styles.container} onSubmit={handleSubmit}>
@@ -107,7 +107,7 @@ const EmailLogin: React.FC = () => {
           <img src="img/kakaoLoginImg.png" alt="카카오 로그인" />
         </a> */}
       </div>
-    </body>
+    </div>
   );
 };
 export default EmailLogin;

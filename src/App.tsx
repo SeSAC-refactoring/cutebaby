@@ -46,7 +46,7 @@ function App() {
         <Route path="/VaccinationDetails" element={<VaccinationDetails />} />
         <Route path="/VaccinationCenters" element={<VaccinationCenters />} />
       </Routes>
-      <Header></Header>
+      {/* <Header></Header> */}
     </div>
   );
 }
