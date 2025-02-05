@@ -7,12 +7,14 @@ interface BabyListProps {
     babyInfo: babyinfo[];
     nothingBaby: boolean;
     handleSelectBaby: (babyId: number) => void;
+    selectedBabyId?: number | null;
 }
 
 export const BabyList: React.FC<BabyListProps> = ({
     nothingBaby,
     babyInfo,
     handleSelectBaby,
+    selectedBabyId,
 }) => {
     return (
         <div>

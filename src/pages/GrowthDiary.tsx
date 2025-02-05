@@ -5,12 +5,13 @@ import { BabyList } from '../components/commons/BabyList';
 import { DiaryInputArea } from '../components/growth-diary-page/DiaryInputArea';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
-import { useEffect, useState } from 'react';
+import { useSelectBaby } from '../hooks/useSelectBaby';
 
 export default function GrowthDiary() {
     const { babyInfo, nothingBaby } = useSelector(
         (state: RootState) => state.baby
     );
+    const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
 
     return (
         <>
