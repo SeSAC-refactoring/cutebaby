@@ -5,7 +5,9 @@ import Logout from "../login-page/Logout";
 export default function Header() {
   return (
     <>
-      <div>로고</div>
+      <div>
+        <Link to="/Home">로고</Link>
+      </div>
       <div>
         <Link to="/Vaccination">예방접종</Link>
       </div>
