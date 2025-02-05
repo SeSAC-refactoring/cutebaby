@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const GrowthDiaryComponent = () => {
+export const DiaryTable = () => {
     return (
         <div>
             <div>성장기록의 목록이 있을 공간</div>
