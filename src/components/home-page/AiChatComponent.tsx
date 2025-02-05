@@ -10,12 +10,12 @@ export const AiChatComponent = () => {
 
     return (
         <div>
-            <h1>챗봇</h1>
+            <h2>챗봇</h2>
             <div>
                 <div>
-                    {messages.map((msg, index) => (
+                    {messages.map((msg, i) => (
                         <div
-                            key={index}
+                            key={i}
                             style={{
                                 margin: '10px 0',
                                 textAlign:
@@ -23,7 +23,7 @@ export const AiChatComponent = () => {
                             }}
                         >
                             <strong>
-                                {msg.role === 'user' ? '사용자 ' : '챗봇 '}:
+                                {msg.role === 'user' ? '🙋‍♂️사용자 ' : '🤖챗봇 '}:
                             </strong>
                             {` ${msg.content}`}
                         </div>
@@ -42,8 +42,11 @@ export const AiChatComponent = () => {
                         placeholder="메시지를 입력하세요."
                         onKeyDown={handleKeyDown}
                     />
-                    <button onClick={() => handleSendMessage(input, setInput)}>
-                        입력
+                    <button
+                        onClick={() => handleSendMessage(input, setInput)}
+                        disabled={isLoading}
+                    >
+                        {isLoading ? '로딩중...' : '입력'}
                     </button>
                 </div>
             </div>
