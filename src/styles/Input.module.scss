@@ -1,0 +1,32 @@
+.input {
+  color: #3b3b41;
+  width: 342px;
+  height: 64px;
+  background-color: #fef9f1;
+  border-radius: 16px;
+  outline: none;
+  padding-left: 24px;
+  font-size: 22px;
+}
+
+.input_default {
+  border: 2px solid #838391;
+}
+
+.input_default:focus {
+  box-shadow: 0 0 0 5px rgba(66, 116, 235, 0.3);
+  border: 2px solid #968cc5;
+}
+
+.input_error {
+  border: 2px solid #fd757d;
+}
+
+.input_disabled {
+  background-color: #f3f3f4;
+  border: none;
+}
+
+.red {
+  background-color: red;
+}
