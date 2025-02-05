@@ -7,6 +7,7 @@ export const AiChatComponent = () => {
     const { input, setInput, handleInputChange } = useInput('');
     const { handleSendMessage, messages, isLoading } = useChatbot();
     const handleKeyDown = useHandleKeyDown(handleSendMessage, input, setInput);
+
     return (
         <div>
             <h1>챗봇</h1>
