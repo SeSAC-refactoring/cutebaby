@@ -44,10 +44,11 @@ const EmailLogin: React.FC = () => {
                 'http://localhost:5001/api/user',
                 { email ,inputpassword}
             );
-            console.log('response >>>', emailPost.data[0]);
+            console.log('responseeeee >>>', emailPost.data[0]);
             if (emailPost.data.length > 0) {
               const user = emailPost.data[0];
               sessionStorage.setItem('user', JSON.stringify(user)); // 사용자 정보를 sessionStorage에 저장
+              sessionStorage.setItem('usernumber',JSON.stringify(emailPost.data[0].usernumber))
               setError(''); // 에러 초기화
             } 
             if (emailPost.data[0].password !== inputpassword) {

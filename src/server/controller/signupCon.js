@@ -27,6 +27,7 @@ export const signupCon = async (req, res) => {
     res.json({
       success: true,
       message: "회원가입이 완료되었습니다.",
+      
     });
   } catch (err) {
     console.error("회원가입 오류:", err);
