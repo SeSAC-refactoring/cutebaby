@@ -6,6 +6,7 @@ import { useSearchCenters } from '../components/vaccination-page/hooks/useSearch
 import { PagenationBtns } from '../components/vaccination-page/PagenationBtns';
 import { CenterList } from '../components/vaccination-page/CenterList';
 import { useHandleSearch } from '../components/vaccination-page/hooks/useHandleSearch';
+import { useRefs } from '../hooks/useRefs';
 
 export default function VaccinationCenters() {
     // hook 사용
@@ -26,15 +27,15 @@ export default function VaccinationCenters() {
     const { provinces, cities, isFirstLoading } =
         useFetchLocation(selectedLocation);
 
+    const refs = useRefs();
+
     const {
         hasSearched,
-        provinceRef,
-        cityRef,
         inputAddress,
         setInputAddress,
         handleSearch,
         savedAddress,
-    } = useHandleSearch(selectedLocation, setCurrentPage, searchCenters);
+    } = useHandleSearch(selectedLocation, setCurrentPage, searchCenters, refs);
 
     const { startPage, endPage, handlePageChange } = usePagenation(
         currentPage,
@@ -65,7 +66,7 @@ export default function VaccinationCenters() {
 
             {/* 지역(시/도) 선택 드롭다운 */}
             <select
-                ref={provinceRef}
+                ref={refs.province}
                 value={selectedLocation.province}
                 disabled={isFirstLoading} // 데이터 불러오는 동안은 드롭다운으로 지역 선택 불가
                 onChange={handleProvinceSelect}
@@ -80,7 +81,7 @@ export default function VaccinationCenters() {
 
             {/* 도시(시/군/구) 선택 드롭다운 (지역이 선택되지 않으면 disabled) */}
             <select
-                ref={cityRef}
+                ref={refs.city}
                 value={selectedLocation.city}
                 disabled={!selectedLocation.province}
                 onChange={handleCitySelect}
