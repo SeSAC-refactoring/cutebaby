@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from "../../styles/Mypage.module.scss";
-import BabyInfo from "./BabyInfo";
+import {BabyInfo} from "./BabyInfo";
 import { BabyInputPlus } from './BabyInputPlus';
 import { NothingBaby } from './NothingBaby';
 
@@ -50,7 +50,7 @@ interface Baby {
           <button onClick={Plus}className={styles.enroll}>{!babyPlus?'아기등록':'아기정보'}</button>
         </div>
         {babyPlus?<BabyInputPlus babyInfo={babyInfo} nothingBaby={nothingBaby} />:
-        nothingBaby ? <BabyInfo/>:<NothingBaby />
+        nothingBaby ? <BabyInfo babyInfo={babyInfo}/>:<NothingBaby />
           }
 
     </>
