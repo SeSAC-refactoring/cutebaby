@@ -1,31 +1,67 @@
 import { Link } from "react-router-dom";
 import Logout from "../login-page/Logout";
-// import Logout from "./login-page/Logout";
+import styles from "../../styles/commons/Header.module.scss";
+// import logo from "/logo.png";
 
 export default function Header() {
   return (
     <>
-      <div>
-        <Link to="/Home">로고</Link>
+      <div className={styles.header}>
+        <div>
+          <Link to="/Home">
+            <img alt="logo"></img>
+          </Link>
+        </div>
+        <div className={styles.menu_container}>
+          <div className={styles.menu}>서비스 소개</div>
+          <div>
+            {" "}
+            <Link to="/Login" className={styles.menu_gray}>
+              로그인
+            </Link>
+          </div>
+        </div>
       </div>
-      <div>
-        <Link to="/Vaccination">예방접종</Link>
+
+      <div className={styles.header}>
+        <div>
+          <Link to="/Home">
+            <img alt="logo"></img>
+          </Link>
+        </div>
+        <div className={styles.menu_container}>
+          <div className={styles.menu}>
+            <Link
+              to="/Vaccination"
+              style={{ textDecoration: "none", color: "#3b3b41" }}
+            >
+              예방접종
+            </Link>
+          </div>
+          <div>
+            <Link to="/GrowthDiary" className={styles.menu_gray}>
+              성장기록
+            </Link>
+          </div>
+          <div>
+            <Link
+              to="/Mypage"
+              className={styles.menu_gray}
+              style={{ textDecoration: "none" }}
+            >
+              마이페이지
+            </Link>
+          </div>
+          {/* <button onClick={Logout}>로그아웃</button> */}
+          <div
+            className={styles.menu_gray}
+            style={{ cursor: "pointer" }}
+            onClick={Logout}
+          >
+            로그아웃
+          </div>
+        </div>
       </div>
-      <div>
-        <Link to="/GrowthDiary">성장기록</Link>
-      </div>
-      <div>
-        <Link to="/Mypage">마이페이지</Link>
-      </div>
-      <div>
-        {" "}
-        <Link to="/Login">로그인</Link>
-      </div>
-      <div>
-        {" "}
-        <Link to="/Signup">회원가입</Link>
-      </div>
-      <button onClick={Logout}>로그아웃</button>
     </>
   );
 }
