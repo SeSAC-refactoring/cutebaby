@@ -209,69 +209,83 @@ const Signup: React.FC = () => {
   return (
     <form>
       <div className={styles.background}>
-        <h2 className={styles.title}>회원가입</h2>
+        <div className={styles.title}>이메일로 가입하기</div>
+        <div className={styles.sub_title}>보호자님의 정보를 기입해주세요.</div>
 
-        <h3 className={styles.gray_box}>1. 보호자님 정보를 적어주세요.</h3>
-
-        <div className={styles.input_set}>
-          <label className={styles.a}>이메일 *</label>
-          <div>
+        <div className={styles.input_container}>
+          <div className={styles.input_set}>
+            {/* <label className={styles.a}>이름 *</label> */}
             <Input
-              type="email"
-              name="email"
-              value={formData.email}
+              label="이름 *"
+              type="text"
+              name="name"
+              value={formData.name}
               onChange={handleInputChange}
-              ref={(el: any) => {
-                inputRef.current.email = el;
+              ref={(el) => {
+                inputRef.current.name = el;
               }}
             />
-            <button onClick={emailCheck}>중복체크</button>
+            {messages.name && <p>{messages.name}</p>}
           </div>
-          {messages.email && <p>{messages.email}</p>}
+
+          <div className={styles.input_set}>
+            <div className={styles.input_button_container}>
+              <Input
+                label="이메일 *"
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                ref={(el: any) => {
+                  inputRef.current.email = el;
+                }}
+              />
+              {/* <button onClick={emailCheck}>중복체크</button> */}
+            </div>
+            {messages.email && <p>{messages.email}</p>}
+          </div>
+
+          <div className={styles.input_set}>
+            <Input
+              label="비밀번호 *"
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleInputChange}
+              ref={(el) => {
+                inputRef.current.password = el;
+              }}
+            />
+            {messages.password && <p>{messages.password}</p>}
+          </div>
+
+          <div className={styles.input_set}>
+            <Input
+              label="비밀번호 확인 *"
+              type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleInputChange}
+              ref={(el) => {
+                inputRef.current.checkPassword = el;
+              }}
+            />
+            {messages.confirmPassword && <p>{messages.confirmPassword}</p>}
+          </div>
         </div>
 
-        <div className={styles.input_set}>
-          <label className={styles.a}>비밀번호 *</label>
-          <Input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleInputChange}
-            ref={(el) => {
-              inputRef.current.password = el;
-            }}
-          />
-          {messages.password && <p>{messages.password}</p>}
+        {/* <button className={styles.button} onClick={handleSubmit}></button> */}
+        <div className={styles.button_container}>
+          <button className={`${styles.btn} ${styles.cancel_button}`}>
+            취소
+          </button>
+          <button
+            className={`${styles.btn} ${styles.done_button}`}
+            type="submit"
+          >
+            완료
+          </button>
         </div>
-
-        <div className={styles.input_set}>
-          <label className={styles.a}>비밀번호 확인 *</label>
-          <Input
-            type="password"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleInputChange}
-            ref={(el) => {
-              inputRef.current.checkPassword = el;
-            }}
-          />
-          {messages.confirmPassword && <p>{messages.confirmPassword}</p>}
-        </div>
-
-        <div className={styles.input_set}>
-          <label className={styles.a}>이름 *</label>
-          <Input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-            ref={(el) => {
-              inputRef.current.name = el;
-            }}
-          />
-          {messages.name && <p>{messages.name}</p>}
-        </div>
-        <button className={styles.button} onClick={handleSubmit}></button>
       </div>
     </form>
   );

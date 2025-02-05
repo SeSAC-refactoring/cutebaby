@@ -21,6 +21,8 @@ const EmailLogin: React.FC = () => {
         if (userInfo) {
             gotoTestMain(); // 로그인 성공 시 자동 이동
         }
+
+
     }, [userInfo]);
     // 이메일 입력값 처리 함수 설정
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -114,5 +116,6 @@ const EmailLogin: React.FC = () => {
             </div>
         </div>
     );
+
 };
 export default EmailLogin;
