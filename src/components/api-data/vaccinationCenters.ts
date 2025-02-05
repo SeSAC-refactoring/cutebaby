@@ -53,7 +53,7 @@ const vaccinationDiseaseInfoApi = (
 ): string => {
     // 검색유형과 검색어가 없을 때 처리
     const searchParams =
-        searchType && searchWord
+        searchType.trim() !== '' && searchWord.trim() !== ''
             ? `&searchTpcd=${searchType}&searchWord=${searchWord}`
             : '';
     return `https://apis.data.go.kr/1790387/orglist3/getOrgList3?serviceKey=aBW%2F97Bvvsc8asD9I8qq50bFJd%2BMkvUNbeUhxpW%2FFLTUBWclU%2BXPryRrW4tHSEeH%2Fui5x%2BmnZtb4dp%2BKVY3EyQ%3D%3D&pageNo=${pageNo}&numOfRows=${numOfRows}&brtcCd=${province}&sggCd=${city}${searchParams}`;

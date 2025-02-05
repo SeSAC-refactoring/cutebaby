@@ -2,10 +2,26 @@ import React from 'react'
 import styles from '../../styles/Mypage.module.scss'
 
 
-export const BabyInputPlus = () => {
+interface Baby {
+    babyname: string;
+    birthday: string;
+    gender: string;
+    picture: string | null; // picture가 null일 수도 있으므로
+  }
+  
+
+interface BabyInputProps {
+    babyInfo: Baby[];  // babyInfo는 배열 형식임
+    nothingBaby : boolean
+  }
+
+export const BabyInputPlus: React.FC<BabyInputProps> = ({babyInfo, nothingBaby}) => {
+
+
   return (
     <>
            <div className={styles.info_box}>
+            {nothingBaby}
             <h3 className={styles.info_title}>아기 등록하기</h3>
             <form>
             <section>

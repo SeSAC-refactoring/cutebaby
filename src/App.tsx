@@ -1,19 +1,6 @@
 // import { fetchUsers, UserDataset } from './services/userService';
 // import Signup from "./components/Signup";
-import Signup from "./pages/Signup";
-import { Route, Routes } from "react-router-dom";
-import GrowthDiary from "./pages/GrowthDiary";
-import Mypage from "./pages/Mypage";
-import KakaoLogin from "./components/login-page/KakaoLogin";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Vaccination from "./pages/Vaccination";
-// import Header from "./components/Header";
-import { useEffect } from "react";
-import { loadKakaoSDK } from "./services/loadKakaoSDK";
-import VaccinationCenters from "./pages/VaccinationCenters";
-import { VaccinationDetails } from "./components/vaccination-page/VaccinationDetails";
-import Header from "./components/commons/Header";
+
 // import GrowthDiary from "./components/GrowthDiary";
 
 export interface UserData {

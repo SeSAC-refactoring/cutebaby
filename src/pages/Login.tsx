@@ -42,29 +42,7 @@ const EmailLogin: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); // 페이지 새로 고침 방지
 
-    try {
-      const emailPost = await axios.post("http://localhost:5001/api/user", {
-        email,
-        inputpassword,
-      });
-      console.log("response >>>", emailPost.data[0]);
-      if (emailPost.data.length > 0) {
-        const user = emailPost.data[0];
-        sessionStorage.setItem("user", JSON.stringify(user)); // 사용자 정보를 sessionStorage에 저장
-        setError(""); // 에러 초기화
-      }
-      if (emailPost.data[0].password !== inputpassword) {
-        setError("비밀번호가 일치하지 않습니다.");
-      } else {
-        setUserInfo(emailPost.data[0]);
-        setError(""); // 에러 초기화
-      }
-    } catch (err: unknown) {
-      if (err instanceof AxiosError) {
-        if (err.response && err.response.status === 404) {
-          setError("사용자를 찾을 수 없습니다.");
-        } else {
-          setError("서버 오류가 발생했습니다.");
+
         }
       } else {
         setError("알 수 없는 오류가 발생했습니다.");

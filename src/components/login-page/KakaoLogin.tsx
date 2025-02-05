@@ -34,7 +34,8 @@ const KakaoLogin = (): React.ReactElement => {
       const user = userData
       console.log('user >>>', user)
       sessionStorage.setItem('user', JSON.stringify(user));
-      sessionStorage.setItem("usernumber", response.data.usernumber.toString()); // sessionStorage에 사용자 정보 저장 >>세션 유지!!
+      console.log('response.data.usernumber >>> ', response.data)
+      sessionStorage.setItem("usernumber", response.data.usernumber); // sessionStorage에 사용자 정보 저장 >>세션 유지!!
       // 로그인 후 Mypage로 이동
       console.log('Navigating to Mypage...');
       navigate('/Mypage', { state: userData });

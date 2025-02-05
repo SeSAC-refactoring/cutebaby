@@ -6,7 +6,8 @@ export const usePagenation = (
     setCurrentPage: (page: number) => void,
     totalPages: number,
     setTotalPages: (page: number) => void,
-    searchCenters: (page: number) => void
+    searchCenters: (page: number, inputAddress: string) => void,
+    savedAddress: string
 ) => {
     // 페이지 그룹의 범위 계산
     const { startPage, endPage } = useMemo(() => {
@@ -21,13 +22,13 @@ export const usePagenation = (
 
     // 페이지 변경 핸들러
     const handlePageChange = useCallback(
-        (newPage: number) => {
+        (newPage: number, inputAddress: string) => {
             if (newPage >= 1 && newPage <= totalPages) {
                 setCurrentPage(newPage);
-                searchCenters(newPage);
+                searchCenters(newPage, savedAddress); // 항상 저장된 검색어 사용 // 페이지를 넘길때는 inputAdress가 바뀌어도 이전의 검색어로 사용
             }
         },
-        [totalPages, searchCenters]
+        [totalPages, searchCenters, savedAddress]
     );
 
     return {
