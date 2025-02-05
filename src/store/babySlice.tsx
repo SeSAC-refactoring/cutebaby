@@ -1,6 +1,6 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import axios from "axios";
-import { babyinfo, BabyState } from "../components/types";
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { babyinfo, BabyState } from '../components/types';
 
 export const initialState: BabyState = {
     babyInfo: [],
@@ -8,23 +8,29 @@ export const initialState: BabyState = {
     loading: false,
     error: null,
 };
-export const fetchBabyInfo = createAsyncThunk("baby/fetchBabyInfo", async (_, { rejectWithValue }) => {
-    try {
-        const user = sessionStorage.getItem("usernumber");
-        console.log('reduxer >>>>>' , user)
-        const response = await axios.post("http://localhost:5001/api/babyinfo", { user });
-        console.log('reduxer 안에 reponse >>' , response)
-        if (!response.data || response.data.length === 0) {
-            return [];
+export const fetchBabyInfo = createAsyncThunk(
+    'baby/fetchBabyInfo',
+    async (_, { rejectWithValue }) => {
+        try {
+            const user = sessionStorage.getItem('usernumber');
+            console.log('reduxer >>>>>', user);
+            const response = await axios.post(
+                'http://localhost:5001/api/babyinfo',
+                { user }
+            );
+            console.log('reduxer 안에 reponse >>', response);
+            if (!response.data || response.data.length === 0) {
+                return [];
+            }
+            return response.data;
+        } catch (error: any) {
+            return rejectWithValue(error.message);
         }
-        return response.data;
-    } catch (error: any) {
-        return rejectWithValue(error.message);
     }
-});
+);
 
 const babySlice = createSlice({
-    name: "baby",
+    name: 'baby',
     initialState,
     reducers: {
         clearBabyInfo: (state) => {
@@ -38,11 +44,14 @@ const babySlice = createSlice({
                 state.loading = true;
                 state.error = null;
             })
-            .addCase(fetchBabyInfo.fulfilled, (state, action: PayloadAction<babyinfo[]>) => {
-                state.loading = false;
-                state.babyInfo = action.payload;
-                state.nothingBaby = action.payload.length > 0;
-            })
+            .addCase(
+                fetchBabyInfo.fulfilled,
+                (state, action: PayloadAction<babyinfo[]>) => {
+                    state.loading = false;
+                    state.babyInfo = action.payload;
+                    state.nothingBaby = action.payload.length > 0;
+                }
+            )
             .addCase(fetchBabyInfo.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload as string;

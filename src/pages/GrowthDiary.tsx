@@ -4,7 +4,7 @@ import { GrowthCalculate } from '../components/growth-diary-page/GrowthCalculate
 import { GrowthDiaryComponent } from '../components/growth-diary-page/GrowthDiaryComponent';
 import styles from '../styles/GrowthDiary.module.scss';
 import { RootState } from '../store';
-import { BabyList } from '../components/commons/BabyList';
+import { BabyList } from '../components/BabyList';
 
 export default function GrowthDiary() {
     const { babyInfo, nothingBaby } = useSelector(
