@@ -51,8 +51,13 @@ const babySlice = createSlice({
                     state.loading = false;
                     state.babyInfo = action.payload;
                     state.nothingBaby = action.payload.length > 0;
-                    console.log('🎯 Redux fulfilled 실행됨, payload:', action.payload);
+                    console.log('action payload >>>>',action.payload)
 
+
+                    let babyids = state.babyInfo.map((value)=>{
+                        return value.babyid
+                    })
+                    sessionStorage.setItem('babyinfo', JSON.stringify(babyids));
                 }
                 
             )
