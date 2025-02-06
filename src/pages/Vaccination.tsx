@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 import styles from '../styles/Vaccination.module.scss';
 import VacUnit from './vac_unit';
+import { VaccinationTable } from '../components/vaccination-page/hooks/vaccination-table/VaccinationTable';
+import { VaccineInfo } from '../components/vaccination-page/VaccineInfo';
 
 export default function Vaccination() {
     return (
         <>
             <div className={styles.background}>
-                <div className={styles.title}>예방접종</div>
+                <div className={styles.title}>표준 예방접종 일정표</div>
                 <div className={styles.text}>
                     우리 하나의 예방접종 일정을 관리해보세요 😀
                 </div>
@@ -28,17 +30,10 @@ export default function Vaccination() {
                         <Link to="/VaccinationCenters">위탁의료기관 찾기</Link>
                     </button>
                 </div>
-                <div className={styles.vac_list}>
-                    <VacUnit />
-                    <VacUnit />
-                    <VacUnit />
-                    <VacUnit />
-                    <VacUnit />
-                    <VacUnit />
-                    <VacUnit />
-                    <VacUnit />
-                </div>
             </div>
+
+            <VaccinationTable />
+            <VaccineInfo />
         </>
     );
 }
