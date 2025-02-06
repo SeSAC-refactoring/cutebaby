@@ -13,26 +13,37 @@ const initialState: BabyState = {
   loading: false,
   error: null,
 };
+const storedBabyInfo = sessionStorage.getItem('babyinfo');
+const babyids: number[] = storedBabyInfo ? JSON.parse(storedBabyInfo) : [];
 
 // fetchgrowInfo 액션 정의
 export const fetchgrowInfo = createAsyncThunk(
   'baby/fetchgrowInfo',
   async (_, { rejectWithValue }) => {
     try {
-        const babyinfo: number[] = JSON.parse(sessionStorage.getItem('babyinfo') || '[]');
-       
-      if (!babyinfo.length) return rejectWithValue("저장된 babyinfo가 없습니다.");
+      console.log('세션 babyinfo:', sessionStorage.getItem('babyinfo'));
 
+      // ✅ sessionStorage 값이 없을 경우 기본값 설정
+      const storedBabyInfo = sessionStorage.getItem('babyinfo');
+      const babyids: number[] = storedBabyInfo ? JSON.parse(storedBabyInfo) : [];
+
+      if (!babyids.length) return rejectWithValue("저장된 babyinfo가 없습니다.");
+
+      // babyid 배열을 이용해 API 요청
       const responses = await Promise.all(
-        babyinfo.map((babyid) => axios.post('http://localhost:5001/api/babygrow', { babyid }))
+        babyids.map((babyid) => axios.post('http://localhost:5001/api/babygrow', { babyid }))
       );
-      console.log('grow resposne >> ' , responses)
+
+      console.log('grow response >>', responses);
+      sessionStorage.setItem('babygrow', JSON.stringify(responses));
+
       return responses.map((res) => res.data);
     } catch (error: any) {
       return rejectWithValue(error.message);
     }
   }
 );
+
 
 // 리듀서 정의
 const babygrowSlice = createSlice({
