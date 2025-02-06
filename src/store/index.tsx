@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import babyReducer from './babySlice';
-import vaccinationReducer from './vaccinationSlice';
+// import vaccinationReducer from './vaccinationSlice';
 
 export const store = configureStore({
     reducer: {
         baby: babyReducer,
-        vaccination: vaccinationReducer,
+        // vaccination: vaccinationReducer,
     },
 });
 
