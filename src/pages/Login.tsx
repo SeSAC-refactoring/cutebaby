@@ -10,6 +10,8 @@ import { fetchBabyInfo } from '../store/babySlice';
 import { AppDispatch, RootState } from '../store';
 import { fetchgrowInfo } from '../store/GrowthDiarySlice';
 
+
+
 // 사용자 정보 인터페이스 정의
 interface UserInfo {
   username: string;
@@ -24,17 +26,22 @@ const EmailLogin: React.FC = () => {
     const [error, setError] = useState<string>(''); // 에러 상태
     const navigate = useNavigate();
 
+    const babyInfo = useSelector((state: RootState) => state.baby.babyInfo);
 
     useEffect(() => {
-        if (userInfo) {
-            dispatch(fetchBabyInfo());
-            
-            dispatch(fetchgrowInfo());
-            gotoTestMain(); // 로그인 성공 시 자동 이동
-        
+      if (userInfo) {
+          dispatch(fetchBabyInfo());
+      }
+  }, [userInfo, dispatch]);
 
-        }
-    }, [userInfo]);
+  // babyInfo가 Redux에서 업데이트되면 sessionStorage에 저장하고, fetchgrowInfo 실행
+  useEffect(() => {
+      if (babyInfo.length > 0) {
+          // sessionStorage.setItem('babyinfo', JSON.stringify(babyInfo)); // 세션에 저장
+          dispatch(fetchgrowInfo()); // 세션 저장 후 실행
+          gotoTestMain();
+      }
+  }, [babyInfo, dispatch]); 
 
     // 이메일 입력값 처리 함수 설정
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
