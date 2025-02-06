@@ -8,6 +8,7 @@ import { Input } from '../components/commons/Input';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBabyInfo } from '../store/babySlice';
 import { AppDispatch, RootState } from '../store';
+import { fetchgrowInfo } from '../store/GrowthDiarySlice';
 
 // 사용자 정보 인터페이스 정의
 interface UserInfo {
@@ -22,14 +23,13 @@ const EmailLogin: React.FC = () => {
     const [userInfo, setUserInfo] = useState<UserInfo | null>(null); // 사용자 정보 상태관리하기
     const [error, setError] = useState<string>(''); // 에러 상태
     const navigate = useNavigate();
-    const {babyInfo} = useSelector(
-        (state: RootState) => state.baby
-    );
+
 
     useEffect(() => {
         if (userInfo) {
-
             dispatch(fetchBabyInfo());
+            
+            dispatch(fetchgrowInfo());
             gotoTestMain(); // 로그인 성공 시 자동 이동
         
 
@@ -124,9 +124,9 @@ const EmailLogin: React.FC = () => {
                 </form>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 {/* <hr /> */}
-                {/* <a href={getKakaoLoginUrl()}>
+                <a href={getKakaoLoginUrl()}>
           <img src="img/kakaoLoginImg.png" alt="카카오 로그인" />
-        </a> */}
+        </a>
             </div>
         </div>
     );

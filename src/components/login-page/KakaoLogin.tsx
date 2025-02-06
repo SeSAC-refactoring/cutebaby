@@ -2,21 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { getKakaoToken, getKakaoUserInfo } from '../../services/kakaoService';
 import axios, { AxiosError } from 'axios';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchBabyInfo } from '../../store/babySlice';
+import { AppDispatch, RootState } from '../../store';
 
 const KakaoLogin = (): React.ReactElement => {
   const [searchParams] = useSearchParams();
   const [userInfo, setUserInfo] = useState<any>(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     const code = searchParams.get('code'); // URL에서 "code" 파라미터 가져오기
     if (code) {
-      handleKakaoLogin(code); // 카카오 로그인 함수 호출
+      handleKakaoLogin(code);
+      // 카카오 로그인 함수 호출
     }
   }, [searchParams]);
 
   const handleKakaoLogin = async (code: string) => {
+
     try {
       const accessToken = await getKakaoToken(code);
       const userData = await getKakaoUserInfo(accessToken);
@@ -37,8 +42,10 @@ const KakaoLogin = (): React.ReactElement => {
       console.log('response.data.usernumber >>> ', response.data)
       sessionStorage.setItem("usernumber", response.data.usernumber); // sessionStorage에 사용자 정보 저장 >>세션 유지!!
       // 로그인 후 Mypage로 이동
+      dispatch(fetchBabyInfo());
+
       console.log('Navigating to Mypage...');
-      navigate('/Mypage', { state: userData });
+      navigate('/Home', { state: userData });
     } catch (error) {
       console.error('카카오 로그인 실패:', error);
     }

@@ -2,14 +2,18 @@ import { AiChatComponent } from '../components/home-page/AiChatComponent';
 import styles from '../styles/Home.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../store';
+import { Root } from 'react-dom/client';
 
 
 export default function Home() {
-    const dispatch = useDispatch<AppDispatch>();
-    const { babyInfo } = useSelector(
+    // const dispatch = useDispatch<AppDispatch>();
+    const { babyInfo  } = useSelector(
         (state: RootState) => state.baby
     );
 
+    
+    const growInfo = useSelector((state: RootState) => state.babygrow.growInfo);
+    console.log('로그인성공시 babygrow 불러옴', growInfo)
     console.log('로그인성공시 babyinfo불러옴',babyInfo)
 
     return (

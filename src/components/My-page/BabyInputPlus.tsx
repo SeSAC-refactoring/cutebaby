@@ -1,17 +1,12 @@
 import React from 'react'
 import styles from '../../styles/Mypage.module.scss'
+import { babyinfo } from '../types';
 
 
-interface Baby {
-    babyname: string;
-    birthday: string;
-    gender: string;
-    picture: string | null; // picture가 null일 수도 있으므로
-  }
   
 
 interface BabyInputProps {
-    babyInfo: Baby[];  // babyInfo는 배열 형식임
+    babyInfo: babyinfo[];  // babyInfo는 배열 형식임
     nothingBaby : boolean
   }
 
