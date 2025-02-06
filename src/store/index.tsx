@@ -5,7 +5,7 @@ import babygrowReducer from './GrowthDiarySlice'
 export const store = configureStore({
     reducer: {
         baby: babyReducer,
-        babygrow: babygrowReducer
+        babygrow : babygrowReducer
     },
 });
 

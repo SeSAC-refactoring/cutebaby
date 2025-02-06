@@ -12,9 +12,9 @@ import { fetchgrowInfo } from '../store/GrowthDiarySlice';
 
 // 사용자 정보 인터페이스 정의
 interface UserInfo {
-    username: string;
-    userid: string;
-    password: string;
+  username: string;
+  userid: string;
+  password: string;
 }
 const EmailLogin: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -126,7 +126,7 @@ const EmailLogin: React.FC = () => {
                 {/* <hr /> */}
                 <a href={getKakaoLoginUrl()}>
           <img src="img/kakaoLoginImg.png" alt="카카오 로그인" />
-        </a>
+        </a> 
             </div>
         </div>
     );
