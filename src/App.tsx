@@ -16,6 +16,10 @@ import VaccinationCenters from "./pages/VaccinationCenters";
 
 import Header from "./components/commons/Header";
 import VaccinationDetails from "./pages/VaccinationDetails";
+import {
+  ChildrenTabs,
+  NoChildrenTabs,
+} from "./components/commons/ChildrenTabs";
 
 // import GrowthDiary from "./components/GrowthDiary";
 
@@ -32,7 +36,8 @@ function App() {
       .catch((error) => console.error("Kakao SDK 로드 실패:", error));
   }, []);
   return (
-    <div className="App">
+    <>
+      {/* <div className="App"> */}
       <h1>꼬물꼬물</h1>
 
       <Routes>
@@ -46,8 +51,11 @@ function App() {
         <Route path="/VaccinationDetails" element={<VaccinationDetails />} />
         <Route path="/VaccinationCenters" element={<VaccinationCenters />} />
       </Routes>
-      <Header></Header>
-    </div>
+      <Home></Home>
+      {/* <ChildrenTabs />
+      <NoChildrenTabs /> */}
+      {/* </div> */}
+    </>
   );
 }
 
