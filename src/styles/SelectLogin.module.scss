@@ -1,8 +1,14 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 400px;
+}
+
 .login_background {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 560px;
+  width: 432px;
   height: 100%;
   border: 2px solid #838391;
   padding: 72px 64px 64px 64px;
@@ -16,22 +22,27 @@
   margin-bottom: 24px;
 }
 .login_img {
-  border: 1px solid red;
   width: 432px;
   margin-bottom: 32px;
 }
-.email_btn {
+.btn {
   width: 432px;
   height: 80px;
   text-align: center;
+  border: none;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  gap: 8px;
+}
+.email_btn {
   margin-bottom: 16px;
   color: white;
   background-color: #3b3b41;
-  border: none;
-  border-radius: 20px;
 }
 .kakao_btn {
-  width: 432px;
-  height: 80px;
-  text-align: center;
+  background-color: #fee500;
 }
