@@ -1,33 +1,119 @@
 .background {
+  border: 1px solid red;
+  width: 1280px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 70px;
+  padding-top: 80px;
   align-items: center;
 }
-.title {
-  font-size: 30px;
-  font-weight: 700;
-}
-.text {
-  margin-top: 5px;
-  font-size: 15px;
-}
-.user_list {
-  margin-top: 5px;
-  background-color: rgb(241, 237, 237);
-  width: 600px;
-  height: 50px;
+.title_wrap {
+  width: 1120px;
+  justify-content: space-between;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
+  border: 1px solid black;
+  margin-bottom: 48px;
 }
-.small_title {
-  width: 600px;
-  font-size: 23px;
+.title {
+  color: #3b3b41;
+  font-size: 40px;
   font-weight: 700;
-  margin-top: 10px;
+  margin-bottom: 16px;
+}
+.text {
+  font-size: 15px;
+  color: #9999a5;
+}
+.cal_btn {
+  width: 181px;
+  height: 56px;
+  text-align: center;
+  background-color: #f6d9a7;
+  border: none;
+  border-radius: 16px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.contents_wrap {
+  width: 1120px;
+  border: 1px solid blue;
+  display: flex;
+  justify-content: space-between;
+}
+.block_record {
+  border: 1px solid red;
+  width: 888px;
+  height: 500px;
+}
+.add_wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.add_btn {
+  width: 166px;
+  height: 64px;
+  background-color: #bbdeeb;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 16px;
+  border: none;
+}
+.inputArea_wrap {
+  display: flex;
+  width: 658px;
+  justify-content: space-between;
+}
+.input {
+  width: 130px;
+  height: 64px;
+  background-color: #fef9f1;
+  border-radius: 16px;
+  border: none;
+  color: #838391;
+  padding-left: 24px;
+  font-size: 22px;
+  margin-right: 5px;
+}
+.label {
+  color: #5d5d67;
+  font-size: 18px;
+  font-weight: bold;
+}
+.list_wrap {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+}
+.row_title {
+  display: flex;
+  flex-direction: row;
+  height: 56px;
+  padding-left: 50px;
+  align-items: center;
+  background-color: #d1e9f1;
+  border-radius: 16px;
+}
+.list_title {
+  width: 198px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.row_el {
+  display: flex;
+  flex-direction: row;
+  height: 72px;
+  padding-left: 50px;
+  align-items: center;
+  border-radius: 16px;
+}
+.row_el:nth-child(2n-1) {
+  background-color: #f4fafc;
+}
+.list_el {
+  width: 198px;
 }
 .record {
   width: 600px;

@@ -2,7 +2,6 @@
 // import Signup from "./components/Signup";
 import Signup from "./pages/Signup";
 import { Route, Routes } from "react-router-dom";
-import GrowthDiary from "./pages/GrowthDiary";
 import Mypage from "./pages/Mypage";
 import KakaoLogin from "./components/login-page/KakaoLogin";
 import Home from "./pages/Home";
@@ -16,10 +15,10 @@ import VaccinationCenters from "./pages/VaccinationCenters";
 
 import Header from "./components/commons/Header";
 import VaccinationDetails from "./pages/VaccinationDetails";
-import {
-  ChildrenTabs,
-  NoChildrenTabs,
-} from "./components/commons/ChildrenTabs";
+import { ChildrenTabs } from "./components/commons/ChildrenTabs";
+import VaccinationUnit from "./pages/vaccination_unit";
+import SelectLogin from "./pages/SelectLogin";
+import GrowthDiary from "./pages/GrowthDiary";
 
 // import GrowthDiary from "./components/GrowthDiary";
 
@@ -51,9 +50,7 @@ function App() {
         <Route path="/VaccinationDetails" element={<VaccinationDetails />} />
         <Route path="/VaccinationCenters" element={<VaccinationCenters />} />
       </Routes>
-      <Home></Home>
-      {/* <ChildrenTabs />
-      <NoChildrenTabs /> */}
+      <GrowthDiary />
       {/* </div> */}
     </>
   );
