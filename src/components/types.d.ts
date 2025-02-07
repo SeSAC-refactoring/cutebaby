@@ -29,7 +29,7 @@ export interface babyinfo {
     babyname: string;
     birthday: string;
     gender: string;
-    picture: string | null;
+    picture:  null|File;
 }
 
 export interface BabyState {
