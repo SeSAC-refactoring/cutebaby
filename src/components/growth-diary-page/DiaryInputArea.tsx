@@ -3,11 +3,14 @@ import styles from "../../styles/GrowthDiary.module.scss";
 import { useNewGrow } from "./hooks/useNewGrow";
 import { useSelectBaby } from "../../hooks/useSelectBaby";
 import { BabyInfo } from "../my-page/BabyInfo";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store";
 import { newGrowData } from "../types";
+import { fetchgrowInfo } from "../../store/GrowthDiarySlice";
 
 export const DiaryInputArea: React.FC = () => { 
+  const dispatch = useDispatch<AppDispatch>(); // Redux dispatch 추가
+
   const { babyInfo} = useSelector(
     (state: RootState) => state.baby
   );
@@ -52,7 +55,8 @@ console.log(formattedDate)
         inputData :formattedDate
       });
       alert("성장 기록이 추가되었습니다!");
-      
+      dispatch(fetchgrowInfo());
+
       // 입력 필드 초기화
       setNewGrowData({
         babyid: newGrowData.babyid, // 선택된 아기는 유지

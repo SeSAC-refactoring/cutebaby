@@ -37,7 +37,7 @@ const EmailLogin: React.FC = () => {
     if (babyInfo.length > 0) {
       // sessionStorage.setItem('babyinfo', JSON.stringify(babyInfo)); // 세션에 저장
       dispatch(fetchgrowInfo()); // 세션 저장 후 실행
-      gotoTestMain();
+      gotoMain();
     }
   }, [babyInfo, dispatch]);
 
@@ -87,7 +87,7 @@ const EmailLogin: React.FC = () => {
       setUserInfo(null); // 오류 발생 시 사용자 정보 초기화
     }
   };
-  const gotoTestMain = () => {
+  const gotoMain = () => {
     navigate("/Home", { state: userInfo }); // Mypage로 이동
   };
   return (
