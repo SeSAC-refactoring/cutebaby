@@ -65,7 +65,7 @@ export const VaccinationSchedule: React.FC = () => {
             {},
             {},
             {},
-            { text: 'Tdap/Td 6차', colSpan: 1 },
+            { text: 'Tdap/Td 6차', colSpan: 2 },
         ],
         [
             {},
@@ -238,7 +238,7 @@ export const VaccinationSchedule: React.FC = () => {
         <div
             style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(15, 1fr)', // 15개의 동일한 너비의 컬럼 생성
+                gridTemplateColumns: 'repeat(15, 1fr)', // 15개의 동일한 너비의 컬럼 생성 // 1fr 말고 px ,% 등 사용 가능
                 overflowX: 'auto', // 표가 화면을 벗어나면 가로 스크롤 추가
             }}
         >
