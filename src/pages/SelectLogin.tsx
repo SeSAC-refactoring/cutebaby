@@ -20,6 +20,10 @@ export default function SelectLogin() {
             카카오톡으로 로그인하기
           </button>
         </a>
+        <div className={styles.link_container}>
+          <div>가입하지 않으셨나요?</div>
+          <div className={styles.link}>회원가입하기</div>
+        </div>
       </div>
     </div>
   );

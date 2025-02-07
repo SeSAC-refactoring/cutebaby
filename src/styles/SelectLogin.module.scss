@@ -45,4 +45,15 @@
 }
 .kakao_btn {
   background-color: #fee500;
+  margin-bottom: 32px;
+}
+.link_container {
+  display: flex;
+  gap: 8px;
+  color: #5d5d67;
+  font-size: 18px;
+}
+.link {
+  text-decoration: underline;
+  cursor: pointer;
 }
