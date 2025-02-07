@@ -56,8 +56,6 @@ function App() {
                     element={<VaccinationCenters />}
                 />
             </Routes>
-            <GrowthDiary />
-            {/* </div> */}
         </>
     );
 }
