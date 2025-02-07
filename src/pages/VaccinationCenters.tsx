@@ -4,10 +4,12 @@ import { useToggleVaccineList } from "../components/vaccination-page/hooks/useTo
 import { usePagenation } from "../components/vaccination-page/hooks/usePagenation";
 import { useSearchCenters } from "../components/vaccination-page/hooks/useSearchCenters";
 import { PagenationBtns } from "../components/vaccination-page/PagenationBtns";
-import { CenterList } from "../components/vaccination-page/CenterList";
+// import { CenterList } from "../components/vaccination-page/CenterList";
 import { useHandleSearch } from "../components/vaccination-page/hooks/useHandleSearch";
 import { useRefs } from "../hooks/useRefs";
 import styles from "../styles/VaccinationCenters.module.scss";
+import VaccinationUnit from "./vaccination_centers_unit";
+import { CenterList } from "../components/vaccination-page/CenterList";
 
 export default function VaccinationCenters() {
   // hook 사용
@@ -71,6 +73,7 @@ export default function VaccinationCenters() {
         value={selectedLocation.province}
         disabled={isFirstLoading} // 데이터 불러오는 동안은 드롭다운으로 지역 선택 불가
         onChange={handleProvinceSelect}
+        className={styles.select}
       >
         <option value="">시/도</option>
         {provinces.map((province) => (
@@ -86,6 +89,7 @@ export default function VaccinationCenters() {
         value={selectedLocation.city}
         disabled={!selectedLocation.province}
         onChange={handleCitySelect}
+        className={styles.select}
       >
         <option value="">시/군/구</option>
         {cities.map((city) => (
@@ -96,6 +100,7 @@ export default function VaccinationCenters() {
       </select>
 
       <input
+        className={styles.select}
         type="text"
         value={inputAddress}
         placeholder="주소"
@@ -109,7 +114,14 @@ export default function VaccinationCenters() {
 
       {/* 검색 버튼 */}
       <button onClick={handleSearch}>병원 검색</button>
-
+      <VaccinationUnit />
+      {/* <CenterList 
+      {
+        centers: Centers[],
+    toggleVaccineList : toggleVaccineList,
+    showVaccineList: { showVaccineList };
+      }
+      /> */}
       {/* 검색 결과(병원 리스트) 표시 */}
       <div>
         <h3>병원 목록</h3>
