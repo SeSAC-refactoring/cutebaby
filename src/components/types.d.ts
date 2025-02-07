@@ -11,6 +11,32 @@ export interface ChildData {
     headCircumference: number | null;
 }
 
+export interface LmsData {
+    개월수구분코드: number;
+    개월수구분코드명: string;
+    성별코드: number; // 성별 ( 1 = 남아, 2 = 여아)
+    성별코드명: string;
+    영유아성장도표L값: number;
+    영유아성장도표M값: number;
+    영유아성장도표S값: number;
+    영유아성장도표시작월: number;
+    영유아성장도표종료월: number;
+    영유아성장종류코드: number;
+    영유아성장종류코드명: string;
+}
+
+export interface PercentileData {
+    백분위수: number;
+    영유아성장도표시작Z값: string;
+    영유아성장도표종료Z값: string;
+}
+
+export interface Percentiles {
+    height: number | null;
+    weight: number | null;
+    headCircumference: number | null;
+}
+
 ////////////////////////////////////////////////////////////////////////////
 // # home-page // 챗봇 기능
 
@@ -86,9 +112,9 @@ export interface SelectedLocation {
 
 //
 export interface newGrowData {
-    babyid : number| null,
-    height : number | string,
-    weight : number | string,
-    head : number| stirng
-    inputData : string
+    babyid: number | null;
+    height: number | string;
+    weight: number | string;
+    head: number | stirng;
+    inputData: string;
 }

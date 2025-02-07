@@ -1,11 +1,15 @@
 import { CalculateChart } from './CalculateChart';
-import { ChildData } from '../types';
 import { useFetchData } from './hooks/useFetchData';
-import { useCalculateMonths } from '../../hooks/useCalculateMonths';
-import { useRefs } from '../../hooks/useRefs';
 import { useChildData } from '../../hooks/useChildData';
 import { useShow } from '../../hooks/useShow';
 import { CalculateInputArea } from './CalculateInputArea';
+import { CalculateDefaultState } from './CalculateDefaultState';
+import { usePercentiles } from './hooks/usePercentiles';
+import { useFilteredLmsDataByMonths } from './hooks/useFilteredLmsDataByMonths ';
+import { useFilteredLmsDataByGender } from './hooks/useFilteredLmsDataByGender ';
+import { log } from 'console';
+import { useEffect } from 'react';
+import { calculateMonths } from './calculateMonths';
 
 export const GrowthCalculate = () => {
     // customHook 가져오기
@@ -16,7 +20,34 @@ export const GrowthCalculate = () => {
         show
     );
 
-    useCalculateMonths(childData, setChildData);
+    // useEffect(() => {
+    //     if (childData.birthDate && childData.measurementDate) {
+    //         const newMonths = calculateMonths(childData);
+    //         setChildData((prev) => ({
+    //             ...prev,
+    //             months: newMonths,
+    //         }));
+    //     }
+    // }, [childData.measurementDate, childData.birthDate]); // 의존성 배열 추가
+    console.log('🙏🙏🙏🙏🙏🙏🙏childData', childData);
+
+    // lmsData // 성별과 일치하는 데이터만 필터링
+    const filteredLmsDataByGender = useFilteredLmsDataByGender(
+        lmsData,
+        childData
+    );
+
+    // lmsData // 성별+개월수까지 일치하는 데이터 필터링
+    const filteredLmsDataByMonths = useFilteredLmsDataByMonths(
+        filteredLmsDataByGender,
+        childData
+    );
+
+    const { percentiles, setPercentiles } = usePercentiles(
+        childData,
+        percentileData,
+        filteredLmsDataByMonths
+    );
 
     return (
         <div>
@@ -26,12 +57,14 @@ export const GrowthCalculate = () => {
                 {/* 사용자 입력값 설정 */}
                 <CalculateInputArea
                     childData={childData}
+                    filteredLmsDataByMonths={filteredLmsDataByMonths}
+                    percentiles={percentiles}
                     setChildData={setChildData}
                     setShow={setShow}
+                    setPercentiles={setPercentiles}
                 />
 
                 {/* 차트 */}
-
                 {/* 로딩 중일 경우 */}
                 {isLoading && <p>로딩 중...</p>}
 
@@ -39,11 +72,14 @@ export const GrowthCalculate = () => {
                 {show && !isLoading && (
                     <CalculateChart
                         childData={childData}
-                        lmsData={lmsData}
+                        filteredLmsDataByGender={filteredLmsDataByGender}
+                        filteredLmsDataByMonths={filteredLmsDataByMonths}
                         percentileData={percentileData}
-                        setShow={setShow}
+                        percentiles={percentiles}
                     />
                 )}
+
+                {!show && <CalculateDefaultState />}
             </div>
         </div>
     );

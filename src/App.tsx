@@ -56,6 +56,7 @@ function App() {
                     element={<VaccinationCenters />}
                 />
             </Routes>
+            <Header />
         </>
     );
 }

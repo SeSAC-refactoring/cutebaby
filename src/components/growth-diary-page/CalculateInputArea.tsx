@@ -1,8 +1,7 @@
 import React from 'react';
 import { useRefs } from '../../hooks/useRefs';
-import { ChildData } from '../types';
+import { ChildData, LmsData, PercentileData, Percentiles } from '../types';
 import { handleCalculateChart } from './handleCalculateChart';
-import { handleHideChart } from './handleHideChart';
 import { handleClearInput } from './handleClearInput';
 import { useHandleInputChange } from './hooks/useHandleInputChange';
 
@@ -10,11 +9,17 @@ import { useHandleInputChange } from './hooks/useHandleInputChange';
 interface CalculateInputAreaProps {
     childData: ChildData;
     setChildData: React.Dispatch<React.SetStateAction<ChildData>>;
+    filteredLmsDataByMonths: LmsData[];
+    percentiles: Percentiles;
     setShow: React.Dispatch<React.SetStateAction<boolean>>;
+    setPercentiles: React.Dispatch<React.SetStateAction<Percentiles>>;
 }
 
 export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
     childData,
+    filteredLmsDataByMonths,
+    percentiles,
+    setPercentiles,
     setChildData,
     setShow,
 }) => {
@@ -24,16 +29,6 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
 
     return (
         <div>
-            {/* <div>
-                <label htmlFor="">성별: </label>
-                <span>{childData.gender}</span>
-            </div>
-
-            <div>
-                <label htmlFor="">생년월일: </label>
-                <span>{childData.birthDate.toISOString().split('T')[0]}</span>
-            </div> */}
-
             <div>
                 <label>측정일: </label>
                 <input
@@ -94,14 +89,17 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
             </button>
             <button
                 onClick={() =>
-                    handleCalculateChart(refs, inputData, setChildData, setShow)
+                    handleCalculateChart(
+                        refs,
+                        inputData,
+                        setChildData,
+                        setShow,
+                        percentiles,
+                        setPercentiles
+                    )
                 }
             >
-                계산
-            </button>
-
-            <button onClick={() => handleHideChart(setShow)}>
-                그래프 접기
+                계산하기
             </button>
         </div>
     );

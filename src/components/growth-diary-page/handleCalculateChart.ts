@@ -1,5 +1,4 @@
-import { useRef } from 'react';
-import { ChildData } from '../types';
+import { ChildData, LmsData, PercentileData, Percentiles } from '../types';
 import { RefsType } from '../../hooks/useRefs';
 
 // 계산 버튼 클릭 시 차트 보여줌
@@ -7,9 +6,11 @@ export const handleCalculateChart = (
     refs: RefsType,
     inputData: ChildData,
     setChildData: React.Dispatch<React.SetStateAction<ChildData>>,
-    setShowChart: React.Dispatch<React.SetStateAction<boolean>>
+    setShow: React.Dispatch<React.SetStateAction<boolean>>,
+    percentiles: Percentiles,
+    setPercentiles: React.Dispatch<React.SetStateAction<Percentiles>>
 ) => {
-    // 측정일 값 없으면 // 측정일가 input focus
+    // 측정일 값 없으면 // 측정일 input focus
     if (!inputData.measurementDate) {
         refs.measurementDate.current?.focus();
         return;
@@ -27,5 +28,6 @@ export const handleCalculateChart = (
 
     // 필수값 있으면
     setChildData(inputData);
-    setShowChart(true);
+    setShow(true);
+    setPercentiles(percentiles);
 };
