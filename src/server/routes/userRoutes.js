@@ -6,6 +6,7 @@ import { emailCheck } from '../controller/emailCheck.js';
 import { babyinfo } from '../controller/babyinfo.js';
 import { babygrow } from '../controller/babygrow.js';
 import { getVaccination } from '../controller/vaccinationController.js';
+import { newgrow } from '../controller/newgrow.js';
 
 const router = express.Router();
 
@@ -17,6 +18,7 @@ router.post('/kakaosignup', kakaoCon);
 router.post('/emailCheck', emailCheck);
 router.post('/babyinfo', babyinfo);
 router.post('/babygrow', babygrow);
+router.post('/newgrow' , newgrow)
 
 // babyid를 기반으로 예방접종 데이터 가져오기
 router.post('/vaccination', getVaccination);
