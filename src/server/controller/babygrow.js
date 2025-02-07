@@ -13,7 +13,6 @@ export const babygrow = async (req, res) => {
     if (!growInfo || growInfo.length === 0) {
         return res.json({ message: `babyid ${babyid}의 성장 데이터가 없습니다.` });
     }
-
     res.json(growInfo);
 } catch (error) {
     console.error('babygrow 에러:', error);

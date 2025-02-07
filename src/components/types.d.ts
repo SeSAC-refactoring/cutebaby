@@ -91,3 +91,10 @@ export interface SelectedLocation {
 }
 
 //
+export interface newGrowData {
+    babyid : number| null,
+    height : number | string,
+    weight : number | string,
+    head : number| stirng
+    inputData : string
+}
