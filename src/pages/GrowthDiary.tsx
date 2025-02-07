@@ -60,19 +60,20 @@ export default function GrowthDiary() {
                         <button>+ 기록추가</button>
                     </div>
 
-                    <DiaryTable
-                        babyInfo={babyInfo}
-                        nothingBaby={nothingBaby}
-                        selectedBabyId={selectedBabyId}
-                    />
-                    <DiaryChart />
-                </div>
-            </div>
 
-            {/* 계산하는 페이지 / 모달 예정??  */}
-            <br />
-            <hr />
-            <GrowthCalculate />
-        </>
-    );
+          <DiaryTable
+            babyInfo={babyInfo}
+            nothingBaby={nothingBaby}
+            selectedBabyId={selectedBabyId}
+          />
+          <DiaryChart />
+        </div>
+      </div>
+
+      {/* 계산하는 페이지 / 모달 예정??  */}
+      <br />
+      <hr />
+      {/* <GrowthCalculate /> */}
+    </div>
+  );
 }
