@@ -26,7 +26,7 @@ export default function Header() {
       <div className={styles.header}>
         <div>
           <Link to="/Home">
-            <img alt="logo"></img>
+            <img src="/img/logo.png" alt="Logo" />
           </Link>
         </div>
         <div className={styles.menu_container}>
