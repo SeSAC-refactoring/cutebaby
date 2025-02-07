@@ -11,12 +11,6 @@ export interface ChildData {
     headCircumference: number | null;
 }
 
-export interface ChartComponentProps {
-    childData: ChildData;
-    lmsData: any[]; // API에서 가져온 데이터 배열
-    percentileData: any[]; // API에서 가져온 데이터 배열
-}
-
 ////////////////////////////////////////////////////////////////////////////
 // # home-page // 챗봇 기능
 

@@ -62,6 +62,8 @@ export default function Vaccination() {
                         console.log(
                             `typeof babyid: ${typeof item.babyid}, typeof vaccinationid: ${typeof item.vaccinationid}, typeof dosenumber: ${typeof item.dosenumber}, typeof dosedate: ${typeof item.dosedate}`
                         );
+                        console.log('dosenumber', item.dosenumber);
+
                         return (
                             <li key={item.vaccinationid}>
                                 <strong>babyid:</strong> {item.babyid}

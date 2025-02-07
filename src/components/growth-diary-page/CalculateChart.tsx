@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChartComponentProps } from '../types';
+import { ChildData } from '../types';
 import { Line } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -25,12 +25,19 @@ ChartJS.register(
     Legend
 );
 
+export interface CalculateChartProps {
+    childData: ChildData;
+    lmsData: any[]; // API에서 가져온 데이터 배열
+    percentileData: any[]; // API에서 가져온 데이터 배열
+    setShow: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 // 버튼 클릭 시 보여지는 차트 컴포넌트 (입력값에 따라 차트 변경)
-export const CalculateChart = ({
+export const CalculateChart: React.FC<CalculateChartProps> = ({
     childData,
     lmsData,
     percentileData,
-}: ChartComponentProps) => {
+}) => {
     if (!childData || !lmsData || !percentileData)
         return <p>데이터가 부족합니다.</p>;
 
