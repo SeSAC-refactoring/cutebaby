@@ -50,7 +50,8 @@ function App() {
         <Route path="/VaccinationDetails" element={<VaccinationDetails />} />
         <Route path="/VaccinationCenters" element={<VaccinationCenters />} />
       </Routes>
-      <GrowthDiary />
+      <Header />
+      {/* <GrowthDiary /> */}
       {/* </div> */}
     </>
   );
