@@ -97,11 +97,6 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
         <div>
             {/* 백분위수 */}
             <div>
-                {childData.height && (
-                    <div>
-                        <p>신장 백분위수: {percentiles.height}</p>
-                    </div>
-                )}
                 {childData.weight && (
                     <div>
                         <p>무게 백분위수: {percentiles.weight}</p>
@@ -128,13 +123,33 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
                 {/* 신장 그래프 */}
                 {childData.height && (
                     <div style={{ height: '400px' }}>
-                        <p>연령별 신장</p>
+                        <p>연령별 키</p>
+                        <div>
+                            <div>
+                                우리아이 키: <span>{childData.height}cm</span>
+                            </div>
+                            <div>
+                                <p>
+                                    백분위: <span>{percentiles.height}%</span>
+                                </p>
+                                <p>
+                                    또래의{' '}
+                                    <span>
+                                        {percentiles.height
+                                            ? `상위 ${100 - percentiles.height}%`
+                                            : '데이터 없음'}
+                                    </span>
+                                    에 해당
+                                </p>
+                            </div>
+                        </div>
+
                         <Line
                             data={createChartData(
                                 p97Height,
                                 p3Height,
                                 currentChildHeight,
-                                '신장'
+                                '키'
                             )}
                             options={chartOptions}
                         />
@@ -145,6 +160,27 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
                 {childData.weight && (
                     <div style={{ height: '400px' }}>
                         <p>연령별 몸무게</p>
+                        <div>
+                            <div>
+                                우리아이 몸무게:{' '}
+                                <span>{childData.weight}cm</span>
+                            </div>
+                            <div>
+                                <p>
+                                    백분위: <span>{percentiles.weight}%</span>
+                                </p>
+                                <p>
+                                    또래의{' '}
+                                    <span>
+                                        {percentiles.weight
+                                            ? `상위 ${100 - percentiles.weight}%`
+                                            : '데이터 없음'}
+                                    </span>
+                                    에 해당
+                                </p>
+                            </div>
+                        </div>
+
                         <Line
                             data={createChartData(
                                 p97Weight,
@@ -161,6 +197,30 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
                 {childData.headCircumference && (
                     <div style={{ height: '400px' }}>
                         <p>연령별 머리둘레</p>
+                        <div>
+                            <div>
+                                우리아이 머리둘레:{' '}
+                                <span>{childData.headCircumference}cm</span>
+                            </div>
+                            <div>
+                                <p>
+                                    백분위:{' '}
+                                    <span>
+                                        {percentiles.headCircumference}%
+                                    </span>
+                                </p>
+                                <p>
+                                    또래의{' '}
+                                    <span>
+                                        {percentiles.headCircumference
+                                            ? `상위 ${100 - percentiles.headCircumference}%`
+                                            : '데이터 없음'}
+                                    </span>
+                                    에 해당
+                                </p>
+                            </div>
+                        </div>
+
                         <Line
                             data={createChartData(
                                 p97HeadCircumference,

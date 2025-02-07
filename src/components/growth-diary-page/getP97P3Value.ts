@@ -10,6 +10,8 @@ export const getP97P3Value = (
         (data) => data['영유아성장종류코드명'] === growthType
     );
 
+    console.log('getP97P3Value', filteredData, growthType);
+
     // LMS값을 이용해 개월수에 따른 p97값 구하기
     const p97 = filteredData.map((data) => ({
         x: data['개월수구분코드'],

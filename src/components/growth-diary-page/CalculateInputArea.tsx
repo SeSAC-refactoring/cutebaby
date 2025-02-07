@@ -4,6 +4,7 @@ import { ChildData, LmsData, PercentileData, Percentiles } from '../types';
 import { handleCalculateChart } from './handleCalculateChart';
 import { handleClearInput } from './handleClearInput';
 import { useHandleInputChange } from './hooks/useHandleInputChange';
+import { handleKeyDown } from './handleKeyDown';
 
 // 사용자 입력값 설정
 interface CalculateInputAreaProps {
@@ -54,6 +55,17 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
                     ref={refs.height}
                     value={inputData.height ?? ''}
                     onChange={handleInputChange}
+                    onKeyDown={(e) =>
+                        handleKeyDown(
+                            e,
+                            refs,
+                            inputData,
+                            setChildData,
+                            setShow,
+                            percentiles,
+                            setPercentiles
+                        )
+                    }
                     placeholder="신장 입력"
                 />
             </div>
@@ -66,6 +78,17 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
                     ref={refs.headCircumference}
                     value={inputData.weight ?? ''}
                     onChange={handleInputChange}
+                    onKeyDown={(e) =>
+                        handleKeyDown(
+                            e,
+                            refs,
+                            inputData,
+                            setChildData,
+                            setShow,
+                            percentiles,
+                            setPercentiles
+                        )
+                    }
                     placeholder="체중 입력"
                 />
             </div>
@@ -78,6 +101,17 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
                     ref={refs.headCircumference}
                     value={inputData.headCircumference ?? ''}
                     onChange={handleInputChange}
+                    onKeyDown={(e) =>
+                        handleKeyDown(
+                            e,
+                            refs,
+                            inputData,
+                            setChildData,
+                            setShow,
+                            percentiles,
+                            setPercentiles
+                        )
+                    }
                     placeholder="머리둘레 입력"
                 />
             </div>
