@@ -3,10 +3,6 @@ import styles from "../styles/vaccination_unit.module.scss";
 export default function VaccinationUnit() {
   return (
     <div className={styles.container}>
-      <div className={styles.image_wrap}>
-        <div className={styles.heart}>♥️</div>
-        <div className={styles.image}></div>
-      </div>
       <div className={styles.content_wrap}>
         <div className={styles.contents_set}>
           <div className={styles.contents_title}>병원이름</div>

@@ -24,3 +24,6 @@ yarn-error.log*
 
 # 환경변수
 .env
+
+#사진들
+/server/uploads

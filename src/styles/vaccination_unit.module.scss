@@ -5,27 +5,10 @@
   display: flex;
   flex-direction: row;
   padding-left: 14px;
+  padding-left: 80px;
   border-radius: 20px;
   padding-top: 44px;
-}
-.image_wrap {
-  border: 1p solid red;
-  display: flex;
-  flex-direction: row;
-  margin-right: 64px;
-}
-.heart {
-  font-size: 24px;
-  position: relative;
-  left: 38px;
-  top: 10px;
-  height: 24px;
-}
-.image {
-  width: 204px;
-  height: 204px;
-  background-color: #f3f3f4;
-  border-radius: 15px;
+  justify-content: space-between;
 }
 
 .content_wrap {
@@ -51,7 +34,8 @@
   color: #6f6f7b;
 }
 .btn_wrap {
-  width: 100%;
+  // width: 100%;
+  width: 900px;
   display: flex;
   justify-content: flex-end;
 }

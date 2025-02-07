@@ -5,7 +5,7 @@ interface Baby {
     babyname: string;
     birthday: string;
     gender: string;
-    picture: string | null; // picture가 null일 수도 있으므로
+    picture: string | null | File; // picture가 null일 수도 있으므로
 }
 
 interface BabyInputProps {

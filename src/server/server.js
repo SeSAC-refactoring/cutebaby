@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import userRoutes from './routes/userRoutes.js';
 import session from 'express-session';
+import router from "./routes/userRoutes.js";
 
 
 const app = express();
@@ -9,10 +10,12 @@ const port = 5001;
 app.use(cors()); 
 
 
-// ✅ JSON과 URL-encoded 데이터를 처리하는 미들웨어 설정
 app.use(express.json());  
 app.use(express.urlencoded({ extended: true }));  
 
+
+app.use("/uploads", express.static("uploads"));
+app.use("/api", router);
 
 app.use(cors({
   origin: 'http://localhost:3000', // React 앱 주소

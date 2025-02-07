@@ -16,9 +16,11 @@ import VaccinationCenters from './pages/VaccinationCenters';
 import Header from './components/commons/Header';
 import VaccinationDetails from './pages/VaccinationDetails';
 import { ChildrenTabs } from './components/commons/ChildrenTabs';
-import VaccinationUnit from './pages/vaccination_unit';
+// import VaccinationUnit from "./pages/vaccination_centers_unit";
 import SelectLogin from './pages/SelectLogin';
 import GrowthDiary from './pages/GrowthDiary';
+import VaccinationUnit from './pages/vaccination_centers_unit';
+import { CenterList } from './components/vaccination-page/CenterList';
 
 // import GrowthDiary from "./components/GrowthDiary";
 
@@ -38,7 +40,7 @@ function App() {
         <>
             {/* <div className="App"> */}
             <h1>꼬물꼬물</h1>
-
+            <Header></Header>
             <Routes>
                 <Route path="/oauth/callback/kakao" element={<KakaoLogin />} />
                 <Route path="/GrowthDiary" element={<GrowthDiary />} />
@@ -56,7 +58,6 @@ function App() {
                     element={<VaccinationCenters />}
                 />
             </Routes>
-            <Header />
         </>
     );
 }

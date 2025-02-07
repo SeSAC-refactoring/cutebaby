@@ -240,7 +240,7 @@ const Signup: React.FC = () => {
                 }}
               />
             </div>
-            <button className={styles.aaa} onClick={emailCheck}>
+            <button className={styles.check_button} onClick={emailCheck}>
               중복체크
             </button>
             {messages.email && <p>{messages.email}</p>}

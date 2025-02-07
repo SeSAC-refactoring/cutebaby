@@ -60,7 +60,6 @@ export default function GrowthDiary() {
                 <div className={styles.block_record}>
                     <div className={styles.add_wrap}>
                         <DiaryInputArea />
-                        <button className={styles.add_btn}>+ 기록추가</button>
                     </div>
 
                     <DiaryTable
