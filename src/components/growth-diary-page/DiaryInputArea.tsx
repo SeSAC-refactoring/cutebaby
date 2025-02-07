@@ -55,7 +55,7 @@ console.log(formattedDate)
         inputData :formattedDate
       });
       alert("성장 기록이 추가되었습니다!");
-      dispatch(fetchgrowInfo());
+      dispatch(fetchgrowInfo(babyInfo));
 
       // 입력 필드 초기화
       setNewGrowData({

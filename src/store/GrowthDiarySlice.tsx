@@ -13,36 +13,33 @@ const initialState: BabyState = {
   loading: false,
   error: null,
 };
-const storedBabyInfo = sessionStorage.getItem('babyinfo');
 
-// fetchgrowInfo 액션 정의
+// ✅ Redux에서 `babyInfo`를 매개변수로 받도록 수정
 export const fetchgrowInfo = createAsyncThunk(
   'baby/fetchgrowInfo',
-  async (_, { rejectWithValue }) => {
+  async (babyInfo: { babyid: number }[], { rejectWithValue }) => { // babyInfo의 타입을 명확히 정의
     try {
-      console.log('세션 babyinfo:', sessionStorage.getItem('babyinfo'));
+      console.log('성장 정보 요청 시작, babyInfo:', babyInfo);
 
-      // ✅ sessionStorage 값이 없을 경우 기본값 설정
-      // const storedBabyInfo = sessionStorage.getItem('babyinfo');
-      const babyids: number[] = storedBabyInfo ? JSON.parse(storedBabyInfo) : [];
+      if (!babyInfo || babyInfo.length === 0) {
+        return rejectWithValue("성장 정보를 요청할 babyInfo가 없습니다.");
+      }
 
-      if (!babyids.length) return rejectWithValue("저장된 babyinfo가 없습니다.");
-      
-      // babyid 배열을 이용해 API 요청
+      // ✅ babyid 배열을 이용해 API 요청
       const responses = await Promise.all(
-        babyids.map((babyid) => axios.post('http://localhost:5001/api/babygrow', { babyid }))
+        babyInfo.map((baby) => 
+          axios.post('http://localhost:5001/api/babygrow', { babyid: baby.babyid })
+        )
       );
 
-      console.log('grow response >>', responses);
+      console.log('✅ 성장 정보 응답 받음:', responses);
       sessionStorage.setItem('babygrow', JSON.stringify(responses));
-
       return responses.map((res) => res.data);
     } catch (error: any) {
       return rejectWithValue(error.message);
     }
   }
 );
-
 
 // 리듀서 정의
 const babygrowSlice = createSlice({
@@ -64,14 +61,13 @@ const babygrowSlice = createSlice({
       .addCase(fetchgrowInfo.fulfilled, (state, action: PayloadAction<any[]>) => {
         state.loading = false;
         state.growInfo = action.payload;
-        console.log('growaction >>', action.payload)
+        console.log('성장 정보 업데이트:', action.payload);
       })
       .addCase(fetchgrowInfo.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
         state.growInfo = [];
-        console.log('state.growInfo >>', state.growInfo)
-
+        console.log('성장 정보 요청 실패:', state.error);
       });
   },
 });
