@@ -5,24 +5,23 @@ import { fetchBabyInfo } from '../../store/babySlice';
 import { babyinfo } from '../types';
 
 interface BabyListProps {
-    babyInfo: babyinfo[]; // `babyInfo` 추가
+    babyInfo: babyinfo[];
     nothingBaby: boolean;
     handleSelectBaby: (babyId: number) => void;
     selectedBabyId?: number | null;
 }
 
 export const BabyList: React.FC<BabyListProps> = ({
-    babyInfo, // babyInfo` 추가
+    babyInfo,
     nothingBaby,
     handleSelectBaby,
     selectedBabyId,
 }) => {
     const dispatch = useDispatch<AppDispatch>();
 
-    // Redux 상태 자동 업데이트 (아기 정보가 추가될 때마다 `fetchBabyInfo` 호출)
     useEffect(() => {
         dispatch(fetchBabyInfo());
-    }, [dispatch]);
+    }, [dispatch, babyInfo.length]);
 
     return (
         <div>

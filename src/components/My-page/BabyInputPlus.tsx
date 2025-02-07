@@ -3,6 +3,9 @@ import styles from "../../styles/Mypage.module.scss";
 import { babyinfo } from "../types";
 import { useCreatebaby } from "./hooks/useCreatebaby";
 import { ImageUploader } from "./ImageUploader"; // ✅ 새 컴포넌트 임포트
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../store";
+import { fetchBabyInfo } from "../../store/babySlice";
 
 interface BabyInputProps {
   babyInfo: babyinfo[];
@@ -17,7 +20,7 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby }) => {
     gender: "",
     picture: null as File | null, // File | null` 타입 유지
   });
-
+  const dispatch = useDispatch<AppDispatch>();
   const { request } = useCreatebaby(); 
   const handleGenderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewBabyData((prev) => ({ ...prev, gender: e.target.value }));
@@ -58,6 +61,8 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby }) => {
         gender: "",
         picture: null, 
       });
+      dispatch(fetchBabyInfo());
+
       alert('등록성공!')
     } catch (error) {
       alert("등록에 실패했습니다.");
