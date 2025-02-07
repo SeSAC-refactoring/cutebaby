@@ -2,9 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/Signup.module.scss";
 import axios, { AxiosError } from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { Input } from "../components/commons/Input";
 // import Input from "../components/commons/Input";
-// import { Input } from "../components/commons/Input";
+import { Input } from "../components/commons/Input";
 
 const Signup: React.FC = () => {
   // 입력값 상태
@@ -240,8 +239,10 @@ const Signup: React.FC = () => {
                   inputRef.current.email = el;
                 }}
               />
-              {/* <button onClick={emailCheck}>중복체크</button> */}
             </div>
+            <button className={styles.aaa} onClick={emailCheck}>
+              중복체크
+            </button>
             {messages.email && <p>{messages.email}</p>}
           </div>
 
