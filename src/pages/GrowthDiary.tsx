@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useSelectBaby } from "../hooks/useSelectBaby";
 import Header from "../components/commons/Header";
+import styles from "../styles/GrowthDiary.module.scss";
 
 export default function GrowthDiary() {
   const { babyInfo, nothingBaby } = useSelector(
@@ -19,12 +20,14 @@ export default function GrowthDiary() {
 
   console.log("애기 성장정보 입니다 >>>>", growInfo);
   return (
-    <div>
+    <div className={styles.background}>
       {/* <Header></Header> */}
-      <div>
+      <div className={styles.title_wrap}>
         <div>
-          <p>성장기록</p>
-          <p>우리 아이의 성장을 기록하고 상태를 확인해보세요 :)</p>
+          <div className={styles.title}>성장기록</div>
+          <div className={styles.text}>
+            우리 아이의 성장을 기록하고 상태를 확인해보세요 :)
+          </div>
           <div>
             {Array.isArray(growInfo) && growInfo.length > 0 ? (
               <ul>
@@ -43,19 +46,19 @@ export default function GrowthDiary() {
             )}
           </div>
         </div>
-        <button>성장상태 계산</button>
+        <button className={styles.cal_btn}>성장상태 계산 {">"}</button>
       </div>
-      <div>
+      <div className={styles.contents_wrap}>
         <BabyList
           babyInfo={babyInfo}
           nothingBaby={nothingBaby}
           handleSelectBaby={handleSelectBaby}
           selectedBabyId={selectedBabyId}
         />
-        <div>
-          <div>
+        <div className={styles.block_record}>
+          <div className={styles.add_wrap}>
             <DiaryInputArea />
-            <button>+ 기록추가</button>
+            <button className={styles.add_btn}>+ 기록추가</button>
           </div>
 
           <DiaryTable
