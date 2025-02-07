@@ -3,19 +3,28 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import babyReducer from './babySlice';
 import babygrowReducer from './GrowthDiarySlice';
-import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
+import {
+    FLUSH,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER,
+    REHYDRATE,
+} from 'redux-persist';
+import vaccinationReducer from './vaccinationSlice';
 
 // 1️⃣ 여러 개의 Reducer를 하나로 합치기
 const rootReducer = combineReducers({
     baby: babyReducer,
     babygrow: babygrowReducer,
+    vaccination: vaccinationReducer,
 });
 
 // 2️⃣ redux-persist 설정 추가
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['babygrow','baby']
+    whitelist: ['babygrow', 'baby', 'vaccination'],
 };
 
 // 3️⃣ persistReducer로 감싸기
@@ -27,7 +36,14 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {
-                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+                ignoredActions: [
+                    FLUSH,
+                    REHYDRATE,
+                    PAUSE,
+                    PERSIST,
+                    PURGE,
+                    REGISTER,
+                ],
             },
         }),
 });
