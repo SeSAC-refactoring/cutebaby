@@ -36,7 +36,7 @@ const EmailLogin: React.FC = () => {
   useEffect(() => {
     if (babyInfo.length > 0) {
       // sessionStorage.setItem('babyinfo', JSON.stringify(babyInfo)); // 세션에 저장
-      dispatch(fetchgrowInfo()); // 세션 저장 후 실행
+      dispatch(fetchgrowInfo(babyInfo)); // 세션 저장 후 실행
       gotoMain();
     }
   }, [babyInfo, dispatch]);

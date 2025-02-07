@@ -21,31 +21,26 @@ const KakaoLogin = (): React.ReactElement => {
     }
   }, [searchParams]);
 
-  // Redux에서 babyInfo가 업데이트되면 fetchgrowInfo 실행
-  useEffect(() => {
-    console.log("📌 Redux babyInfo 상태 변경 감지:", babyInfo);
-    
+  // Redux에서 babyInfo가 업데이트되면 fetchgrowInfo 실행하기
+  useEffect(() => {  
     if (babyInfo && babyInfo.length > 0) {
-      console.log("✅ Redux에서 babyInfo 업데이트 완료, 500ms 후 성장 정보 불러오기...");
-      
-      setTimeout(() => {
-        if (babyInfo.length > 0) {  
-          console.log("🚀 성장 정보 요청 실행");
-          dispatch(fetchgrowInfo());
-          if (growInfo.length >0) {
-            navigate("/Home", { state: babyInfo });
-            console.log("🏠 홈으로 이동합니다...");
-          }else{
-            dispatch(fetchgrowInfo());
-          }
-          
-          // ✅ Redux 상태 업데이트 후 홈으로 이동
-        } else {
-          console.log("❌ 성장 정보 요청 중단: babyInfo가 없습니다.");
-        }
-      }, 500);
+  
+      dispatch(fetchgrowInfo(babyInfo)) 
+        .then(() => {
+  
+          navigate("/Home", { state: babyInfo });
+        })
+        .catch((error) => {
+          console.error("성장 정보 요청 실패:", error);
+        });
+  
+    } else {
+      console.log("성장 정보 요청 중단: babyInfo가 없습니다.");
     }
   }, [babyInfo, dispatch, navigate]);
+  
+  
+  
   
 
   // 카카오 로그인 처리
@@ -68,9 +63,8 @@ const KakaoLogin = (): React.ReactElement => {
       console.log("🔄 Redux에서 아기 정보 로드 시작");
       dispatch(fetchBabyInfo()); // ✅ Redux 상태 업데이트 후 `useEffect`에서 `fetchgrowInfo()` 실행
 
-      console.log("✅ Redux에서 아기 정보 로드 완료");
     } catch (error) {
-      console.error('❌ 카카오 로그인 실패:', error);
+      console.error('카카오 로그인 실패 :', error);
     }
   };
 
