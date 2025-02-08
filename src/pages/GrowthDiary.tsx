@@ -8,8 +8,11 @@ import { RootState } from "../store";
 import { useSelectBaby } from "../hooks/useSelectBaby";
 import Header from "../components/commons/Header";
 import styles from "../styles/GrowthDiary.module.scss";
+import { useState } from "react";
 
 export default function GrowthDiary() {
+  const [openCalModal, setOpenCalModal] = useState<boolean>(false);
+  const [openAddModal, setOpenAddModal] = useState<boolean>(false);
   const { babyInfo, nothingBaby } = useSelector(
     (state: RootState) => state.baby
   );
@@ -46,7 +49,14 @@ export default function GrowthDiary() {
             )}
           </div>
         </div>
-        <button className={styles.cal_btn}>성장상태 계산 {">"}</button>
+        <button
+          className={styles.cal_btn}
+          onClick={() => {
+            setOpenCalModal(true);
+          }}
+        >
+          성장상태 계산 {">"}
+        </button>
       </div>
       <div className={styles.contents_wrap}>
         <BabyList
@@ -73,29 +83,36 @@ export default function GrowthDiary() {
                   머리 둘레 <span className={styles.strong}>20 cm</span>
                 </div>
               </div>
-              <button className={styles.recent_add}>기록 추가</button>
+              <button
+                onClick={() => {
+                  setOpenAddModal(true);
+                }}
+                className={styles.recent_add}
+              >
+                기록 추가
+              </button>
             </div>
           </div>
           <DiaryChart />
         </div>
-
-        {/* <div className={styles.block_record}> */}
-        {/* <div className={styles.add_wrap}>
-            <DiaryInputArea />
-          </div>
-
-          <DiaryTable
-            babyInfo={babyInfo}
-            nothingBaby={nothingBaby}
-            selectedBabyId={selectedBabyId}
-          /> */}
-        {/* </div> */}
       </div>
 
       {/* 계산하는 페이지 / 모달 예정??  */}
       <br />
       <hr />
-      {/* <GrowthCalculate /> */}
+      {openCalModal && <GrowthCalculate setOpenCalModal={setOpenCalModal} />}
+      {openAddModal && (
+        <div className={styles.block_record}>
+          <div className={styles.add_wrap}>
+            <DiaryInputArea setOpenAddModal={setOpenAddModal} />
+          </div>
+          <DiaryTable
+            babyInfo={babyInfo}
+            nothingBaby={nothingBaby}
+            selectedBabyId={selectedBabyId}
+          />
+        </div>
+      )}
     </div>
   );
 }

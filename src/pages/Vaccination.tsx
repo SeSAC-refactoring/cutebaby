@@ -29,10 +29,10 @@ export default function Vaccination() {
         </div>
         <ChildrenTabs />
         <div className={styles.button_wrap}>
-          <button className={styles.small_btn}>
+          <button className={`${styles.small_btn} ${styles.detail}`}>
             <Link to="/VaccinationDetails">감염병 상세설명</Link>
           </button>
-          <button className={styles.small_btn}>
+          <button className={`${styles.small_btn} ${styles.centers}`}>
             <Link to="/VaccinationCenters">위탁의료기관 찾기</Link>
           </button>
         </div>
