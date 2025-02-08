@@ -18,8 +18,8 @@ app.use("/uploads", express.static("uploads"));
 app.use("/api", router);
 
 app.use(cors({
-  origin: 'http://localhost:3000', // React 앱 주소
-  credentials: true
+  origin: 'http://localhost:3000',  // 프론트엔드 주소
+  credentials: true 
 }));
 app.use(session({
   secret: 'keroro2424.',  // 세션 암호화 키

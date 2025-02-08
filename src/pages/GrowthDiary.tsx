@@ -21,6 +21,7 @@ export default function GrowthDiary() {
   const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
   // const growInfo = sessionStorage.getItem('babygrow');
 
+
   console.log("애기 성장정보 입니다 >>>>", growInfo);
   return (
     <div className={styles.background}>
@@ -106,13 +107,18 @@ export default function GrowthDiary() {
           <div className={styles.add_wrap}>
             <DiaryInputArea setOpenAddModal={setOpenAddModal} />
           </div>
+
           <DiaryTable
             babyInfo={babyInfo}
             nothingBaby={nothingBaby}
             selectedBabyId={selectedBabyId}
+
           />
         </div>
       )}
+
     </div>
   );
+  
 }
+

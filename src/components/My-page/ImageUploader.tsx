@@ -2,13 +2,16 @@ import React, { useRef, useState } from "react";
 
 interface ImageUploaderProps {
   onImageSelect: (file: File | null) => void;
+  resetTrigger: boolean; 
+
 }
 
-export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect }) => {
+export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect, resetTrigger }) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
 
@@ -56,6 +59,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect }) =
 
                 // ✅ 부모 컴포넌트로 파일 전달
                 onImageSelect(optimizedFile);
+
               }
             },
             "image/webp",
@@ -71,10 +75,15 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect }) =
     setImagePreview(null);
     onImageSelect(null); // ✅ 부모 컴포넌트로 `null` 전달
 
-    if (fileInputRef.current) {
-      fileInputRef.current.value = ""; // ✅ 파일 입력 필드 초기화
-    }
+    
   };
+  React.useEffect(() => {
+    if (resetTrigger) {
+      setImagePreview(null);
+    }
+  }, [resetTrigger]);
+
+
 
   return (
     <div>

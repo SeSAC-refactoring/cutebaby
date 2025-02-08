@@ -17,7 +17,7 @@ export const getUserInfoByEmail = async (req, res) => {
       
         // req.session.user = user[0];
         res.json(user);
-        req.session.user = user[0].email;
+        // req.session.user = user[0].email;
 
     } else {
       res.status(404).json({ message: 'User not found' });  // 사용자 없으면 404 반환
