@@ -1,18 +1,19 @@
 import React from 'react';
 import styles from '../../styles/Mypage.module.scss';
+import { useSelectBaby } from '../../hooks/useSelectBaby';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
+import {  handleSelectstate } from '../types';
 
-interface Baby {
-    babyname: string;
-    birthday: string;
-    gender: string;
-    picture: string | null | File; // picture가 null일 수도 있으므로
-}
 
-interface BabyInputProps {
-    babyInfo: Baby[]; // babyInfo는 배열 형식임
-}
 
-export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
+
+export const BabyInfo: React.FC= () => {
+
+    const {babyInfo} = useSelector(
+        (state: RootState) => state.baby
+    );
+
     return (
         <>
             <div className={styles.info_box}>

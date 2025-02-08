@@ -2,14 +2,13 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../../store';
 import { fetchBabyInfo } from '../../store/babySlice';
-import { babyinfo } from '../types';
+import { babyinfo, BabyListProps } from '../types';
+import { BabyInputPlus } from '../my-page/BabyInputPlus';
+import { BabyInfo } from '../my-page/BabyInfo';
+import { NothingBaby } from '../my-page/NothingBaby';
+// import styles from "../../styles/commons/BabyList.module.scss";
 
-interface BabyListProps {
-    babyInfo: babyinfo[];
-    nothingBaby: boolean;
-    handleSelectBaby: (babyId: number) => void;
-    selectedBabyId?: number | null;
-}
+
 
 export const BabyList: React.FC<BabyListProps> = ({
     babyInfo,
@@ -25,6 +24,7 @@ export const BabyList: React.FC<BabyListProps> = ({
 
     return (
         <div>
+        <div >
             {babyInfo.length === 0 ? (
                 <p>등록된 아이가 없습니다!</p>
             ) : (
@@ -41,6 +41,11 @@ export const BabyList: React.FC<BabyListProps> = ({
                     </div>
                 ))
             )}
+        </div>
+        <div >
+       
+        </div>
+   
         </div>
     );
 };

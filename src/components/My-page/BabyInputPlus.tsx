@@ -13,6 +13,8 @@ interface BabyInputProps {
 }
 
 export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby }) => {
+  const [resetImage, setResetImage] = useState(false); // 리셋시키기위한 상태관리
+
   const [newBabyData, setNewBabyData] = useState<babyinfo>({
     babyid: 0,
     babyname: "",
@@ -61,6 +63,7 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby }) => {
         gender: "",
         picture: null, 
       });
+      setResetImage((prev) => !prev);
       dispatch(fetchBabyInfo());
 
       alert('등록성공!')
@@ -122,7 +125,10 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby }) => {
 
           <section>
             <label>아기 사진:</label>
-            <ImageUploader onImageSelect={(file) => setNewBabyData((prev) => ({ ...prev, picture: file }))} />
+            <ImageUploader
+              onImageSelect={(file) => setNewBabyData((prev) => ({ ...prev, picture: file }))}
+              resetTrigger={resetImage}
+            />
           </section>
         </form>
       </div>

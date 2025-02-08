@@ -18,78 +18,57 @@ export default function GrowthDiary() {
   const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
   // const growInfo = sessionStorage.getItem('babygrow');
 
-  console.log("애기 성장정보 입니다 >>>>", growInfo);
-  return (
-    <div className={styles.background}>
-      <div className={styles.title_wrap}>
-        <div>
-          <div className={styles.title}>성장기록</div>
-          <div className={styles.text}>
-            우리 아이의 성장을 기록하고 상태를 확인해보세요 :)
-          </div>
-
-          <div>
-            {Array.isArray(growInfo) && growInfo.length > 0 ? (
-              <ul>
-                {growInfo
-                  .flat() // 중첩 배열을 평탄화
-                  .filter((info) => info.babyid === selectedBabyId) // 선택한 아기 ID에 맞는 데이터만 필터링
-                  .map((info, index) => (
-                    <li key={index}>
-                      {info.inputData} - 키: {info.height}
-                      cm, 몸무게: {info.weight}kg
-                    </li>
-                  ))}
-              </ul>
-            ) : (
-              <p>성장 기록이 없습니다.</p>
-            )}
-          </div>
-        </div>
-        <button className={styles.cal_btn}>성장상태 계산 {">"}</button>
-      </div>
-      <div className={styles.contents_wrap}>
-        <BabyList
-          babyInfo={babyInfo}
-          nothingBaby={nothingBaby}
-          handleSelectBaby={handleSelectBaby}
-          selectedBabyId={selectedBabyId}
-        />
-        <div className={styles.recent_container}>
-          <div className={styles.recent_record_wrap}>
-            <div>
-              <span className={styles.recent_title}>가장 최근 기록</span>
-              <span className={styles.recent_date}>2025년 2월 8일</span>
+    console.log('애기 성장정보 입니다 >>>>', growInfo);
+    return (
+        <div className={styles.background}>
+            {/* <Header></Header> */}
+            <div className={styles.title_wrap}>
+                <div>
+                    <div className={styles.title}>성장기록</div>
+                    <div className={styles.text}>
+                        우리 아이의 성장을 기록하고 상태를 확인해보세요 :)
+                    </div>
+                    <div>
+                        {Array.isArray(growInfo) && growInfo.length > 0 ? (
+                            <ul>
+                                {growInfo
+                                    .flat() // 중첩 배열을 평탄화
+                                    .filter(
+                                        (info) => info.babyid === selectedBabyId
+                                    ) // 선택한 아기 ID에 맞는 데이터만 필터링
+                                    .map((info, index) => (
+                                        <li key={index}>
+                                            {info.inputData} - 키: {info.height}
+                                            cm, 몸무게: {info.weight}kg
+                                        </li>
+                                    ))}
+                            </ul>
+                        ) : (
+                            <p>성장 기록이 없습니다.</p>
+                        )}
+                    </div>
+                </div>
+                <button className={styles.cal_btn}>성장상태 계산 {'>'}</button>
             </div>
-            <div className={styles.recent_wrap}>
-              <div className={styles.recent_detail}>
-                <div className={styles.height}>
-                  키 <span className={styles.strong}>100 cm</span>
-                </div>
-                <div className={styles.weight}>
-                  몸무게 <span className={styles.strong}>30 kg</span>
-                </div>
-                <div className={styles.head}>
-                  머리 둘레 <span className={styles.strong}>20 cm</span>
-                </div>
-              </div>
-              <button className={styles.recent_add}>기록 추가</button>
-            </div>
-          </div>
-          <DiaryChart />
-        </div>
-
-        {/* <div className={styles.block_record}> */}
-        {/* <div className={styles.add_wrap}>
-            <DiaryInputArea />
-          </div>
+            <div className={styles.contents_wrap}>
+                <BabyList
+                    babyInfo={babyInfo}
+                    nothingBaby={nothingBaby}
+                    handleSelectBaby={handleSelectBaby}
+                    selectedBabyId={selectedBabyId}
+                    
+                />
+                <div className={styles.block_record}>
+                    <div className={styles.add_wrap}>
+                        <DiaryInputArea />
+                    </div>
 
           <DiaryTable
             babyInfo={babyInfo}
             nothingBaby={nothingBaby}
             selectedBabyId={selectedBabyId}
-          /> */}
-        {/* </div> */}
+          /> 
+        </div>
       </div>
 
       {/* 계산하는 페이지 / 모달 예정??  */}
@@ -98,4 +77,6 @@ export default function GrowthDiary() {
       {/* <GrowthCalculate /> */}
     </div>
   );
+  
 }
+
