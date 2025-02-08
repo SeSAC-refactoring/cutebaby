@@ -26,4 +26,4 @@ yarn-error.log*
 .env
 
 #사진들
-/server/uploads
+/server/uploads/*

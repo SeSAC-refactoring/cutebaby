@@ -8,7 +8,7 @@ export const babygrow = async (req, res) => {
     console.log('babyid in grow > Received babygrow:', babyid);
     // DB에서 babyid로 데이터 조회
     const growInfo = await babygrowModel(babyid);
-
+    console.log('받아온 growinfo>>', growInfo)
     // 데이터가 없을 경우 처리
     if (!growInfo || growInfo.length === 0) {
         return res.json({ message: `babyid ${babyid}의 성장 데이터가 없습니다.` });
