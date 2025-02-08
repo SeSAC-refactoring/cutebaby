@@ -9,6 +9,9 @@ body {
   margin: 0;
   letter-spacing: -0.02em;
   color: var(--color-gray-10);
+  display: flex;
+  justify-content: center;
+  background-color: #fef9f1;
 }
 
 ul {
@@ -60,4 +63,8 @@ td {
 
 td {
   padding: 0;
+}
+
+.background {
+  background-color: red;
 }
