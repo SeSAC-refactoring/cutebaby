@@ -121,17 +121,78 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
       >
         {/* 신장 그래프 */}
         {childData.height && (
-          <div style={{ height: "400px" }}>
-            {/* <p>연령별 키</p> */}
-            <div>
-              <div>
-                우리아이 키: <span>{childData.height}cm</span>
+          <div
+            style={{
+              width: "1000px",
+              height: "522px",
+              display: "flex",
+              flexDirection: "column",
+              padding: "32px 48px",
+              fontSize: "16px",
+              border: "4px solid #D1E9F1",
+              boxSizing: "border-box",
+              borderRadius: "32px",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "24px",
+                fontWeight: "bold",
+                marginBottom: "24px",
+              }}
+            >
+              키
+            </p>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: "24px",
+              }}
+            >
+              <div
+                style={{
+                  width: "440px",
+                  height: "78px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor: "#F3F3F4",
+                  border: "1px solid #E1E1E5",
+                  borderRadius: "8px",
+                }}
+              >
+                우리아이 키{" "}
+                <span style={{ fontWeight: "bold", marginLeft: "10px" }}>
+                  {childData.height} cm
+                </span>
               </div>
-              <div>
+              <div
+                style={{
+                  width: "440px",
+                  height: "78px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor: "#FDEADC",
+                  border: "1px solid #FBD9C1",
+                  borderRadius: "8px",
+                }}
+              >
                 <p>
-                  백분위: <span>{percentiles.height}%</span>
+                  백분위
+                  <span style={{ fontWeight: "bold", marginLeft: "10px" }}>
+                    {percentiles.height} %
+                  </span>
                 </p>
-                <p>
+                <p
+                  style={{
+                    fontSize: "12px",
+                    color: "#6F6F7B",
+                    marginTop: "6px",
+                  }}
+                >
                   또래의{" "}
                   <span>
                     {percentiles.height
@@ -144,6 +205,7 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
             </div>
 
             <Line
+              style={{ height: "280px" }}
               data={createChartData(
                 p97Height,
                 p3Height,
@@ -157,17 +219,78 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
 
         {/* 몸무게 그래프 */}
         {childData.weight && (
-          <div style={{ height: "400px" }}>
-            {/* <p>연령별 몸무게</p> */}
-            <div>
-              <div>
-                우리아이 몸무게: <span>{childData.weight}cm</span>
+          <div
+            style={{
+              width: "1000px",
+              height: "522px",
+              border: "4px solid #D1E9F1",
+              boxSizing: "border-box",
+              display: "flex",
+              flexDirection: "column",
+              padding: "32px 48px",
+              fontSize: "16px",
+              borderRadius: "32px",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "24px",
+                fontWeight: "bold",
+                marginBottom: "24px",
+              }}
+            >
+              몸무게
+            </p>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: "24px",
+              }}
+            >
+              <div
+                style={{
+                  width: "440px",
+                  height: "78px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor: "#F3F3F4",
+                  border: "1px solid #E1E1E5",
+                  borderRadius: "8px",
+                }}
+              >
+                우리아이 몸무게:{" "}
+                <span style={{ fontWeight: "bold", marginLeft: "10px" }}>
+                  {childData.weight}cm
+                </span>
               </div>
-              <div>
+              <div
+                style={{
+                  width: "440px",
+                  height: "78px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor: "#E3F4EF",
+                  border: "1px solid #CCEBE3",
+                  borderRadius: "8px",
+                }}
+              >
                 <p>
-                  백분위: <span>{percentiles.weight}%</span>
+                  백분위
+                  <span style={{ fontWeight: "bold", marginLeft: "10px" }}>
+                    {percentiles.weight}%
+                  </span>
                 </p>
-                <p>
+                <p
+                  style={{
+                    fontSize: "12px",
+                    color: "#6F6F7B",
+                    marginTop: "6px",
+                  }}
+                >
                   또래의{" "}
                   <span>
                     {percentiles.weight
@@ -180,6 +303,7 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
             </div>
 
             <Line
+              style={{ height: "280px" }}
               data={createChartData(
                 p97Weight,
                 p3Weight,
@@ -193,17 +317,78 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
 
         {/* 머리둘레 그래프 */}
         {childData.headCircumference && (
-          <div style={{ height: "400px" }}>
-            {/* <p>연령별 머리둘레</p> */}
-            <div>
-              <div>
-                우리아이 머리둘레: <span>{childData.headCircumference}cm</span>
+          <div
+            style={{
+              width: "1000px",
+              height: "522px",
+              border: "4px solid #D1E9F1",
+              boxSizing: "border-box",
+              display: "flex",
+              flexDirection: "column",
+              padding: "32px 48px",
+              fontSize: "16px",
+              borderRadius: "32px",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "24px",
+                fontWeight: "bold",
+                marginBottom: "24px",
+              }}
+            >
+              머리둘레
+            </p>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: "24px",
+              }}
+            >
+              <div
+                style={{
+                  width: "440px",
+                  height: "78px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor: "#F3F3F4",
+                  border: "1px solid #E1E1E5",
+                  borderRadius: "8px",
+                }}
+              >
+                우리아이 머리둘레
+                <span style={{ fontWeight: "bold", marginLeft: "10px" }}>
+                  {childData.headCircumference}cm
+                </span>
               </div>
-              <div>
+              <div
+                style={{
+                  width: "440px",
+                  height: "78px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor: "#ECE9F9",
+                  border: "1px solid #DDD8F5",
+                  borderRadius: "8px",
+                }}
+              >
                 <p>
-                  백분위: <span>{percentiles.headCircumference}%</span>
+                  백분위
+                  <span style={{ fontWeight: "bold", marginLeft: "10px" }}>
+                    {percentiles.headCircumference}%
+                  </span>
                 </p>
-                <p>
+                <p
+                  style={{
+                    fontSize: "12px",
+                    color: "#6F6F7B",
+                    marginTop: "6px",
+                  }}
+                >
                   또래의{" "}
                   <span>
                     {percentiles.headCircumference
@@ -216,6 +401,7 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
             </div>
 
             <Line
+              style={{ height: "280px" }}
               data={createChartData(
                 p97HeadCircumference,
                 p3HeadCircumference,

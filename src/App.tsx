@@ -40,7 +40,7 @@ function App() {
   return (
     <>
       {/* <div className="App"> */}
-      <h1>꼬물꼬물</h1>
+      {/* <h1>꼬물꼬물</h1> */}
       <Header></Header>
       <Routes>
         <Route path="/oauth/callback/kakao" element={<KakaoLogin />} />

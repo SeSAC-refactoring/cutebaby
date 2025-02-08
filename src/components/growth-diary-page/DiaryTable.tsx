@@ -47,6 +47,18 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({
         <div className={styles.list_el}>30</div>
         <div className={styles.list_el}>20</div>
       </div>
+      <div className={styles.row_el}>
+        <div className={styles.list_el}>2025-01-01</div>
+        <div className={styles.list_el}>140</div>
+        <div className={styles.list_el}>30</div>
+        <div className={styles.list_el}>20</div>
+      </div>
+      <div className={styles.row_el}>
+        <div className={styles.list_el}>2025-01-01</div>
+        <div className={styles.list_el}>140</div>
+        <div className={styles.list_el}>30</div>
+        <div className={styles.list_el}>20</div>
+      </div>
     </div>
   );
 };

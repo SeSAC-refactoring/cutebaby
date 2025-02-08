@@ -50,7 +50,7 @@ export default function VaccinationCenters() {
   );
 
   return (
-    <div>
+    <div className={styles.background}>
       {/* 처음 데이터를 불러오는 동안 */}
       {isFirstLoading && (
         <div
@@ -64,8 +64,17 @@ export default function VaccinationCenters() {
           <p>데이터를 불러오는 중...</p>
         </div>
       )}
+
       <div className={styles.search_wrap}>
-        <h2>위탁의료기관 찾기</h2>
+        <h2
+          style={{
+            fontSize: "40px",
+            fontWeight: "bold",
+            marginBottom: "105px",
+          }}
+        >
+          위탁의료기관 찾기
+        </h2>
 
         {/* 지역(시/도) 선택 드롭다운 */}
         <div className={styles.select_wrap}>

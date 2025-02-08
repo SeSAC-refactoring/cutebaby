@@ -17,17 +17,28 @@
   }
 
   .button_wrap {
-    width: 1100px;
+    width: 1638px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    margin: 102px 0px 30px 0px;
 
     .small_btn {
-      border: none;
-      font-size: 8px;
-      width: 80px;
-      height: 20px;
+      font-size: 18px;
+      width: 238px;
+      height: 56px;
       margin-left: 10px;
+      border-radius: 20px;
+    }
+
+    .detail {
+      border: 1px solid #7dadbe;
+      color: #425b64;
+    }
+
+    .centers {
+      border: 1px solid #619486;
+      color: #4e776c;
     }
   }
 

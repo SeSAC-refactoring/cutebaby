@@ -10,7 +10,7 @@ export const DiaryChart = () => {
         backgroundColor: "skyblue",
       }}
     >
-      성장기록 표 공간
+      성장기록 그래프 영역
     </div>
   );
 };
