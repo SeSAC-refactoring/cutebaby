@@ -9,6 +9,7 @@ import { useSelectBaby } from '../hooks/useSelectBaby';
 
 import styles from '../styles/GrowthDiary.module.scss';
 import { useState } from 'react';
+import { useGrowData } from '../components/growth-diary-page/hooks/useGrowData';
 
 export default function GrowthDiary() {
     const [openCalModal, setOpenCalModal] = useState<boolean>(false);
@@ -20,9 +21,12 @@ export default function GrowthDiary() {
     const growInfo = useSelector((state: RootState) => state.babygrow.growInfo);
 
     const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
+    const { growData, setGrowData } = useGrowData(growInfo, selectedBabyId); // growData = growInfo를 selectedBabyId에 따라 필터링 // selectedBabyId가 변경될 때 growData 업데이트
+
     // const growInfo = sessionStorage.getItem('babygrow');
 
     console.log('애기 성장정보 입니다 >>>>', growInfo);
+    console.log('selectedBabyId에 따른 성장정보 입니다 >>>>', growData);
 
     return (
         <div className={styles.background}>
@@ -48,6 +52,7 @@ export default function GrowthDiary() {
                     handleSelectBaby={handleSelectBaby}
                     selectedBabyId={selectedBabyId}
                 />
+
                 <div className={styles.recent_container}>
                     <div className={styles.recent_record_wrap}>
                         <div>
@@ -55,7 +60,13 @@ export default function GrowthDiary() {
                                 가장 최근 기록
                             </span>
                             <span className={styles.recent_date}>
-                                2025년 2월 8일
+                                {new Date(
+                                    growData[0].inputData
+                                ).toLocaleDateString('ko-KR', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric',
+                                })}
                             </span>
                         </div>
                         <div className={styles.recent_wrap}>
@@ -63,16 +74,20 @@ export default function GrowthDiary() {
                                 <div className={styles.height}>
                                     키{' '}
                                     <span className={styles.strong}>
-                                        100 cm
+                                        {growData[0].height} cm
                                     </span>
                                 </div>
                                 <div className={styles.weight}>
                                     몸무게{' '}
-                                    <span className={styles.strong}>30 kg</span>
+                                    <span className={styles.strong}>
+                                        {growData[0].weight} kg
+                                    </span>
                                 </div>
                                 <div className={styles.head}>
                                     머리 둘레{' '}
-                                    <span className={styles.strong}>20 cm</span>
+                                    <span className={styles.strong}>
+                                        {growData[0].head} cm
+                                    </span>
                                 </div>
                             </div>
                             <button
@@ -108,10 +123,7 @@ export default function GrowthDiary() {
                         />
                     </div>
 
-                    <DiaryTable
-                        selectedBabyId={selectedBabyId}
-                        growInfo={growInfo}
-                    />
+                    <DiaryTable growData={growData} />
                 </div>
             )}
         </div>

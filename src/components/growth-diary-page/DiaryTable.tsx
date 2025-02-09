@@ -4,16 +4,11 @@ import styles from '../../styles/GrowthDiary.module.scss';
 import { useGrowData } from './hooks/useGrowData';
 
 interface DiaryTableProps {
-    growInfo: newGrowData[];
-    selectedBabyId: number | null;
+    growData: newGrowData[];
+    // selectedBabyId: number | null;
 }
 
-export const DiaryTable: React.FC<DiaryTableProps> = ({
-    growInfo,
-    selectedBabyId,
-}) => {
-    const { growData, setGrowData } = useGrowData(growInfo, selectedBabyId); // growInfo / selectedBabyId가 변경될 때 growData 업데이트
-
+export const DiaryTable: React.FC<DiaryTableProps> = ({ growData }) => {
     return (
         <div className={styles.list_wrap}>
             <div className={styles.row_title}>
