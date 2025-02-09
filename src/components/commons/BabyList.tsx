@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../store';
 import { fetchBabyInfo } from '../../store/babySlice';
 import { babyinfo } from '../types';
+import styles from '../../styles/commons/ChildrenTabs.module.scss';
 
 interface BabyListProps {
     babyInfo: babyinfo[];
@@ -23,13 +24,18 @@ export const BabyList: React.FC<BabyListProps> = ({
 
     return (
         <div>
-            <div>
+            <div className={styles.button_group}>
                 {babyInfo.length === 0 ? (
                     <p>등록된 아이가 없습니다!</p>
                 ) : (
                     babyInfo.map((baby: babyinfo) => (
-                        <div
+                        <button
                             key={baby.babyid}
+                            className={
+                                baby.babyid === selectedBabyId
+                                    ? styles.button_selected // 선택된 경우 클래스 적용
+                                    : styles.button
+                            }
                             onClick={() => handleSelectBaby(baby.babyid)}
                             style={{
                                 cursor: 'pointer',
@@ -39,8 +45,8 @@ export const BabyList: React.FC<BabyListProps> = ({
                                         : 'normal',
                             }}
                         >
-                            {baby.babyid} - {baby.babyname}
-                        </div>
+                            {baby.babyname}
+                        </button>
                     ))
                 )}
             </div>
