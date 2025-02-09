@@ -81,7 +81,7 @@ export default function GrowthDiary() {
                                 }}
                                 className={styles.recent_add}
                             >
-                                기록 추가
+                                성장기록
                             </button>
                         </div>
                     </div>
