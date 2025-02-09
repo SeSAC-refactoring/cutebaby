@@ -35,10 +35,6 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
         lmsData,
         childData
     );
-    console.log(
-        'GrowthCalculate: filteredLmsDataByGender>>>',
-        filteredLmsDataByGender
-    );
 
     // lmsData // 성별+개월수까지 일치하는 데이터 필터링
     const filteredLmsDataByMonths = useFilteredLmsDataByMonths(
@@ -53,36 +49,93 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
     );
 
     return (
-        <div>
-            <h1>성장상태 측정계산기</h1>
-            <p>우리 아이의 성장 상태를 확인해보세요:)</p>
-            <div>
-                {/* 사용자 입력값 설정 */}
-                <CalculateInputArea
-                    childData={childData}
-                    filteredLmsDataByMonths={filteredLmsDataByMonths}
-                    percentiles={percentiles}
-                    setChildData={setChildData}
-                    setShow={setShow}
-                    setPercentiles={setPercentiles}
-                />
-
-                {/* 차트 */}
-                {/* 로딩 중일 경우 */}
-                {isLoading && <p>로딩 중...</p>}
-
-                {/* 차트 표시 여부에 따라 렌더링 */}
-                {show && !isLoading && (
-                    <CalculateChart
+        <div
+            style={{
+                backgroundColor: 'white',
+                width: '1160px',
+                // height: "1148px",
+                position: 'absolute',
+                top: '30%',
+                left: '20%',
+                border: '2px solid #838391',
+                borderRadius: '40px',
+                // transform: "translate(-50%,-50%)",
+                display: 'flex',
+                // justifyContent: "center",
+                padding: '80px',
+                boxSizing: 'border-box',
+            }}
+        >
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    width: '1000px',
+                }}
+            >
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        marginBottom: '48px',
+                    }}
+                >
+                    <div>
+                        <div
+                            style={{
+                                fontSize: '40px',
+                                fontWeight: 'bold',
+                                marginBottom: '16px',
+                            }}
+                        >
+                            성장상태 측정계산기
+                        </div>
+                        <p style={{ color: '#9999A5' }}>
+                            우리 아이의 성장 상태를 확인해보세요:)
+                        </p>
+                    </div>
+                    <div
+                        style={{
+                            color: '#3B3B41',
+                            fontSize: '48px',
+                            height: '48px',
+                            cursor: 'pointer',
+                        }}
+                        onClick={() => {
+                            props.setOpenCalModal(false);
+                        }}
+                    >
+                        X
+                    </div>
+                </div>
+                <div style={{ width: '1000px' }}>
+                    {/* 사용자 입력값 설정 */}
+                    <CalculateInputArea
                         childData={childData}
-                        filteredLmsDataByGender={filteredLmsDataByGender}
                         filteredLmsDataByMonths={filteredLmsDataByMonths}
-                        percentileData={percentileData}
                         percentiles={percentiles}
+                        setChildData={setChildData}
+                        setShow={setShow}
+                        setPercentiles={setPercentiles}
                     />
-                )}
 
-                {!show && <CalculateDefaultState />}
+                    {/* 차트 */}
+                    {/* 로딩 중일 경우 */}
+                    {isLoading && <p>로딩 중...</p>}
+
+                    {/* 차트 표시 여부에 따라 렌더링 */}
+                    {show && !isLoading && (
+                        <CalculateChart
+                            childData={childData}
+                            filteredLmsDataByGender={filteredLmsDataByGender}
+                            filteredLmsDataByMonths={filteredLmsDataByMonths}
+                            percentileData={percentileData}
+                            percentiles={percentiles}
+                        />
+                    )}
+
+                    {!show && <CalculateDefaultState />}
+                </div>
             </div>
         </div>
     );

@@ -10,6 +10,15 @@ export interface ChildData {
     weight: number | null;
     headCircumference: number | null;
 }
+export interface BabyListProps {
+    babyInfo: babyinfo[];
+    nothingBaby: boolean;
+    handleSelectBaby: (babyId: number) => void;
+    selectedBabyId?: number | null;
+}
+export interface handleSelectstate{
+    handleSelectBaby: (babyId: number) => void;
+}
 
 export interface LmsData {
     개월수구분코드: number;
@@ -57,6 +66,8 @@ export interface babyinfo {
     gender: string;
     picture: null | File;
 }
+
+
 
 export interface BabyState {
     babyInfo: babyinfo[];
