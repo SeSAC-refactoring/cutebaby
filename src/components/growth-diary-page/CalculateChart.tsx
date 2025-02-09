@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ChildData, LmsData, PercentileData, Percentiles } from '../types';
 import { Line } from 'react-chartjs-2';
 import {
@@ -11,10 +11,9 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
-import { chartOptions } from './chartOptions';
+import { calculateChartOptions } from './calculateChartOptions';
 import { createChartData } from './createChartData';
 import { getP97P3Value } from './getP97P3Value';
-import styles from '../styles/CalculateChart.module.scss';
 
 // Chart.js에서 필요한 요소 등록
 ChartJS.register(
@@ -224,7 +223,7 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
                                 currentChildHeight,
                                 '키'
                             )}
-                            options={chartOptions}
+                            options={calculateChartOptions}
                         />
                     </div>
                 )}
@@ -332,7 +331,7 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
                                 currentChildWeight,
                                 '몸무게'
                             )}
-                            options={chartOptions}
+                            options={calculateChartOptions}
                         />
                     </div>
                 )}
@@ -440,7 +439,7 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
                                 currentChildHeadCircumference,
                                 '머리둘레'
                             )}
-                            options={chartOptions}
+                            options={calculateChartOptions}
                         />
                     </div>
                 )}
