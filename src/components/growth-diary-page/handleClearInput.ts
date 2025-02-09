@@ -3,7 +3,8 @@ import { ChildData } from '../types';
 
 export const handleClearInput = (
     setInputData: React.Dispatch<React.SetStateAction<ChildData>>,
-    setChildData: React.Dispatch<React.SetStateAction<ChildData>>
+    setChildData: React.Dispatch<React.SetStateAction<ChildData>>,
+    setShow: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
     setInputData((prev) => ({
         ...prev,
@@ -22,4 +23,6 @@ export const handleClearInput = (
         weight: null,
         headCircumference: null,
     }));
+
+    setShow(false);
 };

@@ -11,11 +11,13 @@ import { babyinfo } from '../types';
 import { useUpdateChildData } from './hooks/useUpdateChildData';
 
 interface GrowthCalculateProps {
+    setOpenCalModal: React.Dispatch<React.SetStateAction<boolean>>;
     babyInfo: babyinfo[];
     selectedBabyId: number | null;
 }
 
 export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
+    setOpenCalModal,
     babyInfo,
     selectedBabyId,
 }) => {
@@ -28,7 +30,7 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
     );
 
     // selectedBabyId가 변경될 때 childData 업데이트
-    useUpdateChildData(babyInfo, selectedBabyId, setChildData);
+    // useUpdateChildData(babyInfo, selectedBabyId, setChildData);
 
     // lmsData // 성별과 일치하는 데이터만 필터링
     const filteredLmsDataByGender = useFilteredLmsDataByGender(
@@ -102,7 +104,7 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
                             cursor: 'pointer',
                         }}
                         onClick={() => {
-                            props.setOpenCalModal(false);
+                            setOpenCalModal(false);
                         }}
                     >
                         X
@@ -120,21 +122,26 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
                     />
 
                     {/* 차트 */}
-                    {/* 로딩 중일 경우 */}
-                    {isLoading && <p>로딩 중...</p>}
-
                     {/* 차트 표시 여부에 따라 렌더링 */}
-                    {show && !isLoading && (
-                        <CalculateChart
-                            childData={childData}
-                            filteredLmsDataByGender={filteredLmsDataByGender}
-                            filteredLmsDataByMonths={filteredLmsDataByMonths}
-                            percentileData={percentileData}
-                            percentiles={percentiles}
-                        />
+                    {show ? (
+                        isLoading ? (
+                            <p>로딩 중...</p>
+                        ) : (
+                            <CalculateChart
+                                childData={childData}
+                                filteredLmsDataByGender={
+                                    filteredLmsDataByGender
+                                }
+                                filteredLmsDataByMonths={
+                                    filteredLmsDataByMonths
+                                }
+                                percentileData={percentileData}
+                                percentiles={percentiles}
+                            />
+                        )
+                    ) : (
+                        <CalculateDefaultState />
                     )}
-
-                    {!show && <CalculateDefaultState />}
                 </div>
             </div>
         </div>

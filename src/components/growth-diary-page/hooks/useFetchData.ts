@@ -19,7 +19,7 @@ export const useFetchData = (childData: ChildData, show: boolean) => {
         console.log('🟡 childData:', childData);
 
         const fetchLmsData = async () => {
-            if (!show) return; // 차트보기를 안눌렀다면 실행 안함
+            if (!show) return; // 계산하기를 안눌렀다면 실행 안함
             if (!childData.months || !childData.gender) return; // 필수 정보가 없으면 실행 안함
             startLoading();
 
