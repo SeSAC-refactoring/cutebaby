@@ -3,10 +3,11 @@
   border: 2px solid #b0b7c3;
   border-radius: 999px;
   padding: 4px;
-  background-color: #f8fafc;
+  background-color: #f4fafc;
   width: fit-content;
-  width: 930px;
-  height: 64px;
+  width: 1120px;
+  height: 52px;
+  margin-bottom: 24px;
 }
 
 .button {
@@ -24,8 +25,9 @@
 .button_selected {
   flex-grow: 1;
   font-size: 22px;
-  background-color: #dbeafe;
+  background-color: #d1e9f1;
   color: #425b64;
   font-weight: bold;
   border-radius: 999px;
+  border: 2px solid #7dadbe;
 }

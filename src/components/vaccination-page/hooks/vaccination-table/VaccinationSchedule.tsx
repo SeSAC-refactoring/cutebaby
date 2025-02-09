@@ -266,7 +266,7 @@ export const VaccinationSchedule: React.FC = () => {
           style={{
             // colSpan 값이 있으면 해당 크기만큼 병합
             gridColumn: dose.colSpan ? `span ${dose.colSpan}` : "span 1",
-            backgroundColor: dose.text ? "#FFD700" : "transparent",
+            backgroundColor: dose.text ? "#F7F6FD" : "transparent",
             height: i >= 137 && i <= 149 ? "100px" : "50px",
             display: "flex",
             alignItems: "center",
@@ -275,9 +275,11 @@ export const VaccinationSchedule: React.FC = () => {
             borderRight: "3px solid #E1E1E5",
             boxSizing: "border-box",
             fontSize: "22px",
+            flexDirection: "column",
           }}
         >
           {dose.text}
+          {dose.text ? <button>버튼</button> : <></>}
         </div>
       ))}
     </div>
