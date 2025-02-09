@@ -6,10 +6,10 @@ import { DiaryInputArea } from '../components/growth-diary-page/DiaryInputArea';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { useSelectBaby } from '../hooks/useSelectBaby';
-
 import styles from '../styles/GrowthDiary.module.scss';
 import { useState } from 'react';
 import { useGrowData } from '../components/growth-diary-page/hooks/useGrowData';
+import { RecentGrowthRecord } from '../components/growth-diary-page/RecentGrowthRecord';
 
 export default function GrowthDiary() {
     const [openCalModal, setOpenCalModal] = useState<boolean>(false);
@@ -21,7 +21,7 @@ export default function GrowthDiary() {
     const growInfo = useSelector((state: RootState) => state.babygrow.growInfo);
 
     const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
-    const { growData, setGrowData } = useGrowData(growInfo, selectedBabyId); // growData = growInfo를 selectedBabyId에 따라 필터링 // selectedBabyId가 변경될 때 growData 업데이트
+    const { growData } = useGrowData(growInfo, selectedBabyId); // growData = growInfo를 selectedBabyId에 따라 필터링 // selectedBabyId가 변경될 때 growData 업데이트
 
     // const growInfo = sessionStorage.getItem('babygrow');
 
@@ -53,54 +53,32 @@ export default function GrowthDiary() {
                     selectedBabyId={selectedBabyId}
                 />
 
+                {/* 최근 성장기록 */}
                 <div className={styles.recent_container}>
                     <div className={styles.recent_record_wrap}>
-                        <div>
-                            <span className={styles.recent_title}>
-                                가장 최근 기록
-                            </span>
-                            <span className={styles.recent_date}>
-                                {new Date(
-                                    growData[0].inputData
-                                ).toLocaleDateString('ko-KR', {
-                                    year: 'numeric',
-                                    month: 'long',
-                                    day: 'numeric',
-                                })}
-                            </span>
-                        </div>
-                        <div className={styles.recent_wrap}>
-                            <div className={styles.recent_detail}>
-                                <div className={styles.height}>
-                                    키{' '}
-                                    <span className={styles.strong}>
-                                        {growData[0].height} cm
-                                    </span>
-                                </div>
-                                <div className={styles.weight}>
-                                    몸무게{' '}
-                                    <span className={styles.strong}>
-                                        {growData[0].weight} kg
-                                    </span>
-                                </div>
-                                <div className={styles.head}>
-                                    머리 둘레{' '}
-                                    <span className={styles.strong}>
-                                        {growData[0].head} cm
-                                    </span>
-                                </div>
-                            </div>
-                            <button
-                                onClick={() => {
-                                    setOpenAddModal(true);
-                                }}
-                                className={styles.recent_add}
-                            >
-                                성장기록
-                            </button>
-                        </div>
+                        {growData.length > 0 ? (
+                            <RecentGrowthRecord growData={growData} />
+                        ) : (
+                            // 성장기록 데이터가 없을 때
+                            <p>데이터가 없습니다.</p>
+                        )}
+                        <button
+                            onClick={() => {
+                                setOpenAddModal(true);
+                            }}
+                            className={styles.recent_add}
+                        >
+                            성장기록
+                        </button>
                     </div>
-                    <DiaryChart />
+
+                    {/* 성장기록에 대한 그래프 */}
+                    {growData.length > 0 ? (
+                        <DiaryChart growData={growData} />
+                    ) : (
+                        // 성장기록 데이터가 없을 때
+                        <div>데이터가 없습니다.</div>
+                    )}
                 </div>
             </div>
 

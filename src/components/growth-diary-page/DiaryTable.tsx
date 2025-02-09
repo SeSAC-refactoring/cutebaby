@@ -5,7 +5,6 @@ import { useGrowData } from './hooks/useGrowData';
 
 interface DiaryTableProps {
     growData: newGrowData[];
-    // selectedBabyId: number | null;
 }
 
 export const DiaryTable: React.FC<DiaryTableProps> = ({ growData }) => {
@@ -35,6 +34,9 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({ growData }) => {
                                 <div className={styles.list_el}>
                                     {info.head}
                                 </div>
+
+                                <button>수정</button>
+                                <button>삭제</button>
                             </li>
                         ))}
                     </ul>

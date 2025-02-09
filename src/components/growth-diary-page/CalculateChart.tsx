@@ -15,7 +15,7 @@ import { calculateChartOptions } from './calculateChartOptions';
 import { createChartData } from './createChartData';
 import { getP97P3Value } from './getP97P3Value';
 
-// Chart.js에서 필요한 요소 등록
+// Chart.js에 필요한 모듈
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -26,7 +26,7 @@ ChartJS.register(
     Legend
 );
 
-export interface CalculateChartProps {
+interface CalculateChartProps {
     childData: ChildData;
     filteredLmsDataByGender: LmsData[];
     filteredLmsDataByMonths: LmsData[];
@@ -95,23 +95,6 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
 
     return (
         <div>
-            {/* 백분위수 */}
-            <div>
-                {childData.weight && (
-                    <div>
-                        {/* <p>무게 백분위수: {percentiles.weight}</p> */}
-                    </div>
-                )}
-                {childData.headCircumference && (
-                    <div>
-                        {/* <p>
-              머리둘레 백분위수:
-              {percentiles.headCircumference}
-            </p> */}
-                    </div>
-                )}
-            </div>
-
             {/* 그래프 */}
             <div
                 style={{
