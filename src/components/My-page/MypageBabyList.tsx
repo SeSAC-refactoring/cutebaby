@@ -6,6 +6,7 @@ import { NothingBaby } from './NothingBaby';
 import { babyinfo } from '../types';
 import { BabyList } from '../commons/BabyList';
 import { useSelectBaby } from '../../hooks/useSelectBaby';
+import { useDelbaby } from './hooks/useDelbaby';
 
 interface BabyInputProps {
     babyInfo: babyinfo[]; // babyInfo는 배열 형식임
@@ -18,6 +19,7 @@ export const MypageBabyList: React.FC<BabyInputProps> = ({
 }) => {
     const [babyPlus, setBabyPlus] = useState<boolean>(false);
     const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
+    const { delbaby } = useDelbaby();
     console.log('=====', nothingBaby);
 
     console.log('babyinfo >>>>>>>', babyInfo);
@@ -45,6 +47,7 @@ export const MypageBabyList: React.FC<BabyInputProps> = ({
                 <button onClick={Plus} className={styles.enroll}>
                     {!babyPlus ? '아기등록' : '아기정보'}
                 </button>
+                <button onClick={() => delbaby(selectedBabyId)}>아이삭제</button>
             </div>
             {babyPlus ? (
                 <BabyInputPlus babyInfo={babyInfo} nothingBaby={nothingBaby} />
