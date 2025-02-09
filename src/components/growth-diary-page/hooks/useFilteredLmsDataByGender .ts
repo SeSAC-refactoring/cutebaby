@@ -11,7 +11,7 @@ export const useFilteredLmsDataByGender = (
     >([]);
 
     useEffect(() => {
-        if (!lmsData || lmsData.length === 0) return;
+        if (!lmsData || lmsData.length === 0 || !childData.gender) return;
 
         const genderCode = childData.gender === 'male' ? 1 : 2; // 남자는 1, 여자는 2
         const filtered = lmsData.filter(
@@ -19,10 +19,11 @@ export const useFilteredLmsDataByGender = (
         );
 
         setFilteredLmsDataByGender(filtered);
-        console.log(
-            '✅ useEffect - filteredLmsDataByGender 업데이트:',
-            filtered
-        );
+        // console.log(
+        //     '✅ useEffect - filteredLmsDataByGender 업데이트:',
+        //     filtered
+        // );
     }, [childData.gender, lmsData]);
-    return filteredLmsDataByGender;
+
+    return { filteredLmsDataByGender };
 };

@@ -22,7 +22,7 @@ export const useHandleInputChange = (childData: ChildData) => {
                 months: newMonths,
             }));
         }
-    }, [inputData.measurementDate, inputData.birthDate]); // 의존성 배열 추가
+    }, [inputData.measurementDate, inputData.birthDate]);
 
     // 입력 필드 변경 시
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

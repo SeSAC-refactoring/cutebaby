@@ -16,12 +16,12 @@ export const useFilteredLmsDataByMonths = (
                 (data) => data['개월수구분코드'] === childData.months
             );
             setFilteredLmsDataByMonths(filtered);
-            console.log(
-                '✅ useEffect - filteredLmsDataByMonths 업데이트:',
-                filtered
-            );
+            // console.log(
+            //     '✅ useEffect - filteredLmsDataByMonths 업데이트:',
+            //     filtered
+            // );
         }
     }, [childData.months, filteredLmsDataByGender]);
 
-    return filteredLmsDataByMonths;
+    return { filteredLmsDataByMonths };
 };

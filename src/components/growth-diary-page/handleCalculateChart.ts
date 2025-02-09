@@ -29,5 +29,4 @@ export const handleCalculateChart = (
     // 필수값 있으면
     setChildData(inputData);
     setShow(true);
-    setPercentiles(percentiles);
 };
