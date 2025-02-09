@@ -91,7 +91,7 @@ const EmailLogin: React.FC = () => {
     navigate("/Home", { state: userInfo }); // Mypage로 이동
   };
   return (
-    <div>
+    <div className={styles.login_container}>
       <div className={styles.login_background}>
         <div className={styles.title}>이메일로 로그인하기</div>
         <form className={styles.container} onSubmit={handleSubmit}>
@@ -122,10 +122,6 @@ const EmailLogin: React.FC = () => {
           </div>
         </form>
         {error && <p style={{ color: "red" }}>{error}</p>}
-        {/* <hr /> */}
-        {/* <a href={getKakaoLoginUrl()}>
-          <img src="img/kakaoLoginImg.png" alt="카카오 로그인" />
-        </a>  */}
       </div>
     </div>
   );
