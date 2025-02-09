@@ -1,3 +1,8 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
 .background {
   display: flex;
   flex-direction: column;
@@ -78,6 +83,8 @@
   position: relative;
   right: 90px;
   top: 6px;
+  background-color: #f6d9a7;
+  border-radius: 10px;
 }
 .button_container {
   display: flex;
