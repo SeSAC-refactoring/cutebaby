@@ -70,7 +70,7 @@ export default function VaccinationCenters() {
           style={{
             fontSize: "40px",
             fontWeight: "bold",
-            marginBottom: "105px",
+            marginBottom: "48px",
           }}
         >
           위탁의료기관 찾기
@@ -131,7 +131,7 @@ export default function VaccinationCenters() {
       {/* 검색 결과(병원 리스트) 표시 */}
       <div className={styles.contents_wrap}>
         {!hasSearched.current ? (
-          <p>병원을 찾아보세요</p> // 검색 전 표시 문구
+          <p></p> // 검색 전 표시 문구
         ) : isLoading ? (
           <p>병원 정보를 불러오는 중...</p>
         ) : centers.length > 0 ? (

@@ -17,6 +17,8 @@ export const TotalDoses: React.FC = () => {
           fontWeight: "bold",
           borderRight: "3px solid #E1E1E5",
           boxSizing: "border-box",
+          position: "sticky",
+          top: "0",
         }}
       >
         횟수

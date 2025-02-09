@@ -4,27 +4,21 @@ import { VaccineType } from "./VaccineType";
 import { DoseDate } from "./DoseDate";
 import { TotalDoses } from "./TotalDoses";
 import { VaccinationSchedule } from "./VaccinationSchedule";
+import { Link } from "react-router-dom";
+import { ChildrenTabs } from "../../../commons/ChildrenTabs";
+import styles from "../styles/Vaccination.module.scss";
 
 export const VaccinationTable = () => {
   return (
     <div
       style={{
-        width: "1638px",
-        border: "2px solid black",
-        backgroundColor: "#FFFFFF",
-        padding: "80px 0px 0px 80px",
-        borderRadius: "40px",
+        width: "1120px",
+        // border: "2px solid black",
+        // backgroundColor: "#FFFFFF",
+        // padding: "80px 0px 0px 80px",
+        // borderRadius: "40px",
       }}
     >
-      <h2
-        style={{
-          marginBottom: "32px",
-          fontSize: "40px",
-          fontWeight: "bold",
-        }}
-      >
-        예방접종 관리
-      </h2>
       <div
         style={{
           display: "flex",
