@@ -37,16 +37,6 @@ export interface Percentiles {
     headCircumference: number | null;
 }
 
-//////////////////////////////////////////////////////
-// # 서버에서 가져온 아기의 성장기록 정보
-export interface newGrowData {
-    babyid: number | null;
-    height: number | string;
-    weight: number | string;
-    head: number | stirng;
-    inputData: string;
-}
-
 ////////////////////////////////////////////////////////////////////////////
 // # 서버에서 가져온 아기 정보
 export interface babyinfo {
@@ -62,6 +52,25 @@ export interface BabyState {
     nothingBaby: boolean;
     loading: boolean;
     error: string | null;
+}
+
+//////////////////////////////////////////////////////
+// # 서버에서 가져온 아기의 성장기록 정보
+export interface newGrowData {
+    babyid: number | null;
+    height: number | string;
+    weight: number | string;
+    head: number | stirng;
+    inputData: string;
+}
+
+//////////////////////////////////////////////////////
+// # 서버에서 가져온 백신 정보
+export interface VaccinationData {
+    babyid: number;
+    vaccinationid: number;
+    dosenumber: number;
+    dosedate: string;
 }
 
 ////////////////////////////////////////////////////////////////////////////

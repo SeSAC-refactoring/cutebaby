@@ -27,7 +27,7 @@ export const useGrowData = (
                 ); // 날짜기준 내림차순(최신 데이터가 배열 앞쪽)으로 정렬
 
             if (filteredGrowInfo) {
-                console.log('filteredGrowInfo를 보자고', filteredGrowInfo);
+                console.log('filteredGrowInfo >>>', filteredGrowInfo);
 
                 setGrowData(filteredGrowInfo);
             }

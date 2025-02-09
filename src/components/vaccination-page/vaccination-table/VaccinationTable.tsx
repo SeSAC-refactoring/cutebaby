@@ -4,16 +4,19 @@ import { VaccineType } from './VaccineType';
 import { DoseDate } from './DoseDate';
 import { TotalDoses } from './TotalDoses';
 import { VaccinationSchedule } from './VaccinationSchedule';
+import { VaccinationData } from '../../types';
 
-export const VaccinationTable = () => {
+interface VaccinationTableProps {
+    selectedBabyVaccinationData: VaccinationData[];
+}
+
+export const VaccinationTable: React.FC<VaccinationTableProps> = ({
+    selectedBabyVaccinationData,
+}) => {
     return (
         <div
             style={{
                 width: '1120px',
-                // border: "2px solid black",
-                // backgroundColor: "#FFFFFF",
-                // padding: "80px 0px 0px 80px",
-                // borderRadius: "40px",
             }}
         >
             <div
@@ -28,7 +31,11 @@ export const VaccinationTable = () => {
                 <TotalDoses />
                 <div>
                     <DoseDate />
-                    <VaccinationSchedule />
+                    <VaccinationSchedule
+                        selectedBabyVaccinationData={
+                            selectedBabyVaccinationData
+                        }
+                    />
                 </div>
             </div>
         </div>
