@@ -1,58 +1,77 @@
 .container {
-  width: 1001px;
-  // height: 292px;
-  border: 1px solid #838391;
+  width: 1116px;
+  border: 2px solid #bbdeeb;
   display: flex;
   flex-direction: row;
-  padding-left: 14px;
-  padding-left: 80px;
+  padding: 40px 56px;
   border-radius: 20px;
-  padding-top: 44px;
   justify-content: space-between;
   margin-bottom: 28px;
+  box-sizing: border-box;
 }
 
 .content_wrap {
-  width: 673px;
+  // width: 673px;
   height: 220;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 .contents_set {
+  width: 1008px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   margin-bottom: 42px;
+  gap: 40px;
 }
 .contents_title {
-  width: 82px;
+  width: 150px;
   font-size: 22px;
   color: #5d5d67;
 }
 .contents {
-  width: 469px;
   font-size: 22px;
   color: #6f6f7b;
 }
 .btn_wrap {
-  // width: 100%;
   width: 900px;
   display: flex;
   justify-content: flex-end;
 }
 .list_btn {
-  position: relative;
-  bottom: 40px;
-  left: 10px;
-  width: 181px;
-  height: 64px;
+  width: 104px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 20px;
   border: none;
-  color: white;
-  background-color: #b0a5e8;
-  font-size: 20px;
+  color: #3b3b41;
+  background-color: #f6d9a7;
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+}
+.vaccine_list {
+  // background-color: blue;
+  position: relative;
+  // right: 370px;
+  // top: 600px;
+  // border: 1px solid black;
+  // width: 320px;
+}
+.vaccine_list_ul {
+  position: absolute;
+  background-color: white;
+  top: -180px;
+  right: -110px;
+  width: 320px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 12px;
+  padding: 16px 24px;
+  border: 2px solid #b1b1ba;
+  z-index: 10;
 }

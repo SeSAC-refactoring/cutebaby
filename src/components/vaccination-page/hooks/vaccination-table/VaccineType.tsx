@@ -35,6 +35,8 @@ export const VaccineType: React.FC = () => {
           fontWeight: "bold",
           borderRight: "3px solid #E1E1E5",
           boxSizing: "border-box",
+          position: "sticky",
+          top: "0",
         }}
       >
         백신 종류 및 방법

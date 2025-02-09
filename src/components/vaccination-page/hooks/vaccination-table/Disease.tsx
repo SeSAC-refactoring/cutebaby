@@ -33,6 +33,8 @@ export const Disease: React.FC = () => {
           borderTopLeftRadius: "16px",
           borderRight: "3px solid #E1E1E5",
           boxSizing: "border-box",
+          position: "sticky",
+          top: "0",
         }}
       >
         대상 감염병

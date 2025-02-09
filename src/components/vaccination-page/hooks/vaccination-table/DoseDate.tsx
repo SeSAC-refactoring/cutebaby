@@ -24,6 +24,8 @@ export const DoseDate = () => {
       style={{
         display: "flex",
         justifyContent: "space-between",
+        position: "sticky",
+        top: "0",
       }}
     >
       {headers.map((header, i) => (

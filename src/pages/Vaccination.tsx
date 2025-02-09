@@ -23,20 +23,38 @@ export default function Vaccination() {
   return (
     <>
       <div className={styles.background}>
-        <div className={styles.title}>표준 예방접종 일정표</div>
-        <div className={styles.text}>
-          우리 아이의 예방접종 일정을 관리해보세요 😀
+        <div className={styles.container}>
+          <div className={styles.title_wrap}>
+            <span className={styles.title}>예방접종 관리</span>
+            <span className={styles.text}>
+              <strong>표준 예방접종 일정표</strong>를 기준으로 관리할 수
+              있어요:)
+            </span>
+            <div className={styles.button_wrap}>
+              <button
+                style={{ width: "135px", height: "44px" }}
+                className={` ${styles.detail}`}
+              >
+                <Link to="/VaccinationCenters">위탁의료기관 🔎</Link>
+              </button>
+              <button
+                style={{ width: "115px", height: "44px" }}
+                className={`${styles.detail}`}
+              >
+                <Link to="/VaccinationDetails">예방접종 상세</Link>
+              </button>
+              <button
+                style={{ width: "111px", height: "44px" }}
+                className={`${styles.detail}`}
+              >
+                국가예방접종
+              </button>
+            </div>
+          </div>
+
+          <ChildrenTabs />
+          <VaccinationTable />
         </div>
-        <ChildrenTabs />
-        <div className={styles.button_wrap}>
-          <button className={`${styles.small_btn} ${styles.detail}`}>
-            <Link to="/VaccinationDetails">감염병 상세설명</Link>
-          </button>
-          <button className={`${styles.small_btn} ${styles.centers}`}>
-            <Link to="/VaccinationCenters">위탁의료기관 찾기</Link>
-          </button>
-        </div>
-        <VaccinationTable />
       </div>
 
       {/* <VaccineInfo /> */}

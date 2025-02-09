@@ -35,9 +35,22 @@ export const CenterList: React.FC<CenterListProps> = ({
         // </li>
         <div key={center.orgcd} className={styles.container}>
           <div className={styles.content_wrap}>
-            <div className={styles.contents_set}>
-              <div className={styles.contents_title}>병원이름</div>
+            <div
+              className={styles.contents_set}
+              style={{ justifyContent: "space-between" }}
+            >
               <div className={styles.contents}>{center.orgnm}</div>
+              <button
+                onClick={() => toggleVaccineList(center.orgcd)}
+                className={styles.list_btn}
+              >
+                {showVaccineList[center.orgcd] ? "접종 목록 ▲" : "접종 목록 ▼"}
+              </button>
+              {/* <div className={styles.vaccine_list}>
+                {showVaccineList[center.orgcd] && (
+                  <VaccineList center={center} />
+                )}
+              </div> */}
             </div>
             <div className={styles.contents_set}>
               <div className={styles.contents_title}>병원주소</div>
@@ -48,16 +61,19 @@ export const CenterList: React.FC<CenterListProps> = ({
               <div className={styles.contents}>{center.orgTlno}</div>
             </div>
             <div className={styles.btn_wrap}>
-              <button
+              <div className={styles.vaccine_list}>
+                {showVaccineList[center.orgcd] && (
+                  <VaccineList center={center} />
+                )}
+              </div>
+              {/* <button
                 onClick={() => toggleVaccineList(center.orgcd)}
                 className={styles.list_btn}
               >
-                {showVaccineList[center.orgcd]
-                  ? "접종 목록 숨기기▲"
-                  : "접종 목록 보기▼"}
-              </button>
+                {showVaccineList[center.orgcd] ? "접종 목록 ▲" : "접종 목록 ▼"}
+              </button> */}
             </div>
-            {showVaccineList[center.orgcd] && <VaccineList center={center} />}
+            {/* {showVaccineList[center.orgcd] && <VaccineList center={center} />} */}
           </div>
         </div>
       ))}
