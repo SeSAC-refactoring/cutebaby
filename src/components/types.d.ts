@@ -19,6 +19,7 @@ export interface BabyState {
 // # 서버에서 가져온 아기의 성장기록 정보
 export interface newGrowData {
     babyid: number | null;
+    id : number;
     height: number | string;
     weight: number | string;
     head: number | stirng;

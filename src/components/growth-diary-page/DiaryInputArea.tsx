@@ -23,6 +23,7 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
 
     const [newGrowData, setNewGrowData] = useState<newGrowData>({
         babyid: null,
+        id:0,
         height: '',
         weight: '',
         head: '',
@@ -39,9 +40,9 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
         setNewGrowData((prev) => ({ ...prev, [id]: value }));
     };
     const today = new Date();
-    const formattedDate = today.toISOString().split('T')[0];
-    // console.log(formattedDate);
-    // console.log(today);
+    const formattedDate = today.toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/. /g, '-').replace('.', '');
+    console.log(formattedDate); 
+    
 
     const submit = async () => {
         if (!newGrowData.babyid) {
@@ -63,6 +64,7 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
             // 입력 필드 초기화
             setNewGrowData({
                 babyid: newGrowData.babyid, // 선택된 아기는 유지
+                id: 0,
                 height: '',
                 weight: '',
                 head: '',

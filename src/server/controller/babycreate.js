@@ -12,8 +12,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 export const babycreate = async (req, res) => {
-  console.log("🔍 req.body:", req.body);
-  console.log("🔍 req.file:", req.file);
+
   const { usernumber, babyname, birthday, gender } = req.body;
   const picture = req.file ? req.file.filename : null;
 
