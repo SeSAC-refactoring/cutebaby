@@ -22,7 +22,8 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 42px;
-  gap: 40px;
+  gap: 6px;
+  align-items: center;
 }
 .contents_title {
   width: 150px;
@@ -31,7 +32,16 @@
 }
 .contents {
   font-size: 22px;
-  color: #6f6f7b;
+  // color: #6f6f7b;
+}
+.center_name {
+  color: #3b3b41;
+  font-size: 28px;
+  font-weight: bold;
+}
+.center_number {
+  color: #7dadbe;
+  text-decoration: underline;
 }
 .btn_wrap {
   width: 900px;

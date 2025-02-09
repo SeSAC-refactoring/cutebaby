@@ -125,6 +125,7 @@ export default function VaccinationCenters() {
           {/* 검색 버튼 */}
           <button className={styles.search_btn} onClick={handleSearch}>
             검색
+            <img src="/img/search-01.png" alt="검색"></img>
           </button>
         </div>
       </div>
@@ -135,7 +136,7 @@ export default function VaccinationCenters() {
         ) : isLoading ? (
           <p>병원 정보를 불러오는 중...</p>
         ) : centers.length > 0 ? (
-          <div>
+          <div style={{ overflow: "auto" }}>
             <CenterList
               centers={centers}
               toggleVaccineList={toggleVaccineList}
