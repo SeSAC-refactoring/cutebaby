@@ -53,8 +53,8 @@ export default function GrowthDiary() {
                     selectedBabyId={selectedBabyId}
                 />
 
-                {/* 최근 성장기록 */}
                 <div className={styles.recent_container}>
+                    {/* 최근 성장기록 */}
                     <div className={styles.recent_record_wrap}>
                         {growData.length > 0 ? (
                             <RecentGrowthRecord growData={growData} />
@@ -73,12 +73,20 @@ export default function GrowthDiary() {
                     </div>
 
                     {/* 성장기록에 대한 그래프 */}
-                    {growData.length > 0 ? (
-                        <DiaryChart growData={growData} />
-                    ) : (
-                        // 성장기록 데이터가 없을 때
-                        <div>데이터가 없습니다.</div>
-                    )}
+                    <div
+                        style={{
+                            width: '906px',
+                            height: '332px',
+                            marginTop: '24px',
+                        }}
+                    >
+                        {growData.length > 0 ? (
+                            <DiaryChart growData={growData} />
+                        ) : (
+                            // 성장기록 데이터가 없을 때
+                            <div>데이터가 없습니다.</div>
+                        )}
+                    </div>
                 </div>
             </div>
 

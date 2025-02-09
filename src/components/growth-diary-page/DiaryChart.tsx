@@ -10,8 +10,9 @@ import {
     PointElement,
     Title,
     Tooltip,
-    ChartOptions,
 } from 'chart.js';
+import { diaryChartData } from './diaryChartData';
+import { diaryChartOptions } from './diaryChartOptions';
 
 // Chart.js에 필요한 모듈
 ChartJS.register(
@@ -29,73 +30,17 @@ interface DiaryChartProps {
 }
 
 export const DiaryChart: React.FC<DiaryChartProps> = ({ growData }) => {
-    // 그래프 데이터 생성
-    const data = {
-        labels: growData.map((data) => data.inputData), // X축 (날짜)
-        datasets: [
-            {
-                label: '키 (cm)',
-                data: growData.map((data) => data.height),
-                borderColor: 'red',
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                tension: 0.3,
-            },
-            {
-                label: '몸무게 (kg)',
-                data: growData.map((data) => data.weight),
-                borderColor: 'blue',
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                tension: 0.3,
-            },
-            {
-                label: '머리둘레 (cm)',
-                data: growData.map((data) => data.head),
-                borderColor: 'green',
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                tension: 0.3,
-            },
-        ],
-    };
+    const sortedGrowData = [...growData].sort(
+        // [...]로 growData의 복사본을 만든 후 정렬 (원본 배열은 변경하지 않음)
+        (a, b) =>
+            new Date(a.inputData).getTime() - new Date(b.inputData).getTime()
+    );
 
     // 그래프 옵션 설정
-    const diaryChartOptions: ChartOptions<'line'> = {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: {
-                position: 'top',
-            },
-            tooltip: {
-                enabled: true,
-            },
-        },
-        scales: {
-            x: {
-                title: {
-                    display: true,
-                    text: '측정 날짜',
-                },
-            },
-            y: {
-                title: {
-                    display: true,
-                    text: '측정 값',
-                },
-                beginAtZero: false,
-            },
-        },
-    };
-
     return (
-        <div
-            style={{
-                width: '906px',
-                height: '332px',
-                marginTop: '24px',
-                backgroundColor: 'skyblue',
-            }}
-        >
-            <Line data={data} options={diaryChartOptions} />
-        </div>
+        <Line
+            data={diaryChartData(sortedGrowData)}
+            options={diaryChartOptions}
+        />
     );
 };

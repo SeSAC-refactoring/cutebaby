@@ -12,28 +12,25 @@ export const createChartData = (
             label: `P97 (상단선)`,
             data: p97, // { x: 개월수, y: 신장 } 형식
             borderColor: 'pink',
-            borderWidth: 2,
+            backgroundColor: 'pink',
             pointRadius: 2, // 점 크기 // 기본값(3)
-            fill: false, // 선 아래를 색칠하지 않음 (꽉 찬 영역이 아님)
         },
         // P3 데이터
         {
             label: `P3 (하단선)`,
             data: p3,
             borderColor: 'skyblue',
-            borderWidth: 2,
+            backgroundColor: 'skyblue',
             pointRadius: 2,
-            fill: false,
-            borderDash: [5, 5],
+            // borderDash: [5, 5],
         },
         // 아이의 데이터
         {
             label: `아이의 ${label}`,
             data: child,
-            borderColor: 'green',
+            borderColor: 'yellowgreen',
             backgroundColor: 'yellowgreen',
-            pointRadius: 5,
-            fill: false,
+            pointRadius: 8,
         },
     ],
 });

@@ -3,6 +3,7 @@ import { ChartOptions } from 'chart.js';
 export const calculateChartOptions: ChartOptions<'line'> = {
     responsive: true, // 차트를 반응형으로 설정
     maintainAspectRatio: false, // 차트의 가로세로비 유지 안함
+
     scales: {
         // X, Y 축 동작 설정
         x: {
@@ -26,6 +27,7 @@ export const calculateChartOptions: ChartOptions<'line'> = {
             // suggestedMax: 140, // y축 최대값 120cm
         },
     },
+
     plugins: {
         legend: {
             display: true, // 범례 활성화
