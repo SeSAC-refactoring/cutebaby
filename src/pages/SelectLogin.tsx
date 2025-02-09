@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { getKakaoLoginUrl } from "../services/kakaoService";
 import styles from "../styles/SelectLogin.module.scss";
 
@@ -22,7 +23,9 @@ export default function SelectLogin() {
         </a>
         <div className={styles.link_container}>
           <div>가입하지 않으셨나요?</div>
-          <div className={styles.link}>회원가입하기</div>
+          <div className={styles.link}>
+            <Link to="/Signup">회원가입하기</Link>
+          </div>
         </div>
       </div>
     </div>
