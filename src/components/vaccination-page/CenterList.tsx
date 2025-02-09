@@ -39,7 +39,9 @@ export const CenterList: React.FC<CenterListProps> = ({
               className={styles.contents_set}
               style={{ justifyContent: "space-between" }}
             >
-              <div className={styles.contents}>{center.orgnm}</div>
+              <div className={`${styles.contents} ${styles.center_name}`}>
+                {center.orgnm}
+              </div>
               <button
                 onClick={() => toggleVaccineList(center.orgcd)}
                 className={styles.list_btn}
@@ -57,8 +59,11 @@ export const CenterList: React.FC<CenterListProps> = ({
               <div className={styles.contents}>{center.orgAddr}</div>
             </div>
             <div className={styles.contents_set}>
-              <div className={styles.contents_title}>전화번호</div>
-              <div className={styles.contents}>{center.orgTlno}</div>
+              <div className={styles.contents_title}>대표번호</div>
+              <img src="/img/phone-call-01.png" alt="전화기"></img>
+              <div className={`${styles.contents} ${styles.center_number}`}>
+                {center.orgTlno}
+              </div>
             </div>
             <div className={styles.btn_wrap}>
               <div className={styles.vaccine_list}>
