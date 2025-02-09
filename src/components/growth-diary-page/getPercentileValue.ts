@@ -21,11 +21,6 @@ export const getPercentileValue = (
             Number(currentChildLms['영유아성장도표M값']),
             Number(currentChildLms['영유아성장도표S값'])
         );
-
-        console.log(
-            'getPercentileValue 함수 안에서의  percentileValue>>>>>',
-            percentileValue
-        );
     }
 
     return percentileValue;

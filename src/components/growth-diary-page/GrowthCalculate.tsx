@@ -7,34 +7,37 @@ import { CalculateDefaultState } from './CalculateDefaultState';
 import { usePercentiles } from './hooks/usePercentiles';
 import { useFilteredLmsDataByMonths } from './hooks/useFilteredLmsDataByMonths ';
 import { useFilteredLmsDataByGender } from './hooks/useFilteredLmsDataByGender ';
-import { log } from 'console';
-import { useEffect } from 'react';
-import { calculateMonths } from './calculateMonths';
+import { babyinfo } from '../types';
+import { useUpdateChildData } from './hooks/useUpdateChildData';
 
-export const GrowthCalculate = () => {
+interface GrowthCalculateProps {
+    babyInfo: babyinfo[];
+    selectedBabyId: number | null;
+}
+
+export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
+    babyInfo,
+    selectedBabyId,
+}) => {
     // customHook 가져오기
-    const { childData, setChildData } = useChildData();
+    const { childData, setChildData } = useChildData(babyInfo, selectedBabyId);
     const { show, setShow } = useShow();
     const { lmsData, percentileData, isLoading } = useFetchData(
         childData,
         show
     );
 
-    // useEffect(() => {
-    //     if (childData.birthDate && childData.measurementDate) {
-    //         const newMonths = calculateMonths(childData);
-    //         setChildData((prev) => ({
-    //             ...prev,
-    //             months: newMonths,
-    //         }));
-    //     }
-    // }, [childData.measurementDate, childData.birthDate]); // 의존성 배열 추가
-    console.log('🙏🙏🙏🙏🙏🙏🙏childData', childData);
+    // selectedBabyId가 변경될 때 childData 업데이트
+    useUpdateChildData(babyInfo, selectedBabyId, setChildData);
 
     // lmsData // 성별과 일치하는 데이터만 필터링
     const filteredLmsDataByGender = useFilteredLmsDataByGender(
         lmsData,
         childData
+    );
+    console.log(
+        'GrowthCalculate: filteredLmsDataByGender>>>',
+        filteredLmsDataByGender
     );
 
     // lmsData // 성별+개월수까지 일치하는 데이터 필터링

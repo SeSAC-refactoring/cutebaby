@@ -18,7 +18,8 @@ export default function GrowthDiary() {
     const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
     // const growInfo = sessionStorage.getItem('babygrow');
 
-    console.log('애기 성장정보 입니다 >>>>', growInfo);
+    console.log('애기 성장정보 입니다 growInfo>>>>', growInfo);
+
     return (
         <div className={styles.background}>
             {/* <Header></Header> */}
@@ -71,10 +72,13 @@ export default function GrowthDiary() {
                 </div>
             </div>
 
-            {/* 계산하는 페이지 / 모달 예정??  */}
+            {/* 계산하는 페이지 - 모달 예정?*/}
             <br />
             <hr />
-            <GrowthCalculate />
+            <GrowthCalculate
+                babyInfo={babyInfo}
+                selectedBabyId={selectedBabyId}
+            />
         </div>
     );
 }

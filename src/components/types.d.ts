@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////
 // # growth-diary-page
 export interface ChildData {
-    gender: 'male' | 'female';
-    birthDate: Date; // 생년월일 ("YYYY-MM-DD" 형식)
+    gender: 'male' | 'female' | null;
+    birthDate: Date | null; // 생년월일 ("YYYY-MM-DD" 형식)
 
     measurementDate: Date | null; // 측정 ("YYYY-MM-DD" 형식)
     months: number | null;
@@ -55,7 +55,7 @@ export interface babyinfo {
     babyname: string;
     birthday: string;
     gender: string;
-    picture:  null|File;
+    picture: null | File;
 }
 
 export interface BabyState {
