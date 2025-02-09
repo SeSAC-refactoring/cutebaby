@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-// # growth-diary-page
+// # 성장상태 측정계산기
 export interface ChildData {
     gender: 'male' | 'female' | null;
     birthDate: Date | null; // 생년월일 ("YYYY-MM-DD" 형식)
@@ -9,15 +9,6 @@ export interface ChildData {
     height: number | null;
     weight: number | null;
     headCircumference: number | null;
-}
-export interface BabyListProps {
-    babyInfo: babyinfo[];
-    nothingBaby: boolean;
-    handleSelectBaby: (babyId: number) => void;
-    selectedBabyId?: number | null;
-}
-export interface handleSelectstate{
-    handleSelectBaby: (babyId: number) => void;
 }
 
 export interface LmsData {
@@ -46,19 +37,18 @@ export interface Percentiles {
     headCircumference: number | null;
 }
 
-////////////////////////////////////////////////////////////////////////////
-// # home-page // 챗봇 기능
-
-export interface Message {
-    role: 'user' | 'assistant';
-    content: string;
+//////////////////////////////////////////////////////
+// # 서버에서 가져온 아기의 성장기록 정보
+export interface newGrowData {
+    babyid: number | null;
+    height: number | string;
+    weight: number | string;
+    head: number | stirng;
+    inputData: string;
 }
 
 ////////////////////////////////////////////////////////////////////////////
-// # login-page
-
-////////////////////////////////////////////////////////////////////////////
-// # my-page
+// # 서버에서 가져온 아기 정보
 export interface babyinfo {
     babyid: number;
     babyname: string;
@@ -66,8 +56,6 @@ export interface babyinfo {
     gender: string;
     picture: null | File;
 }
-
-
 
 export interface BabyState {
     babyInfo: babyinfo[];
@@ -77,12 +65,7 @@ export interface BabyState {
 }
 
 ////////////////////////////////////////////////////////////////////////////
-// # sign-up-page
-
-////////////////////////////////////////////////////////////////////////////
-// # vaccination-page
-
-// ## vaccinationDetails
+// # vaccinationDetails api 데이터 타입
 interface DiseaseList {
     cd: number;
     cdNm: string;
@@ -93,8 +76,8 @@ interface DiseaseInfo {
     title: string;
 }
 
-// ## vaccinationCenters
-
+////////////////////////////////////////////////////////////////////////////
+// # vaccinationCenters 데이터 타입
 // - 지역(시/도), 도시(시/군/구) api data type
 export interface Location {
     cd: number;
@@ -121,11 +104,9 @@ export interface SelectedLocation {
     city: string;
 }
 
-//
-export interface newGrowData {
-    babyid: number | null;
-    height: number | string;
-    weight: number | string;
-    head: number | stirng;
-    inputData: string;
+////////////////////////////////////////////////////////////////////////////
+// # 챗봇 기능
+export interface Message {
+    role: 'user' | 'assistant';
+    content: string;
 }

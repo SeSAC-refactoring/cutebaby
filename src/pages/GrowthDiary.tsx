@@ -23,6 +23,7 @@ export default function GrowthDiary() {
     // const growInfo = sessionStorage.getItem('babygrow');
 
     console.log('애기 성장정보 입니다 >>>>', growInfo);
+
     return (
         <div className={styles.background}>
             <div className={styles.title_wrap}>
@@ -30,26 +31,6 @@ export default function GrowthDiary() {
                     <div className={styles.title}>성장기록</div>
                     <div className={styles.text}>
                         우리 아이의 성장을 기록하고 상태를 확인해보세요 :)
-                    </div>
-
-                    <div>
-                        {Array.isArray(growInfo) && growInfo.length > 0 ? (
-                            <ul>
-                                {growInfo
-                                    .flat() // 중첩 배열을 평탄화
-                                    .filter(
-                                        (info) => info.babyid === selectedBabyId
-                                    ) // 선택한 아기 ID에 맞는 데이터만 필터링
-                                    .map((info, index) => (
-                                        <li key={index}>
-                                            {info.inputData} - 키: {info.height}
-                                            cm, 몸무게: {info.weight}kg
-                                        </li>
-                                    ))}
-                            </ul>
-                        ) : (
-                            <p>성장 기록이 없습니다.</p>
-                        )}
                     </div>
                 </div>
                 <button
@@ -64,7 +45,6 @@ export default function GrowthDiary() {
             <div className={styles.contents_wrap}>
                 <BabyList
                     babyInfo={babyInfo}
-                    nothingBaby={nothingBaby}
                     handleSelectBaby={handleSelectBaby}
                     selectedBabyId={selectedBabyId}
                 />
@@ -129,9 +109,8 @@ export default function GrowthDiary() {
                     </div>
 
                     <DiaryTable
-                        babyInfo={babyInfo}
-                        nothingBaby={nothingBaby}
                         selectedBabyId={selectedBabyId}
+                        growInfo={growInfo}
                     />
                 </div>
             )}

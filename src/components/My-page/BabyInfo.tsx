@@ -1,18 +1,11 @@
 import React from 'react';
 import styles from '../../styles/Mypage.module.scss';
-import { useSelectBaby } from '../../hooks/useSelectBaby';
+
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
-import {  handleSelectstate } from '../types';
 
-
-
-
-export const BabyInfo: React.FC= () => {
-
-    const {babyInfo} = useSelector(
-        (state: RootState) => state.baby
-    );
+export const BabyInfo: React.FC = () => {
+    const { babyInfo } = useSelector((state: RootState) => state.baby);
 
     return (
         <>

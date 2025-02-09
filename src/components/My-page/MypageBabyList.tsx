@@ -39,8 +39,8 @@ export const MypageBabyList: React.FC<BabyInputProps> = ({
             <div className={styles.user_list}>
                 <BabyList
                     babyInfo={babyInfo}
-                    nothingBaby={nothingBaby}
                     handleSelectBaby={handleSelectBaby}
+                    selectedBabyId={selectedBabyId}
                 />
                 <button onClick={Plus} className={styles.enroll}>
                     {!babyPlus ? '아기등록' : '아기정보'}
@@ -49,7 +49,7 @@ export const MypageBabyList: React.FC<BabyInputProps> = ({
             {babyPlus ? (
                 <BabyInputPlus babyInfo={babyInfo} nothingBaby={nothingBaby} />
             ) : nothingBaby ? (
-                <BabyInfo/>
+                <BabyInfo />
             ) : (
                 <NothingBaby />
             )}
