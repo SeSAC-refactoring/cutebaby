@@ -28,7 +28,7 @@ export default function GrowthDiary() {
         <div className={styles.background}>
             <div className={styles.title_wrap}>
                 <div>
-                    <div className={styles.title}>성장기록</div>
+                    <div className={styles.title}>성장일지</div>
                     <div className={styles.text}>
                         우리 아이의 성장을 기록하고 상태를 확인해보세요 :)
                     </div>

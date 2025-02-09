@@ -19,7 +19,12 @@ export const useGrowData = (
         if (Array.isArray(growInfo) && growInfo.length > 0) {
             const filteredGrowInfo = growInfo
                 .flat() // 중첩 배열을 평탄화
-                .filter((info) => info.babyid === selectedBabyId); // 선택한 아기 ID에 맞는 데이터만 필터링
+                .filter((info) => info.babyid === selectedBabyId) // 선택한 아기 ID에 맞는 데이터만 필터링
+                .sort(
+                    (a, b) =>
+                        new Date(b.inputData).getTime() -
+                        new Date(a.inputData).getTime()
+                ); // 날짜기준 내림차순(최신 데이터가 배열 앞쪽)으로 정렬
 
             if (filteredGrowInfo) {
                 console.log('filteredGrowInfo를 보자고', filteredGrowInfo);

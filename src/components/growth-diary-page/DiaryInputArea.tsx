@@ -40,8 +40,8 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
     };
     const today = new Date();
     const formattedDate = today.toISOString().split('T')[0];
-    console.log(formattedDate);
-    console.log(today);
+    // console.log(formattedDate);
+    // console.log(today);
 
     const submit = async () => {
         if (!newGrowData.babyid) {
@@ -76,7 +76,7 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
     return (
         <div className={styles.modalWrap}>
             <div className={styles.modal_title_wrap}>
-                <div>성장기록 추가</div>
+                <div>성장기록</div>
                 <div
                     style={{ cursor: 'pointer' }}
                     onClick={() => {

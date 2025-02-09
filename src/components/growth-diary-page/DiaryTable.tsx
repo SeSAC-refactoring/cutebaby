@@ -12,7 +12,6 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({
     growInfo,
     selectedBabyId,
 }) => {
-    // 성장 기록 가져오기
     const { growData, setGrowData } = useGrowData(growInfo, selectedBabyId); // growInfo / selectedBabyId가 변경될 때 growData 업데이트
 
     return (
