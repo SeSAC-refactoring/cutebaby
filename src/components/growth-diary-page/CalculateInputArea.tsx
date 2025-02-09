@@ -113,9 +113,7 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
                                     refs,
                                     inputData,
                                     setChildData,
-                                    setShow,
-                                    percentiles,
-                                    setPercentiles
+                                    setShow
                                 )
                             }
                             placeholder="숫자만"
@@ -162,9 +160,7 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
                                     refs,
                                     inputData,
                                     setChildData,
-                                    setShow,
-                                    percentiles,
-                                    setPercentiles
+                                    setShow
                                 )
                             }
                             placeholder="숫자만"
@@ -211,9 +207,7 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
                                     refs,
                                     inputData,
                                     setChildData,
-                                    setShow,
-                                    percentiles,
-                                    setPercentiles
+                                    setShow
                                 )
                             }
                             placeholder="숫자만"
@@ -260,9 +254,7 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
                             refs,
                             inputData,
                             setChildData,
-                            setShow,
-                            percentiles,
-                            setPercentiles
+                            setShow
                         )
                     }
                 >

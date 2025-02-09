@@ -29,11 +29,6 @@ export const useChildData = (
         );
 
         if (selectedBabyInfo) {
-            console.log(
-                '✅ useChildData: selectedBabyInfo 업데이트됨',
-                selectedBabyInfo
-            );
-
             setChildData({
                 gender: selectedBabyInfo.gender === 'boy' ? 'male' : 'female',
                 birthDate: new Date(selectedBabyInfo.birthday),

@@ -4,14 +4,25 @@ import { calculateMonths } from '../calculateMonths';
 
 export const useHandleInputChange = (childData: ChildData) => {
     const [inputData, setInputData] = useState<ChildData>({
-        gender: childData.gender,
-        birthDate: childData.birthDate,
+        gender: null, // childData.gender, // 초기 랜더링 시에는 childData 없어서 null
+        birthDate: null, // childData.birthDate,
         measurementDate: new Date(),
         months: null,
         height: null,
         weight: null,
         headCircumference: null,
     });
+
+    // childData의 gender와 birthDate 업데이트 시 inputData도 업데이트
+    useEffect(() => {
+        if (childData.gender !== null && childData.birthDate !== null) {
+            setInputData((prev) => ({
+                ...prev,
+                gender: childData.gender,
+                birthDate: childData.birthDate,
+            }));
+        }
+    }, [childData.gender, childData.birthDate]);
 
     // measurementDate가 변경될 때 useCalculateMonths 실행
     useEffect(() => {

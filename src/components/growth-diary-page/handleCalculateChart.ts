@@ -6,9 +6,7 @@ export const handleCalculateChart = (
     refs: RefsType,
     inputData: ChildData,
     setChildData: React.Dispatch<React.SetStateAction<ChildData>>,
-    setShow: React.Dispatch<React.SetStateAction<boolean>>,
-    percentiles: Percentiles,
-    setPercentiles: React.Dispatch<React.SetStateAction<Percentiles>>
+    setShow: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
     // 측정일 값 없으면 // 측정일 input focus
     if (!inputData.measurementDate) {
