@@ -1,6 +1,6 @@
 import React from 'react';
 import { VaccinationData } from '../../types';
-import { vaccinationScheduleData } from './vaccinationScheduleData';
+import { vaccinationScheduleData } from '../../commons/vaccinationScheduleData';
 
 interface VaccinationScheduleProps {
     selectedBabyVaccinationData: VaccinationData[];
