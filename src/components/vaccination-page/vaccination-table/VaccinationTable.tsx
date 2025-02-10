@@ -15,9 +15,11 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
 }) => {
     return (
         <div
-            style={{
-                width: '1120px',
-            }}
+            style={
+                {
+                    // width: '1120px',
+                }
+            }
         >
             <div
                 style={{

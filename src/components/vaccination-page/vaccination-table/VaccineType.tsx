@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import VaccinationModal from '../VaccinationModal';
 
 export const VaccineType: React.FC = () => {
     const vaccines = [
@@ -15,17 +16,19 @@ export const VaccineType: React.FC = () => {
         'MMR',
         'VAR',
         'HepA',
-        'LJEV(불활성화 백신)',
-        'LJEV(약독화 생백신)',
+        'IJEV\n(불활성화 백신)',
+        'LJEV\n(약독화 생백신)',
         'HPV',
         'IIV',
     ];
+
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <div>
             <div
                 style={{
-                    width: '179px',
+                    width: '108px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -47,7 +50,7 @@ export const VaccineType: React.FC = () => {
                         key={i}
                         style={{
                             whiteSpace: 'pre-line', // \n을 인식하여 줄바꿈 적용
-                            width: '179px',
+                            width: '108px',
                             height: i === 10 ? '100px' : '50px',
                             display: 'flex',
                             alignItems: 'center',
@@ -57,11 +60,33 @@ export const VaccineType: React.FC = () => {
                             boxSizing: 'border-box',
                         }}
                     >
-                        <span>{vaccine}</span>
-                        <span>{i + 1}</span>
+                        <span>{vaccine} </span>
+                        <span style={{ fontSize: '10px', color: 'red' }}>
+                            {i + 1}
+                        </span>
+                        <button
+                            style={{
+                                width: '53px',
+                                height: '28px',
+                                backgroundColor: '#FFFFFF',
+                                borderRadius: '8px',
+                                border: '1px solid #FED7D9',
+                                color: '#FD757D',
+                                fontSize: '12px',
+                                fontWeight: 'bold',
+                                marginBottom: '4px',
+                            }}
+                            onClick={() => {
+                                setIsOpen(true);
+                            }}
+                        >
+                            <img src="img/edit-contained.png"></img>
+                            입력
+                        </button>
                     </li>
                 ))}
             </ul>
+            {isOpen && <VaccinationModal setIsOpen={setIsOpen} />}
         </div>
     );
 };
