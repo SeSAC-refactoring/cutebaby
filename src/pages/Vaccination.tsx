@@ -27,22 +27,25 @@ export default function Vaccination() {
     ); // selectedBabyVaccinationData = vaccinationData selectedBabyId에 따라 필터링 // selectedBabyId가 변경될 때 vaccinationData 업데이트
     const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
 
-    const user = sessionStorage.getItem("user");
+    const user = sessionStorage.getItem('user');
 
     useEffect(() => {
-        if(!user){
+        if (!user) {
             setOpenLoginModal(true);
-        }else{
+        } else {
             dispatch(fetchVaccinationData(5));
             console.log('Updated vaccinationData:', vaccinationData);
         }
-        
     }, [dispatch]);
 
     return (
         <>
             <div className={styles.background}>
-            {openLoginModal && <NeedLoginModal modalState={() => setOpenLoginModal(false)} />}
+                {openLoginModal && (
+                    <NeedLoginModal
+                        modalState={() => setOpenLoginModal(false)}
+                    />
+                )}
                 <div className={styles.container}>
                     <div className={styles.title_wrap}>
                         <span className={styles.title}>예방접종 관리</span>

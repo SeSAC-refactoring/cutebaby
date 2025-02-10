@@ -15,8 +15,8 @@ export const VaccineType: React.FC = () => {
         'MMR',
         'VAR',
         'HepA',
-        'LJEV(불활성화 백신)',
-        'LJEV(약독화 생백신)',
+        'IJEV\n(불활성화 백신)',
+        'LJEV\n(약독화 생백신)',
         'HPV',
         'IIV',
     ];
@@ -25,7 +25,7 @@ export const VaccineType: React.FC = () => {
         <div>
             <div
                 style={{
-                    width: '179px',
+                    width: '108px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -47,7 +47,7 @@ export const VaccineType: React.FC = () => {
                         key={i}
                         style={{
                             whiteSpace: 'pre-line', // \n을 인식하여 줄바꿈 적용
-                            width: '179px',
+                            width: '108px',
                             height: i === 10 ? '100px' : '50px',
                             display: 'flex',
                             alignItems: 'center',
@@ -57,8 +57,10 @@ export const VaccineType: React.FC = () => {
                             boxSizing: 'border-box',
                         }}
                     >
-                        <span>{vaccine}</span>
-                        <span>{i + 1}</span>
+                        <span>{vaccine} </span>
+                        <span style={{ fontSize: '10px', color: 'red' }}>
+                            {i + 1}
+                        </span>
                     </li>
                 ))}
             </ul>
