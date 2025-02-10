@@ -8,6 +8,6 @@ export default function Logout() {
     localStorage.clear();
     alert('로그아웃 되었습니다.');
 
-    window.location.href = '/Login'; // 로그인 페이지로 이동
+    window.location.href = '/'; // 로그인 페이지로 이동
 
 }

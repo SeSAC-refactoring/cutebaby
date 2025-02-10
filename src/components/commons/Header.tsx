@@ -1,10 +1,26 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Logout from '../login-page/Logout';
 import styles from '../../styles/commons/Header.module.scss';
+import { useEffect, useState } from 'react';
 // import logo from "/logo.png";
 
 export default function Header() {
+    const navigate = useNavigate();
     const location = useLocation(); // 현재 URL 정보를 가져옴
+
+    const user = sessionStorage.getItem('user')
+    const [Logined , setLogined] = useState<boolean>(false)
+    useEffect(()=>{
+        if(!user){
+            setLogined(false)
+        }else{
+            setLogined(true)
+        }
+    })
+    const gotoLogin = ()=>{
+        navigate('/')
+
+    }
 
     return (
         <>
@@ -67,13 +83,21 @@ export default function Header() {
                         </Link>
                     </div>
                     {/* <button onClick={Logout}>로그아웃</button> */}
-                    <div
+
+                    {Logined? <div
                         className={styles.menu_gray}
                         style={{ cursor: 'pointer' }}
                         onClick={Logout}
                     >
                         로그아웃
-                    </div>
+                    </div>: <div
+                        className={styles.menu_gray}
+                        style={{ cursor: 'pointer' }}
+                        onClick={gotoLogin}
+                    >
+                        로그인
+                    </div>}
+                   
                 </div>
             </div>
         </>

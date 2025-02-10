@@ -7,17 +7,26 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { useSelectBaby } from '../hooks/useSelectBaby';
 import styles from '../styles/GrowthDiary.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useGrowData } from '../components/growth-diary-page/hooks/useGrowData';
 import { RecentGrowthRecord } from '../components/growth-diary-page/RecentGrowthRecord';
+import { NeedLoginModal } from '../components/my-page/NeedLoginModal';
 
 export default function GrowthDiary() {
     const [openCalModal, setOpenCalModal] = useState<boolean>(false);
     const [openAddModal, setOpenAddModal] = useState<boolean>(false);
+    const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
 
     const { babyInfo, nothingBaby } = useSelector(
         (state: RootState) => state.baby
     );
+    const user = sessionStorage.getItem("user");
+
+    useEffect(()=>{
+        if(!user){
+            setOpenLoginModal(true);
+        }
+    })
     const growInfo = useSelector((state: RootState) => state.babygrow.growInfo);
 
     const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
@@ -30,6 +39,7 @@ export default function GrowthDiary() {
 
     return (
         <div className={styles.background}>
+                  {openLoginModal && <NeedLoginModal modalState={() => setOpenLoginModal(false)} />}
             <div className={styles.title_wrap}>
                 <div>
                     <div className={styles.title}>성장일지</div>

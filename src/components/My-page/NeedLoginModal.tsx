@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import styles from '../styles/Modal.module.scss'
+import styles from '../../styles/Modal.module.scss'
 interface modalStateProps {
     modalState : ()=> void
 }
@@ -8,7 +8,7 @@ export const NeedLoginModal:React.FC<modalStateProps> = ({modalState}) => {
     const navigate = useNavigate();
 
     const gotoLogin = ()=>{
-        navigate('/Login')
+        navigate('/')
 
     }
     const goBack = () => {
