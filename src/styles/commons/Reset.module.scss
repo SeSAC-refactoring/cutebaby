@@ -1,3 +1,20 @@
+@charset "UTF-8";
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+body,
+th,
+td,
+input,
+select,
+textarea,
+button,
+p,
+div,
+span {
+  font-family: "Pretendard", "Times New Roman", sans-serif !important;
+}
+
 /* CSS Reset */
 
 @font-face {
@@ -9,31 +26,33 @@
 }
 
 * {
+
     box-sizing: border-box;
     font-family: 'Pretendard-Regular';
+
 }
 
 body {
-    height: 100vh;
-    margin: 0;
-    letter-spacing: -0.02em;
-    color: var(--color-gray-10);
-    display: flex;
-    justify-content: center;
-    background-color: #fef9f1;
+  height: 100vh;
+  margin: 0;
+  letter-spacing: -0.02em;
+  color: var(--color-gray-10);
+  display: flex;
+  justify-content: center;
+  background-color: #fef9f1;
 }
 
 ul {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-    padding-inline-start: 0;
-    list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  padding-inline-start: 0;
+  list-style: none;
 }
 
 ol {
-    margin-top: 0;
-    margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 h1,
@@ -43,37 +62,37 @@ h4,
 h5,
 h6,
 p {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 1;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1;
 }
 
 a {
-    color: var(--color-gray-10);
-    text-decoration: none;
+  color: var(--color-gray-10);
+  text-decoration: none;
 }
 
 img {
-    vertical-align: top;
+  vertical-align: top;
 }
 
 button {
-    padding: 0;
-    cursor: pointer;
-    border: none;
-    background: none;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  background: none;
 }
 
 table,
 th,
 td {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 td {
-    padding: 0;
+  padding: 0;
 }
 
 .background {
-    background-color: red;
+  background-color: red;
 }

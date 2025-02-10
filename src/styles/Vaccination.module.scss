@@ -6,6 +6,17 @@
     margin-bottom: 138px;
     align-items: center;
     width: 1920px;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 32px;
+  }
+  .title {
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+   
+
 
     .container {
         display: flex;
