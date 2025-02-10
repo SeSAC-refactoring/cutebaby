@@ -8,6 +8,7 @@ import { PagenationBtns } from "../components/vaccination-page/PagenationBtns";
 import { useHandleSearch } from "../components/vaccination-page/hooks/useHandleSearch";
 import { useRefs } from "../hooks/useRefs";
 import styles from "../styles/VaccinationCenters.module.scss";
+import layout from "../styles/commons/Layout.module.scss";
 import VaccinationUnit from "./vaccination_centers_unit";
 import { CenterList } from "../components/vaccination-page/CenterList";
 
@@ -50,7 +51,7 @@ export default function VaccinationCenters() {
   );
 
   return (
-    <div className={styles.background}>
+    <div className={layout.background}>
       {/* 처음 데이터를 불러오는 동안 */}
       {isFirstLoading && (
         <div
@@ -67,6 +68,7 @@ export default function VaccinationCenters() {
 
       <div className={styles.search_wrap}>
         <h2
+          className={layout.title}
           style={{
             fontSize: "40px",
             fontWeight: "bold",
