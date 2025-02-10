@@ -92,8 +92,12 @@ export default function Vaccination() {
             selectedBabyId={selectedBabyId}
           />
 
-          {openCentersModal && <VaccinationCenters />}
-          {openDetailsModal && <VaccinationDetails />}
+          {openCentersModal && (
+            <VaccinationCenters setOpenCentersModal={setOpenCentersModal} />
+          )}
+          {openDetailsModal && (
+            <VaccinationDetails setOpenDetailsModal={setOpenDetailsModal} />
+          )}
           <VaccinationTable
             selectedBabyVaccinationData={selectedBabyVaccinationData}
           />
