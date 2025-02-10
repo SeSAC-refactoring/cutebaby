@@ -1,8 +1,7 @@
 import React from 'react';
+import { doses } from './VaccinationTableData';
 
 export const TotalDoses: React.FC = () => {
-    const doses = [3, 1, 5, 1, 4, 4, 4, '-', 2, 3, 2, 1, 2, 5, 2, 2, '-'];
-
     return (
         <div>
             <div

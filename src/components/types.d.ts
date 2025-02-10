@@ -29,7 +29,7 @@ export interface newGrowData {
 //////////////////////////////////////////////////////
 // # 서버에서 가져온 백신 정보
 export interface VaccinationData {
-    babyid: number;
+    babyid: number | null;
     vaccinationid: number | null;
     dosenumber: number | null;
     dosedate: string | null;

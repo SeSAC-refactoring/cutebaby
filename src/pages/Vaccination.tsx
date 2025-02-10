@@ -105,22 +105,12 @@ export default function Vaccination() {
                 </div>
             </div>
 
-            <BabyList
-                babyInfo={babyInfo}
-                handleSelectBaby={handleSelectBaby}
-                selectedBabyId={selectedBabyId}
-            />
-
             {openCentersModal && (
                 <VaccinationCenters setOpenCentersModal={setOpenCentersModal} />
             )}
             {openDetailsModal && (
                 <VaccinationDetails setOpenDetailsModal={setOpenDetailsModal} />
             )}
-            <VaccinationTable
-                selectedBabyVaccinationData={selectedBabyVaccinationData}
-                selectedBabyId={selectedBabyId}
-            />
 
             {/* 백신 정보 버튼 클릭 시 모달 예정 */}
             <VaccineInfo />

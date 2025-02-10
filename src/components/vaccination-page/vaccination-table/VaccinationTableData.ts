@@ -1,4 +1,42 @@
-import { VaccinationScheduleData } from '../types';
+import { VaccinationScheduleData } from '../../types';
+
+export const diseasesName = [
+    'B형간염',
+    '결핵',
+    '디프테리아/\n파상풍/\n백일해', // \n을 사용하여 줄바꿈
+    '폴리오',
+    'b형헤모필루스\n인플루엔자',
+    '폐렴구균\n감염증',
+    '로타바이러스\n감염증',
+    '홍역/\n유행성이하선염/\n풍진',
+    '수두',
+    'A형간염',
+    '일본뇌염',
+    '사람유두종\n바이러스감염증',
+    '인플루엔자',
+];
+
+export const vaccinesName = [
+    'HepB',
+    'BCG(피내용)',
+    'DTaP',
+    'Tdap/Td',
+    'IPV',
+    'Hib',
+    'PCV',
+    'PPSV',
+    'RV1',
+    'RV5',
+    'MMR',
+    'VAR',
+    'HepA',
+    'IJEV\n(불활성화 백신)',
+    'LJEV\n(약독화 생백신)',
+    'HPV',
+    'IIV',
+];
+
+export const doses = [3, 1, 5, 1, 4, 4, 4, '-', 2, 3, 2, 1, 2, 5, 2, 2, '-'];
 
 export const vaccinationScheduleData: VaccinationScheduleData[][] = [
     [

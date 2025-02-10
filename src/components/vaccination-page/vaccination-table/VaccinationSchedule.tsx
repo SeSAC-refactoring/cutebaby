@@ -1,7 +1,7 @@
 import React from 'react';
 import { VaccinationData } from '../../types';
-import { vaccinationScheduleData } from '../../commons/vaccinationScheduleData';
 import styles from '../../../styles/Vaccination.module.scss';
+import { vaccinationScheduleData } from './VaccinationTableData';
 
 interface VaccinationScheduleProps {
     selectedBabyVaccinationData: VaccinationData[];

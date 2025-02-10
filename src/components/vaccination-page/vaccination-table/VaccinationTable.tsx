@@ -39,7 +39,6 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                         selectedBabyVaccinationData={
                             selectedBabyVaccinationData
                         }
-                        selectedBabyId={selectedBabyId}
                     />
                 </div>
             </div>
