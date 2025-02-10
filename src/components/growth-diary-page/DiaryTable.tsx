@@ -1,29 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { newGrowData } from "../types";
-import styles from "../../styles/GrowthDiary.module.scss";
-import { useGrowData } from "./hooks/useGrowData";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../store";
-import { fetchBabyInfo } from "../../store/babySlice";
-import { BabyInfo } from "../my-page/BabyInfo";
-import { fetchgrowInfo } from "../../store/GrowthDiarySlice";
+
+import React, {  useEffect, useState } from 'react';
+import { newGrowData } from '../types';
+import styles from '../../styles/GrowthDiary.module.scss';
+import { useGrowData } from './hooks/useGrowData';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../store';
+import { fetchBabyInfo } from '../../store/babySlice';
+import { BabyInfo } from '../my-page/BabyInfo';
+import { fetchgrowInfo } from '../../store/GrowthDiarySlice';
+import { GrowRewriteModal } from './GrowRewriteModal';
+
 
 interface DiaryTableProps {
   growData: newGrowData[];
 }
 
 export const DiaryTable: React.FC<DiaryTableProps> = ({ growData }) => {
-  const babyInfo = useSelector((state: RootState) => state.baby.babyInfo);
 
-  const [data, setData] = useState<newGrowData[]>(growData);
-  const dispatch = useDispatch<AppDispatch>();
-
-  useEffect(() => {}, [dispatch, BabyInfo.length]);
-
-  const onDelGrow = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(e.currentTarget.value);
-    const growId = Number(e.currentTarget.value);
+    const babyInfo = useSelector((state: RootState) => state.baby.babyInfo);
+    const [rewriteModal , setRewriteModal] = useState<boolean>(false)
+    const [data, setData] = useState<newGrowData[]>(growData);
+    const dispatch = useDispatch<AppDispatch>();
+    const [growId , setGrowId] = useState<number>(0)
+ 
+    console.log('data>>>',data)
+    const onDelGrow = async (e: React.MouseEvent<HTMLButtonElement>)=>{
+        console.log(e.currentTarget.value)
+        // const growId = Number(e.currentTarget.value)
+        setGrowId(Number(e.currentTarget.value))
 
     //   Number(e.currentTarget.value)
 
@@ -35,6 +40,7 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({ growData }) => {
     } catch (error) {
       alert("삭제에 실패하였습니다. 관리자에게 문의하세요");
     }
+
   };
   const Rewrite = async (e: React.MouseEvent<HTMLButtonElement>) => {
     const growId = Number(e.currentTarget.value);
@@ -95,6 +101,8 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({ growData }) => {
           </ul>
         )}
       </div>
+       {rewriteModal && <GrowRewriteModal growId={growId} growData={data} onClose={() => setRewriteModal(false)}/>}
     </div>
   );
+
 };
