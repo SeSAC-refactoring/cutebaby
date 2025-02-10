@@ -33,6 +33,16 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({ growData }) => {
             const response = await axios.post('http://localhost:5001/api/delgrow', {growId});
             dispatch(fetchgrowInfo(babyInfo))
         } catch (error) {
+            alert('삭제에 실패하였습니다. 관리자에게 문의하세요')
+        }
+    }
+    const Rewrite = async(e: React.MouseEvent<HTMLButtonElement>)=>{
+        const growId = Number(e.currentTarget.value)
+        try {
+            const response = await axios.post('http://localhost:5001/api/rewritegrow', {growId});
+            dispatch(fetchgrowInfo(babyInfo))
+
+        } catch (error) {
             
         }
     }
@@ -63,7 +73,7 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({ growData }) => {
                                     {info.head}
                                 </div>
 
-                                <button>수정</button>/
+                                <button value={info.id} onClick={Rewrite}>수정</button>/
                                 <button value={info.id} onClick={onDelGrow}>삭제</button>
                             </li>
                         ))}

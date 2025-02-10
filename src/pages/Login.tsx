@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getKakaoLoginUrl } from "../services/kakaoService";
 import styles from "../styles/Login.module.scss";
 import { Session } from "inspector/promises";
@@ -110,9 +110,11 @@ const EmailLogin: React.FC = () => {
             placeholder="비밀번호를 입력해주세요."
           />
           <div className={styles.button_container}>
+            <Link to="/">
             <button className={`${styles.btn} ${styles.cancel_button}`}>
               취소
             </button>
+            </Link>
             <button
               className={`${styles.btn} ${styles.done_button}`}
               type="submit"
