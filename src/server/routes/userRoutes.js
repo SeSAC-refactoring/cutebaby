@@ -11,6 +11,7 @@ import { newgrow } from '../controller/newgrow.js';
 import { babycreate } from '../controller/babycreate.js';
 import { delgrow } from '../controller/delgrow.js';
 import { delbaby } from '../controller/delbaby.js';
+import { updategrow } from '../controller/updategrow.js';
 
 const router = express.Router();
 
@@ -40,6 +41,7 @@ router.post('/delgrow',delgrow);
 router.post('/babycreate',babycreate);
 router.post('/delbaby', delbaby);
 router.post('/rewritegrow')
+router.post('/updategrow', updategrow)
 
 
 // babyid를 기반으로 예방접종 데이터 가져오기

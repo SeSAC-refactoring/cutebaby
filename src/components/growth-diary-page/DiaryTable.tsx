@@ -8,6 +8,7 @@ import { AppDispatch, RootState } from '../../store';
 import { fetchBabyInfo } from '../../store/babySlice';
 import { BabyInfo } from '../my-page/BabyInfo';
 import { fetchgrowInfo } from '../../store/GrowthDiarySlice';
+import { GrowRewriteModal } from './GrowRewriteModal';
 
 interface DiaryTableProps {
     growData: newGrowData[];
@@ -15,18 +16,16 @@ interface DiaryTableProps {
 
 export const DiaryTable: React.FC<DiaryTableProps> = ({ growData }) => {
     const babyInfo = useSelector((state: RootState) => state.baby.babyInfo);
-
+    const [rewriteModal , setRewriteModal] = useState<boolean>(false)
     const [data, setData] = useState<newGrowData[]>(growData);
     const dispatch = useDispatch<AppDispatch>();
-
-    useEffect(() => {
-
-    }, [dispatch, BabyInfo.length]);
-    
+    const [growId , setGrowId] = useState<number>(0)
+ 
+    console.log('data>>>',data)
     const onDelGrow = async (e: React.MouseEvent<HTMLButtonElement>)=>{
         console.log(e.currentTarget.value)
-        const growId = Number(e.currentTarget.value)
-
+        // const growId = Number(e.currentTarget.value)
+        setGrowId(Number(e.currentTarget.value))
     //   Number(e.currentTarget.value)
 
         try {
@@ -36,16 +35,11 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({ growData }) => {
             alert('삭제에 실패하였습니다. 관리자에게 문의하세요')
         }
     }
-    const Rewrite = async(e: React.MouseEvent<HTMLButtonElement>)=>{
-        const growId = Number(e.currentTarget.value)
-        try {
-            const response = await axios.post('http://localhost:5001/api/rewritegrow', {growId});
-            dispatch(fetchgrowInfo(babyInfo))
-
-        } catch (error) {
-            
-        }
+    const rewrite = (e: React.MouseEvent<HTMLButtonElement>)=>{
+        setGrowId(Number(e.currentTarget.value))
+        setRewriteModal(true)
     }
+  
     return (
         <div className={styles.list_wrap}>
             <div className={styles.row_title}>
@@ -73,7 +67,7 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({ growData }) => {
                                     {info.head}
                                 </div>
 
-                                <button value={info.id} onClick={Rewrite}>수정</button>/
+                                <button value={info.id} onClick={rewrite}>수정</button>/
                                 <button value={info.id} onClick={onDelGrow}>삭제</button>
                             </li>
                         ))}
@@ -84,6 +78,8 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({ growData }) => {
                     </ul>
                 )}
             </div>
+            {rewriteModal && <GrowRewriteModal growId={growId} growData={data} onClose={() => setRewriteModal(false)}/>}
+
         </div>
     );
 };
