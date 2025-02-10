@@ -14,8 +14,7 @@ import { delbaby } from '../controller/delbaby.js';
 
 const router = express.Router();
 
-// 이메일로 사용자 정보 조회
-router.post('/user', getUserInfoByEmail);
+
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -28,7 +27,8 @@ const storage = multer.diskStorage({
   const upload = multer({ storage: storage });
   
   router.post("/babycreate", upload.single("picture"), babycreate);
-
+// 이메일로 사용자 정보 조회
+router.post('/user', getUserInfoByEmail);
 // 이메일로 회원가입
 router.post('/signup', signupCon);
 router.post('/kakaosignup', kakaoCon);
