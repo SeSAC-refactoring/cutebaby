@@ -1,4 +1,5 @@
-import styles from "../../styles/Vaccination.module.scss";
+// import styles from "../../styles/Vaccination.module.scss";
+import styles from "../../styles/Modal.module.scss";
 import { Input } from "../commons/Input";
 
 export default function VaccinationModal({ setIsOpen }: any) {

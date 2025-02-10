@@ -7,9 +7,13 @@ import { store, persistor } from './store';
 import { PersistGate } from 'redux-persist/integration/react';
 import './styles/commons/Reset.module.scss';
 
-const root = ReactDOM.createRoot(
-    document.getElementById('root') as HTMLElement
-);
+const rootElement = document.getElementById('root') as HTMLElement;
+
+if (rootElement) {
+    rootElement.classList.add('root'); // root div에 class 추가
+}
+
+const root = ReactDOM.createRoot(rootElement);
 
 root.render(
     <BrowserRouter>

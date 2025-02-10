@@ -6,7 +6,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
 import { fetchBabyInfo } from "../../store/babySlice";
-import { BabyInfo } from "../My-page/BabyInfo";
+import { BabyInfo } from "../my-page/BabyInfo";
 import { fetchgrowInfo } from "../../store/GrowthDiarySlice";
 
 interface DiaryTableProps {

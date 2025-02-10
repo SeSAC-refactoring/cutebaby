@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import VaccinationModal from '../VaccinationModal';
 
 export const VaccineType: React.FC = () => {
     const vaccines = [
@@ -20,6 +21,8 @@ export const VaccineType: React.FC = () => {
         'HPV',
         'IIV',
     ];
+
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <div>
@@ -61,9 +64,29 @@ export const VaccineType: React.FC = () => {
                         <span style={{ fontSize: '10px', color: 'red' }}>
                             {i + 1}
                         </span>
+                        <button
+                            style={{
+                                width: '53px',
+                                height: '28px',
+                                backgroundColor: '#FFFFFF',
+                                borderRadius: '8px',
+                                border: '1px solid #FED7D9',
+                                color: '#FD757D',
+                                fontSize: '12px',
+                                fontWeight: 'bold',
+                                marginBottom: '4px',
+                            }}
+                            onClick={() => {
+                                setIsOpen(true);
+                            }}
+                        >
+                            <img src="img/edit-contained.png"></img>
+                            입력
+                        </button>
                     </li>
                 ))}
             </ul>
+            {isOpen && <VaccinationModal setIsOpen={setIsOpen} />}
         </div>
     );
 };

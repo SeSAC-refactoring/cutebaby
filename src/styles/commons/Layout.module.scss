@@ -1,0 +1,33 @@
+body {
+  background-color: #fef9f1;
+}
+
+.background {
+  width: 1280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+  align-items: center;
+  border-radius: 40px;
+  background-color: #ffffff;
+  border: 2px solid #838391;
+  margin: auto;
+}
+
+.title_wrap {
+  width: 1120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 80px 0 32px 0;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.container {
+  width: 1120px;
+}
