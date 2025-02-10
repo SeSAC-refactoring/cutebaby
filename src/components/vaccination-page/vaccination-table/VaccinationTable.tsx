@@ -8,7 +8,7 @@ import { VaccinationData } from '../../types';
 
 interface VaccinationTableProps {
     selectedBabyVaccinationData: VaccinationData[];
-    selectedBabyId: number;
+    selectedBabyId: number | null;
 }
 
 export const VaccinationTable: React.FC<VaccinationTableProps> = ({

@@ -1,6 +1,7 @@
 import React from 'react';
 import { VaccinationData } from '../types';
 import { vaccinationScheduleData } from '../commons/vaccinationScheduleData';
+import styles from '../../styles/Home.module.scss';
 
 interface MissingVaccinationsProps {
     selectedBabyVaccinationData: VaccinationData[];
@@ -22,17 +23,21 @@ export const MissingVaccinations: React.FC<MissingVaccinationsProps> = ({
             )
     );
 
+    
+
     return (
         <div>
-            {missingVaccinations.length > 0 ? (
-                <div>
-                    {missingVaccinations.map((data, i) => (
-                        <div key={i}>{data.text}</div>
-                    ))}
-                </div>
-            ) : (
-                <p>모든 예방접종이 완료되었습니다!</p>
-            )}
-        </div>
+        {missingVaccinations.length > 0 ? (
+            <div className={styles.vaccine_list}>
+                {missingVaccinations.map((data, i) => (
+                    <div key={i} className={styles.vaccine_item}>
+                        {data.text}
+                    </div>
+                ))}
+            </div>
+        ) : (
+            <p className={styles.completed_message}>모든 예방접종이 완료되었습니다!</p>
+        )}
+    </div>
     );
 };
