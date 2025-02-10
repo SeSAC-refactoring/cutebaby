@@ -1,8 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
 import { VaccinationData } from '../../types';
 import { vaccinationScheduleData } from '../../commons/vaccinationScheduleData';
-import VaccinationModal from '../VaccinationModal';
+import styles from '../../../styles/Vaccination.module.scss';
 
 interface VaccinationScheduleProps {
     selectedBabyVaccinationData: VaccinationData[];
@@ -10,7 +9,8 @@ interface VaccinationScheduleProps {
 export const VaccinationSchedule: React.FC<VaccinationScheduleProps> = ({
     selectedBabyVaccinationData,
 }) => {
-    const [isOpen, setIsOpen] = useState(false);
+    console.log('styles object:', styles);
+
     return (
         <>
             <div
@@ -20,86 +20,52 @@ export const VaccinationSchedule: React.FC<VaccinationScheduleProps> = ({
                     overflowX: 'auto', // 표가 화면을 벗어나면 가로 스크롤 추가
                 }}
             >
-                {vaccinationScheduleData.flat().map((dose, i) => (
+                {vaccinationScheduleData.flat().map((data, i) => {
                     // flat()을 사용해 2차원 배열을 1차원 배열로 변환
-                    <div
-                        key={i}
-                        style={{
-                            // colSpan 값이 있으면 해당 크기만큼 병합
-                            gridColumn: dose.colSpan
-                                ? `span ${dose.colSpan}`
-                                : 'span 1',
-                            backgroundColor: dose.text
-                                ? '#F7F6FD'
-                                : 'transparent',
-                            height: i >= 137 && i <= 149 ? '100px' : '50px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderBottom: '2px solid #E1E1E5',
-                            borderRight: '3px solid #E1E1E5',
-                            boxSizing: 'border-box',
-                            fontSize: '16px',
-                            flexDirection: 'column',
-                            // cursor: dose.text ? "pointer" : "default",
-                        }}
-                    >
-                        {dose.text}
+                    const matchedVaccine = selectedBabyVaccinationData.find(
+                        (item) =>
+                            item.vaccinationid === data.vaccinationid &&
+                            item.dosenumber === data.dosenumber
+                    );
 
-                        {/* 접종일 보여주기 // 없으면 입력 버튼 */}
-                        {dose.text &&
-                            (() => {
-                                const matchedVaccine =
-                                    selectedBabyVaccinationData.find(
-                                        (item) =>
-                                            item.vaccinationid ===
-                                                dose.vaccinationid &&
-                                            item.dosenumber === dose.dosenumber
-                                    );
+                    return (
+                        <div
+                            key={i}
+                            style={{
+                                // colSpan 값이 있으면 해당 크기만큼 병합
+                                gridColumn: data.colSpan
+                                    ? `span ${data.colSpan}`
+                                    : 'span 1',
+                                height: i >= 137 && i <= 149 ? '100px' : '50px',
+                            }}
+                            className={
+                                !data.text
+                                    ? styles.blank
+                                    : matchedVaccine
+                                      ? data.vaccinationid &&
+                                        [13, 14, 16].includes(
+                                            data.vaccinationid
+                                        ) &&
+                                        data.dosenumber === 1
+                                          ? styles.onlyFirst
+                                          : styles.completed
+                                      : data.vaccinationid === 8
+                                        ? styles.notMust
+                                        : styles.notCompleted
+                            }
+                        >
+                            {data.text}
 
-                                return matchedVaccine?.dosedate ? (
-                                    <p
-                                        style={{
-                                            width: '93px',
-                                            height: '28px',
-                                            backgroundColor: '#F3FAF8',
-                                            borderRadius: '8px',
-                                            border: '1px solid #B5E2D5',
-                                            color: '#619486',
-                                            fontSize: '14px',
-                                            fontWeight: 'bold',
-                                            marginBottom: '4px',
-                                        }}
-                                    >
-                                        {matchedVaccine.dosedate}
-                                        <img src="img/Button.png"></img>
-                                    </p>
-                                ) : (
-                                    <button
-                                        style={{
-                                            width: '53px',
-                                            height: '28px',
-                                            backgroundColor: '#FFFFFF',
-                                            borderRadius: '8px',
-                                            border: '1px solid #FED7D9',
-                                            color: '#FD757D',
-                                            fontSize: '12px',
-                                            fontWeight: 'bold',
-                                            marginBottom: '4px',
-                                        }}
-                                        onClick={() => {
-                                            setIsOpen(true);
-                                        }}
-                                    >
-                                        <img src="img/edit-contained.png"></img>
-                                        입력
-                                    </button>
-                                );
-                            })()}
-                    </div>
-                ))}
+                            {/* 접종일 보여주기 // 없으면 빈칸 */}
+                            {matchedVaccine?.dosedate ? ( // ?.(optional chaining): obj가 null이거나 undefined일 경우 자동으로 undefined 반환
+                                <p>{matchedVaccine.dosedate}</p>
+                            ) : (
+                                <></>
+                            )}
+                        </div>
+                    );
+                })}
             </div>
-            {isOpen && <VaccinationModal setIsOpen={setIsOpen} />}
         </>
     );
 };
