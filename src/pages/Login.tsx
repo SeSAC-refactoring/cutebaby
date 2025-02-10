@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getKakaoLoginUrl } from "../services/kakaoService";
 import styles from "../styles/Login.module.scss";
 import { Session } from "inspector/promises";
@@ -49,9 +49,16 @@ const EmailLogin: React.FC = () => {
   const handleInputPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setinputPassword(e.target.value);
   };
+  const enter = (e:React.KeyboardEvent<HTMLDivElement>)=>{
+    if(e.key=="Enter"){
+      handleSubmit(new Event("submit") as unknown as React.FormEvent);
+    }
+  }
+  
   // 이메일로 사용자 정보 조회
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); // 페이지 새로 고침 방지
+    console.log('>>>>>')
     try {
       const emailPost = await axios.post("http://localhost:5001/api/user", {
         email,
@@ -86,15 +93,17 @@ const EmailLogin: React.FC = () => {
       }
       setUserInfo(null); // 오류 발생 시 사용자 정보 초기화
     }
+  
   };
   const gotoMain = () => {
     navigate("/Home", { state: userInfo }); // Mypage로 이동
   };
+
   return (
     <div className={styles.login_container}>
       <div className={styles.login_background}>
         <div className={styles.title}>이메일로 로그인하기</div>
-        <form className={styles.container} onSubmit={handleSubmit}>
+        <section className={styles.container} onKeyDown={enter}>
           <Input
             label="이메일 *"
             type="email"
@@ -110,17 +119,17 @@ const EmailLogin: React.FC = () => {
             placeholder="비밀번호를 입력해주세요."
           />
           <div className={styles.button_container}>
+            <Link to="/">
             <button className={`${styles.btn} ${styles.cancel_button}`}>
               취소
             </button>
+            </Link>
             <button
-              className={`${styles.btn} ${styles.done_button}`}
-              type="submit"
-            >
+              className={`${styles.btn} ${styles.done_button}`} onClick={handleSubmit}>
               완료
             </button>
           </div>
-        </form>
+        </section>
         {error && <p style={{ color: "red" }}>{error}</p>}
       </div>
     </div>

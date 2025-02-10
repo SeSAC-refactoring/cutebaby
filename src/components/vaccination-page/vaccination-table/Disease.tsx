@@ -4,16 +4,16 @@ export const Disease: React.FC = () => {
     const diseases = [
         'B형간염',
         '결핵',
-        '디프테리아\n파상풍\n백일해', // \n을 사용하여 줄바꿈
+        '디프테리아/\n파상풍/\n백일해', // \n을 사용하여 줄바꿈
         '폴리오',
-        'b형헤모필루스인플루엔자',
-        '폐렴구균 감염증',
-        '로타바이러스 감염증',
-        '홍역\n유행성이하선염\n풍진',
+        'b형헤모필루스\n인플루엔자',
+        '폐렴구균\n감염증',
+        '로타바이러스\n감염증',
+        '홍역/\n유행성이하선염/\n풍진',
         '수두',
         'A형간염',
         '일본뇌염',
-        '사람유두종바이러스감염증',
+        '사람유두종\n바이러스감염증',
         '인플루엔자',
     ];
 
@@ -21,7 +21,7 @@ export const Disease: React.FC = () => {
         <div>
             <div
                 style={{
-                    width: '179px',
+                    width: '104px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -45,7 +45,7 @@ export const Disease: React.FC = () => {
                         key={i}
                         style={{
                             whiteSpace: 'pre-line', // \n을 인식하여 줄바꿈 적용
-                            width: '179px',
+                            width: '104px',
                             height:
                                 i === 2 ||
                                 i === 5 ||

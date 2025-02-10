@@ -21,9 +21,7 @@ import GrowthDiary from './pages/GrowthDiary';
 import VaccinationUnit from './pages/vaccination_centers_unit';
 import { CenterList } from './components/vaccination-page/CenterList';
 import { CalculateInputArea } from './components/growth-diary-page/CalculateInputArea';
-
 // import GrowthDiary from "./components/GrowthDiary";
-
 
 export interface UserData {
     userid: number;
@@ -41,6 +39,7 @@ function App() {
         <>
             <Header></Header>
             <Routes>
+                <Route path="/" element={<SelectLogin />}></Route>
                 <Route path="/oauth/callback/kakao" element={<KakaoLogin />} />
                 <Route path="/GrowthDiary" element={<GrowthDiary />} />
                 <Route path="/Home" element={<Home />} />

@@ -16,7 +16,7 @@ export const VaccinationSchedule: React.FC<VaccinationScheduleProps> = ({
             <div
                 style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(15, 1fr)', // 15개의 동일한 너비의 컬럼 생성 // 1fr 말고 px ,% 등 사용 가능
+                    gridTemplateColumns: 'repeat(15, 68px)', // 15개의 동일한 너비의 컬럼 생성 // 1fr 말고 px ,% 등 사용 가능
                     overflowX: 'auto', // 표가 화면을 벗어나면 가로 스크롤 추가
                 }}
             >

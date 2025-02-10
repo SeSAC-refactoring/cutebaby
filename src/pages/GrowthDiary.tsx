@@ -1,26 +1,35 @@
-import { DiaryChart } from "../components/growth-diary-page/DiaryChart";
-import { GrowthCalculate } from "../components/growth-diary-page/GrowthCalculate";
-import { DiaryTable } from "../components/growth-diary-page/DiaryTable";
-import { BabyList } from "../components/commons/BabyList";
-import { DiaryInputArea } from "../components/growth-diary-page/DiaryInputArea";
-import { useSelector } from "react-redux";
-import { RootState } from "../store";
-import { useSelectBaby } from "../hooks/useSelectBaby";
-import styles from "../styles/GrowthDiary.module.scss";
-import layout from "../styles/commons/Layout.module.scss";
-import { useState } from "react";
-import { useGrowData } from "../components/growth-diary-page/hooks/useGrowData";
-import { RecentGrowthRecord } from "../components/growth-diary-page/RecentGrowthRecord";
-import "../styles/commons/Layout.module.scss";
+
+import { DiaryChart } from '../components/growth-diary-page/DiaryChart';
+import { GrowthCalculate } from '../components/growth-diary-page/GrowthCalculate';
+import { DiaryTable } from '../components/growth-diary-page/DiaryTable';
+import { BabyList } from '../components/commons/BabyList';
+import { DiaryInputArea } from '../components/growth-diary-page/DiaryInputArea';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store';
+import { useSelectBaby } from '../hooks/useSelectBaby';
+import styles from '../styles/GrowthDiary.module.scss';
+import { useEffect, useState } from 'react';
+import { useGrowData } from '../components/growth-diary-page/hooks/useGrowData';
+import { RecentGrowthRecord } from '../components/growth-diary-page/RecentGrowthRecord';
+import { NeedLoginModal } from '../components/my-page/NeedLoginModal';
 
 export default function GrowthDiary() {
-  const [openCalModal, setOpenCalModal] = useState<boolean>(false);
-  const [openAddModal, setOpenAddModal] = useState<boolean>(false);
+    const [openCalModal, setOpenCalModal] = useState<boolean>(false);
+    const [openAddModal, setOpenAddModal] = useState<boolean>(false);
+    const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
 
-  const { babyInfo, nothingBaby } = useSelector(
-    (state: RootState) => state.baby
-  );
-  const growInfo = useSelector((state: RootState) => state.babygrow.growInfo);
+    const { babyInfo, nothingBaby } = useSelector(
+        (state: RootState) => state.baby
+    );
+    const user = sessionStorage.getItem("user");
+
+    useEffect(()=>{
+        if(!user){
+            setOpenLoginModal(true);
+        }
+    })
+    const growInfo = useSelector((state: RootState) => state.babygrow.growInfo);
+
 
   const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
   const { growData } = useGrowData(growInfo, selectedBabyId); // growData = growInfo를 selectedBabyId에 따라 필터링 // selectedBabyId가 변경될 때 growData 업데이트
@@ -30,8 +39,10 @@ export default function GrowthDiary() {
   console.log("애기 성장정보 입니다 >>>>", growInfo);
   console.log("selectedBabyId에 따른 성장정보 입니다 >>>>", growData);
 
+
   return (
     <div className={layout.background}>
+       {openLoginModal && <NeedLoginModal modalState={() => setOpenLoginModal(false)} />}
       {/* // <div className="background"> */}
       <div className={layout.title_wrap}>
         <div className={styles.title_container}>
@@ -77,6 +88,18 @@ export default function GrowthDiary() {
             <>
               <div className={styles.recent_record_wrap}>
                 <RecentGrowthRecord growData={growData} />
+
+    return (
+        <div className={styles.background}>
+                  {openLoginModal && <NeedLoginModal modalState={() => setOpenLoginModal(false)} />}
+            <div className={styles.title_wrap}>
+                <div>
+                    <div className={styles.title}>성장일지</div>
+                    <div className={styles.text}>
+                        우리 아이의 성장을 기록하고 상태를 확인해보세요 :)
+                    </div>
+                </div>
+
                 <button
                   onClick={() => {
                     setOpenAddModal(true);
