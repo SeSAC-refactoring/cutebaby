@@ -11,7 +11,8 @@ export default function SelectLogin() {
       <div className={styles.login_background}>
         <div className={styles.title}>로그인</div>
         <img className={styles.login_img} src="/img/login.png" />
-        
+        <section className={styles.signup_gap}>
+        <article className={styles.btn_gap}>
         <Link to="/Login">
         <button className={`${styles.btn} ${styles.email_btn}`}>
           <img src="/img/mail-03.png"></img>
@@ -24,12 +25,15 @@ export default function SelectLogin() {
             카카오톡으로 로그인하기
           </button>
         </a>
+        </article>
         <div className={styles.link_container}>
           <div>가입하지 않으셨나요?</div>
           <div className={styles.link}>
             <Link to="/Signup">회원가입하기</Link>
           </div>
+          
         </div>
+        </section>
       </div>
     </div>
   );

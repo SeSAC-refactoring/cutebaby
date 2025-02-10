@@ -37,14 +37,17 @@
   font-weight: bold;
   gap: 8px;
 }
+.btn_gap{
+  gap: 16px;
+}
 .email_btn {
-  margin-bottom: 16px;
+  // margin-bottom: 16px;
   color: white;
   background-color: #3b3b41;
 }
 .kakao_btn {
   background-color: #fee500;
-  margin-bottom: 32px;
+  // margin-bottom: 32px;
 }
 .link_container {
   display: flex;
