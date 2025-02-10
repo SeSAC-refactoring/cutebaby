@@ -3,7 +3,7 @@ import styles from "../styles/Signup.module.scss";
 import axios, { AxiosError } from "axios";
 import { Link, useNavigate } from "react-router-dom";
 // import Input from "../components/commons/Input";
-import { Input } from "../components/commons/Input";
+import { Input, Input_signup_email } from "../components/commons/Input";
 
 const Signup: React.FC = () => {
   // 입력값 상태
@@ -210,9 +210,6 @@ const Signup: React.FC = () => {
       <form>
         <div className={styles.background}>
           <div className={styles.title}>이메일로 가입하기</div>
-          <div className={styles.sub_title}>
-            보호자님의 정보를 기입해주세요.
-          </div>
 
           <div className={styles.input_container}>
             <div className={styles.input_set}>
@@ -227,12 +224,12 @@ const Signup: React.FC = () => {
                   inputRef.current.name = el;
                 }}
               />
-              {messages.name && <p>{messages.name}</p>}
+              {messages.name && <p className={styles.error}>{messages.name}</p>}
             </div>
 
             <div className={styles.input_set}>
               <div className={styles.input_button_container}>
-                <Input
+                <Input_signup_email
                   label="이메일 *"
                   type="email"
                   name="email"
@@ -242,11 +239,13 @@ const Signup: React.FC = () => {
                     inputRef.current.email = el;
                   }}
                 />
+                <button className={styles.check_button} onClick={emailCheck}>
+                  중복체크
+                </button>
               </div>
-              <button className={styles.check_button} onClick={emailCheck}>
-                중복체크
-              </button>
-              {messages.email && <p>{messages.email}</p>}
+              {messages.email && (
+                <p className={styles.error}>{messages.email}</p>
+              )}
             </div>
 
             <div className={styles.input_set}>
@@ -260,7 +259,9 @@ const Signup: React.FC = () => {
                   inputRef.current.password = el;
                 }}
               />
-              {messages.password && <p>{messages.password}</p>}
+              {messages.password && (
+                <p className={styles.error}>{messages.password}</p>
+              )}
             </div>
 
             <div className={styles.input_set}>
@@ -274,7 +275,9 @@ const Signup: React.FC = () => {
                   inputRef.current.checkPassword = el;
                 }}
               />
-              {messages.confirmPassword && <p>{messages.confirmPassword}</p>}
+              {messages.confirmPassword && (
+                <p className={styles.error}>{messages.confirmPassword}</p>
+              )}
             </div>
           </div>
 

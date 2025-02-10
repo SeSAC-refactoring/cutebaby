@@ -23,7 +23,8 @@ import { CenterList } from './components/vaccination-page/CenterList';
 import { CalculateInputArea } from './components/growth-diary-page/CalculateInputArea';
 
 // import GrowthDiary from "./components/GrowthDiary";
-import '../src/styles/commons/Reset.module.scss';
+
+
 export interface UserData {
     userid: number;
     username: string;
