@@ -40,9 +40,9 @@ export default function GrowthDiary() {
 
   return (
     <div className={layout.background}>
-      {openLoginModal && (
+      {/* {openLoginModal && (
         <NeedLoginModal modalState={() => setOpenLoginModal(false)} />
-      )}
+      )} */}
 
       <div className={layout.title_wrap}>
         <div className={styles.title_container}>
