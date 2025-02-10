@@ -10,7 +10,7 @@ import styles from '../styles/GrowthDiary.module.scss';
 import { useEffect, useState } from 'react';
 import { useGrowData } from '../components/growth-diary-page/hooks/useGrowData';
 import { RecentGrowthRecord } from '../components/growth-diary-page/RecentGrowthRecord';
-import { NeedLoginModal } from '../components/my-page/NeedLoginModal';
+import { NeedLoginModal } from '../components/My-page/NeedLoginModal';
 
 export default function GrowthDiary() {
     const [openCalModal, setOpenCalModal] = useState<boolean>(false);

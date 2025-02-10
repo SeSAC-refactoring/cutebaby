@@ -9,7 +9,7 @@ import { BabyList } from '../components/commons/BabyList';
 import { useSelectBaby } from '../hooks/useSelectBaby';
 import { useVaccinationData } from '../components/vaccination-page/hooks/useVaccinationData';
 import { VaccineInfo } from '../components/vaccination-page/VaccineInfo';
-import { NeedLoginModal } from '../components/my-page/NeedLoginModal';
+import { NeedLoginModal } from '../components/My-page/NeedLoginModal';
 
 export default function Vaccination() {
     const dispatch = useDispatch<AppDispatch>();

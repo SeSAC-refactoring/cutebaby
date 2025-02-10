@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { MypageBabyList } from "../components/my-page/MypageBabyList";
+import { MypageBabyList } from "../components/My-page/MypageBabyList";
 import styles from "../styles/Mypage.module.scss";
-import { NeedLoginModal } from "../components/my-page/NeedLoginModal"; // 모달 import
+import { NeedLoginModal } from "../components/My-page/NeedLoginModal"; // 모달 import
 import axios from "axios";
 import { log } from "console";
 import { babyinfo } from "../components/types";
