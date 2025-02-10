@@ -24,6 +24,7 @@ export interface newGrowData {
     weight: number | string;
     head: number | stirng;
     inputData: string;
+    
 }
 
 //////////////////////////////////////////////////////
