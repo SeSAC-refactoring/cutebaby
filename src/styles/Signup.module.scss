@@ -7,7 +7,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 1280px;
+  justify-content: center;
+  width: 709px;
   border: 2px solid #838391;
   padding: 80px;
   border-radius: 40px;
@@ -18,23 +19,27 @@
   font-weight: bold;
   width: 100%;
   margin-bottom: 8px;
-}
-
-.sub_title {
-  color: #9999a5;
-  font-size: 24px;
-  font-weight: bold;
-  width: 100%;
-  margin-bottom: 48px;
+  text-align: center;
 }
 
 .input_set {
   margin-top: 30px;
   display: flex;
-  flex-direction: row;
-  width: 464px;
+  flex-direction: column;
+  width: 100%;
+  // align-items: center;
+  // margin: 76px 40px 20px 40px;
+}
+.error {
+  color: red;
+}
+.check_input_set {
+  margin-top: 30px;
+  display: flex;
+  width: 100%;
   align-items: center;
-  margin: 76px 40px 20px 40px;
+  justify-content: space-between;
+  // margin: 76px 40px 20px 40px;
 }
 
 .a {
@@ -76,21 +81,30 @@
 ////////////////////////////////////////////////
 /// 버튼 컴포넌트 만들 부분?
 
+.check_button_container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
 .check_button {
   border: none;
-  width: 69px;
-  height: 40px;
-  position: relative;
-  right: 90px;
-  top: 6px;
-  background-color: #f6d9a7;
-  border-radius: 10px;
+  width: 125px;
+  height: 64px;
+  font-size: 22px;
+  font-weight: bold;
+  background-color: #bbdeeb;
+  border-radius: 16px;
+}
+.button_set {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 .button_container {
   display: flex;
   justify-content: center;
-  margin-top: 80px;
-  width: 100%;
+  margin-top: 50px;
+  width: 480px;
 }
 
 .btn {
@@ -117,27 +131,18 @@
 ////////////////////////////////////////////////
 
 .input_button_container {
-  width: 85%;
-  height: 100%;
-  // position: relative;
+  width: 100%;
   display: flex;
-}
-
-.input_button_container button {
-  position: absolute;
-  top: 50px;
-  bottom: 0px;
-  right: 0px;
-  height: 20px;
-  border-radius: 15px;
-  width: 100px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .input_container {
+  width: 480px;
   display: flex;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
-  background-color: #fef9f1;
+  // background-color: #fef9f1;
   border-radius: 32px;
-  padding-bottom: 110px;
 }

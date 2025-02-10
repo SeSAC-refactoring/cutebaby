@@ -24,6 +24,7 @@ import { CalculateInputArea } from "./components/growth-diary-page/CalculateInpu
 
 // import GrowthDiary from "./components/GrowthDiary";
 import "../src/styles/commons/Reset.module.scss";
+import VaccinationModal from "./components/vaccination-page/VaccinationModal";
 export interface UserData {
   userid: number;
   username: string;
