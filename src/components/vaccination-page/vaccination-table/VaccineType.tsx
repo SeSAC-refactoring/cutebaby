@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
-import VaccinationModal from '../VaccinationModal';
+import { VaccinationModal } from '../VaccinationModal';
+import { VaccinationData } from '../../types';
 
-export const VaccineType: React.FC = () => {
+interface VaccineTypeProps {
+    selectedBabyId: number;
+}
+
+export const VaccineType: React.FC<VaccineTypeProps> = ({ selectedBabyId }) => {
     const vaccines = [
         'HepB',
         'BCG(피내용)',
@@ -23,6 +28,13 @@ export const VaccineType: React.FC = () => {
     ];
 
     const [isOpen, setIsOpen] = useState(false);
+    const [newVaccinationData, setNewVaccinationData] =
+        useState<VaccinationData>({
+            babyid: selectedBabyId,
+            vaccinationid: null,
+            dosenumber: null,
+            dosedate: null,
+        });
 
     return (
         <div>
@@ -59,6 +71,9 @@ export const VaccineType: React.FC = () => {
                             borderRight: '3px solid #E1E1E5',
                             boxSizing: 'border-box',
                         }}
+                        onClick={() => {
+                            setIsOpen(true);
+                        }}
                     >
                         <span>{vaccine} </span>
                         <span style={{ fontSize: '10px', color: 'red' }}>
@@ -86,7 +101,12 @@ export const VaccineType: React.FC = () => {
                     </li>
                 ))}
             </ul>
-            {isOpen && <VaccinationModal setIsOpen={setIsOpen} />}
+            {isOpen && (
+                <VaccinationModal
+                    setIsOpen={setIsOpen}
+                    setNewVaccinationData={setNewVaccinationData}
+                />
+            )}
         </div>
     );
 };

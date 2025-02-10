@@ -6,11 +6,10 @@ import styles from '../../../styles/Vaccination.module.scss';
 interface VaccinationScheduleProps {
     selectedBabyVaccinationData: VaccinationData[];
 }
+
 export const VaccinationSchedule: React.FC<VaccinationScheduleProps> = ({
     selectedBabyVaccinationData,
 }) => {
-    console.log('styles object:', styles);
-
     return (
         <>
             <div
@@ -22,11 +21,40 @@ export const VaccinationSchedule: React.FC<VaccinationScheduleProps> = ({
             >
                 {vaccinationScheduleData.flat().map((data, i) => {
                     // flat()을 사용해 2차원 배열을 1차원 배열로 변환
-                    const matchedVaccine = selectedBabyVaccinationData.find(
+
+                    // selectedBabyVaccinationData에 일치하는 데이터 있는지 찾기
+                    let matchedVaccine = selectedBabyVaccinationData.find(
                         (item) =>
                             item.vaccinationid === data.vaccinationid &&
                             item.dosenumber === data.dosenumber
                     );
+
+                    // 벡신 1~2차 로 되어있는 칸일 경우 // vaccinationid(13, 14, 16) && dosenumber === 0일 경우
+                    // data.vaccinationid ===  13 || 14 ||16 이고 data.dosenumber === 0 인 항목은
+                    // data.vaccinationid === item.vaccinationid 일 떄, item.dosenumber가 1인 것만 있으면 1이 있는 항목으로 반환하고,
+                    // item.dosenumber가 2인 것이 있으면 2가 있는 걸로 반환
+                    if (
+                        data.vaccinationid &&
+                        [13, 14, 16].includes(data.vaccinationid) &&
+                        data.dosenumber === 0
+                    ) {
+                        const vaccine1 = selectedBabyVaccinationData.find(
+                            (item) =>
+                                item.vaccinationid === data.vaccinationid &&
+                                item.dosenumber === 1
+                        );
+                        const vaccine2 = selectedBabyVaccinationData.find(
+                            (item) =>
+                                item.vaccinationid === data.vaccinationid &&
+                                item.dosenumber === 2
+                        );
+
+                        if (vaccine2) {
+                            matchedVaccine = vaccine2; // dosenumber가 2이면 반환
+                        } else if (vaccine1) {
+                            matchedVaccine = vaccine1; // dosenumber가 1이면 반환
+                        }
+                    }
 
                     return (
                         <div
@@ -46,7 +74,7 @@ export const VaccinationSchedule: React.FC<VaccinationScheduleProps> = ({
                                         [13, 14, 16].includes(
                                             data.vaccinationid
                                         ) &&
-                                        data.dosenumber === 1
+                                        matchedVaccine.dosenumber === 1
                                           ? styles.onlyFirst
                                           : styles.completed
                                       : data.vaccinationid === 8

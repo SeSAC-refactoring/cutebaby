@@ -19,21 +19,20 @@ export interface BabyState {
 // # 서버에서 가져온 아기의 성장기록 정보
 export interface newGrowData {
     babyid: number | null;
-    id : number;
+    id: number;
     height: number | string;
     weight: number | string;
     head: number | stirng;
     inputData: string;
-    
 }
 
 //////////////////////////////////////////////////////
 // # 서버에서 가져온 백신 정보
 export interface VaccinationData {
     babyid: number;
-    vaccinationid: number;
-    dosenumber: number;
-    dosedate: string;
+    vaccinationid: number | null;
+    dosenumber: number | null;
+    dosedate: string | null;
 }
 
 ////////////////////////////////////////////////////////////////////////////

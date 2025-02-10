@@ -8,10 +8,12 @@ import { VaccinationData } from '../../types';
 
 interface VaccinationTableProps {
     selectedBabyVaccinationData: VaccinationData[];
+    selectedBabyId: number;
 }
 
 export const VaccinationTable: React.FC<VaccinationTableProps> = ({
     selectedBabyVaccinationData,
+    selectedBabyId,
 }) => {
     return (
         <div
@@ -29,7 +31,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                 }}
             >
                 <Disease />
-                <VaccineType />
+                <VaccineType selectedBabyId={selectedBabyId} />
                 <TotalDoses />
                 <div>
                     <DoseDate />
@@ -37,6 +39,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                         selectedBabyVaccinationData={
                             selectedBabyVaccinationData
                         }
+                        selectedBabyId={selectedBabyId}
                     />
                 </div>
             </div>
