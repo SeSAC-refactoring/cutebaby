@@ -41,6 +41,7 @@ function App() {
         <>
             <Header></Header>
             <Routes>
+                <Route path='/' element={<SelectLogin/>}></Route>
                 <Route path="/oauth/callback/kakao" element={<KakaoLogin />} />
                 <Route path="/GrowthDiary" element={<GrowthDiary />} />
                 <Route path="/Home" element={<Home />} />

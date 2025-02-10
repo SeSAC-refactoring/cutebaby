@@ -11,10 +11,13 @@ export default function SelectLogin() {
       <div className={styles.login_background}>
         <div className={styles.title}>로그인</div>
         <img className={styles.login_img} src="/img/login.png" />
+        
+        <Link to="/Login">
         <button className={`${styles.btn} ${styles.email_btn}`}>
           <img src="/img/mail-03.png"></img>
           이메일로 로그인하기
         </button>
+        </Link>
         <a href={getKakaoLoginUrl()} style={{ textDecorationLine: "none" }}>
           <button className={`${styles.btn} ${styles.kakao_btn}`}>
             <img src="/img/kakao.png"></img>

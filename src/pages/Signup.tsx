@@ -283,9 +283,11 @@ const Signup: React.FC = () => {
 
           {/* <button className={styles.button} onClick={handleSubmit}></button> */}
           <div className={styles.button_container}>
+            <Link to="/" className={`${styles.btn} ${styles.cancel_button}`}>
             <button className={`${styles.btn} ${styles.cancel_button}`}>
               취소
             </button>
+            </Link>
             <button
               className={`${styles.btn} ${styles.done_button}`}
               type="submit"
