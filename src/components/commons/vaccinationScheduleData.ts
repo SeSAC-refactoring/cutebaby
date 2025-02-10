@@ -1,6 +1,6 @@
-import React from 'react';
+import { VaccinationScheduleData } from '../types';
 
-export const vaccinationScheduleData = [
+export const vaccinationScheduleData: VaccinationScheduleData[][] = [
     [
         { text: 'HepB 1차', vaccinationid: 1, dosenumber: 1, colSpan: 1 },
         {},

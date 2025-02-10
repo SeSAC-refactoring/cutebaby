@@ -4,7 +4,9 @@ import { Message } from '../../types';
 import { fetchGemini } from '../fetchChatGPT';
 
 export const useChatbot = () => {
-    const [messages, setMessages] = useState<Message[]>([]);
+    const [messages, setMessages] = useState<Message[]>([
+        { role: 'assistant', content: '무엇이 궁금하신가요?' },
+    ]);
     const { isLoading, startLoading, stopLoading } = useLoading(); // 커스텀 훅 사용
 
     const handleSendMessage = useCallback(

@@ -1,4 +1,41 @@
 ////////////////////////////////////////////////////////////////////////////
+// # 서버에서 가져온 아기 정보
+export interface babyinfo {
+    babyid: number;
+    babyname: string;
+    birthday: string;
+    gender: string;
+    picture: null | File;
+}
+
+export interface BabyState {
+    babyInfo: babyinfo[];
+    nothingBaby: boolean;
+    loading: boolean;
+    error: string | null;
+}
+
+//////////////////////////////////////////////////////
+// # 서버에서 가져온 아기의 성장기록 정보
+export interface newGrowData {
+    babyid: number | null;
+    id : number;
+    height: number | string;
+    weight: number | string;
+    head: number | stirng;
+    inputData: string;
+}
+
+//////////////////////////////////////////////////////
+// # 서버에서 가져온 백신 정보
+export interface VaccinationData {
+    babyid: number;
+    vaccinationid: number;
+    dosenumber: number;
+    dosedate: string;
+}
+
+////////////////////////////////////////////////////////////////////////////
 // # 성장상태 측정계산기
 export interface ChildData {
     gender: 'male' | 'female' | null;
@@ -37,40 +74,13 @@ export interface Percentiles {
     headCircumference: number | null;
 }
 
-////////////////////////////////////////////////////////////////////////////
-// # 서버에서 가져온 아기 정보
-export interface babyinfo {
-    babyid: number;
-    babyname: string;
-    birthday: string;
-    gender: string;
-    picture: null | File;
-}
-
-export interface BabyState {
-    babyInfo: babyinfo[];
-    nothingBaby: boolean;
-    loading: boolean;
-    error: string | null;
-}
-
 //////////////////////////////////////////////////////
-// # 서버에서 가져온 아기의 성장기록 정보
-export interface newGrowData {
-    babyid: number | null;
-    height: number | string;
-    weight: number | string;
-    head: number | stirng;
-    inputData: string;
-}
-
-//////////////////////////////////////////////////////
-// # 서버에서 가져온 백신 정보
-export interface VaccinationData {
-    babyid: number;
-    vaccinationid: number;
-    dosenumber: number;
-    dosedate: string;
+// # 예방접종 스케쥴 정보
+export interface VaccinationScheduleData {
+    text?: string;
+    vaccinationid?: number;
+    dosenumber?: number;
+    colSpan?: number;
 }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -114,7 +124,7 @@ export interface SelectedLocation {
 }
 
 ////////////////////////////////////////////////////////////////////////////
-// # 챗봇 기능
+// # 홈의 챗봇 기능
 export interface Message {
     role: 'user' | 'assistant';
     content: string;

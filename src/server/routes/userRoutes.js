@@ -9,6 +9,8 @@ import { babygrow } from '../controller/babygrow.js';
 import { getVaccination } from '../controller/vaccinationController.js';
 import { newgrow } from '../controller/newgrow.js';
 import { babycreate } from '../controller/babycreate.js';
+import { delgrow } from '../controller/delgrow.js';
+import { delbaby } from '../controller/delbaby.js';
 
 const router = express.Router();
 
@@ -34,7 +36,10 @@ router.post('/emailCheck', emailCheck);
 router.post('/babyinfo', babyinfo);
 router.post('/babygrow', babygrow);
 router.post('/newgrow' , newgrow);
+router.post('/delgrow',delgrow);
 router.post('/babycreate',babycreate);
+router.post('/delbaby', delbaby);
+
 
 // babyid를 기반으로 예방접종 데이터 가져오기
 router.post('/vaccination', getVaccination);
