@@ -39,6 +39,7 @@ router.post('/newgrow' , newgrow);
 router.post('/delgrow',delgrow);
 router.post('/babycreate',babycreate);
 router.post('/delbaby', delbaby);
+router.post('/rewritegrow')
 
 
 // babyid를 기반으로 예방접종 데이터 가져오기
