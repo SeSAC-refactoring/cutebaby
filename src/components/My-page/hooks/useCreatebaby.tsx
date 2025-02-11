@@ -17,9 +17,7 @@ export const useCreatebaby = () => {
 
       if (data.picture instanceof File) {
         formData.append("picture", data.picture);
-      } else {
-        throw new Error("이미지가 업로드되지 않았습니다.");
-      }
+      } 
 
       console.log("📦 전송할 FormData:", formData); //FormData 확인
 

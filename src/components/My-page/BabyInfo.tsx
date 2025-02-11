@@ -1,55 +1,85 @@
-import React, { useEffect, useState } from 'react';
-import styles from '../../styles/Mypage.module.scss';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
-import { useSelectBaby } from '../../hooks/useSelectBaby';
+import React, { useEffect, useState } from "react";
+import styles from "../../styles/Mypage.module.scss";
+import { babyinfo } from "../types";
+import { UpdateBaby } from "./UpdateBaby";
 
-export const BabyInfo: React.FC = () => {
-    // Redux에서 babyInfo 가져오기
-    const { babyInfo } = useSelector((state: RootState) => state.baby);
+interface BabyInputProps {
+  babyInfo: babyinfo[];
+  handleSelectBaby: number | null;
+}
 
-    const { selectedBabyId } = useSelectBaby(babyInfo);
+export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo, handleSelectBaby }) => {
+  const [selectedBaby, setSelectedBaby] = useState<{
+    babyid: number;
+    babyname: string;
+    gender: string;
+    birthday: string;
+    picture: string | null;
+  }>({
+    babyid: 0,
+    babyname: "",
+    gender: "",
+    birthday: "",
+    picture: null,
+  });
 
-    const [selectedBaby, setSelectedBaby] = useState(() =>
-        babyInfo.find((baby) => Number(baby.babyid) === Number(selectedBabyId)) || null
-    );
-useEffect(()=>{
+  const [updateBaby, setUpdateBaby] = useState<boolean>(false);
+  const update = () => {
+    setUpdateBaby(true);
+  };
 
-})
-    const [session , setsession] = useState(
-        sessionStorage.getItem('selectedBabyId')
-    )
+  useEffect(() => {
+    const filterbaby = babyInfo.find((baby) => baby.babyid === handleSelectBaby);
+    console.log('filterbaby>>',filterbaby?.picture)
+    if (filterbaby!= null) {
+      let pictureUrl: string | null = null;
 
-    useEffect(() => {
-        
+      if (filterbaby.picture instanceof File) {
+        // File 객체이면 URL 생성
+        pictureUrl = URL.createObjectURL(filterbaby.picture);
 
-        const baby = babyInfo.find((baby) => Number(baby.babyid) === Number(selectedBabyId)) || null;
-        setSelectedBaby(baby);
+      } else if (typeof filterbaby.picture === "string") {
+        // 기존 URL이면 그대로 사용
+        pictureUrl = filterbaby.picture;
+        console.log('>>',pictureUrl)
 
-    }, [selectedBabyId, session]);
+      }
 
-    // 선택된 아기가 없을 경우
-    if (!selectedBaby) {
-        return <div className={styles.info_box}>선택된 아기 정보가 없습니다.</div>;
+      setSelectedBaby({
+        babyid: filterbaby.babyid,
+        babyname: filterbaby.babyname,
+        gender: filterbaby.gender,
+        birthday: filterbaby.birthday,
+        picture: pictureUrl,
+      });
     }
+  }, [handleSelectBaby, babyInfo]);
 
-    return (
-        <>
-            <div className={styles.info_box}>
-                <div className={styles.info_title}>아이 정보보기</div>
-                <div className={styles.info_content}>
-                    <div className={styles.info_a}>이름</div>
-                    <div className={styles.info_b}>{selectedBaby.babyname}</div>
-                </div>
-                <div className={styles.info_content}>
-                    <div className={styles.info_a}>성별</div>
-                    <div className={styles.info_b}>{selectedBaby.gender === 'boy' ? '남아' : '여아'}</div>
-                </div>
-                <div>
-                    {/* <img src={selectedBaby.picture} alt="" /> */}
-                </div>
-            </div>
-            <button className={styles.edit_btn}>수정</button>
-        </>
-    );
+  return (
+    <>
+      <div className={styles.info_box}>
+        {updateBaby && <UpdateBaby selectedBaby={selectedBaby} onClose={() => setUpdateBaby(false)} />}
+
+        <div className={styles.info_title}>아이 정보보기</div>
+        <div className={styles.info_content}>
+          <div className={styles.info_a}>이름</div>
+          <div className={styles.info_b}>{selectedBaby.babyname}</div>
+        </div>
+        <div className={styles.info_content}>
+          <div className={styles.info_a}>성별</div>
+          <div className={styles.info_b}>{selectedBaby.gender === "boy" ? "남아" : "여아"}</div>
+        </div>
+        <div>
+          {selectedBaby.picture ? (
+            <img src={selectedBaby.picture} alt="아기 사진" />
+          ) : (
+            <p>사진이 없습니다.</p>
+          )}
+        </div>
+      </div>
+      <button className={styles.edit_btn} onClick={update}>
+        수정
+      </button>
+    </>
+  );
 };
