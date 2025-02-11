@@ -34,12 +34,17 @@ export default function Home() {
   // console.log('로그인성공시 babygrow 불러옴', growInfo);
   // console.log('로그인성공시 babyinfo불러옴', babyInfo);
 
+  const userString = sessionStorage.getItem('user');
+  const user = userString ? JSON.parse(userString) : null;
+  const username = user?.username ?? '방문자님';
+  
+
   return (
     <div className={layout.container}>
       <div className={`${styles.contentsArea}`}>
         <div className={styles.userArea}>
           <div className={styles.userGreeting}>
-            <strong className={styles.user}>땡땡이</strong>님,
+            <strong className={styles.user}>{username}</strong>님,
             <br />
             안녕하세요
           </div>

@@ -25,16 +25,19 @@ export default function Mypage() {
   const { babyInfo, nothingBaby, loading, error } = useSelector(
     (state: RootState) => state.baby
   );
-  const user = sessionStorage.getItem("user");
+  const userString = sessionStorage.getItem('user');
+  const user = userString ? JSON.parse(userString) : null;
+  const username = user?.username ?? '방문자님';
+  
 
   // 세션 확인 및 데이터 요청
-  useEffect(() => {
-    if (!user) {
-      setOpenModal(true);
-    } else {
-      dispatch(fetchBabyInfo());
-    }
-  }, [dispatch, user]);
+  // useEffect(() => {
+  //   if (!user) {
+  //     setOpenModal(true);
+  //   } else {
+  //     dispatch(fetchBabyInfo());
+  //   }
+  // }, [dispatch, user]);
 
   return (
     <div className={styles.wrap}>
@@ -52,11 +55,11 @@ export default function Mypage() {
             <div className={styles.info_detail_wrap}>
               <div className={styles.detail_set}>
                 <label className={styles.info_label}>이름</label>
-                <div className={styles.name}>김보호자</div>
+                <div className={styles.name}>{username}</div>
               </div>
               <div className={styles.detail_set}>
                 <label className={styles.info_label}>이메일</label>
-                <div className={styles.name}>gmail@gmail.com</div>
+                <div className={styles.name}>{user.userid}</div>
               </div>
               <button className={styles.edit_btn}>
                 비밀번호 수정{" "}
