@@ -10,8 +10,17 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 80px;
+  // align-items: center;
+  border-radius: 40px;
+  background-color: #ffffff;
+  border: 2px solid #838391;
+  margin: auto;
+}
+
   align-items: center;
   overflow-y: scroll;
+
 
   .contentsArea {
     flex-grow: 1;

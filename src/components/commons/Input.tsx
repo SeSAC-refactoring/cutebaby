@@ -4,10 +4,10 @@ import typography from "../../styles/commons/Typography.module.scss";
 import styles from "../../styles/commons/Input.module.scss";
 
 interface InputProps {
-  type: string;
+  type?: string;
   name?: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   label?: string;
 }
