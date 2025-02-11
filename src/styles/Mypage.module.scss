@@ -5,7 +5,7 @@
 .image_box {
   width: 200px;
   height: 200px;
-  background-color:lightcyan;
+  background-color: lightcyan;
   position: relative;
   top: 180px;
   right: 50px;
@@ -20,9 +20,47 @@
 .background {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   padding-top: 30px;
-  align-items: center;
+}
+.user_info_wrap {
+  width: 1120px;
+  height: 212px;
+  background-color: #fef9f1;
+  border-radius: 32px;
+  margin-top: 48px;
+  padding: 48px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.info_detail_wrap {
+  display: flex;
+  justify-content: space-between;
+}
+.info_label {
+  font-size: 18px;
+  // font-weight: bold;
+}
+.name {
+  margin-top: 8px;
+  font-size: 24px;
+  font-weight: bold;
+}
+.edit_btn {
+  width: 181px;
+  height: 56px;
+  border: none;
+  background-color: #f6d9a7;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 16px;
+}
+.detail_set {
+  height: 56px;
+}
+.info_title {
+  font-size: 24px;
+  font-weight: bold;
 }
 .title {
   font-size: 30px;
@@ -74,9 +112,67 @@
 }
 .info_b {
 }
-.edit_btn {
-  background-color: rgb(208, 206, 206);
-  margin-top: 20px;
-  width: 60px;
-  border: none;
+// .edit_btn {
+//   background-color: rgb(208, 206, 206);
+//   margin-top: 20px;
+//   width: 60px;
+//   border: none;
+// }
+.babyInfo_background {
+  width: 1120px;
+  height: 436px;
+  background-color: #fef9f1;
+  border-radius: 32px;
+  margin-top: 48px;
+  padding: 48px 56px;
+  display: flex;
+  flex-direction: column;
+}
+.babyInfo_contents_wrap {
+  display: flex;
+  justify-content: space-between;
+}
+.babyList_wrap {
+  width: 166px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.babyInfo_wrap {
+  padding: 40px;
+  width: 794px;
+  height: 280px;
+  display: flex;
+  justify-content: space-between;
+}
+.babyInfo_detail_wrap {
+  width: 458px;
+  display: flex;
+  flex-direction: column;
+}
+.babyInfo_btn_wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.babyInfo_edit_btn {
+  width: 107px;
+  height: 56px;
+  background-color: #f6d9a7;
+  border-radius: 16px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.baby_add_btn {
+  width: 166px;
+  height: 64px;
+  border-radius: 16px;
+  background-color: #bbdeeb;
+  font-size: 22px;
+  font-weight: bold;
+}
+.img {
+  margin-left: 8px;
 }

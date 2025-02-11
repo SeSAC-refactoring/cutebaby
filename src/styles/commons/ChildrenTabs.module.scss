@@ -36,6 +36,12 @@
   height: 100%;
   border-radius: 32px;
 }
+.column_button_group_small {
+  flex-direction: column;
+  width: 166px;
+  height: 192px;
+  border-radius: 32px;
+}
 .column_button_selected {
   // flex-grow: 1;
   font-size: 22px;

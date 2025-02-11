@@ -56,7 +56,7 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
           width: "1160px",
           // height: "1148px",
           position: "absolute",
-          top: "30%",
+          top: "10%",
           left: "20%",
           border: "2px solid #838391",
           borderRadius: "40px",
