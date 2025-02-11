@@ -11,9 +11,9 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
-import { calculateChartOptions } from './calculateChartOptions';
 import { createChartData } from './createChartData';
 import { getP97P3Value } from './getP97P3Value';
+import { calculateChartOptions } from './calculateChartOptions';
 
 // Chart.js에 필요한 모듈
 ChartJS.register(
@@ -50,6 +50,11 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
     )
         return <p>데이터가 부족합니다.</p>;
 
+    console.log('filteredLmsDataByGender', filteredLmsDataByGender);
+    console.log('filteredLmsDataByMonths', filteredLmsDataByMonths);
+    console.log('percentileData', percentileData);
+    console.log('percentiles', percentiles);
+
     let p97Height: { x: number; y: number }[] = [];
     let p3Height: { x: number; y: number }[] = [];
     let p97Weight: { x: number; y: number }[] = [];
@@ -85,13 +90,18 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
     // 아이의 현재 데이터 (childData의 months를 X축 값으로 사용)
     const currentChildHeight = childData.height
         ? [{ x: childData.months, y: childData.height }]
-        : [];
+        : [null];
     const currentChildWeight = childData.weight
         ? [{ x: childData.months, y: childData.weight }]
-        : [];
+        : [null];
     const currentChildHeadCircumference = childData.headCircumference
         ? [{ x: childData.months, y: childData.headCircumference }]
-        : [];
+        : [null];
+
+    // chartOptions
+    const heightChartOptions = calculateChartOptions('신장 (cm)'); // 키 차트
+    const weightChartOptions = calculateChartOptions('몸무게 (kg)'); // 몸무게 차트
+    const headChartOptions = calculateChartOptions('머리둘레 (cm)'); // 머리둘레 차트
 
     return (
         <div>
@@ -206,7 +216,7 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
                                 currentChildHeight,
                                 '키'
                             )}
-                            options={calculateChartOptions}
+                            options={heightChartOptions}
                         />
                     </div>
                 )}
@@ -314,7 +324,7 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
                                 currentChildWeight,
                                 '몸무게'
                             )}
-                            options={calculateChartOptions}
+                            options={weightChartOptions}
                         />
                     </div>
                 )}
@@ -422,7 +432,7 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
                                 currentChildHeadCircumference,
                                 '머리둘레'
                             )}
-                            options={calculateChartOptions}
+                            options={headChartOptions}
                         />
                     </div>
                 )}

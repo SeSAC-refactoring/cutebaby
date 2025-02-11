@@ -51,11 +51,13 @@ export const MypageBabyList: React.FC<BabyInputProps> = ({
       {/* {babyPlus ? (
                 <BabyInputPlus babyInfo={babyInfo} nothingBaby={nothingBaby} />
             ) : nothingBaby ? (
-                <BabyInfo />
+
+                <BabyInfo babyInfo={babyInfo} handleSelectBaby={selectedBabyId}/>
             ) : (
                 <NothingBaby />
             )} */}
       <button className={styles.baby_add_btn}>아이 등록 +</button>
     </>
   );
+
 };

@@ -3,7 +3,7 @@ import styles from "../../styles/Mypage.module.scss";
 import layout from "../../styles/commons/Layout.module.scss";
 import { babyinfo } from "../types";
 import { useCreatebaby } from "./hooks/useCreatebaby";
-import { ImageUploader } from "./ImageUploader"; // ✅ 새 컴포넌트 임포트
+import { ImageUploader } from "./ImageUploader";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
 import { fetchBabyInfo } from "../../store/babySlice";
@@ -43,10 +43,7 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby }) => {
     } else if (!newBabyData.gender) {
       alert("아이의 성별을 입력해주세요");
       return;
-    } else if (!newBabyData.picture) {
-      alert("아이 사진을 입력해주세요");
-      return;
-    }
+    } 
 
     try {
       await request({

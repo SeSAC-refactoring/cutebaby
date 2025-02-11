@@ -1,148 +1,40 @@
-.container {
-  display: flex;
-  justify-content: center;
-}
+@import "./commons/Colors.module.scss";
 
-.background {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 709px;
-  border: 2px solid #838391;
-  padding: 80px;
-  border-radius: 40px;
-  background-color: #ffffff;
-}
-.title {
-  font-size: 40px;
-  font-weight: bold;
-  width: 100%;
-  margin-bottom: 8px;
-  text-align: center;
-}
+.contentsArea {
+  max-width: 640px;
+  gap: 56px;
 
-.input_set {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  // align-items: center;
-  // margin: 76px 40px 20px 40px;
-}
-.error {
-  color: red;
-}
-.check_input_set {
-  margin-top: 30px;
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  // margin: 76px 40px 20px 40px;
-}
+  .contentsWrap {
+    gap: 24px;
 
-.a {
-  font-size: 16px;
-}
-.input {
-  height: 50px;
-}
-.gray_text {
-  color: rgb(176, 167, 167);
-  width: 600px;
-  margin-top: 30px;
-}
-.checkBox {
-  background-color: rgb(213, 206, 206);
-  width: 600px;
-  height: 600px;
-  display: flex;
-  flex-direction: column;
-  padding: 30px;
-}
-.checkBox_row {
-  display: flex;
-  justify-content: space-around;
-}
-.checkBox_unit {
-  font-size: 25px;
-  width: 30%;
-  text-align: center;
-}
-.button {
-  width: 250px;
-  background-color: rgb(213, 206, 206);
-  border: none;
-  height: 40px;
-  margin: 50px 0px;
-}
+    
+    .formWrapEmail {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      
+      .mailWrap {
+        display: flex;
+        align-items: end;
+        gap: 16px;
+      }
+    }
 
-////////////////////////////////////////////////
-/// 버튼 컴포넌트 만들 부분?
+    .error {
+      // position: absolute;
+      color: $color-red-6;
+    }
+  
+    
+  }
+  .buttonArea {
+    gap: 16px;
 
-.check_button_container {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-.check_button {
-  border: none;
-  width: 125px;
-  height: 64px;
-  font-size: 22px;
-  font-weight: bold;
-  background-color: #bbdeeb;
-  border-radius: 16px;
-}
-.button_set {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.button_container {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-  width: 480px;
-}
-
-.btn {
-  width: 208px;
-  height: 80px;
-  font-size: 24px;
-  font-weight: bold;
-  border: none;
-  border-radius: 20px;
-}
-
-.cancel_button {
-  background-color: #f6d9a7;
-  margin-right: 16px;
-  width: 100%;
-}
-
-.done_button {
-  background-color: #3b3b41;
-  color: #ffffff;
-  width: 100%;
-}
-
-////////////////////////////////////////////////
-
-.input_button_container {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.input_container {
-  width: 480px;
-  display: flex;
-  // flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  // background-color: #fef9f1;
-  border-radius: 32px;
+    a {
+      display: block;
+      width: 100%;
+    }
+  }
+  
 }

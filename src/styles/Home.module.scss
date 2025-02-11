@@ -1,11 +1,23 @@
-.background {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    padding: 50px;
-    gap: 24px;
-    background-color: #FFF8F5;
-    min-height: 100vh;
+@import "./commons/Colors.module.scss";
+
+// .contentsArea {
+//   width: 100%;
+//   flex-grow: 1;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   gap: 48px;
+
+//   .userArea {
+//     flex-grow: 1;
+//     height: 100%;
+//     display: flex;
+//     flex-direction: row;
+//     width: 100%;
+//     padding: 50px;
+//     gap: 24px;
+//     background-color: #FFF8F5;
+//     min-height: 100vh;
 
     .block_user {
         flex: 1;
@@ -336,4 +348,4 @@
             }
         }
     }
-}
+

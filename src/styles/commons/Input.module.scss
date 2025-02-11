@@ -1,57 +1,106 @@
-.input {
-  color: #3b3b41;
-  // width: 392px;
-  // width: 432px;
-  // width: 500px;
-  width: 480px;
-  height: 64px;
-  background-color: #fef9f1;
-  border-radius: 16px;
-  outline: none;
-  padding-left: 24px;
-  font-size: 22px;
-  // margin-bottom: 24px;
-}
-.input_signup {
-  color: #3b3b41;
-  // width: 392px;
-  // width: 432px;
-  // width: 500px;
-  width: 331px;
-  height: 64px;
-  background-color: #fef9f1;
-  border-radius: 16px;
-  outline: none;
-  padding-left: 24px;
-  font-size: 22px;
-  margin-bottom: 24px;
+
+@import "../commons/Colors.module.scss";
+
+
+.inputWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
 }
 
-.input_default {
-  border: 2px solid #838391;
+label {
+  width: 100%;
+  position: relative;
+  color: $color-gray-8;
+  display: flex;
+
+  // 필수입력 표시
+  &::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    margin-left: 4px;
+    background-color: $color-red-5;
+    border-radius: 999px;
+  }
+  
+
 }
 
-.input_default:focus {
-  box-shadow: 0 0 0 5px rgba(66, 116, 235, 0.3);
-  border: 2px solid #968cc5;
+input {
+  width: 100%;
+  height: 64px;
+  background-color: $color-yellow-1;
+  border-radius: 16px;
+  padding-left: 24px;
+  border: 2px solid $color-gray-6;
+
+  &:focus,
+  &:focus-visible {
+    box-shadow: 0px 0px 0px 5px rgba(176, 165, 232, .4);
+    border: 2px solid $color-purple-7;
+  }
+
+  &::placeholder {
+    color: $color-gray-4;
+  }
 }
+
+select:disabled,
+textarea:disabled,
+.input_disabled,
+input[type="text"]:disabled,
+input[type="email"]:disabled {
+  color: $color-gray-4;
+  background-color: $color-gray-1;
+  border-color: $color-gray-1;
+}
+
+// .input_signup {
+// }
 
 .input_error {
   border: 2px solid #fd757d;
 }
 
-.input_disabled {
-  background-color: #f3f3f4;
-  border: none;
-}
+/* 일정 등록 모달 내의 select 스타일링 */
+// .scheduleModal select {
+//   padding: 12px 16px;
+//   appearance: none; /* 기본 디자인 제거 */
+//   background-image: url("../../img/icon-chevron-down.svg");
+//   background-repeat: no-repeat;
+//   background-position: right 16px center;
+// }
 
-.background {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+// input[type="datetime-local"] {
+//   background-image: url("../../img/icon-calendar.svg");
+//   background-repeat: no-repeat;
+//   background-position: right 16px center;
+// }
 
-.label {
-  font-size: 18px;
-  font-weight: bold;
-}
+// input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+//   opacity: 0;
+// }
+
+// select:focus,
+// textarea:focus,
+// input[type="text"]:focus,
+// input[type="datetime-local"]:focus {
+//   border-color: var(--color-blue-50);
+//   outline: 4px solid rgba(92, 149, 255, 0.3);
+// }
+
+// select::placeholder,
+// textarea::placeholder,
+// input[type="text"]::placeholder,
+// input[type="datetime-local"]::placeholder {
+//   color: var(--color-gray-60);
+// }
+
+// select:disabled,
+// textarea:disabled,
+// input:disabled {
+//   color: var(--color-gray-70);
+//   background-image: none;
+// }

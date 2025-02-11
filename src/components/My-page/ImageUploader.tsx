@@ -1,9 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 interface ImageUploaderProps {
   onImageSelect: (file: File | null) => void;
-  resetTrigger: boolean; 
-
+  resetTrigger: boolean;
 }
 
 export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect, resetTrigger }) => {
@@ -11,11 +10,10 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect, res
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
 
-      // ✅ 파일 크기 제한 (2MB 이상 제한)
+      // ✅ 파일 크기 제한 (2MB 이하)
       if (file.size > 2 * 1024 * 1024) {
         alert("파일 크기가 너무 큽니다! 2MB 이하의 이미지를 업로드해주세요.");
         return;
@@ -31,7 +29,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect, res
           const canvas = document.createElement("canvas");
           const ctx = canvas.getContext("2d");
 
-          const targetSize = 100; // ✅ 이미지 크기를 100x100으로 조정
+          const targetSize = 200; // ✅ 이미지 크기 100x100으로 조정
           canvas.width = targetSize;
           canvas.height = targetSize;
 
@@ -41,7 +39,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect, res
             srcHeight = img.height;
 
           if (img.width > img.height) {
-            srcX = (img.width - img.height) / 2; // 중앙 정렬
+            srcX = (img.width - img.height) / 2;
             srcWidth = img.height;
           } else {
             srcY = (img.height - img.width) / 2;
@@ -50,19 +48,24 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect, res
 
           ctx?.drawImage(img, srcX, srcY, srcWidth, srcHeight, 0, 0, targetSize, targetSize);
 
+          // ✅ 원본 파일의 타입을 유지하여 저장
           canvas.toBlob(
             (blob) => {
               if (blob) {
-                const optimizedFile = new File([blob], file.name, { type: "image/webp" });
+                const fileType = file.type; // 원본 파일 타입 유지
+                const fileName = file.name; // 원본 파일명 유지
 
-                setImagePreview(URL.createObjectURL(optimizedFile));
+                const optimizedFile = new File([blob], fileName, { type: fileType });
+
+                // ✅ 미리보기 URL 생성 및 메모리 누수 방지
+                const previewURL = URL.createObjectURL(optimizedFile);
+                setImagePreview(previewURL);
 
                 // ✅ 부모 컴포넌트로 파일 전달
                 onImageSelect(optimizedFile);
-
               }
             },
-            "image/webp",
+            file.type, // 원본 파일 형식 유지
             0.8 // ✅ 압축 품질 (0.0 ~ 1.0)
           );
         };
@@ -70,20 +73,25 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect, res
     }
   };
 
+  // ✅ 이미지 취소 처리
   const handleCancelImage = (e: React.FormEvent) => {
     e.preventDefault();
+    if (imagePreview) {
+      URL.revokeObjectURL(imagePreview); // 메모리 누수 방지
+    }
     setImagePreview(null);
-    onImageSelect(null); // ✅ 부모 컴포넌트로 `null` 전달
-
-    
+    onImageSelect(null);
   };
-  React.useEffect(() => {
+
+  // ✅ 외부에서 resetTrigger가 변경되면 이미지 초기화
+  useEffect(() => {
     if (resetTrigger) {
+      if (imagePreview) {
+        URL.revokeObjectURL(imagePreview); // 메모리 해제
+      }
       setImagePreview(null);
     }
   }, [resetTrigger]);
-
-
 
   return (
     <div>

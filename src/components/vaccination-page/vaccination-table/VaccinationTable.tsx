@@ -16,8 +16,6 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
     selectedBabyVaccinationData,
     selectedBabyId,
 }) => {
-    console.log('selectedBabyVaccinationData', selectedBabyVaccinationData);
-
     // 서버에 있는 데이터와 일치하는 백신 찾기 matchedVaccine
     const matchedVaccineList = vaccinationScheduleData.flat().map((data) => {
         // flat()을 사용해 2차원 배열을 1차원 배열로 변환
@@ -55,12 +53,9 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                 matchedVaccine = vaccine1; // dosenumber가 1이면 반환
             }
         }
-        // console.log('matchedVaccine', matchedVaccine);
 
         return matchedVaccine || null; // 없는 경우 null
     });
-
-    console.log('matchedVaccineList', matchedVaccineList);
 
     return (
         <div>

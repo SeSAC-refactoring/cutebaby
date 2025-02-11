@@ -1,91 +1,28 @@
-.container {
+@import "./commons/Colors.module.scss";
+
+.contentsArea {
+  max-width: 640px;
+  justify-content: space-between;
+  gap: 56px;
+
+  .login_img {
+    width: 100%;
+  }
+
+  .buttonArea {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .link_container {
     display: flex;
     justify-content: center;
+    gap: 8px;
+    color: $color-gray-8;
 
-    .login_background {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        width: 640px;
-        height: 830px;
-        border: 2px solid #838391;
-        padding: 80px;
-        border-radius: 40px;
-        background-color: #ffffff;
-
-        .title {
-            width: 100%;
-            height: 46px;
-            font-size: 40px;
-            font-weight: bold;
-        }
-
-        .img_signup {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 100%;
-            height: 568px;
-
-            .login_img {
-                width: auto;
-                max-width: 100%;
-                height: 264px;
-                object-fit: contain;
-            }
-
-            .signup_gap {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                align-items: center;
-                gap: 48px;
-
-                .btn_gap {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    gap: 16px;
-
-                    .btn {
-                        width: 432px;
-                        height: 80px;
-                        text-align: center;
-                        border: none;
-                        border-radius: 20px;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        font-size: 24px;
-                        font-weight: bold;
-                        gap: 8px;
-                    }
-
-                    .email_btn {
-                        // margin-bottom: 16px;
-                        color: white;
-                        background-color: #3b3b41;
-                    }
-
-                    .kakao_btn {
-                        background-color: #fee500;
-                        // margin-bottom: 32px;
-                    }
-                }
-
-                .link_container {
-                    display: flex;
-                    gap: 8px;
-                    color: #5d5d67;
-                    font-size: 18px;
-
-                    .link {
-                        text-decoration: underline;
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
+    .link {
+      text-decoration: underline;
+      cursor: pointer;
     }
+  }
 }

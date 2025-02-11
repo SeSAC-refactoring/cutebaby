@@ -14,15 +14,22 @@ export const useFetchData = (childData: ChildData, show: boolean) => {
 
     // lms api 가져오기 // childData 변경 시 실행, showChart가 true일 때 실행 // useCallback()으로 최적화
     useEffect(() => {
-        console.log('🔍 useEffect 실행됨!');
-        console.log('🟡 show 상태:', show);
+        console.log('🔍 LMS 데이터를 가져오는 useEffect 실행됨!');
         console.log('🟡 childData:', childData);
 
         const fetchLmsData = async () => {
             if (!show) return; // 계산하기를 안눌렀다면 실행 안함
-            if (!childData.months || !childData.gender) return; // 필수 정보가 없으면 실행 안함
-            startLoading();
+            if (
+                childData.months === null ||
+                childData.months === undefined ||
+                !childData.gender
+            ) {
+                // 필수 정보가 없으면 실행 안함
+                console.warn('필수 정보 부족: months 또는 gender 값 없음');
+                return;
+            }
 
+            startLoading(); // 로딩 시작
             try {
                 const data = await fetchGrowthChartLms();
                 setLmsData(data);
