@@ -1,28 +1,33 @@
 import React, { useState } from 'react';
-import VaccinationModal from '../VaccinationModal';
+import { VaccinationModal } from '../VaccinationModal';
+import { VaccinationData } from '../../types';
+import { doses, vaccinesName } from './VaccinationTableData';
 
-export const VaccineType: React.FC = () => {
-    const vaccines = [
-        'HepB',
-        'BCG(피내용)',
-        'DTaP',
-        'Tdap/Td',
-        'IPV',
-        'Hib',
-        'PCV',
-        'PPSV',
-        'RV1',
-        'RV5',
-        'MMR',
-        'VAR',
-        'HepA',
-        'IJEV\n(불활성화 백신)',
-        'LJEV\n(약독화 생백신)',
-        'HPV',
-        'IIV',
-    ];
+interface VaccineTypeProps {
+    selectedBabyId: number | null;
+}
 
+export const VaccineType: React.FC<VaccineTypeProps> = ({ selectedBabyId }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [newVaccinationData, setNewVaccinationData] =
+        useState<VaccinationData>({
+            babyid: selectedBabyId,
+            vaccinationid: null,
+            dosenumber: null,
+            dosedate: null,
+        });
+
+    const [selectedVaccineId, setSelectedVaccineId] = useState<number | null>(
+        null
+    );
+    const [selectedDoseNumber, setSelectedDoseNumber] = useState<number>(1); // 기본값 1
+    const handleOpenModal = (vaccinationid: number) => {
+        const doseValue = doses[vaccinationid - 1]; // doses 배열에서 해당 백신의 dose 값 가져오기
+        const doseNumber = doseValue === '-' ? 1 : Number(doseValue); // dose 값이 '-'이면 1로 변경
+        setSelectedVaccineId(vaccinationid);
+        setSelectedDoseNumber(doseNumber);
+        setIsOpen(true);
+    };
 
     return (
         <div>
@@ -45,7 +50,7 @@ export const VaccineType: React.FC = () => {
                 백신 종류 및 방법
             </div>
             <ul style={{ listStyle: 'none', padding: '0', margin: '0' }}>
-                {vaccines.map((vaccine, i) => (
+                {vaccinesName.map((vaccine, i) => (
                     <li
                         key={i}
                         style={{
@@ -59,6 +64,7 @@ export const VaccineType: React.FC = () => {
                             borderRight: '3px solid #E1E1E5',
                             boxSizing: 'border-box',
                         }}
+                        onClick={() => handleOpenModal(i + 1)} // 클릭 시 해당 백신의 vaccinationid 저장
                     >
                         <span>{vaccine} </span>
                         <span style={{ fontSize: '10px', color: 'red' }}>
@@ -76,9 +82,6 @@ export const VaccineType: React.FC = () => {
                                 fontWeight: 'bold',
                                 marginBottom: '4px',
                             }}
-                            onClick={() => {
-                                setIsOpen(true);
-                            }}
                         >
                             <img src="img/edit-contained.png"></img>
                             입력
@@ -86,7 +89,16 @@ export const VaccineType: React.FC = () => {
                     </li>
                 ))}
             </ul>
-            {isOpen && <VaccinationModal setIsOpen={setIsOpen} />}
+
+            {/* 선택된 백신이 있을 때만 모달 열기 */}
+            {isOpen && selectedVaccineId !== null && (
+                <VaccinationModal
+                    setIsOpen={setIsOpen}
+                    setNewVaccinationData={setNewVaccinationData}
+                    vaccinationid={selectedVaccineId}
+                    dosenumber={selectedDoseNumber}
+                />
+            )}
         </div>
     );
 };

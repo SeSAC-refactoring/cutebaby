@@ -32,6 +32,7 @@
 }
 .contents_wrap {
   width: 1120px;
+  height: 576px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -55,11 +56,12 @@
 .add_btn {
   width: 166px;
   height: 64px;
-  background-color: #bbdeeb;
+  background-color: #3b3b41;
   font-size: 22px;
   font-weight: bold;
   border-radius: 16px;
   border: none;
+  color: #ffffff;
 }
 .inputArea_wrap {
   display: flex;
@@ -110,13 +112,21 @@
   padding-left: 50px;
   align-items: center;
   border-radius: 16px;
+  justify-content: center;
 }
 .row_el:nth-child(2n-1) {
   background-color: #f4fafc;
 }
+
 .list_el {
   width: 198px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding-left: 20px;
 }
+
 .record {
   width: 600px;
   background-color: rgb(208, 206, 206);
@@ -305,6 +315,26 @@
   font-weight: bold;
   border-radius: 16px;
   position: absolute;
-  top: 83%;
-  left: 45%;
+  z-index: 100;
+  top: 90%;
+  left: 860px;
+}
+
+.table_btn {
+  color: #3b3b41;
+  font-size: 16px;
+  font-weight: bold;
+  height: 44px;
+  border-radius: 12px;
+}
+
+.edit_btn {
+  background-color: #bbdeeb;
+  width: 80px;
+  margin-right: 8px;
+}
+
+.delete_btn {
+  background-color: #f6c7c6;
+  width: 56px;
 }

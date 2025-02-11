@@ -11,8 +11,6 @@ import { useVaccinationData } from '../components/vaccination-page/hooks/useVacc
 import { MissingVaccinations } from '../components/home-page/MissingVaccinations';
 
 export default function Home() {
-    // const dispatch = useDispatch<AppDispatch>();
-
     // store에서 정보 가져오기
     const { babyInfo } = useSelector((state: RootState) => state.baby);
     const growInfo = useSelector((state: RootState) => state.babygrow.growInfo);
@@ -22,7 +20,7 @@ export default function Home() {
 
     // 커스텀 훅 사용
     const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
-    const { growData } = useGrowData(growInfo, selectedBabyId); // growInfo를 selectedBabyId에 따라 필터링 // selectedBabyId가 변경될 때 growData 업데이트
+    const { growData } = useGrowData(growInfo, selectedBabyId); //  // growInfo를 selectedBabyId에 따라 필터링 // selectedBabyId가 변경될 때 growData 업데이트
     const { selectedBabyVaccinationData } = useVaccinationData(
         vaccinationData,
         selectedBabyId
@@ -31,12 +29,13 @@ export default function Home() {
     // console.log('로그인성공시 babygrow 불러옴', growInfo);
     // console.log('로그인성공시 babyinfo불러옴', babyInfo);
 
+    // user정보 가져오기 필요!
     return (
         <div className={styles.background}>
             <div>
                 <div className={styles.block_user}>
                     <div className={styles.big_title}>
-                        땡땡이님,
+                        {/* {user[username]}님, */}
                         <br />
                         안녕하세요
                     </div>
@@ -47,34 +46,41 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div>
-                    <BabyList
-                        babyInfo={babyInfo}
-                        handleSelectBaby={handleSelectBaby}
-                        selectedBabyId={selectedBabyId}
-                    />
-                    <div>
-                        <p>우리아이 성장그래프</p>
-                        <button>
-                            <Link to="/GrowthDiary">성장일지 보러가기</Link>
-                        </button>
-                    </div>
-                    <Link to="/GrowthDiary">
-                        <div>
-                            {growData.length > 0 ? (
-                                <DiaryChart growData={growData} />
-                            ) : (
-                                // 성장기록 데이터가 없을 때
-                                <div style={{ backgroundColor: 'green' }}>
-                                    데이터가 없습니다.
+                <div className={styles.main_content_section}>
+                    <div className={styles.content_container}>
+                        <BabyList
+                            babyInfo={babyInfo}
+                            handleSelectBaby={handleSelectBaby}
+                            selectedBabyId={selectedBabyId}
+                        />
+                        <div className={styles.growth_chart_section}>
+                            <div className={styles.header}>
+                                <p>우리아이 성장그래프</p>
+                                <button>
+                                    <Link to="/GrowthDiary">
+                                        성장일지 보러가기
+                                    </Link>
+                                </button>
+                            </div>
+                            <Link to="/GrowthDiary">
+                                <div className={styles.chart_container}>
+                                    {growData.length > 0 ? (
+                                        <DiaryChart growData={growData} />
+                                    ) : (
+                                        // 성장기록 데이터가 없을 때
+                                        <div className={styles.empty}>
+                                            데이터가 없습니다.
+                                        </div>
+                                    )}
                                 </div>
-                            )}
+                            </Link>
                         </div>
-                    </Link>
 
-                    <div>
-                        <div>
-                            <Link to="/Vaccination">
+                        <div className={styles.vaccination_section}>
+                            <Link
+                                to="/Vaccination"
+                                className={styles.info_card}
+                            >
                                 <p>다가오는 예방접종</p>
                                 <MissingVaccinations
                                     selectedBabyVaccinationData={
@@ -82,9 +88,10 @@ export default function Home() {
                                     }
                                 />
                             </Link>
-                        </div>
-                        <div>
-                            <Link to="/VaccinationDetails">
+                            <Link
+                                to="/VaccinationDetails"
+                                className={styles.info_card}
+                            >
                                 <p>예방접종 대상 감염병 정보</p>
                                 <p>바로가기</p>
                             </Link>
@@ -95,7 +102,7 @@ export default function Home() {
 
             <div className={styles.block_chatbot}>
                 <div className={styles.chatbot}>
-                    <div>
+                    <div className={styles.chat_header}>
                         <p>궁금한 내용이 있으신가요?</p>
                         <p>
                             무엇이든 <span>AI챗봇</span>에게 물어보세요😉
