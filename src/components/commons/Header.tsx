@@ -1,5 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logout from "../login-page/Logout";
+import typography from "../../styles/commons/Typography.module.scss";
 import styles from "../../styles/commons/Header.module.scss";
 import { useEffect, useState } from "react";
 // import logo from "/logo.png";
@@ -39,19 +40,19 @@ export default function Header() {
                     </div>
                 </div>
             </div> */}
-      <div className={styles.headerWrapper}>
+      <div className={[styles.container, styles.headerWrapper].join(" ")}>
         <div className={styles.header}>
           <div>
             <Link to="/Home">
               <img src="/img/BI.svg" alt="Logo" />
             </Link>
           </div>
-          <div className={[styles.menu_container, styles.textMdMd].join(" ")}>
+          <div className={[styles.menu_container, typography.textMdMd].join(" ")}>
             <Link
               to="/Vaccination"
               className={
                 location.pathname === "/Vaccination"
-                  ? [styles.menu_active, styles.textMdBd].join(" ")
+                  ? [styles.menu_active, typography.textMdBd].join(" ")
                   : styles.menu
               }
             >
@@ -62,11 +63,11 @@ export default function Header() {
               to="/GrowthDiary"
               className={
                 location.pathname === "/GrowthDiary"
-                  ? styles.menu_active
+                  ? [styles.menu_active, typography.textMdBd].join(" ")
                   : styles.menu
               }
             >
-              성장기록
+              성장일지
             </Link>
 
             <div>
@@ -74,7 +75,7 @@ export default function Header() {
                 to="/Mypage"
                 className={
                   location.pathname === "/Mypage"
-                    ? styles.menu_active
+                    ? [styles.menu_active, typography.textMdBd].join(" ")
                     : styles.menu
                 }
               >
@@ -84,21 +85,19 @@ export default function Header() {
             {/* <button onClick={Logout}>로그아웃</button> */}
 
             {Logined ? (
-              <div
+              <a
                 className={styles.menu}
-                style={{ cursor: "pointer" }}
                 onClick={Logout}
               >
                 로그아웃
-              </div>
+              </a>
             ) : (
-              <div
+              <a
                 className={styles.menu}
-                style={{ cursor: "pointer" }}
                 onClick={gotoLogin}
               >
                 로그인
-              </div>
+              </a>
             )}
           </div>
         </div>

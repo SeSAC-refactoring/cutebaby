@@ -1,41 +1,5 @@
-.title_wrap {
-  width: 1120px;
-  justify-content: space-between;
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 48px;
-}
-.title_container {
-  display: flex;
-  align-items: flex-end;
-  gap: 12px;
-}
-.title {
-  color: #3b3b41;
-  font-size: 40px;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-.text {
-  font-size: 24px;
-  color: #9999a5;
-}
-.cal_btn {
-  width: 181px;
-  height: 56px;
-  text-align: center;
-  background-color: #f6d9a7;
-  border: none;
-  border-radius: 16px;
-  font-size: 20px;
-  font-weight: bold;
-}
-.contents_wrap {
-  width: 1120px;
-  height: 576px;
-  display: flex;
-  justify-content: space-between;
-}
+@import "./commons/Colors.module.scss";
+
 .block_record {
   position: absolute;
   top: 30%;
@@ -52,6 +16,7 @@
   justify-content: space-between;
   align-items: flex-end;
 }
+
 .add_btn {
   width: 166px;
   height: 64px;
@@ -62,11 +27,13 @@
   border: none;
   color: #ffffff;
 }
+
 .inputArea_wrap {
   display: flex;
   width: 811px;
   justify-content: space-between;
 }
+
 .input {
   width: 190px;
   height: 64px;
@@ -79,6 +46,7 @@
   margin-right: 5px;
   box-sizing: border-box;
 }
+
 .label {
   color: #5d5d67;
   font-size: 18px;

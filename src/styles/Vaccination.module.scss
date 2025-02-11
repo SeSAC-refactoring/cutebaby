@@ -1,23 +1,9 @@
-.text {
-  color: #9999a5;
-  font-size: 24px;
-}
+@import "./commons/Colors.module.scss";
 
 .button_wrap {
-  width: 377px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  .detail {
-    background-color: #f6d9a7;
-    border: none;
-    border-radius: 12px;
-    color: #3b3b41;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-  }
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
 }
 
 .vac_list {

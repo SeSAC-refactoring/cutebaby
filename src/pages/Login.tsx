@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { getKakaoLoginUrl } from "../services/kakaoService";
+import layout from "../styles/commons/Layout.module.scss";
+import typography from "../styles/commons/Typography.module.scss";
+import button from "../styles/commons/Button.module.scss";
 import styles from "../styles/Login.module.scss";
 import { Session } from "inspector/promises";
 import { Input } from "../components/commons/Input";
@@ -49,16 +52,16 @@ const EmailLogin: React.FC = () => {
   const handleInputPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setinputPassword(e.target.value);
   };
-  const enter = (e:React.KeyboardEvent<HTMLDivElement>)=>{
-    if(e.key=="Enter"){
+  const enter = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key == "Enter") {
       handleSubmit(new Event("submit") as unknown as React.FormEvent);
     }
-  }
-  
+  };
+
   // 이메일로 사용자 정보 조회
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); // 페이지 새로 고침 방지
-    console.log('>>>>>')
+    console.log(">>>>>");
     try {
       const emailPost = await axios.post("http://localhost:5001/api/user", {
         email,
@@ -93,39 +96,44 @@ const EmailLogin: React.FC = () => {
       }
       setUserInfo(null); // 오류 발생 시 사용자 정보 초기화
     }
-  
   };
   const gotoMain = () => {
     navigate("/Home", { state: userInfo }); // Mypage로 이동
   };
 
   return (
-    <div className={styles.login_container}>
-      <div className={styles.login_background}>
-        <div className={styles.title}>이메일로 로그인하기</div>
-        <section className={styles.container} onKeyDown={enter}>
-          <Input
-            label="이메일 *"
-            type="email"
-            value={email}
-            onChange={handleInputChange}
-            placeholder="이메일을 입력해주세요."
-          />
-          <Input
-            label="비밀번호 *"
-            type="password"
-            value={inputpassword}
-            onChange={handleInputPassword}
-            placeholder="비밀번호를 입력해주세요."
-          />
-          <div className={styles.button_container}>
+    <div className={layout.container}>
+      <div className={`${layout.contentsArea} ${styles.contentsArea}`}>
+        <div className={`${layout.titleArea} ${typography.text4xlBd}`}>
+          이메일로 로그인하기
+        </div>
+        <section className={layout.contentsWrap} onKeyDown={enter}>
+          <div className={styles.formWrap}>
+            <Input
+              label="이메일"
+              type="email"
+              value={email}
+              onChange={handleInputChange}
+              placeholder="이메일을 입력해주세요."
+            />
+            <Input
+              label="비밀번호"
+              type="password"
+              value={inputpassword}
+              onChange={handleInputPassword}
+              placeholder="비밀번호를 입력해주세요."
+            />
+          </div>
+          <div className={`${layout.buttonArea} ${styles.buttonArea}`}>
             <Link to="/">
-            <button className={`${styles.btn} ${styles.cancel_button}`}>
-              취소
-            </button>
+              <button className={`${button.btnXlYw} ${typography.textXlBd}`}>
+                취소
+              </button>
             </Link>
             <button
-              className={`${styles.btn} ${styles.done_button}`} onClick={handleSubmit}>
+              className={`${button.btnXlGr} ${typography.textXlBd}`}
+              onClick={handleSubmit}
+            >
               완료
             </button>
           </div>

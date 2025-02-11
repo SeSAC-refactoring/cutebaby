@@ -3,6 +3,7 @@ import cors from 'cors';
 import userRoutes from './routes/userRoutes.js';
 import session from 'express-session';
 import router from "./routes/userRoutes.js";
+import path from 'path';
 
 
 const app = express();
@@ -14,7 +15,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));  
 
 
-app.use("/uploads", express.static("uploads"));
 app.use("/api", router);
 
 app.use(cors({
@@ -28,8 +28,7 @@ app.use(session({
   cookie: { secure: false }  // 개발환경에서는 secure: false, https에서는 true로 설정
 }));
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
 
 app.use('/api', userRoutes); 
 

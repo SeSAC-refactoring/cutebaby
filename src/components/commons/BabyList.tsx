@@ -23,30 +23,28 @@ export const BabyList: React.FC<BabyListProps> = ({
   }, [dispatch, babyInfo.length]);
 
   return (
-    <div>
-      <div className={styles.button_group}>
-        {babyInfo.length === 0 ? (
-          <p>등록된 아이가 없습니다!</p>
-        ) : (
-          babyInfo.map((baby: babyinfo) => (
-            <button
-              key={baby.babyid}
-              className={
-                baby.babyid === selectedBabyId
-                  ? styles.button_selected // 선택된 경우 클래스 적용
-                  : styles.button
-              }
-              onClick={() => handleSelectBaby(baby.babyid)}
-              style={{
-                cursor: "pointer",
-                fontWeight: baby.babyid === selectedBabyId ? "bold" : "normal",
-              }}
-            >
-              {baby.babyname}
-            </button>
-          ))
-        )}
-      </div>
+    <div className={styles.segments}>
+      {babyInfo.length === 0 ? (
+        <p>등록된 아이가 없습니다!</p>
+      ) : (
+        babyInfo.map((baby: babyinfo) => (
+          <button
+            key={baby.babyid}
+            className={
+              baby.babyid === selectedBabyId
+                ? styles.segmentsItem_selected // 선택된 경우 클래스 적용
+                : styles.segmentsItem
+            }
+            onClick={() => handleSelectBaby(baby.babyid)}
+            style={{
+              cursor: "pointer",
+              fontWeight: baby.babyid === selectedBabyId ? "bold" : "normal",
+            }}
+          >
+            {baby.babyname}
+          </button>
+        ))
+      )}
     </div>
   );
 };

@@ -1,56 +1,15 @@
-.login_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+.contentsArea {
+  max-width: 640px;
+  gap: 56px;
 
-.login_background {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 560px;
-  border: 2px solid #838391;
-  padding: 72px 64px 64px 64px;
-  border-radius: 40px;
-  background-color: #ffffff;
-}
+  .formWrap {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
 
-.title {
-  font-size: 40px;
-  font-weight: bold;
-  margin-bottom: 56px;
-  background-color: #ffffff;
-}
-
-.container {
-  // background-color: blue;
-  display: flex;
-  flex-direction: column;
-  height: 416px;
-  padding: auto;
-}
-
-.button_container {
-  display: flex;
-  justify-content: center;
-  margin-top: 80px;
-}
-
-.btn {
-  width: 232px;
-  height: 80px;
-  font-size: 24px;
-  font-weight: bold;
-  border: none;
-  border-radius: 20px;
-}
-
-.cancel_button {
-  background-color: #f6d9a7;
-  margin-right: 16px;
-}
-
-.done_button {
-  background-color: #3b3b41;
-  color: #ffffff;
+  .buttonArea {
+    gap: 16px;
+  }
 }
