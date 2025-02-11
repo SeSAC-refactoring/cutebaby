@@ -35,7 +35,6 @@ router.post('/newgrow' , newgrow);
 router.post('/delgrow',delgrow);
 router.post('/babycreate',babycreate);
 router.post('/delbaby', delbaby);
-router.post('/rewritegrow')
 router.post('/updategrow', updategrow)
 router.post('/updateBaby', upload.single("picture"), updateBaby)
 
