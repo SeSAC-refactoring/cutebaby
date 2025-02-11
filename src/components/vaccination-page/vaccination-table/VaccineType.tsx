@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { VaccinationModal } from '../VaccinationModal';
 import { VaccinationData } from '../../types';
 import { doses, vaccinesName } from './VaccinationTableData';
@@ -13,13 +13,9 @@ export const VaccineType: React.FC<VaccineTypeProps> = ({
     selectedBabyVaccinationData,
 }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [newVaccinationData, setNewVaccinationData] =
-        useState<VaccinationData>({
-            babyid: selectedBabyId,
-            vaccinationid: null,
-            dosenumber: null,
-            dosedate: null,
-        });
+    const [newVaccinationData, setNewVaccinationData] = useState<
+        VaccinationData[]
+    >([]); // 서버로 보낼 추가/수정된 백신 정보
 
     const [selectedVaccineId, setSelectedVaccineId] = useState<number | null>(
         null
@@ -32,6 +28,8 @@ export const VaccineType: React.FC<VaccineTypeProps> = ({
         setSelectedDoseNumber(doseNumber);
         setIsOpen(true);
     };
+
+    // useEffect(() => console.log(newVaccinationData), [newVaccinationData]); // 서버로 보낼 추가/수정된 백신 정보
 
     return (
         <div>
@@ -102,6 +100,7 @@ export const VaccineType: React.FC<VaccineTypeProps> = ({
                     dosenumber={selectedDoseNumber}
                     selectedBabyVaccinationData={selectedBabyVaccinationData}
                     setNewVaccinationData={setNewVaccinationData}
+                    selectedBabyId={selectedBabyId}
                 />
             )}
         </div>
