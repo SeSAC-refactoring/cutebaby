@@ -17,9 +17,13 @@ body {
   width: 100%;
   height: 100vh;
   margin: 0;
+
+  overflow: auto;
+
   overflow: hidden;
   display: flex;
   flex-direction: column;
+
   color: $color-gray-10;
   letter-spacing: -0.02em;
   font-family: "Pretendard", "Times New Roman", sans-serif;

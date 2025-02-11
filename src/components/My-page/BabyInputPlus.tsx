@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../styles/Mypage.module.scss";
+import layout from "../../styles/commons/Layout.module.scss";
 import { babyinfo } from "../types";
 import { useCreatebaby } from "./hooks/useCreatebaby";
 import { ImageUploader } from "./ImageUploader";
@@ -23,7 +24,7 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby }) => {
     picture: null as File | null, // File | null` 타입 유지
   });
   const dispatch = useDispatch<AppDispatch>();
-  const { request } = useCreatebaby(); 
+  const { request } = useCreatebaby();
   const handleGenderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewBabyData((prev) => ({ ...prev, gender: e.target.value }));
   };
@@ -31,7 +32,7 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby }) => {
     const { id, value } = e.target;
     setNewBabyData((prev) => ({ ...prev, [id]: value }));
   };
-//입력잘했는지 검사
+  //입력잘했는지 검사
   const createBaby = async () => {
     if (!newBabyData.babyname) {
       alert("아이의 이름을 입력해주세요");
@@ -49,7 +50,7 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby }) => {
         babyname: newBabyData.babyname,
         birthday: newBabyData.birthday,
         gender: newBabyData.gender,
-        picture: newBabyData.picture, 
+        picture: newBabyData.picture,
       });
 
       // 입력 필드 초기화
@@ -58,12 +59,12 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby }) => {
         babyname: "",
         birthday: "",
         gender: "",
-        picture: null, 
+        picture: null,
       });
       setResetImage((prev) => !prev);
       dispatch(fetchBabyInfo());
 
-      alert('등록성공!')
+      alert("등록성공!");
     } catch (error) {
       alert("등록에 실패했습니다.");
     }
@@ -71,9 +72,9 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby }) => {
 
   return (
     <>
-      <div className={styles.info_box}>
+      <div className={layout.background}>
         {nothingBaby}
-        <h3 className={styles.info_title}>아기 등록하기</h3>
+        <h3 className={layout.title}>아기 등록하기</h3>
         <form>
           <section>
             <label>이름 :</label>
@@ -123,7 +124,9 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby }) => {
           <section>
             <label>아기 사진:</label>
             <ImageUploader
-              onImageSelect={(file) => setNewBabyData((prev) => ({ ...prev, picture: file }))}
+              onImageSelect={(file) =>
+                setNewBabyData((prev) => ({ ...prev, picture: file }))
+              }
               resetTrigger={resetImage}
             />
           </section>
