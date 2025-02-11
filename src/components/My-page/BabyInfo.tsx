@@ -69,6 +69,11 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo, handleSelectBaby 
           <div className={styles.info_a}>성별</div>
           <div className={styles.info_b}>{selectedBaby.gender === "boy" ? "남아" : "여아"}</div>
         </div>
+        <div className={styles.info_content}>
+          <div className={styles.info_a}>생일</div>
+          <div className={styles.info_b}>{selectedBaby.birthday}</div>
+        </div>
+
         <div>
           {selectedBaby.picture ? (
             <img src={selectedBaby.picture} alt="아기 사진" />
