@@ -5,9 +5,13 @@ import { doses, vaccinesName } from './VaccinationTableData';
 
 interface VaccineTypeProps {
     selectedBabyId: number | null;
+    selectedBabyVaccinationData: VaccinationData[];
 }
 
-export const VaccineType: React.FC<VaccineTypeProps> = ({ selectedBabyId }) => {
+export const VaccineType: React.FC<VaccineTypeProps> = ({
+    selectedBabyId,
+    selectedBabyVaccinationData,
+}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [newVaccinationData, setNewVaccinationData] =
         useState<VaccinationData>({
@@ -90,13 +94,14 @@ export const VaccineType: React.FC<VaccineTypeProps> = ({ selectedBabyId }) => {
                 ))}
             </ul>
 
-            {/* 선택된 백신이 있을 때만 모달 열기 */}
+            {/* 선택된 백신접종 CURD 모달 열기 */}
             {isOpen && selectedVaccineId !== null && (
                 <VaccinationModal
                     setIsOpen={setIsOpen}
-                    setNewVaccinationData={setNewVaccinationData}
                     vaccinationid={selectedVaccineId}
                     dosenumber={selectedDoseNumber}
+                    selectedBabyVaccinationData={selectedBabyVaccinationData}
+                    setNewVaccinationData={setNewVaccinationData}
                 />
             )}
         </div>
