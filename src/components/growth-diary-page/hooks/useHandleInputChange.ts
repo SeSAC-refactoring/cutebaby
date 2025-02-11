@@ -28,10 +28,14 @@ export const useHandleInputChange = (childData: ChildData) => {
     useEffect(() => {
         if (inputData.birthDate && inputData.measurementDate) {
             const newMonths = calculateMonths(inputData);
-            setInputData((prev) => ({
-                ...prev,
-                months: newMonths,
-            }));
+
+            // 기존 months 값과 다를 때만 업데이트
+            if (inputData.months !== newMonths) {
+                setInputData((prev) => ({
+                    ...prev,
+                    months: newMonths,
+                }));
+            }
         }
     }, [inputData.measurementDate, inputData.birthDate]);
 

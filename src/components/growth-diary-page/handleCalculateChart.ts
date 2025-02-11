@@ -25,6 +25,9 @@ export const handleCalculateChart = (
     }
 
     // 필수값 있으면
-    setChildData(inputData);
+    setChildData((prev) => ({
+        ...prev,
+        ...inputData,
+    }));
     setShow(true);
 };
