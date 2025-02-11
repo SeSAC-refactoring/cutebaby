@@ -7,6 +7,7 @@ import { babyinfo } from '../types';
 import { BabyList } from '../commons/BabyList';
 import { useSelectBaby } from '../../hooks/useSelectBaby';
 import { useDelbaby } from './hooks/useDelbaby';
+import { DelbabyModal } from './DelbabyModal';
 
 interface BabyInputProps {
     babyInfo: babyinfo[]; // babyInfo는 배열 형식임
@@ -19,21 +20,26 @@ export const MypageBabyList: React.FC<BabyInputProps> = ({
 }) => {
     const [babyPlus, setBabyPlus] = useState<boolean>(false);
     const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
-    const { delbaby } = useDelbaby();
+    const [delModal , setDelModal] = useState<boolean>(false);
+
+
     console.log('=====', nothingBaby);
 
     console.log('babyinfo >>>>>>>', babyInfo);
-
+    const Del = ()=>{
+        setDelModal(true)
+    }
     const Plus = () => {
-        if (!babyPlus) {
-            setBabyPlus(true);
-            console.log('baby boolean>>', babyPlus);
-            console.log('nothing baby boolean>>', nothingBaby);
-        } else {
-            setBabyPlus(false);
-            console.log('baby boolean>>', babyPlus);
-            console.log('nothing baby boolean>>', nothingBaby);
-        }
+        setBabyPlus(true)
+        // if (!babyPlus) {
+        //     setBabyPlus(true);
+        //     console.log('baby boolean>>', babyPlus);
+        //     console.log('nothing baby boolean>>', nothingBaby);
+        // } else {
+        //     setBabyPlus(false);
+        //     console.log('baby boolean>>', babyPlus);
+        //     console.log('nothing baby boolean>>', nothingBaby);
+        // }
     };
 
     return (
@@ -45,17 +51,21 @@ export const MypageBabyList: React.FC<BabyInputProps> = ({
                     selectedBabyId={selectedBabyId}
                 />
                 <button onClick={Plus} className={styles.enroll}>
-                    {!babyPlus ? '아기등록' : '아기정보'}
+                    {!babyPlus?'아이등록':''}
                 </button>
-                <button onClick={() => delbaby(selectedBabyId)}>아이삭제</button>
+                <button className={styles.enroll} onClick={Del }>아이삭제</button>
+                {delModal&&<DelbabyModal handleSelectBaby={selectedBabyId} babyInfo={babyInfo} onClose={() => setDelModal(false)}/>}
             </div>
-            {babyPlus ? (
+            {babyPlus && <BabyInputPlus onClose={() => setBabyPlus(false)} babyInfo={babyInfo} nothingBaby={nothingBaby} />}
+            {!babyPlus && <BabyInfo babyInfo={babyInfo} handleSelectBaby={selectedBabyId}/>}
+
+            {/* {babyPlus ? (
                 <BabyInputPlus babyInfo={babyInfo} nothingBaby={nothingBaby} />
             ) : nothingBaby ? (
-                <BabyInfo babyInfo={babyInfo} handleSelectBaby={selectedBabyId}/>
+                
             ) : ( 
                 <NothingBaby /> 
-            )}
+            )} */}
         </>
     );
 };

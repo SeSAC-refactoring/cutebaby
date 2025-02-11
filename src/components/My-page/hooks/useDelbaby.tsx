@@ -19,7 +19,9 @@ export const useDelbaby = () => {
             const response = await axios.post('http://localhost:5001/api/delbaby', { babyid });
 
                 dispatch(fetchBabyInfo())
+
                 console.log("아기 삭제 완료:", babyId);
+                return true
             
         } catch (error) {
             console.error("아기 삭제 실패:", error);
