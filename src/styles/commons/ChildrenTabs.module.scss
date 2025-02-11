@@ -7,45 +7,43 @@
   background-color: $color-blue-1;
   border: 2px solid $color-gray-6;
   border-radius: 999px;
-  
-  button, .segmentsItem {
+
+  button,
+  .segmentsItem {
     padding: 10px 16px;
     flex-grow: 1;
     color: $color-blue-7;
     border-radius: 999px;
   }
-  
+
   .segmentsItem_selected {
     background-color: $color-blue-3;
     color: $color-blue-10;
     border: 2px solid $color-blue-7;
   }
 
-
-.column_button_group {
-  flex-direction: column;
-  width: 166px;
-  height: 100%;
-  border-radius: 32px;
+  .column_button_group {
+    flex-direction: column;
+    width: 166px;
+    height: 100%;
+    border-radius: 32px;
+  }
+  .column_button_group_small {
+    flex-direction: column;
+    width: 166px;
+    height: 192px;
+    border-radius: 32px;
+  }
+  .column_button_selected {
+    // flex-grow: 1;
+    font-size: 22px;
+    background-color: #d1e9f1;
+    color: #425b64;
+    font-weight: bold;
+    border-radius: 999px;
+    border: 2px solid #7dadbe;
+    height: 52px;
+    width: 154px;
+    padding: 8px 16px;
+  }
 }
-.column_button_group_small {
-  flex-direction: column;
-  width: 166px;
-  height: 192px;
-  border-radius: 32px;
-}
-.column_button_selected {
-  // flex-grow: 1;
-  font-size: 22px;
-  background-color: #d1e9f1;
-  color: #425b64;
-  font-weight: bold;
-  border-radius: 999px;
-  border: 2px solid #7dadbe;
-  height: 52px;
-  width: 154px;
-  padding: 8px 16px;
-
-}
-
-
