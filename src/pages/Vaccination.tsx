@@ -105,9 +105,9 @@ export default function Vaccination() {
 
           {openCentersModal && <VaccinationCenters />}
           {openDetailsModal && <VaccinationDetails />}
-          <VaccinationTable
+          {/* <VaccinationTable
             selectedBabyVaccinationData={selectedBabyVaccinationData}
-          />
+          /> */}
         </div>
 
         {/* 백신 정보 버튼 클릭 시 모달 예정 */}

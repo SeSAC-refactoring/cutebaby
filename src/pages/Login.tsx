@@ -5,7 +5,7 @@ import { getKakaoLoginUrl } from "../services/kakaoService";
 import layout from "../styles/commons/Layout.module.scss";
 import typography from "../styles/commons/Typography.module.scss";
 import button from "../styles/commons/Button.module.scss";
-import styles from "../styles/Signup.module.scss";
+import styles from "../styles/Login.module.scss";
 import { Session } from "inspector/promises";
 import { Input } from "../components/commons/Input";
 import { useDispatch, useSelector } from "react-redux";
@@ -52,16 +52,16 @@ const EmailLogin: React.FC = () => {
   const handleInputPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setinputPassword(e.target.value);
   };
-  const enter = (e:React.KeyboardEvent<HTMLDivElement>)=>{
-    if(e.key=="Enter"){
+  const enter = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key == "Enter") {
       handleSubmit(new Event("submit") as unknown as React.FormEvent);
     }
-  }
-  
+  };
+
   // 이메일로 사용자 정보 조회
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); // 페이지 새로 고침 방지
-    console.log('>>>>>')
+    console.log(">>>>>");
     try {
       const emailPost = await axios.post("http://localhost:5001/api/user", {
         email,
@@ -96,7 +96,6 @@ const EmailLogin: React.FC = () => {
       }
       setUserInfo(null); // 오류 발생 시 사용자 정보 초기화
     }
-  
   };
   const gotoMain = () => {
     navigate("/Home", { state: userInfo }); // Mypage로 이동
@@ -105,7 +104,9 @@ const EmailLogin: React.FC = () => {
   return (
     <div className={layout.container}>
       <div className={`${layout.contentsArea} ${styles.contentsArea}`}>
-        <div className={`${layout.titleArea} ${typography.text4xlBd}`}>이메일로 로그인하기</div>
+        <div className={`${layout.titleArea} ${typography.text4xlBd}`}>
+          이메일로 로그인하기
+        </div>
         <section className={layout.contentsWrap} onKeyDown={enter}>
           <div className={styles.formWrap}>
             <Input
@@ -130,7 +131,9 @@ const EmailLogin: React.FC = () => {
               </button>
             </Link>
             <button
-              className={`${button.btnXlGr} ${typography.textXlBd}`} onClick={handleSubmit}>
+              className={`${button.btnXlGr} ${typography.textXlBd}`}
+              onClick={handleSubmit}
+            >
               완료
             </button>
           </div>
