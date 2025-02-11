@@ -10,7 +10,7 @@ export const RecentGrowthRecord: React.FC<RecentGrowthRecordProps> = ({
   growData,
 }) => {
   return (
-    <>
+    <div className={styles.recent_background}>
       <div>
         <span className={styles.recent_title}>가장 최근 기록</span>
         <span className={styles.recent_date}>
@@ -37,6 +37,6 @@ export const RecentGrowthRecord: React.FC<RecentGrowthRecordProps> = ({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };

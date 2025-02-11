@@ -11,7 +11,7 @@ interface BabyListProps {
   selectedBabyId: number | null;
 }
 
-export const BabyList: React.FC<BabyListProps> = ({
+export const BabyListColumn: React.FC<BabyListProps> = ({
   babyInfo,
   handleSelectBaby,
   selectedBabyId,
@@ -24,7 +24,7 @@ export const BabyList: React.FC<BabyListProps> = ({
 
   return (
     <div>
-      <div className={styles.button_group}>
+      <div className={`${styles.button_group} ${styles.column_button_group}`}>
         {babyInfo.length === 0 ? (
           <p>등록된 아이가 없습니다!</p>
         ) : (
@@ -33,7 +33,7 @@ export const BabyList: React.FC<BabyListProps> = ({
               key={baby.babyid}
               className={
                 baby.babyid === selectedBabyId
-                  ? styles.button_selected // 선택된 경우 클래스 적용
+                  ? styles.column_button_selected // 선택된 경우 클래스 적용
                   : styles.button
               }
               onClick={() => handleSelectBaby(baby.babyid)}
@@ -43,6 +43,15 @@ export const BabyList: React.FC<BabyListProps> = ({
               }}
             >
               {baby.babyname}
+              {baby.babyid === selectedBabyId ? (
+                <img
+                  src="img/check-02.png"
+                  alt="체크 아이콘"
+                  style={{ marginLeft: "8px" }}
+                ></img>
+              ) : (
+                <></>
+              )}
             </button>
           ))
         )}

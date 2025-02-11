@@ -35,7 +35,6 @@
   height: 576px;
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
 }
 .block_record {
   position: absolute;
@@ -139,6 +138,10 @@
   padding-top: 30px;
   margin-bottom: 10px;
 }
+.recent_contents_wrap {
+  border: 1px solid red;
+  display: flex;
+}
 .record_table {
   width: 550px;
   margin-bottom: 30px;
@@ -214,6 +217,9 @@
   margin-bottom: 30px;
 }
 .recent_record_wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   background-color: #fef9f1;
   border-radius: 32px;
   width: 906px;
@@ -229,7 +235,12 @@
   color: #6f6f7b;
   font-size: 16px;
 }
+.recent_background {
+  width: 496px;
+}
 .recent_wrap {
+  width: 496px;
+
   margin-top: 16px;
   display: flex;
   justify-content: space-between;
