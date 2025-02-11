@@ -1,10 +1,11 @@
-@import "./Colors.scss";
-@import "./Typography.scss";
+@import "./Colors.module.scss";
+
 @font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* CSS Reset */
@@ -12,15 +13,13 @@
   box-sizing: border-box;
 }
 
-.root {
-  display: flex;
-}
-
 body {
   width: 100%;
   height: 100vh;
   margin: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   color: $color-gray-10;
   letter-spacing: -0.02em;
   font-family: "Pretendard", "Times New Roman", sans-serif;

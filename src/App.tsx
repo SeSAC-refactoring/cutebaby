@@ -23,7 +23,9 @@ import { CenterList } from "./components/vaccination-page/CenterList";
 import { CalculateInputArea } from "./components/growth-diary-page/CalculateInputArea";
 import { RecentGrowthRecord } from "./components/growth-diary-page/RecentGrowthRecord";
 import { useGrowData } from "./components/growth-diary-page/hooks/useGrowData";
+
 // import GrowthDiary from "./components/GrowthDiary";
+import styles from "./styles/commons/Reset.module.scss";
 
 export interface UserData {
   userid: number;
