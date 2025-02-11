@@ -52,9 +52,9 @@ export const MypageBabyList: React.FC<BabyInputProps> = ({
             {babyPlus ? (
                 <BabyInputPlus babyInfo={babyInfo} nothingBaby={nothingBaby} />
             ) : nothingBaby ? (
-                <BabyInfo />
-            ) : (
-                <NothingBaby />
+                <BabyInfo babyInfo={babyInfo} handleSelectBaby={selectedBabyId}/>
+            ) : ( 
+                <NothingBaby /> 
             )}
         </>
     );

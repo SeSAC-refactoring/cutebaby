@@ -8,7 +8,7 @@ import { babyinfo } from '../controller/babyinfo.js';
 import { babygrow } from '../controller/babygrow.js';
 import { getVaccination } from '../controller/vaccinationController.js';
 import { newgrow } from '../controller/newgrow.js';
-import { babycreate } from '../controller/babycreate.js';
+import { babycreate, updateBaby } from '../controller/babycreate.js';
 import { delgrow } from '../controller/delgrow.js';
 import { delbaby } from '../controller/delbaby.js';
 import { updategrow } from '../controller/updategrow.js';
@@ -16,18 +16,13 @@ import { updategrow } from '../controller/updategrow.js';
 const router = express.Router();
 
 
+const storage = multer.memoryStorage(); // 🚀 메모리에서만 처리
+const upload = multer({
+    storage: storage,
+    limits: { fileSize: 5 * 1024 * 1024 }, // 파일 크기 제한 (5MB)
+});
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, "uploads/");
-    },
-    filename: (req, file, cb) => {
-      cb(null, Date.now() + "_" + file.originalname);
-    },
-  });
-  const upload = multer({ storage: storage });
-  
-  router.post("/babycreate", upload.single("picture"), babycreate);
+router.post("/babycreate", upload.single("picture"), babycreate);
 // 이메일로 사용자 정보 조회
 router.post('/user', getUserInfoByEmail);
 // 이메일로 회원가입
@@ -42,6 +37,7 @@ router.post('/babycreate',babycreate);
 router.post('/delbaby', delbaby);
 router.post('/rewritegrow')
 router.post('/updategrow', updategrow)
+router.post('/updateBaby', upload.single("picture"), updateBaby)
 
 
 // babyid를 기반으로 예방접종 데이터 가져오기

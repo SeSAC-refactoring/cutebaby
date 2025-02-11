@@ -38,14 +38,21 @@ export default function Home() {
     <div className={layout.container}>
       <div className={`${styles.contentsArea}`}>
         <div className={styles.userArea}>
-          <div className={styles.userGreeting}>
-            <strong className={styles.user}>땡땡이</strong>님,
-            <br />
-            안녕하세요
-          </div>
-          <div className={styles.small_title}>
-            우리아이 <span>예방접종을 관리하고, 성장일지를 기록</span>
-            해보세요:)
+          <div className={`${styles.userGreeting} ${typography.text4xlMd}`}>
+            <div>
+              <strong className={`${styles.user} ${typography.text4xlBd}`}>
+                땡땡이
+              </strong>
+              님,
+              <br />
+              안녕하세요👋🏼
+            </div>
+            <div className={`${styles.pageGuide} ${typography.textLgRg}`}>
+              우리아이{" "}
+              <span className={typography.textLgMd}>예방접종을 관리</span>하고,{" "}
+              <span className={typography.textLgMd}>성장일지를 기록</span>
+              해보세요:)
+            </div>
           </div>
           <div className={styles.mainContents}>
             <BabyList
@@ -54,9 +61,12 @@ export default function Home() {
               selectedBabyId={selectedBabyId}
             />
             <div className={styles.graphArea}>
-              <p>우리아이 성장그래프</p>
-              <button>
-                <Link to="/GrowthDiary">성장일지 보러가기</Link>
+              <p className={typography.textLgBd}>우리아이 성장그래프</p>
+              <button className={`${button.btnSmYw} ${typography.textBsBd}`}>
+                <Link to="/GrowthDiary">
+                  성장일지 보러가기
+                  <img src="../img/icons/i-chevron-right-s20.svg" alt="" />
+                </Link>
               </button>
             </div>
             <Link to="/GrowthDiary">
@@ -75,7 +85,11 @@ export default function Home() {
             <div className={styles.bannerArea}>
               <div className={styles.bannerItem}>
                 <div className={styles.bannerTopArea}>
-                  <h4 className={`${styles.bannerTitle} ${typography.textSmBd}`}>다가오는 예방접종</h4>
+                  <h4
+                    className={`${styles.bannerTitle} ${typography.textSmBd}`}
+                  >
+                    다가오는 예방접종
+                  </h4>
                   <Link to="/Vaccination">접종관리</Link>
                 </div>
                 <MissingVaccinations
@@ -91,7 +105,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className={styles.block_chatbot}>
+        <div className={styles.chatbotArea}>
           <div className={styles.chatbot}>
             <div>
               <p>궁금한 내용이 있으신가요?</p>
