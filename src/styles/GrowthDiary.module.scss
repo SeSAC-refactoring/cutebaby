@@ -89,6 +89,8 @@
   margin-top: 32px;
   display: flex;
   flex-direction: column;
+  height: 584px;
+  overflow: auto;
 }
 .row_title {
   display: flex;
@@ -102,7 +104,9 @@
 .list_title {
   width: 198px;
   font-size: 22px;
+  height: 56px;
   font-weight: bold;
+  line-height: 56px;
 }
 
 .row_el {
