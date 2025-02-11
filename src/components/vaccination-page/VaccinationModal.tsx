@@ -1,10 +1,11 @@
 // import styles from "../../styles/Vaccination.module.scss";
+import { useEffect, useState } from 'react';
 import styles from '../../styles/Modal.module.scss';
 import { VaccinationData } from '../types';
 import { vaccinesName } from './vaccination-table/VaccinationTableData';
 import { VaccinationModalBtns } from './VaccinationModalBtns';
 import { VaccinationModalDateRecord } from './VaccinationModalDateRecord';
-import { VaccinationModalInputFields } from './VaccinationModalInputFields';
+import { VaccinationModalInputArea } from './VaccinationModalInputArea';
 import { VaccinationModalTitle } from './VaccinationModalTitle';
 
 interface VaccinationModalProps {
@@ -13,8 +14,9 @@ interface VaccinationModalProps {
     dosenumber: number;
     selectedBabyVaccinationData: VaccinationData[];
     setNewVaccinationData: React.Dispatch<
-        React.SetStateAction<VaccinationData>
+        React.SetStateAction<VaccinationData[]>
     >;
+    selectedBabyId: number | null;
 }
 
 export const VaccinationModal: React.FC<VaccinationModalProps> = ({
@@ -23,7 +25,14 @@ export const VaccinationModal: React.FC<VaccinationModalProps> = ({
     dosenumber,
     selectedBabyVaccinationData,
     setNewVaccinationData,
+    selectedBabyId,
 }) => {
+    const [inputData, setInputData] = useState<VaccinationData[]>([]); // 접종날짜 클릭 시 상태변경
+
+    useEffect(() => {
+        console.log('inputData', inputData);
+    }, [inputData]);
+
     return (
         <div
             className={styles.modal_overlay}
@@ -52,19 +61,22 @@ export const VaccinationModal: React.FC<VaccinationModalProps> = ({
                     />
 
                     {/* 🌟 접종 입력 필드 // dosenumber만큼 input태그 생성 */}
-                    <VaccinationModalInputFields
+                    <VaccinationModalInputArea
                         dosenumber={dosenumber}
                         vaccinationid={vaccinationid}
                         selectedBabyVaccinationData={
                             selectedBabyVaccinationData
                         }
-                        setNewVaccinationData={setNewVaccinationData}
+                        setInputData={setInputData}
+                        selectedBabyId={selectedBabyId}
                     />
 
                     {/* 🌟 버튼 */}
                     <VaccinationModalBtns
                         vaccinationid={vaccinationid}
                         setIsOpen={setIsOpen}
+                        setNewVaccinationData={setNewVaccinationData}
+                        inputData={inputData}
                     />
                 </div>
             </div>
