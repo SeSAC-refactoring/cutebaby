@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { useGrowData } from "../components/growth-diary-page/hooks/useGrowData";
 import { RecentGrowthRecord } from "../components/growth-diary-page/RecentGrowthRecord";
 import { NeedLoginModal } from "../components/my-page/NeedLoginModal";
+import { BabyListColumn } from "../components/commons/BabyList_column";
 
 export default function GrowthDiary() {
   const [openCalModal, setOpenCalModal] = useState<boolean>(false);
@@ -29,10 +30,11 @@ export default function GrowthDiary() {
     }
   });
   const growInfo = useSelector((state: RootState) => state.babygrow.growInfo);
+  console.log(growInfo, "1234");
 
   const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
   const { growData } = useGrowData(growInfo, selectedBabyId); // growData = growInfo를 selectedBabyId에 따라 필터링 // selectedBabyId가 변경될 때 growData 업데이트
-
+  console.log(growData, "asdf");
   // const growInfo = sessionStorage.getItem('babygrow');
 
   console.log("애기 성장정보 입니다 >>>>", growInfo);
@@ -60,16 +62,17 @@ export default function GrowthDiary() {
       </div>
 
       <div className={styles.contents_wrap}>
-        {growData.length > 0 ? (
-          <BabyList
+        {growInfo ? (
+          <BabyListColumn
             babyInfo={babyInfo}
             handleSelectBaby={handleSelectBaby}
             selectedBabyId={selectedBabyId}
           />
         ) : (
           <>
-            <img src="img/Contents.png" alt="성장일지 이미지" />
-            <button className={styles.baby_button}>아이 등록하기 {">"}</button>
+            {/*  */}
+            {/* <button className={styles.baby_button}>아이 등록하기 {">"}</button> */}
+            <p>성장기록없음</p>
           </>
         )}
 
@@ -87,7 +90,9 @@ export default function GrowthDiary() {
               </div>
             </>
           ) : (
-            <p style={{ visibility: "hidden" }}>데이터 없음</p>
+            <div>
+              <img src="img/Contents.png" alt="성장일지 이미지" />
+            </div>
           )}
 
           {/* 성장기록 그래프 */}
