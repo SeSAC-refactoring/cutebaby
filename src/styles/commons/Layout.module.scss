@@ -3,12 +3,19 @@
 .container {
   flex-grow: 1;
   width: 100%;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  min-width: 390px;
+  max-width: 1280px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-y: scroll;
 
   .contentsArea {
+    flex-grow: 1;
+    width: 100%;
     padding: 56px 80px;
     display: flex;
     flex-direction: column;
@@ -18,7 +25,7 @@
     background-color: $color-white;
     border: 2px solid $color-gray-6;
     border-radius: 40px;
-  
+
     .titleArea {
       width: 100%;
       display: flex;
@@ -29,13 +36,32 @@
         display: flex;
         gap: 16px;
       }
-      
+
       .pageGuide {
         align-self: end;
         color: $color-gray-5;
       }
+    }
 
+    .contentsWrap {
+      width: 100%;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .buttonArea {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      a {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
 }
-

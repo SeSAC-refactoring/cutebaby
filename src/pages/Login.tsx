@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { getKakaoLoginUrl } from "../services/kakaoService";
-import styles from "../styles/Login.module.scss";
+import layout from "../styles/commons/Layout.module.scss";
+import typography from "../styles/commons/Typography.module.scss";
+import button from "../styles/commons/Button.module.scss";
+import styles from "../styles/Signup.module.scss";
 import { Session } from "inspector/promises";
 import { Input } from "../components/commons/Input";
 import { useDispatch, useSelector } from "react-redux";
@@ -100,32 +103,34 @@ const EmailLogin: React.FC = () => {
   };
 
   return (
-    <div className={styles.login_container}>
-      <div className={styles.login_background}>
-        <div className={styles.title}>이메일로 로그인하기</div>
-        <section className={styles.container} onKeyDown={enter}>
-          <Input
-            label="이메일 *"
-            type="email"
-            value={email}
-            onChange={handleInputChange}
-            placeholder="이메일을 입력해주세요."
-          />
-          <Input
-            label="비밀번호 *"
-            type="password"
-            value={inputpassword}
-            onChange={handleInputPassword}
-            placeholder="비밀번호를 입력해주세요."
-          />
-          <div className={styles.button_container}>
+    <div className={layout.container}>
+      <div className={`${layout.contentsArea} ${styles.contentsArea}`}>
+        <div className={`${layout.titleArea} ${typography.text4xlBd}`}>이메일로 로그인하기</div>
+        <section className={layout.contentsWrap} onKeyDown={enter}>
+          <div className={styles.formWrap}>
+            <Input
+              label="이메일"
+              type="email"
+              value={email}
+              onChange={handleInputChange}
+              placeholder="이메일을 입력해주세요."
+            />
+            <Input
+              label="비밀번호"
+              type="password"
+              value={inputpassword}
+              onChange={handleInputPassword}
+              placeholder="비밀번호를 입력해주세요."
+            />
+          </div>
+          <div className={`${layout.buttonArea} ${styles.buttonArea}`}>
             <Link to="/">
-            <button className={`${styles.btn} ${styles.cancel_button}`}>
-              취소
-            </button>
+              <button className={`${button.btnXlYw} ${typography.textXlBd}`}>
+                취소
+              </button>
             </Link>
             <button
-              className={`${styles.btn} ${styles.done_button}`} onClick={handleSubmit}>
+              className={`${button.btnXlGr} ${typography.textXlBd}`} onClick={handleSubmit}>
               완료
             </button>
           </div>

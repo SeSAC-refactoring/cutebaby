@@ -1,62 +1,28 @@
 @import "./commons/Colors.module.scss";
 
 .contentsArea {
-  width: 640px;
+  max-width: 640px;
+  justify-content: space-between;
   gap: 56px;
 
-  .img_signup {
-    display: flex;
+  .login_img {
+    width: 100%;
+  }
+
+  .buttonArea {
     flex-direction: column;
-    justify-content: space-between;
-    gap: 60px;
+    gap: 8px;
+  }
 
-    .login_img {
-      width: 100%;
-    }
+  .link_container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    color: $color-gray-8;
 
-    .signup_gap {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      gap: 48px;
-
-      .btn_gap {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-
-        .btn {
-          width: 100%;
-          height: 80px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 8px;
-          border-radius: 20px;
-        }
-
-        .email_btn {
-          color: $color-white;
-          background-color: $color-gray-10;
-        }
-
-        .kakao_btn {
-          background-color: $color-kakao-yellow;
-        }
-      }
-
-      .link_container {
-        display: flex;
-        gap: 8px;
-        color: $color-gray-8;
-
-        .link {
-          text-decoration: underline;
-          cursor: pointer;
-        }
-      }
+    .link {
+      text-decoration: underline;
+      cursor: pointer;
     }
   }
 }

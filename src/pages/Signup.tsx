@@ -1,4 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
+import layout from "../styles/commons/Layout.module.scss";
+import typography from "../styles/commons/Typography.module.scss";
+import button from "../styles/commons/Button.module.scss";
 import styles from "../styles/Signup.module.scss";
 import axios, { AxiosError } from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -206,97 +209,100 @@ const Signup: React.FC = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <form>
-        <div className={styles.background}>
-          <div className={styles.title}>이메일로 가입하기</div>
+    <div className={layout.container}>
+      <div className={`${layout.contentsArea} ${styles.contentsArea}`}>
+        <div className={`${layout.titleArea} ${typography.text4xlBd}`}>
+          이메일로 가입하기
+        </div>
 
-          <div className={styles.input_container}>
-            <div className={styles.input_set}>
-              {/* <label className={styles.a}>이름 *</label> */}
-              <Input
-                label="이름 *"
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                ref={(el) => {
-                  inputRef.current.name = el;
-                }}
-              />
-              {messages.name && <p className={styles.error}>{messages.name}</p>}
-            </div>
-
-            <div className={styles.input_set}>
-              <div className={styles.input_button_container}>
-                <Input_signup_email
-                  label="이메일 *"
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  ref={(el: any) => {
-                    inputRef.current.email = el;
-                  }}
-                />
-                <button className={styles.check_button} onClick={emailCheck}>
-                  중복체크
-                </button>
-              </div>
-              {messages.email && (
-                <p className={styles.error}>{messages.email}</p>
-              )}
-            </div>
-
-            <div className={styles.input_set}>
-              <Input
-                label="비밀번호 *"
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleInputChange}
-                ref={(el) => {
-                  inputRef.current.password = el;
-                }}
-              />
-              {messages.password && (
-                <p className={styles.error}>{messages.password}</p>
-              )}
-            </div>
-
-            <div className={styles.input_set}>
-              <Input
-                label="비밀번호 확인 *"
-                type="password"
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleInputChange}
-                ref={(el) => {
-                  inputRef.current.checkPassword = el;
-                }}
-              />
-              {messages.confirmPassword && (
-                <p className={styles.error}>{messages.confirmPassword}</p>
-              )}
-            </div>
+        <div className={`${layout.contentsWrap} ${styles.contentsWrap}`}>
+          <div className={styles.formWrap}>
+            <Input
+              label="이름"
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              placeholder="이름을 입력해주세요."
+              ref={(el) => {
+                inputRef.current.name = el;
+              }}
+            />
+            {messages.name && <p className={styles.error}>{messages.name}</p>}
           </div>
 
-          {/* <button className={styles.button} onClick={handleSubmit}></button> */}
-          <div className={styles.button_container}>
-            <Link to="/" className={`${styles.btn} ${styles.cancel_button}`}>
-            <button className={`${styles.btn} ${styles.cancel_button}`}>
-              취소
-            </button>
-            </Link>
-            <button
-              className={`${styles.btn} ${styles.done_button}`}
-              type="submit"
-            >
-              완료
-            </button>
+          <div className={`${styles.formWrap} ${styles.formWrapEmail}`}>
+            <div className={styles.mailWrap}>
+              <Input_signup_email
+                label="이메일"
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="이메일을 입력해주세요."
+                ref={(el: any) => {
+                  inputRef.current.email = el;
+                }}
+              />
+              <button
+                className={`${button.btnLgBl} ${typography.textLgBd}`}
+                onClick={emailCheck}
+              >
+                중복체크
+              </button>
+            </div>
+            {messages.email && <p className={styles.error}>{messages.email}</p>}
+          </div>
+              
+          <div className={styles.formWrap}>
+            <Input
+              label="비밀번호"
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleInputChange}
+              placeholder="비밀번호를 입력해주세요."
+              ref={(el) => {
+                inputRef.current.password = el;
+              }}
+            />
+            {messages.password && (
+              <p className={styles.error}>{messages.password}</p>
+            )}
+          </div>
+
+          <div className={styles.formWrap}>
+            <Input
+              label="비밀번호 확인"
+              type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleInputChange}
+              placeholder="비밀번호를 한번 더 입력해주세요."
+              ref={(el) => {
+                inputRef.current.checkPassword = el;
+              }}
+            />
+            {messages.confirmPassword && (
+              <p className={styles.error}>{messages.confirmPassword}</p>
+            )}
           </div>
         </div>
-      </form>
+
+        <div className={`${layout.buttonArea} ${styles.buttonArea}`}>
+          <Link to="/">
+            <button className={`${button.btnXlYw} ${typography.textXlBd}`}>
+              취소
+            </button>
+          </Link>
+          <button
+            className={`${button.btnXlGr} ${typography.textXlBd}`}
+            type="submit"
+          >
+            완료
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

@@ -25,13 +25,11 @@ export const MissingVaccinations: React.FC<MissingVaccinationsProps> = ({
     );
 
     return (
-        <div>
+        <div className={styles.bannerItemVacWrap}>
             {missingVaccinations.length > 0 ? (
-                <div className={styles.vaccine_list}>
+                <div className={styles.bannerItemVac}>
                     {missingVaccinations.map((data, i) => (
-                        <div key={i} className={styles.vaccine_item}>
-                            {data.text}
-                        </div>
+                        <div className={styles.dataItem} key={i}>{data.text}</div>
                     ))}
                 </div>
             ) : (

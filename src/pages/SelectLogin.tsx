@@ -15,42 +15,42 @@ export default function SelectLogin() {
         <div className={[layout.titleArea, typography.text4xlBd].join(" ")}>
           로그인
         </div>
-        <div className={styles.img_signup}>
+        <div className={layout.contentsWrap}>
           <img
             className={styles.login_img}
-            src="/img/visual_login_ggomul_01_.svg"
+            src="/img/visuals/visual_login_ggomul_01_.svg"
           />
-          <div className={styles.signup_gap}>
-            <div className={styles.btn_gap}>
-              <Link to="/Login">
-                <button
-                  className={`${button.btnXlBk} ${typography.textXlBd}`}
-                >
-                  <img src="/img/mail-03.png"></img>
-                  이메일로 로그인하기
-                </button>
-              </Link>
-              <a
-                href={getKakaoLoginUrl()}
-                style={{ textDecorationLine: "none" }}
+          
+          <div className={`${layout.buttonArea} ${styles.buttonArea}`}>
+            <Link to="/Login">
+              <button
+                className={`${button.btnXlGr} ${typography.textXlBd}`}
               >
-                <button
-                  className={`${button.btnXlKyw} ${styles.kakao_btn} ${typography.textXlBd}`}
-                >
-                  <img src="/img/kakao.png"></img>
-                  카카오톡으로 로그인하기
-                </button>
-              </a>
-            </div>
-
-            <div
-              className={[styles.link_container, typography.textSmRg].join(" ")}
+                <img src="/img/icons/i-mail-s32.svg"></img>
+                이메일로 로그인하기
+              </button>
+            </Link>
+            <a
+              href={getKakaoLoginUrl()}
+              style={{ textDecorationLine: "none" }}
             >
-              <div>가입하지 않으셨나요?</div>
-              <div className={[styles.link, typography.textSmMd].join(" ")}>
-                <Link to="/Signup">회원가입하기</Link>
-              </div>
+              <button
+                className={`${button.btnXlKyw} ${typography.textXlBd}`}
+              >
+                <img src="/img/icons/i-kakaotalk-s32.svg"></img>
+                카카오톡으로 로그인하기
+              </button>
+            </a>
+          </div>
+
+          <div
+            className={[styles.link_container, typography.textSmRg].join(" ")}
+          >
+            <div>가입하지 않으셨나요?</div>
+            <div className={[styles.link, typography.textSmMd].join(" ")}>
+              <Link to="/Signup">회원가입하기</Link>
             </div>
+        
           </div>
         </div>
       </div>

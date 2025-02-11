@@ -10,11 +10,12 @@ import "./styles/commons/Reset.module.scss";
 const rootElement = document.getElementById("root") as HTMLElement;
 
 if (rootElement) {
-  rootElement.style.flexGrow = "1"; //
+  rootElement.style.flexGrow = "1";
   rootElement.style.display = "flex"; // root div flex 적용
   rootElement.style.flexDirection = "column";
   rootElement.style.justifyContent = "center";
   rootElement.style.alignItems = "center";
+  rootElement.style.overflow = "hidden";
 }
 
 const root = ReactDOM.createRoot(rootElement);
