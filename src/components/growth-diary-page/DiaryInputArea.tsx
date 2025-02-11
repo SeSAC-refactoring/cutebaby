@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "../../styles/GrowthDiary.module.scss";
 import { useNewGrow } from "./hooks/useNewGrow";
 import { useSelectBaby } from "../../hooks/useSelectBaby";
@@ -17,10 +17,14 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
   selectedBabyId,
 }) => {
   const dispatch = useDispatch<AppDispatch>(); // Redux dispatch 추가
-
   const { babyInfo } = useSelector((state: RootState) => state.baby);
   const { request } = useNewGrow();
-
+  
+  const inputRef = useRef({
+    height: null as HTMLInputElement | null,
+    weight: null as HTMLInputElement | null,
+    head: null as HTMLInputElement | null,
+  });
   const [newGrowData, setNewGrowData] = useState<newGrowData>({
     babyid: null,
     id: 0,
@@ -54,31 +58,42 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
     if (!newGrowData.babyid) {
       alert("아기를 선택하세요!");
       return;
+    }else if(!newGrowData.height){
+      inputRef.current.height?.focus();
+
+    }else if(!newGrowData.weight){
+      inputRef.current.weight?.focus();
+
+    }else if(!newGrowData.head){
+      inputRef.current.head?.focus();
+
+    }else{
+      try {
+        await request({
+          babyid: newGrowData.babyid,
+          height: Number(newGrowData.height),
+          weight: Number(newGrowData.weight),
+          head: Number(newGrowData.head),
+          inputData: formattedDate,
+        });
+        alert("성장 기록이 추가되었습니다!");
+        dispatch(fetchgrowInfo(babyInfo));
+  
+        // 입력 필드 초기화
+        setNewGrowData({
+          babyid: newGrowData.babyid, // 선택된 아기는 유지
+          id: 0,
+          height: "",
+          weight: "",
+          head: "",
+          inputData: "",
+        });
+      } catch (error) {
+        alert("기록 추가에 실패했습니다.");
+      }
     }
 
-    try {
-      await request({
-        babyid: newGrowData.babyid,
-        height: Number(newGrowData.height),
-        weight: Number(newGrowData.weight),
-        head: Number(newGrowData.head),
-        inputData: formattedDate,
-      });
-      alert("성장 기록이 추가되었습니다!");
-      dispatch(fetchgrowInfo(babyInfo));
 
-      // 입력 필드 초기화
-      setNewGrowData({
-        babyid: newGrowData.babyid, // 선택된 아기는 유지
-        id: 0,
-        height: "",
-        weight: "",
-        head: "",
-        inputData: "",
-      });
-    } catch (error) {
-      alert("기록 추가에 실패했습니다.");
-    }
   };
 
   return (
@@ -108,6 +123,9 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
                 placeholder="숫자 입력"
                 value={newGrowData.height}
                 onChange={handleInputChange}
+                ref={(el) => {
+                  inputRef.current.height = el;
+                }}
               />
               <span>cm</span>
             </div>
@@ -125,6 +143,9 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
                 placeholder="숫자 입력"
                 value={newGrowData.weight}
                 onChange={handleInputChange}
+                ref={(el) => {
+                  inputRef.current.weight = el;
+                }}
               />
               <span>kg</span>
             </div>
@@ -142,6 +163,9 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
                 placeholder="숫자 입력"
                 value={newGrowData.head}
                 onChange={handleInputChange}
+                ref={(el) => {
+                  inputRef.current.head = el;
+                }}
               />
               <span>cm</span>
             </div>
