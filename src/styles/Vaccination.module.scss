@@ -32,37 +32,27 @@
 // 예방접종 표 내부 색
 // 빈칸
 .blank {
-
-    background-color: transparent;
-
+  background-color: transparent;
 }
 
 // 예방접종 완료
 .completed {
-
-    background-color: grey;
-
+  background-color: grey;
 }
 
 // 예방접종 미완료
 .notCompleted {
-
-    background-color: pink;
-
+  background-color: #ffeeef;
 }
 
 // 필수가 아닌 것 // 완료 시 completed로 바뀜뀜
 .notMust {
-
-    background-color: blue;
-
+  background-color: #e1e1e5;
 }
 
 // 1~2회 접종인 것 중 1회만 접종 시 // 2회 접종 완료 시 compldted로
 .onlyFirst {
-
-    background-color: rgba(255, 182, 193, 0.457);
-
+  background-color: rgba(255, 182, 193, 0.457);
 }
 
 .enter_btn {
