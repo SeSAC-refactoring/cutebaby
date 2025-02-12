@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { SelectedLocation } from '../../types';
 
 export const useLocationSelect = () => {
@@ -31,6 +31,8 @@ export const useLocationSelect = () => {
         },
         [setCurrentPage]
     );
+
+    // 시/군/구 변경 시 검색 여부 초기화(false로로)
 
     return {
         currentPage,

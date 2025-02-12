@@ -1,6 +1,4 @@
-
 @import "../commons/Colors.module.scss";
-
 
 .inputWrap {
   display: flex;
@@ -14,6 +12,8 @@ label {
   position: relative;
   color: $color-gray-8;
   display: flex;
+  font-size: 18px;
+  font-weight: bold;
 
   // 필수입력 표시
   &::after {
@@ -24,8 +24,6 @@ label {
     background-color: $color-red-5;
     border-radius: 999px;
   }
-  
-
 }
 
 input {
@@ -38,7 +36,7 @@ input {
 
   &:focus,
   &:focus-visible {
-    box-shadow: 0px 0px 0px 5px rgba(176, 165, 232, .4);
+    box-shadow: 0px 0px 0px 5px rgba(176, 165, 232, 0.4);
     border: 2px solid $color-purple-7;
   }
 

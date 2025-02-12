@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store";
 import { fetchBabyInfo } from "../store/babySlice";
 import layout from "../styles/commons/Layout.module.scss";
-import { BabyListColumnSmall } from "../components/commons/BabyList_column_small";
+import { BabyListColumnSmall } from "../components/commons/BabyListColumn_small";
 import {
   BabyModal,
   PasswordEditModal,
@@ -25,7 +25,7 @@ export default function Mypage() {
   const { babyInfo, nothingBaby, loading, error } = useSelector(
     (state: RootState) => state.baby
   );
-  const userString = sessionStorage.getItem('user');
+  const userString = sessionStorage.getItem("user");
   const user = userString ? JSON.parse(userString) : null;
   const username = user?.username ?? '방문자님';
   const userid = user?.userid ?? '로그인이 필요한 서비스 입니다';
@@ -41,15 +41,17 @@ export default function Mypage() {
   }, [dispatch, userString]);
 
   return (
-    <div className={styles.wrap}>
+    <div className={layout.container}>
       {/* openMoal이 트루면 모달 실행 */}
       {openModal && <NeedLoginModal modalState={() => setOpenModal(false)} />}
       {/* {passwordEditModal && <PasswordEditModal />} */}
       {/* {babyAddModal && <BabyModal />} */}
-      <div className={styles.pageContent}>
+      <div>
         {/* <div className={styles.icon}>수정 아이콘</div> */}
-        <div className={layout.background}>
-          <h1 className={layout.title}>마이페이지</h1>
+        <div className={layout.contentsArea}>
+          <div className={layout.titleArea}>
+            <h1 className={layout.title}>마이페이지</h1>
+          </div>
 
           <div className={styles.user_info_wrap}>
             <div className={styles.info_title}>내 정보</div>
@@ -72,7 +74,8 @@ export default function Mypage() {
               </button>
             </div>
           </div>
-          <div className={styles.babyInfo_background}>
+          <MypageBabyList babyInfo={babyInfo} nothingBaby={nothingBaby} />
+          {/* <div className={styles.babyInfo_background}>
             <div className={styles.info_title}>우리아이 정보</div>
             <div className={styles.babyInfo_contents_wrap}>
               <div className={styles.babyList_wrap}>
@@ -105,7 +108,7 @@ export default function Mypage() {
                 {/* </div> */}
               {/* </div> */}
             </div>
-          </div>
+          </div> */}
           {/* {message.trim()
           ?
           :<BabyInput message={message} />} */}

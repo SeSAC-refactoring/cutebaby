@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import { useGrowData } from "../components/growth-diary-page/hooks/useGrowData";
 import { RecentGrowthRecord } from "../components/growth-diary-page/RecentGrowthRecord";
 import { NeedLoginModal } from "../components/my-page/NeedLoginModal";
-import { BabyListColumn } from "../components/commons/BabyList_column";
+import { BabyListColumn } from "../components/commons/BabyListColumn";
 
 export default function GrowthDiary() {
   const [openCalModal, setOpenCalModal] = useState<boolean>(false);
@@ -50,9 +50,12 @@ export default function GrowthDiary() {
       <div className={layout.contentsArea}>
         <div className={layout.titleArea}>
           <div className={layout.textWrap}>
-            <div className={[layout.title, typography.text4xlBd].join(" ")}>성장일지</div>
+            <div className={[layout.title, typography.text4xlBd].join(" ")}>
+              성장일지
+            </div>
             <div className={[layout.pageGuide, typography.textXlMd].join(" ")}>
-              <strong className={typography.textXlBd}>우리 아이의 성장</strong>을 기록하고 상태를 확인해보세요:)
+              <strong className={typography.textXlBd}>우리 아이의 성장</strong>
+              을 기록하고 상태를 확인해보세요:)
             </div>
           </div>
           <button
@@ -73,7 +76,9 @@ export default function GrowthDiary() {
           ) : (
             <>
               <img src="img/Contents.png" alt="성장일지 이미지" />
-              <button className={[button.btnLgBk, typography.textLgBd].join(" ")}>
+              <button
+                className={[button.btnLgBk, typography.textLgBd].join(" ")}
+              >
                 아이 등록하기 {">"}
               </button>
             </>
@@ -83,13 +88,38 @@ export default function GrowthDiary() {
             {growData.length > 0 ? (
               <>
                 <div className={styles.recent_record_wrap}>
+                  {/* 성장기록 그래프 */}
+                  <div
+                    style={{
+                      width: "808px",
+                      height: "476px",
+                      marginTop: "24px",
+                      border: "3px solid #D1E9F1",
+                      borderRadius: "32px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        margin: "32px 0px 0px 40px",
+                        fontSize: "18px",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      우리아이 성장 추이
+                    </div>
+                    {growData.length > 0 ? (
+                      <DiaryChart growData={growData} />
+                    ) : (
+                      <p></p>
+                    )}
+                  </div>
                   <RecentGrowthRecord growData={growData} />
-                  <button
+                  {/* <button
                     onClick={() => setOpenAddModal(true)}
                     className={styles.recent_add}
                   >
-                    성장기록
-                  </button>
+                    성장기록 보러가기
+                  </button> */}
                 </div>
               </>
             ) : (
