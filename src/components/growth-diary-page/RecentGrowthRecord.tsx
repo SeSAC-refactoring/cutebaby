@@ -1,6 +1,8 @@
 import React from "react";
 import { newGrowData } from "../types";
 import styles from "../../styles/GrowthDiary.module.scss";
+import { DiaryInputArea } from "./DiaryInputArea";
+import { DiaryTable } from "./DiaryTable";
 
 interface RecentGrowthRecordProps {
   growData: newGrowData[];
@@ -11,7 +13,7 @@ export const RecentGrowthRecord: React.FC<RecentGrowthRecordProps> = ({
 }) => {
   return (
     <div className={styles.recent_background}>
-      <div>
+      <div className={styles.recent_title_wrap}>
         <span className={styles.recent_title}>가장 최근 기록</span>
         <span className={styles.recent_date}>
           {new Date(growData[0].inputData).toLocaleDateString("ko-KR", {
@@ -21,7 +23,6 @@ export const RecentGrowthRecord: React.FC<RecentGrowthRecordProps> = ({
           })}
         </span>
       </div>
-
       <div className={styles.recent_wrap}>
         <div className={styles.recent_detail}>
           <div className={styles.height}>
@@ -36,6 +37,14 @@ export const RecentGrowthRecord: React.FC<RecentGrowthRecordProps> = ({
             <span className={styles.strong}>{growData[0].head} cm</span>
           </div>
         </div>
+      </div>
+      <div className={styles.recent_add_button_wrap}>
+        <button
+          // onClick={() => setOpenAddModal(true)}
+          className={styles.recent_add}
+        >
+          성장기록 보러가기
+        </button>
       </div>
     </div>
   );

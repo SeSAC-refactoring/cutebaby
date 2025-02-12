@@ -27,7 +27,7 @@
   height: 212px;
   background-color: #fef9f1;
   border-radius: 32px;
-  margin-top: 48px;
+  // margin-top: 48px;
   padding: 48px 56px;
   display: flex;
   flex-direction: column;
@@ -57,6 +57,9 @@
 }
 .detail_set {
   height: 56px;
+  display: flex;
+  flex-direction: column;
+  width: 320px;
 }
 .info_title {
   font-size: 24px;
@@ -131,36 +134,52 @@
 .babyInfo_contents_wrap {
   display: flex;
   justify-content: space-between;
+  width: 1008px;
 }
-.babyList_wrap {
-  width: 166px;
-  height: 280px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+// .babyList_wrap {
+//   width: 166px;
+//   height: 280px;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+// }
 .babyInfo_wrap {
   padding: 40px;
-  width: 794px;
+  width: 1008px;
   height: 280px;
   display: flex;
   justify-content: space-between;
+  border: 3px solid #d1e9f1;
+  border-radius: 32px;
+  background-color: #ffffff;
 }
 .babyInfo_detail_wrap {
-  width: 458px;
+  width: 672px;
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
 }
 .babyInfo_btn_wrap {
   width: 100%;
+  width: 197px;
   height: 100%;
   display: flex;
   justify-content: flex-end;
+  align-items: flex-end;
+  gap: 15px;
 }
 .babyInfo_edit_btn {
   width: 107px;
   height: 56px;
   background-color: #f6d9a7;
+  border-radius: 16px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.babyInfo_delete_btn {
+  width: 75px;
+  height: 56px;
+  padding: 16px 20px;
+  background-color: #f6c7c6;
   border-radius: 16px;
   font-size: 20px;
   font-weight: bold;
@@ -172,6 +191,12 @@
   background-color: #bbdeeb;
   font-size: 22px;
   font-weight: bold;
+}
+.baby_img {
+  border: 4px solid #f3f3f4;
+  border-radius: 32px;
+  width: 200px;
+  height: 200px;
 }
 .img {
   margin-left: 8px;

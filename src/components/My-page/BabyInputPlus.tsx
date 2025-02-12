@@ -1,11 +1,14 @@
 import React, { useRef, useState } from "react";
-import styles from "../../styles/Mypage.module.scss";
+// import styles from "../../styles/Mypage.module.scss";
+import styles from "../../styles/Modal.module.scss";
+import tabs from "../../styles/commons/ChildrenTabs.module.scss";
 import { babyinfo } from "../types";
 import { useCreatebaby } from "./hooks/useCreatebaby";
 import { ImageUploader } from "./ImageUploader";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
 import { fetchBabyInfo } from "../../store/babySlice";
+import { BabyModal } from "./MypageModal";
 
 interface BabyInputProps {
   babyInfo: babyinfo[];
@@ -13,7 +16,10 @@ interface BabyInputProps {
   onClose: () => void;
 }
 
-export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby,onClose }) => {
+export const BabyInputPlus: React.FC<BabyInputProps> = ({
+  nothingBaby,
+  onClose,
+}) => {
   const today = new Date();
   const birthday = today
     .toLocaleDateString("ko-KR", {
@@ -32,7 +38,7 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby,onClose })
     gender: "",
     picture: null as File | null, // File | null` 타입 유지
   });
-  const [genderCheck , setGenderCheck] = useState<boolean>(false)
+  const [genderCheck, setGenderCheck] = useState<boolean>(false);
   const inputRef = useRef({
     babyname: null as HTMLInputElement | null,
     birthday: null as HTMLInputElement | null,
@@ -40,9 +46,8 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby,onClose })
     name: null as HTMLInputElement | null,
   });
 
-
   const dispatch = useDispatch<AppDispatch>();
-  const { request } = useCreatebaby(); 
+  const { request } = useCreatebaby();
   const handleGenderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewBabyData((prev) => ({ ...prev, gender: e.target.value }));
   };
@@ -51,56 +56,59 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby,onClose })
     setNewBabyData((prev) => ({ ...prev, [id]: value }));
   };
 
-
-//입력잘했는지 검사
+  //입력잘했는지 검사
   const createBaby = async () => {
     if (!newBabyData.babyname) {
-      inputRef.current.babyname?.focus(); 
+      inputRef.current.babyname?.focus();
     } else if (!newBabyData.birthday) {
-      inputRef.current.babyname?.focus(); 
+      inputRef.current.babyname?.focus();
     } else if (!newBabyData.gender) {
-      setGenderCheck(true)
-      inputRef.current.gender?.focus(); 
-
-    } else{
+      setGenderCheck(true);
+      inputRef.current.gender?.focus();
+    } else {
       try {
         await request({
           babyname: newBabyData.babyname,
           birthday: newBabyData.birthday,
           gender: newBabyData.gender,
-          picture: newBabyData.picture, 
+          picture: newBabyData.picture,
         });
-  
+
         // 입력 필드 초기화
         setNewBabyData({
           babyid: 0,
           babyname: "",
           birthday: birthday,
           gender: "",
-          picture: null, 
+          picture: null,
         });
         setResetImage((prev) => !prev);
         dispatch(fetchBabyInfo());
         onClose();
-        alert('등록성공!')
+        alert("등록성공!");
       } catch (error) {
         alert("등록에 실패했습니다.");
       }
-
     }
-
-  
   };
-
 
   return (
     <>
+      <BabyModal />
       <div className={styles.info_box}>
         {nothingBaby}
-        <h3 className={styles.info_title}>아기 등록하기</h3>
+        <div className={styles.modal_title_wrap}>
+          <div className={styles.modal_title}>아이 정보 등록</div>
+          <div className={styles.X_btn}>X</div>
+        </div>
+        <img src="/img/Profile.png" alt="아기 사진" />
+        <button className={styles.modal_img_button}>
+          사진 등록
+          <img src="img/image-add.png" alt="이미지 아이콘" />
+        </button>
         <form>
           <section>
-            <label>이름 :</label>
+            <label>이름</label>
             <input
               type="text"
               id="babyname"
@@ -114,7 +122,7 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby,onClose })
           </section>
 
           <section>
-            <label>생년월일 :</label>
+            <label>생년월일</label>
             <input
               type="date"
               id="birthday"
@@ -127,7 +135,12 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby,onClose })
           </section>
 
           <section>
-            <label >성별 :</label>
+            <label>성별</label>
+            <div className={tabs.button_group}>
+              <div className={tabs.button_selected}>남아</div>
+              <div className={tabs.button}>여아</div>
+            </div>
+            <label>성별 :</label>
             <label>
               <input
                 type="checkbox"
@@ -135,8 +148,6 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby,onClose })
                 value="boy"
                 checked={newBabyData.gender === "boy"}
                 onChange={handleGenderChange}
-                
-                
               />
               남아
             </label>
@@ -150,13 +161,15 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby,onClose })
               />
               여아
             </label>
-            {genderCheck&&'아이의 성별을 체크해주세요!'}
+            {genderCheck && "아이의 성별을 체크해주세요!"}
           </section>
 
           <section>
             <label>아기 사진:</label>
             <ImageUploader
-              onImageSelect={(file) => setNewBabyData((prev) => ({ ...prev, picture: file }))}
+              onImageSelect={(file) =>
+                setNewBabyData((prev) => ({ ...prev, picture: file }))
+              }
               resetTrigger={resetImage}
             />
           </section>
@@ -165,7 +178,7 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ nothingBaby,onClose })
       <button className={styles.edit_btn} onClick={createBaby}>
         완료
       </button>
-      <button className={styles.edit_btn} onClick={onClose} >
+      <button className={styles.edit_btn} onClick={onClose}>
         취소
       </button>
     </>

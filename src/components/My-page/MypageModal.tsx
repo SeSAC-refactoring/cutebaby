@@ -49,9 +49,9 @@ export function BabyModal() {
       </button>
       <Input label="이름" placeholder="이름을 입력해주세요."></Input>
       <Input label="생년월일" placeholder="생년월일을 선택해주세요."></Input>
-      <div className={tabs.button_group}>
-        <div className={tabs.button_selected}>남아</div>
-        <div className={tabs.button}>여아</div>
+      <div className={tabs.segments}>
+        <div className={tabs.segmentsItem_selected}>남아</div>
+        <div className={tabs.segmentsItem}>여아</div>
       </div>
       <div className={styles.modal_button_container}>
         <button className={`${styles.modal_btn} ${styles.modal_cancel_button}`}>

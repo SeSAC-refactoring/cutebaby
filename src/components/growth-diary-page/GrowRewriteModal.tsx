@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 // import styles from '../../styles/Modal.module.scss'
-import styles from "../../styles/Vaccination.module.scss";
+import styles from "../../styles/Modal.module.scss";
 import { newGrowData } from "../types";
 import { useUpdateGrow } from "./hooks/useUpdateGrow";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
 import { fetchgrowInfo } from "../../store/GrowthDiarySlice";
+import { Input } from "../commons/Input";
 //모달css로 옮기면 삭제 후 위에 주석으로 교체해야함
 interface GrowRewriteModalProps {
   onClose: () => void;
@@ -69,24 +70,30 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
     }
   };
   return (
-    <div className={styles.modal_overlay}>
+    <div
+      className={styles.modal_overlay}
+      onClick={() => {
+        onClose(false);
+      }}
+    >
       <div className={styles.modal_background}>
         <div className={styles.modal_container}>
           <div className={styles.modal_title_wrap}>
-            <div className={styles.modal_title}>기록 추가</div>
+            <div className={styles.modal_title}>기록 수정</div>
             <div
               onClick={() => {
                 onClose(false);
               }}
               style={{
                 fontSize: "40px",
+                cursor: "pointer",
               }}
             >
               X
             </div>
           </div>
-          <label>
-            <h2>신장</h2>
+          <div className={styles.input_set}>
+            <label>신장</label>
             <input
               className={styles.modal_input}
               id="height"
@@ -94,9 +101,9 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
               value={rewriteData.height}
               onChange={handleInputChange}
             ></input>
-          </label>
-          <label>
-            <h2>체중</h2>
+          </div>
+          <div className={styles.input_set}>
+            <label>체중</label>
             <input
               className={styles.modal_input}
               placeholder="숫자만"
@@ -104,9 +111,9 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
               value={rewriteData.weight}
               onChange={handleInputChange}
             ></input>
-          </label>
-          <label>
-            <h2>머리둘레</h2>
+          </div>
+          <div className={styles.input_set}>
+            <label>머리둘레</label>
             <input
               className={styles.modal_input}
               id="head"
@@ -114,7 +121,7 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
               value={rewriteData.head}
               onChange={handleInputChange}
             ></input>
-          </label>
+          </div>
           <div className={styles.modal_button_container}>
             <button
               className={`${styles.modal_btn} ${styles.modal_cancel_button}`}
@@ -133,4 +140,3 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
     </div>
   );
 };
-

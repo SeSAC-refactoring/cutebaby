@@ -1,5 +1,5 @@
 import React, { forwardRef, useRef } from "react";
-import "../../styles/commons/Reset.module.scss"
+import "../../styles/commons/Reset.module.scss";
 import typography from "../../styles/commons/Typography.module.scss";
 import styles from "../../styles/commons/Input.module.scss";
 
@@ -21,9 +21,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div className={styles.inputWrap}>
-        <label className={typography.textSmBd}>
-          {label}
-        </label>
+        <label className={typography.textSmBd}>{label}</label>
         <input
           className={typography.textLgRg}
           ref={inputRef}
