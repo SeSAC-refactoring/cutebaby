@@ -25,7 +25,10 @@ const initialState: VaccinationState = {
 // 데이터 가져오기
 export const fetchVaccinationData = createAsyncThunk(
     'vaccination/fetchVaccinationData', // Redux에서 액션을 구분하는 이름
+    
     async (babyid: number, { rejectWithValue }) => {
+
+        console.log('store에서 babyid', babyid)
         try {
             // 백엔드 서버에 요청 보내기
             const response = await axios.post(
