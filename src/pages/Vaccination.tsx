@@ -19,6 +19,7 @@ import VaccinationDetails from './VaccinationDetails';
 export default function Vaccination() {
     const [openCentersModal, setOpenCentersModal] = useState<boolean>(false);
     const [openDetailsModal, setOpenDetailsModal] = useState<boolean>(false);
+    const [openInfoModal, setOpenInfoModal] = useState<boolean>(false);
 
     const dispatch = useDispatch<AppDispatch>();
 
@@ -111,9 +112,9 @@ export default function Vaccination() {
                             </button>
                             <button
                                 className={`${button.btnSmYw} ${typography.textBsBd}`}
-                                onClick={() => setOpenDetailsModal(true)}
+                                onClick={() => setOpenInfoModal(true)}
                             >
-                                국가예방접종
+                                백신 정보
                             </button>
                         </div>
                     </div>
@@ -140,9 +141,9 @@ export default function Vaccination() {
             {openDetailsModal && (
                 <VaccinationDetails setOpenDetailsModal={setOpenDetailsModal} />
             )}
-
-            {/* 백신 정보 버튼 클릭 시 모달 예정 */}
-            <VaccineInfo />
+            {openInfoModal && (
+                <VaccineInfo setOpenInfoModal={setOpenInfoModal} />
+            )}
         </>
     );
 }
