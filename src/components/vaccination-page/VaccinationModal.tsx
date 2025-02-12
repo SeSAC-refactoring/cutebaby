@@ -1,11 +1,8 @@
 // import styles from "../../styles/Vaccination.module.scss";
-import { useEffect, useState } from 'react';
 import styles from '../../styles/Modal.module.scss';
 import { VaccinationData } from '../types';
-import { vaccinesName } from './vaccination-table/VaccinationTableData';
 import { VaccinationModalBtns } from './VaccinationModalBtns';
 import { VaccinationModalDateRecord } from './VaccinationModalDateRecord';
-import { VaccinationModalInputArea } from './VaccinationModalInputArea';
 import { VaccinationModalTitle } from './VaccinationModalTitle';
 
 interface VaccinationModalProps {
@@ -52,27 +49,14 @@ export const VaccinationModal: React.FC<VaccinationModalProps> = ({
                         selectedBabyVaccinationData={
                             selectedBabyVaccinationData
                         }
-                        // setInputData={setInputData}
                         selectedBabyId={selectedBabyId}
                     />
-
-                    {/* 🌟 접종 입력 필드 // dosenumber만큼 input태그 생성 */}
-                    {/* <VaccinationModalInputArea
-                        dosenumber={dosenumber}
-                        vaccinationid={vaccinationid}
-                        selectedBabyVaccinationData={
-                            selectedBabyVaccinationData
-                        }
-                        setInputData={setInputData}
-                        selectedBabyId={selectedBabyId}
-                    /> */}
 
                     {/* 🌟 버튼 */}
                     <VaccinationModalBtns
                         vaccinationid={vaccinationid}
                         setIsOpen={setIsOpen}
                         setNewVaccinationData={setNewVaccinationData}
-                        // inputData={inputData}
                     />
                 </div>
             </div>
