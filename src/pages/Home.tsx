@@ -129,22 +129,23 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
+
                 <div className={styles.chatbotArea}>
-                    <div className={styles.chatbot}>
-                        <div>
-                            <p>궁금한 내용이 있으신가요?</p>
-                            <p>
-                                무엇이든 <span>AI챗봇</span>에게 물어보세요😉
-                            </p>
-                        </div>
+                    <div className={styles.chatbot_top}>
+                        <p className={styles.title}>
+                            궁금한 내용이 있으신가요?
+                        </p>
                         <p>
-                            {new Date().toLocaleDateString('ko-KR', {
-                                year: 'numeric',
-                                month: 'long',
-                                day: 'numeric',
-                            })}
+                            무엇이든 <span>AI챗봇</span>에게 물어보세요😉
                         </p>
                     </div>
+                    <p>
+                        {new Date().toLocaleDateString('ko-KR', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                        })}
+                    </p>
                     <AiChatComponent />
                 </div>
             </div>
