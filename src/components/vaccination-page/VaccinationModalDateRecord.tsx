@@ -13,11 +13,9 @@ interface VaccinationModalDateRecordProps {
     selectedBabyId: number | null;
 }
 
-export const VaccinationModalDateRecord: React.FC<VaccinationModalDateRecordProps> = ({
-    vaccinationid,
-    dosenumber,
-    selectedBabyId,
-}) => {
+export const VaccinationModalDateRecord: React.FC<
+    VaccinationModalDateRecordProps
+> = ({ vaccinationid, dosenumber, selectedBabyId }) => {
     const dispatch = useDispatch<AppDispatch>();
     const babyId: number = selectedBabyId ?? 0;
 
@@ -50,7 +48,10 @@ export const VaccinationModalDateRecord: React.FC<VaccinationModalDateRecordProp
     const [doseDate, setDoseDate] = useState<string>('');
 
     useEffect(() => {
-        console.log('🔍 클릭한 예방접종 ID에 해당하는 기록:', specificVaccinationData);
+        console.log(
+            '🔍 클릭한 예방접종 ID에 해당하는 기록:',
+            specificVaccinationData
+        );
     }, [specificVaccinationData]);
 
     if (vaccinationid === 17) return <p>매년 접종하세요</p>;
@@ -85,7 +86,6 @@ export const VaccinationModalDateRecord: React.FC<VaccinationModalDateRecordProp
                 vaccinationid: vaccinationid,
                 dosenumber: doseNum,
                 dosedate: doseDate,
-
             });
 
             setSelectedDose(null);
@@ -114,52 +114,97 @@ export const VaccinationModalDateRecord: React.FC<VaccinationModalDateRecordProp
 
     // 접종일이 있는 차수 중 마지막 차수 찾기
     const existingDoses = specificVaccinationData
-        .filter((data) => data.vaccinationid === vaccinationid && data.dosenumber !== null)
+        .filter(
+            (data) =>
+                data.vaccinationid === vaccinationid && data.dosenumber !== null
+        )
         .map((data) => data.dosenumber as number)
         .sort((a, b) => a - b);
 
-    const lastDose = existingDoses.length > 0 ? existingDoses[existingDoses.length - 1] : null;
+    const lastDose =
+        existingDoses.length > 0
+            ? existingDoses[existingDoses.length - 1]
+            : null;
 
     return (
         <div>
             <p>접종 기록</p>
             {Array.from({ length: dosenumber }, (_, i) => {
                 const doseNum = i + 1; // 1차, 2차 ... 보여줄 것
+
+                // 현재 차수의 접종 기록 찾기
                 const matchedDose = selectedBabyVaccinationData.find(
                     (data) =>
                         data.vaccinationid === vaccinationid &&
                         data.dosenumber === doseNum
                 );
 
+                // 앞 차수(doseNum - 1)에 접종 기록이 있는지 확인
+                const prevDose = selectedBabyVaccinationData.find(
+                    (data) =>
+                        data.vaccinationid === vaccinationid &&
+                        data.dosenumber === doseNum - 1 &&
+                        data.dosedate !== null // 앞 차수가 접종된 경우만 유효
+                );
+
+                // 앞 차수가 접종되지 않았으면  입력버튼 비활성화
+                const isDisabled = doseNum > 1 && !prevDose;
+
                 return (
                     <div key={i}>
                         <div style={{ display: 'flex' }}>
                             <p>{doseNum}차 - </p>
-                            <p>{matchedDose ? matchedDose.dosedate : '미접종'}</p>
-                            <button onClick={() => handleOpenInput(doseNum, matchedDose?.dosedate || null)}>
+                            <p>
+                                {matchedDose ? matchedDose.dosedate : '미접종'}
+                            </p>
+                            {/* 앞의 차가 접종되지 않았으면 disabled */}
+                            <button
+                                onClick={() =>
+                                    handleOpenInput(
+                                        doseNum,
+                                        matchedDose?.dosedate || null
+                                    )
+                                }
+                                disabled={isDisabled}
+                            >
                                 {matchedDose ? '수정' : '입력'}
                             </button>
-                            <button onClick={() => handleDeleteData(doseNum)} disabled={doseNum !== lastDose}>
+                            <button
+                                onClick={() => handleDeleteData(doseNum)}
+                                disabled={doseNum !== lastDose}
+                            >
                                 삭제
                             </button>
                         </div>
 
                         {/* 해당 차수의 input 필드 */}
                         {selectedDose === doseNum && (
-                            <div style={{ marginTop: '5px', display: 'flex', gap: '10px' }}>
+                            <div
+                                style={{
+                                    marginTop: '5px',
+                                    display: 'flex',
+                                    gap: '10px',
+                                }}
+                            >
                                 <input
                                     type="date"
                                     value={doseDate}
-                                    onChange={(e) => setDoseDate(e.target.value)}
+                                    onChange={(e) =>
+                                        setDoseDate(e.target.value)
+                                    }
                                 />
                                 <button
                                     onClick={() =>
-                                        matchedDose ? handleupDate(doseNum) : handleSaveData(doseNum)
+                                        matchedDose
+                                            ? handleupDate(doseNum)
+                                            : handleSaveData(doseNum)
                                     }
                                 >
-                                    완료
+                                    확인
                                 </button>
-                                <button onClick={() => setSelectedDose(null)}>취소</button>
+                                <button onClick={() => setSelectedDose(null)}>
+                                    취소
+                                </button>
                             </div>
                         )}
                     </div>
