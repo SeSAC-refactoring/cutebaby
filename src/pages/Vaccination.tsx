@@ -48,6 +48,16 @@ export default function Vaccination() {
         }
     }, [dispatch]);
 
+    useEffect(
+        () =>
+            console.log(
+                'vaccinationData, selectedBabyVaccinationData',
+                vaccinationData,
+                selectedBabyVaccinationData
+            ),
+        [vaccinationData, selectedBabyVaccinationData]
+    );
+
     return (
         <>
             <div className={layout.container}>
@@ -107,16 +117,12 @@ export default function Vaccination() {
                             </button>
                         </div>
                     </div>
-                    {openCentersModal && (
-                        <VaccinationCenters
-                            setOpenCentersModal={setOpenCentersModal}
-                        />
-                    )}
-                    {openDetailsModal && (
-                        <VaccinationDetails
-                            setOpenDetailsModal={setOpenDetailsModal}
-                        />
-                    )}
+
+                    <BabyList
+                        babyInfo={babyInfo}
+                        handleSelectBaby={handleSelectBaby}
+                        selectedBabyId={selectedBabyId}
+                    />
 
                     <VaccinationTable
                         selectedBabyVaccinationData={
@@ -125,10 +131,18 @@ export default function Vaccination() {
                         selectedBabyId={selectedBabyId}
                     />
                 </div>
-
-                {/* 백신 정보 버튼 클릭 시 모달 예정 */}
-                <VaccineInfo />
             </div>
+
+            {/* 모달 */}
+            {openCentersModal && (
+                <VaccinationCenters setOpenCentersModal={setOpenCentersModal} />
+            )}
+            {openDetailsModal && (
+                <VaccinationDetails setOpenDetailsModal={setOpenDetailsModal} />
+            )}
+
+            {/* 백신 정보 버튼 클릭 시 모달 예정 */}
+            <VaccineInfo />
         </>
     );
 }

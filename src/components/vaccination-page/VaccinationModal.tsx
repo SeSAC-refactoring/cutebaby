@@ -27,12 +27,6 @@ export const VaccinationModal: React.FC<VaccinationModalProps> = ({
     setNewVaccinationData,
     selectedBabyId,
 }) => {
-    const [inputData, setInputData] = useState<VaccinationData[]>([]); // 접종날짜 클릭 시 상태변경
-
-    useEffect(() => {
-        console.log('inputData', inputData);
-    }, [inputData]);
-
     return (
         <div
             className={styles.modal_overlay}
@@ -51,17 +45,19 @@ export const VaccinationModal: React.FC<VaccinationModalProps> = ({
                         setIsOpen={setIsOpen}
                     />
 
-                    {/* 🌟 접종 기록 // 접종한 날짜 보여주기 */}
+                    {/* 🌟 접종 기록 // 접종한 날짜 보여주기 + 버튼 클릭 시 input 태그 보이기 */}
                     <VaccinationModalDateRecord
                         vaccinationid={vaccinationid}
                         dosenumber={dosenumber}
                         selectedBabyVaccinationData={
                             selectedBabyVaccinationData
                         }
+                        // setInputData={setInputData}
+                        selectedBabyId={selectedBabyId}
                     />
 
                     {/* 🌟 접종 입력 필드 // dosenumber만큼 input태그 생성 */}
-                    <VaccinationModalInputArea
+                    {/* <VaccinationModalInputArea
                         dosenumber={dosenumber}
                         vaccinationid={vaccinationid}
                         selectedBabyVaccinationData={
@@ -69,14 +65,14 @@ export const VaccinationModal: React.FC<VaccinationModalProps> = ({
                         }
                         setInputData={setInputData}
                         selectedBabyId={selectedBabyId}
-                    />
+                    /> */}
 
                     {/* 🌟 버튼 */}
                     <VaccinationModalBtns
                         vaccinationid={vaccinationid}
                         setIsOpen={setIsOpen}
                         setNewVaccinationData={setNewVaccinationData}
-                        inputData={inputData}
+                        // inputData={inputData}
                     />
                 </div>
             </div>

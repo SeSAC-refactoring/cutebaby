@@ -7,14 +7,14 @@ interface VaccinationModalBtnsProps {
     setNewVaccinationData: React.Dispatch<
         React.SetStateAction<VaccinationData[]>
     >;
-    inputData: VaccinationData[];
+    // inputData: VaccinationData;
 }
 
 export const VaccinationModalBtns: React.FC<VaccinationModalBtnsProps> = ({
     vaccinationid,
     setIsOpen,
     setNewVaccinationData,
-    inputData,
+    // inputData,
 }) => {
     return (
         <div className={styles.modal_button_container}>
@@ -29,17 +29,11 @@ export const VaccinationModalBtns: React.FC<VaccinationModalBtnsProps> = ({
             ) : (
                 <>
                     <button
-                        className={`${styles.modal_btn} ${styles.modal_cancel_button}`}
-                        onClick={() => setIsOpen(false)}
-                    >
-                        취소
-                    </button>
-                    <button
                         className={`${styles.modal_btn} ${styles.modal_done_button}`}
                         onClick={() => {
                             setIsOpen(false);
-                            setNewVaccinationData(inputData);
-                        }} // 완료 버튼 클릭 시 데이터 저장
+                            // setNewVaccinationData(inputData);
+                        }}
                     >
                         완료
                     </button>
