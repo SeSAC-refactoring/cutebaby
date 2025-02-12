@@ -34,10 +34,9 @@ export default function Home() {
   // console.log('로그인성공시 babygrow 불러옴', growInfo);
   // console.log('로그인성공시 babyinfo불러옴', babyInfo);
 
-  const userString = sessionStorage.getItem('user');
+  const userString = sessionStorage.getItem("user");
   const user = userString ? JSON.parse(userString) : null;
-  const username = user?.username ?? '방문자님';
-  
+  const username = user?.username ?? "방문자님";
 
   return (
     <div className={layout.container}>
@@ -111,21 +110,19 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.chatbotArea}>
-          <div className={styles.chatbot}>
-            <div>
-              <p>궁금한 내용이 있으신가요?</p>
-              <p>
-                무엇이든 <span>AI챗봇</span>에게 물어보세요😉
-              </p>
-            </div>
+          <div className={styles.chatbot_top}>
+            <p className={styles.title}>궁금한 내용이 있으신가요?</p>
             <p>
-              {new Date().toLocaleDateString("ko-KR", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
+              무엇이든 <span>AI챗봇</span>에게 물어보세요😉
             </p>
           </div>
+          <p>
+            {new Date().toLocaleDateString("ko-KR", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </p>
           <AiChatComponent />
         </div>
       </div>

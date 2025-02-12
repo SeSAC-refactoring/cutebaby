@@ -8,7 +8,7 @@ import styles from "../../styles/commons/ChildrenTabs.module.scss";
 interface BabyListProps {
   babyInfo: babyinfo[];
   handleSelectBaby: (babyId: number) => void;
-  selectedBabyId: number | null;
+  selectedBabyId?: number | null;
 }
 
 export const BabyListColumn: React.FC<BabyListProps> = ({
