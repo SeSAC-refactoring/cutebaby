@@ -1,17 +1,20 @@
-import { AiChatComponent } from '../components/home-page/AiChatComponent';
-import layout from '../styles/commons/Layout.module.scss';
-import typography from '../styles/commons/Typography.module.scss';
-import button from '../styles/commons/Button.module.scss';
-import styles from '../styles/Home.module.scss';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store';
-import { BabyList } from '../components/commons/BabyList';
-import { useSelectBaby } from '../hooks/useSelectBaby';
-import { useGrowData } from '../components/growth-diary-page/hooks/useGrowData';
-import { DiaryChart } from '../components/growth-diary-page/DiaryChart';
-import { Link } from 'react-router-dom';
-import { useVaccinationData } from '../components/vaccination-page/hooks/useVaccinationData';
-import { MissingVaccinations } from '../components/home-page/MissingVaccinations';
+
+import { AiChatComponent } from "../components/home-page/AiChatComponent";
+import layout from "../styles/commons/Layout.module.scss";
+import typography from "../styles/commons/Typography.module.scss";
+import button from "../styles/commons/Button.module.scss";
+import AI from "../styles/AIChatComponent.module.scss";
+import styles from "../styles/Home.module.scss";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
+import { BabyList } from "../components/commons/BabyList";
+import { useSelectBaby } from "../hooks/useSelectBaby";
+import { useGrowData } from "../components/growth-diary-page/hooks/useGrowData";
+import { DiaryChart } from "../components/growth-diary-page/DiaryChart";
+import { Link } from "react-router-dom";
+import { useVaccinationData } from "../components/vaccination-page/hooks/useVaccinationData";
+import { MissingVaccinations } from "../components/home-page/MissingVaccinations";
+
 
 export default function Home() {
     // const dispatch = useDispatch<AppDispatch>();
@@ -149,6 +152,35 @@ export default function Home() {
                     <AiChatComponent />
                 </div>
             </div>
+
+          </div>
+        </div>
+        <div className={AI.chatbotArea}>
+          <div className={AI.chat_header}>
+            <img
+              src="img/Icon.png"
+              alt="아이콘"
+              style={{ width: "34px", height: "34px" }}
+            />
+            <div className={AI.chat_header_title_wrap}>
+              <div className={AI.chat_header_title}>
+                궁금한 내용이 있으신가요?
+              </div>
+              <div>
+                무엇이든 <span>AI챗봇</span>에게 물어보세요😉
+              </div>
+            </div>
+            <div></div>{" "}
+          </div>
+          <div className={AI.chat_date}>
+            {new Date().toLocaleDateString("ko-KR", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </div>
+          <AiChatComponent />
+
         </div>
     );
 }
