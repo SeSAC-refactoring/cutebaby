@@ -2,6 +2,7 @@ import { AiChatComponent } from "../components/home-page/AiChatComponent";
 import layout from "../styles/commons/Layout.module.scss";
 import typography from "../styles/commons/Typography.module.scss";
 import button from "../styles/commons/Button.module.scss";
+import AI from "../styles/AIChatComponent.module.scss";
 import styles from "../styles/Home.module.scss";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
@@ -109,20 +110,30 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className={styles.chatbotArea}>
-          <div className={styles.chatbot_top}>
-            <p className={styles.title}>궁금한 내용이 있으신가요?</p>
-            <p>
-              무엇이든 <span>AI챗봇</span>에게 물어보세요😉
-            </p>
+        <div className={AI.chatbotArea}>
+          <div className={AI.chat_header}>
+            <img
+              src="img/Icon.png"
+              alt="아이콘"
+              style={{ width: "34px", height: "34px" }}
+            />
+            <div className={AI.chat_header_title_wrap}>
+              <div className={AI.chat_header_title}>
+                궁금한 내용이 있으신가요?
+              </div>
+              <div>
+                무엇이든 <span>AI챗봇</span>에게 물어보세요😉
+              </div>
+            </div>
+            <div></div>{" "}
           </div>
-          <p>
+          <div className={AI.chat_date}>
             {new Date().toLocaleDateString("ko-KR", {
               year: "numeric",
               month: "long",
               day: "numeric",
             })}
-          </p>
+          </div>
           <AiChatComponent />
         </div>
       </div>
