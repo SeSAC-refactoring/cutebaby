@@ -121,7 +121,6 @@ export default function Mypage() {
 
                     {/*애기 정보 출력 */}
                     <BabyInfo babyInfo={babyInfo} />
-                    {/* <MypageBabyList babyInfo={babyInfo} nothingBaby={nothingBaby} /> */}
                 </div>
             </div>
         </div>
