@@ -40,13 +40,13 @@ export default function GrowthDiary() {
   // const growInfo = sessionStorage.getItem('babygrow');
 
   console.log("애기 성장정보 입니다 >>>>", growInfo);
-  console.log("selectedBabyId에 따른 성장정보 입니다 >>>>", growData);
+  console.log("selectedBabyId에 따른 성장정보 입니다x` >>>>", growData);
 
   return (
     <div className={layout.container}>
-      {/* {openLoginModal && (
+      {openLoginModal && (
         <NeedLoginModal modalState={() => setOpenLoginModal(false)} />
-      )} */}
+      )}
       <div className={layout.contentsArea}>
         <div className={layout.titleArea}>
           <div className={layout.textWrap}>

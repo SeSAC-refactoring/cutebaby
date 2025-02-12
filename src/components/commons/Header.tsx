@@ -47,6 +47,7 @@ export default function Header() {
                             <img src="/img/BI.svg" alt="Logo" />
                         </Link>
                     </div>
+
                     <div
                         className={[
                             styles.menu_container,
@@ -66,13 +67,7 @@ export default function Header() {
                         >
                             홈
                         </Link>
-                    </div>
-                    <div
-                        className={[
-                            styles.menu_container,
-                            typography.textMdMd,
-                        ].join(' ')}
-                    >
+
                         <Link
                             to="/Vaccination"
                             className={
@@ -101,21 +96,20 @@ export default function Header() {
                             성장일지
                         </Link>
 
-                        <div>
-                            <Link
-                                to="/Mypage"
-                                className={
-                                    location.pathname === '/Mypage'
-                                        ? [
-                                              styles.menu_active,
-                                              typography.textMdBd,
-                                          ].join(' ')
-                                        : styles.menu
-                                }
-                            >
-                                마이페이지
-                            </Link>
-                        </div>
+                        <Link
+                            to="/Mypage"
+                            className={
+                                location.pathname === '/Mypage'
+                                    ? [
+                                          styles.menu_active,
+                                          typography.textMdBd,
+                                      ].join(' ')
+                                    : styles.menu
+                            }
+                        >
+                            마이페이지
+                        </Link>
+
                         {/* <button onClick={Logout}>로그아웃</button> */}
 
                         {Logined ? (

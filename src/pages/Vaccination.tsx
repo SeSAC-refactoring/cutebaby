@@ -19,6 +19,7 @@ import VaccinationDetails from './VaccinationDetails';
 export default function Vaccination() {
     const [openCentersModal, setOpenCentersModal] = useState<boolean>(false);
     const [openDetailsModal, setOpenDetailsModal] = useState<boolean>(false);
+    const [openInfoModal, setOpenInfoModal] = useState<boolean>(false);
 
     const dispatch = useDispatch<AppDispatch>();
 
@@ -37,13 +38,14 @@ export default function Vaccination() {
 
     const user = sessionStorage.getItem('user');
     console.log('👼👼👼👼👼👼user', user);
-
+    const babyId: number = selectedBabyId ?? 0;
+    console.log('페이지에서 babyid',babyId)
     // 로그인 안된 경우 로그인 모달 띄우기
     useEffect(() => {
         if (!user) {
             setOpenLoginModal(true);
         } else {
-            dispatch(fetchVaccinationData(5));
+            dispatch(fetchVaccinationData(babyId));
             console.log('Updated vaccinationData:', vaccinationData);
         }
     }, [dispatch]);
@@ -111,9 +113,9 @@ export default function Vaccination() {
                             </button>
                             <button
                                 className={`${button.btnSmYw} ${typography.textBsBd}`}
-                                onClick={() => setOpenDetailsModal(true)}
+                                onClick={() => setOpenInfoModal(true)}
                             >
-                                국가예방접종
+                                백신 정보
                             </button>
                         </div>
                     </div>
@@ -140,9 +142,9 @@ export default function Vaccination() {
             {openDetailsModal && (
                 <VaccinationDetails setOpenDetailsModal={setOpenDetailsModal} />
             )}
-
-            {/* 백신 정보 버튼 클릭 시 모달 예정 */}
-            <VaccineInfo />
+            {openInfoModal && (
+                <VaccineInfo setOpenInfoModal={setOpenInfoModal} />
+            )}
         </>
     );
 }
