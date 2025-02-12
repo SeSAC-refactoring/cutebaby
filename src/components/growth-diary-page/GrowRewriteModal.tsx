@@ -72,11 +72,10 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
     return (
         <div
             className={styles.modal_overlay}
-            onClick={() => {
-                onClose(false);
-            }}
-        >
-            <div className={styles.modal_background}>
+            onClick={onClose}>
+            <div className={styles.modal_background}
+             onClick={(e) => e.stopPropagation()}>
+                
                 <div className={styles.modal_container}>
                     <div className={styles.modal_title_wrap}>
                         <div className={styles.modal_title}>기록 수정</div>
@@ -91,6 +90,17 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
                         >
                             X
                         </div>
+                    </div>
+                    <div className={styles.input_set}>
+                        <label>측정날짜</label>
+                        <input
+                            type='date'
+                            className={styles.modal_input}
+                            id="height"
+                            placeholder="숫자만"
+                            value={rewriteData.height}
+                            onChange={handleInputChange}
+                        ></input>
                     </div>
                     <div className={styles.input_set}>
                         <label>신장</label>
