@@ -8,16 +8,8 @@
   min-width: 390px;
   max-width: 1280px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  padding: 80px;
-  // align-items: center;
-  border-radius: 40px;
-  background-color: #ffffff;
-  border: 2px solid #838391;
-  margin: auto;
   align-items: center;
-  overflow-y: scroll;
 }
 
 .contentsArea {
@@ -30,8 +22,10 @@
   align-items: center;
   gap: 48px;
   background-color: $color-white;
-  // border: 2px solid $color-gray-6;
+  border: 2px solid $color-gray-6;
   border-radius: 40px;
+  align-items: center;
+  overflow-y: scroll;
 
   .titleArea {
     width: 100%;
