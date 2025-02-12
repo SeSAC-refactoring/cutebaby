@@ -75,6 +75,8 @@ const EmailLogin: React.FC = () => {
           "usernumber",
           JSON.stringify(emailPost.data[0].usernumber)
         );
+        sessionStorage.setItem("useremail", emailPost.data[0].userid); 
+        sessionStorage.setItem("username", emailPost.data[0].username); 
 
         setError(""); // 에러 초기화
       }
