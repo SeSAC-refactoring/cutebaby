@@ -12,12 +12,10 @@ import { BabyModal } from "./MypageModal";
 
 interface BabyInputProps {
   babyInfo: babyinfo[];
-  nothingBaby: boolean;
   onClose: () => void;
 }
 
 export const BabyInputPlus: React.FC<BabyInputProps> = ({
-  nothingBaby,
   onClose,
 }) => {
   const today = new Date();
@@ -96,7 +94,6 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({
     <>
       <BabyModal />
       <div className={styles.info_box}>
-        {nothingBaby}
         <div className={styles.modal_title_wrap}>
           <div className={styles.modal_title}>아이 정보 등록</div>
           <div className={styles.X_btn}>X</div>

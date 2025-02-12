@@ -24,14 +24,12 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({ growData }) => {
 
     const onDelGrow = async (e: React.MouseEvent<HTMLButtonElement>) => {
         console.log(e.currentTarget.value);
-        // const growId = Number(e.currentTarget.value)
-        setGrowId(Number(e.currentTarget.value));
-        //   Number(e.currentTarget.value)
+        const selectedGrowId = Number(e.currentTarget.value); 
         try {
             const response = await axios.post(
                 'http://localhost:5001/api/delgrow',
                 {
-                    growId,
+                    growId: selectedGrowId,
                 }
             );
             dispatch(fetchgrowInfo(babyInfo));

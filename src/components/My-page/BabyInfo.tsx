@@ -3,16 +3,18 @@ import styles from "../../styles/Mypage.module.scss";
 import { babyinfo } from "../types";
 import { UpdateBaby } from "./UpdateBaby";
 import { DelbabyModal } from "./DelbabyModal";
+import { BabyListColumnSmall } from "../commons/BabyListColumn_small";
+import { BabyInputPlus } from "../my-page/BabyInputPlus";  // 🔹 모달 import
 
 interface BabyInputProps {
   babyInfo: babyinfo[];
-  handleSelectBaby: number | null;
 }
 
-export const BabyInfo: React.FC<BabyInputProps> = ({
-  babyInfo,
-  handleSelectBaby,
-}) => {
+export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
+  const [selectedBabyId, setSelectedBabyId] = useState<number | null>(
+    babyInfo.length > 0 ? babyInfo[0].babyid : null
+  );
+
   const [selectedBaby, setSelectedBaby] = useState<{
     babyid: number;
     babyname: string;
@@ -29,19 +31,14 @@ export const BabyInfo: React.FC<BabyInputProps> = ({
 
   const [updateBaby, setUpdateBaby] = useState<boolean>(false);
   const [delModal, setDelModal] = useState<boolean>(false);
+  const [babyPlus, setBabyPlus] = useState<boolean>(false); // 🔹 아이 등록 모달 상태
 
-  // 수정 버튼 클릭 시
-  const update = () => {
-    setUpdateBaby(true);
-  };
-
-  // 삭제 버튼 클릭 시
-  const Del = () => {
-    setDelModal(true);
+  const handleSelectBaby = (babyId: number) => {
+    setSelectedBabyId(babyId);
   };
 
   useEffect(() => {
-    const filterbaby = babyInfo.find((baby) => baby.babyid === handleSelectBaby);
+    const filterbaby = babyInfo.find((baby) => baby.babyid === selectedBabyId);
 
     if (filterbaby) {
       let pictureUrl: string | null = null;
@@ -60,12 +57,21 @@ export const BabyInfo: React.FC<BabyInputProps> = ({
         picture: pictureUrl,
       });
     }
-  }, [handleSelectBaby, babyInfo]);
+  }, [selectedBabyId, babyInfo]);
 
   return (
     <div className={styles.babyInfo_background}>
       <div className={styles.info_title}>우리아이 정보</div>
+
       <div className={styles.babyInfo_contents_wrap}>
+        {/* 🔹 BabyListColumnSmall에 모달 열기 함수 전달 */}
+        <BabyListColumnSmall 
+          babyInfo={babyInfo} 
+          handleSelectBaby={handleSelectBaby} 
+          selectedBabyId={selectedBabyId} 
+          onOpenModal={() => setBabyPlus(true)} // 🔹 버튼 클릭 시 모달 열기
+        />
+
         <div className={styles.babyInfo_wrap}>
           <div>
             {selectedBaby.picture ? (
@@ -86,26 +92,22 @@ export const BabyInfo: React.FC<BabyInputProps> = ({
               </div>
             </div>
             <div className={styles.babyInfo_btn_wrap}>
-              {/* 삭제 버튼 */}
-              <button className={styles.babyInfo_delete_btn} onClick={Del}>
+              <button className={styles.babyInfo_delete_btn} onClick={() => setDelModal(true)}>
                 삭제
               </button>
-              {/* 삭제 모달 */}
               {delModal && (
                 <DelbabyModal
-                  handleSelectBaby={selectedBaby.babyid} // 정확한 babyid 전달
+                  handleSelectBaby={selectedBaby.babyid}
                   babyInfo={babyInfo}
-                  onClose={() => setDelModal(false)} // 모달 닫기 이벤트 정상 작동
+                  onClose={() => setDelModal(false)}
                 />
               )}
 
-              {/* 수정 버튼 */}
-              <button className={styles.babyInfo_edit_btn} onClick={update}>
+              <button className={styles.babyInfo_edit_btn} onClick={() => setUpdateBaby(true)}>
                 수정
                 <img className={styles.icon} alt="수정 아이콘" src="/img/edit-01.png" />
               </button>
 
-              {/* 수정 모달 */}
               {updateBaby && (
                 <UpdateBaby
                   selectedBaby={selectedBaby}
@@ -116,6 +118,13 @@ export const BabyInfo: React.FC<BabyInputProps> = ({
           </div>
         </div>
       </div>
+
+      {babyPlus && (
+        <BabyInputPlus
+          onClose={() => setBabyPlus(false)}
+          babyInfo={babyInfo}
+        />
+      )}
     </div>
   );
 };

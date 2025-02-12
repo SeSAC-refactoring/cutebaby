@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { MypageBabyList } from '../components/my-page/MypageBabyList';
+// import { MypageBabyList } from "../components/my-page/MypageBabyList";
 import styles from '../styles/Mypage.module.scss';
 import { NeedLoginModal } from '../components/my-page/NeedLoginModal';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +11,9 @@ import {
     PasswordEditModal,
 } from '../components/my-page/MypageModal';
 import { UserupdateModal } from '../components/my-page/UserupdateModal';
+import { BabyInfo } from '../components/my-page/BabyInfo';
+import { useSelectBaby } from '../hooks/useSelectBaby';
+import { BabyListColumnSmall } from '../components/commons/BabyListColumn_small';
 
 export default function Mypage() {
     // 로그인 확인
@@ -117,10 +120,8 @@ export default function Mypage() {
                     </div>
 
                     {/*애기 정보 출력 */}
-                    <MypageBabyList
-                        babyInfo={babyInfo}
-                        nothingBaby={nothingBaby}
-                    />
+                    <BabyInfo babyInfo={babyInfo} />
+                    {/* <MypageBabyList babyInfo={babyInfo} nothingBaby={nothingBaby} /> */}
                 </div>
             </div>
         </div>
