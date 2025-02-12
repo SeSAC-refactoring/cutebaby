@@ -124,6 +124,7 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                             type="text"
                             value={inputAddress}
                             placeholder="주소"
+                            disabled={!selectedLocation.city} // 도시를 선택하지 않으면 disabled
                             onChange={(e) => setInputAddress(e.target.value)}
                             onKeyDown={(e) => {
                                 if (e.key === 'Enter') {
@@ -153,7 +154,7 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                             textAlign: 'center',
                         }}
                     >
-                        <p>데이터를 불러오는 중...</p>
+                        <p>로딩 중...</p>
                     </div>
                 )}
 
@@ -162,8 +163,11 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                     {!hasSearched ? (
                         <p>검색해 주세요.</p> // 검색 전 표시 문구
                     ) : isLoading ? (
-                        <p>병원 정보를 불러오는 중...</p>
-                    ) : centers.length > 0 ? (
+                        <p>로딩 중...</p>
+                    ) : !centers ||
+                      (centers || []).filter(Boolean).length < 1 ? (
+                        <p>병원 정보가 없습니다.</p>
+                    ) : (
                         <div style={{ overflow: 'auto' }}>
                             <CenterList
                                 centers={centers}
@@ -182,8 +186,6 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                                 }
                             />
                         </div>
-                    ) : (
-                        <p>해당 지역의 병원이 없습니다.</p>
                     )}
                 </div>
             </div>
