@@ -52,7 +52,7 @@ export default function Vaccination() {
     //         setBabyId(selectedBabyId);
     //     }
     // }, [selectedBabyId]);
-    // console.log('페이지에서 babyid', babyId);
+    console.log('페이지에서 babyid', babyId);
 
     // 로그인 안된 경우 로그인 모달 띄우기 // 로그인 되면 데이터 가져오기
     useEffect(() => {
