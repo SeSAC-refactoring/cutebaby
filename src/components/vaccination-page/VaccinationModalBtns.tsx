@@ -32,7 +32,7 @@ export const VaccinationModalBtns: React.FC<VaccinationModalBtnsProps> = ({
                             setIsOpen(false);
                         }}
                     >
-                        완료
+                        확인?
                     </button>
                 </>
             )}

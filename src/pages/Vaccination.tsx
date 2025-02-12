@@ -20,35 +20,49 @@ export default function Vaccination() {
     const [openCentersModal, setOpenCentersModal] = useState<boolean>(false);
     const [openDetailsModal, setOpenDetailsModal] = useState<boolean>(false);
     const [openInfoModal, setOpenInfoModal] = useState<boolean>(false);
+    const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
 
     const dispatch = useDispatch<AppDispatch>();
 
+    // Redux에서 정보 가져오기
     const { babyInfo, nothingBaby } = useSelector(
         (state: RootState) => state.baby
     );
     const { vaccinationData, loading, error } = useSelector(
         (state: RootState) => state.vaccination
     );
+
+    // 훅 사용
     const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
     const { selectedBabyVaccinationData } = useVaccinationData(
         vaccinationData,
         selectedBabyId
     ); // selectedBabyVaccinationData = vaccinationData selectedBabyId에 따라 필터링 // selectedBabyId가 변경될 때 vaccinationData 업데이트
-    const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
 
     const user = sessionStorage.getItem('user');
-    console.log('👼👼👼👼👼👼user', user);
     const babyId: number = selectedBabyId ?? 0;
-    console.log('페이지에서 babyid',babyId)
-    // 로그인 안된 경우 로그인 모달 띄우기
+
+    console.log('👼👼👼👼👼👼user', user);
+
+    // // 선택된 babyId 상태
+    // const [babyId, setBabyId] = useState<number>(0);
+    // // babyId가 선택된 후 업데이트
+    // useEffect(() => {
+    //     if (selectedBabyId !== null) {
+    //         setBabyId(selectedBabyId);
+    //     }
+    // }, [selectedBabyId]);
+    // console.log('페이지에서 babyid', babyId);
+
+    // 로그인 안된 경우 로그인 모달 띄우기 // 로그인 되면 데이터 가져오기
     useEffect(() => {
         if (!user) {
             setOpenLoginModal(true);
-        } else {
+        } else if (babyId) {
             dispatch(fetchVaccinationData(babyId));
             console.log('Updated vaccinationData:', vaccinationData);
         }
-    }, [dispatch]);
+    }, [dispatch, babyId]);
 
     useEffect(
         () =>

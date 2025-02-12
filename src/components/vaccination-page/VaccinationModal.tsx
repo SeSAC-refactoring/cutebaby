@@ -46,9 +46,6 @@ export const VaccinationModal: React.FC<VaccinationModalProps> = ({
                     <VaccinationModalDateRecord
                         vaccinationid={vaccinationid}
                         dosenumber={dosenumber}
-                        // selectedBabyVaccinationData={
-                        //     selectedBabyVaccinationData
-                        // }
                         selectedBabyId={selectedBabyId}
                     />
 
