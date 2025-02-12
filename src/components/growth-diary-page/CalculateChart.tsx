@@ -11,9 +11,9 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
-import { createChartData } from './createChartData';
-import { getP97P3Value } from './getP97P3Value';
-import { calculateChartOptions } from './calculateChartOptions';
+import { createChartData } from './functions/createChartData';
+import { getP97P3Value } from './functions/getP97P3Value';
+import { calculateChartOptions } from './functions/calculateChartOptions';
 
 // Chart.js에 필요한 모듈
 ChartJS.register(

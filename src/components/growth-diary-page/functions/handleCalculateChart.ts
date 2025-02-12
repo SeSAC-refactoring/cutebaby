@@ -1,5 +1,5 @@
-import { ChildData, LmsData, PercentileData, Percentiles } from '../types';
-import { RefsType } from '../../hooks/useRefs';
+import { ChildData, LmsData, PercentileData, Percentiles } from '../../types';
+import { RefsType } from '../../../hooks/useRefs';
 
 // 계산 버튼 클릭 시 차트 보여줌
 export const handleCalculateChart = (

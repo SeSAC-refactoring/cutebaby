@@ -1,10 +1,11 @@
 import React from 'react';
 import { useRefs } from '../../hooks/useRefs';
-import { ChildData, LmsData, PercentileData, Percentiles } from '../types';
-import { handleCalculateChart } from './handleCalculateChart';
-import { handleClearInput } from './handleClearInput';
+import { ChildData, LmsData, Percentiles } from '../types';
+
+import { handleClearInput } from './functions/handleClearInput';
 import { useHandleInputChange } from './hooks/useHandleInputChange';
-import { handleKeyDown } from './handleKeyDown';
+import { handleKeyDown } from './functions/handleKeyDown';
+import { handleCalculateChart } from './functions/handleCalculateChart';
 
 // 사용자 입력값 설정
 interface CalculateInputAreaProps {
@@ -51,7 +52,7 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
                             fontWeight: 'bold',
                         }}
                     >
-                        측정일
+                        측정날짜
                     </label>
                     <input
                         style={{
@@ -89,7 +90,7 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
                         }}
                         htmlFor=""
                     >
-                        신장{' '}
+                        키{' '}
                     </label>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         <input
@@ -136,7 +137,7 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
                         }}
                         htmlFor=""
                     >
-                        체중{' '}
+                        몸무게{' '}
                     </label>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         <input
@@ -223,6 +224,11 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
                     marginTop: '32px',
                 }}
             >
+                <p>
+                    백분위수란 같은 성별과 연령을 가진 100명을 오름차순으로
+                    나열했을 때 이 중 몇 번째에 해당되는지를 의미합니다. (예:
+                    97%는 상위 3%를 의미)
+                </p>
                 <button
                     style={{
                         width: '142px',

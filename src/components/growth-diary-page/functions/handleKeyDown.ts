@@ -1,5 +1,5 @@
-import { RefsType } from '../../hooks/useRefs';
-import { ChildData, Percentiles } from '../types';
+import { RefsType } from '../../../hooks/useRefs';
+import { ChildData, Percentiles } from '../../types';
 import { handleCalculateChart } from './handleCalculateChart';
 
 // 엔터 키 이벤트 핸들러

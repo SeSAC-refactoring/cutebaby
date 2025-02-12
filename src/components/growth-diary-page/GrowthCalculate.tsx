@@ -8,7 +8,6 @@ import { usePercentiles } from './hooks/usePercentiles';
 import { useFilteredLmsDataByMonths } from './hooks/useFilteredLmsDataByMonths ';
 import { useFilteredLmsDataByGender } from './hooks/useFilteredLmsDataByGender ';
 import { babyinfo } from '../types';
-import { handleCalculateChart } from './handleCalculateChart';
 import modal from '../../styles/Modal.module.scss';
 
 interface GrowthCalculateProps {
@@ -43,7 +42,6 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
         filteredLmsDataByMonths
     );
 
-
     console.log('GrowthCalculate 모달의 childData', childData);
     // console.log('GrowthCalculate 모달의 lmsData', lmsData);
     // console.log(
@@ -52,7 +50,6 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
     // );
 
     return (
-
         <div
             onClick={() => {
                 setOpenCalModal(false);

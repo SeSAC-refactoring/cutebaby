@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ChildData } from '../../types';
-import { calculateMonths } from '../calculateMonths';
+import { calculateMonths } from '../functions/calculateMonths';
 
 export const useHandleInputChange = (childData: ChildData) => {
     const [inputData, setInputData] = useState<ChildData>({

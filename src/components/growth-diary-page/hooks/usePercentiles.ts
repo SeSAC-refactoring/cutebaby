@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ChildData, LmsData, PercentileData, Percentiles } from '../../types';
-import { getPercentileValue } from '../getPercentileValue';
+import { getPercentileValue } from '../functions/getPercentileValue';
 
 // childData useState
 export const usePercentiles = (

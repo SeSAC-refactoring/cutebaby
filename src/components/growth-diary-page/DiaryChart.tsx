@@ -11,8 +11,9 @@ import {
     Title,
     Tooltip,
 } from 'chart.js';
-import { diaryChartData } from './diaryChartData';
-import { diaryChartOptions } from './diaryChartOptions';
+
+import { diaryChartOptions } from './functions/diaryChartOptions';
+import { diaryChartData } from './functions/diaryChartData';
 
 // Chart.js에 필요한 모듈
 ChartJS.register(
