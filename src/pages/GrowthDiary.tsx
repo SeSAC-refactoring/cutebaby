@@ -159,7 +159,9 @@ export default function GrowthDiary() {
 
                 {/* 기록추가 모달 */}
                 {openAddModal && (
-                    <div className={styles.block_record}>
+                    <div className={styles.modal_background_wrap}onClick={()=>setOpenAddModal(false)}>
+                    <div className={styles.block_record}  onClick={(e) => e.stopPropagation()}>
+                        
                         <div className={styles.add_wrap}>
                             <DiaryInputArea
                                 setOpenAddModal={setOpenAddModal}
@@ -167,6 +169,7 @@ export default function GrowthDiary() {
                             />
                         </div>
                         <DiaryTable growData={growData} />
+                    </div>
                     </div>
                 )}
             </div>
