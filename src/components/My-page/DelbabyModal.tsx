@@ -1,42 +1,56 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
-import styles from '../../styles/Modal.module.scss'
+import React, { useEffect } from 'react';
+import styles from '../../styles/Modal.module.scss';
 import { useDelbaby } from './hooks/useDelbaby';
-import { useSelectBaby } from '../../hooks/useSelectBaby';
 import { babyinfo } from '../types';
 
-
-interface delbabyprops {
+interface DelbabyProps {
     onClose: () => void;
-    babyInfo: babyinfo[]; // babyInfo는 배열 형식임
+    babyInfo: babyinfo[];
     handleSelectBaby: number | null;
-
 }
-export const DelbabyModal:React.FC<delbabyprops> = ({onClose,handleSelectBaby}) => {
+
+export const DelbabyModal: React.FC<DelbabyProps> = ({ onClose, handleSelectBaby }) => {
     const { delbaby } = useDelbaby();
-    console.log('asdfasdfasdfbabyid',handleSelectBaby)
+
+    // `handleSelectBaby`가 올바른 값인지 확인
+    useEffect(() => {
+        console.log('삭제할 babyid:', handleSelectBaby);
+    }, [handleSelectBaby]);
+
+    // 모달 닫기
     const goBack = () => {
-        onClose()
+        console.log(' 모달 닫기 실행');
+        onClose();
     };
 
+    // 아이 삭제 핸들러
     const handleDelete = async () => {
-        const success = await delbaby(handleSelectBaby);
-        if (success) {
-            onClose();
+        if (handleSelectBaby !== null) {
+            const success = await delbaby(handleSelectBaby);
+            if (success) {
+                console.log(' 아이 삭제 성공');
+                onClose();
+            } else {
+                console.error(' 아이 삭제 실패');
+            }
+        } else {
+            console.error('⚠ 삭제할 babyid가 null입니다.');
         }
     };
-  return (
-      <div className={styles.modalbackground}>
-        <div className={styles.mainModal}>
-        <p>정말 아이를 삭제하시겠습니까?</p>
-        <div >
-        <button onClick={handleDelete}>아이삭제</button>
 
-          <button onClick={goBack} >
-            취소
-          </button>
+    return (
+      <div className={styles.modal_overlay}>
+      <div className={styles.modal_background}>
+      <div className={styles.modal_container}>
+      <div className={styles.modal_title_wrap}>
+      <div className={styles.modal_title}>정말 삭제하시겠습니까?</div>
+                <div>
+                    <button onClick={handleDelete}>아이 삭제</button>
+                    <button onClick={goBack}>취소</button>
+                </div>
+            </div>
         </div>
         </div>
-      </div>
-  )
-}
+        </div>
+    );
+};

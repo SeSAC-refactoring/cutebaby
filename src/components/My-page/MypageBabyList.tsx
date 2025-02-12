@@ -20,14 +20,11 @@ export const MypageBabyList: React.FC<BabyInputProps> = ({
 }) => {
   const [babyPlus, setBabyPlus] = useState<boolean>(false);
   const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
-  const [delModal, setDelModal] = useState<boolean>(false);
 
   console.log("=====", nothingBaby);
 
   console.log("babyinfo >>>>>>>", babyInfo);
-  const Del = () => {
-    setDelModal(true);
-  };
+
   const Plus = () => {
     setBabyPlus(true);
     // if (!babyPlus) {
@@ -52,16 +49,7 @@ export const MypageBabyList: React.FC<BabyInputProps> = ({
         <button onClick={Plus} className={styles.enroll}>
           {!babyPlus ? "아이등록" : ""}
         </button>
-        <button className={styles.enroll} onClick={Del}>
-          아이삭제
-        </button>
-        {delModal && (
-          <DelbabyModal
-            handleSelectBaby={selectedBabyId}
-            babyInfo={babyInfo}
-            onClose={() => setDelModal(false)}
-          />
-        )}
+        
       </div>
       {babyPlus && (
         <BabyInputPlus
