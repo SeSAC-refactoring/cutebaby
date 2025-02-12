@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChildData, LmsData, PercentileData } from '../types';
+import { ChildData, LmsData, PercentileData } from '../../types';
 import { calculatePercentile } from './Calculate';
 
 export const getPercentileValue = (

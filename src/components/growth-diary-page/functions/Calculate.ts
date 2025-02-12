@@ -1,5 +1,5 @@
 import React from 'react';
-import { PercentileData } from '../types';
+import { PercentileData } from '../../types';
 
 // Z-Score를 입력하면 해당 Z-Score에서의 성장 값(키, 몸무게, 머리둘레)을 계산하는 공식
 const calculateValue = (L: number, M: number, S: number, Z: number) => {

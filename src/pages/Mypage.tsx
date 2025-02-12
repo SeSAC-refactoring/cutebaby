@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
-import { MypageBabyList } from "../components/my-page/MypageBabyList";
+// import { MypageBabyList } from "../components/my-page/MypageBabyList";
 import styles from "../styles/Mypage.module.scss";
-import { NeedLoginModal } from "../components/my-page/NeedLoginModal"; 
+import { NeedLoginModal } from "../components/my-page/NeedLoginModal"; // 모달 import
+import axios from "axios";
+import { log } from "console";
+import { babyinfo } from "../components/types";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store";
 import { fetchBabyInfo } from "../store/babySlice";
@@ -64,8 +67,8 @@ export default function Mypage() {
               </button>
             </div>
           </div>
-          <MypageBabyList babyInfo={babyInfo} nothingBaby={nothingBaby} />
-          {/* <div className={styles.babyInfo_background}>
+          {/* <MypageBabyList babyInfo={babyInfo} nothingBaby={nothingBaby} />
+          <div className={styles.babyInfo_background}>
             <div className={styles.info_title}>우리아이 정보</div>
             <div className={styles.babyInfo_contents_wrap}>
               <div className={styles.babyList_wrap}>

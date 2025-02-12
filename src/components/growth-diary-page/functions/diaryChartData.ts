@@ -1,4 +1,4 @@
-import { newGrowData } from '../types';
+import { newGrowData } from '../../types';
 
 // 그래프 데이터 생성
 export const diaryChartData = (sortedGrowData: newGrowData[]) => {

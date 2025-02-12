@@ -1,4 +1,4 @@
-import { LmsData } from '../types';
+import { LmsData } from '../../types';
 import { calculateP3, calculateP97 } from './Calculate';
 
 export const getP97P3Value = (

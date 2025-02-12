@@ -45,9 +45,33 @@ export default function GrowthDiary() {
 
     return (
         <div className={layout.container}>
+            {/* 로그인 필요 모달 */}
             {openLoginModal && (
                 <NeedLoginModal modalState={() => setOpenLoginModal(false)} />
             )}
+
+            {/* 성장 계산기 모달 */}
+            {openCalModal && (
+                <GrowthCalculate
+                    setOpenCalModal={setOpenCalModal}
+                    babyInfo={babyInfo}
+                    selectedBabyId={selectedBabyId}
+                />
+            )}
+
+            {/* 기록추가 모달 */}
+            {openAddModal && (
+                <div className={styles.block_record}>
+                    <div className={styles.add_wrap}>
+                        <DiaryInputArea
+                            setOpenAddModal={setOpenAddModal}
+                            selectedBabyId={selectedBabyId}
+                        />
+                    </div>
+                    <DiaryTable growData={growData} />
+                </div>
+            )}
+
             <div className={layout.contentsArea}>
                 <div className={layout.titleArea}>
                     <div className={layout.textWrap}>
@@ -145,28 +169,6 @@ export default function GrowthDiary() {
                         )}
                     </div>
                 </div>
-
-                {/* 성장 계산기 모달 */}
-                {openCalModal && (
-                    <GrowthCalculate
-                        setOpenCalModal={setOpenCalModal}
-                        babyInfo={babyInfo}
-                        selectedBabyId={selectedBabyId}
-                    />
-                )}
-
-                {/* 기록추가 모달 */}
-                {openAddModal && (
-                    <div className={styles.block_record}>
-                        <div className={styles.add_wrap}>
-                            <DiaryInputArea
-                                setOpenAddModal={setOpenAddModal}
-                                selectedBabyId={selectedBabyId}
-                            />
-                        </div>
-                        <DiaryTable growData={growData} />
-                    </div>
-                )}
             </div>
         </div>
     );

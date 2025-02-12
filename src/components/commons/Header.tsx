@@ -117,7 +117,18 @@ export default function Header() {
                                 로그아웃
                             </a>
                         ) : (
-                            <a className={styles.menu} onClick={gotoLogin}>
+                            <a
+                                className={
+                                    location.pathname === '/Login' ||
+                                    location.pathname === '/'
+                                        ? [
+                                              styles.menu_active,
+                                              typography.textMdBd,
+                                          ].join(' ')
+                                        : styles.menu
+                                }
+                                onClick={gotoLogin}
+                            >
                                 로그인
                             </a>
                         )}

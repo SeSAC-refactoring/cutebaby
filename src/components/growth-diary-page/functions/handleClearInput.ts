@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChildData } from '../types';
+import { ChildData } from '../../types';
 
 export const handleClearInput = (
     setInputData: React.Dispatch<React.SetStateAction<ChildData>>,
