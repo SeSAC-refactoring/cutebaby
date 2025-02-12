@@ -1,9 +1,132 @@
 @import "./commons/Colors.module.scss";
 
-.button_wrap {
+.contentsArea {
+  .contentsWrap {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    gap: 8px;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+// VaccinationTable.tsx
+.vacTableWrap {
+  width: 100%;
+  height: 528px;
+  display: flex;
+  overflow: scroll;
+  border-bottom: 3px solid $color-blue-4;
+  border-top-left-radius: 16px;
+
+  .vacTable {
+    width: 100%;
+    display: flex;
+
+    .vacTableScheduleArea {
+      flex-grow: 1;
+    }
+  }
+}
+
+// Table default style
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.th {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  position: sticky;
+  top: 0;
+  background-color: $color-blue-3;
+  border-right: 3px solid $color-blue-6;
+}
+
+.td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 2px solid $color-gray-2;
+  border-right: 3px solid $color-gray-2;
+}
+
+// Disease.tsx
+// VaccineType.tsx
+// TotalDoses.tsx
+// DoseDate.tsx
+.thDiseases {
+  width: 142px;
+}
+
+.ulDiseases,
+.ulVaccineType {
+  background-color: $color-blue-1;
+}
+
+ul {
+  li {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    white-space: pre-line; // \n을 인식하여 줄바꿈 적용
+    text-align: center;
+    border-bottom: 2px solid $color-gray-2;
+    border-right: 3px solid $color-gray-2;
+  }
+}
+
+.thVaccineType,
+.ulVaccineType {
+  width: 192px;
+}
+
+.liVaccineType {
+  padding-right: 8px;
+  display: flex;
+  justify-items: start;
+  gap: 8px;
+
+  .vaccineName {
+    flex-grow: 1;
+    text-align: left;
+  }
+}
+
+.thTotalDoses {
+  width: 40px;
+}
+
+.liTotalDoses {
+  height: 50px;
+}
+
+.thDoseDateWrap {
+  position: sticky;
+  top: 0;
+  display: flex;
+  background-color: $color-blue-3;
+  
+  .thDoseDate {
+    width: 80px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    background-color: $color-blue-3;
+    border-right: 3px solid $color-blue-6;
+  }
+}
+
+.vacScheduleCell {
+  display: grid;
+  grid-template-columns: repeat(15, 80px); // 15개의 동일한 너비의 컬럼 생성 // 1fr 말고 px ,% 등 사용 가능
+}
+
+
+.button_wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
 }
 
 .vac_list {

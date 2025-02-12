@@ -32,6 +32,16 @@ $kakao-yellow-hovered: $color-kakao-yellow-4;
 $kakao-yellow-pressed: $color-kakao-yellow-7;
 
 ////////// Size //////////
+// 2xsmall
+.btn2xsCr {
+  padding: 6px 8px;
+  gap: 4px;
+  color: $color-red-5;
+  background-color: $color-white;
+  border: 1px solid $color-red-2;
+  border-radius: 8px;
+}
+
 // Xsmall
 
 // Small
@@ -44,15 +54,15 @@ $kakao-yellow-pressed: $color-kakao-yellow-7;
   color: $color-gray-10;
   border-radius: 12px;
   background-color: $yellow-default;
-  
+
   &:disabled {
     background-color: $yellow-disabled;
   }
-  
+
   &:hover {
     background-color: $yellow-hovered;
   }
-  
+
   &:active {
     background-color: $yellow-pressed;
   }
@@ -67,15 +77,15 @@ $kakao-yellow-pressed: $color-kakao-yellow-7;
   color: $color-white;
   border-radius: 16px;
   background-color: $gray-default;
-  
+
   &:disabled {
     background-color: $gray-disabled;
   }
-  
+
   &:hover {
     background-color: $gray-hovered;
   }
-  
+
   &:active {
     background-color: $gray-pressed;
   }

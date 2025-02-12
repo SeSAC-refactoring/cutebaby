@@ -15,14 +15,11 @@ import { VaccineInfo } from "../components/vaccination-page/VaccineInfo";
 import { NeedLoginModal } from "../components/my-page/NeedLoginModal";
 import VaccinationCenters from "./VaccinationCenters";
 import VaccinationDetails from "./VaccinationDetails";
-
 export default function Vaccination() {
   const [openCentersModal, setOpenCentersModal] = useState<boolean>(false);
   const [openDetailsModal, setOpenDetailsModal] = useState<boolean>(false);
   const [openInfoModal, setOpenInfoModal] = useState<boolean>(false);
-
   const dispatch = useDispatch<AppDispatch>();
-
   const { babyInfo, nothingBaby } = useSelector(
     (state: RootState) => state.baby
   );
@@ -35,10 +32,8 @@ export default function Vaccination() {
     selectedBabyId
   ); // selectedBabyVaccinationData = vaccinationData selectedBabyId에 따라 필터링 // selectedBabyId가 변경될 때 vaccinationData 업데이트
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
-
   const user = sessionStorage.getItem("user");
-  console.log("👼👼👼👼👼👼user", user);
-
+  console.log(":angel::angel::angel::angel::angel::angel:user", user);
   // 로그인 안된 경우 로그인 모달 띄우기
   useEffect(() => {
     if (!user) {
@@ -48,7 +43,6 @@ export default function Vaccination() {
       console.log("Updated vaccinationData:", vaccinationData);
     }
   }, [dispatch]);
-
   useEffect(
     () =>
       console.log(
@@ -58,38 +52,13 @@ export default function Vaccination() {
       ),
     [vaccinationData, selectedBabyVaccinationData]
   );
-
-    const user = sessionStorage.getItem('user');
-    console.log('👼👼👼👼👼👼user', user);
-    const babyId: number = selectedBabyId ?? 0;
-    console.log('페이지에서 babyid',babyId)
-    // 로그인 안된 경우 로그인 모달 띄우기
-    useEffect(() => {
-        if (!user) {
-            setOpenLoginModal(true);
-        } else {
-            dispatch(fetchVaccinationData(babyId));
-            console.log('Updated vaccinationData:', vaccinationData);
-        }
-    }, [dispatch]);
-
-  useEffect(
-    () =>
-      console.log(
-        "vaccinationData, selectedBabyVaccinationData",
-        vaccinationData,
-        selectedBabyVaccinationData
-      ),
-    [vaccinationData, selectedBabyVaccinationData]
-  );
-
   return (
     <>
       <div className={layout.container}>
         {openLoginModal && (
           <NeedLoginModal modalState={() => setOpenLoginModal(false)} />
         )}
-        <div className={layout.contentsArea}>
+        <div className={`${layout.contentsArea} ${styles.contentsArea}`}>
           <div className={layout.titleArea}>
             <div className={layout.textWrap}>
               <div className={[layout.title, typography.text4xlBd].join(" ")}>
@@ -111,7 +80,7 @@ export default function Vaccination() {
               >
                 위탁의료기관{" "}
                 <img src="img/icons/i-search-s20.svg" alt="성장일지 이미지" />
-                {/* <Link to="/VaccinationCenters">위탁의료기관 🔎</Link> */}
+                {/* <Link to="/VaccinationCenters">위탁의료기관 :mag_right:</Link> */}
                 {/* {openCentersModal && <VaccinationCenters />} */}
               </button>
               <button
@@ -129,44 +98,19 @@ export default function Vaccination() {
               </button>
             </div>
           </div>
-
-          <BabyList
-            babyInfo={babyInfo}
-            handleSelectBaby={handleSelectBaby}
-            selectedBabyId={selectedBabyId}
-          />
-
-          <VaccinationTable
-            selectedBabyVaccinationData={selectedBabyVaccinationData}
-            selectedBabyId={selectedBabyId}
-          />
+          <div className={styles.contentsWrap}>
+            <BabyList
+              babyInfo={babyInfo}
+              handleSelectBaby={handleSelectBaby}
+              selectedBabyId={selectedBabyId}
+            />
+            <VaccinationTable
+              selectedBabyVaccinationData={selectedBabyVaccinationData}
+              selectedBabyId={selectedBabyId}
+            />
+          </div>
         </div>
       </div>
-      <div className={styles.button_wrap}>
-        <button
-          className={`${button.btnSmYw} ${typography.textBsBd}`}
-          onClick={() => setOpenCentersModal(true)}
-        >
-          위탁의료기관{" "}
-          <img src="img/icons/i-search-s20.svg" alt="성장일지 이미지" />
-          {/* <Link to="/VaccinationCenters">위탁의료기관 🔎</Link> */}
-          {/* {openCentersModal && <VaccinationCenters />} */}
-        </button>
-        <button
-          className={`${button.btnSmYw} ${typography.textBsBd}`}
-          onClick={() => setOpenDetailsModal(true)}
-        >
-          감염병 정보
-          {/* <Link to="/VaccinationDetails">감염병 정보</Link> */}
-        </button>
-        <button
-          className={`${button.btnSmYw} ${typography.textBsBd}`}
-          onClick={() => setOpenDetailsModal(true)}
-        >
-          국가예방접종
-        </button>
-      </div>
-
       {/* 모달 */}
       {openCentersModal && (
         <VaccinationCenters setOpenCentersModal={setOpenCentersModal} />

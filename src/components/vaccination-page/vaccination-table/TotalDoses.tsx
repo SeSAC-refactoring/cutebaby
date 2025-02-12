@@ -1,47 +1,26 @@
-import React from 'react';
-import { doses } from './VaccinationTableData';
+import React from "react";
+import { doses } from "./VaccinationTableData";
+import typography from "../../../styles/commons/Typography.module.scss";
+import styles from "../../../styles/Vaccination.module.scss";
 
 export const TotalDoses: React.FC = () => {
-    return (
-        <div>
-            <div
-                style={{
-                    width: '20px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: '56px',
-                    backgroundColor: '#93CBDF',
-                    fontSize: '22px',
-                    fontWeight: 'bold',
-                    borderRight: '3px solid #E1E1E5',
-                    boxSizing: 'border-box',
-                    position: 'sticky',
-                    top: '0',
-                }}
-            >
-                횟수
-            </div>
-            <ul style={{ listStyle: 'none', padding: '0', margin: '0' }}>
-                {doses.map((dose, i) => (
-                    <li
-                        key={i}
-                        style={{
-                            whiteSpace: 'pre-line', // \n을 인식하여 줄바꿈 적용
-                            width: '20px',
-                            height: i === 10 ? '100px' : '50px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderBottom: '2px solid #E1E1E5',
-                            borderRight: '3px solid #E1E1E5',
-                            boxSizing: 'border-box',
-                        }}
-                    >
-                        {dose}
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+  return (
+    <div>
+      <div
+        className={`${styles.cell} ${styles.th} ${styles.thTotalDoses} ${typography.textSmBd}`}
+      >
+        횟수
+      </div>
+      <ul className={`${typography.textSmRg} ${styles.ulTotalDoses}`}>
+        {doses.map((dose, i) => (
+          <li
+            className={`${styles.cell} ${styles.td}  ${styles.li} ${styles.liTotalDoses}`}
+            key={i}
+          >
+            {dose}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };

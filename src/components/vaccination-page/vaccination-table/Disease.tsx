@@ -1,56 +1,32 @@
-import React from 'react';
-import { diseasesName } from './VaccinationTableData';
+import React from "react";
+import { diseasesName } from "./VaccinationTableData";
+import typography from "../../../styles/commons/Typography.module.scss";
+import styles from "../../../styles/Vaccination.module.scss";
 
 export const Disease: React.FC = () => {
-    return (
-        <div>
-            <div
-                style={{
-                    width: '104px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: '56px',
-                    backgroundColor: '#93CBDF',
-                    fontSize: '22px',
-                    fontWeight: 'bold',
-                    borderBottomLeftRadius: '16px',
-                    borderTopLeftRadius: '16px',
-                    borderRight: '3px solid #E1E1E5',
-                    boxSizing: 'border-box',
-                    position: 'sticky',
-                    top: '0',
-                }}
-            >
-                대상 감염병
-            </div>
-            <ul style={{ listStyle: 'none', padding: '0', margin: '0' }}>
-                {diseasesName.map((disease, i) => (
-                    <li
-                        key={i}
-                        style={{
-                            whiteSpace: 'pre-line', // \n을 인식하여 줄바꿈 적용
-                            width: '104px',
-                            height:
-                                i === 2 ||
-                                i === 5 ||
-                                i === 6 ||
-                                i === 7 ||
-                                i === 10
-                                    ? '100px'
-                                    : '50px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderBottom: '2px solid #E1E1E5',
-                            borderRight: '3px solid #E1E1E5',
-                            boxSizing: 'border-box',
-                        }}
-                    >
-                        {disease}
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+  return (
+    <div>
+      <div
+        className={`${styles.cell} ${styles.th} ${styles.thDiseases} ${typography.textSmBd}`}
+      >
+        대상 감염병
+      </div>
+      <ul className={`${typography.textSmRg} ${styles.ulDiseases}`}>
+        {diseasesName.map((disease, i) => (
+          <li
+            className={`${styles.cell} ${styles.td} ${styles.li} ${styles.liDiseases}`}
+            key={i}
+            style={{
+              height:
+                i === 2 || i === 5 || i === 6 || i === 7 || i === 10
+                  ? "100px"
+                  : "50px",
+            }}
+          >
+            {disease}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
