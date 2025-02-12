@@ -16,7 +16,7 @@ export const VaccineType: React.FC<VaccineTypeProps> = ({
     const [newVaccinationData, setNewVaccinationData] = useState<
         VaccinationData[]
     >([]); // 서버로 보낼 추가/수정된 백신 정보
-
+    
     const [selectedVaccineId, setSelectedVaccineId] = useState<number | null>(
         null
     );

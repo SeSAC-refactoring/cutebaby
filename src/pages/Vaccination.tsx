@@ -37,13 +37,14 @@ export default function Vaccination() {
 
     const user = sessionStorage.getItem('user');
     console.log('👼👼👼👼👼👼user', user);
-
+    const babyId: number = selectedBabyId ?? 0;
+    console.log('페이지에서 babyid',babyId)
     // 로그인 안된 경우 로그인 모달 띄우기
     useEffect(() => {
         if (!user) {
             setOpenLoginModal(true);
         } else {
-            dispatch(fetchVaccinationData(5));
+            dispatch(fetchVaccinationData(babyId));
             console.log('Updated vaccinationData:', vaccinationData);
         }
     }, [dispatch]);
