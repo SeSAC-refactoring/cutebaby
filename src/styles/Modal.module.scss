@@ -3,12 +3,13 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  // height: 100vh;
   background: rgba(0, 0, 0, 0.5); // 반투명 배경
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000; // 모달이 가장 위에 오도록 설정
+  overflow: auto;
 }
 .mainModal {
   position: absolute;
@@ -35,6 +36,7 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  overflow: auto;
 }
 .center_background {
   width: 1280px;
@@ -113,4 +115,16 @@
   border-radius: 8px;
   padding: 18px 24px;
   font-size: 22px;
+}
+
+.modal_img_button {
+  width: 111px;
+  height: 42px;
+  padding: 10px 14px;
+  background-color: #bbdeeb;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  gap: 3px;
 }

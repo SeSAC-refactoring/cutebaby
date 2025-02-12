@@ -1,13 +1,20 @@
 import styles from '../../styles/Modal.module.scss';
+import { VaccinationData } from '../types';
 
 interface VaccinationModalBtnsProps {
     vaccinationid: number;
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    setNewVaccinationData: React.Dispatch<
+        React.SetStateAction<VaccinationData[]>
+    >;
+    inputData: VaccinationData[];
 }
 
 export const VaccinationModalBtns: React.FC<VaccinationModalBtnsProps> = ({
     vaccinationid,
     setIsOpen,
+    setNewVaccinationData,
+    inputData,
 }) => {
     return (
         <div className={styles.modal_button_container}>
@@ -29,8 +36,10 @@ export const VaccinationModalBtns: React.FC<VaccinationModalBtnsProps> = ({
                     </button>
                     <button
                         className={`${styles.modal_btn} ${styles.modal_done_button}`}
-                        // onClick={handleSubmit} // 완료 버튼 클릭 시 데이터 저장
-                        onClick={() => setIsOpen(false)}
+                        onClick={() => {
+                            setIsOpen(false);
+                            setNewVaccinationData(inputData);
+                        }} // 완료 버튼 클릭 시 데이터 저장
                     >
                         완료
                     </button>

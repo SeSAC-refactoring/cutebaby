@@ -43,6 +43,7 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
         filteredLmsDataByMonths
     );
 
+
     console.log('GrowthCalculate 모달의 childData', childData);
     // console.log('GrowthCalculate 모달의 lmsData', lmsData);
     // console.log(
@@ -51,6 +52,7 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
     // );
 
     return (
+
         <div
             onClick={() => {
                 setOpenCalModal(false);

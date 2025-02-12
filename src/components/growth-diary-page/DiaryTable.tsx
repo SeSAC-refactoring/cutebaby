@@ -19,7 +19,9 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({ growData }) => {
   const [data, setData] = useState<newGrowData[]>(growData);
   const dispatch = useDispatch<AppDispatch>();
   const [growId, setGrowId] = useState<number>(0);
+
   console.log("data>>>", data);
+
   const onDelGrow = async (e: React.MouseEvent<HTMLButtonElement>) => {
     console.log(e.currentTarget.value);
     // const growId = Number(e.currentTarget.value)
@@ -34,12 +36,22 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({ growData }) => {
       alert("삭제에 실패하였습니다. 관리자에게 문의하세요");
     }
   };
+
+
   const rewrite = (e: React.MouseEvent<HTMLButtonElement>) => {
     setGrowId(Number(e.currentTarget.value));
     setRewriteModal(true);
+    console.log(rewriteModal)
   };
   return (
     <div className={styles.list_wrap}>
+       {rewriteModal && (
+        <GrowRewriteModal
+          growId={growId}
+          growData={data}
+          onClose={() => setRewriteModal(false)}
+        />
+      )}
       <div className={styles.row_title}>
         <div className={styles.list_title}>날짜</div>
         <div className={styles.list_title}>키(cm)</div>
@@ -86,13 +98,8 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({ growData }) => {
           </ul>
         )}
       </div>
-      {rewriteModal && (
-        <GrowRewriteModal
-          growId={growId}
-          growData={data}
-          onClose={() => setRewriteModal(false)}
-        />
-      )}
+     
     </div>
   );
 };
+

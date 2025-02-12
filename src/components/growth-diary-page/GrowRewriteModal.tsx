@@ -54,7 +54,7 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
       });
       alert("성장 기록이 수정되었습니다!");
       dispatch(fetchgrowInfo(babyInfo));
-      onClose(false);
+      onClose();
       // 입력 필드 초기화
       setrewriteData({
         babyid: growData.babyid, // 선택된 아기는 유지
@@ -133,3 +133,4 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
     </div>
   );
 };
+

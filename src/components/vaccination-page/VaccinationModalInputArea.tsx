@@ -1,24 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { VaccinationData } from '../types';
 import styles from '../../styles/Modal.module.scss';
 
-interface VaccinationModalInputFieldsProps {
+interface VaccinationModalInputAreaProps {
     dosenumber: number;
     vaccinationid: number;
     selectedBabyVaccinationData: VaccinationData[];
-    setNewVaccinationData: React.Dispatch<
-        React.SetStateAction<VaccinationData>
-    >;
+    setInputData: React.Dispatch<React.SetStateAction<VaccinationData[]>>;
+    selectedBabyId: number | null;
 }
 
-export const VaccinationModalInputFields: React.FC<
-    VaccinationModalInputFieldsProps
+export const VaccinationModalInputArea: React.FC<
+    VaccinationModalInputAreaProps
 > = ({
     dosenumber,
     vaccinationid,
     selectedBabyVaccinationData,
-    setNewVaccinationData,
+    setInputData,
+    selectedBabyId,
 }) => {
+    // 날짜 변경 시 상태변경 함수
+    const handleDateChange = (dosenumber: number, date: string) => {
+        setInputData((prev) => {
+            // 기존 inputData에서 dosenumber에 해당하는 데이터 찾기
+            const existingData = prev.find(
+                (data) => data.dosenumber === dosenumber
+            );
+
+            if (existingData) {
+                // 기존 data 있으면 수정
+                return prev.map((data) =>
+                    data.dosenumber === dosenumber
+                        ? { ...data, dosedate: date }
+                        : data
+                );
+            } else {
+                // 기존 data 없으면 추가
+                return [
+                    ...prev,
+                    {
+                        babyid: selectedBabyId,
+                        vaccinationid: vaccinationid,
+                        dosenumber: dosenumber,
+                        dosedate: date,
+                    },
+                ];
+            }
+        });
+    };
+
     return (
         <>
             {Array.from({ length: dosenumber }).map((_, i) => {
@@ -81,20 +111,9 @@ export const VaccinationModalInputFields: React.FC<
                                 type="date"
                                 disabled={isDisabled} // 비활성화 설정
                                 defaultValue={defaultDate} // 기본값을 데이터가 있으면 불러오고 없으면 오늘날짜로 new Date().toISOString().split('T')[0]
-
-                                // 여기는 필요 없을듯.. 어차피 disabled라 클릭 못함
-                                // onFocus={(e) => {
-                                //     if (isDisabled) {
-                                //         // disabled 시 이전 차수 input으로 focus 이동
-                                //         const prevInput = e.target
-                                //             .closest('div') // 현재 클릭한 input이 포함된 가장 가까운 div 찾기
-                                //             ?.previousElementSibling // 바로 이전의 형제 요소 (div) 찾기
-                                //             ?.querySelector('input'); // 이전 div 내부의 input 찾기
-                                //         if (prevInput) {
-                                //             prevInput.focus(); // 이전 input 요소로 focus
-                                //         }
-                                //     }
-                                // }}
+                                onChange={(e) =>
+                                    handleDateChange(i + 1, e.target.value)
+                                }
                             />
                         )}
                     </div>
