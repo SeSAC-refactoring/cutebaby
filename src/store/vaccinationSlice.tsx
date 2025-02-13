@@ -27,12 +27,13 @@ export const fetchVaccinationData = createAsyncThunk(
     'vaccination/fetchVaccinationData', // Redux에서 액션을 구분하는 이름
     
     async (babyid: number, { rejectWithValue }) => {
+        const API_URL = process.env.REACT_APP_API_URL;
 
         console.log('store에서 babyid', babyid)
         try {
             // 백엔드 서버에 요청 보내기
             const response = await axios.post(
-                'http://localhost:5001/api/vaccination',
+                `${API_URL}/api/vaccination`,
                 { babyid } // babyid 값을 받아 해당 아기의 예방접종 데이터 조회
             );
             if (!response.data || response.data.length === 0) {

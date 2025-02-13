@@ -1,6 +1,8 @@
 import { babyinfoModel } from "../model/babyinfoModel.js";
 
 export const babyinfo = async (req, res) => {
+    const API_URL = process.env.REACT_APP_API_URL;
+
     const { user } = req.body;
     console.log('babyinfo > Received email:', user);
 
@@ -19,7 +21,7 @@ export const babyinfo = async (req, res) => {
                     } else if (typeof baby.picture === "string" && baby.picture.startsWith("http")) {
                         pictureUrl = baby.picture;
                     } else {
-                        pictureUrl = `http://localhost/uploads/${baby.picture}`;
+                        pictureUrl = `${API_URL}/uploads/${baby.picture}`;
                     }
                 }
 
