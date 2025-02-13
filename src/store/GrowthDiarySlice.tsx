@@ -18,6 +18,8 @@ const initialState: BabyState = {
 export const fetchgrowInfo = createAsyncThunk(
   'baby/fetchgrowInfo',
   async (babyInfo: { babyid: number }[], { rejectWithValue }) => { // babyInfo의 타입을 명확히 정의
+    const API_URL = process.env.REACT_APP_API_URL;
+
     try {
       console.log('성장 정보 요청 시작, babyInfo:', babyInfo);
 
@@ -28,7 +30,7 @@ export const fetchgrowInfo = createAsyncThunk(
       // ✅ babyid 배열을 이용해 API 요청
       const responses = await Promise.all(
         babyInfo.map((baby) => 
-          axios.post('http://localhost:5001/api/babygrow', { babyid: baby.babyid })
+          axios.post(`${API_URL}/api/babygrow`, { babyid: baby.babyid })
         )
       );
 

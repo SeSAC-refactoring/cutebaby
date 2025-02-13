@@ -12,11 +12,13 @@ export const initialState: BabyState = {
 export const fetchBabyInfo = createAsyncThunk(
     'baby/fetchBabyInfo',
     async (_, { rejectWithValue }) => {
+        const API_URL = process.env.REACT_APP_API_URL;
+
         try {
             const user = sessionStorage.getItem('usernumber');
             console.log('user number redux에 전달 >>>>>', user);
             const response = await axios.post(
-                'http://localhost:5001/api/babyinfo',
+                `${API_URL}/api/babyinfo`,
                 { user }
             );
             console.log('reduxer 안에 reponse >>', response);
