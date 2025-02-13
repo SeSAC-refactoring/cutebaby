@@ -12,7 +12,7 @@ export const AiChatComponent = () => {
   return (
     <div>
       {/* 메세지를 보여주는 곳 */}
-      <div>
+      <div className={styles.chat_wrapper}>
         {messages.map((msg, i) => (
           <div
             key={i}
@@ -23,7 +23,13 @@ export const AiChatComponent = () => {
             }}
             className={styles.chat_content}
           >
-            <div className={styles.chat_message_wrap}>
+            <div
+              className={
+                msg.role === "user"
+                  ? styles.chat_right_message_wrap
+                  : styles.chat_left_message_wrap
+              }
+            >
               <strong>
                 {msg.role === "user" ? "사용자 " : "꼬물"}
                 <br />
