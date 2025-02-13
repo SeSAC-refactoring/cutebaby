@@ -6,7 +6,7 @@ import styles from "../styles/Signup.module.scss";
 import axios, { AxiosError } from "axios";
 import { Link, useNavigate } from "react-router-dom";
 // import Input from "../components/commons/Input";
-import { Input, Input_signup_email } from "../components/commons/Input";
+import { Input, InputSignupEmail } from "../components/commons/Input";
 
 const Signup: React.FC = () => {
   // 입력값 상태
@@ -144,7 +144,7 @@ const Signup: React.FC = () => {
   };
   const inputEmail = formData.email;
   console.log("inputEmail>>>>", inputEmail);
-  
+
   const emailCheck = async (e: React.FormEvent) => {
     e.preventDefault();
     const response = await axios.post("http://localhost:5001/api/emailCheck", {
@@ -235,7 +235,7 @@ const Signup: React.FC = () => {
 
             <div className={`${styles.formWrap} ${styles.formWrapEmail}`}>
               <div className={styles.mailWrap}>
-                <Input_signup_email
+                <InputSignupEmail
                   label="이메일"
                   type="email"
                   name="email"
@@ -253,9 +253,11 @@ const Signup: React.FC = () => {
                   중복체크
                 </button>
               </div>
-              {messages.email && <p className={styles.error}>{messages.email}</p>}
+              {messages.email && (
+                <p className={styles.error}>{messages.email}</p>
+              )}
             </div>
-                
+
             <div className={styles.formWrap}>
               <Input
                 label="비밀번호"
@@ -304,7 +306,6 @@ const Signup: React.FC = () => {
             </button>
           </div>
         </div>
-
       </div>
     </div>
   );

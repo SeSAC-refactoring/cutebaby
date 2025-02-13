@@ -37,7 +37,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     );
   }
 );
-export const Input_signup_email = forwardRef<HTMLInputElement, InputProps>(
+export const InputSignupEmail = forwardRef<HTMLInputElement, InputProps>(
   ({ type, name, value, onChange, placeholder, label }, ref) => {
     const inputRef = useRef<HTMLInputElement>(null);
 
@@ -45,7 +45,7 @@ export const Input_signup_email = forwardRef<HTMLInputElement, InputProps>(
     React.useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
     return (
-      <div className={styles.inputWrap}>
+      <div className={styles.input_email_check}>
         <label className={typography.textSmBd}>{label}</label>
         <input
           className={typography.textLgRg}

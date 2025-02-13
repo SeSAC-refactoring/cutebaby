@@ -105,7 +105,9 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
       >
         <div className={styles.modal_title_wrap}>
           <div className={styles.modal_title}>아이 정보 등록</div>
-          <div className={styles.X_btn}>X</div>
+          <div className={styles.X_btn} onClick={onClose}>
+            X
+          </div>
         </div>
         <div className={styles.modal_img_wrap}>
           {defaultImg && <img src="/img/Profile.png" alt="아기 사진" />}
@@ -176,7 +178,6 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
             <GenderInput
               setSelectedGender={handleGenderChange}
               selectedGender={selectedGender}
-            
             />
             {/* <label>
               <input
@@ -204,17 +205,15 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
         <div className={styles.modal_button_container}>
           <button
             className={`${styles.modal_btn} ${styles.modal_cancel_button}`}
-             type="button"
-             onClick={onClose}
-
+            type="button"
+            onClick={onClose}
           >
             취소
           </button>
           <button
             className={`${styles.modal_btn} ${styles.modal_done_button}`}
             onClick={createBaby}
-
-             type="button"
+            type="button"
           >
             완료
           </button>
