@@ -187,10 +187,6 @@ export default function GrowthDiary() {
                                             marginTop: '24px',
                                             border: '3px solid #D1E9F1',
                                             borderRadius: '32px',
-                                            // display: 'flex',
-                                            // flexDirection: 'column',
-                                            // justifyContent: 'center',
-                                            // alignItems: 'center',
                                         }}
                                     >
                                         <div
