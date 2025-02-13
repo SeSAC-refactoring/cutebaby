@@ -3,8 +3,10 @@ import styles from "../../styles/Mypage.module.scss";
 import { babyinfo } from "../types";
 import { UpdateBaby } from "./UpdateBaby";
 import { DelbabyModal } from "./DelbabyModal";
+
 import { BabyListColumnSmall } from "../commons/BabyListColumn_small";
-import { BabyInputPlus } from "./BabyInputPlus"; // 🔹 모달 import
+import { BabyInputPlus } from "./BabyInputPlus";
+
 import { BabyList } from "../commons/BabyList";
 import modal from "../../styles/Modal.module.scss";
 
