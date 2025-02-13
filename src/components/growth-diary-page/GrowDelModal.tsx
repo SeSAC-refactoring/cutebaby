@@ -47,8 +47,9 @@ export const GrowDelModal: React.FC<GrowDelModalProps> = ({
                 <div className={styles.modal_container}>
                     <p>정말 삭제하시겠습니까?</p>
                     <div className={styles.modal_button_container}>
-                        <button className={styles.modal_btn} onClick={onDelGrow}>예</button>
                         <button className={styles.modal_btn} onClick={onClose}>아니오</button>
+                        <button className={styles.modal_btn} onClick={onDelGrow}>예</button>
+
                     </div>
                 </div>
             </div>

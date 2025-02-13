@@ -57,7 +57,7 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
                         <label className={styles.label} htmlFor="height">
                             키
                         </label>
-                        <div>
+                        <div >
                             <input
                                 className={styles.input}
                                 type="number"
@@ -70,7 +70,7 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
                                     inputRef.current.height = el;
                                 }}
                             />
-                            <span>cm</span>
+                            <span className={styles.list_title}>cm</span>
                         </div>
                     </div>
 
@@ -91,7 +91,7 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
                                     inputRef.current.weight = el;
                                 }}
                             />
-                            <span>kg</span>
+                            <span className={styles.list_title}>kg</span>
                         </div>
                     </div>
 
@@ -112,30 +112,29 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
                                     inputRef.current.head = el;
                                 }}
                             />
-                            <span>cm</span>
+                            <span className={styles.list_title}>cm</span>
                         </div>
                     </div>
                 </div>
+               
+            </div>
+            <div className={styles.container_btn}>
                 <button
-                    // 입력값 초기화
                     onClick={() =>
                         setNewGrowData({
-                            babyid: newGrowData.babyid, // 선택된 아기는 유지
-                            id: 0,
-                            height: '',
-                            weight: '',
-                            head: '',
-                            inputData: new Date().toISOString().split('T')[0],
-                        })
+                        babyid: newGrowData.babyid,
+                        id: 0,
+                        height: '',
+                        weight: '',
+                        head: '',
+                        inputData: new Date().toISOString().split('T')[0],
+                         })
                     }
-                >
-                    초기화
-                </button>
+                            className={styles.reset_btn}>초기화</button>
 
-                <button className={styles.add_btn} onClick={handleDiarySubmit}>
-                    추가하기
-                </button>
+                <button className={styles.add_btn} onClick={handleDiarySubmit}>추가하기</button>
             </div>
+
         </div>
     );
 };
