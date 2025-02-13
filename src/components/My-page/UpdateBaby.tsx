@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import styles from "../../styles/Modal.module.scss";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
 import { ImageUploader } from "../my-page/ImageUploader";
 import { useBabyUpdate } from "./hooks/useBabyUpdate";
 import { fetchBabyInfo } from "../../store/babySlice";
+import { Input } from "../commons/Input";
+import { GenderInput } from "../commons/genderList";
 
 interface UpdateBabyProps {
   onClose: () => void;
@@ -23,6 +25,7 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
 }) => {
   const dispatch = useDispatch<AppDispatch>();
   const { requestbaby } = useBabyUpdate();
+  const [defaultImg, setDefaultImg] = useState(true);
 
   //기존 데이터를 유지하면서 변경 가능하도록 설정
   const [rewriteData, setRewriteData] = useState({
@@ -39,9 +42,13 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
   };
 
   // 성별 선택 시 `rewriteData` 업데이트
-  const handleGenderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRewriteData((prev) => ({ ...prev, gender: e.target.value }));
-  };
+  // const handleGenderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setRewriteData((prev) => ({ ...prev, gender: e.target.value }));
+  // };
+  const handleGenderChange = useCallback((gender: string) => {
+    setSelectedGender(gender);
+    setRewriteData((prev) => ({ ...prev, gender }));
+  }, []);
 
   // 이미지 변경 시 `rewriteData` 업데이트
   const handleImageSelect = (file: File | null) => {
@@ -84,27 +91,39 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
       console.error("업데이트 오류:", error);
     }
   };
+  const [selectedGender, setSelectedGender] = useState(rewriteData.gender);
 
   return (
-    <div className={styles.modal_overlay}>
-      <div className={styles.modal_background}>
-        <div className={styles.modal_container}>
-          <div className={styles.modal_title_wrap}>
-            <div className={styles.modal_title}>아기 정보 수정</div>
-            <div
-              onClick={onClose}
-              style={{
-                fontSize: "40px",
-                cursor: "pointer",
-              }}
-            >
-              X
-            </div>
+    <div onClick={onClose} className={styles.modal_overlay}>
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className={styles.modal_container}
+      >
+        <div className={styles.modal_title_wrap}>
+          <div className={styles.modal_title}>아기 정보 수정</div>
+          <div onClick={onClose} className={styles.X_btn}>
+            X
           </div>
-
-          {/* <ImageUploader onImageSelect={handleImageSelect} resetTrigger={false} /> */}
-
-          <label>
+        </div>
+        <div className={styles.modal_img_wrap}>
+          {defaultImg && <img src="/img/Profile.png" alt="아기 사진" />}
+          <div style={{ position: "relative", bottom: "60px", left: "30px" }}>
+            <ImageUploader
+              setDefaultImg={setDefaultImg}
+              onImageSelect={handleImageSelect}
+              resetTrigger={false}
+            />
+          </div>
+        </div>
+        <div className={styles.modal_Input_wrap}>
+          <Input
+            label="이름"
+            placeholder="이름 입력"
+            id="babyname"
+            value={rewriteData.babyname}
+            onChange={handleInputChange}
+          ></Input>
+          {/* <label>
             <h2>이름</h2>
             <input
               className={styles.modal_input}
@@ -113,9 +132,16 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
               value={rewriteData.babyname} // 기존 이름 유지
               onChange={handleInputChange}
             />
-          </label>
+          </label> */}
+          <Input
+            label="생년월일"
+            type="date"
+            id="birthday"
+            value={rewriteData.birthday}
+            onChange={handleInputChange}
+          ></Input>
 
-          <label>
+          {/* <label>
             <h2>생년월일</h2>
             <input
               className={styles.modal_input}
@@ -124,43 +150,30 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
               value={rewriteData.birthday} // 기존 날짜 유지
               onChange={handleInputChange}
             />
-          </label>
+          </label> */}
 
-          <label>
-            <input
-              type="radio"
-              name="gender"
-              value="boy"
-              checked={rewriteData.gender === "boy"}
-              onChange={handleGenderChange}
+          <section>
+            <label>성별 :</label>
+            <GenderInput
+              setSelectedGender={handleGenderChange}
+              selectedGender={selectedGender}
             />
-            남아
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="gender"
-              value="girl"
-              checked={rewriteData.gender === "girl"}
-              onChange={handleGenderChange}
-            />
-            여아
-          </label>
+          </section>
+        </div>
 
-          <div className={styles.modal_button_container}>
-            <button
-              className={`${styles.modal_btn} ${styles.modal_cancel_button}`}
-              onClick={onClose}
-            >
-              취소
-            </button>
-            <button
-              onClick={rewrite}
-              className={`${styles.modal_btn} ${styles.modal_done_button}`}
-            >
-              완료
-            </button>
-          </div>
+        <div className={styles.modal_button_container}>
+          <button
+            className={`${styles.modal_btn} ${styles.modal_cancel_button}`}
+            onClick={onClose}
+          >
+            취소
+          </button>
+          <button
+            onClick={rewrite}
+            className={`${styles.modal_btn} ${styles.modal_done_button}`}
+          >
+            완료
+          </button>
         </div>
       </div>
     </div>

@@ -31,7 +31,9 @@ export default function Mypage() {
 
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [updateModal, setOpenUpdate] = useState<boolean>(false);
-  const { babyInfo, nothingBaby } = useSelector((state: RootState) => state.baby);
+  const { babyInfo, nothingBaby } = useSelector(
+    (state: RootState) => state.baby
+  );
 
   const update = () => {
     if (!isKakaoLogin) {
@@ -80,7 +82,9 @@ export default function Mypage() {
                 <div className={styles.name}>{userInfo.userid}</div>
               </div>
               <button
-                className={`${styles.edit_btn} ${isKakaoLogin ? styles.disabled : ""}`}
+                className={`${styles.edit_btn} ${
+                  isKakaoLogin ? styles.disabled : ""
+                }`}
                 onClick={update}
                 disabled={isKakaoLogin}
               >
@@ -94,21 +98,21 @@ export default function Mypage() {
 
               {/* 수정 모달 */}
               {updateModal && (
-                <div onClick={() => setOpenUpdate(false)} className={styles.modal_overlay}>
-                  <UserupdateModal
-                    modalState={() => {
-                      setOpenUpdate(false);
-                      // 정보가 수정되면 상태 업데이트
-                      const updatedEmail = sessionStorage.getItem("useremail") ?? "";
-                      const kakaoLogin = !updatedEmail.includes("@");
+                <UserupdateModal
+                  modalState={() => {
+                    setOpenUpdate(false);
+                    // 정보가 수정되면 상태 업데이트
+                    const updatedEmail =
+                      sessionStorage.getItem("useremail") ?? "";
+                    const kakaoLogin = !updatedEmail.includes("@");
 
-                      setUserInfo({
-                        username: sessionStorage.getItem("username") ?? "방문자님",
-                        userid: kakaoLogin ? "카카오 로그인" : updatedEmail,
-                      });
-                    }}
-                  />
-                </div>
+                    setUserInfo({
+                      username:
+                        sessionStorage.getItem("username") ?? "방문자님",
+                      userid: kakaoLogin ? "카카오 로그인" : updatedEmail,
+                    });
+                  }}
+                />
               )}
             </div>
           </div>

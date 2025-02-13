@@ -1,3 +1,5 @@
+@import "../styles/commons/Colors.module.scss";
+
 .modalbackground {
   position: fixed;
   top: 0;
@@ -176,4 +178,40 @@
       gap: 20px;
     }
   }
+}
+.check_wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.check_btn {
+  width: 125px;
+  height: 64px;
+  background-color: #bbdeeb;
+  border: none;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 16px;
+}
+.error_message {
+  position: relative;
+  bottom: 10px;
+}
+.del_modal_button_wrap {
+  display: flex;
+  width: 100%;
+  margin-top: 100px;
+  gap: 16px;
+}
+.del_button {
+  color: $color-white;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+}
+.cancel_button {
+  color: $color-gray-10;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
 }
