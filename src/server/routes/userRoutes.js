@@ -49,4 +49,27 @@ router.post('/updateUser',updateUser)
 // babyid를 기반으로 예방접종 데이터 가져오기
 router.post('/vaccination', getVaccination);
 
+//////////////////
+router.get("/babycreate", upload.single("picture"), babycreate);
+// 이메일로 사용자 정보 조회
+router.get('/user', getUserInfoByEmail);
+// 이메일로 회원가입
+router.get('/signup', signupCon);
+router.get('/kakaosignup', kakaoCon);
+router.get('/emailCheck', emailCheck);
+router.get('/babyinfo', babyinfo);
+router.get('/babygrow', babygrow);
+router.get('/newgrow' , newgrow);
+router.get('/delgrow',delgrow);
+router.get('/babycreate',babycreate);
+router.get('/delbaby', delbaby);
+router.get('/updategrow', updategrow)
+router.get('/updateBaby', upload.single("picture"), updateBaby)
+router.get('/newVac', newVac)   
+router.get('/delVac', delVac)
+router.get('/updateVac', updateVac)
+router.get('/updateUser',updateUser)
+
+// babyid를 기반으로 예방접종 데이터 가져오기
+router.get('/vaccination', getVaccination);
 export default router;
