@@ -61,16 +61,15 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
         <>
             <div className={styles.vacTableWrap}>
                 <div className={styles.vacTable}>
-                    <div className={styles.vacTableHeader}>
-                        <Disease />
-                        <VaccineType
-                            selectedBabyId={selectedBabyId}
-                            selectedBabyVaccinationData={
-                                selectedBabyVaccinationData
-                            }
-                        />
-                        <TotalDoses />
-                    </div>
+                    <Disease />
+                    <VaccineType
+                        selectedBabyId={selectedBabyId}
+                        selectedBabyVaccinationData={
+                            selectedBabyVaccinationData
+                        }
+                    />
+                    <TotalDoses />
+
                     <div className={styles.vacTableScheduleArea}>
                         <div className={styles.thDoseDateWrap}>
                             <DoseDate />

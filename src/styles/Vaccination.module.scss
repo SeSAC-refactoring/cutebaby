@@ -51,7 +51,7 @@
 .th {
     padding-top: 14px;
     padding-bottom: 14px;
-    // position: sticky;
+    position: sticky;
     top: 0;
     background-color: $color-blue-3;
     border-right: 2px solid $color-blue-6;
@@ -68,13 +68,6 @@
 // VaccineType.tsx
 // TotalDoses.tsx
 // DoseDate.tsx
-.vacTableHeader {
-    position: sticky;
-    left: 0;
-    display: flex;
-    // z-index: 20; // 다른 요소보다 위로 배치
-}
-
 .thDiseases {
     width: 142px;
 }
@@ -123,7 +116,7 @@ ul {
 }
 
 .thDoseDateWrap {
-    // position: sticky;
+    position: sticky;
     top: 0;
     display: flex;
     background-color: $color-blue-3;

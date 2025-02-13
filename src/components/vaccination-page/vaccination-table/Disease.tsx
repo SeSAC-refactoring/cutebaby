@@ -5,7 +5,7 @@ import styles from '../../../styles/Vaccination.module.scss';
 
 export const Disease: React.FC = () => {
     return (
-        <div>
+        <div className={styles.diseaseWrap}>
             <div
                 className={`${styles.cell} ${styles.th} ${styles.thDiseases} ${typography.textBsBd}`}
             >
