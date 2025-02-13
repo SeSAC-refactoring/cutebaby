@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import styles from "../../styles/Modal.module.scss";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
-import { ImageUploader } from "../my-page/ImageUploader";
+import { ImageUploader } from "./ImageUploader";
 import { useBabyUpdate } from "./hooks/useBabyUpdate";
 import { fetchBabyInfo } from "../../store/babySlice";
 import { Input } from "../commons/Input";
