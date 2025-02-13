@@ -16,7 +16,9 @@ const GenderInputComponent: React.FC<GenderInputProps> = ({
   ];
 
   return (
-    <div style={{ display: "flex", gap: "20px" }}>
+    <div
+      style={{ display: "flex", gap: "20px" }}
+      onClick={(e) => e.stopPropagation()} >
       <div className={styles.segments}>
         {genderOptions.map((el) => (
           <button
@@ -26,7 +28,8 @@ const GenderInputComponent: React.FC<GenderInputProps> = ({
                 ? styles.segmentsItem_selected
                 : styles.segmentsItem
             }
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation(); 
               if (selectedGender !== el.value) {
                 setSelectedGender(el.value);
               }
