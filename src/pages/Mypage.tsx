@@ -49,13 +49,11 @@ export default function Mypage() {
     <div className={layout.container}>
       {/* 로그인 필요 모달 */}
       {openModal && <NeedLoginModal modalState={() => setOpenModal(false)} />}
-
       <div>
         <div className={layout.contentsArea}>
           <div className={layout.titleArea}>
             <h1 className={layout.title}>마이페이지</h1>
           </div>
-
           {/* 사용자 정보 출력하기*/}
           <div className={styles.user_info_wrap}>
             <div className={styles.info_title}>내 정보</div>
@@ -92,7 +90,6 @@ export default function Mypage() {
               )}
             </div>
           </div>
-
           {/*애기 정보 출력 */}
           {/* <MypageBabyList babyInfo={babyInfo} nothingBaby={nothingBaby} /> */}
           <BabyInfo babyInfo={babyInfo} />
