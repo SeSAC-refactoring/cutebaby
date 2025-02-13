@@ -61,7 +61,7 @@ const EmailLogin: React.FC = () => {
     // 이메일로 사용자 정보 조회
     const handleSubmit = async (e: React.FormEvent) => {
         const API_URL = process.env.REACT_APP_API_URL;
-
+        console.log(API_URL)
         e.preventDefault(); // 페이지 새로 고침 방지
         console.log('>>>>>');
         try {
