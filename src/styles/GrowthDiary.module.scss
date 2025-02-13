@@ -31,7 +31,7 @@
 
 .inputArea_wrap {
   display: flex;
-  width: 811px;
+  width: 100%;
   justify-content: space-between;
 }
 
@@ -172,6 +172,12 @@
   color: white;
   width: 80px;
 }
+.container_btn{
+  display: flex;
+  justify-content: flex-end; 
+  gap: 10px; 
+  margin-top: 16px;}
+
 .small_text {
   font-size: 8px;
   text-align: right;
@@ -322,6 +328,17 @@
   z-index: 100;
   top: 90%;
   left: 860px;
+}
+.reset_btn{
+  
+    width: 142px;
+    height : 64px;
+    margin-right: 16px;
+    background-color: #F6D9A7;
+    font-size: 22px;
+    border-radius: 16px;
+    border: none,
+
 }
 
 .table_btn {
