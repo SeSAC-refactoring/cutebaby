@@ -1,211 +1,217 @@
-@import "./commons/Colors.module.scss";
+@import './commons/Colors.module.scss';
 
 //Vaccination.tsx
 .contentsArea {
-  gap: 32px;
-  .button_wrap {
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-  }
+    gap: 32px;
+    .button_wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+    }
 
-  .contentsWrap {
-    flex-grow: 1;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
+    .contentsWrap {
+        flex-grow: 1;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
 }
 
 // VaccinationTable.tsx
 .vacTableWrap {
-  flex-grow: 1;
-  width: 100%;
-  max-height: 500px;
-  display: flex;
-  overflow: hidden;
-  border-bottom: 2px solid $color-blue-4;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-
-  .vacTable {
     flex-grow: 1;
     width: 100%;
+    max-height: 500px;
     display: flex;
-    overflow: scroll;
+    overflow: hidden;
+    border-bottom: 2px solid $color-blue-4;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
 
-    .vacTableScheduleArea {
-      flex-grow: 1;
+    .vacTable {
+        flex-grow: 1;
+        width: 100%;
+        display: flex;
+        overflow: scroll;
+
+        .vacTableScheduleArea {
+            flex-grow: 1;
+        }
     }
-  }
 }
 
 // Table default style
 .cell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .th {
-  padding-top: 14px;
-  padding-bottom: 14px;
-  position: sticky;
-  top: 0;
-  background-color: $color-blue-3;
-  border-right: 2px solid $color-blue-6;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    // position: sticky;
+    top: 0;
+    background-color: $color-blue-3;
+    border-right: 2px solid $color-blue-6;
 }
 
 .td {
-  padding: 8px;
-  text-align: center;
-  border-bottom: 2px solid $color-blue-4;
-  border-right: 2px solid $color-blue-4;
+    padding: 8px;
+    text-align: center;
+    border-bottom: 2px solid $color-blue-4;
+    border-right: 2px solid $color-blue-4;
 }
 
 // Disease.tsx
 // VaccineType.tsx
 // TotalDoses.tsx
 // DoseDate.tsx
+.vacTableHeader {
+    position: sticky;
+    left: 0;
+    display: flex;
+    // z-index: 20; // 다른 요소보다 위로 배치
+}
+
 .thDiseases {
-  width: 142px;
+    width: 142px;
 }
 
 .ulDiseases,
 .ulVaccineType {
-  background-color: $color-blue-1;
+    background-color: $color-blue-1;
 }
 
 ul {
-  li {
-    width: 100%;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    white-space: pre-line; // \n을 인식하여 줄바꿈 적용
-    text-align: center;
-    border-bottom: 2px solid $color-gray-2;
-    border-right: 2px solid $color-gray-2;
-  }
+    li {
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        white-space: pre-line; // \n을 인식하여 줄바꿈 적용
+        text-align: center;
+        border-bottom: 2px solid $color-gray-2;
+        border-right: 2px solid $color-gray-2;
+    }
 }
 
 .thVaccineType,
 .ulVaccineType {
-  width: 192px;
+    width: 192px;
 }
 
 .liVaccineType {
-  padding-right: 8px;
-  display: flex;
-  justify-items: start;
-  gap: 8px;
+    padding-right: 8px;
+    display: flex;
+    justify-items: start;
+    gap: 8px;
 
-  .vaccineName {
-    flex-grow: 1;
-    text-align: left;
-  }
+    .vaccineName {
+        flex-grow: 1;
+        text-align: left;
+    }
 }
 
 .thTotalDoses {
-  width: 40px;
+    width: 40px;
 }
 
 .liTotalDoses {
-  height: 50px;
+    height: 50px;
 }
 
 .thDoseDateWrap {
-  position: sticky;
-  top: 0;
-  display: flex;
-  background-color: $color-blue-3;
-
-  .thDoseDate {
-    width: 80px;
-    padding-top: 14px;
-    padding-bottom: 14px;
+    // position: sticky;
+    top: 0;
+    display: flex;
     background-color: $color-blue-3;
-    border-right: 1px solid $color-blue-6;
-  }
+
+    .thDoseDate {
+        width: 80px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+        background-color: $color-blue-3;
+        border-right: 1px solid $color-blue-6;
+    }
 }
 
 // VaccinationSchedule.tsx
 .vacScheduleWrap {
-  display: grid;
-  grid-template-columns: repeat(
-    15,
-    80px
-  ); // 15개의 동일한 너비의 컬럼 생성 // 1fr 말고 px ,% 등 사용 가능
-  background-color: $color-gray-bg;
+    display: grid;
+    grid-template-columns: repeat(
+        15,
+        80px
+    ); // 15개의 동일한 너비의 컬럼 생성 // 1fr 말고 px ,% 등 사용 가능
+    background-color: $color-gray-bg;
 
-  // 예방접종 표 내부 색
-  .cell {
-    padding: 8px 4px;
-    display: flex;
-    flex-direction: column;
-    border-right: 1px solid $color-gray-2;
-    border-bottom: 2px solid $color-gray-2;
-    
-    .dataWrap {
-      display: flex;
-      gap: 4px;
-      
-      .checkIconHidden {
-        display: none;
-      }
-      .checkIconShow {
-        display: block;
-      }
-    }
-  }
+    // 예방접종 표 내부 색
+    .cell {
+        padding: 8px 4px;
+        display: flex;
+        flex-direction: column;
+        border-right: 1px solid $color-gray-2;
+        border-bottom: 2px solid $color-gray-2;
 
-  // 예방접종 완료
-  .completed {
-    color: $color-gray-4;
-    background-color: $color-gray-0;
+        .dataWrap {
+            display: flex;
+            gap: 4px;
 
-    .date {
-      color: $color-gray-4;
+            .checkIconHidden {
+                display: none;
+            }
+            .checkIconShow {
+                display: block;
+            }
+        }
     }
 
-  }
+    // 예방접종 완료
+    .completed {
+        color: $color-gray-4;
+        background-color: $color-gray-0;
 
-  // 예방접종 미완료
-  .notCompleted {
-    color: $color-red-5;
-    background-color: $color-red-1;
-  }
+        .date {
+            color: $color-gray-4;
+        }
+    }
 
-  // 필수가 아닌 것 // 완료 시 completed로 바뀜뀜
-  .notMust {
-    background-color: $color-purple-1;
-  }
+    // 예방접종 미완료
+    .notCompleted {
+        color: $color-red-5;
+        background-color: $color-red-1;
+    }
+
+    // 필수가 아닌 것 // 완료 시 completed로 바뀜뀜
+    .notMust {
+        background-color: $color-purple-1;
+    }
 }
 
 // 1~2회 접종인 것 중 1회만 접종 시 // 2회 접종 완료 시 compldted로
 .onlyFirst {
-  background-color: rgba(255, 182, 193, 0.457);
+    background-color: rgba(255, 182, 193, 0.457);
 }
 
 .enter_btn {
-  background-color: rgb(214, 213, 213);
-  width: 40px;
-  border: none;
+    background-color: rgb(214, 213, 213);
+    width: 40px;
+    border: none;
 }
 .search_wrap {
-  margin-top: 30px;
-  width: 500px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    margin-top: 30px;
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .search_date {
-  width: 340px;
-  height: 30px;
+    width: 340px;
+    height: 30px;
 }
 .search_btn {
-  border: none;
-  height: 30px;
-  width: 50px;
+    border: none;
+    height: 30px;
+    width: 50px;
 }
