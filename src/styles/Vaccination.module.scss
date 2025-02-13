@@ -8,7 +8,7 @@
     justify-content: space-between;
     gap: 8px;
   }
-  
+
   .contentsWrap {
     flex-grow: 1;
     width: 100%;
@@ -25,8 +25,9 @@
   max-height: 500px;
   display: flex;
   overflow: hidden;
-  border-bottom: 3px solid $color-blue-4;
+  border-bottom: 2px solid $color-blue-4;
   border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 
   .vacTable {
     flex-grow: 1;
@@ -53,14 +54,14 @@
   position: sticky;
   top: 0;
   background-color: $color-blue-3;
-  border-right: 3px solid $color-blue-6;
+  border-right: 2px solid $color-blue-6;
 }
 
 .td {
   padding: 8px;
   text-align: center;
-  border-bottom: 2px solid $color-gray-2;
-  border-right: 3px solid $color-gray-2;
+  border-bottom: 2px solid $color-blue-4;
+  border-right: 2px solid $color-blue-4;
 }
 
 // Disease.tsx
@@ -85,7 +86,7 @@ ul {
     white-space: pre-line; // \n을 인식하여 줄바꿈 적용
     text-align: center;
     border-bottom: 2px solid $color-gray-2;
-    border-right: 3px solid $color-gray-2;
+    border-right: 2px solid $color-gray-2;
   }
 }
 
@@ -99,7 +100,7 @@ ul {
   display: flex;
   justify-items: start;
   gap: 8px;
-  
+
   .vaccineName {
     flex-grow: 1;
     text-align: left;
@@ -119,43 +120,67 @@ ul {
   top: 0;
   display: flex;
   background-color: $color-blue-3;
-  
+
   .thDoseDate {
     width: 80px;
     padding-top: 14px;
     padding-bottom: 14px;
     background-color: $color-blue-3;
-    border-right: 3px solid $color-blue-6;
+    border-right: 2px solid $color-blue-6;
   }
 }
 
 // VaccinationSchedule.tsx
-.vacScheduleCell {
+.vacScheduleWrap {
   display: grid;
-  grid-template-columns: repeat(15, 80px); // 15개의 동일한 너비의 컬럼 생성 // 1fr 말고 px ,% 등 사용 가능
-}
+  grid-template-columns: repeat(
+    15,
+    80px
+  ); // 15개의 동일한 너비의 컬럼 생성 // 1fr 말고 px ,% 등 사용 가능
+  background-color: $color-gray-bg;
 
+  // 예방접종 표 내부 색
+  .cell {
+    padding: 8px 4px;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid $color-gray-2;
+    border-bottom: 2px solid $color-gray-2;
+    
+    .dataWrap {
+      display: flex;
+      gap: 4px;
+      
+      .checkIconHidden {
+        display: none;
+      }
+      .checkIconShow {
+        display: block;
+      }
+    }
+  }
 
+  // 예방접종 완료
+  .completed {
+    color: $color-gray-4;
+    background-color: $color-gray-0;
 
-// 예방접종 표 내부 색
-// 빈칸
-.blank {
-  background-color: transparent;
-}
+    .date {
+      color: $color-gray-4;
+    }
 
-// 예방접종 완료
-.completed {
-  background-color: grey;
-}
+  }
 
-// 예방접종 미완료
-.notCompleted {
-  background-color: #ffeeef;
-}
+  // 예방접종 미완료
+  .notCompleted {
+    color: $color-red-6;
+    background-color: $color-red-1;
+  }
 
-// 필수가 아닌 것 // 완료 시 completed로 바뀜뀜
-.notMust {
-  background-color: #e1e1e5;
+  // 필수가 아닌 것 // 완료 시 completed로 바뀜뀜
+  .notMust {
+    background-color: #e1e1e5;
+  }
 }
 
 // 1~2회 접종인 것 중 1회만 접종 시 // 2회 접종 완료 시 compldted로
@@ -183,7 +208,4 @@ ul {
   border: none;
   height: 30px;
   width: 50px;
-}
-
-.date {
 }

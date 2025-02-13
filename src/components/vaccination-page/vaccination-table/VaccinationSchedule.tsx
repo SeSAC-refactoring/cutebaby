@@ -1,5 +1,6 @@
 import React from "react";
 import { VaccinationData } from "../../types";
+import typography from "../../../styles/commons/Typography.module.scss";
 import styles from "../../../styles/Vaccination.module.scss";
 import { vaccinationScheduleData } from "./VaccinationTableData";
 
@@ -12,7 +13,7 @@ export const VaccinationSchedule: React.FC<VaccinationScheduleProps> = ({
 }) => {
   return (
     <>
-      <div className={styles.vacScheduleCell}>
+      <div className={`${styles.vacScheduleWrap} ${typography.textXsRg}`}>
         {vaccinationScheduleData.flat().map((data, i) => {
           // flat()을 사용해 2차원 배열을 1차원 배열로 변환
 
@@ -28,23 +29,40 @@ export const VaccinationSchedule: React.FC<VaccinationScheduleProps> = ({
               }}
               className={
                 !data.text
-                  ? styles.blank
+                  ? styles.cell
                   : matchedVaccine
                   ? data.vaccinationid &&
                     [13, 14, 16].includes(data.vaccinationid) &&
                     matchedVaccine.dosenumber === 1
-                    ? styles.onlyFirst
-                    : styles.completed
+                    ? `${styles.cell} ${styles.onlyFirst}`
+                    : `${styles.cell} ${styles.completed}`
                   : data.vaccinationid === 8
-                  ? styles.notMust
-                  : styles.notCompleted
+                  ? `${styles.cell} ${styles.notMust}`
+                  : `${styles.cell} ${styles.notCompleted}`
               }
             >
-              {data.text}
+              <div className={styles.dataWrap}>
+                <img className={
+                !data.text
+                  ? styles.checkIconHidden
+                  : matchedVaccine
+                  ? data.vaccinationid &&
+                    [13, 14, 16].includes(data.vaccinationid) &&
+                    matchedVaccine.dosenumber === 1
+                    ? styles.checkIconHidden
+                    : styles.checkIconShow
+                  : data.vaccinationid === 8
+                  ? styles.notMust
+                  : styles.checkIconHidden
+              } src="/img/icons/i-check-s12.svg" alt="" />
+                {data.text}
+              </div>
 
               {/* 접종일 보여주기 // 없으면 빈칸 */}
               {matchedVaccine?.dosedate ? ( // ?.(optional chaining): obj가 null이거나 undefined일 경우 자동으로 undefined 반환
-                <p className={styles.date}>{matchedVaccine.dosedate}</p>
+                <p className={`${styles.date} ${typography.text2xsRg}`}>
+                  {matchedVaccine.dosedate}
+                </p>
               ) : (
                 <></>
               )}
