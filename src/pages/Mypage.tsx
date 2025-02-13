@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 // import { MypageBabyList } from "../components/my-page/MypageBabyList";
 // import { MypageBabyList } from "../components/my-page/MypageBabyList";
 import styles from "../styles/Mypage.module.scss";
+import modal from "../styles/Modal.module.scss";
 import { NeedLoginModal } from "../components/my-page/NeedLoginModal";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store";
@@ -45,6 +46,7 @@ export default function Mypage() {
       window.removeEventListener("storage", handleStorageChange);
     };
   }, []);
+  console.log(updateModal);
   return (
     <div className={layout.container}>
       {/* 로그인 필요 모달 */}
@@ -78,17 +80,22 @@ export default function Mypage() {
               </button>
               {/* 수정 모달 */}
               {updateModal && (
-                <UserupdateModal
-                  modalState={() => {
-                    setOpenUpdate(false);
-                    // 정보가 수정되면 상태 업데이트
-                    setUserInfo({
-                      username:
-                        sessionStorage.getItem("username") ?? "방문자님",
-                      userid: sessionStorage.getItem("useremail") ?? "",
-                    });
-                  }}
-                />
+                <div
+                  onClick={() => setOpenUpdate(false)}
+                  className={styles.modal_overlay}
+                >
+                  <UserupdateModal
+                    modalState={() => {
+                      setOpenUpdate(false);
+                      // 정보가 수정되면 상태 업데이트
+                      setUserInfo({
+                        username:
+                          sessionStorage.getItem("username") ?? "방문자님",
+                        userid: sessionStorage.getItem("useremail") ?? "",
+                      });
+                    }}
+                  />
+                </div>
               )}
             </div>
           </div>

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 // import styles from "../../styles/Mypage.module.scss";
 import styles from "../../styles/Modal.module.scss";
 import tabs from "../../styles/commons/ChildrenTabs.module.scss";
@@ -9,15 +9,16 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
 import { fetchBabyInfo } from "../../store/babySlice";
 import { BabyModal } from "./MypageModal";
+import { Input } from "../commons/Input";
+import { BabyList } from "../commons/BabyList";
+import { GenderInput } from "../commons/genderList";
 
 interface BabyInputProps {
   babyInfo: babyinfo[];
   onClose: () => void;
 }
 
-export const BabyInputPlus: React.FC<BabyInputProps> = ({
-  onClose,
-}) => {
+export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
   const today = new Date();
   const birthday = today
     .toLocaleDateString("ko-KR", {
@@ -27,7 +28,8 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({
     })
     .replace(/. /g, "-")
     .replace(".", "");
-
+  const [defaultImg, setDefaultImg] = useState(true);
+  const [selectedGender, setSelectedGender] = useState("boy");
   const [resetImage, setResetImage] = useState(true); // 리셋시키기위한 상태관리
   const [newBabyData, setNewBabyData] = useState<babyinfo>({
     babyid: 0,
@@ -46,9 +48,14 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({
 
   const dispatch = useDispatch<AppDispatch>();
   const { request } = useCreatebaby();
-  const handleGenderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewBabyData((prev) => ({ ...prev, gender: e.target.value }));
-  };
+  // const handleGenderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setNewBabyData((prev) => ({ ...prev, gender: e.target.value }));
+  // };
+  const handleGenderChange = useCallback((gender: string) => {
+    setSelectedGender(gender);
+    console.log(gender);
+    setNewBabyData((prev) => ({ ...prev, gender }));
+  }, []);
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     setNewBabyData((prev) => ({ ...prev, [id]: value }));
@@ -92,19 +99,48 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({
 
   return (
     <>
-      <BabyModal />
-      <div className={styles.info_box}>
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className={styles.modal_container}
+      >
         <div className={styles.modal_title_wrap}>
           <div className={styles.modal_title}>아이 정보 등록</div>
           <div className={styles.X_btn}>X</div>
         </div>
-        <img src="/img/Profile.png" alt="아기 사진" />
-        <button className={styles.modal_img_button}>
-          사진 등록
-          <img src="img/image-add.png" alt="이미지 아이콘" />
-        </button>
-        <form>
-          <section>
+        <div className={styles.modal_img_wrap}>
+          {defaultImg && <img src="/img/Profile.png" alt="아기 사진" />}
+          <div style={{ position: "relative", bottom: "60px", left: "30px" }}>
+            <ImageUploader
+              setDefaultImg={setDefaultImg}
+              onImageSelect={(file) =>
+                setNewBabyData((prev) => ({ ...prev, picture: file }))
+              }
+              resetTrigger={resetImage}
+            />
+          </div>
+        </div>
+        <form className={styles.modal_Input_wrap}>
+          <Input
+            label="이름"
+            placeholder="이름을 입력해주세요."
+            id="babyname"
+            value={newBabyData.babyname}
+            onChange={handleInputChange}
+            ref={(el) => {
+              inputRef.current.babyname = el;
+            }}
+          ></Input>
+          <Input
+            label="생년월일"
+            type="date"
+            id="birthday"
+            value={newBabyData.birthday}
+            onChange={handleInputChange}
+            ref={(el) => {
+              inputRef.current.birthday = el;
+            }}
+          ></Input>
+          {/* <section>
             <label>이름</label>
             <input
               type="text"
@@ -116,9 +152,9 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({
                 inputRef.current.babyname = el;
               }}
             />
-          </section>
+          </section> */}
 
-          <section>
+          {/* <section>
             <label>생년월일</label>
             <input
               type="date"
@@ -129,16 +165,19 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({
                 inputRef.current.birthday = el;
               }}
             />
-          </section>
-
+          </section> */}
           <section>
-            <label>성별</label>
+            {/* <label>성별</label>
             <div className={tabs.button_group}>
               <div className={tabs.button_selected}>남아</div>
               <div className={tabs.button}>여아</div>
-            </div>
+            </div> */}
             <label>성별 :</label>
-            <label>
+            <GenderInput
+              setSelectedGender={handleGenderChange}
+              selectedGender={selectedGender}
+            />
+            {/* <label>
               <input
                 type="checkbox"
                 name="gender"
@@ -157,27 +196,25 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({
                 onChange={handleGenderChange}
               />
               여아
-            </label>
+            </label> */}
             {genderCheck && "아이의 성별을 체크해주세요!"}
           </section>
-
-          <section>
-            <label>아기 사진:</label>
-            <ImageUploader
-              onImageSelect={(file) =>
-                setNewBabyData((prev) => ({ ...prev, picture: file }))
-              }
-              resetTrigger={resetImage}
-            />
-          </section>
         </form>
+        <div className={styles.modal_button_container}>
+          <button
+            className={`${styles.modal_btn} ${styles.modal_cancel_button}`}
+            onClick={createBaby}
+          >
+            취소
+          </button>
+          <button
+            className={`${styles.modal_btn} ${styles.modal_done_button}`}
+            onClick={onClose}
+          >
+            완료
+          </button>
+        </div>
       </div>
-      <button className={styles.edit_btn} onClick={createBaby}>
-        완료
-      </button>
-      <button className={styles.edit_btn} onClick={onClose}>
-        취소
-      </button>
     </>
   );
 };
