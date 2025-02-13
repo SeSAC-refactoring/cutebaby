@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
 import { fetchBabyInfo } from "../../store/babySlice";
 import { babyinfo } from "../types";
+import typography from "../../styles/commons/Typography.module.scss";
 import styles from "../../styles/commons/ChildrenTabs.module.scss";
 
 interface BabyListProps {
@@ -26,8 +27,8 @@ export const BabyList: React.FC<BabyListProps> = ({
 
   return (
     // 마이페이지의 babylist 스타일의 경우 아이 등록 버튼까지 감는 div
-    <div style={{ display: "flex", gap: "20px" }}>
-      <div className={styles.segments}>
+    <div>
+      <div className={`${styles.segments}`}>
         {babyInfo.length === 0 ? (
           <p>등록된 아이가 없습니다!</p>
         ) : (
@@ -36,16 +37,20 @@ export const BabyList: React.FC<BabyListProps> = ({
               key={baby.babyid}
               className={
                 baby.babyid === selectedBabyId
-                  ? styles.segmentsItem_selected // 선택된 경우 클래스 적용
-                  : styles.segmentsItem
+                  ? `${styles.segmentsItem_selected} ${typography.textLgBd}` // 선택된 경우 클래스 적용
+                  : `${styles.segmentsItem} ${typography.textLgBd}`
               }
               onClick={() => handleSelectBaby(baby.babyid)}
-              style={{
-                cursor: "pointer",
-                fontWeight: baby.babyid === selectedBabyId ? "bold" : "normal",
-              }}
+              // style={{
+              //   fontWeight: baby.babyid === selectedBabyId ? "bold" : "normal",
+              // }}
             >
               {baby.babyname}
+              <img className={
+                  baby.babyid === selectedBabyId
+                    ? styles.showCheckIcon // 선택된 경우 클래스 적용
+                    : styles.hiddenCheckIcon
+                } src="/img/icons/i-tabs-check-s24.svg" alt="체크 아이콘" />
             </button>
           ))
         )}

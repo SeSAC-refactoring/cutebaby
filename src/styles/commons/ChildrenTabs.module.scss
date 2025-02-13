@@ -10,18 +10,30 @@
 
   button,
   .segmentsItem {
+    width: 100%;
     padding: 10px 16px;
-    flex-grow: 1;
+    display: flex;
+    gap: 8px;
     color: $color-blue-7;
     border-radius: 999px;
+    
+    
+    .hiddenCheckIcon {
+      display: none;
+    }
+    .showCheckIcon {
+      display: block;
+    }
   }
 
   .segmentsItem_selected {
+    padding: 10px 16px;
+    flex-grow: 1;
     background-color: $color-blue-3;
     color: $color-blue-10;
     border: 2px solid $color-blue-7;
   }
-
+  
   .column_button_group {
     flex-direction: column;
     width: 166px;
