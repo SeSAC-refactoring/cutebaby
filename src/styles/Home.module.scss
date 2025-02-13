@@ -41,8 +41,9 @@
         width: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         border-radius: 16px;
+        margin-top: 24px;
 
         &.empty {
           background-color: $color-gray-1;
@@ -63,116 +64,80 @@
         }
       }
     }
-
-    //                 .chart_container {
-    //
-    //             }
-
-    //             .vaccination_section {
-    //                 margin-top: 32px;
-    //                 display: grid;
-    //                 grid-template-columns: 1fr 1fr;
-    //                 gap: 32px;
-    //                 justify-content: space-between;
-
-    //                 .info_card {
-    //                     background: #F4FAFC;
-    //                     border-radius: 16px;
-    //                     padding: 20px;
-    //                     border: 1px solid #BBDEEB;
-    //                     width: 368px;
-    //                     height: 114px;
-
-    //                     &:hover {
-    //                         transform: translateY(-2px);
-    //                     }
-
-    //                     p {
-    //                         margin: 12px;
-    //                         &:first-child {
-    //                             font-size: 18px;
-    //                             font-weight: 700;
-    //                             color: #5D5D67;
-    //                             margin-bottom: 16px;
-    //                         }
-
-    //                         &:last-child {
-    //                             color: #6B7280;
-    //                         }
-    //                     }
-
-    //                     a {
-    //                         text-decoration: none;
-    //                         color: inherit;
-    //                     }
-
-    //                     .vaccine_list {
-    //                         display: flex;
-    //                         gap: 8px;
-    //                         align-items: center;
-    //                         flex-direction: row;
-    //                         margin-top: 8px;
-    //                         overflow-x: auto;
-
-    //                         &::-webkit-scrollbar {
-    //                             display: none;
-    //                         }
-    //                     }
-
-    //                     .vaccine_item {
-    //                         width: 115px;
-    //                         height: 34px;
-    //                         padding: 4px 12px;
-    //                         background: #FFE4E6;
-    //                         border-radius: 8px;
-    //                         font-size: 16px;
-    //                         font-weight: 700;
-    //                         color: #FC5760;
-    //                         font-weight: 500;
-    //                         white-space: nowrap;
-    //                     }
-
-    //                     // .completed_message {
-    //                     //     color: #6B7280;
-    //                     //     font-size: 14px;
-    //                     // }
-
-    //                     .vaccine_tags {
-    //                         display: flex;
-    //                         flex-wrap: wrap;
-    //                         gap: 6px;
-    //                         margin-top: 8px;
-    //                         max-height: 70px; // 태그가 너무 길어지지 않도록 제한
-    //                         overflow-y: auto;
-
-    //                         .tag {
-    //                             padding: 2px 8px;
-    //                             background: #FFE4E6;
-    //                             border-radius: 12px;
-    //                             font-size: 11px;
-    //                             color: #E11D48;
-    //                             font-weight: 500;
-    //                             white-space: nowrap;
-    //                         }
-
-    //                         // 스크롤바 스타일링
-    //                         &::-webkit-scrollbar {
-    //                             width: 4px;
-    //                         }
-
-    //                         &::-webkit-scrollbar-track {
-    //                             background: #f1f1f1;
-    //                         }
-
-    //                         &::-webkit-scrollbar-thumb {
-    //                             background: #FFE4E6;
-    //                             border-radius: 4px;
-    //                         }
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+    .diary_chart {
+      width: 776px;
+      height: 266px;
+    }
   }
+}
+
+.banner_wrap {
+  display: flex;
+  gap: 24px;
+  margin-top: 170px;
+  // margin: auto;
+}
+.banner_container {
+  display: flex;
+  align-items: center;
+  flex: 1 0 0;
+  align-self: stretch;
+  border-radius: 24px;
+  border: 2px solid $color-blue-4;
+  background-color: #f4fafc;
+  // padding: 24px 32px;
+  padding: 0px 32px;
+  justify-content: space-between;
+}
+.banner_left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.banner_title {
+  font-size: 18px;
+  font-weight: 700;
+}
+.banner_link {
+  font-size: 16px;
+  font-weight: 700;
+  color: $color-gray-6;
+}
+.no_diary_chart {
+  display: flex;
+  width: 776px;
+  padding: 24px 32px;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  flex: 1 0 0;
+  border-radius: 24px;
+  background-color: $color-blue-1;
+  margin-top: 10px;
+}
+.bottom_text {
+  color: $color-gray-8;
+  font-size: 18px;
+  font-weight: 500;
+}
+.highlight {
+  color: $color-blue-8;
+}
+.no_diary_chart_bottom {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.bottom_button {
+  display: flex;
+  height: 44px;
+  padding: 10px 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 12px;
+  background-color: $color-blue-4;
+  color: var(--Gray-10, #3b3b41);
+  font-size: 16px;
+  font-weight: 700;
 }
