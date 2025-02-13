@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import axios from "axios";
 import styles from "../../styles/Modal.module.scss";
+import { Input, InputSignupEmail } from "../commons/Input";
 
 interface UserupdateProps {
   modalState: () => void;
@@ -147,51 +148,58 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
   };
 
   return (
-    <div className={styles.modal_background}>
-      <div className={styles.modal_container}>
+    <div onClick={modalState} className={styles.modal_overlay}>
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className={styles.modal_container}
+      >
         <div className={styles.modal_title_wrap}>
           <div className={styles.modal_title}>개인 정보 수정</div>
-          <div
-            onClick={modalState}
-            style={{
-              fontSize: "40px",
-              cursor: "pointer",
-            }}
-          >
+          <div onClick={modalState} className={styles.X_btn}>
             X
           </div>
         </div>
-
-        {/* 이름 입력 */}
-        <label>
-          <h2>이름</h2>
-          <input
-            className={styles.modal_input}
+        <div className={styles.modal_Input_wrap} style={{ height: "250px" }}>
+          {/* 이름 입력 */}
+          <Input
+            label="이름"
             name="name"
             placeholder="이름 입력"
             value={formData.name}
             onChange={handleChange}
-          />
-          <p className={styles.error_message}>{messages.name}</p>
-        </label>
+          ></Input>
+          {/* <label>
+            <h2>이름</h2>
+            <input
+              className={styles.modal_input}
+              name="name"
+              placeholder="이름 입력"
+              value={formData.name}
+              onChange={handleChange}
+            /> */}
+          <div className={styles.error_message}>{messages.name}</div>
+          {/* </label> */}
 
-        {/* 이메일 입력 */}
-        <label>
-          <h2>이메일</h2>
-          <input
-            type="email"
-            name="email"
-            className={styles.modal_input}
-            value={formData.email}
-            placeholder="이메일 입력"
-            onChange={handleChange}
-          />
-          <p className={styles.error_message}>{messages.email}</p>
-        </label>
+          {/* 이메일 입력 */}
+          <div className={styles.check_wrap}>
+            <InputSignupEmail
+              label="이메일"
+              type="email"
+              name="email"
+              placeholder="이메일 입력"
+              value={formData.email}
+              onChange={handleChange}
+            ></InputSignupEmail>
+            <button className={styles.check_btn} onClick={emailCheck}>
+              중복 체크
+            </button>
+          </div>
 
-        {/* 이메일 중복 확인 버튼 */}
-        <button onClick={emailCheck}>중복 체크</button>
+          <div className={styles.error_message}>{messages.email}</div>
+          {/* </label> */}
 
+          {/* 이메일 중복 확인 버튼 */}
+        </div>
         {/* 버튼 */}
         <div className={styles.modal_button_container}>
           <button
