@@ -12,14 +12,21 @@ const port = process.env.PORT || 5001;
 
 // CORS 설정 (Netlify 프론트와 연결)
 const allowedOrigins = [
-  'http://localhost:3000',  // 개발 환경 (React)
-  process.env.CLIENT_URL     // Netlify에서 배포된 프론트 URL
+  'http://localhost:3000',
+  process.env.CLIENT_URL
 ];
 
 app.use(cors({
-  origin: allowedOrigins,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS 정책 위반'));
+    }
+  },
   credentials: true
 }));
+
 
 // JSON 및 URL 인코딩 데이터 처리
 app.use(express.json());
