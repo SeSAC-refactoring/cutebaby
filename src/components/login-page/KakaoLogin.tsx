@@ -60,6 +60,7 @@ const KakaoLogin = (): React.ReactElement => {
       sessionStorage.setItem('user', JSON.stringify(userData));
       sessionStorage.setItem("usernumber", response.data.usernumber);
       sessionStorage.setItem('username', userData.properties.nickname);
+      sessionStorage.setItem('useremail', userData.id);
 
 
       console.log("🔄 Redux에서 아기 정보 로드 시작");
