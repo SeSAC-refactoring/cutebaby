@@ -122,11 +122,8 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
                         {/* 사용자 입력값 설정 */}
                         <CalculateInputArea
                             childData={childData}
-                            filteredLmsDataByMonths={filteredLmsDataByMonths}
-                            percentiles={percentiles}
                             setChildData={setChildData}
                             setShow={setShow}
-                            setPercentiles={setPercentiles}
                         />
                         {/* 차트 */}
                         {/* 차트 표시 여부에 따라 렌더링 */}{' '}

@@ -11,17 +11,11 @@ import { handleCalculateChart } from './functions/handleCalculateChart';
 interface CalculateInputAreaProps {
     childData: ChildData;
     setChildData: React.Dispatch<React.SetStateAction<ChildData>>;
-    filteredLmsDataByMonths: LmsData[];
-    percentiles: Percentiles;
     setShow: React.Dispatch<React.SetStateAction<boolean>>;
-    setPercentiles: React.Dispatch<React.SetStateAction<Percentiles>>;
 }
 
 export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
     childData,
-    filteredLmsDataByMonths,
-    percentiles,
-    setPercentiles,
     setChildData,
     setShow,
 }) => {

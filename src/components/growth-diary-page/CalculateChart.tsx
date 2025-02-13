@@ -207,17 +207,18 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
                                 </p>
                             </div>
                         </div>
-
-                        <Line
-                            // style={{ height: '280px' }}
-                            data={createChartData(
-                                p97Height,
-                                p3Height,
-                                currentChildHeight,
-                                '키'
-                            )}
-                            options={heightChartOptions}
-                        />
+                        <div style={{ height: '100%' }}>
+                            <Line
+                                // style={{ height: '280px' }}
+                                data={createChartData(
+                                    p97Height,
+                                    p3Height,
+                                    currentChildHeight,
+                                    '키'
+                                )}
+                                options={heightChartOptions}
+                            />
+                        </div>
                     </div>
                 )}
 
