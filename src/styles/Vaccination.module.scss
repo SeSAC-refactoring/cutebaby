@@ -1,7 +1,16 @@
 @import "./commons/Colors.module.scss";
 
+//Vaccination.tsx
 .contentsArea {
+  gap: 32px;
+  .button_wrap {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  
   .contentsWrap {
+    flex-grow: 1;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -11,16 +20,19 @@
 
 // VaccinationTable.tsx
 .vacTableWrap {
+  flex-grow: 1;
   width: 100%;
-  height: 528px;
+  max-height: 500px;
   display: flex;
-  overflow: scroll;
+  overflow: hidden;
   border-bottom: 3px solid $color-blue-4;
   border-top-left-radius: 16px;
 
   .vacTable {
+    flex-grow: 1;
     width: 100%;
     display: flex;
+    overflow: scroll;
 
     .vacTableScheduleArea {
       flex-grow: 1;
@@ -87,7 +99,7 @@ ul {
   display: flex;
   justify-items: start;
   gap: 8px;
-
+  
   .vaccineName {
     flex-grow: 1;
     text-align: left;
@@ -117,26 +129,13 @@ ul {
   }
 }
 
+// VaccinationSchedule.tsx
 .vacScheduleCell {
   display: grid;
   grid-template-columns: repeat(15, 80px); // 15개의 동일한 너비의 컬럼 생성 // 1fr 말고 px ,% 등 사용 가능
 }
 
 
-.button_wrap {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.vac_list {
-  background-color: rgb(214, 213, 213);
-  margin-top: 10px;
-  width: 1100px;
-  height: 500px;
-  display: flex;
-  flex-wrap: wrap;
-}
 
 // 예방접종 표 내부 색
 // 빈칸

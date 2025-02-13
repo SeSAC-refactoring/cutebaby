@@ -7,7 +7,7 @@ export const TotalDoses: React.FC = () => {
   return (
     <div>
       <div
-        className={`${styles.cell} ${styles.th} ${styles.thTotalDoses} ${typography.textSmBd}`}
+        className={`${styles.cell} ${styles.th} ${styles.thTotalDoses} ${typography.textBsBd}`}
       >
         횟수
       </div>

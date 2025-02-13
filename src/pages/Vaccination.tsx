@@ -15,6 +15,7 @@ import { VaccineInfo } from "../components/vaccination-page/VaccineInfo";
 import { NeedLoginModal } from "../components/my-page/NeedLoginModal";
 import VaccinationCenters from "./VaccinationCenters";
 import VaccinationDetails from "./VaccinationDetails";
+
 export default function Vaccination() {
   const [openCentersModal, setOpenCentersModal] = useState<boolean>(false);
   const [openDetailsModal, setOpenDetailsModal] = useState<boolean>(false);
