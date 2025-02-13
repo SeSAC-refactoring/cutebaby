@@ -10,10 +10,11 @@ interface InputProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   label?: string;
+  id?: string;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ type, name, value, onChange, placeholder, label }, ref) => {
+  ({ id, type, name, value, onChange, placeholder, label }, ref) => {
     const inputRef = useRef<HTMLInputElement>(null);
 
     // 부모에서 ref를 사용하도록 하기 위해 useImperativeHandle 사용
@@ -23,6 +24,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       <div className={styles.inputWrap}>
         <label className={typography.textSmBd}>{label}</label>
         <input
+          id={id}
           className={typography.textLgRg}
           ref={inputRef}
           type={type}

@@ -17,7 +17,10 @@ interface UpdateBabyProps {
   };
 }
 
-export const UpdateBaby: React.FC<UpdateBabyProps> = ({ onClose, selectedBaby }) => {
+export const UpdateBaby: React.FC<UpdateBabyProps> = ({
+  onClose,
+  selectedBaby,
+}) => {
   const dispatch = useDispatch<AppDispatch>();
   const { requestbaby } = useBabyUpdate();
 
@@ -50,7 +53,6 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({ onClose, selectedBaby })
 
   // ✅ 변경된 값만 FormData에 추가하여 서버로 전송
   const rewrite = async () => {
-    
     const formData = new FormData();
     formData.append("babyid", String(selectedBaby.babyid));
 
@@ -100,7 +102,7 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({ onClose, selectedBaby })
             </div>
           </div>
 
-          <ImageUploader onImageSelect={handleImageSelect} resetTrigger={false} />
+          {/* <ImageUploader onImageSelect={handleImageSelect} resetTrigger={false} /> */}
 
           <label>
             <h2>이름</h2>
@@ -146,10 +148,16 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({ onClose, selectedBaby })
           </label>
 
           <div className={styles.modal_button_container}>
-            <button className={`${styles.modal_btn} ${styles.modal_cancel_button}`} onClick={onClose}>
+            <button
+              className={`${styles.modal_btn} ${styles.modal_cancel_button}`}
+              onClick={onClose}
+            >
               취소
             </button>
-            <button onClick={rewrite} className={`${styles.modal_btn} ${styles.modal_done_button}`}>
+            <button
+              onClick={rewrite}
+              className={`${styles.modal_btn} ${styles.modal_done_button}`}
+            >
               완료
             </button>
           </div>

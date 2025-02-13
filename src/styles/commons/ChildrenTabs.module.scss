@@ -47,3 +47,19 @@
     padding: 8px 16px;
   }
 }
+
+.add_button {
+  width: 170px;
+  height: 64px;
+  display: flex;
+  height: 64px;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 16px;
+  background-color: $color-blue-4;
+  color: var(--Gray-10, #3b3b41);
+  font-size: 22px;
+  font-weight: 700;
+}

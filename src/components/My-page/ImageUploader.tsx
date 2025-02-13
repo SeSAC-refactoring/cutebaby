@@ -1,11 +1,22 @@
-import React, { useRef, useState, useEffect } from "react";
-
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+} from "react";
+import styles from "../../styles/Modal.module.scss";
 interface ImageUploaderProps {
   onImageSelect: (file: File | null) => void;
   resetTrigger: boolean;
+  setDefaultImg: Dispatch<SetStateAction<boolean>>;
 }
 
-export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect, resetTrigger }) => {
+export const ImageUploader: React.FC<ImageUploaderProps> = ({
+  setDefaultImg,
+  onImageSelect,
+  resetTrigger,
+}) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
@@ -46,7 +57,17 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect, res
             srcHeight = img.width;
           }
 
-          ctx?.drawImage(img, srcX, srcY, srcWidth, srcHeight, 0, 0, targetSize, targetSize);
+          ctx?.drawImage(
+            img,
+            srcX,
+            srcY,
+            srcWidth,
+            srcHeight,
+            0,
+            0,
+            targetSize,
+            targetSize
+          );
 
           // ✅ 원본 파일의 타입을 유지하여 저장
           canvas.toBlob(
@@ -55,12 +76,14 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect, res
                 const fileType = file.type; // 원본 파일 타입 유지
                 const fileName = file.name; // 원본 파일명 유지
 
-                const optimizedFile = new File([blob], fileName, { type: fileType });
+                const optimizedFile = new File([blob], fileName, {
+                  type: fileType,
+                });
 
                 // ✅ 미리보기 URL 생성 및 메모리 누수 방지
                 const previewURL = URL.createObjectURL(optimizedFile);
                 setImagePreview(previewURL);
-
+                setDefaultImg(false);
                 // ✅ 부모 컴포넌트로 파일 전달
                 onImageSelect(optimizedFile);
               }
@@ -79,6 +102,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect, res
     if (imagePreview) {
       URL.revokeObjectURL(imagePreview); // 메모리 누수 방지
     }
+    setDefaultImg(true);
     setImagePreview(null);
     onImageSelect(null);
   };
@@ -94,13 +118,54 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect, res
   }, [resetTrigger]);
 
   return (
-    <div>
-      <input type="file" accept="image/*" onChange={handleImageUpload} ref={fileInputRef} />
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       {imagePreview && (
-        <div>
+        <div
+          style={{
+            height: "240px",
+            position: "relative",
+            top: "60px",
+            right: "30px",
+          }}
+        >
           <img src={imagePreview} alt="아기 사진 미리보기" />
-          <button onClick={handleCancelImage}>이미지 취소</button>
+          <button
+            style={{
+              fontSize: "20px",
+              position: "relative",
+              bottom: "200px",
+              left: "186px",
+              fontWeight: "bold",
+            }}
+            onClick={handleCancelImage}
+          >
+            X
+          </button>
         </div>
+      )}
+      {!imagePreview && (
+        <>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            ref={fileInputRef}
+            style={{ display: "none" }}
+          />
+          <button
+            onClick={() => fileInputRef.current?.click()}
+            className={styles.modal_img_button}
+          >
+            사진 등록
+            <img src="img/image-add.png" alt="이미지 아이콘" />
+          </button>
+        </>
       )}
     </div>
   );
