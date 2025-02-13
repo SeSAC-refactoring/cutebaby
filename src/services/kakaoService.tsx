@@ -4,7 +4,7 @@ const KAKAO_AUTH_URL = 'https://kauth.kakao.com/oauth/token';
 const KAKAO_USER_INFO_URL = 'https://kapi.kakao.com/v2/user/me';
 
 const REST_API_KEY = 'b2740a7fdc4c83d80f3b6ebb17d2279d'; // 카카오 개발자 콘솔에서 발급받은 REST API 키
-const REDIRECT_URI = 'http://localhost:3000/oauth/callback/kakao';
+const REDIRECT_URI = 'https://wrigglebaby.netlify.app/oauth/callback/kakao';
 
 // 카카오 로그인 URL 생성
 export const getKakaoLoginUrl = (): string => {

@@ -48,8 +48,9 @@ const KakaoLogin = (): React.ReactElement => {
     try {
       const accessToken = await getKakaoToken(code);
       const userData = await getKakaoUserInfo(accessToken);
+      const API_URL = process.env.REACT_APP_API_URL;
 
-      const response = await axios.post('http://localhost:5001/api/kakaosignup', { userData });
+      const response = await axios.post(`${API_URL}/api/kakaosignup`, { userData });
 
       if (response.data.success) {
         alert("로그인되었습니다!");

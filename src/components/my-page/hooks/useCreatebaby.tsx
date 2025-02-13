@@ -8,6 +8,8 @@ export const useCreatebaby = () => {
     throw new Error("usernumber가 존재하지 않습니다.");
   }
     const request = async (data: { babyname: string; birthday: string; gender: string; picture: File | null }) => {
+      const API_URL = process.env.REACT_APP_API_URL;
+
     try {
       const formData = new FormData();
       formData.append("babyname", data.babyname);
@@ -21,7 +23,7 @@ export const useCreatebaby = () => {
 
       console.log("📦 전송할 FormData:", formData); //FormData 확인
 
-      const response = await axios.post("http://localhost:5001/api/babycreate", formData, {
+      const response = await axios.post(`${API_URL}/api/babycreate`, formData, {
         headers: {
           "Content-Type": "multipart/form-data", // 파일 업로드 필수 헤더
         },

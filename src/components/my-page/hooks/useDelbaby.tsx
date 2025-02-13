@@ -7,7 +7,8 @@ import { AppDispatch } from '../../../store';
 export const useDelbaby = () => {
     const dispatch = useDispatch<AppDispatch>();
     const delbaby = async (babyId: number | null) => {
-            
+        const API_URL = process.env.REACT_APP_API_URL;
+
         console.log(babyId)
         const babyid = Number(babyId)
         if (!babyId) {
@@ -16,7 +17,7 @@ export const useDelbaby = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:5001/api/delbaby', { babyid });
+            const response = await axios.post(`${API_URL}/api/delbaby`, { babyid });
 
                 dispatch(fetchBabyInfo())
 

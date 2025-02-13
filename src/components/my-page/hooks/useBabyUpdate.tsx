@@ -7,6 +7,7 @@ export const useBabyUpdate = () => {
   // 서버에 데이터 전송하는 함수
   const requestbaby = async (formData: FormData) => {
     console.log("🔍 전송할 데이터 (formData):", [...formData.entries()]); // ✅ FormData 데이터 확인
+    const API_URL = process.env.REACT_APP_API_URL;
 
     try {
         console.log(formData)
@@ -14,7 +15,7 @@ export const useBabyUpdate = () => {
         console.log("📌 FormData:", pair[0], pair[1]);
       }
 
-      const response = await axios.post("http://localhost:5001/api/updateBaby", formData, {
+      const response = await axios.post(`${API_URL}/api/updateBaby`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

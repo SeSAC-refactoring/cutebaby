@@ -11,6 +11,8 @@ interface UserupdateProps {
 }
 
 export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
+  const API_URL = process.env.REACT_APP_API_URL;
+
   const [formData, setFormData] = useState({
     email: "",
     name: "",
@@ -70,7 +72,7 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5001/api/emailCheck",
+        `${API_URL}/api/emailCheck`,
         {
           email: formData.email,
         }
@@ -122,7 +124,7 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5001/api/updateUser",
+        `${API_URL}/api/updateUser`,
         {
           email: formData.email,
           username: formData.name,

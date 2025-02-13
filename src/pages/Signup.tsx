@@ -9,6 +9,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Input, InputSignupEmail } from "../components/commons/Input";
 
 const Signup: React.FC = () => {
+  const API_URL = process.env.REACT_APP_API_URL;
+
   // 입력값 상태
   const [formData, setFormData] = useState({
     email: "",
@@ -147,7 +149,7 @@ const Signup: React.FC = () => {
 
   const emailCheck = async (e: React.FormEvent) => {
     e.preventDefault();
-    const response = await axios.post("http://localhost:5001/api/emailCheck", {
+    const response = await axios.post(`${API_URL}/api/emailCheck`, {
       inputEmail,
     });
     console.log(response);
@@ -169,7 +171,7 @@ const Signup: React.FC = () => {
     //여기서부터 db연결
     if (emptyCheck()) {
       try {
-        const response = await axios.post("http://localhost:5001/api/signup", {
+        const response = await axios.post(`${API_URL}/api/signup`, {
           formData,
         });
         console.log("response >>", response);
