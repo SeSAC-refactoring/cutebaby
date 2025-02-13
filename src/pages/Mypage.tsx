@@ -95,25 +95,6 @@ export default function Mypage() {
                   alt="수정 아이콘"
                 />
               </button>
-
-              {/* 수정 모달 */}
-              {updateModal && (
-                <UserupdateModal
-                  modalState={() => {
-                    setOpenUpdate(false);
-                    // 정보가 수정되면 상태 업데이트
-                    const updatedEmail =
-                      sessionStorage.getItem("useremail") ?? "";
-                    const kakaoLogin = !updatedEmail.includes("@");
-
-                    setUserInfo({
-                      username:
-                        sessionStorage.getItem("username") ?? "방문자님",
-                      userid: kakaoLogin ? "카카오 로그인" : updatedEmail,
-                    });
-                  }}
-                />
-              )}
             </div>
           </div>
 
@@ -121,6 +102,22 @@ export default function Mypage() {
           <BabyInfo babyInfo={babyInfo} />
         </div>
       </div>
+      {/* 수정 모달 */}
+      {updateModal && (
+        <UserupdateModal
+          modalState={() => {
+            setOpenUpdate(false);
+            // 정보가 수정되면 상태 업데이트
+            const updatedEmail = sessionStorage.getItem("useremail") ?? "";
+            const kakaoLogin = !updatedEmail.includes("@");
+
+            setUserInfo({
+              username: sessionStorage.getItem("username") ?? "방문자님",
+              userid: kakaoLogin ? "카카오 로그인" : updatedEmail,
+            });
+          }}
+        />
+      )}
     </div>
   );
 }

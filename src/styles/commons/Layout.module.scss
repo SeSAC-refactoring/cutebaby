@@ -27,42 +27,43 @@
   border-radius: 40px;
   align-items: center;
   overflow: hidden;
+}
 
-  .titleArea {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-self: start;
 
-    .textWrap {
-      display: flex;
-      gap: 16px;
-    }
+.contentsWrap {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-    .pageGuide {
-      align-self: end;
-      color: $color-gray-5;
-    }
-  }
-
-  .contentsWrap {
-    width: 100%;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .buttonArea {
+.buttonArea {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+  a {
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+  }
+}
 
-    a {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+.titleArea {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-self: start;
+  
+  .textWrap {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .pageGuide {
+    align-self: end;
+    color: $color-gray-5;
   }
 }
