@@ -16,6 +16,7 @@
 .contentsArea {
   flex-grow: 1;
   width: 100%;
+  height: -webkit-fill-available;
   padding: 56px 80px;
   display: flex;
   flex-direction: column;
@@ -25,8 +26,7 @@
   border: 2px solid $color-gray-6;
   border-radius: 40px;
   align-items: center;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow: hidden;
 
   .titleArea {
     width: 100%;

@@ -126,7 +126,7 @@ ul {
     padding-top: 14px;
     padding-bottom: 14px;
     background-color: $color-blue-3;
-    border-right: 2px solid $color-blue-6;
+    border-right: 1px solid $color-blue-6;
   }
 }
 
@@ -144,7 +144,7 @@ ul {
     padding: 8px 4px;
     display: flex;
     flex-direction: column;
-    border-right: 2px solid $color-gray-2;
+    border-right: 1px solid $color-gray-2;
     border-bottom: 2px solid $color-gray-2;
     
     .dataWrap {
@@ -173,13 +173,13 @@ ul {
 
   // 예방접종 미완료
   .notCompleted {
-    color: $color-red-6;
+    color: $color-red-5;
     background-color: $color-red-1;
   }
 
   // 필수가 아닌 것 // 완료 시 completed로 바뀜뀜
   .notMust {
-    background-color: #e1e1e5;
+    background-color: $color-purple-1;
   }
 }
 

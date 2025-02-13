@@ -54,8 +54,8 @@ export const VaccineType: React.FC<VaccineTypeProps> = ({
           >
             <span className={styles.vaccineName}>{vaccine} </span>
             {/* <span style={{ fontSize: "10px", color: "red" }}>{i + 1}</span> */}
-            <button className={button.btn2xsCr}>
-              <img src="img/edit-contained.png"></img>
+            <button className={`${button.btn2xsRd} ${typography.text2xsMd}`}>
+              <img src="/img/icons/i-edit-s12.svg"/>
               입력
             </button>
           </li>
