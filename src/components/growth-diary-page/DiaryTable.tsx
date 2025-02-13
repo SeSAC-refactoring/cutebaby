@@ -1,47 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { newGrowData } from '../types';
 import styles from '../../styles/GrowthDiary.module.scss';
-import { useGrowData } from './hooks/useGrowData';
-import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../store';
-import { fetchBabyInfo } from '../../store/babySlice';
-import { BabyInfo } from '../my-page/BabyInfo';
-import { fetchgrowInfo } from '../../store/GrowthDiarySlice';
 import { GrowRewriteModal } from './GrowRewriteModal';
+import { GrowDelModal } from './GrowDelModal';
 
 interface DiaryTableProps {
     growData: newGrowData[];
 }
 export const DiaryTable: React.FC<DiaryTableProps> = ({ growData }) => {
-    const babyInfo = useSelector((state: RootState) => state.baby.babyInfo);
     const [rewriteModal, setRewriteModal] = useState<boolean>(false);
+    const [delModal , setdelModal] = useState<boolean>(false);
+
     const [data, setData] = useState<newGrowData[]>(growData);
-    const dispatch = useDispatch<AppDispatch>();
     const [growId, setGrowId] = useState<number>(0);
 
     console.log('data>>>', data);
 
-    const onDelGrow = async (e: React.MouseEvent<HTMLButtonElement>) => {
-        console.log(e.currentTarget.value);
-        const selectedGrowId = Number(e.currentTarget.value); 
-        try {
-            const response = await axios.post(
-                'http://localhost:5001/api/delgrow',
-                {
-                    growId: selectedGrowId,
-                }
-            );
-            dispatch(fetchgrowInfo(babyInfo));
-        } catch (error) {
-            alert('삭제에 실패하였습니다. 관리자에게 문의하세요');
-        }
-    };
-
     const rewrite = (e: React.MouseEvent<HTMLButtonElement>) => {
         setGrowId(Number(e.currentTarget.value));
         setRewriteModal(true);
-        console.log(rewriteModal);
+    };
+
+    const delModalState = (e: React.MouseEvent<HTMLButtonElement>) => {
+        setGrowId(Number(e.currentTarget.value));
+        setdelModal(true);
     };
     return (
         <div className={styles.list_wrap}>
@@ -51,6 +33,12 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({ growData }) => {
                     growData={data}
                     onClose={() => setRewriteModal(false)}
                 />
+            )}
+            {delModal &&(
+                <GrowDelModal 
+                growId={growId}
+                growData={data}
+                onClose={() => setdelModal(false)}/>
             )}
             <div className={styles.row_title}>
                 <div className={styles.list_title}>측정날짜</div>
@@ -94,7 +82,7 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({ growData }) => {
                                 <button
                                     className={`${styles.table_btn} ${styles.delete_btn}`}
                                     value={info.id}
-                                    onClick={onDelGrow}
+                                    onClick={delModalState}
                                 >
                                     삭제
                                 </button>

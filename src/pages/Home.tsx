@@ -36,8 +36,9 @@ export default function Home() {
   console.log("로그인성공시 babyinfo불러옴", babyInfo);
 
   const userString = sessionStorage.getItem("user");
+  const username = sessionStorage.getItem("username") ?? "방문자"
   const user = userString ? JSON.parse(userString) : null;
-  const username = user?.username ?? "방문자";
+  // const username = user?.username ?? "방문자";
 
   return (
     <div className={layout.container}>

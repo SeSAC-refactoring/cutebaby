@@ -1,27 +1,28 @@
-import React, { useState } from 'react';
-// import styles from '../../styles/Modal.module.scss'
+import React, { useEffect, useState } from 'react';
 import styles from '../../styles/Modal.module.scss';
 import { newGrowData } from '../types';
 import { useUpdateGrow } from './hooks/useUpdateGrow';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store';
 import { fetchgrowInfo } from '../../store/GrowthDiarySlice';
-import { Input } from '../commons/Input';
-//모달css로 옮기면 삭제 후 위에 주석으로 교체해야함
+
 interface GrowRewriteModalProps {
     onClose: () => void;
     growData: newGrowData[];
     growId: number;
 }
+
 export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
     onClose,
     growData,
     growId,
-}: any) => {
-    const { requestGrow } = useUpdateGrow();
-    const dispatch = useDispatch<AppDispatch>(); // Redux dispatch 추가
+}) => {
+    const dispatch = useDispatch<AppDispatch>();
     const { babyInfo } = useSelector((state: RootState) => state.baby);
-    const [rewriteData, setrewriteData] = useState<newGrowData>({
+    const { requestGrow } = useUpdateGrow();
+
+    // 기본 데이터 저장
+    const [basicdata, setBasicdata] = useState<newGrowData>({
         babyid: null,
         id: 0,
         height: '',
@@ -29,60 +30,75 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
         head: '',
         inputData: '',
     });
-    console.log('growData', growData);
-    console.log('growId:', growId);
+
+    // 수정 데이터 상태
+    const [rewriteData, setrewriteData] = useState<newGrowData>(basicdata);
+
+    // growData가 변경될 때 기본값 설정
+    useEffect(() => {
+        if (growData.length === 0) return; // 데이터가 없을 경우 실행 방지
+
+        const beforedate = growData.find((value) => value.id === growId);
+        if (beforedate) {
+            setBasicdata(beforedate);
+            setrewriteData(beforedate); // 기본값을 rewriteData에도 즉시 반영
+        }
+    }, [growData, growId]);
+
+    // growData가 변경될 때 rewriteData도 즉시 반영
+    useEffect(() => {
+        setrewriteData(basicdata);
+    }, [basicdata]);
+
+    // 입력 변경 핸들러
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { id, value } = e.target;
         setrewriteData((prev) => ({ ...prev, [id]: value }));
     };
-    const rewrite = async () => {
+
+    // 포커스 시 기존 값 초기화
+    const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+        const { id } = e.target;
+        setrewriteData((prev) => ({ ...prev, [id]: '' }));
+    };
+
+    // 포커스를 잃을 때 기본값 복구
+    const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+        const { id, value } = e.target;
         setrewriteData((prev) => ({
             ...prev,
-            babyid: growData[0].babyid,
-            id: growId,
-            inputData: growData[0].inputData,
+            [id]: value.trim() === '' ? basicdata[id as keyof newGrowData] : value,
         }));
-        console.log('최종입력값', rewriteData);
-        console.log('date >>', growData[0].inputData);
+    };
+
+    // 수정 버튼 클릭 시 실행
+    const handleRewrite = async () => {
         try {
             await requestGrow({
-                babyid: growData[0].babyid,
+                babyid: Number(growData[0].babyid),
                 id: growId,
                 height: Number(rewriteData.height),
                 weight: Number(rewriteData.weight),
                 head: Number(rewriteData.head),
-                inputData: growData[0].inputData,
+                inputData: rewriteData.inputData,
             });
+
             alert('성장 기록이 수정되었습니다!');
             dispatch(fetchgrowInfo(babyInfo));
             onClose();
-            // 입력 필드 초기화
-            setrewriteData({
-                babyid: growData.babyid, // 선택된 아기는 유지
-                id: 0,
-                height: '',
-                weight: '',
-                head: '',
-                inputData: '',
-            });
         } catch (error) {
-            alert('기록 추가에 실패했습니다.');
+            alert('기록 수정에 실패했습니다.');
         }
     };
+
     return (
-        <div
-            className={styles.modal_overlay}
-            onClick={onClose}>
-            <div className={styles.modal_background}
-             onClick={(e) => e.stopPropagation()}>
-                
+        <div className={styles.modal_overlay}>
+            <div className={styles.modal_background}>
                 <div className={styles.modal_container}>
                     <div className={styles.modal_title_wrap}>
                         <div className={styles.modal_title}>기록 수정</div>
                         <div
-                            onClick={() => {
-                                onClose(false);
-                            }}
+                            onClick={onClose}
                             style={{
                                 fontSize: '40px',
                                 cursor: 'pointer',
@@ -91,55 +107,66 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
                             X
                         </div>
                     </div>
+
                     <div className={styles.input_set}>
                         <label>측정날짜</label>
                         <input
-                            type='date'
+                            type="date"
                             className={styles.modal_input}
-                            id="height"
-                            placeholder="숫자만"
-                            value={rewriteData.height}
+                            id="inputData"
+                            value={rewriteData.inputData}
                             onChange={handleInputChange}
-                        ></input>
+                        />
                     </div>
+
                     <div className={styles.input_set}>
                         <label>신장</label>
                         <input
                             className={styles.modal_input}
                             id="height"
-                            placeholder="숫자만"
+                            placeholder="숫자만 입력"
                             value={rewriteData.height}
                             onChange={handleInputChange}
-                        ></input>
+                            onFocus={handleFocus}
+                            onBlur={handleBlur}
+                        />
                     </div>
+
                     <div className={styles.input_set}>
                         <label>체중</label>
                         <input
                             className={styles.modal_input}
-                            placeholder="숫자만"
                             id="weight"
+                            placeholder="숫자만 입력"
                             value={rewriteData.weight}
                             onChange={handleInputChange}
-                        ></input>
+                            onFocus={handleFocus}
+                            onBlur={handleBlur}
+                        />
                     </div>
+
                     <div className={styles.input_set}>
                         <label>머리둘레</label>
                         <input
                             className={styles.modal_input}
                             id="head"
-                            placeholder="숫자만"
+                            placeholder="숫자만 입력"
                             value={rewriteData.head}
                             onChange={handleInputChange}
-                        ></input>
+                            onFocus={handleFocus}
+                            onBlur={handleBlur}
+                        />
                     </div>
+
                     <div className={styles.modal_button_container}>
                         <button
                             className={`${styles.modal_btn} ${styles.modal_cancel_button}`}
+                            onClick={onClose}
                         >
                             취소
                         </button>
                         <button
-                            onClick={rewrite}
+                            onClick={handleRewrite}
                             className={`${styles.modal_btn} ${styles.modal_done_button}`}
                         >
                             완료

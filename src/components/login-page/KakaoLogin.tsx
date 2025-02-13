@@ -59,6 +59,8 @@ const KakaoLogin = (): React.ReactElement => {
 
       sessionStorage.setItem('user', JSON.stringify(userData));
       sessionStorage.setItem("usernumber", response.data.usernumber);
+      sessionStorage.setItem('username', userData.properties.nickname);
+
 
       console.log("🔄 Redux에서 아기 정보 로드 시작");
       dispatch(fetchBabyInfo()); // ✅ Redux 상태 업데이트 후 `useEffect`에서 `fetchgrowInfo()` 실행
