@@ -3,24 +3,24 @@
 .container {
   flex-grow: 1;
   width: 100%;
-  padding-top: 80px;
-  padding-bottom: 80px;
   min-width: 390px;
   max-width: 1280px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .contentsArea {
-  flex-grow: 1;
   width: 100%;
+  height: -webkit-fill-available;
   padding: 56px 80px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 48px;
   background-color: $color-white;
   border: 2px solid $color-gray-6;
   border-radius: 40px;

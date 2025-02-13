@@ -7,7 +7,7 @@ export const Disease: React.FC = () => {
   return (
     <div>
       <div
-        className={`${styles.cell} ${styles.th} ${styles.thDiseases} ${typography.textSmBd}`}
+        className={`${styles.cell} ${styles.th} ${styles.thDiseases} ${typography.textBsBd}`}
       >
         대상 감염병
       </div>

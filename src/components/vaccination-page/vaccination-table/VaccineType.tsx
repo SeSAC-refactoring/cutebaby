@@ -37,7 +37,7 @@ export const VaccineType: React.FC<VaccineTypeProps> = ({
   return (
     <div>
       <div
-        className={`${styles.cell} ${styles.th} ${typography.textSmBd} ${styles.thVaccineType}`}
+        className={`${styles.cell} ${styles.th} ${typography.textBsBd} ${styles.thVaccineType}`}
         style={{}}
       >
         백신 종류 및 방법
