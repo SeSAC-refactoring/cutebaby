@@ -86,6 +86,19 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                         </div>
                     </div>
 
+                    <div>
+                        <p>어린이 국가예방접종 사업 위탁의료기관이란?</p>
+                        <p>
+                            어린이 국가예방접종 대상자가 비용 부담없이 접종받을
+                            수 있는 의료기관입니다.
+                        </p>
+                        <p>
+                            의료기관마다 취급하는 백신이 다를 수 있으므로, 특정
+                            제품을 접종하고자 할 때는 방문할 의료기관에 사전
+                            확인하시기 바랍니다.
+                        </p>
+                    </div>
+
                     {/* 지역(시/도) 선택 드롭다운 */}
                     <div className={styles.select_wrap}>
                         <select

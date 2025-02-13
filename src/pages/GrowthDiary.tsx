@@ -18,12 +18,13 @@ import { BabyListColumn } from '../components/commons/BabyListColumn';
 import { Link } from 'react-router-dom';
 import { GrowRewriteModal } from '../components/growth-diary-page/GrowRewriteModal';
 import { GrowDelModal } from '../components/growth-diary-page/GrowDelModal';
+import { CenterList } from '../components/vaccination-page/CenterList';
 
 export default function GrowthDiary() {
     const [openCalModal, setOpenCalModal] = useState<boolean>(false);
     const [openAddModal, setOpenAddModal] = useState<boolean>(false);
     const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
-    
+
     // 수정 및 삭제 모달 상태 추가
     const [openRewriteModal, setOpenRewriteModal] = useState<boolean>(false);
     const [openDelModal, setOpenDelModal] = useState<boolean>(false);
@@ -75,17 +76,27 @@ export default function GrowthDiary() {
                 />
             )}
 
-            {/* 기록 추가 모달 */}
+            {/* 성장기록 보러가기 모달 */}
             {openAddModal && (
-                <div className={styles.modal_background_wrap} onClick={() => setOpenAddModal(false)}>
-                    <div className={styles.block_record} onClick={(e) => e.stopPropagation()}>
+                <div
+                    className={styles.modal_background_wrap}
+                    onClick={() => setOpenAddModal(false)}
+                >
+                    <div
+                        className={styles.block_record}
+                        onClick={(e) => e.stopPropagation()}
+                    >
                         <div className={styles.add_wrap}>
                             <DiaryInputArea
                                 setOpenAddModal={setOpenAddModal}
                                 selectedBabyId={selectedBabyId}
                             />
                         </div>
-                        <DiaryTable growData={growData} onEdit={handleEdit} onDelete={handleDelete} />
+                        <DiaryTable
+                            growData={growData}
+                            onEdit={handleEdit}
+                            onDelete={handleDelete}
+                        />
                     </div>
                 </div>
             )}
@@ -111,16 +122,32 @@ export default function GrowthDiary() {
             <div className={layout.contentsArea}>
                 <div className={layout.titleArea}>
                     <div className={layout.textWrap}>
-                        <div className={[layout.title, typography.text4xlBd].join(' ')}>
+                        <div
+                            className={[
+                                layout.title,
+                                typography.text4xlBd,
+                            ].join(' ')}
+                        >
                             성장일지
                         </div>
-                        <div className={[layout.pageGuide, typography.textXlMd].join(' ')}>
-                            <strong className={typography.textXlBd}>우리 아이의 성장</strong>
+                        <div
+                            className={[
+                                layout.pageGuide,
+                                typography.textXlMd,
+                            ].join(' ')}
+                        >
+                            <strong className={typography.textXlBd}>
+                                우리 아이의 성장
+                            </strong>
                             을 기록하고 상태를 확인해보세요:)
                         </div>
                     </div>
-                    <button className={[button.btnSmYw, typography.textBsBd].join(' ')}
-                        onClick={() => setOpenCalModal(true)}>
+                    <button
+                        className={[button.btnSmYw, typography.textBsBd].join(
+                            ' '
+                        )}
+                        onClick={() => setOpenCalModal(true)}
+                    >
                         성장상태 계산 {'>'}
                     </button>
                 </div>
@@ -136,7 +163,12 @@ export default function GrowthDiary() {
                         <>
                             <img src="img/Contents.png" alt="성장일지 이미지" />
                             <Link to="/Mypage">
-                                <button className={[button.btnLgBk, typography.textLgBd].join(' ')}>
+                                <button
+                                    className={[
+                                        button.btnLgBk,
+                                        typography.textLgBd,
+                                    ].join(' ')}
+                                >
                                     아이 등록하기 {'>'}
                                 </button>
                             </Link>
@@ -148,15 +180,47 @@ export default function GrowthDiary() {
                             <>
                                 <div className={styles.recent_record_wrap}>
                                     {/* 성장기록 그래프 */}
-                                    <div style={{ width: '808px', height: '476px', marginTop: '24px', border: '3px solid #D1E9F1', borderRadius: '32px' }}>
-                                        <div style={{ margin: '32px 0px 0px 40px', fontSize: '18px', fontWeight: 'bold' }}>
-                                            우리아이 성장 추이
+                                    <div
+                                        style={{
+                                            width: '808px',
+                                            height: '476px',
+                                            marginTop: '24px',
+                                            border: '3px solid #D1E9F1',
+                                            borderRadius: '32px',
+                                            // display: 'flex',
+                                            // flexDirection: 'column',
+                                            // justifyContent: 'center',
+                                            // alignItems: 'center',
+                                        }}
+                                    >
+                                        <div
+                                            style={{
+                                                margin: '32px 0px 0px 40px',
+                                                fontSize: '18px',
+                                                fontWeight: 'bold',
+                                            }}
+                                        >
+                                            우리 아이 성장 추이
                                         </div>
-                                        {growData.length > 0 ? (
-                                            <DiaryChart growData={growData} />
-                                        ) : (
-                                            <p></p>
-                                        )}
+                                        <div
+                                            style={{
+                                                padding: '20px',
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                                alignContent: 'center',
+                                                width: '100%',
+                                                height: '100%',
+                                            }}
+                                        >
+                                            {growData.length > 0 ? (
+                                                <DiaryChart
+                                                    growData={growData}
+                                                />
+                                            ) : (
+                                                // 데이터 없을 때
+                                                <p></p>
+                                            )}
+                                        </div>
                                     </div>
                                     <RecentGrowthRecord
                                         growData={growData}

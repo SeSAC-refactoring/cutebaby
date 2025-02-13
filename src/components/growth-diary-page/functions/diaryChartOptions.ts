@@ -2,7 +2,7 @@ import { ChartOptions } from 'chart.js';
 
 export const diaryChartOptions: ChartOptions<'line'> = {
     responsive: true, // 차트를 반응형으로 설정
-    maintainAspectRatio: false, // 차트의 가로세로비 유지 안함
+    // maintainAspectRatio: false, // 차트의 가로세로비 유지 안함
 
     scales: {
         // X축 동작 설정
@@ -30,7 +30,7 @@ export const diaryChartOptions: ChartOptions<'line'> = {
                 display: false,
             },
             grid: {
-                drawOnChartArea: false, // 다른 Y축과 겹치는 그리드 제거
+                // drawOnChartArea: false, // 다른 Y축과 겹치는 그리드 제거
             },
         },
         yHeight: {
@@ -49,7 +49,7 @@ export const diaryChartOptions: ChartOptions<'line'> = {
                 // color: 'blue',
             },
             suggestedMin: 20, // 최소값 20
-            suggestedMax: 250,
+            suggestedMax: 180,
         },
         yWeight: {
             // 몸무게 (kg) Y축
@@ -67,14 +67,14 @@ export const diaryChartOptions: ChartOptions<'line'> = {
                 // color: 'blue',
             },
             suggestedMin: 0, // 최소값 20
-            suggestedMax: 200,
+            suggestedMax: 100,
         },
         yHead: {
             // 머리둘레 (cm) Y축
             type: 'linear',
             position: 'right',
-            suggestedMin: 20, // 최소값 20
-            suggestedMax: 70, // 최대값 70
+            suggestedMin: 30, // 최소값
+            suggestedMax: 60, // 최대값
             title: {
                 display: true,
                 text: '머리둘레 (cm)',
