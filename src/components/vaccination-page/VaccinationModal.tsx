@@ -9,9 +9,9 @@ interface VaccinationModalProps {
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
     vaccinationid: number;
     dosenumber: number;
-    setNewVaccinationData: React.Dispatch<
-        React.SetStateAction<VaccinationData[]>
-    >;
+    // setNewVaccinationData: React.Dispatch<
+    //     React.SetStateAction<VaccinationData[]>
+    // >;
     selectedBabyId: number | null;
 }
 
@@ -19,7 +19,7 @@ export const VaccinationModal: React.FC<VaccinationModalProps> = ({
     setIsOpen,
     vaccinationid,
     dosenumber,
-    setNewVaccinationData,
+    // setNewVaccinationData,
     selectedBabyId,
 }) => {
     return (
@@ -30,30 +30,22 @@ export const VaccinationModal: React.FC<VaccinationModalProps> = ({
             }}
         >
             <div
-                className={styles.modal_background}
-                onClick={(e) => e.stopPropagation()} // 이벤트 버블링 방지
+                onClick={(e) => e.stopPropagation()}
+                className={styles.modal_container}
             >
-                <div className={styles.modal_container}>
-                    {/* 🌟 모달 제목 */}
-                    <VaccinationModalTitle
-                        vaccinationid={vaccinationid}
-                        setIsOpen={setIsOpen}
-                    />
+                {/* 🌟 모달 제목 */}
+                <VaccinationModalTitle
+                    vaccinationid={vaccinationid}
+                    setIsOpen={setIsOpen}
+                />
 
-                    {/* 🌟 접종 기록 // 접종한 날짜 보여주기 + 버튼 클릭 시 input 태그 보이기 */}
-                    <VaccinationModalDateRecord
-                        vaccinationid={vaccinationid}
-                        dosenumber={dosenumber}
-                        selectedBabyId={selectedBabyId}
-                    />
-
-                    {/* 🌟 버튼 */}
-                    <VaccinationModalBtns
-                        vaccinationid={vaccinationid}
-                        setIsOpen={setIsOpen}
-                        setNewVaccinationData={setNewVaccinationData}
-                    />
-                </div>
+                {/* 🌟 접종 기록 // 접종한 날짜 보여주기 + 입력수정삭제 버튼 */}
+                <VaccinationModalDateRecord
+                    vaccinationid={vaccinationid}
+                    dosenumber={dosenumber}
+                    selectedBabyId={selectedBabyId}
+                    setIsOpen={setIsOpen}
+                />
             </div>
         </div>
     );
