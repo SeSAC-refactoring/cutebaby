@@ -40,18 +40,12 @@ export const VaccinationModal: React.FC<VaccinationModalProps> = ({
                         setIsOpen={setIsOpen}
                     />
 
-                    {/* 🌟 접종 기록 // 접종한 날짜 보여주기 + 버튼 클릭 시 input 태그 보이기 */}
+                    {/* 🌟 접종 기록 // 접종한 날짜 보여주기 + 입력수정삭제 버튼 */}
                     <VaccinationModalDateRecord
                         vaccinationid={vaccinationid}
                         dosenumber={dosenumber}
                         selectedBabyId={selectedBabyId}
-                    />
-
-                    {/* 🌟 버튼 */}
-                    <VaccinationModalBtns
-                        vaccinationid={vaccinationid}
                         setIsOpen={setIsOpen}
-                        setNewVaccinationData={setNewVaccinationData}
                     />
                 </div>
             </div>
