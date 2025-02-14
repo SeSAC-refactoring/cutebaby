@@ -149,7 +149,7 @@ const Signup: React.FC = () => {
 
   const emailCheck = async (e: React.FormEvent) => {
     e.preventDefault();
-    const response = await axios.post(`${API_URL}/api/emailCheck`, {
+    const response = await axios.post(`${API_URL}/emailCheck`, {
       inputEmail,
     });
     console.log(response);
@@ -167,7 +167,7 @@ const Signup: React.FC = () => {
   // 폼 제출 핸들러
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
+    console.log("test>>", formData);
     //여기서부터 db연결
     if (emptyCheck()) {
       try {
@@ -178,7 +178,20 @@ const Signup: React.FC = () => {
         if (response.data.success) {
           console.log("회원가입 성공:", response.data.message);
           const user = formData;
+          const email = user.email;
+          const password = user.password;
+          const emailPost = await axios.post(`${API_URL}/user`, {
+            email,
+            password,
+          });
+
           sessionStorage.setItem("user", JSON.stringify(user));
+          sessionStorage.setItem(
+            "usernumber",
+            JSON.stringify(emailPost.data[0].usernumber)
+          );
+          sessionStorage.setItem("useremail", user.email);
+          sessionStorage.setItem("username", user.name);
 
           alert("회원가입이 완료되었습니다!");
           gotoMypage();
@@ -325,8 +338,8 @@ const Signup: React.FC = () => {
 
             <button
               className={`${button.btnXlGr} ${typography.textXlBd}`}
-              type="submit"
-              disabled={!isFormValid}
+              // disabled={!isFormValid}
+              onClick={handleSubmit}
             >
               완료
             </button>

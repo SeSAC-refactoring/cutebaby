@@ -4,25 +4,58 @@ import typography from "../styles/commons/Typography.module.scss";
 import button from "../styles/commons/Button.module.scss";
 import AI from "../styles/AIChatComponent.module.scss";
 import styles from "../styles/Home.module.scss";
-import { useSelector } from "react-redux";
-import { RootState } from "../store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../store";
 import { BabyList } from "../components/commons/BabyList";
 import { useSelectBaby } from "../hooks/useSelectBaby";
 import { useGrowData } from "../components/growth-diary-page/hooks/useGrowData";
 import { DiaryChart } from "../components/growth-diary-page/DiaryChart";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import VaccinationCenters from "./VaccinationCenters";
 import VaccinationDetails from "./VaccinationDetails";
+import { fetchgrowInfo } from "../store/GrowthDiarySlice";
+import Loading from "../components/home-page/Loading";
+import { userInfo } from "os";
 
 export default function Home() {
   const [openCentersModal, setOpenCentersModal] = useState<boolean>(false);
   const [openDetailsModal, setOpenDetailsModal] = useState<boolean>(false);
   // const dispatch = useDispatch<AppDispatch>();
 
+  //로딩 상태 관리
+  const [loading, setLoading] = useState<boolean>(true);
+
   // store에서 정보 가져오기
+  const dispatch = useDispatch<AppDispatch>();
   const { babyInfo } = useSelector((state: RootState) => state.baby);
   const growInfo = useSelector((state: RootState) => state.babygrow.growInfo);
+  const username = sessionStorage.getItem("username") ?? "방문자";
+
+  useEffect(() => {
+    setLoading(true); // 처음엔 무조건 로딩 시작해야하는데...
+
+    const fetchData = async () => {
+      if (username !== "방문자" && babyInfo.length > 0) {
+        try {
+          await dispatch(fetchgrowInfo(babyInfo)); // 성장 정보 가져오기
+        } catch (error) {
+          console.error("데이터 가져오기 실패:", error);
+        }
+      }
+      setLoading(false); // 데이터 가져오기 완료 후 로딩 종료
+    };
+
+    fetchData();
+  }, [babyInfo, dispatch, username]);
+
+  useEffect(() => {
+    if (babyInfo.length === 0) {
+      setLoading(false); // babyInfo가 없으면 즉시 로딩 종료
+    } else if (growInfo.length > 0) {
+      setLoading(false); // 성장 정보가 있으면 로딩 종료
+    }
+  }, [babyInfo, growInfo]);
 
   // 커스텀 훅 사용
   const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
@@ -31,7 +64,6 @@ export default function Home() {
   console.log("로그인성공시 babygrow 불러옴", growInfo);
   console.log("로그인성공시 babyinfo불러옴", babyInfo);
 
-  const username = sessionStorage.getItem("username") ?? "방문자";
   // const userString = sessionStorage.getItem('user');
   // const user = userString ? JSON.parse(userString) : null;
   // const username = user?.username ?? "방문자";
@@ -39,6 +71,7 @@ export default function Home() {
   return (
     <div className={layout.container}>
       {/* 모달 */}
+      {loading && <Loading />}
       {openCentersModal && (
         <VaccinationCenters setOpenCentersModal={setOpenCentersModal} />
       )}
@@ -128,7 +161,9 @@ export default function Home() {
                 <h4 className={`${styles.banner_title} ${typography.textSmBd}`}>
                   예방접종 대상 감염병 정보
                 </h4>
-                <div className={`${styles.banner_link} ${typography.textBsBd}`}>바로가기 {">"}</div>
+                <div className={`${styles.banner_link} ${typography.textBsBd}`}>
+                  바로가기 {">"}
+                </div>
               </div>
               <div
                 className={`${styles.banner_container} ${styles.banner_search}`}
@@ -137,7 +172,9 @@ export default function Home() {
                 <h4 className={`${styles.banner_title} ${typography.textSmBd}`}>
                   위탁의료기관 찾기
                 </h4>
-                <div className={`${styles.banner_link} ${typography.textBsBd}`}>바로가기 {">"}</div>
+                <div className={`${styles.banner_link} ${typography.textBsBd}`}>
+                  바로가기 {">"}
+                </div>
               </div>
             </div>
           </div>
