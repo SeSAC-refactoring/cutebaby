@@ -1,5 +1,5 @@
-import mysql from 'mysql2';
-import dotenv from 'dotenv';
+import mysql from "mysql2";
+import dotenv from "dotenv";
 
 // .env 파일 로드
 dotenv.config();
@@ -12,13 +12,12 @@ const db = mysql.createConnection({
   port: parseInt(process.env.DB_PORT, 10),
 });
 
-
 db.connect((err) => {
   if (err) {
-    console.error('MySQL 연결 오류:', err);
+    console.error("MySQL 연결 오류:", err);
     return;
   }
-  console.log('✅ MySQL 연결 성공!');
+  console.log("✅ MySQL 연결 성공!");
 });
 
 export default db;
