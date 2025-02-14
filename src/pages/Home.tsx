@@ -13,8 +13,13 @@ import { DiaryChart } from "../components/growth-diary-page/DiaryChart";
 import { Link } from "react-router-dom";
 import { useVaccinationData } from "../components/vaccination-page/hooks/useVaccinationData";
 import { MissingVaccinations } from "../components/home-page/MissingVaccinations";
+import { useState } from "react";
+import VaccinationCenters from "./VaccinationCenters";
+import VaccinationDetails from "./VaccinationDetails";
 
 export default function Home() {
+  const [openCentersModal, setOpenCentersModal] = useState<boolean>(false);
+  const [openDetailsModal, setOpenDetailsModal] = useState<boolean>(false);
   // const dispatch = useDispatch<AppDispatch>();
 
   // store에서 정보 가져오기
@@ -42,6 +47,13 @@ export default function Home() {
 
   return (
     <div className={layout.container}>
+      {/* 모달 */}
+      {openCentersModal && (
+        <VaccinationCenters setOpenCentersModal={setOpenCentersModal} />
+      )}
+      {openDetailsModal && (
+        <VaccinationDetails setOpenDetailsModal={setOpenDetailsModal} />
+      )}
       <div className={`${styles.contentsArea}`}>
         <div className={styles.userArea}>
           <div className={`${styles.userGreeting} ${typography.text4xlMd}`}>
@@ -141,7 +153,12 @@ export default function Home() {
                   <div className={styles.banner_title}>
                     예방접종 대상 감염병 정보
                   </div>
-                  <div className={styles.banner_link}>바로가기 {">"}</div>
+                  <div
+                    className={styles.banner_link}
+                    onClick={() => setOpenDetailsModal(true)}
+                  >
+                    바로가기 {">"}
+                  </div>
                 </div>
                 <div className={styles.banner_right}>
                   <img src="img/Visual.png" alt=""></img>
@@ -150,7 +167,12 @@ export default function Home() {
               <div className={styles.banner_container}>
                 <div className={styles.banner_left}>
                   <div className={styles.banner_title}>위탁의료기관 찾기</div>
-                  <div className={styles.banner_link}>바로가기 {">"}</div>
+                  <div
+                    className={styles.banner_link}
+                    onClick={() => setOpenCentersModal(true)}
+                  >
+                    바로가기 {">"}
+                  </div>
                 </div>
                 <div className={styles.banner_right}>
                   <img src="img/Visual2.png" alt=""></img>
