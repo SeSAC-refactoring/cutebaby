@@ -209,14 +209,17 @@ ul {
   width: 50px;
 }
 .complete_btn_wrap {
+  font-size: 22px;
+  font-weight: bold;
   height: 96px;
   width: 182px;
   justify-content: space-between;
   display: flex;
   align-items: flex-end;
-  border: 1px solid red;
 }
 .date_del_btn {
+  font-size: 22px;
+  font-weight: bold;
   border-radius: 16px;
   width: 87px;
   height: 64px;
@@ -224,6 +227,8 @@ ul {
   background-color: #f6c7c6;
 }
 .date_edit_btn {
+  font-size: 22px;
+  font-weight: bold;
   border-radius: 16px;
   width: 87px;
   height: 64px;
@@ -234,12 +239,22 @@ ul {
   height: 96px;
   display: flex;
   align-items: flex-end;
-  border: 1px solid blue;
 }
 .date_enter_btn {
+  font-size: 22px;
+  font-weight: bold;
   width: 182px;
   height: 64px;
   border: none;
   background-color: $color-blue-4;
   border-radius: 16px;
+}
+.date_cancel_btn {
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 16px;
+  width: 87px;
+  height: 64px;
+  border: none;
+  background-color: $color-yellow-4;
 }
