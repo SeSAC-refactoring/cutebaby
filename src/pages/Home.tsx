@@ -144,30 +144,34 @@ export default function Home() {
         </div>
         {/* 오른쪽 | 챗봇 */}
         <div className={AI.chatbotArea}>
-          <div className={AI.chat_header}>
-            <img
-              src="img/Icon.png"
-              alt="아이콘"
-              style={{ width: "34px", height: "34px" }}
-            />
-            <div className={AI.chat_header_title_wrap}>
-              <div className={AI.chat_header_title}>
-                궁금한 내용이 있으신가요?
+          <div className={AI.chatbotWrap}>
+            <div className={AI.chatHeaderWrap}>
+              <div className={AI.chat_header}>
+                <img
+                  src="img/Icon.png"
+                  alt="아이콘"
+                  style={{ width: "34px", height: "34px" }}
+                />
+                <div className={AI.chat_header_title_wrap}>
+                  <div className={AI.chat_header_title}>
+                    궁금한 내용이 있으신가요?
+                  </div>
+                  <div>
+                    무엇이든 <span>AI챗봇</span>에게 물어보세요😉
+                  </div>
+                </div>
+                <div></div>{" "}
               </div>
-              <div>
-                무엇이든 <span>AI챗봇</span>에게 물어보세요😉
+              <div className={AI.chat_date}>
+                {new Date().toLocaleDateString("ko-KR", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
               </div>
             </div>
-            <div></div>{" "}
+            <AiChatComponent />
           </div>
-          <div className={AI.chat_date}>
-            {new Date().toLocaleDateString("ko-KR", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </div>
-          <AiChatComponent />
         </div>
       </div>
     </div>
