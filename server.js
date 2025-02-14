@@ -16,7 +16,10 @@ const allowedOrigins = [
   process.env.CLIENT_URL,
   'https://wrigglebaby.netlify.app', // Netlify 배포된 프론트엔드
 ];
-
+const options = {
+  key: fs.readFileSync('/etc/nginx/ssl/nginx-selfsigned.key'),
+  cert: fs.readFileSync('/etc/nginx/ssl/nginx-selfsigned.crt')
+};
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
