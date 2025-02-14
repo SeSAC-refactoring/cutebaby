@@ -15,7 +15,7 @@ import { useGrowData } from '../components/growth-diary-page/hooks/useGrowData';
 import { RecentGrowthRecord } from '../components/growth-diary-page/RecentGrowthRecord';
 import { NeedLoginModal } from '../components/my-page/NeedLoginModal';
 import { BabyListColumn } from '../components/commons/BabyListColumn';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { GrowRewriteModal } from '../components/growth-diary-page/GrowRewriteModal';
 import { GrowDelModal } from '../components/growth-diary-page/GrowDelModal';
 import { CenterList } from '../components/vaccination-page/CenterList';
@@ -23,7 +23,6 @@ import { CenterList } from '../components/vaccination-page/CenterList';
 export default function GrowthDiary() {
     const [openCalModal, setOpenCalModal] = useState<boolean>(false);
     const [openAddModal, setOpenAddModal] = useState<boolean>(false);
-    const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
 
     // 수정 및 삭제 모달 상태 추가
     const [openRewriteModal, setOpenRewriteModal] = useState<boolean>(false);
@@ -33,11 +32,13 @@ export default function GrowthDiary() {
     const { babyInfo, nothingBaby } = useSelector(
         (state: RootState) => state.baby
     );
-    const user = sessionStorage.getItem('user');
 
+    //  로그인 안했을 시 // 로그인 페이지로 리디렉션
+    const user = sessionStorage.getItem('user');
+    const navigate = useNavigate();
     useEffect(() => {
         if (!user) {
-            setOpenLoginModal(true);
+            navigate('/');
         }
     });
 
@@ -62,11 +63,6 @@ export default function GrowthDiary() {
 
     return (
         <div className={layout.container}>
-            {/* 로그인 필요 모달 */}
-            {openLoginModal && (
-                <NeedLoginModal modalState={() => setOpenLoginModal(false)} />
-            )}
-
             {/* 성장 계산기 모달 */}
             {openCalModal && (
                 <GrowthCalculate
