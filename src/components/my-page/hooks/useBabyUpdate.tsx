@@ -10,7 +10,7 @@ export const useBabyUpdate = () => {
     const API_URL = process.env.REACT_APP_API_URL;
 
     try {
-        console.log(formData)
+      console.log(formData);
       for (const pair of formData.entries()) {
         console.log("📌 FormData:", pair[0], pair[1]);
       }

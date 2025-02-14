@@ -68,6 +68,7 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
     }
 
     try {
+ 
       const response = await axios.post(
         `${API_URL}/emailCheck`,
         {
@@ -120,6 +121,7 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
     const usernum = sessionStorage.getItem("usernumber");
 
     try {
+
       const response = await axios.post(
         `${API_URL}/updateUser`,
         {
