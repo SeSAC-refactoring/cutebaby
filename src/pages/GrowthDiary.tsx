@@ -38,7 +38,7 @@ export default function GrowthDiary() {
   const navigate = useNavigate();
   useEffect(() => {
     if (!user) {
-      navigate("/");
+      // navigate("/");
     }
   });
 
