@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import modal from "../../styles/Modal.module.scss";
+import styles from "../../styles/Modal.module.scss";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
 import { ImageUploader } from "./ImageUploader";
@@ -94,18 +94,18 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
   const [selectedGender, setSelectedGender] = useState(rewriteData.gender);
 
   return (
-    <div className={modal.modalWrap}>
+    <div onClick={onClose} className={styles.modal_overlay}>
       <div
         onClick={(e) => e.stopPropagation()}
-        className={modal.modalbackground}
+        className={styles.modal_container}
       >
-        <div className={modal.modal_title_wrap}>
-          <div className={modal.modal_title}>아기 정보 수정</div>
-          <div onClick={onClose} className={modal.X_btn}>
+        <div className={styles.modal_title_wrap}>
+          <div className={styles.modal_title}>아기 정보 수정</div>
+          <div onClick={onClose} className={styles.X_btn}>
             X
           </div>
         </div>
-        <div className={modal.modal_img_wrap}>
+        <div className={styles.modal_img_wrap}>
           {defaultImg && <img src="/img/Profile.png" alt="아기 사진" />}
           <div style={{ position: "relative", bottom: "60px", left: "30px" }}>
             <ImageUploader
@@ -115,7 +115,7 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
             />
           </div>
         </div>
-        <div className={modal.modal_Input_wrap}>
+        <div className={styles.modal_Input_wrap}>
           <Input
             label="이름"
             placeholder="이름 입력"
@@ -126,7 +126,7 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
           {/* <label>
             <h2>이름</h2>
             <input
-              className={modal.modal_input}
+              className={styles.modal_input}
               id="babyname"
               placeholder="이름 입력"
               value={rewriteData.babyname} // 기존 이름 유지
@@ -144,7 +144,7 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
           {/* <label>
             <h2>생년월일</h2>
             <input
-              className={modal.modal_input}
+              className={styles.modal_input}
               type="date"
               id="birthday"
               value={rewriteData.birthday} // 기존 날짜 유지
@@ -161,22 +161,21 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
           </section>
         </div>
 
-        <div className={modal.modal_button_container}>
+        <div className={styles.modal_button_container}>
           <button
-            className={`${modal.modal_btn} ${modal.modal_cancel_button}`}
+            className={`${styles.modal_btn} ${styles.modal_cancel_button}`}
             onClick={onClose}
           >
             취소
           </button>
           <button
             onClick={rewrite}
-            className={`${modal.modal_btn} ${modal.modal_done_button}`}
+            className={`${styles.modal_btn} ${styles.modal_done_button}`}
           >
             완료
           </button>
         </div>
       </div>
-      <div onClick={onClose} className={modal.modal_overlay}></div>
     </div>
   );
 };

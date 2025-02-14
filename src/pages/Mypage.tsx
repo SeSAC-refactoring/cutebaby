@@ -52,6 +52,7 @@ export default function Mypage() {
         }
     };
 
+<<<<<<< HEAD
     // sessionStorage가 변경되면 state 업데이트
     useEffect(() => {
         const handleStorageChange = () => {
@@ -145,4 +146,76 @@ export default function Mypage() {
             )}
         </div>
     );
+=======
+    window.addEventListener("storage", handleStorageChange);
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
+  return (
+    <div className={layout.container}>
+      {/* 로그인 필요 모달 */}
+      {openModal && <NeedLoginModal modalState={() => setOpenModal(false)} />}
+      <div>
+        <div className={layout.contentsArea}>
+          <div className={layout.titleArea}>
+            <h1 className={layout.title}>마이페이지</h1>
+          </div>
+
+          {/* 사용자 정보 출력하기 */}
+          <div className={styles.user_info_wrap}>
+            <div className={styles.info_title}>내 정보</div>
+            <div className={styles.info_detail_wrap}>
+              <div className={styles.detail_set}>
+                <label className={styles.info_label}>이름</label>
+                <div className={styles.name}>{userInfo.username}</div>
+              </div>
+              <div className={styles.detail_set}>
+                <label className={styles.info_label}>이메일</label>
+                <div className={styles.name}>{userInfo.userid}</div>
+              </div>
+              <button
+                className={`${styles.edit_btn} ${
+                  isKakaoLogin ? styles.disabled : ""
+                }`}
+                onClick={update}
+                disabled={isKakaoLogin}
+              >
+                개인정보 수정
+                <img
+                  className={styles.img}
+                  src="/img/edit-01.png"
+                  alt="수정 아이콘"
+                />
+              </button>
+
+              {/* 수정 모달 */}
+              {updateModal && (
+                <UserupdateModal
+                  modalState={() => {
+                    setOpenUpdate(false);
+                    // 정보가 수정되면 상태 업데이트
+                    const updatedEmail =
+                      sessionStorage.getItem("useremail") ?? "";
+                    const kakaoLogin = !updatedEmail.includes("@");
+
+                    setUserInfo({
+                      username:
+                        sessionStorage.getItem("username") ?? "방문자님",
+                      userid: kakaoLogin ? "카카오 로그인" : updatedEmail,
+                    });
+                  }}
+                />
+              )}
+            </div>
+          </div>
+
+          {/* 애기 정보 출력 */}
+          <BabyInfo babyInfo={babyInfo} />
+        </div>
+      </div>
+    </div>
+  );
+>>>>>>> fdec2f3 (Revert "0214 모달 CSS 수정중|마이페이지-아기정보수정,성장일지-계산기 진행중")
 }
