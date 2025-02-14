@@ -104,6 +104,7 @@ export const VaccinationModalDateRecord: React.FC<
 
             setSelectedDose(null);
             dispatch(fetchVaccinationData(babyId));
+            setDoseDate('');
         } catch (error) {
             console.error(error);
         }

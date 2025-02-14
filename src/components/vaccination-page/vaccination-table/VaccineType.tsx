@@ -54,7 +54,7 @@ export const VaccineType: React.FC<VaccineTypeProps> = ({ selectedBabyId }) => {
                             className={`${button.btn2xsRd} ${typography.text2xsMd}`}
                         >
                             <img src="/img/icons/i-edit-s12.svg" />
-                            입력
+                            관리
                         </button>
                     </li>
                 ))}
@@ -66,7 +66,7 @@ export const VaccineType: React.FC<VaccineTypeProps> = ({ selectedBabyId }) => {
                     setIsOpen={setIsOpen}
                     vaccinationid={selectedVaccineId}
                     dosenumber={selectedDoseNumber}
-                    setNewVaccinationData={setNewVaccinationData}
+                    //   setNewVaccinationData={setNewVaccinationData}
                     selectedBabyId={selectedBabyId}
                 />
             )}
