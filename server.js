@@ -9,6 +9,10 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5001;
 
+
+
+
+
 // ✅ **CORS 설정 수정**
 const allowedOrigins = [
   'http://localhost:3000',  
