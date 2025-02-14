@@ -5,34 +5,30 @@
   gap: 56px;
 
   .contentsWrap {
-
     .formsWrapper {
       flex-grow: 1;
       display: flex;
       flex-direction: column;
       gap: 24px;
 
-      .formWrapEmail {
+      .formWrap {
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 16px;
-        
+        gap: 10px;
+
         .mailWrap {
           display: flex;
           align-items: end;
           gap: 16px;
         }
-    }
-    
+      }
     }
 
     .error {
       // position: absolute;
       color: $color-red-6;
     }
-  
-    
   }
   .buttonArea {
     gap: 16px;
@@ -42,5 +38,4 @@
       width: 100%;
     }
   }
-  
 }
