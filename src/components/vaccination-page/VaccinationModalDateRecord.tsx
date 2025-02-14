@@ -1,3 +1,5 @@
+import styles from '../../styles/Vaccination.module.scss';
+
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store';
@@ -6,6 +8,7 @@ import { VaccinationData } from '../types';
 import { InputVac } from './vaccination-table/InputVac';
 import { DelVac } from './vaccination-table/DelVac';
 import { UpdateVac } from './vaccination-table/UpdateVac';
+import { DateCompleteInput } from '../commons/Input';
 
 interface VaccinationModalDateRecordProps {
     vaccinationid: number;
@@ -127,8 +130,15 @@ export const VaccinationModalDateRecord: React.FC<
             : null;
 
     return (
-        <div>
-            <p>접종 기록</p>
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '24px',
+                border: '1px solid black',
+            }}
+        >
+            {/* <p>접종 기록</p> */}
             {Array.from({ length: dosenumber }, (_, i) => {
                 const doseNum = i + 1; // 1차, 2차 ... 보여줄 것
 
@@ -152,61 +162,138 @@ export const VaccinationModalDateRecord: React.FC<
 
                 return (
                     <div key={i}>
-                        <div style={{ display: 'flex' }}>
-                            <p>{doseNum}차 - </p>
-                            <p>
-                                {matchedDose ? matchedDose.dosedate : '미접종'}
-                            </p>
-                            {/* 앞의 차가 접종되지 않았으면 disabled */}
-                            <button
-                                onClick={() =>
-                                    handleOpenInput(
-                                        doseNum,
-                                        matchedDose?.dosedate || null
-                                    )
-                                }
-                                disabled={isDisabled}
+                        {selectedDose !== doseNum ? (
+                            <div
+                                style={{
+                                    width: '512px',
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                }}
                             >
-                                {matchedDose ? '수정' : '입력'}
-                            </button>
-                            <button
-                                onClick={() => handleDeleteData(doseNum)}
-                                disabled={doseNum !== lastDose}
-                            >
-                                삭제
-                            </button>
-                        </div>
+                                <DateCompleteInput
+                                    //   type="date"
+                                    label={`${doseNum}차`}
+                                    placeholder={
+                                        matchedDose?.dosedate
+                                            ? `${matchedDose?.dosedate} 완료`
+                                            : '미접종'
+                                    }
+                                    disabled={matchedDose && true}
+                                />
 
-                        {/* 해당 차수의 input 필드 */}
-                        {selectedDose === doseNum && (
+                                {/* <p>{doseNum}차 - </p>
+            <p>{matchedDose ? matchedDose.dosedate : "미접종"}</p> */}
+                                {/* 앞의 차가 접종되지 않았으면 disabled */}
+                                {/* <button
+              onClick={() =>
+                handleOpenInput(doseNum, matchedDose?.dosedate || null)
+              }
+              disabled={isDisabled}
+            >
+              {matchedDose ? "수정" : "입력"}
+            </button> */}
+                                {matchedDose ? (
+                                    <div className={styles.complete_btn_wrap}>
+                                        <button
+                                            onClick={() =>
+                                                handleDeleteData(doseNum)
+                                            }
+                                            disabled={doseNum !== lastDose}
+                                            className={styles.date_del_btn}
+                                        >
+                                            삭제
+                                        </button>
+                                        <button
+                                            onClick={() =>
+                                                handleOpenInput(
+                                                    doseNum,
+                                                    matchedDose?.dosedate ||
+                                                        null
+                                                )
+                                            }
+                                            className={styles.date_edit_btn}
+                                        >
+                                            수정
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <div className={styles.enter_btn_wrap}>
+                                        <button
+                                            onClick={() =>
+                                                handleOpenInput(doseNum, null)
+                                            }
+                                            className={styles.date_enter_btn}
+                                        >
+                                            입력하기
+                                        </button>
+                                    </div>
+                                )}
+                                {/* <button
+              onClick={() => handleDeleteData(doseNum)}
+              disabled={doseNum !== lastDose}
+            >
+              삭제
+            </button> */}
+                            </div>
+                        ) : (
                             <div
                                 style={{
                                     marginTop: '5px',
                                     display: 'flex',
                                     gap: '10px',
+                                    justifyContent: 'space-between',
                                 }}
                             >
-                                <input
-                                    type="date"
+                                <DateCompleteInput
+                                    //   type="date"
                                     value={doseDate}
                                     onChange={(e) =>
                                         setDoseDate(e.target.value)
                                     }
+                                    label={`${doseNum}차`}
+                                    style="dateEdit"
                                 />
-                                <button
-                                    onClick={() =>
-                                        matchedDose
-                                            ? handleupDate(doseNum)
-                                            : handleSaveData(doseNum)
-                                    }
-                                >
-                                    확인
-                                </button>
-                                <button onClick={() => setSelectedDose(null)}>
-                                    취소
-                                </button>
+                                <div className={styles.complete_btn_wrap}>
+                                    <button
+                                        onClick={() => setSelectedDose(null)}
+                                        disabled={doseNum !== lastDose}
+                                        className={styles.date_del_btn}
+                                    >
+                                        취소
+                                    </button>
+                                    <button
+                                        onClick={() =>
+                                            matchedDose
+                                                ? handleupDate(doseNum)
+                                                : handleSaveData(doseNum)
+                                        }
+                                        className={styles.date_edit_btn}
+                                    >
+                                        완료
+                                    </button>
+                                </div>
+                                {/* <input
+                  type="date"
+                  value={doseDate}
+                  onChange={(e) => setDoseDate(e.target.value)}
+                /> */}
+                                {/* <button
+                  onClick={() =>
+                    matchedDose
+                      ? handleupDate(doseNum)
+                      : handleSaveData(doseNum)
+                  }
+                >
+                  확인
+                </button>
+                <button onClick={() => setSelectedDose(null)}>취소</button> */}
                             </div>
                         )}
+
+                        {/* 해당 차수의 input 필드 */}
+                        {/* {selectedDose === doseNum && (
+             
+            )} */}
                     </div>
                 );
             })}
