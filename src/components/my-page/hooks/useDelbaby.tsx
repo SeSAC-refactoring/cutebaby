@@ -16,8 +16,8 @@ export const useDelbaby = () => {
       return;
     }
 
-    try {
-      const response = await axios.post(`${API_URL}/delbaby`, { babyid });
+        try {
+            const response = await axios.post(`${API_URL}/delbaby`, { babyid });
 
       dispatch(fetchBabyInfo());
 

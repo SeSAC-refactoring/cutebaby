@@ -149,7 +149,7 @@ const Signup: React.FC = () => {
 
   const emailCheck = async (e: React.FormEvent) => {
     e.preventDefault();
-    const response = await axios.post(`${API_URL}/api/emailCheck`, {
+    const response = await axios.post(`${API_URL}/emailCheck`, {
       inputEmail,
     });
     console.log(response);
