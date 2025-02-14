@@ -10,7 +10,6 @@ import { useEffect, useState } from 'react';
 import { fetchVaccinationData } from '../store/vaccinationSlice';
 import { BabyList } from '../components/commons/BabyList';
 import { useSelectBaby } from '../hooks/useSelectBaby';
-<<<<<<< HEAD
 import { VaccineInfo } from '../components/vaccination-page/VaccineInfo';
 import VaccinationCenters from './VaccinationCenters';
 import VaccinationDetails from './VaccinationDetails';
@@ -18,16 +17,6 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Vaccination() {
     // const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
-=======
-import { useVaccinationData } from '../components/vaccination-page/hooks/useVaccinationData';
-import { VaccineInfo } from '../components/vaccination-page/VaccineInfo';
-import { NeedLoginModal } from '../components/my-page/NeedLoginModal';
-import VaccinationCenters from './VaccinationCenters';
-import VaccinationDetails from './VaccinationDetails';
-
-export default function Vaccination() {
-    const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
->>>>>>> fdec2f3 (Revert "0214 모달 CSS 수정중|마이페이지-아기정보수정,성장일지-계산기 진행중")
     const [openCentersModal, setOpenCentersModal] = useState<boolean>(false);
     const [openDetailsModal, setOpenDetailsModal] = useState<boolean>(false);
     const [openInfoModal, setOpenInfoModal] = useState<boolean>(false);
@@ -35,7 +24,6 @@ export default function Vaccination() {
     const dispatch = useDispatch<AppDispatch>();
 
     // Redux에서 정보 가져오기
-<<<<<<< HEAD
     const { babyInfo } = useSelector((state: RootState) => state.baby);
     // const { vaccinationData } = useSelector(
     //     (state: RootState) => state.vaccination
@@ -47,38 +35,16 @@ export default function Vaccination() {
     //     vaccinationData,
     //     selectedBabyId
     // ); // selectedBabyVaccinationData = vaccinationData selectedBabyId에 따라 필터링 // selectedBabyId가 변경될 때 vaccinationData 업데이트
-=======
-    const { babyInfo, nothingBaby } = useSelector(
-        (state: RootState) => state.baby
-    );
-    const { vaccinationData, loading, error } = useSelector(
-        (state: RootState) => state.vaccination
-    );
-
-    // 훅 사용
-    const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
-    const { selectedBabyVaccinationData } = useVaccinationData(
-        vaccinationData,
-        selectedBabyId
-    ); // selectedBabyVaccinationData = vaccinationData selectedBabyId에 따라 필터링 // selectedBabyId가 변경될 때 vaccinationData 업데이트
->>>>>>> fdec2f3 (Revert "0214 모달 CSS 수정중|마이페이지-아기정보수정,성장일지-계산기 진행중")
 
     const user = sessionStorage.getItem('user');
     const babyId: number = selectedBabyId ?? 0;
     console.log('👼👼👼👼👼👼user', user);
 
-<<<<<<< HEAD
     //  로그인 안했을 시 로그인 페이지로 리디렉션 // 로그인 되면 데이터 가져오기
     const navigate = useNavigate();
     useEffect(() => {
         if (!user) {
             navigate('/');
-=======
-    // 로그인 안된 경우 로그인 모달 띄우기 // 로그인 되면 데이터 가져오기
-    useEffect(() => {
-        if (!user) {
-            setOpenLoginModal(true);
->>>>>>> fdec2f3 (Revert "0214 모달 CSS 수정중|마이페이지-아기정보수정,성장일지-계산기 진행중")
         } else if (babyId) {
             dispatch(fetchVaccinationData(babyId));
         }
@@ -97,15 +63,9 @@ export default function Vaccination() {
     return (
         <div className={layout.container}>
             {/* 모달 */}
-<<<<<<< HEAD
             {/* {openLoginModal && (
                 <NeedLoginModal modalState={() => setOpenLoginModal(false)} />
             )} */}
-=======
-            {openLoginModal && (
-                <NeedLoginModal modalState={() => setOpenLoginModal(false)} />
-            )}
->>>>>>> fdec2f3 (Revert "0214 모달 CSS 수정중|마이페이지-아기정보수정,성장일지-계산기 진행중")
             {openCentersModal && (
                 <VaccinationCenters setOpenCentersModal={setOpenCentersModal} />
             )}
@@ -172,16 +132,7 @@ export default function Vaccination() {
                         selectedBabyId={selectedBabyId}
                     />
 
-<<<<<<< HEAD
                     <VaccinationTable selectedBabyId={selectedBabyId} />
-=======
-                    <VaccinationTable
-                        selectedBabyVaccinationData={
-                            selectedBabyVaccinationData
-                        }
-                        selectedBabyId={selectedBabyId}
-                    />
->>>>>>> fdec2f3 (Revert "0214 모달 CSS 수정중|마이페이지-아기정보수정,성장일지-계산기 진행중")
                 </div>
             </div>
         </div>
