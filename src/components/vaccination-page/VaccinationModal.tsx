@@ -9,7 +9,6 @@ interface VaccinationModalProps {
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
     vaccinationid: number;
     dosenumber: number;
-    selectedBabyVaccinationData: VaccinationData[];
     setNewVaccinationData: React.Dispatch<
         React.SetStateAction<VaccinationData[]>
     >;
@@ -20,7 +19,6 @@ export const VaccinationModal: React.FC<VaccinationModalProps> = ({
     setIsOpen,
     vaccinationid,
     dosenumber,
-    selectedBabyVaccinationData,
     setNewVaccinationData,
     selectedBabyId,
 }) => {

@@ -6,11 +6,11 @@ import { useSearchCenters } from '../components/vaccination-page/hooks/useSearch
 import { PagenationBtns } from '../components/vaccination-page/PagenationBtns';
 import { useHandleSearch } from '../components/vaccination-page/hooks/useHandleSearch';
 import { useRefs } from '../hooks/useRefs';
+import { CenterList } from '../components/vaccination-page/CenterList';
+
 import styles from '../styles/VaccinationCenters.module.scss';
 import modal from '../styles/Modal.module.scss';
 import layout from '../styles/commons/Layout.module.scss';
-import { CenterList } from '../components/vaccination-page/CenterList';
-import { useState } from 'react';
 
 export default function VaccinationCenters({ setOpenCentersModal }: any) {
     // hook 사용
@@ -21,18 +21,13 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
         handleProvinceSelect,
         handleCitySelect,
     } = useLocationSelect();
-
     const { showVaccineList, setShowVaccineList, toggleVaccineList } =
         useToggleVaccineList();
-
     const { isLoading, centers, totalPages, setTotalPages, searchCenters } =
         useSearchCenters(selectedLocation, setShowVaccineList);
-
     const { provinces, cities, isFirstLoading } =
         useFetchLocation(selectedLocation);
-
     const refs = useRefs();
-
     const {
         inputAddress,
         setInputAddress,
@@ -40,7 +35,6 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
         savedAddress,
         hasSearched,
     } = useHandleSearch(selectedLocation, setCurrentPage, searchCenters, refs);
-
     const { startPage, endPage, handlePageChange } = usePagenation(
         currentPage,
         setCurrentPage,
