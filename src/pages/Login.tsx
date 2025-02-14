@@ -61,6 +61,7 @@ const EmailLogin: React.FC = () => {
   // 이메일로 사용자 정보 조회
   const handleSubmit = async (e: React.FormEvent) => {
     const API_URL = process.env.REACT_APP_API_URL;
+
     console.log(API_URL);
     e.preventDefault(); // 페이지 새로 고침 방지
     console.log(">>>>>");
@@ -127,7 +128,10 @@ const EmailLogin: React.FC = () => {
               onChange={handleInputPassword}
               placeholder="비밀번호를 입력해주세요."
             />
+<<<<<<< Updated upstream
             {error && <p style={{ color: "red" }}>{error}</p>}
+=======
+>>>>>>> Stashed changes
           </div>
           <div className={`${layout.buttonArea} ${styles.buttonArea}`}>
             <Link to="/">
@@ -143,6 +147,10 @@ const EmailLogin: React.FC = () => {
             </button>
           </div>
         </section>
+<<<<<<< Updated upstream
+=======
+        {error && <p style={{ color: "red" }}>{error}</p>}
+>>>>>>> Stashed changes
       </div>
     </div>
   );
