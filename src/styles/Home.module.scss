@@ -2,6 +2,7 @@
 
 .contentsArea {
   width: 100%;
+  height: -webkit-fill-available;
   flex-grow: 1;
   display: flex;
   justify-content: center;
@@ -13,9 +14,9 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 96px;
+    justify-content: space-between;
     background: url(../../public/img/visuals/visual_home_ggomul_02_.svg)
-      no-repeat top 16px right 0px;
+      no-repeat top -32px right 0px;
 
     .userGreeting {
       display: flex;
@@ -28,15 +29,16 @@
     }
 
     .mainContents {
-      flex-grow: 1;
+      max-height: 610px;
       padding: 32px;
       display: flex;
       flex-direction: column;
+      gap: 24px;
       background-color: $color-white;
       border: 2px solid $color-gray-6;
       border-radius: 32px;
 
-      .graphArea {
+      .chartContentsArea {
         flex-grow: 1;
         width: 100%;
         display: flex;
@@ -47,76 +49,66 @@
 
         &.empty {
           background-color: $color-gray-1;
+
+          .dataGraphArea {
+            width: 100%;
+          }
         }
       }
 
-      .bannerArea {
+      .banner_wrap {
         display: flex;
         gap: 24px;
 
-        .bannerItem {
+        .banner_container {
           flex-grow: 1;
           height: 114px;
-          overflow: hidden;
-          background-color: $color-white;
-          border: 2px solid $color-gray-6;
+          padding: 24px;
+          display: flex;
+          flex-direction: column;
+          align-items: self-start;
+          justify-content: start;
+          gap: 4px;
+          border: 2px solid $color-blue-4;
           border-radius: 24px;
+
+          .banner_title {
+            color: $color-gray-8;
+          }
+
+          .banner_link {
+            color: $color-gray-6;
+          }
+        }
+
+        .banner_vac {
+          background: $color-blue-1 url(../../public/img/Visual.png)
+            no-repeat top 6px right 16px;
+          }
+          
+        .banner_search {
+          background: $color-blue-1 url(../../public/img/Visual2.png)
+            no-repeat top 6px right 16px;
         }
       }
-    }
-    .diary_chart {
-      width: 776px;
-      height: 266px;
     }
   }
 }
 
-.banner_wrap {
-  display: flex;
-  gap: 24px;
-  margin-top: 170px;
-  // margin: auto;
-}
-.banner_container {
-  display: flex;
-  align-items: center;
-  flex: 1 0 0;
-  align-self: stretch;
-  border-radius: 24px;
-  border: 2px solid $color-blue-4;
-  background-color: #f4fafc;
-  // padding: 24px 32px;
-  padding: 0px 32px;
-  justify-content: space-between;
-  cursor: pointer;
-}
-.banner_left {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.banner_title {
-  font-size: 18px;
-  font-weight: 700;
-}
-.banner_link {
-  font-size: 16px;
-  font-weight: 700;
-  color: $color-gray-6;
-  cursor: pointer;
-}
 .no_diary_chart {
   display: flex;
-  width: 776px;
   padding: 24px 32px;
   flex-direction: column;
   align-items: center;
   gap: 24px;
-  flex: 1 0 0;
   border-radius: 24px;
   background-color: $color-blue-1;
-  margin-top: 10px;
 }
+
+.no_diary_chart_img {
+  width: 100%;
+}
+
 .bottom_text {
   color: $color-gray-8;
   font-size: 18px;

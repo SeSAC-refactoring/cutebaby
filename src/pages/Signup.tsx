@@ -149,7 +149,7 @@ const Signup: React.FC = () => {
 
   const emailCheck = async (e: React.FormEvent) => {
     e.preventDefault();
-    const response = await axios.post(`${API_URL}/api/emailCheck`, {
+    const response = await axios.post(`${API_URL}/emailCheck`, {
       inputEmail,
     });
     console.log(response);
@@ -171,7 +171,7 @@ const Signup: React.FC = () => {
     //여기서부터 db연결
     if (emptyCheck()) {
       try {
-        const response = await axios.post(`${API_URL}/api/signup`, {
+        const response = await axios.post(`${API_URL}/signup`, {
           formData,
         });
         console.log("response >>", response);
@@ -210,6 +210,27 @@ const Signup: React.FC = () => {
     //     setEmailCheck(false)
     //   }
   };
+
+  console.log(formData);
+
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    // 모든 조건이 만족되었는지 확인
+    const isValid =
+      formData.email.trim() !== "" &&
+      messages.email === "사용가능한 이메일 입니다!" &&
+      formData.password.trim() !== "" &&
+      messages.password === "사용가능한 비밀번호입니다!" &&
+      formData.confirmPassword.trim() !== "" &&
+      messages.confirmPassword === "비밀번호가 일치합니다." &&
+      formData.name.trim() !== "" &&
+      messages.name === "사용가능한 닉네임입니다.";
+
+    setIsFormValid(isValid);
+  }, [formData, messages]);
+
+  console.log("isFormValid:", isFormValid);
 
   return (
     <div className={layout.container}>
@@ -250,6 +271,7 @@ const Signup: React.FC = () => {
                 />
                 <button
                   className={`${button.btnLgBl} ${typography.textLgBd}`}
+                  style={{ color: "#3B3B41" }}
                   onClick={emailCheck}
                 >
                   중복체크
@@ -300,12 +322,21 @@ const Signup: React.FC = () => {
                 취소
               </button>
             </Link>
+
             <button
+              className={`${button.btnXlGr} ${typography.textXlBd}`}
+              type="submit"
+              disabled={!isFormValid}
+            >
+              완료
+            </button>
+
+            {/* <button
               className={`${button.btnXlGr} ${typography.textXlBd}`}
               type="submit"
             >
               완료
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

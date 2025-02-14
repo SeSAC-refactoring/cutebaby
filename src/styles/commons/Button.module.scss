@@ -68,6 +68,29 @@ $kakao-yellow-pressed: $color-kakao-yellow-7;
   }
 }
 
+// → blue
+.btnSmBl {
+  height: 44px;
+  padding-left: 14px;
+  padding-right: 14px;
+  gap: 4px;
+  color: $color-gray-10;
+  border-radius: 12px;
+  background-color: $blue-default;
+
+  &:disabled {
+    background-color: $blue-disabled;
+  }
+
+  &:hover {
+    background-color: $blue-hovered;
+  }
+
+  &:active {
+    background-color: $blue-pressed;
+  }
+}
+
 // Large
 // → gray
 .btnLgGr {

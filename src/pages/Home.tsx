@@ -47,6 +47,7 @@ export default function Home() {
       )}
 
       <div className={`${styles.contentsArea}`}>
+        {/* 왼쪽 | 사용자 영역 */}
         <div className={styles.userArea}>
           <div className={`${styles.userGreeting} ${typography.text4xlMd}`}>
             <div>
@@ -73,8 +74,8 @@ export default function Home() {
 
             <div className={styles.diary_chart}>
               {growData.length > 0 ? (
-                <>
-                  <div className={styles.graphArea}>
+                <div className={styles.chartContentsArea}>
+                  <div className={styles.titleArea}>
                     <p className={typography.textLgBd}>우리아이 성장그래프</p>
                     <button
                       className={`${button.btnSmYw} ${typography.textBsBd}`}
@@ -88,24 +89,10 @@ export default function Home() {
                       </Link>
                     </button>
                   </div>
-                  <div
-                    style={{
-                      height: "330px",
-                      marginTop: "12px",
-                    }}
-                  >
-                    <div
-                      style={{
-                        height: "100%",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
-                    >
-                      <DiaryChart growData={growData} />
-                    </div>
+                  <div className={styles.dataGraphArea}>
+                    <DiaryChart growData={growData} />
                   </div>
-                </>
+                </div>
               ) : (
                 // 성장기록 데이터가 없을 때
                 <div className={styles.no_diary_chart}>
@@ -117,15 +104,17 @@ export default function Home() {
                     ></img>
                   </div>
                   <div className={styles.no_diary_chart_bottom}>
-                    <div className={styles.bottom_text}>
+                    <div className={typography.textBsRg}>
                       우리아이의 성장상태 확인하고
                       <br />
                       <span className={styles.highlight}>성장추이 그래프</span>
                       로 확인할 수 있어요!
                     </div>
-                    <div className={styles.bottom_button}>
+                    <button
+                      className={`${button.btnSmBl} ${typography.textBsBd}`}
+                    >
                       바로 시작하기 {">"}
-                    </div>
+                    </button>
                   </div>
                 </div>
               )}
@@ -133,35 +122,27 @@ export default function Home() {
 
             <div className={styles.banner_wrap}>
               <div
-                className={styles.banner_container}
+                className={`${styles.banner_container} ${styles.banner_vac}`}
                 onClick={() => setOpenDetailsModal(true)}
               >
-                <div className={styles.banner_left}>
-                  <div className={styles.banner_title}>
-                    예방접종 대상 감염병 정보
-                  </div>
-                  <div className={styles.banner_link}>바로가기 {">"}</div>
-                </div>
-                <div className={styles.banner_right}>
-                  <img src="img/Visual.png" alt=""></img>
-                </div>
+                <h4 className={`${styles.banner_title} ${typography.textSmBd}`}>
+                  예방접종 대상 감염병 정보
+                </h4>
+                <div className={`${styles.banner_link} ${typography.textBsBd}`}>바로가기 {">"}</div>
               </div>
               <div
-                className={styles.banner_container}
+                className={`${styles.banner_container} ${styles.banner_search}`}
                 onClick={() => setOpenCentersModal(true)}
               >
-                <div className={styles.banner_left}>
-                  <div className={styles.banner_title}>위탁의료기관 찾기</div>
-                  <div className={styles.banner_link}>바로가기 {">"}</div>
-                </div>
-                <div className={styles.banner_right}>
-                  <img src="img/Visual2.png" alt=""></img>
-                </div>
+                <h4 className={`${styles.banner_title} ${typography.textSmBd}`}>
+                  위탁의료기관 찾기
+                </h4>
+                <div className={`${styles.banner_link} ${typography.textBsBd}`}>바로가기 {">"}</div>
               </div>
             </div>
           </div>
         </div>
-
+        {/* 오른쪽 | 챗봇 */}
         <div className={AI.chatbotArea}>
           <div className={AI.chat_header}>
             <img
