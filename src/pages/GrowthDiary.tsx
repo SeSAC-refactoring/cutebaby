@@ -143,26 +143,14 @@ export default function GrowthDiary() {
             />
           ) : (
             <>
-              <div className={styles.no_baby_wrap}>
-                <div className={styles.no_baby_box1}></div>
-                <div className={styles.no_baby_box2_Wrap}>
-                  <div className={styles.no_baby_box2_1}></div>
-                  <div className={styles.no_baby_box2_2}></div>
-                </div>
-              </div>
-              <div className={styles.blur_background}>
-                <div className={styles.blur_container}>
-                  <img src="/img/Ggoggo-002.png" />
-                  <div className={styles.blur_text}>
-                    등록된 아이가 없습니다!
-                  </div>
-                  <Link to="/Mypage">
-                    <button className={styles.baby_enroll_btn}>
-                      아이 등록하기 {">"}
-                    </button>
-                  </Link>
-                </div>
-              </div>
+              <img src="img/Contents.png" alt="성장일지 이미지" />
+              <Link to="/Mypage">
+                <button
+                  className={[button.btnLgBk, typography.textLgBd].join(" ")}
+                >
+                  아이 등록하기 {">"}
+                </button>
+              </Link>
             </>
           )}
 
