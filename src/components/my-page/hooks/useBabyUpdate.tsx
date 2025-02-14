@@ -10,12 +10,12 @@ export const useBabyUpdate = () => {
     const API_URL = process.env.REACT_APP_API_URL;
 
     try {
-        console.log(formData)
+      console.log(formData);
       for (const pair of formData.entries()) {
         console.log("📌 FormData:", pair[0], pair[1]);
       }
 
-      const response = await axios.post(`${API_URL}/api/updateBaby`, formData, {
+      const response = await axios.post(`${API_URL}/updateBaby`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

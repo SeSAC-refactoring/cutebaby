@@ -171,7 +171,7 @@ const Signup: React.FC = () => {
     //여기서부터 db연결
     if (emptyCheck()) {
       try {
-        const response = await axios.post(`${API_URL}/api/signup`, {
+        const response = await axios.post(`${API_URL}/signup`, {
           formData,
         });
         console.log("response >>", response);

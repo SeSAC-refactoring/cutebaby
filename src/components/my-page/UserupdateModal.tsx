@@ -68,12 +68,9 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
     }
 
     try {
-      const response = await axios.post(
-        `${API_URL}/api/emailCheck`,
-        {
-          email: formData.email,
-        }
-      );
+      const response = await axios.post(`${API_URL}/emailCheck`, {
+        email: formData.email,
+      });
 
       console.log("서버 응답:", response.data); // 디버깅 로그 추가
 
@@ -120,14 +117,11 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
     const usernum = sessionStorage.getItem("usernumber");
 
     try {
-      const response = await axios.post(
-        `${API_URL}/api/updateUser`,
-        {
-          email: formData.email,
-          username: formData.name,
-          usernumber: usernum,
-        }
-      );
+      const response = await axios.post(`${API_URL}/updateUser`, {
+        email: formData.email,
+        username: formData.name,
+        usernumber: usernum,
+      });
 
       if (response.data.success) {
         alert("정보가 성공적으로 수정되었습니다.");
