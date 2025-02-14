@@ -13,7 +13,8 @@ const port = process.env.PORT || 5001;
 // CORS 설정 (Netlify 프론트와 연결)
 const allowedOrigins = [
   'http://localhost:3000',
-  process.env.CLIENT_URL
+  process.env.CLIENT_URL,
+  'https://wrigglebaby.netlify.app', // Netlify 배포된 프론트엔드
 ];
 
 app.use(cors({
@@ -37,7 +38,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET, // 보안을 위해 .env에서 관리
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false } // HTTPS 배포 시 true로 변경
+  cookie: { secure: true, sameSite: 'none' } 
 }));
 
 // API 라우트 설정
