@@ -10,6 +10,7 @@
   background-color: #ffffff;
   border: 2px solid #838391;
   margin: auto;
+  overflow: auto;
 }
 
 .select {
@@ -54,3 +55,45 @@
   border-top: 2px solid #e1e1e5;
   padding-top: 32px;
 }
+.tooltip_position {
+  position: relative;
+}
+/* span 태그 option */
+.tooltip {
+  position: absolute;
+  top: 10%;
+  // left: 50%;
+  left: 110%;
+  z-index: 1;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 1px solid black;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+
+/* 툴팁 option */
+.tooltip i {
+  position: absolute;
+  display: none;
+  height: 4.5em;
+  width: 17em;
+  bottom: -2em;
+  left: 10em;
+  // left: calc(-50% + 1.25em);
+  // right: calc(-50% + 1.25em);
+  // right: 10%;
+  padding: 0.5em 0.5em;
+  text-align: center;
+  color: #fff;
+  background-color: #222;
+  box-sizing: border-box;
+  -webkit-transform: translateX(calc(-50%));
+  -webkit-border-radius: 0.4em;
+}
+
+.tooltip:hover i,
+.tooltip:focus i {
+  display: block;
+} /* focus된 상태에서는 display가 block 되도록 설정되도록 하는 css */
