@@ -10,7 +10,7 @@ export const useNewGrow = () => {
     const API_URL = process.env.REACT_APP_API_URL;
 
     try {
-      const response = await axios.post(`${API_URL}/api/newgrow`, data);
+      const response = await axios.post(`${API_URL}/newgrow`, data);
       setNewGrow(response.data); // 서버 응답을 상태에 저장
       return response.data;
     } catch (error) {

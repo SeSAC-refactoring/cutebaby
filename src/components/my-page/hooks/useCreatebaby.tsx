@@ -23,7 +23,7 @@ export const useCreatebaby = () => {
 
       console.log("📦 전송할 FormData:", formData); //FormData 확인
 
-      const response = await axios.post(`${API_URL}/api/babycreate`, formData, {
+      const response = await axios.post(`${API_URL}/babycreate`, formData, {
         headers: {
           "Content-Type": "multipart/form-data", // 파일 업로드 필수 헤더
         },

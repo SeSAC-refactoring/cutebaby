@@ -9,7 +9,7 @@ export const useInputbaby = () => {
   // 서버에 데이터 전송하는 함수
   const request = async (data: { babyid : number ;height: number; weight: number; head: number;inputData : string}) => {
     try {
-      const response = await axios.post(`${API_URL}/api/newbaby`, data);
+      const response = await axios.post(`${API_URL}/newbaby`, data);
       setNewbaby(response.data); // 서버 응답을 상태에 저장
       return response.data;
     } catch (error) {

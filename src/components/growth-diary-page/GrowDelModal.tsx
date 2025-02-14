@@ -31,7 +31,7 @@ export const GrowDelModal: React.FC<GrowDelModalProps> = ({
 
         try {
             const response = await axios.post(
-                `${API_URL}/api/delgrow`,
+                `${API_URL}/delgrow`,
                 {
                     growId:growId,
                 }

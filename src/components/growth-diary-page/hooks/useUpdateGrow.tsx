@@ -10,7 +10,7 @@ export const useUpdateGrow = () => {
 
     console.log('ㄱㅂㅈㅁㄷㅂㄱㅈㅁㄷㄹ',data)
     try {
-      const response = await axios.post(`${API_URL}/api/updategrow`, data);
+      const response = await axios.post(`${API_URL}/updategrow`, data);
       setupdateGrow(response.data); // 서버 응답을 상태에 저장
       return response.data;
     } catch (error) {

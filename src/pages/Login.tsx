@@ -66,7 +66,7 @@ const EmailLogin: React.FC = () => {
         console.log('>>>>>');
         try {
             const emailPost = await axios.post(
-                `${API_URL}/api/user`,
+                `${API_URL}/user`,
                 {
                     email,
                     inputpassword,
