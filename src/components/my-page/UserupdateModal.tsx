@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import axios from "axios";
 import styles from "../../styles/Modal.module.scss";
+import modal from "../../styles/Modal.module.scss";
 import { Input, InputSignupEmail } from "../commons/Input";
 
 interface UserupdateProps {
@@ -162,16 +163,24 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
   };
 
   return (
-    <div onClick={modalState} className={styles.modal_overlay}>
+    <div onClick={modalState} className={modal.modal_overlay}>
       <div
         onClick={(e) => e.stopPropagation()}
-        className={styles.modal_container}
+        className={modal.modal_container}
       >
-        <div className={styles.modal_title_wrap}>
-          <div className={styles.modal_title}>개인 정보 수정</div>
-          <div onClick={modalState} className={styles.X_btn}>
-            X
+        <div className={modal.modal_title_wrap}>
+          <div className={modal.modal_title}>개인 정보 수정</div>
+          <div
+            onClick={() => {
+              modalState();
+            }}
+            className={modal.closeBtn}
+          >
+            <img src="/img/icons/i-modal-close-s32.svg" alt="" />
           </div>
+          {/* <div onClick={modalState} className={styles.X_btn}>
+            X
+          </div> */}
         </div>
         <div className={styles.modal_Input_wrap} style={{ height: "250px" }}>
           {/* 이름 입력 */}
