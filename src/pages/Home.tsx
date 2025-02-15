@@ -69,7 +69,7 @@ export default function Home() {
   // const username = user?.username ?? "방문자";
 
   return (
-    <div className={layout.container}>
+    <div className={layout.mainAreaWrap}>
       {/* 모달 */}
       {loading && <Loading />}
       {openCentersModal && (
@@ -78,139 +78,155 @@ export default function Home() {
       {openDetailsModal && (
         <VaccinationDetails setOpenDetailsModal={setOpenDetailsModal} />
       )}
-
-      <div className={`${styles.contentsArea}`}>
-        {/* 왼쪽 | 사용자 영역 */}
-        <div className={styles.userArea}>
-          <div className={`${styles.userGreeting} ${typography.text4xlMd}`}>
-            <div>
-              <strong className={`${styles.user} ${typography.text4xlBd}`}>
-                {username}
-              </strong>
-              님,
-              <br />
-              안녕하세요👋🏼
+      <div className={layout.container}>
+        <div className={`${styles.contentsArea}`}>
+          {/* 왼쪽 | 사용자 영역 */}
+          <div className={styles.userArea}>
+            <div className={`${styles.userGreeting} ${typography.text4xlMd}`}>
+              <div>
+                <strong className={`${styles.user} ${typography.text4xlBd}`}>
+                  {username}
+                </strong>
+                님,
+                <br />
+                안녕하세요👋🏼
+              </div>
+              <div className={`${styles.pageGuide} ${typography.textLgRg}`}>
+                우리아이{" "}
+                <span className={typography.textLgMd}>예방접종을 관리</span>
+                하고,{" "}
+                <span className={typography.textLgMd}>성장일지를 기록</span>
+                해보세요:)
+              </div>
             </div>
-            <div className={`${styles.pageGuide} ${typography.textLgRg}`}>
-              우리아이{" "}
-              <span className={typography.textLgMd}>예방접종을 관리</span>
-              하고, <span className={typography.textLgMd}>성장일지를 기록</span>
-              해보세요:)
-            </div>
-          </div>
-          <div className={styles.mainContents}>
-            {/* <BabyList
-              babyInfo={babyInfo}
-              handleSelectBaby={handleSelectBaby}
-              selectedBabyId={selectedBabyId}
-            /> */}
+            <div className={styles.mainContents}>
+              {/* <BabyList
+                babyInfo={babyInfo}
+                handleSelectBaby={handleSelectBaby}
+                selectedBabyId={selectedBabyId}
+                /> */}
 
-            <div className={styles.diaryChartWrap}>
-              {growData.length > 0 ? (
-                <div className={styles.chartContentsArea}>
-                  <div className={styles.titleArea}>
-                    <h4 className={typography.textLgBd}>
-                      우리 아이 성장 그래프
-                    </h4>
-                    <button
-                      className={`${button.btnSmYw} ${typography.textBsBd}`}
-                    >
-                      <Link to="/GrowthDiary">
-                        성장일지 보러가기
-                        <img
-                          src="../img/icons/i-chevron-right-s20.svg"
-                          alt=""
-                        />
-                      </Link>
-                    </button>
-                  </div>
-                  <div className={styles.dataChartArea}>
-                    <DiaryChart growData={growData} />
-                  </div>
-                </div>
-              ) : (
-                // 성장기록 데이터가 없을 때
-                <div className={styles.no_diary_chart}>
-                  <div className={styles.no_diary_chart_top}>
-                    <img
-                      src="img/BarLineChart.png"
-                      alt="그래프 이미지"
-                      className={styles.no_diary_chart_img}
-                    ></img>
-                  </div>
-                  <div className={styles.no_diary_chart_bottom}>
-                    <div className={typography.textBsRg}>
-                      우리아이의 성장상태 확인하고
-                      <br />
-                      <span className={styles.highlight}>성장추이 그래프</span>
-                      로 확인할 수 있어요!
+              <div className={styles.diaryChartWrap}>
+                {growData.length > 0 ? (
+                  <div className={styles.chartContentsArea}>
+                    <div className={styles.titleArea}>
+                      <h4 className={typography.textLgBd}>
+                        우리 아이 성장 그래프
+                      </h4>
+                      <button
+                        className={`${button.btnSmYw} ${typography.textBsBd}`}
+                      >
+                        <Link to="/GrowthDiary">
+                          성장일지 보러가기
+                          <img
+                            src="../img/icons/i-chevron-right-s20.svg"
+                            alt=""
+                          />
+                        </Link>
+                      </button>
                     </div>
-                    <button
-                      className={`${button.btnSmBl} ${typography.textBsBd}`}
-                    >
-                      바로 시작하기 {">"}
-                    </button>
+                    <div className={styles.dataChartArea}>
+                      <DiaryChart growData={growData} />
+                    </div>
+                  </div>
+                ) : (
+                  // 성장기록 데이터가 없을 때
+                  <div className={styles.no_diary_chart}>
+                    <div className={styles.no_diary_chart_top}>
+                      <img
+                        className={styles.no_diary_chart_img}
+                        src="img/visuals/visuals-home-barLineChart.svg"
+                        alt="그래프 이미지"
+                      />
+                    </div>
+                    <div className={styles.no_diary_chart_bottom}>
+                      <div
+                        className={`${typography.textSmRg} ${styles.bottom_text}`}
+                      >
+                        우리아이의 성장상태 확인하고
+                        <br />
+                        <span
+                          className={`${typography.textSmMd} ${styles.highlight}`}
+                        >
+                          성장추이 그래프
+                        </span>
+                        로 확인할 수 있어요!
+                      </div>
+                      <button
+                        className={`${button.btnSmBl} ${typography.textBsBd}`}
+                      >
+                        바로 시작하기 {">"}
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className={styles.banner_wrap}>
+                <div
+                  className={`${styles.banner_container} ${styles.banner_vac}`}
+                  onClick={() => setOpenDetailsModal(true)}
+                >
+                  <h4
+                    className={`${styles.banner_title} ${typography.textSmBd}`}
+                  >
+                    예방접종 대상 감염병 정보
+                  </h4>
+                  <div
+                    className={`${styles.banner_link} ${typography.textBsBd}`}
+                  >
+                    바로가기 {">"}
                   </div>
                 </div>
-              )}
-            </div>
-
-            <div className={styles.banner_wrap}>
-              <div
-                className={`${styles.banner_container} ${styles.banner_vac}`}
-                onClick={() => setOpenDetailsModal(true)}
-              >
-                <h4 className={`${styles.banner_title} ${typography.textSmBd}`}>
-                  예방접종 대상 감염병 정보
-                </h4>
-                <div className={`${styles.banner_link} ${typography.textBsBd}`}>
-                  바로가기 {">"}
-                </div>
-              </div>
-              <div
-                className={`${styles.banner_container} ${styles.banner_search}`}
-                onClick={() => setOpenCentersModal(true)}
-              >
-                <h4 className={`${styles.banner_title} ${typography.textSmBd}`}>
-                  위탁의료기관 찾기
-                </h4>
-                <div className={`${styles.banner_link} ${typography.textBsBd}`}>
-                  바로가기 {">"}
+                <div
+                  className={`${styles.banner_container} ${styles.banner_search}`}
+                  onClick={() => setOpenCentersModal(true)}
+                >
+                  <h4
+                    className={`${styles.banner_title} ${typography.textSmBd}`}
+                  >
+                    위탁의료기관 찾기
+                  </h4>
+                  <div
+                    className={`${styles.banner_link} ${typography.textBsBd}`}
+                  >
+                    바로가기 {">"}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        {/* 오른쪽 | 챗봇 */}
-        <div className={AI.chatbotArea}>
-          <div className={AI.chatbotWrap}>
-            <div className={AI.chatHeaderWrap}>
-              <div className={AI.chat_header}>
-                <div className={AI.headerIconWrap}>
-                  <img
-                    src="/img/icons/i-headphones-s24.svg"
-                    alt="챗봇 아이콘"
-                  />
-                </div>
-                <div className={AI.chat_header_title_wrap}>
-                  <div className={typography.textSmBd}>
-                    궁금한 내용이 있으신가요?
+          {/* 오른쪽 | 챗봇 */}
+          <div className={AI.chatbotArea}>
+            <div className={AI.chatbotWrap}>
+              <div className={AI.chatHeaderWrap}>
+                <div className={AI.chat_header}>
+                  <div className={AI.headerIconWrap}>
+                    <img
+                      src="/img/icons/i-headphones-s24.svg"
+                      alt="챗봇 아이콘"
+                    />
                   </div>
-                  <div className={AI.chatTitleGuide}>
-                    무엇이든 <span>AI챗봇</span>에게 물어보세요😉
+                  <div className={AI.chat_header_title_wrap}>
+                    <div className={typography.textSmBd}>
+                      궁금한 내용이 있으신가요?
+                    </div>
+                    <div className={AI.chatTitleGuide}>
+                      무엇이든 <span>AI챗봇</span>에게 물어보세요😉
+                    </div>
                   </div>
+                  <div></div>{" "}
                 </div>
-                <div></div>{" "}
+                <div className={`${AI.chat_date} ${typography.textBsRg}`}>
+                  {new Date().toLocaleDateString("ko-KR", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </div>
               </div>
-              <div className={`${AI.chat_date} ${typography.textBsRg}`}>
-                {new Date().toLocaleDateString("ko-KR", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </div>
+              <AiChatComponent />
             </div>
-            <AiChatComponent />
           </div>
         </div>
       </div>

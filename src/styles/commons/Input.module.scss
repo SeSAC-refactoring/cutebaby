@@ -74,11 +74,10 @@ select,
 input {
   width: 100%;
   height: 64px;
-  background-color: $color-yellow-1;
-  border-radius: 16px;
   padding-left: 24px;
+  background-color: $color-yellow-1;
   border: 2px solid $color-gray-6;
-  
+  border-radius: 16px;
 }
 
 select::placeholder,
@@ -103,8 +102,9 @@ input[type="email"]:disabled {
   color: $color-gray-4;
   background-color: $color-gray-1;
   border-color: $color-gray-1;
+  opacity: 1;
 }
 
 .input_error {
-  border: 2px solid #fd757d;
+  border: 2px solid $color-red-5;
 }

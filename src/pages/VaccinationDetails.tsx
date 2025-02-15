@@ -102,19 +102,13 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
 
         <div className={modal.modalContentsArea}>
           {isLoading ? (
-            <div
-              className={modal.loadingContens}
-              style={{
-                width: "100%",
-                height: "200px",
-                backgroundColor: "black",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                color: "white",
-              }}
-            >
-              로딩 중...
+            <div className={modal.loadingContens}>
+              <img src="/img/visuals/visual_loading_ggomul_04.svg" alt="" />
+              <p>
+                자료를 가져오고 있어요..
+                <br />
+                조금만 기다려주세요..
+              </p>
             </div>
           ) : (
             <>
@@ -149,7 +143,7 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
                       </span>
                     </div>
                     <DiseaseInfoMessage
-                    message={diseaseInfo[onClickDis].message}
+                      message={diseaseInfo[onClickDis].message}
                     />
                   </div>
                 )}
