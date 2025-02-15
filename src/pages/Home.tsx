@@ -184,22 +184,20 @@ export default function Home() {
           <div className={AI.chatbotWrap}>
             <div className={AI.chatHeaderWrap}>
               <div className={AI.chat_header}>
-                <img
-                  src="img/Icon.png"
-                  alt="아이콘"
-                  style={{ width: "34px", height: "34px" }}
-                />
+                <div className={AI.headerIconWrap}>
+                  <img src="/img/icons/i-headphones-s24.svg" alt="챗봇 아이콘" />
+                </div>
                 <div className={AI.chat_header_title_wrap}>
-                  <div className={AI.chat_header_title}>
+                  <div className={typography.textSmBd}>
                     궁금한 내용이 있으신가요?
                   </div>
-                  <div>
+                  <div className={AI.chatTitleGuide}>
                     무엇이든 <span>AI챗봇</span>에게 물어보세요😉
                   </div>
                 </div>
                 <div></div>{" "}
               </div>
-              <div className={AI.chat_date}>
+              <div className={`${AI.chat_date} ${typography.textBsRg}`}>
                 {new Date().toLocaleDateString("ko-KR", {
                   year: "numeric",
                   month: "long",
