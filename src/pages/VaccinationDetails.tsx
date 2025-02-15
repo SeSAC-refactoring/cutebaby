@@ -100,66 +100,63 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
           </div>
         </div>
 
-        {isLoading ? (
-          <div
-            className={modal.loadingContens}
-            style={{
-              width: "100%",
-              height: "200px",
-              backgroundColor: "black",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              color: "white",
-            }}
-          >
-            로딩 중...
-          </div>
-        ) : (
-          <>
-            <div className={styles.chipBtnWrap}>
-              {diseaseList.map((disease, idx) => (
-                <button
-                  key={disease.cd}
-                  className={`${styles.chipBtn} ${typography.textSmBd}`}
-                  style={{
-                    backgroundColor: focus === idx ? "#D1E9F1" : "#f4fafc",
-                    border: focus === idx ? "1px solid #7DADBE" : "#f4fafc",
-                    color: focus === idx ? "#425B64" : "#7DADBE",
-                  }}
-                  onClick={() => {
-                    setFocus(idx);
-                    setOnClickDis(disease.cd);
-                    fetchDiseaseInfo(disease.cd);
-                  }}
-                >
-                  {disease.cdNm.split(" ")[0]}
-                </button>
-              ))}
+        <div className={modal.modalContentsArea}>
+          {isLoading ? (
+            <div
+              className={modal.loadingContens}
+              style={{
+                width: "100%",
+                height: "200px",
+                backgroundColor: "black",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                color: "white",
+              }}
+            >
+              로딩 중...
             </div>
+          ) : (
+            <>
+              <div className={styles.chipBtnWrap}>
+                {diseaseList.map((disease, idx) => (
+                  <button
+                    key={disease.cd}
+                    className={`${typography.textSmBd} ${
+                      focus === idx ? styles.chipBtnAcitve : styles.chipBtn
+                    }`}
+                    onClick={() => {
+                      setFocus(idx);
+                      setOnClickDis(disease.cd);
+                      fetchDiseaseInfo(disease.cd);
+                    }}
+                  >
+                    {disease.cdNm.split(" ")[0]}
+                  </button>
+                ))}
+              </div>
 
-            <div>
-              {diseaseInfo[onClickDis] && (
-                <div className={styles.diseaseInfo_wrap}>
-                  <div className={styles.title_wrap}>
-                    <span className={styles.title_big}>
-                      {diseaseInfo[onClickDis].title.split("(")[0]}
-                    </span>
-                    <span className={styles.title_small}>
-                      {"("}
-                      {diseaseInfo[onClickDis].title.split("(")[1]}
-                    </span>
-                  </div>
-                  <p className={styles.diseaseInfo}>
+              <div className={styles.diseaseInfoArea}>
+                {diseaseInfo[onClickDis] && (
+                  <div className={styles.diseaseInfo_wrap}>
+                    <div className={styles.title_wrap}>
+                      <span className={styles.title_big}>
+                        {diseaseInfo[onClickDis].title.split("(")[0]}
+                      </span>
+                      <span className={styles.title_small}>
+                        {"("}
+                        {diseaseInfo[onClickDis].title.split("(")[1]}
+                      </span>
+                    </div>
                     <DiseaseInfoMessage
-                      message={diseaseInfo[onClickDis].message}
+                    message={diseaseInfo[onClickDis].message}
                     />
-                  </p>
-                </div>
-              )}
-            </div>
-          </>
-        )}
+                  </div>
+                )}
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

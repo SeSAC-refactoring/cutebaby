@@ -46,10 +46,10 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
 
   return (
     <div
+      className={modal.modal_overlay}
       onClick={() => {
         setOpenCentersModal(false);
       }}
-      className={modal.modal_overlay}
     >
       <div
         onClick={(e) => {

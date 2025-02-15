@@ -1,68 +1,81 @@
 @import "./Colors.module.scss";
 
-.container {
-  flex-grow: 1;
+// 컨텐츠 + 모달 영역
+.mainAreaWrap {
+  position: relative;
   width: 100%;
-  min-width: 390px;
-  max-width: 1280px;
-  padding-top: 64px;
-  padding-bottom: 64px;
-  overflow: hidden;
+  height: calc(100vh - 140px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.contentsArea {
-  flex-grow: 1;
-  width: 100%;
-  padding: 56px 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-  background-color: $color-white;
-  border: 2px solid $color-gray-6;
-  border-radius: 40px;
-  align-items: center;
-  overflow: hidden;
-
-  .titleArea {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-self: start;
-
-    .textWrap {
-      display: flex;
-      gap: 16px;
-    }
-
-    .pageGuide {
-      align-self: end;
-      color: $color-gray-5;
-    }
-  }
-
-  .contentsWrap {
-    width: 100%;
+  
+  // 매인 컨텐츠 영역
+  .container {
     flex-grow: 1;
+    width: 100%;
+    position: relative;
+    min-width: 390px;
+    max-width: 1280px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .buttonArea {
-    width: 100%;
-    display: flex;
     justify-content: center;
-
-    a {
+    align-items: center;
+  }
+  
+  .contentsArea {
+    flex-grow: 1;
+    width: 100%;
+    padding: 56px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    background-color: $color-white;
+    border: 2px solid $color-gray-6;
+    border-radius: 40px;
+    overflow: hidden;
+  
+    .titleArea {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-self: start;
+  
+      .textWrap {
+        display: flex;
+        gap: 16px;
+      }
+  
+      .pageGuide {
+        align-self: end;
+        color: $color-gray-5;
+      }
+    }
+  
+    .contentsWrap {
+      width: 100%;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  
+    .buttonArea {
       width: 100%;
       display: flex;
       justify-content: center;
-      align-items: center;
+  
+      a {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
 }
+

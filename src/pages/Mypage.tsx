@@ -73,70 +73,71 @@ export default function Mypage() {
   }, []);
 
   return (
-    <div className={layout.container}>
+    <div className={layout.mainAreaWrap}>
       {/* 로그인 필요 모달 */}
       {/* {openModal && (
-                <NeedLoginModal modalState={() => setOpenModal(false)} />
-            )} */}
-
-      <div className={`${layout.contentsArea} ${styles.contentsArea}`}>
-        <div className={layout.titleArea}>
-          <div className={layout.textWrap}>
-            <h1 className={[layout.title, typography.text4xlBd].join(" ")}>
-              마이페이지
-            </h1>
+                  <NeedLoginModal modalState={() => setOpenModal(false)} />
+              )} */}
+      <div className={layout.container}>
+        <div className={`${layout.contentsArea} ${styles.contentsArea}`}>
+          <div className={layout.titleArea}>
+            <div className={layout.textWrap}>
+              <h1 className={[layout.title, typography.text4xlBd].join(" ")}>
+                마이페이지
+              </h1>
+            </div>
           </div>
+
+          {/* 사용자 정보 출력하기 */}
+          <div className={styles.user_info_wrap}>
+            <div className={styles.info_title}>내 정보</div>
+            <div className={styles.info_detail_wrap}>
+              <div className={styles.detail_set}>
+                <label className={styles.info_label}>이름</label>
+                <div className={styles.name}>{userInfo.username}</div>
+              </div>
+              <div className={styles.detail_set}>
+                <label className={styles.info_label}>이메일</label>
+                <div className={styles.name}>{userInfo.userid}</div>
+              </div>
+              <button
+                className={`${styles.edit_btn} ${
+                  isKakaoLogin ? styles.disabled : ""
+                }`}
+                onClick={update}
+                disabled={isKakaoLogin}
+              >
+                개인정보 수정
+                <img
+                  className={styles.img}
+                  src="/img/edit-01.png"
+                  alt="수정 아이콘"
+                />
+              </button>
+            </div>
+          </div>
+
+          {/* 애기 정보 출력 */}
+          <BabyInfo babyInfo={babyInfo} />
         </div>
 
-        {/* 사용자 정보 출력하기 */}
-        <div className={styles.user_info_wrap}>
-          <div className={styles.info_title}>내 정보</div>
-          <div className={styles.info_detail_wrap}>
-            <div className={styles.detail_set}>
-              <label className={styles.info_label}>이름</label>
-              <div className={styles.name}>{userInfo.username}</div>
-            </div>
-            <div className={styles.detail_set}>
-              <label className={styles.info_label}>이메일</label>
-              <div className={styles.name}>{userInfo.userid}</div>
-            </div>
-            <button
-              className={`${styles.edit_btn} ${
-                isKakaoLogin ? styles.disabled : ""
-              }`}
-              onClick={update}
-              disabled={isKakaoLogin}
-            >
-              개인정보 수정
-              <img
-                className={styles.img}
-                src="/img/edit-01.png"
-                alt="수정 아이콘"
-              />
-            </button>
-          </div>
-        </div>
+        {/* 수정 모달 */}
+        {updateModal && (
+          <UserupdateModal
+            modalState={() => {
+              setOpenUpdate(false);
+              // 정보가 수정되면 상태 업데이트
+              const updatedEmail = sessionStorage.getItem("useremail") ?? "";
+              const kakaoLogin = !updatedEmail.includes("@");
 
-        {/* 애기 정보 출력 */}
-        <BabyInfo babyInfo={babyInfo} />
+              setUserInfo({
+                username: sessionStorage.getItem("username") ?? "방문자님",
+                userid: kakaoLogin ? "카카오 로그인" : updatedEmail,
+              });
+            }}
+          />
+        )}
       </div>
-
-      {/* 수정 모달 */}
-      {updateModal && (
-        <UserupdateModal
-          modalState={() => {
-            setOpenUpdate(false);
-            // 정보가 수정되면 상태 업데이트
-            const updatedEmail = sessionStorage.getItem("useremail") ?? "";
-            const kakaoLogin = !updatedEmail.includes("@");
-
-            setUserInfo({
-              username: sessionStorage.getItem("username") ?? "방문자님",
-              userid: kakaoLogin ? "카카오 로그인" : updatedEmail,
-            });
-          }}
-        />
-      )}
     </div>
   );
 }

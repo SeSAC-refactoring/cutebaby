@@ -1,11 +1,13 @@
 @import "../styles/commons/Colors.module.scss";
 
+
 // 모달 오버레이
 .modal_overlay {
+  flex-grow: 1;
   position: absolute;
-  top: 140px;
+  top: 0;
   width: 100%;
-  height: -webkit-fill-available;
+  height: 100%;
   padding-top: 64px;
   padding-bottom: 64px;
   display: flex;
@@ -45,6 +47,21 @@
           width: 100%;
         }
       }
+    }
+
+    .modalContentsArea {
+      flex-grow: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    // 로딩 화면
+    .loadingContens {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
     }
   }
 }

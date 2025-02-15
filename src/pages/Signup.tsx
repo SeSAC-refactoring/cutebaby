@@ -296,116 +296,114 @@ const Signup: React.FC = () => {
   }, [signUpCheck]);
 
   return (
-    <div className={layout.container}>
-      <div className={`${layout.contentsArea} ${styles.contentsArea}`}>
-        <div className={`${layout.titleArea} ${typography.text4xlBd}`}>
-          이메일로 가입하기
-        </div>
+    <div className={layout.mainAreaWrap}>
+      <div className={layout.container}>
+        <div className={`${layout.contentsArea} ${styles.contentsArea}`}>
+          <div className={`${layout.titleArea} ${typography.text4xlBd}`}>
+            이메일로 가입하기
+          </div>
 
-        <div className={`${layout.contentsWrap} ${styles.contentsWrap}`}>
-          <div className={styles.formsWrapper}>
-            <div className={styles.formWrap}>
-              <Input
-                label="이름"
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                placeholder="이름을 입력해주세요."
-                ref={(el) => {
-                  inputRef.current.name = el;
-                }}
-              />
-              {messages.name && <p className={styles.error}>{messages.name}</p>}
-            </div>
-
-            <div className={`${styles.formWrap} ${styles.formWrapEmail}`}>
-              <div className={styles.mailWrap}>
-                <InputSignupEmail
-                  label="이메일"
-                  type="email"
-                  name="email"
-                  value={formData.email}
+          <div className={`${layout.contentsWrap} ${styles.contentsWrap}`}>
+            <div className={styles.formsWrapper}>
+              <div className={styles.formWrap}>
+                <Input
+                  label="이름"
+                  type="text"
+                  name="name"
+                  value={formData.name}
                   onChange={handleInputChange}
-                  placeholder="이메일을 입력해주세요."
-                  ref={(el: any) => {
-                    inputRef.current.email = el;
+                  placeholder="이름을 입력해주세요."
+                  ref={(el) => {
+                    inputRef.current.name = el;
                   }}
                 />
-                <button
-                  className={`${button.btnLgBl} ${typography.textLgBd}`}
-                  style={{ color: "#3B3B41" }}
-                  onClick={emailCheck}
-                >
-                  중복체크
-                </button>
+                {messages.name && (
+                  <p className={styles.error}>{messages.name}</p>
+                )}
               </div>
-              {messages.email && (
-                <p className={styles.error}>{messages.email}</p>
-              )}
-            </div>
 
-            <div className={styles.formWrap}>
-              <Input
-                label="비밀번호"
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleInputChange}
-                placeholder="비밀번호를 입력해주세요."
-                ref={(el) => {
-                  inputRef.current.password = el;
-                }}
-              />
-              {messages.password && (
-                <p className={styles.error}>{messages.password}</p>
-              )}
-            </div>
+              <div className={`${styles.formWrap} ${styles.formWrapEmail}`}>
+                <div className={styles.mailWrap}>
+                  <InputSignupEmail
+                    label="이메일"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="이메일을 입력해주세요."
+                    ref={(el: any) => {
+                      inputRef.current.email = el;
+                    }}
+                  />
+                  <button
+                    className={`${button.btnLgBl} ${typography.textLgBd}`}
+                    style={{ color: "#3B3B41" }}
+                    onClick={emailCheck}
+                  >
+                    중복체크
+                  </button>
+                </div>
+                {messages.email && (
+                  <p className={styles.error}>{messages.email}</p>
+                )}
+              </div>
 
-            <div className={styles.formWrap}>
-              <Input
-                label="비밀번호 확인"
-                type="password"
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleInputChange}
-                placeholder="비밀번호를 한번 더 입력해주세요."
-                ref={(el) => {
-                  inputRef.current.checkPassword = el;
-                }}
-              />
-              {messages.confirmPassword && (
-                <p className={styles.error}>{messages.confirmPassword}</p>
-              )}
+              <div className={styles.formWrap}>
+                <Input
+                  label="비밀번호"
+                  type="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  placeholder="비밀번호를 입력해주세요."
+                  ref={(el) => {
+                    inputRef.current.password = el;
+                  }}
+                />
+                {messages.password && (
+                  <p className={styles.error}>{messages.password}</p>
+                )}
+              </div>
+
+              <div className={styles.formWrap}>
+                <Input
+                  label="비밀번호 확인"
+                  type="password"
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={handleInputChange}
+                  placeholder="비밀번호를 한번 더 입력해주세요."
+                  ref={(el) => {
+                    inputRef.current.checkPassword = el;
+                  }}
+                />
+                {messages.confirmPassword && (
+                  <p className={styles.error}>{messages.confirmPassword}</p>
+                )}
+              </div>
             </div>
-          </div>
-          <div className={`${layout.buttonArea} ${styles.buttonArea}`}>
-            <Link to="/">
-              <button className={`${button.btnXlYw} ${typography.textXlBd}`}>
-                취소
-              </button>
-            </Link>
-            {isFormValid ? (
+            <div className={`${layout.buttonArea} ${styles.buttonArea}`}>
+              <Link to="/">
+                <button className={`${button.btnXlYw} ${typography.textXlBd}`}>
+                  취소
+                </button>
+              </Link>
+
               <button
                 className={`${button.btnXlGr} ${typography.textXlBd}`}
+                // disabled={!isFormValid}
                 onClick={handleSubmit}
               >
                 완료
               </button>
-            ) : (
-              <button
-                className={`${button.disabled_btnXl} ${typography.textXlBd}`}
-              >
-                완료
-              </button>
-            )}
 
-            {/* <button
+              {/* <button
               className={`${button.btnXlGr} ${typography.textXlBd}`}
               type="submit"
             >
               완료
             </button> */}
+            </div>
           </div>
         </div>
       </div>

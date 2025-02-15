@@ -61,7 +61,7 @@ export default function Vaccination() {
   // );
 
   return (
-    <div className={layout.container}>
+    <div className={layout.mainAreaWrap}>
       {/* 모달 */}
       {/* {openLoginModal && (
                 <NeedLoginModal modalState={() => setOpenLoginModal(false)} />
@@ -73,51 +73,54 @@ export default function Vaccination() {
         <VaccinationDetails setOpenDetailsModal={setOpenDetailsModal} />
       )}
       {openInfoModal && <VaccineInfo setOpenInfoModal={setOpenInfoModal} />}
-
-      <div className={`${layout.contentsArea} ${styles.contentsArea}`}>
-        <div className={layout.titleArea}>
-          <div className={layout.textWrap}>
-            <div className={[layout.title, typography.text4xlBd].join(" ")}>
-              예방접종 관리
+      <div className={layout.container}>
+        <div className={`${layout.contentsArea} ${styles.contentsArea}`}>
+          <div className={layout.titleArea}>
+            <div className={layout.textWrap}>
+              <div className={[layout.title, typography.text4xlBd].join(" ")}>
+                예방접종 관리
+              </div>
+              <div
+                className={[layout.pageGuide, typography.textXlMd].join(" ")}
+              >
+                <strong className={typography.textXlBd}>
+                  표준 예방접종 일정표
+                </strong>
+                를 기준으로 관리할 수 있어요:)
+              </div>
             </div>
-            <div className={[layout.pageGuide, typography.textXlMd].join(" ")}>
-              <strong className={typography.textXlBd}>
-                표준 예방접종 일정표
-              </strong>
-              를 기준으로 관리할 수 있어요:)
+            <div className={styles.button_wrap}>
+              <button
+                className={`${button.btnSmYw} ${typography.textBsBd}`}
+                onClick={() => setOpenCentersModal(true)}
+              >
+                위탁의료기관{" "}
+                <img src="img/icons/i-search-s20.svg" alt="성장일지 이미지" />
+              </button>
+              <button
+                className={`${button.btnSmYw} ${typography.textBsBd}`}
+                onClick={() => setOpenDetailsModal(true)}
+              >
+                감염병 정보
+              </button>
+              <button
+                className={`${button.btnSmYw} ${typography.textBsBd}`}
+                onClick={() => setOpenInfoModal(true)}
+              >
+                백신 정보
+              </button>
             </div>
           </div>
-          <div className={styles.button_wrap}>
-            <button
-              className={`${button.btnSmYw} ${typography.textBsBd}`}
-              onClick={() => setOpenCentersModal(true)}
-            >
-              위탁의료기관{" "}
-              <img src="img/icons/i-search-s20.svg" alt="성장일지 이미지" />
-            </button>
-            <button
-              className={`${button.btnSmYw} ${typography.textBsBd}`}
-              onClick={() => setOpenDetailsModal(true)}
-            >
-              감염병 정보
-            </button>
-            <button
-              className={`${button.btnSmYw} ${typography.textBsBd}`}
-              onClick={() => setOpenInfoModal(true)}
-            >
-              백신 정보
-            </button>
+
+          <div className={styles.contentsWrap}>
+            <BabyList
+              babyInfo={babyInfo}
+              handleSelectBaby={handleSelectBaby}
+              selectedBabyId={selectedBabyId}
+            />
+
+            <VaccinationTable selectedBabyId={selectedBabyId} />
           </div>
-        </div>
-
-        <div className={styles.contentsWrap}>
-          <BabyList
-            babyInfo={babyInfo}
-            handleSelectBaby={handleSelectBaby}
-            selectedBabyId={selectedBabyId}
-          />
-
-          <VaccinationTable selectedBabyId={selectedBabyId} />
         </div>
       </div>
     </div>

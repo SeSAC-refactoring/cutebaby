@@ -16,7 +16,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 80px;
     background: url(../../public/img/visuals/visual_home_ggomul_02_.svg)
       no-repeat top 0px right 0px;
 
@@ -34,7 +34,6 @@
     // 하단 | 차트 + 배너 영역
     .mainContents {
       flex-grow: 1;
-      max-height: 610px;
       padding: 32px;
       display: flex;
       flex-direction: column;
@@ -73,7 +72,6 @@
           .dataChartArea {
             flex-grow: 1;
             width: 100%;
-            max-height: 352px;
             padding: 8px 16px;
             display: flex;
             flex-direction: column;
@@ -83,9 +81,7 @@
             border-radius: 24px;
 
             canvas {
-              max-width: 100%;
-              max-height: 100%;
-              object-fit: contain;
+              // object-fit: contain;
             }
 
             &.empty {

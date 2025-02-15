@@ -102,44 +102,47 @@ const EmailLogin: React.FC = () => {
   const gotoMain = () => {
     navigate("/Home", { state: userInfo }); // Mypage로 이동
   };
+  
   return (
-    <div className={layout.container}>
-      <div className={`${layout.contentsArea} ${styles.contentsArea}`}>
-        <div className={`${layout.titleArea} ${typography.text4xlBd}`}>
-          이메일로 로그인하기
-        </div>
-        <section className={layout.contentsWrap} onKeyDown={enter}>
-          <div className={styles.formWrap}>
-            <Input
-              label="이메일"
-              type="email"
-              value={email}
-              onChange={handleInputChange}
-              placeholder="이메일을 입력해주세요."
-            />
-            <Input
-              label="비밀번호"
-              type="password"
-              value={inputpassword}
-              onChange={handleInputPassword}
-              placeholder="비밀번호를 입력해주세요."
-            />
+    <div className={layout.mainAreaWrap}>
+      <div className={layout.container}>
+        <div className={`${layout.contentsArea} ${styles.contentsArea}`}>
+          <div className={`${layout.titleArea} ${typography.text4xlBd}`}>
+            이메일로 로그인하기
           </div>
-          <div className={`${layout.buttonArea} ${styles.buttonArea}`}>
-            <Link to="/">
-              <button className={`${button.btnXlYw} ${typography.textXlBd}`}>
-                취소
+          <section className={layout.contentsWrap} onKeyDown={enter}>
+            <div className={styles.formWrap}>
+              <Input
+                label="이메일"
+                type="email"
+                value={email}
+                onChange={handleInputChange}
+                placeholder="이메일을 입력해주세요."
+              />
+              <Input
+                label="비밀번호"
+                type="password"
+                value={inputpassword}
+                onChange={handleInputPassword}
+                placeholder="비밀번호를 입력해주세요."
+              />
+            </div>
+            <div className={`${layout.buttonArea} ${styles.buttonArea}`}>
+              <Link to="/">
+                <button className={`${button.btnXlYw} ${typography.textXlBd}`}>
+                  취소
+                </button>
+              </Link>
+              <button
+                className={`${button.btnXlGr} ${typography.textXlBd}`}
+                onClick={handleSubmit}
+              >
+                완료
               </button>
-            </Link>
-            <button
-              className={`${button.btnXlGr} ${typography.textXlBd}`}
-              onClick={handleSubmit}
-            >
-              완료
-            </button>
-          </div>
-        </section>
-        {error && <p style={{ color: "red" }}>{error}</p>}
+            </div>
+          </section>
+          {error && <p style={{ color: "red" }}>{error}</p>}
+        </div>
       </div>
     </div>
   );
