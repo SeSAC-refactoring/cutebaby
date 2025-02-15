@@ -29,7 +29,7 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
     .replace(/. /g, "-")
     .replace(".", "");
   const [defaultImg, setDefaultImg] = useState(true);
-  const [selectedGender, setSelectedGender] = useState("boy");
+  const [selectedGender, setSelectedGender] = useState("");
   const [resetImage, setResetImage] = useState(true); // 리셋시키기위한 상태관리
   const [newBabyData, setNewBabyData] = useState<babyinfo>({
     babyid: 0,
