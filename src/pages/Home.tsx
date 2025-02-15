@@ -16,15 +16,11 @@ import VaccinationCenters from "./VaccinationCenters";
 import VaccinationDetails from "./VaccinationDetails";
 import { fetchgrowInfo } from "../store/GrowthDiarySlice";
 import Loading from "../components/home-page/Loading";
-import { userInfo } from "os";
 
 export default function Home() {
   const [openCentersModal, setOpenCentersModal] = useState<boolean>(false);
   const [openDetailsModal, setOpenDetailsModal] = useState<boolean>(false);
-  // const dispatch = useDispatch<AppDispatch>();
-
-  //로딩 상태 관리
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(true); // 로딩 상태 관리
 
   // store에서 정보 가져오기
   const dispatch = useDispatch<AppDispatch>();
@@ -32,52 +28,50 @@ export default function Home() {
   const growInfo = useSelector((state: RootState) => state.babygrow.growInfo);
   const username = sessionStorage.getItem("username") ?? "방문자";
 
+  // userinfo 및 성장 정보 가져오기
   useEffect(() => {
-    setLoading(true); // 처음엔 무조건 로딩 시작해야하는데...
+    setLoading(true); // 로딩 시작
 
     const fetchData = async () => {
-      if (username !== "방문자" && babyInfo.length > 0) {
-        try {
-          await dispatch(fetchgrowInfo(babyInfo)); // 성장 정보 가져오기
-        } catch (error) {
-          console.error("데이터 가져오기 실패:", error);
+      try {
+        // userinfo 가져오기
+        const userinfo = sessionStorage.getItem("user"); // 올바른 키 이름 사용
+        if (!userinfo) {
+          console.warn("Userinfo not found in sessionStorage");
+          return; // userinfo가 없으면 로딩 종료
         }
+
+        // 성장 정보 가져오기
+        if (username !== "방문자" && babyInfo.length > 0) {
+          await dispatch(fetchgrowInfo(babyInfo));
+        }
+      } catch (error) {
+        console.error("데이터 가져오기 실패:", error);
+      } finally {
+        setLoading(false); // 로딩 종료
       }
-      setLoading(false); // 데이터 가져오기 완료 후 로딩 종료
     };
 
     fetchData();
   }, [babyInfo, dispatch, username]);
 
-  useEffect(() => {
-    if (babyInfo.length === 0) {
-      setLoading(false); // babyInfo가 없으면 즉시 로딩 종료
-    } else if (growInfo.length > 0) {
-      setLoading(false); // 성장 정보가 있으면 로딩 종료
-    }
-  }, [babyInfo, growInfo]);
-
   // 커스텀 훅 사용
   const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
-  const { growData } = useGrowData(growInfo, selectedBabyId); // growInfo를 selectedBabyId에 따라 필터링 // selectedBabyId가 변경될 때 growData 업데이트
-
-  console.log("로그인성공시 babygrow 불러옴", growInfo);
-  console.log("로그인성공시 babyinfo불러옴", babyInfo);
-
-  // const userString = sessionStorage.getItem('user');
-  // const user = userString ? JSON.parse(userString) : null;
-  // const username = user?.username ?? "방문자";
+  const { growData } = useGrowData(growInfo, selectedBabyId);
 
   return (
     <div className={layout.mainAreaWrap}>
-      {/* 모달 */}
+      {/* 로딩 창 */}
       {loading && <Loading />}
+
+      {/* 모달 */}
       {openCentersModal && (
         <VaccinationCenters setOpenCentersModal={setOpenCentersModal} />
       )}
       {openDetailsModal && (
         <VaccinationDetails setOpenDetailsModal={setOpenDetailsModal} />
       )}
+
       <div className={layout.container}>
         <div className={`${styles.contentsArea}`}>
           {/* 왼쪽 | 사용자 영역 */}
@@ -100,12 +94,7 @@ export default function Home() {
               </div>
             </div>
             <div className={styles.mainContents}>
-              {/* <BabyList
-                babyInfo={babyInfo}
-                handleSelectBaby={handleSelectBaby}
-                selectedBabyId={selectedBabyId}
-                /> */}
-
+              {/* 성장 그래프 영역 */}
               <div className={styles.diaryChartWrap}>
                 {growData.length > 0 ? (
                   <div className={styles.chartContentsArea}>
@@ -162,6 +151,7 @@ export default function Home() {
                 )}
               </div>
 
+              {/* 배너 영역 */}
               <div className={styles.banner_wrap}>
                 <div
                   className={`${styles.banner_container} ${styles.banner_vac}`}
@@ -196,6 +186,7 @@ export default function Home() {
               </div>
             </div>
           </div>
+
           {/* 오른쪽 | 챗봇 */}
           <div className={AI.chatbotArea}>
             <div className={AI.chatbotWrap}>
@@ -215,7 +206,6 @@ export default function Home() {
                       무엇이든 <span>AI챗봇</span>에게 물어보세요😉
                     </div>
                   </div>
-                  <div></div>{" "}
                 </div>
                 <div className={`${AI.chat_date} ${typography.textBsRg}`}>
                   {new Date().toLocaleDateString("ko-KR", {
