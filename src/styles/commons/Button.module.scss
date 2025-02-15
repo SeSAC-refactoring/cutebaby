@@ -203,16 +203,3 @@ $kakao-yellow-pressed: $color-kakao-yellow-7;
 }
 
 // 2Xlarge
-
-//disabled
-.btnDis {
-  width: 100%;
-  height: 80px;
-  gap: 8px;
-  color: $color-white;
-  border-radius: 20px;
-  background-color: $gray-disabled;
-  &:disabled {
-    background-color: $gray-disabled;
-  }
-}
