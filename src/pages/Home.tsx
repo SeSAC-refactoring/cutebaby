@@ -105,11 +105,13 @@ export default function Home() {
               selectedBabyId={selectedBabyId}
             /> */}
 
-            <div className={styles.diary_chart}>
+            <div className={styles.diaryChartWrap}>
               {growData.length > 0 ? (
                 <div className={styles.chartContentsArea}>
                   <div className={styles.titleArea}>
-                    <p className={typography.textLgBd}>우리아이 성장그래프</p>
+                    <h4 className={typography.textLgBd}>
+                      우리 아이 성장 그래프
+                    </h4>
                     <button
                       className={`${button.btnSmYw} ${typography.textBsBd}`}
                     >
@@ -122,7 +124,7 @@ export default function Home() {
                       </Link>
                     </button>
                   </div>
-                  <div className={styles.dataGraphArea}>
+                  <div className={styles.dataChartArea}>
                     <DiaryChart growData={growData} />
                   </div>
                 </div>
@@ -185,7 +187,10 @@ export default function Home() {
             <div className={AI.chatHeaderWrap}>
               <div className={AI.chat_header}>
                 <div className={AI.headerIconWrap}>
-                  <img src="/img/icons/i-headphones-s24.svg" alt="챗봇 아이콘" />
+                  <img
+                    src="/img/icons/i-headphones-s24.svg"
+                    alt="챗봇 아이콘"
+                  />
                 </div>
                 <div className={AI.chat_header_title_wrap}>
                   <div className={typography.textSmBd}>

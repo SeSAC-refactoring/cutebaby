@@ -1,5 +1,7 @@
 @import "./commons/Colors.module.scss";
 
+// Home.tsx ////////////////////////////////
+// 전체 영역
 .contentsArea {
   width: 100%;
   height: -webkit-fill-available;
@@ -9,6 +11,7 @@
   align-items: center;
   gap: 40px;
 
+  // 왼쪽 | 사용자 영역
   .userArea {
     flex-grow: 1;
     height: 100%;
@@ -18,6 +21,7 @@
     background: url(../../public/img/visuals/visual_home_ggomul_02_.svg)
       no-repeat top -32px right 0px;
 
+    // 상단 | 환영 메세지 영역
     .userGreeting {
       display: flex;
       flex-direction: column;
@@ -28,7 +32,9 @@
       }
     }
 
+    // 하단 | 차트 + 배너 영역
     .mainContents {
+      flex-grow: 1;
       max-height: 610px;
       padding: 32px;
       display: flex;
@@ -37,29 +43,63 @@
       background-color: $color-white;
       border: 2px solid $color-gray-6;
       border-radius: 32px;
+      overflow: hidden;
 
-      .chartContentsArea {
+      // [우리 아이 성장 그래프] 전체 영역
+      .diaryChartWrap {
         flex-grow: 1;
         width: 100%;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-radius: 16px;
-        margin-top: 24px;
 
-        &.empty {
-          background-color: $color-gray-1;
+        // 차트 영역 | 상단:영역명+버튼 + 하단 차트
+        .chartContentsArea {
+          flex-grow: 1;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          gap: 8px;
 
-          .dataGraphArea {
+          .titleArea {
             width: 100%;
+            display: flex;
+
+            h4 {
+              flex-grow: 1;
+            }
+          }
+
+          .dataChartArea {
+            width: 100%;
+            height: -webkit-fill-available;
+            max-height: 352px;
+            padding: 8px 16px;
+            display: flex;
+            border: 2px solid $color-blue-3;
+            border-radius: 24px;
+            justify-content: center;
+            align-items: center;
+
+            canvas {
+              max-width: 100%;
+              max-height: 100%;
+              object-fit: contain;
+            }
+
+            &.empty {
+              background-color: $color-gray-1;
+            }
           }
         }
       }
 
+      // 배너 전체 영역
       .banner_wrap {
         display: flex;
         gap: 24px;
 
+        // 배너 공통 스타일
         .banner_container {
           flex-grow: 1;
           height: 114px;
@@ -81,14 +121,16 @@
           }
         }
 
+        // 배너 | 예방접종 정보
         .banner_vac {
-          background: $color-blue-1 url(../../public/img/Visual.png)
-            no-repeat top 6px right 16px;
-          }
-          
+          background: $color-blue-1 url(../../public/img/Visual.png) no-repeat
+            top 6px right 16px;
+        }
+
+        // 배너 | 기관 찾기
         .banner_search {
-          background: $color-blue-1 url(../../public/img/Visual2.png)
-            no-repeat top 6px right 16px;
+          background: $color-blue-1 url(../../public/img/Visual2.png) no-repeat
+            top 6px right 16px;
         }
       }
     }
