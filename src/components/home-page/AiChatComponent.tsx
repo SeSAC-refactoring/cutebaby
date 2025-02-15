@@ -14,35 +14,40 @@ export const AiChatComponent = () => {
     <div className={styles.chatbotAreaWrap}>
       {/* 메세지를 보여주는 곳 */}
       <div className={styles.chat_wrapper}>
-        {messages.map((msg, i) => (
-          <div
-            key={i}
-            style={{
-              textAlign: msg.role === "user" ? "right" : "left",
-              //   border: "1px solid black",
-            }}
-            className={styles.chat_content}
-          >
+        <div className={styles.chatMessageAreaWrap}>
+          {messages.map((msg, i) => (
             <div
-              className={`${styles.chatMessageArea} ${
-                msg.role === "user"
-                  ? styles.chat_user_message
-                  : styles.chat_ai_message
-              }`}
+              className={styles.chatMessageArea}
+              key={i}
+              style={{
+                textAlign: msg.role === "user" ? "right" : "left",
+              }}
             >
-              <strong className={typography.textXsBd}>
-                {msg.role === "user" ? "사용자 " : "꼬물"}
-                <br />
-              </strong>
-              <div className={typography.textSmRg}>{` ${msg.content}`}</div>
+              <div
+                className={`${styles.chatMessageWrap} ${
+                  msg.role === "user"
+                    ? styles.chat_user_message
+                    : styles.chat_ai_message
+                }`}
+              >
+                <strong className={typography.textXsBd}>
+                  {msg.role === "user" ? "나" : "팀 꼬물"}
+                  <br />
+                </strong>
+                <div className={typography.textSmRg}>{`${msg.content}`}</div>
+              </div>
             </div>
-          </div>
-        ))}
-        {isLoading && (
-          <div className={styles.chat_left_message_wrap}>
-            <div className={styles.chat_message}>답변을 기다리고 있습니다.</div>
-          </div>
-        )}
+          ))}
+          {isLoading && (
+            <div
+              className={`${styles.chatLoadingMessage} ${typography.textBsMd}`}
+            >
+              답변을 기다리고 있어요,
+              <br />
+              조금만 기다려주세요..
+            </div>
+          )}
+        </div>
       </div>
 
       {/* 입력받는 곳 */}
@@ -51,9 +56,9 @@ export const AiChatComponent = () => {
           type="text"
           value={input}
           onChange={handleInputChange}
-          placeholder="메시지를 입력해주세요."
+          placeholder="질문을 입력해주세요."
           onKeyDown={handleKeyDown}
-          className={`${styles.chat_input} ${typography.textLgRg}`}
+          className={`${typography.textLgRg}`}
         />
         <button
           onClick={() => handleSendMessage(input, setInput)}
@@ -61,9 +66,9 @@ export const AiChatComponent = () => {
           className={styles.chat_input_button}
         >
           {isLoading ? (
-            "로딩중..."
+            <div className={`${styles.btnLoading}`}></div>
           ) : (
-            <img src="img/Send button.png" alt="입력 아이콘"></img>
+            <img src="img/icons/i-send-s32.svg" alt="입력 아이콘" />
           )}
         </button>
       </div>
