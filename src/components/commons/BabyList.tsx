@@ -27,7 +27,7 @@ export const BabyList: React.FC<BabyListProps> = ({
 
   return (
     // 마이페이지의 babylist 스타일의 경우 아이 등록 버튼까지 감는 div
-    <div>
+    <div className={styles.container}>
       <div className={`${styles.segments}`}>
         {babyInfo.length === 0 ? (
           <p>등록된 아이가 없습니다!</p>
@@ -46,11 +46,15 @@ export const BabyList: React.FC<BabyListProps> = ({
               // }}
             >
               {baby.babyname}
-              <img className={
+              <img
+                className={
                   baby.babyid === selectedBabyId
                     ? styles.showCheckIcon // 선택된 경우 클래스 적용
                     : styles.hiddenCheckIcon
-                } src="/img/icons/i-tabs-check-s24.svg" alt="체크 아이콘" />
+                }
+                src="/img/icons/i-tabs-check-s24.svg"
+                alt="체크 아이콘"
+              />
             </button>
           ))
         )}
