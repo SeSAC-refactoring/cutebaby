@@ -42,19 +42,23 @@ export const VaccinationSchedule: React.FC<VaccinationScheduleProps> = ({
               }
             >
               <div className={styles.dataWrap}>
-                <img className={
-                !data.text
-                  ? styles.checkIconHidden
-                  : matchedVaccine
-                  ? data.vaccinationid &&
-                    [13, 14, 16].includes(data.vaccinationid) &&
-                    matchedVaccine.dosenumber === 1
-                    ? styles.checkIconHidden
-                    : styles.checkIconShow
-                  : data.vaccinationid === 8
-                  ? styles.notMust
-                  : styles.checkIconHidden
-              } src="/img/icons/i-check-s12.svg" alt="" />
+                <img
+                  className={
+                    !data.text
+                      ? styles.checkIconHidden
+                      : matchedVaccine
+                      ? data.vaccinationid &&
+                        [13, 14, 16].includes(data.vaccinationid) &&
+                        matchedVaccine.dosenumber === 1
+                        ? styles.checkIconHidden
+                        : styles.checkIconShow
+                      : data.vaccinationid === 8
+                      ? styles.notMust
+                      : styles.checkIconHidden
+                  }
+                  src="/img/icons/i-check-s12.svg"
+                  alt=""
+                />
                 {data.text}
               </div>
 

@@ -10,6 +10,14 @@ import { Input, InputSignupEmail } from "../components/commons/Input";
 
 const Signup: React.FC = () => {
   const API_URL = process.env.REACT_APP_API_URL;
+  // 유효성 검사
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [signUpCheck, setSignUpCheck] = useState({
+    name: false,
+    email: false,
+    password: false,
+    passwordCheck: false,
+  });
 
   // 입력값 상태
   const [formData, setFormData] = useState({
@@ -52,10 +60,15 @@ const Signup: React.FC = () => {
 
   // 이메일 유효성 검사
   useEffect(() => {
+    if (formData.email.trim() === "") {
+      setSignUpCheck((prev) => ({
+        ...prev,
+        email: false,
+      }));
+    }
     if (!formData.email.trim())
       return setMessages((prev) => ({ ...prev, email: "" }));
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    console.log(emailbtn);
     if (emailbtn) {
       setMessages((prev) => ({
         ...prev,
@@ -70,12 +83,22 @@ const Signup: React.FC = () => {
           ? "중복체크를 눌러주세요!"
           : "이메일 형식에 맞게 입력해 주세요!",
       }));
+      setSignUpCheck((prev) => ({
+        ...prev,
+        email: false,
+      }));
       setEmailCheck(false);
     }
   }, [formData.email]);
 
   // 비밀번호 유효성 검사
   useEffect(() => {
+    if (formData.password.trim() === "") {
+      setSignUpCheck((prev) => ({
+        ...prev,
+        password: false,
+      }));
+    }
     if (!formData.password.trim())
       return setMessages((prev) => ({ ...prev, password: "" }));
     const passwordRegex =
@@ -86,10 +109,20 @@ const Signup: React.FC = () => {
         ? "사용가능한 비밀번호입니다!"
         : "숫자, 영문자, 특수문자 조합으로 8자리 이상 입력해주세요!",
     }));
+    setSignUpCheck((prev) => ({
+      ...prev,
+      password: passwordRegex.test(formData.password) ? true : false,
+    }));
   }, [formData.password]);
 
   // 비밀번호 확인 검사
   useEffect(() => {
+    if (formData.confirmPassword.trim() === "") {
+      setSignUpCheck((prev) => ({
+        ...prev,
+        passwordCheck: false,
+      }));
+    }
     if (!formData.confirmPassword.trim())
       return setMessages((prev) => ({ ...prev, confirmPassword: "" }));
     setMessages((prev) => ({
@@ -99,10 +132,21 @@ const Signup: React.FC = () => {
           ? "비밀번호가 일치합니다."
           : "비밀번호가 일치하지 않습니다.",
     }));
+    setSignUpCheck((prev) => ({
+      ...prev,
+      passwordCheck:
+        formData.password === formData.confirmPassword ? true : false,
+    }));
   }, [formData.confirmPassword, formData.password]);
 
   // 이름 유효성 검사
   useEffect(() => {
+    if (formData.name.trim() === "") {
+      setSignUpCheck((prev) => ({
+        ...prev,
+        name: false,
+      }));
+    }
     if (!formData.name.trim())
       return setMessages((prev) => ({ ...prev, name: "" }));
     setMessages((prev) => ({
@@ -112,11 +156,19 @@ const Signup: React.FC = () => {
           ? "사용가능한 닉네임입니다."
           : "이름은 2글자 이상 입력해주세요!",
     }));
+    setSignUpCheck((prev) => ({
+      ...prev,
+      name: formData.name.length >= 2 ? true : false,
+    }));
   }, [formData.name]);
 
   //입력한값에 빈값이 있는지 검사
   const emptyCheck = () => {
     if (!formData.email.trim()) {
+      setSignUpCheck((prev) => ({
+        ...prev,
+        email: false,
+      }));
       setMessages((prev) => ({ ...prev, email: "이메일을 입력해 주세요!" }));
       inputRef.current.email?.scrollIntoView({ behavior: "smooth" });
       inputRef.current.email?.focus();
@@ -152,10 +204,14 @@ const Signup: React.FC = () => {
     const response = await axios.post(`${API_URL}/emailCheck`, {
       inputEmail,
     });
-    console.log(response);
+    console.log(123, response);
     if (!inputEmail.trim()) {
       setEmailCheck(false);
     } else if (response) {
+      setSignUpCheck((prev) => ({
+        ...prev,
+        email: true,
+      }));
       console.log("response>>>", response.data.message);
       // inputRef.current.email?.scrollIntoView({ behavior: "smooth" });
       inputRef.current.email?.focus();
@@ -224,26 +280,20 @@ const Signup: React.FC = () => {
     //   }
   };
 
-  console.log(formData);
-
-  const [isFormValid, setIsFormValid] = useState(false);
+  console.log("---------", signUpCheck);
 
   useEffect(() => {
-    // 모든 조건이 만족되었는지 확인
-    const isValid =
-      formData.email.trim() !== "" &&
-      messages.email === "사용가능한 이메일 입니다!" &&
-      formData.password.trim() !== "" &&
-      messages.password === "사용가능한 비밀번호입니다!" &&
-      formData.confirmPassword.trim() !== "" &&
-      messages.confirmPassword === "비밀번호가 일치합니다." &&
-      formData.name.trim() !== "" &&
-      messages.name === "사용가능한 닉네임입니다.";
-
-    setIsFormValid(isValid);
-  }, [formData, messages]);
-
-  console.log("isFormValid:", isFormValid);
+    if (
+      signUpCheck.email &&
+      signUpCheck.name &&
+      signUpCheck.password &&
+      signUpCheck.passwordCheck
+    ) {
+      setIsFormValid(true);
+    } else {
+      setIsFormValid(false);
+    }
+  }, [signUpCheck]);
 
   return (
     <div className={layout.container}>
@@ -335,14 +385,20 @@ const Signup: React.FC = () => {
                 취소
               </button>
             </Link>
-
-            <button
-              className={`${button.btnXlGr} ${typography.textXlBd}`}
-              // disabled={!isFormValid}
-              onClick={handleSubmit}
-            >
-              완료
-            </button>
+            {isFormValid ? (
+              <button
+                className={`${button.btnXlGr} ${typography.textXlBd}`}
+                onClick={handleSubmit}
+              >
+                완료
+              </button>
+            ) : (
+              <button
+                className={`${button.disabled_btnXl} ${typography.textXlBd}`}
+              >
+                완료
+              </button>
+            )}
 
             {/* <button
               className={`${button.btnXlGr} ${typography.textXlBd}`}
