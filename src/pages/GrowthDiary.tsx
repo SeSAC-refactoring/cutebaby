@@ -167,7 +167,11 @@ export default function GrowthDiary() {
                         )}
                         onClick={() => setOpenCalModal(true)}
                     >
-                        성장상태 계산 {'>'}
+                        성장상태 계산
+                        <img
+                            src="../img/icons/i-chevron-right-s20.svg"
+                            alt=">"
+                        />
                     </button>
                 </div>
 
@@ -273,7 +277,11 @@ export default function GrowthDiary() {
                                                     styles.baby_enroll_btn
                                                 }
                                             >
-                                                성장일지 등록하기 {'>'}
+                                                성장일지 등록하기
+                                                <img
+                                                    src="../img/icons/i-chevron-right-s28.svg"
+                                                    alt=">"
+                                                />
                                             </button>
                                         </div>
                                     </div>
