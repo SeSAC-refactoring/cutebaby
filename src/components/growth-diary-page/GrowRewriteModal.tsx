@@ -93,7 +93,7 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
 
     return (
         <div className={styles.modal_overlay}>
-            <div className={styles.modal_background}>
+            <div className={styles.modalWrap}>
                 <div className={styles.modal_container}>
                     <div className={styles.modal_title_wrap}>
                         <div className={styles.modal_title}>기록 수정</div>

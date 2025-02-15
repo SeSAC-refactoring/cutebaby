@@ -1,117 +1,117 @@
 .wrap {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .image_box {
-    width: 200px;
-    height: 200px;
-    background-color: lightcyan;
-    position: relative;
-    top: 180px;
-    right: 50px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+  width: 200px;
+  height: 200px;
+  background-color: lightcyan;
+  position: relative;
+  top: 180px;
+  right: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 .invisible {
-    width: 200px;
-    height: 200px;
+  width: 200px;
+  height: 200px;
 }
 .background {
-    display: flex;
-    flex-direction: column;
-    padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
 }
 .user_info_wrap {
-    width: 1120px;
-    height: 212px;
-    background-color: #FEF9F1;
-    border-radius: 32px;
-    // margin-top: 48px;
-    padding: 48px 56px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  width: 1120px;
+  height: 212px;
+  background-color: #fef9f1;
+  border-radius: 32px;
+  // margin-top: 48px;
+  padding: 48px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .info_detail_wrap {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .info_label {
-    font-size: 18px;
-    // font-weight: bold;
+  font-size: 18px;
+  // font-weight: bold;
 }
 .name {
-    margin-top: 8px;
-    font-size: 24px;
-    font-weight: bold;
+  margin-top: 8px;
+  font-size: 24px;
+  font-weight: bold;
 }
 .edit_btn {
-    width: 181px;
-    height: 56px;
-    border: none;
-    background-color: #F6D9A7;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 16px;
+  width: 181px;
+  height: 56px;
+  border: none;
+  background-color: #f6d9a7;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 16px;
 }
 .detail_set {
-    height: 56px;
-    display: flex;
-    flex-direction: column;
-    width: 320px;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  width: 320px;
 }
 .info_title {
-    font-size: 24px;
-    font-weight: bold;
+  font-size: 24px;
+  font-weight: bold;
 }
 .title {
-    font-size: 30px;
-    font-weight: 700;
+  font-size: 30px;
+  font-weight: 700;
 }
 .user_list {
-    margin-top: 40px;
-    background-color: rgb(241, 237, 237);
-    width: 600px;
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
+  margin-top: 40px;
+  background-color: rgb(241, 237, 237);
+  width: 600px;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
 .user_wrap {
-    display: flex;
-    justify-content: space-around;
-    width: 400px;
+  display: flex;
+  justify-content: space-around;
+  width: 400px;
 }
 .enroll {
-    border: none;
+  border: none;
 }
 .small_title {
-    width: 600px;
-    font-size: 23px;
-    font-weight: 700;
-    margin-top: 10px;
+  width: 600px;
+  font-size: 23px;
+  font-weight: 700;
+  margin-top: 10px;
 }
 .info_box {
-    margin-top: 40px;
-    width: 600px;
-    background-color: rgb(208, 206, 206);
-    display: flex;
-    flex-direction: column;
-    padding-top: 30px;
-    padding-left: 40px;
-    margin-bottom: 10px;
+  margin-top: 40px;
+  width: 600px;
+  background-color: rgb(208, 206, 206);
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  padding-left: 40px;
+  margin-bottom: 10px;
 }
 .info_title {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 .info_content {
-    display: flex;
-    margin-bottom: 30px;
+  display: flex;
+  margin-bottom: 30px;
 }
 .info_a {
-    width: 120px;
+  width: 120px;
 }
 .info_b {
 }
@@ -122,20 +122,19 @@
 //   border: none;
 // }
 .babyInfo_background {
-    width: 1120px;
-    height: 436px;
-    background-color: #FEF9F1;
-    border-radius: 32px;
-    margin-top: 48px;
-    padding: 48px 56px;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  background-color: #fef9f1;
+  border-radius: 32px;
+  margin-bottom: 48px;
+  padding: 48px 56px;
+  display: flex;
+  flex-direction: column;
 }
 .babyInfo_contents_wrap {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 1008px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 1008px;
 }
 // .babyList_wrap {
 //   width: 166px;
@@ -145,60 +144,76 @@
 //   justify-content: space-between;
 // }
 .babyInfo_wrap {
-    padding: 40px;
-    width: 1008px;
-    height: 280px;
-    display: flex;
-    justify-content: space-between;
-    border: 3px solid #D1E9F1;
-    border-radius: 32px;
-    background-color: #FFFFFF;
+  padding: 40px;
+  width: 1008px;
+  height: 280px;
+  display: flex;
+  justify-content: space-between;
+  border: 3px solid #d1e9f1;
+  border-radius: 32px;
+  background-color: #ffffff;
 }
 .babyInfo_detail_wrap {
-    width: 672px;
-    display: flex;
-    // flex-direction: column;
+  width: 672px;
+  display: flex;
+  // flex-direction: column;
 }
 .babyInfo_btn_wrap {
-    width: 100%;
-    width: 197px;
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    gap: 15px;
+  width: 100%;
+  width: 197px;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 15px;
 }
 .babyInfo_edit_btn {
-    width: 107px;
-    height: 56px;
-    background-color: #F6D9A7;
-    border-radius: 16px;
-    font-size: 20px;
-    font-weight: bold;
+  width: 107px;
+  height: 56px;
+  background-color: #f6d9a7;
+  border-radius: 16px;
+  font-size: 20px;
+  font-weight: bold;
 }
 .babyInfo_delete_btn {
-    width: 75px;
-    height: 56px;
-    padding: 16px 20px;
-    background-color: #F6C7C6;
-    border-radius: 16px;
-    font-size: 20px;
-    font-weight: bold;
+  width: 75px;
+  height: 56px;
+  padding: 16px 20px;
+  background-color: #f6c7c6;
+  border-radius: 16px;
+  font-size: 20px;
+  font-weight: bold;
 }
 .baby_add_btn {
-    width: 166px;
-    height: 64px;
-    border-radius: 16px;
-    background-color: #BBDEEB;
-    font-size: 22px;
-    font-weight: bold;
+  width: 166px;
+  height: 64px;
+  border-radius: 16px;
+  background-color: #bbdeeb;
+  font-size: 22px;
+  font-weight: bold;
 }
 .baby_img {
-    border: 4px solid #F3F3F4;
-    border-radius: 32px;
-    width: 200px;
-    height: 200px;
+  border: 4px solid #f3f3f4;
+  border-radius: 32px;
+  width: 200px;
+  height: 200px;
 }
 .img {
-    margin-left: 8px;
+  margin-left: 8px;
+}
+.contentsArea {
+  gap: 32px;
+  .button_wrap {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .contentsWrap {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
 }

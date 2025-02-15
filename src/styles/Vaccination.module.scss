@@ -2,7 +2,7 @@
 
 //Vaccination.tsx
 .contentsArea {
-  gap: 32px;
+
   .button_wrap {
     display: flex;
     justify-content: space-between;
@@ -20,11 +20,11 @@
 
 // VaccinationTable.tsx
 .vacTableWrap {
-  flex-grow: 1;
   width: 100%;
-  max-height: 500px;
+  // max-height: 500px;
   display: flex;
-  overflow: hidden;
+  flex-direction: column;
+  overflow: auto;
   border-bottom: 2px solid $color-blue-4;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -33,7 +33,6 @@
     flex-grow: 1;
     width: 100%;
     display: flex;
-    overflow: scroll;
 
     .vacTableScheduleArea {
       flex-grow: 1;
@@ -55,6 +54,7 @@
   top: 0;
   background-color: $color-blue-3;
   border-right: 2px solid $color-blue-6;
+  z-index: 100px;
 }
 
 .td {
@@ -65,8 +65,23 @@
 }
 
 // Disease.tsx
+.diseaseWrap {
+  z-index: 2;
+  position: sticky;
+  left: 0;
+}
 // VaccineType.tsx
+.VaccineTypeWrap {
+  z-index: 2;
+  position: sticky;
+  left: 142px;
+}
 // TotalDoses.tsx
+.TotalDosesWrap {
+  z-index: 2;
+  position: sticky;
+  left: 334px;
+}
 // DoseDate.tsx
 .thDiseases {
   width: 142px;
@@ -113,6 +128,7 @@ ul {
 
 .liTotalDoses {
   height: 50px;
+  background-color: #ffffff;
 }
 
 .thDoseDateWrap {
@@ -120,6 +136,7 @@ ul {
   top: 0;
   display: flex;
   background-color: $color-blue-3;
+  z-index: 0;
 
   .thDoseDate {
     width: 80px;

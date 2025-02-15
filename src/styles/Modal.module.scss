@@ -1,65 +1,71 @@
 @import "../styles/commons/Colors.module.scss";
 
-.modalbackground {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  // height: 100vh;
-  background: rgba(0, 0, 0, 0.5); // 반투명 배경
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000; // 모달이 가장 위에 오도록 설정
-  overflow: auto;
-}
-.mainModal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  width: 300px;
-}
 
-// VaccinationModal css
+// 모달 오버레이
 .modal_overlay {
-  position: fixed;
+  flex-grow: 1;
+  position: absolute;
   top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  overflow: hidden;
-  backdrop-filter: blur(2px);
-}
-.center_background {
-  width: 640px;
-  // height: 400px;
+  width: 100%;
+  height: 100%;
+  padding-top: 64px;
+  padding-bottom: 64px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 80px;
   align-items: center;
-  border-radius: 40px;
-  background-color: #ffffff;
-  border: 2px solid #838391;
-  margin: auto;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+
+  // 모달 영역
+  .modalWrap {
+    flex-grow: 1;
+    width: 100%;
+    min-width: 390px;
+    max-width: 1280px;
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    background-color: $color-white;
+    border: 2px solid $color-gray-6;
+    border-radius: 40px;
+
+    // 모달 타이틀 영역
+    .modal_title_wrap {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      // 닫기 버튼
+      .closeBtn {
+        width: 48px;
+        height: 48px;
+        padding: 8px;
+  
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .modalContentsArea {
+      flex-grow: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    // 로딩 화면
+    .loadingContens {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
 }
-.modal_background {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  bottom: 250px;
-  left: 640px;
-}
+
 .modal_container {
   display: flex;
   flex-direction: column;
@@ -71,12 +77,6 @@
   border-radius: 40px;
   padding: 64px;
   border: 2px solid #838391;
-}
-.modal_title_wrap {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 48px;
 }
 .modal_Input_wrap {
   width: 100%;

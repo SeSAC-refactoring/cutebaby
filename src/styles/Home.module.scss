@@ -4,7 +4,6 @@
 // 전체 영역
 .contentsArea {
   width: 100%;
-  height: -webkit-fill-available;
   flex-grow: 1;
   display: flex;
   justify-content: center;
@@ -17,9 +16,9 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 80px;
     background: url(../../public/img/visuals/visual_home_ggomul_02_.svg)
-      no-repeat top -32px right 0px;
+      no-repeat top 0px right 0px;
 
     // 상단 | 환영 메세지 영역
     .userGreeting {
@@ -35,7 +34,6 @@
     // 하단 | 차트 + 배너 영역
     .mainContents {
       flex-grow: 1;
-      max-height: 610px;
       padding: 32px;
       display: flex;
       flex-direction: column;
@@ -50,6 +48,7 @@
         flex-grow: 1;
         width: 100%;
         display: flex;
+        flex-direction: column;
 
         // 차트 영역 | 상단:영역명+버튼 + 하단 차트
         .chartContentsArea {
@@ -71,20 +70,18 @@
           }
 
           .dataChartArea {
+            flex-grow: 1;
             width: 100%;
-            height: -webkit-fill-available;
-            max-height: 352px;
             padding: 8px 16px;
             display: flex;
-            border: 2px solid $color-blue-3;
-            border-radius: 24px;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            border: 2px solid $color-blue-3;
+            border-radius: 24px;
 
             canvas {
-              max-width: 100%;
-              max-height: 100%;
-              object-fit: contain;
+              // object-fit: contain;
             }
 
             &.empty {
@@ -96,12 +93,12 @@
 
       // 배너 전체 영역
       .banner_wrap {
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 24px;
 
         // 배너 공통 스타일
         .banner_container {
-          flex-grow: 1;
           height: 114px;
           padding: 24px;
           display: flex;

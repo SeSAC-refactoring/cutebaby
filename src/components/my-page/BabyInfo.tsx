@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/Mypage.module.scss";
+
 import { babyinfo } from "../types";
 import { UpdateBaby } from "./UpdateBaby";
 import { DelbabyModal } from "./DelbabyModal";
@@ -68,13 +69,6 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
       <div className={styles.info_title}>우리아이 정보</div>
 
       <div className={styles.babyInfo_contents_wrap}>
-        {/* <BabyListColumnSmall
-                    babyInfo={babyInfo}
-                    handleSelectBaby={handleSelectBaby}
-                    selectedBabyId={selectedBabyId}
-                    onOpenModal={() => setBabyPlus(true)} // 🔹 버튼 클릭 시 모달 열기
-                /> */}
-
         <BabyList
           babyInfo={babyInfo}
           handleSelectBaby={handleSelectBaby}
@@ -84,14 +78,14 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
 
         <div className={styles.babyInfo_wrap}>
           <div>
-            {selectedBaby.picture ? (
+            {!(selectedBaby.picture === "data:image/jpeg;base64,") ? (
               <img
-                src={selectedBaby.picture}
+                src={selectedBaby?.picture || "img/babybasic.png"}
                 alt="아기 사진"
                 className={styles.baby_img}
               />
             ) : (
-              <p>사진이 없습니다.</p>
+              <img src="img/babybasic.png" alt="기본 아기 사진"></img>
             )}
           </div>
           <div className={styles.babyInfo_detail_wrap}>

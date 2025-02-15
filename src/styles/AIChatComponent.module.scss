@@ -1,197 +1,210 @@
-@import "./commons/Colors.module.scss";
+@import './commons/Colors.module.scss';
 @import url(https://fonts.googleapis.com/css?family=Lato:300);
 
 // Home.tsx ////////////////////////////////
 // 챗봇 영역
 .chatbotArea {
-  flex-grow: 1;
-  max-width: 400px;
-  height: -webkit-fill-available;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  background-color: $color-white;
-  border: 2px solid $color-gray-6;
-  border-radius: 32px;
-  
-  // 챗봇 영역
-  .chatbotWrap {
     flex-grow: 1;
-    position: relative;
-    width: 100%;
+    max-width: 400px;
+    height: -webkit-fill-available;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
+    background-color: $color-white;
+    border: 2px solid $color-gray-6;
+    border-radius: 32px;
 
-    // chatbot header
-    .chatHeaderWrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      padding: 32px 32px 12px 32px;
-      z-index: 10;
-      backdrop-filter: blur(10px);
-
-      .chat_header {
+    // 챗봇 영역
+    .chatbotWrap {
+        flex-grow: 1;
+        position: relative;
         width: 100%;
-        padding: 16px;
         display: flex;
-        align-items: center;
-        gap: 16px;
-        background-color: $color-orange-2;
-        border-radius: 16px;
+        flex-direction: column;
 
-        // header icon
-        .headerIconWrap {
-          padding: 6px 8px 10px;
-          background-color: $color-orange-5;
-          border-radius: 999px;
+        // chatbot header
+        .chatHeaderWrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 32px 32px 12px 32px;
+            z-index: 10;
+            backdrop-filter: blur(10px);
 
-          img {
-            width: 100%;
-          }
+            .chat_header {
+                width: 100%;
+                padding: 16px;
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                background-color: $color-orange-2;
+                border-radius: 16px;
+
+                // header icon
+                .headerIconWrap {
+                    padding: 6px 8px 10px;
+                    background-color: $color-orange-5;
+                    border-radius: 999px;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                // header text
+                .chat_header_title_wrap {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4px;
+                }
+
+                .chatTitleGuide {
+                    color: $color-gray-6;
+                }
+            }
+
+            .chat_date {
+                color: $color-gray-5;
+            }
         }
-
-        // header text
-        .chat_header_title_wrap {
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-        }
-
-        .chatTitleGuide {
-          color: $color-gray-6;
-        }
-      }
-
-      .chat_date {
-        color: $color-gray-5;
-      }
     }
-  }
-  //   @media (max-width: 768px) {
-  //     width: 100%;
-  //     height: auto;
-  //     padding: 16px;
-  //     border-radius: 16px;
-  //   }
+    //   @media (max-width: 768px) {
+    //     width: 100%;
+    //     height: auto;
+    //     padding: 16px;
+    //     border-radius: 16px;
+    //   }
 }
 
 // AiChatComponent.tsx ////////////////
 .chatbotAreaWrap {
-  width: 100%;
-  height: -webkit-fill-available;
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-
-  // Ai, 사용자 메세지(말풍선) 노출 영역
-  .chat_wrapper {
     width: 100%;
-    padding-left: 32px;
-    padding-right: 32px;
+    height: -webkit-fill-available;
+    position: absolute;
+    bottom: 0;
     display: flex;
-    // 역방향
-    flex-direction: column-reverse;
-    overflow-y: scroll;
-    
-    // 역방향 지정 후 정방향 노출 목적
-    .chatMessageAreaWrap {
-      flex-grow: 1;
-      padding-bottom: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+    flex-direction: column;
+    justify-content: end;
 
-      // 말풍선 공통 스타일
-      .chatMessageWrap {
-        max-width: 65%;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        padding: 16px;
-        border: 2px solid $color-gray-6;
-      }
-      
-      // 질문 입력 후 로딩 메세지
-      .chatLoadingMessage {
+    // Ai, 사용자 메세지(말풍선) 노출 영역
+    .chat_wrapper {
         width: 100%;
-        padding: 16px;
+        padding-left: 32px;
+        padding-right: 32px;
         display: flex;
-        justify-content: center;
-        color: $color-gray-6;
-        background-color: $color-gray-1;
-        backdrop-filter: blur(16px);
-        border: 2px solid $color-gray-2;
-        border-radius: 16px;
-      }      
-      
-      // ai 말풍선
-      .chat_ai_message {
-        justify-self: start;
-        background-color: $color-white;
-        border-radius: 0px 14px 14px 14px;
-        box-shadow: -4px 4px 0px 0px $color-gray-2;
-      }
-      
-      // 사용자 말풍선
-      .chat_user_message {
-        justify-self: end;
-        color: $color-white;
-        background-color: $color-orange-6;
-        border-radius: 14px 0px 14px 14px;
-        box-shadow: 4px 4px 0px 0px $color-gray-2;
-      }
-    }
-  }
-  // 메세지 입력 인풋 + 전송버튼 영역
-  .chat_input_wrapper {
-    width: 100%;
-    padding-bottom: 32px;
-    padding-left: 32px;
-    padding-right: 32px;
-    display: flex;
-    gap: 16px;
-    
-    // 전송 버튼
-    .chat_input_button {
-      width: 64px;
-      height: 64px;
-      padding: 16px;
-      background-color: $color-orange-6;
-      border-radius: 16px;
-  
-      &:disabled {
-        background-color: $color-orange-3;
-      }
+        flex-direction: column-reverse; // 역방향
+        overflow-y: scroll;
 
-      // 전송 버튼 클릭 후 로딩 애니메이션
-      .btnLoading {
-        width: 32px;
-        height: 32px;
-        position: relative;
-        display: inline-block;
-        vertical-align: middle;
-        background-color: $color-white;
-        border-radius: 50%;
-        animation: .4s infinite ease-in-out;
-        animation-name: Loading;
-  
-        @keyframes Loading {
-          from {
-            transform: scale(0);
-            opacity: 1;
-          }
-          to {
-            transform: scale(1);
-            opacity: 0;
-          }
+        // 스크롤 숨기기
+        -ms-overflow-style: none; // for IE, Edge
+        scrollbar-width: none; // for Firefox
+        &::-webkit-scrollbar {
+            display: none; // for Chrome, Safari, and Opera
         }
-      }
+
+        // 역방향 지정 후 정방향 노출 목적
+        .chatMessageAreaWrap {
+            flex-grow: 1;
+            padding-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            // 질문 입력 후 로딩 메세지
+            .chatLoadingMessage {
+                width: 100%;
+                padding: 16px;
+                display: flex;
+                justify-content: center;
+                color: $color-gray-6;
+                background-color: $color-gray-1;
+                backdrop-filter: blur(16px);
+                border: 2px solid $color-gray-2;
+                border-radius: 16px;
+            }
+
+            // 말풍선 공통 스타일
+            .chatMessageWrap {
+                max-width: 65%;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                padding: 16px;
+                border: 2px solid $color-gray-6;
+                overflow: hidden;
+            }
+
+            // ai 말풍선
+            .chat_ai_message {
+                justify-self: start;
+                background-color: $color-white;
+                border-radius: 0px 14px 14px 14px;
+                box-shadow: -4px 4px 0px 0px $color-gray-2;
+            }
+
+            // 사용자 말풍선
+            .chat_user_message {
+                justify-self: end;
+                color: $color-white;
+                background-color: $color-orange-5;
+                border-radius: 14px 0px 14px 14px;
+                box-shadow: 4px 4px 0px 0px $color-gray-2;
+            }
+
+            // 메세지 스타일
+            .message_text_area p {
+                // background-color: blue;
+                line-height: normal; // 줄간격
+                white-space: normal; // normal: 연속된 공백은 한 개의 공백으로, 컨테이너 크기를 넘어가는 경우 자동으로 줄바꿈, 긴 단어 자체는 줄바꿈되지 않음
+                overflow-wrap: break-word; // 컨테이너 크기를 넘어가는 긴 단어가 있을 경우 강제 개행
+            }
+        }
     }
-  }
+    // 메세지 입력 인풋 + 전송버튼 영역
+    .chat_input_wrapper {
+        width: 100%;
+        padding-bottom: 32px;
+        padding-left: 32px;
+        padding-right: 32px;
+        display: flex;
+        gap: 16px;
+
+        // 전송 버튼
+        .chat_input_button {
+            width: 64px;
+            height: 64px;
+            padding: 16px;
+            background-color: $color-orange-6;
+            border-radius: 16px;
+
+            &:disabled {
+                background-color: $color-orange-3;
+            }
+
+            // 전송 버튼 클릭 후 로딩 애니메이션
+            .btnLoading {
+                width: 32px;
+                height: 32px;
+                position: relative;
+                display: inline-block;
+                vertical-align: middle;
+                background-color: $color-white;
+                border-radius: 50%;
+                animation: 0.4s infinite ease-in-out;
+                animation-name: Loading;
+
+                @keyframes Loading {
+                    from {
+                        transform: scale(0);
+                        opacity: 1;
+                    }
+                    to {
+                        transform: scale(1);
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+    }
 }
-
-
