@@ -42,31 +42,12 @@ export default function GrowthDiary() {
         }
     });
 
-    const growInfo = useSelector((state: RootState) => state.babygrow.growInfo);
-    const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
-    const { growData } = useGrowData(growInfo, selectedBabyId);
-    const [page1, setPage1] = useState(false);
-    const [page2, setPage2] = useState(false);
-    const [page3, setPage3] = useState(false);
 
-    useEffect(() => {
-        if (babyInfo.length > 0 && growData.length > 0) {
-            //모든 데이터 다 있음
-            setPage1(true);
-            setPage2(false);
-            setPage3(false);
-        } else if (babyInfo.length > 0 && growData.length === 0) {
-            //아기 데이터 O, 성장 데이터 X
-            setPage2(true);
-            setPage1(false);
-            setPage3(false);
-        } else {
-            //모든 데이터 X
-            setPage3(true);
-            setPage1(false);
-            setPage2(false);
-        }
-    });
+  const growInfo = useSelector((state: RootState) => state.babygrow.growInfo);
+  const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
+  const { growData } = useGrowData(growInfo, selectedBabyId);
+
+
 
     console.log('애기 성장정보 입니다 >>>>', growInfo);
     console.log('selectedBabyId에 따른 성장정보 입니다 >>>>', growData);
@@ -77,12 +58,14 @@ export default function GrowthDiary() {
         setOpenRewriteModal(true);
     };
 
-    // 삭제 모달 열기
-    const handleDelete = (growId: number) => {
-        setSelectedGrowId(growId);
-        setOpenDelModal(true);
-    };
-    console.log(page1, page2, page3);
+
+  // 삭제 모달 열기
+  const handleDelete = (growId: number) => {
+    setSelectedGrowId(growId);
+    setOpenDelModal(true);
+  };
+  // console.log(page1, page2, page3);
+
 
     return (
         <div className={layout.container}>
