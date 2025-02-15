@@ -1,117 +1,103 @@
-.background {
-    width: 1360px;
-    height: 900px;
-    display: flex;
-    flex-direction: column;
-    padding: 80px;
-    border-radius: 40px;
-    background-color: #ffffff;
-    border: 2px solid #838391;
-    margin: auto;
-    overflow: auto;
+@import "../styles/commons/Colors.module.scss";
 
-    .title {
-        font-size: 30px;
-        font-weight: 700;
-    }
-
-    .select {
-        padding-left: 10px;
-        margin-top: 10px;
-        width: 650px;
-        height: 30px;
-    }
-
-    .component_wrap {
-        margin-top: 30px;
-        height: 500px;
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-.user_list {
-    margin-top: 5px;
-    background-color: rgb(241, 237, 237);
-    width: 600px;
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.detail {
-    padding-left: 30px;
-    width: 500px;
-    height: 100px;
-    background-color: rgb(241, 237, 237);
-    margin-bottom: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-.tag_wrap {
+.chipBtnWrap {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-}
-.tag {
+  }
+  
+  .chipBtn {
     padding: 10px 16px;
-    background-color: #f4fafc;
-    border: none;
+    background-color: $color-blue-2;
     border-radius: 999px;
-    font-size: 18px;
-    font-weight: bold;
-}
-.tag_font {
-    //   color: #7dadbe;
-}
+  }
+  
 
-.contents_wrap {
-}
-.diseaseInfo_wrap {
-    margin-top: 32px;
+.background {
+  .title {
+    font-size: 30px;
+    font-weight: 700;
+  }
+
+  .select {
+    padding-left: 10px;
+    margin-top: 10px;
+    width: 650px;
+    height: 30px;
+  }
+
+  .component_wrap {
+    margin-top: 30px;
+    height: 500px;
     display: flex;
     flex-direction: column;
+  }
+}
+
+.user_list {
+  margin-top: 5px;
+  background-color: rgb(241, 237, 237);
+  width: 600px;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.detail {
+  padding-left: 30px;
+  width: 500px;
+  height: 100px;
+  background-color: rgb(241, 237, 237);
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.diseaseInfo_wrap {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
 }
 .title_wrap {
-    margin-bottom: 32px;
-    border-bottom: 2px solid #f3f3f4;
-    padding: 32px 0px;
+  margin-bottom: 32px;
+  border-bottom: 2px solid #f3f3f4;
+  padding: 32px 0px;
 }
 .title_big {
-    font-size: 32px;
-    font-weight: bold;
-    margin-right: 16px;
-    color: #3b3b41;
+  font-size: 32px;
+  font-weight: bold;
+  margin-right: 16px;
+  color: #3b3b41;
 }
 .title_small {
-    font-size: 24px;
-    color: #838391;
+  font-size: 24px;
+  color: #838391;
 }
 
 .diseaseInfo {
-    font-size: 17px;
-    line-height: 25px;
+  font-size: 17px;
+  line-height: 25px;
 
-    // 모든 줄의 스타일
-    div {
-        margin: 10px 0px;
-    }
+  // 모든 줄의 스타일
+  div {
+    margin: 10px 0px;
+  }
 
-    // ▶ 나오기 전 스타일
-    .beforeIndicator {
-        font-size: 20px;
-        font-weight: bold;
-    }
+  // ▶ 나오기 전 스타일
+  .beforeIndicator {
+    font-size: 20px;
+    font-weight: bold;
+  }
 
-    // ▶ 포함한 줄의 스타일
-    .highlight {
-        font-size: 20px;
-        // font-weight: bold;
-        // background-color: aqua;
-        color: blue;
-        // margin-bottom: 50px;
-    }
+  // ▶ 포함한 줄의 스타일
+  .highlight {
+    font-size: 20px;
+    // font-weight: bold;
+    // background-color: aqua;
+    color: blue;
+    // margin-bottom: 50px;
+  }
 }

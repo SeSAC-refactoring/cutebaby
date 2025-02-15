@@ -9,6 +9,7 @@
   padding-bottom: 64px;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -16,7 +17,6 @@
 .contentsArea {
   flex-grow: 1;
   width: 100%;
-  height: -webkit-fill-available;
   padding: 56px 80px;
   display: flex;
   flex-direction: column;
