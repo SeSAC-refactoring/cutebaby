@@ -19,7 +19,7 @@
     flex-direction: column;
     justify-content: space-between;
     background: url(../../public/img/visuals/visual_home_ggomul_02_.svg)
-      no-repeat top -32px right 0px;
+      no-repeat top 0px right 0px;
 
     // 상단 | 환영 메세지 영역
     .userGreeting {
@@ -96,12 +96,12 @@
 
       // 배너 전체 영역
       .banner_wrap {
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 24px;
 
         // 배너 공통 스타일
         .banner_container {
-          flex-grow: 1;
           height: 114px;
           padding: 24px;
           display: flex;

@@ -13,7 +13,7 @@
   background-color: $color-white;
   border: 2px solid $color-gray-6;
   border-radius: 32px;
-  
+
   // 챗봇 영역
   .chatbotWrap {
     flex-grow: 1;
@@ -93,10 +93,16 @@
     padding-left: 32px;
     padding-right: 32px;
     display: flex;
-    // 역방향
-    flex-direction: column-reverse;
+    flex-direction: column-reverse; // 역방향
     overflow-y: scroll;
-    
+
+    // 스크롤 숨기기
+    -ms-overflow-style: none; // for IE, Edge
+    scrollbar-width: none; // for Firefox
+    &::-webkit-scrollbar {
+      display: none; // for Chrome, Safari, and Opera
+    }
+
     // 역방향 지정 후 정방향 노출 목적
     .chatMessageAreaWrap {
       flex-grow: 1;
@@ -105,16 +111,6 @@
       flex-direction: column;
       gap: 16px;
 
-      // 말풍선 공통 스타일
-      .chatMessageWrap {
-        max-width: 65%;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        padding: 16px;
-        border: 2px solid $color-gray-6;
-      }
-      
       // 질문 입력 후 로딩 메세지
       .chatLoadingMessage {
         width: 100%;
@@ -126,8 +122,19 @@
         backdrop-filter: blur(16px);
         border: 2px solid $color-gray-2;
         border-radius: 16px;
-      }      
-      
+      }
+
+      // 말풍선 공통 스타일
+      .chatMessageWrap {
+        max-width: 65%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 16px;
+        border: 2px solid $color-gray-6;
+        overflow: hidden;
+      }
+
       // ai 말풍선
       .chat_ai_message {
         justify-self: start;
@@ -135,12 +142,12 @@
         border-radius: 0px 14px 14px 14px;
         box-shadow: -4px 4px 0px 0px $color-gray-2;
       }
-      
+
       // 사용자 말풍선
       .chat_user_message {
         justify-self: end;
         color: $color-white;
-        background-color: $color-orange-6;
+        background-color: $color-orange-5;
         border-radius: 14px 0px 14px 14px;
         box-shadow: 4px 4px 0px 0px $color-gray-2;
       }
@@ -154,7 +161,7 @@
     padding-right: 32px;
     display: flex;
     gap: 16px;
-    
+
     // 전송 버튼
     .chat_input_button {
       width: 64px;
@@ -162,7 +169,7 @@
       padding: 16px;
       background-color: $color-orange-6;
       border-radius: 16px;
-  
+
       &:disabled {
         background-color: $color-orange-3;
       }
@@ -176,9 +183,9 @@
         vertical-align: middle;
         background-color: $color-white;
         border-radius: 50%;
-        animation: .4s infinite ease-in-out;
+        animation: 0.4s infinite ease-in-out;
         animation-name: Loading;
-  
+
         @keyframes Loading {
           from {
             transform: scale(0);
@@ -193,5 +200,3 @@
     }
   }
 }
-
-

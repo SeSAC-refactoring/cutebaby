@@ -16,7 +16,8 @@ export const AiChatComponent = () => {
       <div className={styles.chat_wrapper}>
         <div className={styles.chatMessageAreaWrap}>
           {messages.map((msg, i) => (
-            <div className={styles.chatMessageArea}
+            <div
+              className={styles.chatMessageArea}
               key={i}
               style={{
                 textAlign: msg.role === "user" ? "right" : "left",
@@ -41,7 +42,9 @@ export const AiChatComponent = () => {
             <div
               className={`${styles.chatLoadingMessage} ${typography.textBsMd}`}
             >
-              답변을 기다리고 있어요, 조금만 기다려주세요..
+              답변을 기다리고 있어요,
+              <br />
+              조금만 기다려주세요..
             </div>
           )}
         </div>
