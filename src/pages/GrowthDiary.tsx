@@ -45,6 +45,28 @@ export default function GrowthDiary() {
   const growInfo = useSelector((state: RootState) => state.babygrow.growInfo);
   const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
   const { growData } = useGrowData(growInfo, selectedBabyId);
+  const [page1, setPage1] = useState(false);
+  const [page2, setPage2] = useState(false);
+  const [page3, setPage3] = useState(false);
+
+  useEffect(() => {
+    if (babyInfo.length > 0 && growData.length > 0) {
+      //모든 데이터 다 있음
+      setPage1(true);
+      setPage2(false);
+      setPage3(false);
+    } else if (babyInfo.length > 0 && growData.length === 0) {
+      //아기 데이터 O, 성장 데이터 X
+      setPage2(true);
+      setPage1(false);
+      setPage3(false);
+    } else {
+      //모든 데이터 X
+      setPage3(true);
+      setPage1(false);
+      setPage2(false);
+    }
+  });
 
   console.log("애기 성장정보 입니다 >>>>", growInfo);
   console.log("selectedBabyId에 따른 성장정보 입니다 >>>>", growData);
@@ -60,6 +82,7 @@ export default function GrowthDiary() {
     setSelectedGrowId(growId);
     setOpenDelModal(true);
   };
+  console.log(page1, page2, page3);
 
   return (
     <div className={layout.container}>
@@ -135,6 +158,127 @@ export default function GrowthDiary() {
         </div>
 
         <div className={styles.contentsArea}>
+          {babyInfo.length > 0 && (
+            <>
+              <BabyList
+                babyInfo={babyInfo}
+                handleSelectBaby={handleSelectBaby}
+                selectedBabyId={selectedBabyId}
+              />
+
+              {/* 성장기록 그래프 */}
+
+              {growData.length > 0 ? (
+                <>
+                  <div className={styles.recent_record_wrap}>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignContent: "center",
+                        width: "100%",
+                        height: "100%",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "808px",
+                          height: "476px",
+                          marginTop: "24px",
+                          border: "3px solid #D1E9F1",
+                          borderRadius: "32px",
+                        }}
+                      >
+                        <div
+                          style={{
+                            margin: "32px 0px 0px 40px",
+                            fontSize: "18px",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          우리 아이 성장 추이
+                        </div>
+                        <DiaryChart growData={growData} />
+                      </div>
+                      <RecentGrowthRecord
+                        growData={growData}
+                        setOpenAddModal={setOpenAddModal}
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <></>
+              )}
+
+              {growData.length > 0 ? (
+                <></>
+              ) : (
+                <>
+                  <div
+                    style={{ marginTop: "32px" }}
+                    className={styles.no_baby_box2_Wrap}
+                  >
+                    <div className={styles.no_baby_box2_1}></div>
+                    <div className={styles.no_baby_box2_2}></div>
+                  </div>
+                  <div
+                    style={{ height: "512px", bottom: "512px" }}
+                    className={styles.blur_background}
+                  >
+                    <div className={styles.blur_container}>
+                      <img src="/img/Ggoggo-002.png" />
+                      <div className={styles.blur_text}>
+                        등록된 기록이 없습니다!
+                      </div>
+
+                      <button
+                        onClick={() => {
+                          setOpenAddModal(true);
+                        }}
+                        className={styles.baby_enroll_btn}
+                      >
+                        성장일지 등록하기 {">"}
+                      </button>
+                    </div>
+                  </div>
+                </>
+              )}
+            </>
+          )}
+          {babyInfo.length === 0 && (
+            <>
+              <div className={styles.no_baby_wrap}>
+                <div className={styles.no_baby_box1}></div>
+                <div className={styles.no_baby_box2_Wrap}>
+                  <div className={styles.no_baby_box2_1}></div>
+                  <div className={styles.no_baby_box2_2}></div>
+                </div>
+              </div>
+              <div className={styles.blur_background}>
+                <div className={styles.blur_container}>
+                  <img src="/img/Ggoggo-002.png" />
+                  <div className={styles.blur_text}>
+                    등록된 아이가 없습니다!
+                  </div>
+                  <Link to="/Mypage">
+                    <button className={styles.baby_enroll_btn}>
+                      아이 등록하기 {">"}
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </>
+          )}
+          {/* {babyInfo.length > 0 ? (
+            <BabyList
+              babyInfo={babyInfo}
+              handleSelectBaby={handleSelectBaby}
+              selectedBabyId={selectedBabyId}
+            />
+          ) : (
+            <></>
+          )}
           {growData.length > 0 ? (
             <BabyList
               babyInfo={babyInfo}
@@ -143,68 +287,28 @@ export default function GrowthDiary() {
             />
           ) : (
             <>
-              <img src="img/Contents.png" alt="성장일지 이미지" />
-              <Link to="/Mypage">
-                <button
-                  className={[button.btnLgBk, typography.textLgBd].join(" ")}
-                >
-                  아이 등록하기 {">"}
-                </button>
-              </Link>
-            </>
-          )}
-
-          <div className={styles.recent_container}>
-            {growData.length > 0 ? (
-              <>
-                <div className={styles.recent_record_wrap}>
-                  {/* 성장기록 그래프 */}
-                  <div
-                    style={{
-                      width: "808px",
-                      height: "476px",
-                      marginTop: "24px",
-                      border: "3px solid #D1E9F1",
-                      borderRadius: "32px",
-                    }}
-                  >
-                    <div
-                      style={{
-                        margin: "32px 0px 0px 40px",
-                        fontSize: "18px",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      우리 아이 성장 추이
-                    </div>
-                    <div
-                      style={{
-                        padding: "20px",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignContent: "center",
-                        width: "100%",
-                        height: "100%",
-                      }}
-                    >
-                      {growData.length > 0 ? (
-                        <DiaryChart growData={growData} />
-                      ) : (
-                        // 데이터 없을 때
-                        <p></p>
-                      )}
-                    </div>
-                  </div>
-                  <RecentGrowthRecord
-                    growData={growData}
-                    setOpenAddModal={setOpenAddModal}
-                  />
+              <div className={styles.no_baby_wrap}>
+                <div className={styles.no_baby_box1}></div>
+                <div className={styles.no_baby_box2_Wrap}>
+                  <div className={styles.no_baby_box2_1}></div>
+                  <div className={styles.no_baby_box2_2}></div>
                 </div>
-              </>
-            ) : (
-              <p style={{ visibility: "hidden" }}>데이터 없음</p>
-            )}
-          </div>
+              </div>
+              <div className={styles.blur_background}>
+                <div className={styles.blur_container}>
+                  <img src="/img/Ggoggo-002.png" />
+                  <div className={styles.blur_text}>
+                    등록된 아이가 없습니다!
+                  </div>
+                  <Link to="/Mypage">
+                    <button className={styles.baby_enroll_btn}>
+                      아이 등록하기 {">"}
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </>
+          )} */}
         </div>
       </div>
     </div>
