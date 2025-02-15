@@ -55,6 +55,7 @@
   top: 0;
   background-color: $color-blue-3;
   border-right: 2px solid $color-blue-6;
+  z-index: 100px;
 }
 
 .td {
@@ -65,8 +66,23 @@
 }
 
 // Disease.tsx
+.diseaseWrap {
+  z-index: 2;
+  position: sticky;
+  left: 0;
+}
 // VaccineType.tsx
+.VaccineTypeWrap {
+  z-index: 2;
+  position: sticky;
+  left: 142px;
+}
 // TotalDoses.tsx
+.TotalDosesWrap {
+  z-index: 2;
+  position: sticky;
+  left: 334px;
+}
 // DoseDate.tsx
 .thDiseases {
   width: 142px;
@@ -113,6 +129,7 @@ ul {
 
 .liTotalDoses {
   height: 50px;
+  background-color: #ffffff;
 }
 
 .thDoseDateWrap {
@@ -120,6 +137,7 @@ ul {
   top: 0;
   display: flex;
   background-color: $color-blue-3;
+  z-index: 0;
 
   .thDoseDate {
     width: 80px;

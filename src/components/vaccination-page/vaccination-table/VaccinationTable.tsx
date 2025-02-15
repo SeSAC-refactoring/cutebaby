@@ -1,86 +1,82 @@
-import styles from '../../../styles/Vaccination.module.scss';
+import styles from "../../../styles/Vaccination.module.scss";
 
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { Disease } from './Disease';
-import { VaccineType } from './VaccineType';
-import { DoseDate } from './DoseDate';
-import { TotalDoses } from './TotalDoses';
-import { VaccinationSchedule } from './VaccinationSchedule';
-import { vaccinationScheduleData } from './VaccinationTableData';
+import React from "react";
+import { useSelector } from "react-redux";
+import { Disease } from "./Disease";
+import { VaccineType } from "./VaccineType";
+import { DoseDate } from "./DoseDate";
+import { TotalDoses } from "./TotalDoses";
+import { VaccinationSchedule } from "./VaccinationSchedule";
+import { vaccinationScheduleData } from "./VaccinationTableData";
 
-import { RootState } from '../../../store';
+import { RootState } from "../../../store";
 interface VaccinationTableProps {
-    selectedBabyId: number | null;
+  selectedBabyId: number | null;
 }
 
 export const VaccinationTable: React.FC<VaccinationTableProps> = ({
-    selectedBabyId,
+  selectedBabyId,
 }) => {
-    // Redux에서 정보 가져오기
-    const { vaccinationData } = useSelector(
-        (state: RootState) => state.vaccination
+  // Redux에서 정보 가져오기
+  const { vaccinationData } = useSelector(
+    (state: RootState) => state.vaccination
+  );
+
+  // 서버에 있는 데이터와 일치하는 백신 찾기 matchedVaccine
+  const matchedVaccineList = vaccinationScheduleData.flat().map((data) => {
+    // flat()을 사용해 2차원 배열을 1차원 배열로 변환
+
+    // selectedBabyVaccinationData에 일치하는 데이터 있는지 찾기
+    let matchedVaccine = vaccinationData.find(
+      (item) =>
+        item.vaccinationid === data.vaccinationid &&
+        item.dosenumber === data.dosenumber
     );
 
-    // 서버에 있는 데이터와 일치하는 백신 찾기 matchedVaccine
-    const matchedVaccineList = vaccinationScheduleData.flat().map((data) => {
-        // flat()을 사용해 2차원 배열을 1차원 배열로 변환
+    // 벡신 1~2차 로 되어있는 칸일 경우 // vaccinationid(13, 14, 16) && dosenumber === 0일 경우
+    // data.vaccinationid ===  13 || 14 ||16 이고 data.dosenumber === 0 인 항목은
+    // data.vaccinationid === item.vaccinationid 일 떄, item.dosenumber가 1인 것만 있으면 1이 있는 항목으로 반환하고,
+    // item.dosenumber가 2인 것이 있으면 2가 있는 걸로 반환
+    if (
+      data.vaccinationid &&
+      [13, 14, 16].includes(data.vaccinationid) &&
+      data.dosenumber === 0
+    ) {
+      const vaccine1 = vaccinationData.find(
+        (item) =>
+          item.vaccinationid === data.vaccinationid && item.dosenumber === 1
+      );
+      const vaccine2 = vaccinationData.find(
+        (item) =>
+          item.vaccinationid === data.vaccinationid && item.dosenumber === 2
+      );
 
-        // selectedBabyVaccinationData에 일치하는 데이터 있는지 찾기
-        let matchedVaccine = vaccinationData.find(
-            (item) =>
-                item.vaccinationid === data.vaccinationid &&
-                item.dosenumber === data.dosenumber
-        );
+      if (vaccine2) {
+        matchedVaccine = vaccine2; // dosenumber가 2이면 반환
+      } else if (vaccine1) {
+        matchedVaccine = vaccine1; // dosenumber가 1이면 반환
+      }
+    }
 
-        // 벡신 1~2차 로 되어있는 칸일 경우 // vaccinationid(13, 14, 16) && dosenumber === 0일 경우
-        // data.vaccinationid ===  13 || 14 ||16 이고 data.dosenumber === 0 인 항목은
-        // data.vaccinationid === item.vaccinationid 일 떄, item.dosenumber가 1인 것만 있으면 1이 있는 항목으로 반환하고,
-        // item.dosenumber가 2인 것이 있으면 2가 있는 걸로 반환
-        if (
-            data.vaccinationid &&
-            [13, 14, 16].includes(data.vaccinationid) &&
-            data.dosenumber === 0
-        ) {
-            const vaccine1 = vaccinationData.find(
-                (item) =>
-                    item.vaccinationid === data.vaccinationid &&
-                    item.dosenumber === 1
-            );
-            const vaccine2 = vaccinationData.find(
-                (item) =>
-                    item.vaccinationid === data.vaccinationid &&
-                    item.dosenumber === 2
-            );
+    return matchedVaccine || null; // 없는 경우 null
+  });
 
-            if (vaccine2) {
-                matchedVaccine = vaccine2; // dosenumber가 2이면 반환
-            } else if (vaccine1) {
-                matchedVaccine = vaccine1; // dosenumber가 1이면 반환
-            }
-        }
+  return (
+    <>
+      <div className={styles.vacTableWrap}>
+        <div className={styles.vacTable}>
+          <Disease />
+          <VaccineType selectedBabyId={selectedBabyId} />
+          <TotalDoses />
 
-        return matchedVaccine || null; // 없는 경우 null
-    });
-
-    return (
-        <>
-            <div className={styles.vacTableWrap}>
-                <div className={styles.vacTable}>
-                    <Disease />
-                    <VaccineType selectedBabyId={selectedBabyId} />
-                    <TotalDoses />
-
-                    <div className={styles.vacTableScheduleArea}>
-                        <div className={styles.thDoseDateWrap}>
-                            <DoseDate />
-                        </div>
-                        <VaccinationSchedule
-                            matchedVaccineList={matchedVaccineList}
-                        />
-                    </div>
-                </div>
+          <div className={styles.vacTableScheduleArea}>
+            <div className={styles.thDoseDateWrap}>
+              <DoseDate />
             </div>
-        </>
-    );
+            <VaccinationSchedule matchedVaccineList={matchedVaccineList} />
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
