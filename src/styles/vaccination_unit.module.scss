@@ -1,3 +1,10 @@
+
+.centerListArea {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
 .container {
   display: flex; /* Flexbox 활성화 */
   flex-direction: column; /* 필요에 따라 방향 설정 */
