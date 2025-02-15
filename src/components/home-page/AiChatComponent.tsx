@@ -1,17 +1,11 @@
+import React, { useState } from "react";
 import { useChatbot } from "./hooks/useFetchChatbot";
-import ReactMarkdown from "react-markdown";
 import { useHandleKeyDown } from "./hooks/useHandleKeyDown";
 import { useInput } from "../../hooks/useInput";
 import typography from "../../styles/commons/Typography.module.scss";
 import styles from "../../styles/AIChatComponent.module.scss";
 
-interface AiChatComponentProps {
-  username: string;
-}
-
-export const AiChatComponent: React.FC<AiChatComponentProps> = ({
-  username,
-}) => {
+export const AiChatComponent = () => {
   const { input, setInput, handleInputChange } = useInput("");
   const { handleSendMessage, messages, isLoading } = useChatbot();
   const handleKeyDown = useHandleKeyDown(handleSendMessage, input, setInput);
@@ -22,8 +16,7 @@ export const AiChatComponent: React.FC<AiChatComponentProps> = ({
       <div className={styles.chat_wrapper}>
         <div className={styles.chatMessageAreaWrap}>
           {messages.map((msg, i) => (
-            <div
-              className={styles.chatMessageArea}
+            <div className={styles.chatMessageArea}
               key={i}
               style={{
                 textAlign: msg.role === "user" ? "right" : "left",
@@ -37,14 +30,10 @@ export const AiChatComponent: React.FC<AiChatComponentProps> = ({
                 }`}
               >
                 <strong className={typography.textXsBd}>
-                  {msg.role === "user" ? username : "팀 꼬물"}
+                  {msg.role === "user" ? "나" : "팀 꼬물"}
                   <br />
                 </strong>
-                <div
-                  className={`${typography.textSmRg} ${styles.message_text_area}`}
-                >
-                  <ReactMarkdown>{`${msg.content}`}</ReactMarkdown>
-                </div>
+                <div className={typography.textSmRg}>{`${msg.content}`}</div>
               </div>
             </div>
           ))}
@@ -52,9 +41,7 @@ export const AiChatComponent: React.FC<AiChatComponentProps> = ({
             <div
               className={`${styles.chatLoadingMessage} ${typography.textBsMd}`}
             >
-              답변을 기다리고 있어요,
-              <br />
-              조금만 기다려주세요..
+              답변을 기다리고 있어요, 조금만 기다려주세요..
             </div>
           )}
         </div>
