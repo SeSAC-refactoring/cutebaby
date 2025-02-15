@@ -7,6 +7,7 @@
   align-items: center;
   width: 100%;
 }
+
 .DateCompleteInputWrap {
   height: 96px;
   display: flex;
@@ -25,6 +26,7 @@
     }
   }
 }
+
 .EditDateWrap {
   height: 96px;
   display: flex;
@@ -32,12 +34,14 @@
   gap: 8px;
   align-items: center;
   width: 314px;
+
   input {
     padding-right: 16px;
     box-sizing: border-box;
     border: 2px solid #838391;
   }
 }
+
 .input_email_check {
   display: flex;
   flex-wrap: wrap;
@@ -65,6 +69,8 @@ label {
   }
 }
 
+// input, select 스타일링
+select,
 input {
   width: 100%;
   height: 64px;
@@ -72,24 +78,21 @@ input {
   border-radius: 16px;
   padding-left: 24px;
   border: 2px solid $color-gray-6;
+  
+}
 
-  &:disabled {
-    background-color: $color-green-1;
-    border: none;
-    color: $color-green-7;
-    &::placeholder {
-      color: $color-green-7;
-    }
-  }
-  &:focus,
-  &:focus-visible {
-    box-shadow: 0px 0px 0px 5px rgba(176, 165, 232, 0.4);
-    border: 2px solid $color-purple-7;
-  }
+select::placeholder,
+input::placeholder {
+  color: $color-gray-4;
+}
 
-  &::placeholder {
-    color: $color-gray-4;
-  }
+select:focus,
+input:focus,
+select:focus-visible,
+input:focus-visible {
+  outline: none;
+  box-shadow: 0px 0px 0px 5px rgba(176, 165, 232, 0.4);
+  border: 2px solid $color-purple-7;
 }
 
 select:disabled,
@@ -102,50 +105,6 @@ input[type="email"]:disabled {
   border-color: $color-gray-1;
 }
 
-// .input_signup {
-// }
-
 .input_error {
   border: 2px solid #fd757d;
 }
-
-/* 일정 등록 모달 내의 select 스타일링 */
-// .scheduleModal select {
-//   padding: 12px 16px;
-//   appearance: none; /* 기본 디자인 제거 */
-//   background-image: url("../../img/icon-chevron-down.svg");
-//   background-repeat: no-repeat;
-//   background-position: right 16px center;
-// }
-
-// input[type="datetime-local"] {
-//   background-image: url("../../img/icon-calendar.svg");
-//   background-repeat: no-repeat;
-//   background-position: right 16px center;
-// }
-
-// input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-//   opacity: 0;
-// }
-
-// select:focus,
-// textarea:focus,
-// input[type="text"]:focus,
-// input[type="datetime-local"]:focus {
-//   border-color: var(--color-blue-50);
-//   outline: 4px solid rgba(92, 149, 255, 0.3);
-// }
-
-// select::placeholder,
-// textarea::placeholder,
-// input[type="text"]::placeholder,
-// input[type="datetime-local"]::placeholder {
-//   color: var(--color-gray-60);
-// }
-
-// select:disabled,
-// textarea:disabled,
-// input:disabled {
-//   color: var(--color-gray-70);
-//   background-image: none;
-// }

@@ -8,9 +8,11 @@ import { useHandleSearch } from "../components/vaccination-page/hooks/useHandleS
 import { useRefs } from "../hooks/useRefs";
 import { CenterList } from "../components/vaccination-page/CenterList";
 
+import select from "../styles/commons/Input.module.scss";
 import styles from "../styles/VaccinationCenters.module.scss";
 import modal from "../styles/Modal.module.scss";
 import layout from "../styles/commons/Layout.module.scss";
+import typography from "../styles/commons/Typography.module.scss";
 
 export default function VaccinationCenters({ setOpenCentersModal }: any) {
   // hook 사용
@@ -60,23 +62,16 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
       >
         <div className={styles.search_wrap}>
           <div className={modal.modal_title_wrap}>
-            <h2
-              className={layout.title}
-              style={{
-                fontSize: "40px",
-                fontWeight: "bold",
-                marginBottom: "48px",
-              }}
-            >
+            <h2 className={`${layout.title} ${typography.text4xlBd}`}>
               위탁의료기관 찾기
             </h2>
             <div
               onClick={() => {
                 setOpenCentersModal(false);
               }}
-              className={modal.X_btn}
+              className={modal.closeBtn}
             >
-              X
+              <img src="/img/icons/i-modal-close-s32.svg" alt="" />
             </div>
           </div>
 
@@ -95,11 +90,11 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
           {/* 지역(시/도) 선택 드롭다운 */}
           <div className={styles.select_wrap}>
             <select
+              className={typography.textLgRg}
               ref={refs.province}
               value={selectedLocation.province}
               disabled={isFirstLoading} // 데이터 불러오는 동안은 드롭다운으로 지역 선택 불가
               onChange={handleProvinceSelect}
-              className={styles.select}
             >
               <option value="">시/도</option>
               {provinces.map((province) => (
