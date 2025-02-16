@@ -23,12 +23,12 @@ export const useChatbot = () => {
             setMessages((prev) => [...prev, userMessage]); // 사용자 입력 메시지 추가
             setInput('');
             startLoading();
+            console.log('handleSendMessage');
 
             try {
                 const response = await fetchGemini(input);
-                if (!response) {
-                    throw new Error('Gemini API 응답 없음');
-                }
+                if (!response) throw new Error('Gemini API 응답 없음');
+
                 const chatbotMessage: Message = {
                     role: 'assistant',
                     content: response,
