@@ -9,7 +9,7 @@ export const useDelbaby = () => {
   const delbaby = async (babyId: number | null) => {
     const API_URL = process.env.REACT_APP_API_URL;
 
-    console.log(babyId);
+    // console.log(babyId);
     const babyid = Number(babyId);
     if (!babyId) {
       alert("삭제할 아이를 선택하세요.");
