@@ -26,7 +26,7 @@
 }
 .user_info_wrap {
   width: 1120px;
-  height: 212px;
+  // height: 212px;
   background-color: #fef9f1;
   border-radius: 32px;
   // margin-top: 48px;
@@ -206,6 +206,63 @@
   }
 }
 
-.addButton {
-  width: auto;
+
+.add_button {
+  // width: 170px;
+  width: 20%;
+  height: 64px;
+  display: flex;
+  height: 64px;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 16px;
+  background-color: $color-blue-4;
+  color: var(--Gray-10, #3b3b41);
+  font-size: 22px;
+  font-weight: 700;
 }
+
+@media screen and (max-width: 390px) {
+  .user_info_wrap {
+    padding: 30px;
+    width: 300px;
+    max-width: 640px;
+    flex-direction: column;
+  }
+  .info_detail_wrap {
+    gap: 20px;
+    flex-direction: column;
+  }
+  .detail_set {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .container {
+    button {
+      font-size: 10px;
+    }
+  }
+  .babyInfo_wrap {
+    padding: 20px;
+    flex-direction: column;
+    gap: 3px;
+    align-items: center;
+  }
+  .babyInfo_detail_wrap {
+    width: 100%;
+    flex-direction: column;
+  }
+  .detail_wrap {
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 5px;
+  }
+  .babyInfo_btn_wrap {
+    margin-top: 3px;
+    width: 100%;
+  }
+}
+

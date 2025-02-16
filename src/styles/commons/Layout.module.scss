@@ -143,4 +143,12 @@
       }
     }
   }
+  .textWrap {
+    flex-direction: column;
+    margin-bottom: 8px;
+  }
+  .titleArea {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
