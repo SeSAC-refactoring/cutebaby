@@ -16,6 +16,7 @@ import VaccinationCenters from "./VaccinationCenters";
 import VaccinationDetails from "./VaccinationDetails";
 import { fetchgrowInfo } from "../store/GrowthDiarySlice";
 import Loading from "../components/home-page/Loading";
+// import Icon from "../img/icons/i-chevron-right-s20.svg";
 
 export default function Home() {
   const [openCentersModal, setOpenCentersModal] = useState<boolean>(false);
@@ -141,11 +142,17 @@ export default function Home() {
                         </span>
                         로 확인할 수 있어요!
                       </div>
-                      <button
-                        className={`${button.btnSmBl} ${typography.textBsBd}`}
-                      >
-                        바로 시작하기 {">"}
-                      </button>
+                      <Link to="/SelectLogin">
+                        <button
+                          className={`${button.btnSmBl} ${typography.textBsBd}`}
+                        >
+                          바로 시작하기
+                          <img
+                            src="/img/icons/i-chevron-right-s20.svg"
+                            alt="바로가기 아이콘"
+                          ></img>
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 )}
@@ -165,7 +172,11 @@ export default function Home() {
                   <div
                     className={`${styles.banner_link} ${typography.textBsBd}`}
                   >
-                    바로가기 {">"}
+                    바로가기{" "}
+                    <img
+                      src="/img/icons/i-chevron-right-s20.svg"
+                      alt="바로가기 아이콘"
+                    ></img>
                   </div>
                 </div>
                 <div
@@ -180,7 +191,11 @@ export default function Home() {
                   <div
                     className={`${styles.banner_link} ${typography.textBsBd}`}
                   >
-                    바로가기 {">"}
+                    바로가기{" "}
+                    <img
+                      src="/img/icons/i-chevron-right-s20.svg"
+                      alt="바로가기 아이콘"
+                    ></img>
                   </div>
                 </div>
               </div>

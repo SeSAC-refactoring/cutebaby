@@ -16,7 +16,8 @@ export const AiChatComponent = () => {
       <div className={styles.chat_wrapper}>
         <div className={styles.chatMessageAreaWrap}>
           {messages.map((msg, i) => (
-            <div className={styles.chatMessageArea}
+            <div
+              className={styles.chatMessageArea}
               key={i}
               style={{
                 textAlign: msg.role === "user" ? "right" : "left",
