@@ -140,6 +140,7 @@ export default function GrowthDiary() {
                                     을 기록하고 상태를 확인해보세요:)
                                 </div>
                             </div>
+
                             <button
                                 className={[
                                     button.btnSmYw,
