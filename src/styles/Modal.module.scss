@@ -1,6 +1,5 @@
 @import "../styles/commons/Colors.module.scss";
 
-
 // 모달 오버레이
 .modal_overlay {
   flex-grow: 1;
@@ -16,7 +15,7 @@
   align-items: center;
   z-index: 1000;
   backdrop-filter: blur(2px);
-  
+
   // 모달 영역
   .modalWrap {
     flex-grow: 1;
@@ -43,7 +42,7 @@
         width: 48px;
         height: 48px;
         padding: 8px;
-  
+
         img {
           width: 100%;
         }
@@ -74,7 +73,6 @@
         backdrop-filter: blur(16px);
       }
     }
-
   }
 }
 
@@ -226,4 +224,11 @@
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
+}
+.modal_title_wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 42px;
 }

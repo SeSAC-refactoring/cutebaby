@@ -9,7 +9,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+
   // 매인 컨텐츠 영역
   .container {
     flex-grow: 1;
@@ -25,7 +25,7 @@
     justify-content: center;
     align-items: center;
   }
-  
+
   .contentsArea {
     flex-grow: 1;
     width: 100%;
@@ -38,24 +38,24 @@
     border: 2px solid $color-gray-6;
     border-radius: 40px;
     overflow: hidden;
-  
+
     .titleArea {
       width: 100%;
       display: flex;
       justify-content: space-between;
       align-self: start;
-  
+
       .textWrap {
         display: flex;
         gap: 16px;
       }
-  
+
       .pageGuide {
         align-self: end;
         color: $color-gray-5;
       }
     }
-  
+
     .contentsWrap {
       width: 100%;
       flex-grow: 1;
@@ -63,12 +63,12 @@
       flex-direction: column;
       justify-content: space-between;
     }
-  
+
     .buttonArea {
       width: 100%;
       display: flex;
       justify-content: center;
-  
+
       a {
         width: 100%;
         display: flex;
@@ -78,4 +78,3 @@
     }
   }
 }
-
