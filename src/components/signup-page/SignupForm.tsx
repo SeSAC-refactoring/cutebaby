@@ -151,7 +151,9 @@ const SignupForm: React.FC = () => {
                   }}
                 />
                 {messages.name && (
-                  <p className={styles.error}>{messages.name}</p>
+                  <p className={`${styles.error} ${typography.textBsMd}`}>
+                    {messages.name}
+                  </p>
                 )}
               </div>
 
@@ -177,7 +179,9 @@ const SignupForm: React.FC = () => {
                   </button>
                 </div>
                 {messages.email && (
-                  <p className={styles.error}>{messages.email}</p>
+                  <p className={`${styles.error} ${typography.textBsMd}`}>
+                    {messages.email}
+                  </p>
                 )}
               </div>
 
@@ -194,7 +198,9 @@ const SignupForm: React.FC = () => {
                   }}
                 />
                 {messages.password && (
-                  <p className={styles.error}>{messages.password}</p>
+                  <p className={`${styles.error} ${typography.textBsMd}`}>
+                    {messages.password}
+                  </p>
                 )}
               </div>
 
@@ -211,7 +217,9 @@ const SignupForm: React.FC = () => {
                   }}
                 />
                 {messages.confirmPassword && (
-                  <p className={styles.error}>{messages.confirmPassword}</p>
+                  <p className={`${styles.error} ${typography.textBsMd}`}>
+                    {messages.confirmPassword}
+                  </p>
                 )}
               </div>
             </div>

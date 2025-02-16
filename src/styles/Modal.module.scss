@@ -93,7 +93,8 @@
   height: 320px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 20px;
+  // justify-content: space-between;
 }
 .modal_img_wrap {
   height: 240px;
@@ -206,6 +207,7 @@
 .error_message {
   position: relative;
   bottom: 10px;
+  color: red;
 }
 .del_modal_button_wrap {
   display: flex;

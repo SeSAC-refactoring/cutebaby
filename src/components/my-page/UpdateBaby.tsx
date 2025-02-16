@@ -1,5 +1,7 @@
 import React, { useCallback, useState } from "react";
 import styles from "../../styles/Modal.module.scss";
+import typography from "../../styles/commons/Typography.module.scss";
+import button from "../../styles/commons/Button.module.scss";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
 import { ImageUploader } from "./ImageUploader";
@@ -127,16 +129,6 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
             value={rewriteData.babyname}
             onChange={handleInputChange}
           ></Input>
-          {/* <label>
-            <h2>이름</h2>
-            <input
-              className={styles.modal_input}
-              id="babyname"
-              placeholder="이름 입력"
-              value={rewriteData.babyname} // 기존 이름 유지
-              onChange={handleInputChange}
-            />
-          </label> */}
           <Input
             label="생년월일"
             type="date"
@@ -144,20 +136,8 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
             value={rewriteData.birthday}
             onChange={handleInputChange}
           ></Input>
-
-          {/* <label>
-            <h2>생년월일</h2>
-            <input
-              className={styles.modal_input}
-              type="date"
-              id="birthday"
-              value={rewriteData.birthday} // 기존 날짜 유지
-              onChange={handleInputChange}
-            />
-          </label> */}
-
           <section>
-            <label>성별 :</label>
+            <label>성별</label>
             <GenderInput
               setSelectedGender={handleGenderChange}
               selectedGender={selectedGender}
@@ -167,14 +147,14 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
 
         <div className={styles.modal_button_container}>
           <button
-            className={`${styles.modal_btn} ${styles.modal_cancel_button}`}
+            className={`${button.btnXlYw} ${typography.textXlBd}`}
             onClick={onClose}
           >
             취소
           </button>
           <button
             onClick={rewrite}
-            className={`${styles.modal_btn} ${styles.modal_done_button}`}
+            className={`${button.btnXlGr} ${typography.textXlBd}`}
           >
             완료
           </button>
