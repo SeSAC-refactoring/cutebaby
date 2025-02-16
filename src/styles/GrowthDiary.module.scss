@@ -74,6 +74,8 @@
   height: 56px;
   font-weight: bold;
   line-height: 56px;
+  display: flex;
+  justify-content: center;
 }
 
 .row_el {
@@ -83,19 +85,26 @@
   padding-left: 50px;
   align-items: center;
   border-radius: 16px;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .row_el:nth-child(2n-1) {
   background-color: #f4fafc;
 }
-
+.btn_wrap {
+  display: flex;
+  width: 200px;
+  padding: 14px 28px;
+  align-items: center;
+  height: 100%;
+  margin-left: 16px;
+}
 .list_el {
   width: 198px;
+  height: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   text-align: center;
-  padding-left: 20px;
 }
 
 .record {
@@ -158,12 +167,12 @@
 .cal_input {
   width: 180px;
 }
-.btn_wrap {
-  margin-top: 20px;
-  display: flex;
-  width: 180px;
-  justify-content: space-between;
-}
+// .btn_wrap {
+//   margin-top: 20px;
+//   display: flex;
+//   width: 180px;
+//   justify-content: space-between;
+// }
 .btn {
   border: none;
   background-color: black;
@@ -233,6 +242,7 @@
 }
 .recent_graph {
   padding: 2%;
+  height: 100%;
 }
 .recent_title {
   font-size: 18px;
