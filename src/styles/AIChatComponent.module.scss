@@ -214,3 +214,30 @@ label::after {
     }
   }
 }
+
+@media screen and (max-width: 390px) {
+  .chatbotArea {
+    max-width: 100%;
+    min-height: 90vh; /* 모바일에서 키보드 문제 방지 */
+    border-radius: 16px;
+  }
+
+  .chat_wrapper {
+    padding: 8px;
+  }
+
+  .chatMessageWrap {
+    max-width: 85%;
+    padding: 10px;
+  }
+
+  .chat_input_wrapper {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .chat_input_button {
+    width: 48px;
+    height: 48px;
+  }
+}
