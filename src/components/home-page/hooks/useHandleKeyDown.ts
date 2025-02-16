@@ -11,10 +11,11 @@ export const useHandleKeyDown = (
     const handleKeyDown = useCallback(
         (e: React.KeyboardEvent<HTMLInputElement>) => {
             if (e.key === 'Enter') {
+                e.preventDefault();
                 handleSendMessage(input, setInput);
             }
         },
-        [handleSendMessage, input, setInput]
+        [input]
     );
 
     return handleKeyDown;
