@@ -1,4 +1,6 @@
 import styles from "../../styles/Vaccination.module.scss";
+import typography from "../../styles/commons/Typography.module.scss";
+import button from "../../styles/commons/Button.module.scss";
 
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +10,7 @@ import { VaccinationData } from "../types";
 import { InputVac } from "./vaccination-table/InputVac";
 import { DelVac } from "./vaccination-table/DelVac";
 import { UpdateVac } from "./vaccination-table/UpdateVac";
+import { Input } from "../commons/Input";
 // import { DateCompleteInput } from '../commons/Input';
 
 interface VaccinationModalDateRecordProps {
@@ -170,7 +173,7 @@ export const VaccinationModalDateRecord: React.FC<
           <div className={styles.inputBtn_wrap} key={i}>
             {/* 왼쪽 날짜나 미접종을 보여주는 부분 // input 창 */}
             <div className={styles.input_wrap}>
-              <p style={{ fontSize: "18px", fontWeight: "700" }}>
+              <p className={typography.textSmBd}>
                 {vaccinationid === 8
                   ? "고위험군에 한하여 접종"
                   : vaccinationid === 4
@@ -206,13 +209,14 @@ export const VaccinationModalDateRecord: React.FC<
               // [입력하기] 버튼을 눌렀을 때
               <div className={styles.complete_btn_wrap}>
                 <button
-                  className={styles.date_cancel_btn}
+                  // className={styles.date_cancel_btn}
+                  className={`${button.btnLgYw} ${typography.textLgBd}`}
                   onClick={() => setSelectedDose(null)}
                 >
                   취소
                 </button>
                 <button
-                  className={styles.date_edit_btn}
+                  className={`${button.btnLgBl} ${typography.textLgBd}`}
                   onClick={() =>
                     matchedDose
                       ? handleupDate(doseNum)
@@ -229,14 +233,14 @@ export const VaccinationModalDateRecord: React.FC<
                 style={{ display: "flex" }}
               >
                 <button
-                  className={styles.date_del_btn}
+                  className={`${button.btnLgCo} ${typography.textLgBd}`}
                   onClick={() => handleDeleteData(doseNum)}
                   disabled={doseNum !== lastDose}
                 >
                   삭제
                 </button>
                 <button
-                  className={styles.date_edit_btn}
+                  className={`${button.btnLgBl} ${typography.textLgBd}`}
                   onClick={() => handleOpenInput(doseNum, matchedDose.dosedate)}
                 >
                   수정
@@ -245,7 +249,7 @@ export const VaccinationModalDateRecord: React.FC<
             ) : (
               <div className={styles.complete_btn_wrap}>
                 <button
-                  className={styles.date_enter_btn}
+                  className={`${button.btnLgBl} ${typography.textLgBd}`}
                   onClick={() => handleOpenInput(doseNum, null)}
                   disabled={isDisabled}
                 >

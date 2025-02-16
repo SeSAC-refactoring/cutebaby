@@ -43,6 +43,7 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({
                   onClick={() => onEdit(info.id)}
                 >
                   수정
+                  <img src="/img/edit-02.png" alt="수정아이콘"></img>
                 </button>
               </li>
             ))}
