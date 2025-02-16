@@ -35,7 +35,7 @@ export const fetchgrowInfo = createAsyncThunk(
         )
       );
 
-      console.log("✅ 성장 정보 응답 받음:", responses);
+      // console.log("✅ 성장 정보 응답 받음:", responses);
       sessionStorage.setItem("babygrow", JSON.stringify(responses));
       return responses.map((res) => res.data);
     } catch (error: any) {
@@ -66,14 +66,14 @@ const babygrowSlice = createSlice({
         (state, action: PayloadAction<any[]>) => {
           state.loading = false;
           state.growInfo = action.payload;
-          console.log("성장 정보 업데이트:", action.payload);
+          // console.log("성장 정보 업데이트:", action.payload);
         }
       )
       .addCase(fetchgrowInfo.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
         state.growInfo = [];
-        console.log("성장 정보 요청 실패:", state.error);
+        // console.log("성장 정보 요청 실패:", state.error);
       });
   },
 });

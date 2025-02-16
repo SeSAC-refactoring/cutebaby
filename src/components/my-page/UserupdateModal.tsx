@@ -64,8 +64,8 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
   // 이메일 중복 확인 요청
   const emailCheck = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("formdata.email>>>", formData.email);
-    console.log("formdata.email type >>", typeof formData.email);
+    // console.log("formdata.email>>>", formData.email);
+    // console.log("formdata.email type >>", typeof formData.email);
 
     if (!formData.email.trim()) {
       setMessages((prev) => ({ ...prev, email: "이메일을 입력해주세요!" }));
@@ -83,7 +83,7 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
         inputEmail: formData.email,
       });
 
-      console.log("서버 응답:", response); // 디버깅 로그 추가
+      // console.log("서버 응답:", response); // 디버깅 로그 추가
       // console.log("서버에서 응답받은 user", response.data.user[0].userid);
       if (response.data.success) {
         setEmailCheck(true);
@@ -99,7 +99,7 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
         }));
       }
     } catch (error) {
-      console.error(" 이메일 중복 확인 오류:", error);
+      // console.error(" 이메일 중복 확인 오류:", error);
       setMessages((prev) => ({
         ...prev,
         email: "이메일 중복 확인 중 오류가 발생했습니다.",
@@ -161,16 +161,13 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
         alert("정보 수정에 실패했습니다.");
       }
     } catch (error) {
-      console.error("정보 수정 오류:", error);
+      // console.error("정보 수정 오류:", error);
     }
   };
 
   return (
     <div onClick={modalState} className={modal.modal_overlay}>
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className={modal.modal_container}
-      >
+      <div onClick={(e) => e.stopPropagation()} className={modal.modalWrap}>
         <div className={modal.modal_title_wrap}>
           <div className={modal.modal_title}>개인 정보 수정</div>
           <div

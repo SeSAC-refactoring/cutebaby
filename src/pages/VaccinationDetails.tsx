@@ -33,7 +33,7 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
         const list = await fetchVaccinationDiseaseList();
         setDiseaseList(list);
       } catch (error) {
-        console.error("Error fetching disease list:", error);
+        // console.error("Error fetching disease list:", error);
       } finally {
         stopLoading();
       }
@@ -65,7 +65,7 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
         setDiseaseInfo((prev) => ({ ...prev, [cd]: info })); // 데이터 저장
         setExpandItems((prev) => ({ ...prev, [cd]: true })); // 데이터를 불러온 후 상태 변경
       } catch (error) {
-        console.error(`Error fetching info for disease ${cd}:`, error);
+        // console.error(`Error fetching info for disease ${cd}:`, error);
       } finally {
         stopLoading();
       }
@@ -86,10 +86,8 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
         }}
         className={`${modal.modalWrap}`}
       >
-        <div className={modal.modal_title_wrap}>
-          <h2 className={typography.text4xlBd}>
-            예방접종 대상 감염병 정보
-          </h2>
+        <div className={modal.titleArea}>
+          <h2 className={typography.text4xlBd}>예방접종 대상 감염병 정보</h2>
           <div
             onClick={() => {
               setOpenDetailsModal(false);
@@ -134,10 +132,14 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
                 {diseaseInfo[onClickDis] && (
                   <div className={styles.diseaseInfo_wrap}>
                     <div className={styles.title_wrap}>
-                      <span className={`${styles.title_big} ${typography.text3xlBd}`}>
+                      <span
+                        className={`${styles.title_big} ${typography.text3xlBd}`}
+                      >
                         {diseaseInfo[onClickDis].title.split("(")[0]}
                       </span>
-                      <span className={`${styles.title_small} ${typography.textXlMd}`}>
+                      <span
+                        className={`${styles.title_small} ${typography.textXlMd}`}
+                      >
                         {"("}
                         {diseaseInfo[onClickDis].title.split("(")[1]}
                       </span>
