@@ -1,3 +1,5 @@
+@import "./commons/Colors.module.scss";
+
 .wrap {
   display: flex;
   justify-content: center;
@@ -41,11 +43,7 @@
   font-size: 18px;
   // font-weight: bold;
 }
-.name {
-  margin-top: 8px;
-  font-size: 24px;
-  font-weight: bold;
-}
+
 .edit_btn {
   width: 181px;
   height: 56px;
@@ -55,15 +53,19 @@
   font-weight: bold;
   border-radius: 16px;
 }
+.detail_wrap {
+  width: 394px;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 81px;
+}
 .detail_set {
   height: 56px;
   display: flex;
   flex-direction: column;
-  width: 320px;
-}
-.info_title {
-  font-size: 24px;
-  font-weight: bold;
+  //   width: 320px;
+  //   width: 100%;
+  gap: 8px;
 }
 .title {
   font-size: 30px;
@@ -129,12 +131,14 @@
   padding: 48px 56px;
   display: flex;
   flex-direction: column;
+  gap: 32px;
 }
 .babyInfo_contents_wrap {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 1008px;
+  width: 100%;
+  gap: 24px;
 }
 // .babyList_wrap {
 //   width: 166px;
@@ -145,8 +149,8 @@
 // }
 .babyInfo_wrap {
   padding: 40px;
-  width: 1008px;
-  height: 280px;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   border: 3px solid #d1e9f1;
@@ -159,31 +163,15 @@
   // flex-direction: column;
 }
 .babyInfo_btn_wrap {
-  width: 100%;
   width: 197px;
+  //   width: 300px;
   height: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
   gap: 15px;
 }
-.babyInfo_edit_btn {
-  width: 107px;
-  height: 56px;
-  background-color: #f6d9a7;
-  border-radius: 16px;
-  font-size: 20px;
-  font-weight: bold;
-}
-.babyInfo_delete_btn {
-  width: 75px;
-  height: 56px;
-  padding: 16px 20px;
-  background-color: #f6c7c6;
-  border-radius: 16px;
-  font-size: 20px;
-  font-weight: bold;
-}
+
 .baby_add_btn {
   width: 166px;
   height: 64px;
@@ -216,4 +204,21 @@
     flex-direction: column;
     gap: 24px;
   }
+}
+
+.add_button {
+  // width: 170px;
+  width: 20%;
+  height: 64px;
+  display: flex;
+  height: 64px;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 16px;
+  background-color: $color-blue-4;
+  color: var(--Gray-10, #3b3b41);
+  font-size: 22px;
+  font-weight: 700;
 }
