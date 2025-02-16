@@ -22,7 +22,7 @@ export const fetchgrowInfo = createAsyncThunk(
     const API_URL = process.env.REACT_APP_API_URL;
 
     try {
-      console.log("성장 정보 요청 시작, babyInfo:", babyInfo);
+      // console.log("성장 정보 요청 시작, babyInfo:", babyInfo);
 
       if (!babyInfo || babyInfo.length === 0) {
         return rejectWithValue("성장 정보를 요청할 babyInfo가 없습니다.");
