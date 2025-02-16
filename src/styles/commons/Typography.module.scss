@@ -171,3 +171,8 @@ html {
 .capitalize {
   text-transform: capitalize;
 }
+@media screen and (max-width: 390px) {
+  .text4xlBd {
+    font-size: 3.2rem;
+  }
+}
