@@ -10,6 +10,8 @@ import { BabyInputPlus } from "./BabyInputPlus";
 
 import { BabyList } from "../commons/BabyList";
 import modal from "../../styles/Modal.module.scss";
+import button from "../../styles/commons/Button.module.scss";
+import typography from "../../styles/commons/Typography.module.scss";
 
 interface BabyInputProps {
   babyInfo: babyinfo[];
@@ -66,7 +68,7 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
 
   return (
     <div className={styles.babyInfo_background}>
-      <div className={styles.info_title}>우리아이 정보</div>
+      <div className={typography.textXlBd}>우리아이 정보</div>
 
       <div className={styles.babyInfo_contents_wrap}>
         <BabyList
@@ -89,19 +91,26 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
             )}
           </div>
           <div className={styles.babyInfo_detail_wrap}>
-            <div style={{ marginBottom: "32px" }} className={styles.detail_set}>
-              <label className={styles.info_label}>생년월일</label>
-              <div className={styles.name}>{selectedBaby.birthday}</div>
-            </div>
-            <div className={styles.detail_set}>
-              <label className={styles.info_label}>성별</label>
-              <div className={styles.name}>
-                {selectedBaby.gender === "boy" ? "남아" : "여아"}
+            <div className={styles.detail_wrap}>
+              <div
+                style={{ marginBottom: "32px" }}
+                className={styles.detail_set}
+              >
+                <div className={typography.textSmBd}>생년월일</div>
+                <div className={typography.textXlBd}>
+                  {selectedBaby.birthday}
+                </div>
+              </div>
+              <div className={styles.detail_set}>
+                <div className={typography.textSmBd}>성별</div>
+                <div className={typography.textXlBd}>
+                  {selectedBaby.gender === "boy" ? "남아" : "여아"}
+                </div>
               </div>
             </div>
             <div className={styles.babyInfo_btn_wrap}>
               <button
-                className={styles.babyInfo_delete_btn}
+                className={`${button.btnMeCo} ${typography.textMdBd}`}
                 onClick={() => setDelModal(true)}
               >
                 삭제
@@ -115,7 +124,8 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
               )}
 
               <button
-                className={styles.babyInfo_edit_btn}
+                // className={styles.babyInfo_edit_btn}
+                className={`${button.btnMdYw} ${typography.textMdBd}`}
                 onClick={() => setUpdateBaby(true)}
               >
                 수정
@@ -125,14 +135,13 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
                   src="/img/edit-01.png"
                 />
               </button>
-
-              {updateBaby && (
-                <UpdateBaby
-                  selectedBaby={selectedBaby}
-                  onClose={() => setUpdateBaby(false)}
-                />
-              )}
             </div>
+            {updateBaby && (
+              <UpdateBaby
+                selectedBaby={selectedBaby}
+                onClose={() => setUpdateBaby(false)}
+              />
+            )}
           </div>
         </div>
       </div>

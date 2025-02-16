@@ -1,6 +1,9 @@
 import React, { useCallback, useRef, useState } from "react";
 // import styles from "../../styles/Mypage.module.scss";
 import styles from "../../styles/Modal.module.scss";
+import typography from "../../styles/commons/Typography.module.scss";
+import button from "../../styles/commons/Button.module.scss";
+
 import tabs from "../../styles/commons/ChildrenTabs.module.scss";
 import { babyinfo } from "../types";
 import { useCreatebaby } from "./hooks/useCreatebaby";
@@ -142,76 +145,25 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
               inputRef.current.birthday = el;
             }}
           ></Input>
-          {/* <section>
-            <label>이름</label>
-            <input
-              type="text"
-              id="babyname"
-              placeholder="아이의 이름을 입력해주세요!"
-              value={newBabyData.babyname}
-              onChange={handleInputChange}
-              ref={(el) => {
-                inputRef.current.babyname = el;
-              }}
-            />
-          </section> */}
-
-          {/* <section>
-            <label>생년월일</label>
-            <input
-              type="date"
-              id="birthday"
-              value={newBabyData.birthday}
-              onChange={handleInputChange}
-              ref={(el) => {
-                inputRef.current.birthday = el;
-              }}
-            />
-          </section> */}
           <section>
-            {/* <label>성별</label>
-            <div className={tabs.button_group}>
-              <div className={tabs.button_selected}>남아</div>
-              <div className={tabs.button}>여아</div>
-            </div> */}
-            <label>성별 :</label>
+            <label>성별</label>
             <GenderInput
               setSelectedGender={handleGenderChange}
               selectedGender={selectedGender}
             />
-            {/* <label>
-              <input
-                type="checkbox"
-                name="gender"
-                value="boy"
-                checked={newBabyData.gender === "boy"}
-                onChange={handleGenderChange}
-              />
-              남아
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="gender"
-                value="girl"
-                checked={newBabyData.gender === "girl"}
-                onChange={handleGenderChange}
-              />
-              여아
-            </label> */}
             {genderCheck && "아이의 성별을 체크해주세요!"}
           </section>
         </div>
         <div className={styles.modal_button_container}>
           <button
-            className={`${styles.modal_btn} ${styles.modal_cancel_button}`}
+            className={`${button.btnXlYw} ${typography.textXlBd}`}
             type="button"
             onClick={onClose}
           >
             취소
           </button>
           <button
-            className={`${styles.modal_btn} ${styles.modal_done_button}`}
+            className={`${button.btnXlGr} ${typography.textXlBd}`}
             onClick={createBaby}
             type="button"
           >

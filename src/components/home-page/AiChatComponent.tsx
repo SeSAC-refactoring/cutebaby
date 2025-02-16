@@ -4,6 +4,7 @@ import { useHandleKeyDown } from "./hooks/useHandleKeyDown";
 import { useInput } from "../../hooks/useInput";
 import typography from "../../styles/commons/Typography.module.scss";
 import styles from "../../styles/AIChatComponent.module.scss";
+import { Input } from "../commons/Input";
 
 export const AiChatComponent = () => {
   const { input, setInput, handleInputChange } = useInput("");
@@ -50,13 +51,12 @@ export const AiChatComponent = () => {
 
       {/* 입력받는 곳 */}
       <div className={styles.chat_input_wrapper}>
-        <input
+        <Input
           type="text"
           value={input}
           onChange={handleInputChange}
           placeholder="질문을 입력해주세요."
           onKeyDown={handleKeyDown}
-          className={`${typography.textLgRg}`}
         />
         <button
           onClick={() => handleSendMessage(input, setInput)}

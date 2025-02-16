@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "../../styles/Modal.module.scss";
+import typography from "../../styles/commons/Typography.module.scss";
 import button from "../../styles/commons/Button.module.scss";
 import { useDelbaby } from "./hooks/useDelbaby";
 import { babyinfo } from "../types";
@@ -57,13 +58,13 @@ export const DelbabyModal: React.FC<DelbabyProps> = ({
           <div className={styles.del_modal_button_wrap}>
             <button
               onClick={goBack}
-              className={`${button.btnXlYw} ${styles.cancel_button}`}
+              className={`${button.btnXlYw} ${typography.textXlBd}`}
             >
               취소
             </button>
             <button
               onClick={handleDelete}
-              className={`${button.btnXlGr} ${styles.del_button}`}
+              className={`${button.btnXlGr} ${typography.textXlBd}`}
             >
               삭제
             </button>
