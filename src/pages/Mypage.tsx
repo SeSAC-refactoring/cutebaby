@@ -119,6 +119,7 @@ export default function Mypage() {
               </div>
               {babyInfo.length === 0 && (
                 <button
+                  style={{ width: "30%" }}
                   onClick={() => setBabyPlus(true)}
                   className={`${styles.addButton} ${button.btnLgBl} ${typography.textLgBd}`}
                 >
