@@ -60,7 +60,7 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
         }}
         style={{ height: centers.length === 0 ? "400px" : "900px" }}
       >
-        <div className={modal.modal_title_wrap}>
+        <div className={modal.titleArea}>
           <h2 className={`${layout.title} ${typography.text4xlBd}`}>
             위탁의료기관 찾기
           </h2>
@@ -73,7 +73,6 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
             <img src="/img/icons/i-modal-close-s32.svg" alt="" />
           </div>
         </div>
-
         {/* <div className={`${typography.textSmRg} ${styles.description}`}>
           <p>어린이 국가예방접종 사업 위탁의료기관이란?</p>
           <p>
@@ -85,11 +84,10 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
             접종하고자 할 때는 방문할 의료기관에 사전 확인하시기 바랍니다.
           </p>
         </div> */}
-
         <div className={modal.modalContentsArea}>
           {/* 데이터를 불러오는 로딩 화면 */}
           {isFirstLoading && (
-            <div className={modal.loadingContens}>
+            <div className={`${modal.loadingContens} ${styles.pageLoading}`}>
               <img src="/img/visuals/visual_loading_ggomul_04.svg" alt="" />
               <p className={typography.textLgMd}>
                 자료를 가져오고 있어요..
@@ -159,11 +157,28 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
           {/* 검색 결과(병원 리스트) 표시 */}
           <div className={styles.contents_wrap}>
             {!hasSearched ? (
-              <p>검색해 주세요.</p> // 검색 전 표시 문구
+              <div className={`${styles.loadingContens}`}>
+                <img src="/img/visuals/visual_loading_ggomul_03.svg" alt="" />
+                <p className={typography.textLgMd}>
+                  찾으시는 주소를 선택하시고 검색해주세요:)
+                </p>
+              </div>
             ) : isLoading ? (
-              <p>로딩 중...</p>
+              <div className={`${styles.loadingContens}`}>
+                <img src="/img/visuals/visual_loading_ggomul_04.svg" alt="" />
+                <p className={typography.textLgMd}>
+                  자료를 가져오고 있어요..
+                  <br />
+                  조금만 기다려주세요..
+                </p>
+              </div>
             ) : !centers || (centers || []).filter(Boolean).length < 1 ? (
-              <p>병원 정보가 없습니다.</p>
+              <div className={`${styles.loadingContens}`}>
+                <img src="/img/visuals/visual_loading_ggomul_06.svg" alt="" />
+                <p className={typography.textLgMd}>
+                  찾으시는 병원 정보가 없습니다...
+                </p>
+              </div>
             ) : (
               <div className={styles.centerListWrap}>
                 <CenterList

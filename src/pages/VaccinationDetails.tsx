@@ -87,7 +87,7 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
         className={`${modal.modalWrap}`}
       >
         <div className={modal.modal_title_wrap}>
-          <h2 className={`${modal.modalTitle} ${typography.text4xlBd}`}>
+          <h2 className={typography.text4xlBd}>
             예방접종 대상 감염병 정보
           </h2>
           <div
@@ -134,10 +134,10 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
                 {diseaseInfo[onClickDis] && (
                   <div className={styles.diseaseInfo_wrap}>
                     <div className={styles.title_wrap}>
-                      <span className={styles.title_big}>
+                      <span className={`${styles.title_big} ${typography.text3xlBd}`}>
                         {diseaseInfo[onClickDis].title.split("(")[0]}
                       </span>
-                      <span className={styles.title_small}>
+                      <span className={`${styles.title_small} ${typography.textXlMd}`}>
                         {"("}
                         {diseaseInfo[onClickDis].title.split("(")[1]}
                       </span>

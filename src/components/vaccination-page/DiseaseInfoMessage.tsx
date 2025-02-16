@@ -1,5 +1,5 @@
 import React from "react";
-
+import typography from "../../styles/commons/Typography.module.scss";
 import styles from "../../styles/VaccinationDetails.module.scss";
 
 interface DiseaseInfoMessageProps {
@@ -22,13 +22,13 @@ export const DiseaseInfoMessage: React.FC<DiseaseInfoMessageProps> = ({
           return (
             <p
               key={i}
-              className={
+              className={`${typography.textSmRg} ${
                 findFirstIndicator
                   ? line.includes("▶")
                     ? styles.highlight // ▶ 있는 줄 스타일
                     : ""
                   : styles.beforeIndicator // 첫 번째 ▶ 나오기 전 스타일
-              }
+              }`}
             >
               {line}
             </p>
