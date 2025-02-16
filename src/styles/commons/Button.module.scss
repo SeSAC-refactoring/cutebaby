@@ -115,6 +115,26 @@ $kakao-yellow-pressed: $color-kakao-yellow-7;
 }
 
 // → yellow
+.btnLgYw {
+  height: 64px;
+  padding: 16px 24px;
+  gap: 8px;
+  color: $color-gray-10;
+  border-radius: 16px;
+  background-color: $yellow-default;
+
+  &:disabled {
+    background-color: $yellow-disabled;
+  }
+
+  &:hover {
+    background-color: $yellow-hovered;
+  }
+
+  &:active {
+    background-color: $yellow-pressed;
+  }
+}
 
 // → blue
 .btnLgBl {

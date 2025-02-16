@@ -104,7 +104,7 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
           {isLoading ? (
             <div className={modal.loadingContens}>
               <img src="/img/visuals/visual_loading_ggomul_04.svg" alt="" />
-              <p>
+              <p className={typography.textLgMd}>
                 자료를 가져오고 있어요..
                 <br />
                 조금만 기다려주세요..
