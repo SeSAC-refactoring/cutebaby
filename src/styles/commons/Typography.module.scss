@@ -1,169 +1,172 @@
-/* Typography */
+html {
+  // 1rem을 10px로 바꾸기
+  font-size: 62.5%;
+}
 
 .text3xsRg {
-  font-size: 10px;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 14px;
+  line-height: 1.4rem;
 }
 .text3xsMd {
-  font-size: 10px;
+  font-size: 1rem;
   font-weight: 500;
-  line-height: 14px;
+  line-height: 1.4rem;
 }
 .text3xsBd {
-  font-size: 10px;
+  font-size: 1rem;
   font-weight: 700;
-  line-height: 14px;
+  line-height: 1.4rem;
 }
 .text2xsRg {
-  font-size: 12px;
+  font-size: 1.2rem;
   font-weight: 400;
-  line-height: 16px;
+  line-height: 1.6rem;
 }
 .text2xsMd {
-  font-size: 12px;
+  font-size: 1.2rem;
   font-weight: 500;
-  line-height: 16px;
+  line-height: 1.6rem;
 }
 .text2xsBd {
-  font-size: 12px;
+  font-size: 1.2rem;
   font-weight: 700;
-  line-height: 16px;
+  line-height: 1.6rem;
 }
 .textXsRg {
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 400;
-  line-height: 18px;
+  line-height: 1.8rem;
 }
 .textXsMd {
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 500;
-  line-height: 18px;
+  line-height: 1.8rem;
 }
 .textXsBd {
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 700;
-  line-height: 18px;
+  line-height: 1.8rem;
 }
 .textBsRg {
-  font-size: 16px;
+  font-size: 1.6rem; /* 16px */
   font-weight: 400;
-  line-height: 20px;
+  line-height: 2rem; /* 20px */
 }
 .textBsMd {
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 500;
-  line-height: 20px;
+  line-height: 2rem;
 }
 .textBsBd {
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 700;
-  line-height: 20px;
+  line-height: 2rem;
 }
 .textSmRg {
-  font-size: 18px;
+  font-size: 1.8rem; /* 18px */
   font-weight: 400;
-  line-height: 22px;
+  line-height: 2.2rem; /* 22px */
 }
 .textSmMd {
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 500;
-  line-height: 22px;
+  line-height: 2.2rem;
 }
 .textSmBd {
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 700;
-  line-height: 22px;
+  line-height: 2.2rem;
 }
 .textMdRg {
-  font-size: 20px;
+  font-size: 2rem; /* 20px */
   font-weight: 400;
-  line-height: 24px;
+  line-height: 2.4rem; /* 24px */
 }
 .textMdMd {
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 2.4rem;
 }
 .textMdBd {
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
-  line-height: 24px;
+  line-height: 2.4rem;
 }
 .textLgRg {
-  font-size: 22px;
+  font-size: 2.2rem; /* 22px */
   font-weight: 400;
-  line-height: 28px;
+  line-height: 2.8rem; /* 28px */
 }
 .textLgMd {
-  font-size: 22px;
+  font-size: 2.2rem;
   font-weight: 500;
-  line-height: 28px;
+  line-height: 2.8rem;
 }
 .textLgBd {
-  font-size: 22px;
+  font-size: 2.2rem;
   font-weight: 700;
-  line-height: 28px;
+  line-height: 2.8rem;
 }
 .textxLgRg {
-  font-size: 24px;
+  font-size: 2.4rem; /* 24px */
   font-weight: 400;
-  line-height: 28px;
+  line-height: 2.8rem; /* 28px */
 }
 .textXlMd {
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 500;
-  line-height: 28px;
+  line-height: 2.8rem;
 }
 .textXlBd {
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 700;
-  line-height: 28px;
+  line-height: 2.8rem;
 }
 .text2xlRg {
-  font-size: 28px;
+  font-size: 2.8rem; /* 28px */
   font-weight: 400;
-  line-height: 34px;
+  line-height: 3.4rem; /* 34px */
 }
 .text2xlMd {
-  font-size: 28px;
+  font-size: 2.8rem;
   font-weight: 500;
-  line-height: 34px;
+  line-height: 3.4rem;
 }
 .text2xlBd {
-  font-size: 28px;
+  font-size: 2.8rem;
   font-weight: 700;
-  line-height: 34px;
+  line-height: 3.4rem;
 }
 .text3xlRg {
-  font-size: 32px;
+  font-size: 3.2rem;
   font-weight: 400;
-  line-height: 38px;
+  line-height: 3.8rem;
 }
 .text3xlMd {
-  font-size: 32px;
+  font-size: 3.2rem;
   font-weight: 500;
-  line-height: 38px;
+  line-height: 3.8rem;
 }
 .text3xlBd {
-  font-size: 32px;
+  font-size: 3.2rem;
   font-weight: 700;
-  line-height: 38px;
+  line-height: 3.8rem;
 }
 .text4xlRg {
-  font-size: 40px;
+  font-size: 4rem;
   font-weight: 400;
-  line-height: 46px;
+  line-height: 4.6rem;
 }
 .text4xlMd {
-  font-size: 40px;
+  font-size: 4rem;
   font-weight: 500;
-  line-height: 46px;
+  line-height: 4.6rem;
 }
 .text4xlBd {
-  font-size: 40px;
+  font-size: 4rem;
   font-weight: 700;
-  line-height: 46px;
+  line-height: 4.6rem;
 }
 .capitalize {
   text-transform: capitalize;
