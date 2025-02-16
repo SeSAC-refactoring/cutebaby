@@ -92,19 +92,6 @@
   background-color: $color-blue-1;
 }
 
-ul {
-  li {
-    width: 100%;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    white-space: pre-line; // \n을 인식하여 줄바꿈 적용
-    text-align: center;
-    border-bottom: 2px solid $color-gray-2;
-    border-right: 2px solid $color-gray-2;
-  }
-}
-
 .thVaccineType,
 .ulVaccineType {
   width: 192px;
@@ -199,6 +186,12 @@ ul {
   }
 }
 
+.modalVacDateContentsArea {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 // 1~2회 접종인 것 중 1회만 접종 시 // 2회 접종 완료 시 compldted로
 .onlyFirst {
   background-color: rgba(255, 182, 193, 0.457);
@@ -206,64 +199,54 @@ ul {
 
 .enter_btn {
   background-color: rgb(214, 213, 213);
-  width: 40px;
-  border: none;
 }
+
 .search_wrap {
-  margin-top: 30px;
-  width: 500px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .search_date {
-  width: 340px;
   height: 30px;
 }
 .search_btn {
-  border: none;
   height: 30px;
-  width: 50px;
 }
 .complete_btn_wrap {
   font-size: 22px;
   font-weight: bold;
   height: 96px;
-  width: 182px;
   justify-content: space-between;
   display: flex;
   align-items: flex-end;
   gap: 8px;
+  
+  button {
+    width: 100%;
+  }
 }
 .date_del_btn {
   font-size: 22px;
   font-weight: bold;
   border-radius: 16px;
-  width: 87px;
   height: 64px;
-  border: none;
   background-color: #f6c7c6;
 }
 .date_edit_btn {
   font-size: 22px;
   font-weight: bold;
   border-radius: 16px;
-  width: 87px;
   height: 64px;
-  border: none;
   background-color: $color-blue-4;
 }
 .enter_btn_wrap {
-  height: 96px;
   display: flex;
   align-items: flex-end;
 }
 .date_enter_btn {
   font-size: 22px;
   font-weight: bold;
-  width: 182px;
   height: 64px;
-  border: none;
   background-color: $color-blue-4;
   border-radius: 16px;
 }
@@ -271,36 +254,38 @@ ul {
   font-size: 22px;
   font-weight: bold;
   border-radius: 16px;
-  width: 87px;
   height: 64px;
-  border: none;
   background-color: $color-yellow-4;
 }
+
 .inputBtn_wrap {
-  width: 512px;
+  flex-grow: 1;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  gap: 16px;
 }
 .input_wrap {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
+  gap: 8px;
   justify-content: space-between;
 }
 .complete_input {
-  background-color: $color-green-1;
-  width: 314px;
-  height: 64px;
-  font-size: 22px;
-  font-weight: 700;
-  border-radius: 16px;
-  color: $color-green-7;
+  flex-grow: 1;
+  width: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   padding-left: 24px;
+  padding-right: 24px;
+  color: $color-green-7;
+  background-color: $color-green-1;
+  border-radius: 16px;
 }
 .not_complete_input {
+  flex-grow: 1;
   background-color: $color-gray-1;
-  width: 314px;
   height: 64px;
   font-size: 22px;
   font-weight: 700;
@@ -310,10 +295,11 @@ ul {
   align-items: center;
   padding-left: 24px;
 }
+
 .date_input {
+  flex-grow: 1;
   background-color: $color-yellow-1;
   border: 2px solid $color-gray-6;
-  width: 314px;
   height: 64px;
   font-size: 22px;
   border-radius: 16px;
