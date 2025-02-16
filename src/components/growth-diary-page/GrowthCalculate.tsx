@@ -54,6 +54,7 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
         onClick={(e) => {
           e.stopPropagation();
         }}
+
       >
         <div className={modal.titleArea}>
           <div className={modal.textWrap}>
@@ -64,6 +65,7 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
               우리 아이의 성장 상태를 확인해보세요:)
             </p>
           </div>
+
           <div
             className={modal.closeBtn}
             onClick={() => {
@@ -72,6 +74,7 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
           >
             <img src="/img/icons/i-modal-close-s32.svg" alt="" />
           </div>
+
         </div>
         <div className={modal.modalContentsArea}>
           {/* 사용자 입력값 설정 */}
@@ -87,6 +90,7 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
               <div className={modal.loadingContens}>
                 <img src="/img/visuals/visual_loading_ggomul_04.svg" alt="" />
                 <p className={typography.textLgMd}>
+
                   자료를 가져오고 있어요..
                   <br />
                   조금만 기다려주세요..

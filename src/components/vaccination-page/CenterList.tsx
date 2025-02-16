@@ -42,15 +42,15 @@ export const CenterList: React.FC<CenterListProps> = ({
                   )}
                 </div>
                 <div className={styles.contents_set}>
-                  <div className={styles.contents_title}>병원주소</div>
-                  <div className={styles.contents}>
+                  <div className={`${styles.contents_title} ${typography.textLgMd}`}>병원주소</div>
+                  <div className={`${styles.contents} ${typography.textLgMd}`}>
                     {center.orgAddr || "주소 없음"}
                   </div>
                 </div>
                 <div className={styles.contents_set}>
-                  <div className={styles.contents_title}>대표번호</div>
+                  <div className={`${styles.contents_title} ${typography.textLgMd}`}>대표번호</div>
                   <img src="/img/phone-call-01.png" alt="전화기"></img>
-                  <div className={`${styles.contents} ${styles.center_number}`}>
+                  <div className={`${styles.contents} ${styles.center_number} ${typography.textLgMd}`}>
                     {center.orgTlno || "전화번호 없음"}
                   </div>
                 </div>
