@@ -73,6 +73,7 @@ export default function Vaccination() {
         <VaccinationDetails setOpenDetailsModal={setOpenDetailsModal} />
       )}
       {openInfoModal && <VaccineInfo setOpenInfoModal={setOpenInfoModal} />}
+
       <div className={layout.container}>
         <div className={`${layout.contentsArea} ${styles.contentsArea}`}>
           <div className={layout.titleArea}>

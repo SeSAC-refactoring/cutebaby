@@ -138,7 +138,11 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
       </div>
 
       {babyPlus && (
-        <div onClick={() => setBabyPlus(false)} className={modal.modal_overlay}>
+        <div
+          onClick={() => setBabyPlus(false)}
+          style={{ right: "0px" }}
+          className={modal.modal_overlay}
+        >
           <BabyInputPlus
             onClose={() => setBabyPlus(false)}
             babyInfo={babyInfo}
