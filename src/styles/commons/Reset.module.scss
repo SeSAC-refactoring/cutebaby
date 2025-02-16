@@ -108,12 +108,12 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* Select box 스타일 초기화 */
 select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  // -webkit-appearance: none;
+  // -moz-appearance: none;
+  // appearance: none;
 }
 
 /* IE 에서 Select box 화살표 제거 */
 select::-ms-expand {
-  display: none;
+  // display: none;
 }
