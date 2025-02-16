@@ -127,12 +127,11 @@ export default function Mypage() {
                   <div className={typography.textXlBd}>{userInfo.userid}</div>
                 </div>
                 <button
-                  className={`${button.btnMdYw} ${typography.textMdBd}${
+                  className={`${button.btnLgYw} ${typography.textMdBd}${
                     isKakaoLogin ? styles.disabled : ""
                   }`}
                   onClick={update}
                   disabled={isKakaoLogin}
-                  style={{ width: "20%" }}
                 >
                   개인정보 수정
                   <img
