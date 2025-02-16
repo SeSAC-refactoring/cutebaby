@@ -1,6 +1,8 @@
 import React from "react";
 import { newGrowData } from "../types";
 import styles from "../../styles/GrowthDiary.module.scss";
+import button from "../../styles/commons/Button.module.scss";
+import typography from "../../styles/commons/Typography.module.scss";
 import { DiaryInputArea } from "./DiaryInputArea";
 import { DiaryTable } from "./DiaryTable";
 
@@ -43,7 +45,7 @@ export const RecentGrowthRecord: React.FC<RecentGrowthRecordProps> = ({
       <div className={styles.recent_add_button_wrap}>
         <button
           onClick={() => setOpenAddModal(true)}
-          className={styles.recent_add}
+          className={`${button.btnSmGr} ${typography.textBsMd}`}
         >
           성장기록 보러가기
         </button>

@@ -71,7 +71,6 @@
   }
 
   // 모달 영역
-  .modalWrapWidth,
   .modalWrap {
     flex-grow: 1;
     width: 100%;
@@ -122,6 +121,8 @@
       display: flex;
       flex-direction: column;
       gap: 24px;
+      overflow-x: hidden;
+      overflow-y: scroll;
 
 
       // 로딩 화면

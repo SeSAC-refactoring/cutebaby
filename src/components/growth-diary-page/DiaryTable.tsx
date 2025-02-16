@@ -24,9 +24,9 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({
         <div className={styles.list_title}>몸무게(kg)</div>
         <div className={styles.list_title}>머리둘레(cm)</div>
       </div>
-      <div>
+      <div className={typography.textLgRg}>
         {growData.length > 0 ? (
-          <ul>
+          <ul className={typography.textLgRg}>
             {growData.map((info, i) => (
               <li key={i} className={styles.row_el}>
                 <div className={`${styles.list_el} ${typography.textLgRg}`}>

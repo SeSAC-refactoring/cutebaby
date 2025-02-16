@@ -6,6 +6,7 @@ import { DiaryInputArea } from "../components/growth-diary-page/DiaryInputArea";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useSelectBaby } from "../hooks/useSelectBaby";
+import modal from "../styles/Modal.module.scss";
 import layout from "../styles/commons/Layout.module.scss";
 import typography from "../styles/commons/Typography.module.scss";
 import button from "../styles/commons/Button.module.scss";
@@ -38,9 +39,7 @@ export default function GrowthDiary() {
   const navigate = useNavigate();
   useEffect(() => {
     if (!user) {
-
       navigate("/");
-
     }
   });
 
@@ -48,10 +47,8 @@ export default function GrowthDiary() {
   const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
   const { growData } = useGrowData(growInfo, selectedBabyId);
 
-
   // console.log("애기 성장정보 입니다 >>>>", growInfo);
   // console.log("selectedBabyId에 따른 성장정보 입니다 >>>>", growData);
-
 
   // 수정 모달 열기
   const handleEdit = (growId: number) => {
@@ -67,7 +64,7 @@ export default function GrowthDiary() {
   // console.log(page1, page2, page3);
 
   return (
-    <>
+    <div className={layout.mainAreaWrap}>
       {/* 성장 계산기 모달 */}
       {openCalModal && (
         <GrowthCalculate
@@ -80,11 +77,13 @@ export default function GrowthDiary() {
       {/* 성장기록 보러가기 모달 */}
       {openAddModal && (
         <div
-          className={styles.modal_background_wrap}
-          onClick={() => setOpenAddModal(false)}
+          className={modal.modal_overlay}
+          onClick={() => {
+            setOpenAddModal(false);
+          }}
         >
           <div
-            className={styles.block_record}
+            className={modal.modalWrap}
             onClick={(e) => e.stopPropagation()}
           >
             <div className={styles.add_wrap}>
@@ -119,148 +118,142 @@ export default function GrowthDiary() {
           onClose={() => setOpenDelModal(false)}
         />
       )}
-      <div className={layout.mainAreaWrap}>
-        <div className={layout.container}>
-          <div className={layout.contentsArea}>
-            <div className={layout.titleArea}>
-              <div className={layout.textWrap}>
-                <div className={[layout.title, typography.text4xlBd].join(" ")}>
-                  성장일지
-                </div>
-                <div
-                  className={[layout.pageGuide, typography.textXlMd].join(" ")}
-                >
-                  <strong className={typography.textXlBd}>
-                    우리 아이의 성장
-                  </strong>
-                  을 기록하고 상태를 확인해보세요:)
-                </div>
+      <div className={layout.container}>
+        <div className={layout.contentsArea}>
+          <div className={layout.titleArea}>
+            <div className={layout.textWrap}>
+              <div className={[layout.title, typography.text4xlBd].join(" ")}>
+                성장일지
               </div>
-
-
-              <button
-                className={[button.btnSmYw, typography.textBsBd].join(" ")}
-                onClick={() => setOpenCalModal(true)}
+              <div
+                className={[layout.pageGuide, typography.textXlMd].join(" ")}
               >
-                성장상태 계산
-                <img src="../img/icons/i-chevron-right-s20.svg" alt=">" />
-              </button>
+                <strong className={typography.textXlBd}>
+                  우리 아이의 성장
+                </strong>
+                을 기록하고 상태를 확인해보세요:)
+              </div>
             </div>
 
-            <div className={styles.contentsArea}>
-              {babyInfo.length > 0 && (
-                <>
-                  <BabyList
-                    babyInfo={babyInfo}
-                    handleSelectBaby={handleSelectBaby}
-                    selectedBabyId={selectedBabyId}
-                  />
+            <button
+              className={[button.btnSmYw, typography.textBsBd].join(" ")}
+              onClick={() => setOpenCalModal(true)}
+            >
+              성장상태 계산
+              <img src="../img/icons/i-chevron-right-s20.svg" alt=">" />
+            </button>
+          </div>
 
-                  {/* 성장기록 그래프 */}
+          <div className={`${layout.contentsWrap} ${styles.contentsWrap}`}>
+            {babyInfo.length > 0 && (
+              <>
+                <BabyList
+                  babyInfo={babyInfo}
+                  handleSelectBaby={handleSelectBaby}
+                  selectedBabyId={selectedBabyId}
+                />
 
-                  {growData.length > 0 ? (
-                    <>
-                      <div className={styles.recent_record_wrap}>
-                        <div className={styles.recent_contents_wrap}>
-                          <div className={styles.recent_graph_wrap}>
-                            <div className={styles.recent_graph_title}>
-                              우리 아이 성장 추이
-                            </div>
-                            <div className={styles.recent_graph}>
-                              <DiaryChart growData={growData} />
-                            </div>
+                {/* 성장기록 그래프 */}
+
+                {growData.length > 0 ? (
+                  <>
+                    <div className={styles.recent_record_wrap}>
+                      <div className={styles.recent_contents_wrap}>
+                        <div className={styles.recent_graph_wrap}>
+                          <div className={styles.recent_graph_title}>
+                            우리 아이 성장 추이
                           </div>
-                          <RecentGrowthRecord
-                            growData={growData}
-                            setOpenAddModal={setOpenAddModal}
-                          />
-                        </div>
-                      </div>
-                    </>
-                  ) : (
-                    <></>
-                  )}
-
-                  {growData.length > 0 ? (
-                    <></>
-                  ) : (
-                    <>
-                      <div
-                        style={{ marginTop: "32px" }}
-                        className={styles.no_baby_box2_Wrap}
-                      >
-                        <div className={styles.no_baby_box2_1}></div>
-                        <div className={styles.no_baby_box2_2}></div>
-                      </div>
-                      <div
-                        style={{
-                          height: "512px",
-                          bottom: "512px",
-                        }}
-                        className={styles.blur_background}
-                      >
-                        <div className={styles.blur_container}>
-                          <img src="/img/Ggoggo-002.png" />
-                          <div className={styles.blur_text}>
-                            등록된 기록이 없습니다!
+                          <div className={styles.recent_graph}>
+                            <DiaryChart growData={growData} />
                           </div>
-
-                          <button
-                            onClick={() => {
-                              setOpenAddModal(true);
-                            }}
-                            className={`${button.btnLgGr} ${typography.textLgBd}`}
-                          >
-                            성장기록 등록하기
-                            <img
-                              src="../img/icons/i-chevron-right-s28.svg"
-                              alt=">"
-                            />
-                          </button>
                         </div>
+                        <RecentGrowthRecord
+                          growData={growData}
+                          setOpenAddModal={setOpenAddModal}
+                        />
                       </div>
-                    </>
-                  )}
-                </>
-              )}
-              {babyInfo.length === 0 && (
-                <>
-                  <div className={styles.no_baby_wrap}>
-                    <div className={styles.no_baby_box1}></div>
-                    <div className={styles.no_baby_box2_Wrap}>
+                    </div>
+                  </>
+                ) : (
+                  <></>
+                )}
+
+                {growData.length > 0 ? (
+                  <></>
+                ) : (
+                  <>
+                    <div
+                      style={{ marginTop: "32px" }}
+                      className={styles.no_baby_box2_Wrap}
+                    >
                       <div className={styles.no_baby_box2_1}></div>
                       <div className={styles.no_baby_box2_2}></div>
                     </div>
-                  </div>
-                  <div className={styles.blur_background}>
-                    <div className={styles.blur_container}>
-                      <img src="/img/Ggoggo-002.png" />
-                      <div className={styles.blur_text}>
-                        등록된 아이가 없습니다!
-                      </div>
-
-                      <Link className={styles.Link} to="/Mypage">
+                    <div
+                      style={{
+                        height: "512px",
+                        bottom: "512px",
+                      }}
+                      className={styles.blur_background}
+                    >
+                      <div className={styles.blur_container}>
+                        <img src="/img/Ggoggo-002.png" />
+                        <div className={styles.blur_text}>
+                          등록된 기록이 없습니다!
+                        </div>
 
                         <button
+                          onClick={() => {
+                            setOpenAddModal(true);
+                          }}
                           className={`${button.btnLgGr} ${typography.textLgBd}`}
                         >
-                          아이 등록하기
+                          성장기록 등록하기
                           <img
-
                             src="../img/icons/i-chevron-right-s28.svg"
-
-                            alt="바로가기 아이콘"
-                          ></img>
+                            alt=">"
+                          />
                         </button>
-                      </Link>
+                      </div>
                     </div>
+                  </>
+                )}
+              </>
+            )}
+            {babyInfo.length === 0 && (
+              <>
+                <div className={styles.no_baby_wrap}>
+                  <div className={styles.no_baby_box1}></div>
+                  <div className={styles.no_baby_box2_Wrap}>
+                    <div className={styles.no_baby_box2_1}></div>
+                    <div className={styles.no_baby_box2_2}></div>
                   </div>
-                </>
-              )}
-            </div>
+                </div>
+                <div className={styles.blur_background}>
+                  <div className={styles.blur_container}>
+                    <img src="/img/Ggoggo-002.png" />
+                    <div className={styles.blur_text}>
+                      등록된 아이가 없습니다!
+                    </div>
+
+                    <Link className={styles.Link} to="/Mypage">
+                      <button
+                        className={`${button.btnLgGr} ${typography.textLgBd}`}
+                      >
+                        아이 등록하기
+                        <img
+                          src="../img/icons/i-chevron-right-s28.svg"
+                          alt="바로가기 아이콘"
+                        ></img>
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
