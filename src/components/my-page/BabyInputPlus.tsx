@@ -104,71 +104,77 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
     <>
       <div
         onClick={(e) => e.stopPropagation()}
-        className={styles.modal_container}
+        className={styles.modalWrapW640}
       >
-        <div className={styles.modal_title_wrap}>
-          <div className={styles.modal_title}>아이 정보 등록</div>
-          <div className={styles.X_btn} onClick={onClose}>
-            X
+        <div className={styles.titleArea}>
+          <div className={`${styles.modal_title} ${typography.text4xlBd}`}>
+            아이 정보 등록
+          </div>
+          <div onClick={onClose} className={styles.closeBtn}>
+            <img src="/img/icons/i-modal-close-s32.svg" alt="" />
           </div>
         </div>
-        <div className={styles.modal_img_wrap}>
-          {defaultImg && <img src="/img/Profile.png" alt="아기 사진" />}
-          <div style={{ position: "relative", bottom: "60px", left: "30px" }}>
-            <ImageUploader
-              setDefaultImg={setDefaultImg}
-              onImageSelect={(file) =>
-                setNewBabyData((prev) => ({ ...prev, picture: file }))
-              }
-              resetTrigger={resetImage}
-            />
+        <div className={styles.modalContentsArea}>
+          <div className={styles.modalContentsAreaWrap}>
+            <div className={styles.modal_img_wrap}>
+              {defaultImg && <img src="/img/Profile.png" alt="아기 사진" />}
+              <button className={button.btnSmBl}>
+                <ImageUploader
+                  setDefaultImg={setDefaultImg}
+                  onImageSelect={(file) =>
+                    setNewBabyData((prev) => ({ ...prev, picture: file }))
+                  }
+                  resetTrigger={resetImage}
+                />
+              </button>
+            </div>
+            <div className={styles.modal_Input_wrap}>
+              <Input
+                label="이름"
+                placeholder="이름을 입력해주세요."
+                id="babyname"
+                value={newBabyData.babyname}
+                onChange={handleInputChange}
+                ref={(el) => {
+                  inputRef.current.babyname = el;
+                }}
+              ></Input>
+              <Input
+                label="생년월일"
+                type="date"
+                id="birthday"
+                value={newBabyData.birthday}
+                onChange={handleInputChange}
+                ref={(el) => {
+                  inputRef.current.birthday = el;
+                }}
+              ></Input>
+              <section>
+                <label>성별</label>
+                <GenderInput
+                  setSelectedGender={handleGenderChange}
+                  selectedGender={selectedGender}
+                />
+                {genderCheck && "아이의 성별을 체크해주세요!"}
+              </section>
+            </div>
           </div>
-        </div>
-        <div className={styles.modal_Input_wrap}>
-          <Input
-            label="이름"
-            placeholder="이름을 입력해주세요."
-            id="babyname"
-            value={newBabyData.babyname}
-            onChange={handleInputChange}
-            ref={(el) => {
-              inputRef.current.babyname = el;
-            }}
-          ></Input>
-          <Input
-            label="생년월일"
-            type="date"
-            id="birthday"
-            value={newBabyData.birthday}
-            onChange={handleInputChange}
-            ref={(el) => {
-              inputRef.current.birthday = el;
-            }}
-          ></Input>
-          <section>
-            <label>성별</label>
-            <GenderInput
-              setSelectedGender={handleGenderChange}
-              selectedGender={selectedGender}
-            />
-            {genderCheck && "아이의 성별을 체크해주세요!"}
-          </section>
-        </div>
-        <div className={styles.modal_button_container}>
-          <button
-            className={`${button.btnXlYw} ${typography.textXlBd}`}
-            type="button"
-            onClick={onClose}
-          >
-            취소
-          </button>
-          <button
-            className={`${button.btnXlGr} ${typography.textXlBd}`}
-            onClick={createBaby}
-            type="button"
-          >
-            완료
-          </button>
+          <div className={styles.modal_button_container}>
+            <button
+              className={`${button.btnXlYw} ${typography.textXlBd}`}
+              type="button"
+              onClick={onClose}
+            >
+              취소
+            </button>
+            <button
+              className={`${button.btnXlGr} ${typography.textXlBd}`}
+              onClick={createBaby}
+              type="button"
+            >
+              완료
+            </button>
+          </div>
         </div>
       </div>
     </>

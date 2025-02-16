@@ -10,7 +10,8 @@
       display: flex;
       flex-direction: column;
       gap: 2.4rem;
-      margin-bottom: 34px;
+      padding-bottom: 32px;
+      overflow-y: scroll;
 
       .formWrap {
         position: relative;

@@ -79,9 +79,8 @@
             align-items: center;
             border: 2px solid $color-blue-3;
             border-radius: 24px;
-
+            
             canvas {
-              // object-fit: contain;
             }
 
             &.empty {

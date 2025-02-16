@@ -6,6 +6,8 @@ import React, {
   SetStateAction,
 } from "react";
 import styles from "../../styles/Modal.module.scss";
+import typography from "../../styles/commons/Typography.module.scss";
+import button from "../../styles/commons/Button.module.scss";
 interface ImageUploaderProps {
   onImageSelect: (file: File | null) => void;
   resetTrigger: boolean;
@@ -118,7 +120,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
   }, [resetTrigger]);
 
   return (
-    <div
+    <div className={styles.imgUpModalWrap}
       style={{
         display: "flex",
         flexDirection: "column",
@@ -160,10 +162,14 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
           />
           <button
             onClick={() => fileInputRef.current?.click()}
-            className={styles.modal_img_button}
+            className={`${button.btnSmBl} ${typography.textBsBd}`}
           >
             사진 등록
-            <img src="img/image-add.png" alt="이미지 아이콘" />
+            <img
+              className={styles.iconPhoto}
+              src="img/icons/i-profile-photo-s20.svg"
+              alt="이미지 아이콘"
+            />
           </button>
         </>
       )}
