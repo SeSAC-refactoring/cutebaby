@@ -29,10 +29,10 @@ const KakaoLogin = (): React.ReactElement => {
           navigate("/Home", { state: babyInfo });
         })
         .catch((error) => {
-          console.error("성장 정보 요청 실패:", error);
+          // console.error("성장 정보 요청 실패:", error);
         });
     } else {
-      console.log("성장 정보 요청 중단: babyInfo가 없습니다.");
+      // console.log("성장 정보 요청 중단: babyInfo가 없습니다.");
     }
   }, [babyInfo, dispatch, navigate]);
 
@@ -56,10 +56,10 @@ const KakaoLogin = (): React.ReactElement => {
       sessionStorage.setItem("username", userData.properties.nickname);
       sessionStorage.setItem("useremail", userData.id);
 
-      console.log("🔄 Redux에서 아기 정보 로드 시작");
+      // console.log("🔄 Redux에서 아기 정보 로드 시작");
       dispatch(fetchBabyInfo()); // ✅ Redux 상태 업데이트 후 `useEffect`에서 `fetchgrowInfo()` 실행
     } catch (error) {
-      console.error("카카오 로그인 실패 :", error);
+      // console.error("카카오 로그인 실패 :", error);
     }
   };
 

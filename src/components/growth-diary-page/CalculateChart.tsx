@@ -50,10 +50,10 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
   )
     return <p>데이터가 부족합니다.</p>;
 
-  console.log("filteredLmsDataByGender", filteredLmsDataByGender);
-  console.log("filteredLmsDataByMonths", filteredLmsDataByMonths);
-  console.log("percentileData", percentileData);
-  console.log("percentiles", percentiles);
+  // console.log("filteredLmsDataByGender", filteredLmsDataByGender);
+  // console.log("filteredLmsDataByMonths", filteredLmsDataByMonths);
+  // console.log("percentileData", percentileData);
+  // console.log("percentiles", percentiles);
 
   let p97Height: { x: number; y: number }[] = [];
   let p3Height: { x: number; y: number }[] = [];

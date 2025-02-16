@@ -19,12 +19,12 @@ export const DelbabyModal: React.FC<DelbabyProps> = ({
 
   // `handleSelectBaby`가 올바른 값인지 확인
   useEffect(() => {
-    console.log("삭제할 babyid:", handleSelectBaby);
+    // console.log("삭제할 babyid:", handleSelectBaby);
   }, [handleSelectBaby]);
 
   // 모달 닫기
   const goBack = () => {
-    console.log(" 모달 닫기 실행");
+    // console.log(" 모달 닫기 실행");
     onClose();
   };
 
@@ -33,13 +33,13 @@ export const DelbabyModal: React.FC<DelbabyProps> = ({
     if (handleSelectBaby !== null) {
       const success = await delbaby(handleSelectBaby);
       if (success) {
-        console.log(" 아이 삭제 성공");
+        // console.log(" 아이 삭제 성공");
         onClose();
       } else {
-        console.error(" 아이 삭제 실패");
+        // console.error(" 아이 삭제 실패");
       }
     } else {
-      console.error("⚠ 삭제할 babyid가 null입니다.");
+      // console.error("⚠ 삭제할 babyid가 null입니다.");
     }
   };
 

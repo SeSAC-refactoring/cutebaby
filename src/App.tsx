@@ -33,9 +33,9 @@ export interface UserData {
 
 function App() {
   useEffect(() => {
-    loadKakaoSDK()
-      .then(() => console.log("Kakao SDK 준비 완료"))
-      .catch((error) => console.error("Kakao SDK 로드 실패:", error));
+    loadKakaoSDK();
+    // .then(() => console.log("Kakao SDK 준비 완료"))
+    // .catch((error) => console.error("Kakao SDK 로드 실패:", error));
   }, []);
 
   return (
