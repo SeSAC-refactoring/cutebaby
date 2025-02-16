@@ -3,7 +3,7 @@
 // Home.tsx ////////////////////////////////
 // 전체 영역
 .contentsArea {
-  width: 100%;
+  width: 100;
   flex-grow: 1;
   display: flex;
   justify-content: center;
@@ -177,19 +177,25 @@
 }
 @media screen and (max-width: 390px) {
   .contentsArea {
+    // position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    overflow-y: auto;
+    flex-grow: 0;
     height: 100vh;
-    padding: 16px;
+    width: 100%;
+    padding: 6%;
+    border: none;
+    overflow: auto; /* 내부 내용이 넘칠 경우 스크롤 */
+
+    // padding: 16px;
 
     // 왼쪽 | 사용자 영역
     .userArea {
       flex-grow: 0;
       width: 90vw;
       height: 100%;
-      box-sizing: border-box;
+      box-sizing: content-box;
       display: flex;
       flex-direction: column;
       gap: 80px;
@@ -273,12 +279,12 @@
           .banner_wrap {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            gap: 12px;
 
             // 배너 공통 스타일
             .banner_container {
               height: 114px;
-              padding: 24px;
+              padding: 12px;
               display: flex;
               flex-direction: column;
               align-items: self-start;
