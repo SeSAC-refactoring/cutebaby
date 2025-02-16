@@ -1,0 +1,22 @@
+@import "./commons/Colors.module.scss";
+
+.contentsArea {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+
+  .formArea {
+    flex-grow: 1;
+    display: flex;
+    gap: 32px;
+
+    .inputDate {
+      flex-grow: 1;
+    }
+  }
+
+  .buttonsArea {
+    display: flex;
+    gap: 16px;
+  }
+}
