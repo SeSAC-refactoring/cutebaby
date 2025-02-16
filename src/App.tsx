@@ -50,6 +50,7 @@ function App() {
         <Route path="/Mypage" element={<Mypage />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Vaccination" element={<Vaccination />} />
+        <Route path="/SelectLogin" element={<SelectLogin />} />
         {/* <Route path="/VaccinationDetails" element={<VaccinationDetails />} />
         <Route path="/VaccinationCenters" element={<VaccinationCenters />} /> */}
       </Routes>
