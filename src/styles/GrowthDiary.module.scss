@@ -3,7 +3,7 @@
 .block_record {
   position: absolute;
   top: 19%;
-  left: 340px;
+  left: 320px;
   border: 2px solid #838391;
   border-radius: 40px;
   width: 1280px;
@@ -107,7 +107,6 @@
   margin-bottom: 10px;
 }
 .recent_contents_wrap {
-  border: 1px solid red;
   display: flex;
 }
 .record_table {
@@ -300,9 +299,12 @@
 .modalWrap {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  // background-color: blue;
 }
 .input_background {
   // width: 1000px;
+  width: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -313,6 +315,7 @@
   font-size: 40px;
   font-weight: bold;
   margin-bottom: 48px;
+  width: 100%;
 }
 .img {
   margin: 48px;
@@ -354,6 +357,8 @@
   background-color: #bbdeeb;
   width: 80px;
   margin-left: 8px;
+  display: flex;
+  gap: 4px;
 }
 
 .delete_btn {
