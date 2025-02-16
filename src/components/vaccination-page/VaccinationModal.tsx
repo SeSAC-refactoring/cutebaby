@@ -32,7 +32,7 @@ export const VaccinationModal: React.FC<VaccinationModalProps> = ({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={styles.modal_container}
+        className={styles.modalWrapW640}
       >
         {/* 🌟 모달 제목 */}
         <VaccinationModalTitle

@@ -260,3 +260,35 @@
   }
 
 }
+
+.tooltipContents {
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: $color-blue-1;
+  border-radius: 16px;
+}
+
+.vacInfoWrap {
+  padding-top: 24px;
+  padding-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: scroll;
+  
+  li {
+    width: 100%;
+    display: flex;    
+
+    .vacInfoIndex {
+      padding-right: 8px;
+    }
+    
+    .vacName {
+      padding-bottom: 8px;
+      color: $color-blue-7;
+    }
+  }
+}

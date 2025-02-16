@@ -1,4 +1,5 @@
 import styles from "../../styles/Vaccination.module.scss";
+import modal from "../../styles/Modal.module.scss";
 import typography from "../../styles/commons/Typography.module.scss";
 import button from "../../styles/commons/Button.module.scss";
 
@@ -142,12 +143,7 @@ export const VaccinationModalDateRecord: React.FC<
     existingDoses.length > 0 ? existingDoses[existingDoses.length - 1] : null;
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "24px",
-      }}
+    <div className={styles.modalVacDateContentsArea}
     >
       {Array.from({ length: dosenumber }, (_, i) => {
         const doseNum = i + 1; // 1차, 2차 ... 보여줄 것
@@ -185,7 +181,7 @@ export const VaccinationModalDateRecord: React.FC<
               {selectedDose === doseNum ? (
                 // [입력하기]/[수정] 버튼을 눌렀을 때
                 <input
-                  className={styles.date_input}
+                  className={`${styles.date_input} ${typography.textLgBd}`}
                   type="date"
                   value={doseDate}
                   onChange={(e) => setDoseDate(e.target.value)}
@@ -195,8 +191,8 @@ export const VaccinationModalDateRecord: React.FC<
                 <div
                   className={
                     matchedDose
-                      ? `${styles.complete_input}`
-                      : `${styles.not_complete_input}`
+                      ? `${styles.complete_input} ${typography.textLgBd}`
+                      : `${styles.not_complete_input} ${typography.textLgBd}`
                   }
                 >
                   {matchedDose ? `${matchedDose.dosedate} 완료` : "미접종"}
