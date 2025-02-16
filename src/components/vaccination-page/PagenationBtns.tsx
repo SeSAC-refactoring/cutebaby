@@ -1,4 +1,6 @@
 import React from "react";
+import styles from "../../styles/VaccinationCenters.module.scss"
+import typography from "../../styles/commons/Typography.module.scss"
 
 interface PaginationProps {
   currentPage: number;
@@ -16,8 +18,9 @@ export const PagenationBtns: React.FC<PaginationProps> = ({
   handlePageChange,
 }) => {
   return (
-    <div>
+    <div className={`${styles.pageNation}`}>
       <button
+        className={typography.textMdMd}
         onClick={() => handlePageChange(startPage - 1)}
         disabled={startPage <= 1} // startPage가 1보다 작을 수 없음
       >
@@ -30,6 +33,7 @@ export const PagenationBtns: React.FC<PaginationProps> = ({
         const pageNumber = startPage + index;
         return (
           <button
+            className={typography.textMdMd}
             key={pageNumber}
             onClick={() => handlePageChange(pageNumber)}
             disabled={
@@ -43,6 +47,7 @@ export const PagenationBtns: React.FC<PaginationProps> = ({
       })}
 
       <button
+        className={typography.textMdMd}
         onClick={() => handlePageChange(endPage + 1)}
         disabled={endPage >= totalPages} // 마지막 페이지 그룹이면 비활성화
       >

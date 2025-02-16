@@ -14,6 +14,7 @@
   .container {
     flex-grow: 1;
     width: 100%;
+    min-height: 0;
     position: relative;
     min-width: 390px;
     max-width: 1280px;
@@ -29,6 +30,7 @@
   .contentsArea {
     flex-grow: 1;
     width: 100%;
+    min-height: 0;
     padding: 56px 80px;
     display: flex;
     flex-direction: column;
@@ -58,6 +60,7 @@
 
     .contentsWrap {
       width: 100%;
+      min-height: 0;
       flex-grow: 1;
       display: flex;
       flex-direction: column;

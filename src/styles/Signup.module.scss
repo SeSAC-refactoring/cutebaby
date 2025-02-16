@@ -13,12 +13,11 @@
       margin-bottom: 34px;
 
       .formWrap {
+        position: relative;
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 20px;
-        position: relative;
-        margin: 5px;
+        gap: 16px;
 
         .mailWrap {
           display: flex;

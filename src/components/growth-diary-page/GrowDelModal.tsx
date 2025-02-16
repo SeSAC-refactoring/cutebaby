@@ -42,7 +42,7 @@ export const GrowDelModal: React.FC<GrowDelModalProps> = ({
 
   return (
     <div className={styles.modal_overlay}>
-      <div className={styles.modal_container}>
+      <div className={`${styles.modal_container} ${styles.modalWrap}`}>
         <p className={styles.modal_title}>정말 삭제하시겠습니까?</p>
         <div className={styles.modal_button_container}>
           <button
