@@ -187,6 +187,7 @@ export default function GrowthDiary() {
                             <div
                               style={{
                                 padding: "2%",
+                                height: "100%",
                               }}
                             >
                               <DiaryChart growData={growData} />
