@@ -68,8 +68,8 @@ const vaccinationSlice = createSlice({
         (state, action: PayloadAction<VaccinationData[]>) => {
           state.loading = false;
           state.vaccinationData = action.payload;
-          console.log("action payload", action.payload);
-          console.log("Redux store vaccinationData:", state.vaccinationData);
+          // console.log("action payload", action.payload);
+          // console.log("Redux store vaccinationData:", state.vaccinationData);
 
           let babyids = state.vaccinationData.map((value) => {
             return value.babyid;
