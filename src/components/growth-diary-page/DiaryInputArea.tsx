@@ -71,7 +71,12 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
                 />
               </div>
 
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <Input
                     label="키"
@@ -87,7 +92,15 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
                       inputRef.current.height = el;
                     }}
                   />
-                  <span style={{ marginLeft: "8px", marginRight: "12px" }}>
+                  <span
+                    className={typography.textSmBd}
+                    style={{
+                      marginLeft: "8px",
+                      marginRight: "12px",
+                      position: "relative",
+                      top: "13px",
+                    }}
+                  >
                     cm
                   </span>
                 </div>
@@ -109,14 +122,27 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
                       inputRef.current.weight = el;
                     }}
                   />
-                  <span style={{ marginLeft: "8px", marginRight: "12px" }}>
+                  <span
+                    className={typography.textSmBd}
+                    style={{
+                      marginLeft: "8px",
+                      marginRight: "12px",
+                      position: "relative",
+                      top: "13px",
+                    }}
+                  >
                     kg
                   </span>
                 </div>
               </div>
 
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <div style={{ display: "flex", alignItems: "center" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
                   <Input
                     label="머리둘레"
                     className={styles.input}
@@ -130,7 +156,16 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
                       inputRef.current.head = el;
                     }}
                   />
-                  <span style={{ marginLeft: "8px" }}>cm</span>
+                  <span
+                    className={typography.textSmBd}
+                    style={{
+                      marginLeft: "8px",
+                      position: "relative",
+                      top: "13px",
+                    }}
+                  >
+                    cm
+                  </span>
                 </div>
               </div>
             </div>
