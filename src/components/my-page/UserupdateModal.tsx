@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import axios from "axios";
 import styles from "../../styles/Modal.module.scss";
+import modal from "../../styles/Modal.module.scss";
 import { Input, InputSignupEmail } from "../commons/Input";
 
 interface UserupdateProps {
@@ -11,10 +12,9 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
   const API_URL = process.env.REACT_APP_API_URL;
 
   const [formData, setFormData] = useState({
-    email: "",
-    name: "",
+    email: sessionStorage.getItem("useremail") || "",
+    name: sessionStorage.getItem("username") || "",
   });
-
   const [messages, setMessages] = useState({
     email: "",
     name: "",
@@ -61,23 +61,27 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
   // 이메일 중복 확인 요청
   const emailCheck = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("formdata.email>>>", formData.email);
+    console.log("formdata.email type >>", typeof formData.email);
 
     if (!formData.email.trim()) {
       setMessages((prev) => ({ ...prev, email: "이메일을 입력해주세요!" }));
       return;
     }
-
+    if (!formData.email.includes("@")) {
+      setMessages((prev) => ({
+        ...prev,
+        email: "유효하지 않은 이메일 주소입니다!",
+      }));
+      return;
+    }
     try {
- 
-      const response = await axios.post(
-        `${API_URL}/emailCheck`,
-        {
-          email: formData.email,
-        }
-      );
+      const response = await axios.post(`${API_URL}/emailCheck`, {
+        inputEmail: formData.email,
+      });
 
-      console.log("서버 응답:", response.data); // 디버깅 로그 추가
-
+      console.log("서버 응답:", response); // 디버깅 로그 추가
+      // console.log("서버에서 응답받은 user", response.data.user[0].userid);
       if (response.data.success) {
         setEmailCheck(true);
         setMessages((prev) => ({
@@ -92,7 +96,7 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
         }));
       }
     } catch (error) {
-      console.error("❌ 이메일 중복 확인 오류:", error);
+      console.error(" 이메일 중복 확인 오류:", error);
       setMessages((prev) => ({
         ...prev,
         email: "이메일 중복 확인 중 오류가 발생했습니다.",
@@ -102,15 +106,26 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
 
   // 사용자 정보 업데이트 요청
   const handleUpdate = async () => {
-    if (!formData.name.trim()) {
+    const storedName = sessionStorage.getItem("username") || "";
+    const storedEmail = sessionStorage.getItem("useremail") || "";
+
+    const updatedName = formData.name.trim() || storedName;
+    const updatedEmail = formData.email.trim() || storedEmail;
+
+    if (updatedName === storedName && updatedEmail === storedEmail) {
+      modalState();
+      return;
+    }
+
+    if (!updatedName) {
       setMessages((prev) => ({ ...prev, name: "이름을 입력해주세요!" }));
       return;
     }
-    if (!formData.email.trim()) {
+    if (!updatedEmail) {
       setMessages((prev) => ({ ...prev, email: "이메일을 입력해주세요!" }));
       return;
     }
-    if (!emailbtn) {
+    if (!emailbtn && updatedEmail !== storedEmail) {
       setMessages((prev) => ({
         ...prev,
         email: "이메일 중복 체크를 해주세요!",
@@ -121,47 +136,51 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
     const usernum = sessionStorage.getItem("usernumber");
 
     try {
-
-      const response = await axios.post(
-        `${API_URL}/updateUser`,
-        {
-          email: formData.email,
-          username: formData.name,
-          usernumber: usernum,
-        }
-      );
+      const response = await axios.post(`${API_URL}/updateUser`, {
+        email: updatedEmail,
+        username: updatedName,
+        usernumber: usernum,
+      });
 
       if (response.data.success) {
         alert("정보가 성공적으로 수정되었습니다.");
 
-        // ✅ sessionStorage 업데이트
-        sessionStorage.setItem("username", formData.name);
-        sessionStorage.setItem("useremail", formData.email);
+        // sessionStorage 업데이트
+        sessionStorage.setItem("username", updatedName);
+        sessionStorage.setItem("useremail", updatedEmail);
 
-        // ✅ 스토리지 이벤트 트리거 (Mypage에서 리렌더링)
+        // 스토리지 이벤트 트리거 (Mypage에서 리렌더링)
         window.dispatchEvent(new Event("storage"));
 
-        // ✅ 모달 닫기
+        // 모달 닫기
         modalState();
       } else {
         alert("정보 수정에 실패했습니다.");
       }
     } catch (error) {
-      console.error("❌ 정보 수정 오류:", error);
+      console.error("정보 수정 오류:", error);
     }
   };
 
   return (
-    <div onClick={modalState} className={styles.modal_overlay}>
+    <div onClick={modalState} className={modal.modal_overlay}>
       <div
         onClick={(e) => e.stopPropagation()}
-        className={styles.modal_container}
+        className={modal.modal_container}
       >
-        <div className={styles.modal_title_wrap}>
-          <div className={styles.modal_title}>개인 정보 수정</div>
-          <div onClick={modalState} className={styles.X_btn}>
-            X
+        <div className={modal.modal_title_wrap}>
+          <div className={modal.modal_title}>개인 정보 수정</div>
+          <div
+            onClick={() => {
+              modalState();
+            }}
+            className={modal.closeBtn}
+          >
+            <img src="/img/icons/i-modal-close-s32.svg" alt="" />
           </div>
+          {/* <div onClick={modalState} className={styles.X_btn}>
+            X
+          </div> */}
         </div>
         <div className={styles.modal_Input_wrap} style={{ height: "250px" }}>
           {/* 이름 입력 */}

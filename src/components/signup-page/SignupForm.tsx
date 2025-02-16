@@ -1,4 +1,3 @@
-// src/components/SignupForm.tsx
 import React, { useEffect, useRef, useState } from "react";
 import {
   validateEmail,
@@ -18,6 +17,7 @@ import axios from "axios";
 const SignupForm: React.FC = () => {
   const navigate = useNavigate();
   const API_URL = process.env.REACT_APP_API_URL;
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -33,6 +33,14 @@ const SignupForm: React.FC = () => {
   });
 
   const [emailbtn, setEmailCheck] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [signUpCheck, setSignUpCheck] = useState({
+    name: false,
+    email: false,
+    password: false,
+    passwordCheck: false,
+  });
+
   const inputRef = useRef({
     email: null as HTMLInputElement | null,
     password: null as HTMLInputElement | null,
@@ -46,16 +54,39 @@ const SignupForm: React.FC = () => {
   };
 
   useEffect(() => {
-    setMessages((prev) => ({
-      ...prev,
-      email: validateEmail(formData.email, emailbtn).message,
-      password: validatePassword(formData.password).message,
-      confirmPassword: validateConfirmPassword(
-        formData.password,
-        formData.confirmPassword
-      ).message,
-      name: validateName(formData.name).message,
-    }));
+    const emailValidation = validateEmail(formData.email, emailbtn);
+    const passwordValidation = validatePassword(formData.password);
+    const confirmPasswordValidation = validateConfirmPassword(
+      formData.password,
+      formData.confirmPassword
+    );
+    const nameValidation = validateName(formData.name);
+
+    // 각 필드의 유효성 검사 결과를 signUpCheck에 반영
+    setSignUpCheck({
+      name: nameValidation.isValid,
+      email: emailValidation.isValid,
+      password: passwordValidation.isValid,
+      passwordCheck: confirmPasswordValidation.isValid,
+    });
+
+    //입력값 다 잘 통과되었는지 확인해야함
+    const isAllFieldsValid =
+      nameValidation.isValid &&
+      emailValidation.isValid &&
+      passwordValidation.isValid &&
+      confirmPasswordValidation.isValid &&
+      emailbtn; // 이메일 중복 검사 통과 여부 확인하기
+
+    setIsFormValid(isAllFieldsValid);
+
+    // 메시지 업데이트하기
+    setMessages({
+      email: emailValidation.message,
+      password: passwordValidation.message,
+      confirmPassword: confirmPasswordValidation.message,
+      name: nameValidation.message,
+    });
   }, [formData, emailbtn]);
 
   const emailCheck = async (e: React.FormEvent) => {
@@ -74,36 +105,7 @@ const SignupForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    //비번 유효성 검사 함수만든거 불러오는거
-    const passwordValidation = validatePassword(formData.password);
-    //비번이 일치한지 검사한거 불러오기
-    const confirmPasswordValidation = validateConfirmPassword(
-      formData.password,
-      formData.confirmPassword
-    );
-
-    console.log(passwordValidation.isValid);
-    console.log(confirmPasswordValidation);
-
-    if (!emailbtn) {
-      setMessages((prev) => ({
-        ...prev,
-        email: "이메일 중복검사를 진행해 주세요!",
-      }));
-      return;
-    } else if (!passwordValidation.isValid) {
-      setMessages((prev) => ({
-        ...prev,
-        password: "비밀번호를 확인해 주세요!",
-      }));
-      return;
-    } else if (!confirmPasswordValidation.isValid) {
-      setMessages((prev) => ({
-        ...prev,
-        confirmPassword: "비밀번호를 확인해 주세요!",
-      }));
-      return;
-    }
+    if (!isFormValid) return;
 
     const response = await registerUser(formData);
     if (response.success) {
@@ -115,10 +117,6 @@ const SignupForm: React.FC = () => {
         password,
       });
       sessionStorage.setItem("user", JSON.stringify(user));
-      //   sessionStorage.setItem(
-      //     "usernumber",
-      //     JSON.stringify(emailPost.data[0].usernumber)
-      //   );
       sessionStorage.setItem("useremail", user.email);
       sessionStorage.setItem("username", user.name);
 
@@ -226,18 +224,11 @@ const SignupForm: React.FC = () => {
 
               <button
                 className={`${button.btnXlGr} ${typography.textXlBd}`}
-                // disabled={!isFormValid}
+                disabled={!isFormValid}
                 onClick={handleSubmit}
               >
                 완료
               </button>
-
-              {/* <button
-            className={`${button.btnXlGr} ${typography.textXlBd}`}
-            type="submit"
-          >
-            완료
-          </button> */}
             </div>
           </div>
         </div>
