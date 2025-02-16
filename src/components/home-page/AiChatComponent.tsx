@@ -52,6 +52,7 @@ export const AiChatComponent = () => {
       {/* 입력받는 곳 */}
       <div className={styles.chat_input_wrapper}>
         <Input
+          className={styles.inputWrap}
           type="text"
           value={input}
           onChange={handleInputChange}

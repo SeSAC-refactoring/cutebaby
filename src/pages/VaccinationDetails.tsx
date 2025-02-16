@@ -86,7 +86,7 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
         }}
         className={`${modal.modalWrap}`}
       >
-        <div className={modal.modal_title_wrap}>
+        <div className={modal.titleArea}>
           <h2 className={typography.text4xlBd}>
             예방접종 대상 감염병 정보
           </h2>
