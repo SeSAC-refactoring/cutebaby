@@ -78,7 +78,17 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
               }
               placeholder="숫자만"
             />
-            <span style={{ marginLeft: "8px", marginRight: "12px" }}>cm</span>
+            <span
+              className={typography.textSmBd}
+              style={{
+                marginLeft: "8px",
+                marginRight: "12px",
+                position: "relative",
+                top: "13px",
+              }}
+            >
+              cm
+            </span>
           </div>
         </div>
 
@@ -97,7 +107,17 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
               }
               placeholder="숫자만"
             />
-            <span style={{ marginLeft: "8px", marginRight: "12px" }}>kg</span>
+            <span
+              className={typography.textSmBd}
+              style={{
+                marginLeft: "8px",
+                marginRight: "12px",
+                position: "relative",
+                top: "13px",
+              }}
+            >
+              kg
+            </span>
           </div>
         </div>
 
@@ -116,7 +136,12 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
               }
               placeholder="숫자만"
             />
-            <span style={{ marginLeft: "8px" }}>cm</span>
+            <span
+              className={typography.textSmBd}
+              style={{ marginLeft: "8px", position: "relative", top: "13px" }}
+            >
+              cm
+            </span>
           </div>
         </div>
       </div>

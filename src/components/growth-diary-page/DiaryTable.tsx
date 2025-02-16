@@ -3,6 +3,7 @@ import { newGrowData } from "../types";
 import styles from "../../styles/GrowthDiary.module.scss";
 import { GrowRewriteModal } from "./GrowRewriteModal";
 import { GrowDelModal } from "./GrowDelModal";
+import typography from "../../styles/commons/Typography.module.scss";
 
 interface DiaryTableProps {
   growData: newGrowData[];
@@ -28,23 +29,33 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({
           <ul>
             {growData.map((info, i) => (
               <li key={i} className={styles.row_el}>
-                <div className={styles.list_el}>{info.inputData}</div>
-                <div className={styles.list_el}>{info.height}</div>
-                <div className={styles.list_el}>{info.weight}</div>
-                <div className={styles.list_el}>{info.head}</div>
-                <button
-                  className={`${styles.table_btn} ${styles.delete_btn}`}
-                  onClick={() => onDelete(info.id)}
-                >
-                  삭제
-                </button>
-                <button
-                  className={`${styles.table_btn} ${styles.edit_btn}`}
-                  onClick={() => onEdit(info.id)}
-                >
-                  수정
-                  <img src="/img/edit-02.png" alt="수정아이콘"></img>
-                </button>
+                <div className={`${styles.list_el} ${typography.textLgRg}`}>
+                  {info.inputData}
+                </div>
+                <div className={`${styles.list_el} ${typography.textLgRg}`}>
+                  {info.height}
+                </div>
+                <div className={`${styles.list_el} ${typography.textLgRg}`}>
+                  {info.weight}
+                </div>
+                <div className={`${styles.list_el} ${typography.textLgRg}`}>
+                  {info.head}
+                </div>
+                <div className={styles.btn_wrap}>
+                  <button
+                    className={`${styles.table_btn} ${styles.delete_btn}`}
+                    onClick={() => onDelete(info.id)}
+                  >
+                    삭제
+                  </button>
+                  <button
+                    className={`${styles.table_btn} ${styles.edit_btn}`}
+                    onClick={() => onEdit(info.id)}
+                  >
+                    수정
+                    <img src="/img/edit-02.png" alt="수정아이콘"></img>
+                  </button>
+                </div>
               </li>
             ))}
           </ul>
