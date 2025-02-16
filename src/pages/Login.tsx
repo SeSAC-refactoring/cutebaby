@@ -161,7 +161,11 @@ const EmailLogin: React.FC = () => {
                 onChange={handleInputPassword}
                 placeholder="비밀번호를 입력해주세요."
               />
-              {error && <p style={{ color: "red" }}>{error}</p>}
+              {error && (
+                <p style={{ color: "red" }} className={typography.textBsMd}>
+                  {error}
+                </p>
+              )}
             </div>
             <div className={`${layout.buttonArea} ${styles.buttonArea}`}>
               <Link to="/">
@@ -177,7 +181,6 @@ const EmailLogin: React.FC = () => {
               </button>
             </div>
           </section>
-          {/* {error && <p style={{ color: "red" }}>{error}</p>} */}
         </div>
       </div>
     </div>

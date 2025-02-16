@@ -6,10 +6,9 @@ import { handleClearInput } from "./functions/handleClearInput";
 import { useHandleInputChange } from "./hooks/useHandleInputChange";
 import { handleKeyDown } from "./functions/handleKeyDown";
 import { handleCalculateChart } from "./functions/handleCalculateChart";
+import { Input } from "../commons/Input";
 
-import input from "../../styles/commons/Input.module.scss";
 import typography from "../../styles/commons/Typography.module.scss";
-import styles from "../../styles/GrowthCalculate.module.scss";
 import button from "../../styles/commons/Button.module.scss";
 
 // 사용자 입력값 설정
@@ -29,12 +28,28 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
   const refs = useRefs();
 
   return (
-    <div className={styles.contentsArea}>
-      <div className={styles.formArea}>
-        <div className={`${input.inputWrap} ${styles.inputDate}`}>
-          <label>측정날짜</label>
-          <input
-            className={typography.textLgRg}
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        padding: "32px 48px",
+        marginBottom: "48px",
+        backgroundColor: "#FEF9F1",
+        borderRadius: "32px",
+        width: "1000px",
+        boxSizing: "border-box",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          gap: "48px",
+        }}
+      >
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <Input
+            label="측정날짜"
             type="date"
             name="measurementDate"
             ref={refs.measurementDate}
@@ -46,72 +61,86 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
             onChange={handleInputChange}
           />
         </div>
-        <div className={input.inputWrap}>
-          <label htmlFor="">키 </label>
-          <div className={input.showUnitWrap}>
-            <input
-              className={typography.textLgRg}
+
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <Input
+              label="키"
               type="number"
               name="height"
               ref={refs.height}
-              value={inputData.height ?? ""}
+              //   value={inputData.height ?? ""}
+              value={String(inputData.height ?? "")}
               onChange={handleInputChange}
-              onKeyDown={(e) =>
+              onKeyDown={(e: any) =>
                 handleKeyDown(e, refs, inputData, setChildData, setShow)
               }
               placeholder="숫자만"
             />
-            <span className={input.inputUnit}>cm</span>
+            <span style={{ marginLeft: "8px", marginRight: "12px" }}>cm</span>
           </div>
         </div>
-        <div className={input.inputWrap}>
-          <label htmlFor="">몸무게 </label>
-          <div className={input.showUnitWrap}>
-            <input
-              className={typography.textLgRg}
+
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <Input
+              label="몸무게"
               type="number"
               name="weight"
               ref={refs.headCircumference}
-              value={inputData.weight ?? ""}
+              value={String(inputData.weight ?? "")}
+              //   value={inputData.weight ?? ""}
               onChange={handleInputChange}
-              onKeyDown={(e) =>
+              onKeyDown={(e: any) =>
                 handleKeyDown(e, refs, inputData, setChildData, setShow)
               }
               placeholder="숫자만"
             />
-            <span className={input.inputUnit}>kg</span>
+            <span style={{ marginLeft: "8px", marginRight: "12px" }}>kg</span>
           </div>
         </div>
-        <div className={input.inputWrap}>
-          <label htmlFor="">머리둘레</label>
-          <div className={input.showUnitWrap}>
-            <input
-              className={typography.textLgRg}
+
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <Input
+              label="머리둘레"
               type="number"
               name="headCircumference"
               ref={refs.headCircumference}
-              value={inputData.headCircumference ?? ""}
+              //   value={inputData.headCircumference ?? ""}
+              value={String(inputData.headCircumference ?? "")}
               onChange={handleInputChange}
-              onKeyDown={(e) =>
+              onKeyDown={(e: any) =>
                 handleKeyDown(e, refs, inputData, setChildData, setShow)
               }
               placeholder="숫자만"
             />
-            <span className={input.inputUnit}>cm</span>
+            <span style={{ marginLeft: "8px" }}>cm</span>
           </div>
         </div>
       </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          marginTop: "32px",
+          width: "100%",
+          gap: "16px",
+        }}
+      >
         {/* <p>
-            백분위수란 같은 성별과 연령을 가진 100명을 오름차순으로 나열했을 때 이
-            중 몇 번째에 해당되는지를 의미합니다. (예: 97%는 상위 3%를 의미)
+          백분위수란 같은 성별과 연령을 가진 100명을 오름차순으로 나열했을 때 이
+          중 몇 번째에 해당되는지를 의미합니다. (예: 97%는 상위 3%를 의미)
         </p> */}
-      <div className={styles.buttonsArea}>
-        <button className={button.btnLgYw}
+        <button
+          className={`${button.btnLgYw} ${typography.textLgBd}`}
           onClick={() => handleClearInput(setInputData, setChildData, setShow)}
         >
           초기화
+          <img src="/img/arrow-rotate-left-01.png" alt="초기화 아이콘"></img>
         </button>
-        <button className={button.btnLgGr}
+        <button
+          className={`${button.btnLgGr} ${typography.textLgBd}`}
           onClick={() =>
             handleCalculateChart(refs, inputData, setChildData, setShow)
           }

@@ -41,11 +41,6 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
   );
 
   console.log("GrowthCalculate 모달의 childData", childData);
-  // console.log('GrowthCalculate 모달의 lmsData', lmsData);
-  // console.log(
-  //     'GrowthCalculate 모달의 filteredLmsDataByGender',
-  //     filteredLmsDataByGender
-  // );
 
   return (
     <div

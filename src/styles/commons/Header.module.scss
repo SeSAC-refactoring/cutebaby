@@ -1,54 +1,106 @@
-@import './Colors.module.scss';
+@import "./Colors.module.scss";
 
 .container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1001;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
 }
 
 .headerWrapper {
-    min-height: 140px;
-    background-color: $color-white;
-    border-bottom: 2px solid $color-gray-6;
+  min-height: 140px;
+  background-color: $color-white;
+  border-bottom: 2px solid $color-gray-6;
 
-    .header {
-        width: 100%;
-        min-width: 390px;
-        max-width: 1280px;
+  .header {
+    width: 100%;
+    min-width: 390px;
+    max-width: 1280px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .menu_container {
+      display: flex;
+      gap: auto;
+
+      // 선택 안된 메뉴
+      a,
+      .meun {
+        height: 54px;
+        padding-left: 8px;
+        padding-right: 8px;
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        color: $color-gray-5;
+        border-bottom: 2px solid $color-white;
+        cursor: pointer;
+      }
 
-        .menu_container {
-            display: flex;
-            gap: 24px;
-
-            // 선택 안된 메뉴
-            a,
-            .meun {
-                height: 54px;
-                padding-left: 8px;
-                padding-right: 8px;
-                display: flex;
-                align-items: center;
-                color: $color-gray-5;
-                border-bottom: 2px solid $color-white;
-                cursor: pointer;
-            }
-
-            // 선택된 메뉴
-            .menu_active {
-                height: 54px;
-                padding-left: 8px;
-                padding-right: 8px;
-                display: flex;
-                align-items: center;
-                color: $color-gray-10;
-                border-bottom: 2px solid $color-gray-10;
-            }
-        }
+      // 선택된 메뉴
+      .menu_active {
+        height: 54px;
+        padding-left: 8px;
+        padding-right: 8px;
+        display: flex;
+        align-items: center;
+        color: $color-gray-10;
+        border-bottom: 2px solid $color-gray-10;
+      }
     }
+    .icon_container {
+      display: flex;
+      flex-direction: column; // 아이콘과 글씨를 세로 정렬
+      align-items: center; // 가로 방향 가운데 정렬
+      justify-content: center; // 세로 방향 가운데 정렬
+      text-align: center;
+    }
+    .header_icons {
+      display: none;
+    }
+  }
+}
+
+// 390px 이하의 화면 크기에 대한 반응형 스타일
+@media (max-width: 390px) {
+  .headerWrapper {
+    min-height: 100px; // 헤더 높이 조정
+    width: 100vw;
+    //밑으로 보내기
+    top: 100%;
+    left: 0%;
+    position: absolute;
+    transform: translate(0%, -100%);
+
+    /////////////
+    border: 0px; // 밑줄없애기
+    .header {
+      justify-content: center; // 헤더 내부 요소를 중앙 정렬
+
+      //   gap: 12px;
+      .logo {
+        display: none;
+      }
+      .menu_container {
+        display: flex;
+        justify-content: space-evenly; // 모든 메뉴를 균등하게 배치
+        width: 100%; // 전체 너비를 사용하여 정렬
+
+        a,
+        .meun,
+        .menu_active {
+          height: auto; // 메뉴 높이 조정
+          font-size: 14px; // 폰트 크기 조정
+          border-bottom: 0px;
+          flex-direction: column; // 아이콘과 텍스트를 세로로 정렬
+        }
+      }
+
+      .header_icons {
+        display: block;
+      }
+    }
+  }
 }

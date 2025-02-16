@@ -91,6 +91,31 @@ $kakao-yellow-pressed: $color-kakao-yellow-7;
   }
 }
 
+// Medium
+// → yellow
+.btnMdYw {
+  width: 107;
+  height: 56px;
+  padding-left: 20px;
+  padding-right: 12px;
+  gap: 8px;
+  color: $color-gray-10;
+  border-radius: 16px;
+  background-color: $yellow-default;
+
+  &:disabled {
+    background-color: $yellow-disabled;
+  }
+
+  &:hover {
+    background-color: $yellow-hovered;
+  }
+
+  &:active {
+    background-color: $yellow-pressed;
+  }
+}
+
 // Large
 // → gray
 .btnLgGr {
@@ -111,6 +136,27 @@ $kakao-yellow-pressed: $color-kakao-yellow-7;
 
   &:active {
     background-color: $gray-pressed;
+  }
+}
+
+.btnLgYw {
+  height: 64px;
+  padding: 16px 24px;
+  gap: 8px;
+  color: $color-gray-10;
+  border-radius: 16px;
+  background-color: $yellow-default;
+
+  &:disabled {
+    background-color: $yellow-disabled;
+  }
+
+  &:hover {
+    background-color: $yellow-hovered;
+  }
+
+  &:active {
+    background-color: $yellow-pressed;
   }
 }
 
@@ -220,6 +266,28 @@ $kakao-yellow-pressed: $color-kakao-yellow-7;
 
   &:active {
     background-color: $kakao-yellow-pressed;
+  }
+}
+
+.btnMeCo {
+  width: 75px;
+  height: 56px;
+  gap: 8px;
+  color: $color-gray-10;
+  border-radius: 16px;
+  background-color: $color-coral-4;
+  padding: 16px 20px;
+
+  &:disabled {
+    // background-color: $coral-disabled;
+  }
+
+  &:hover {
+    // background-color: $coral-hovered;
+  }
+
+  &:active {
+    // background-color: $coral-pressed;
   }
 }
 

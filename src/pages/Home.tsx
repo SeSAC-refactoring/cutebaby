@@ -60,6 +60,8 @@ export default function Home() {
   const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
   const { growData } = useGrowData(growInfo, selectedBabyId);
 
+  console.log(1111, username);
+
   return (
     <div className={layout.mainAreaWrap}>
       {/* 로딩 창 */}
@@ -142,17 +144,45 @@ export default function Home() {
                         </span>
                         로 확인할 수 있어요!
                       </div>
-                      <Link to="/SelectLogin">
-                        <button
-                          className={`${button.btnSmBl} ${typography.textBsBd}`}
-                        >
-                          바로 시작하기
-                          <img
-                            src="/img/icons/i-chevron-right-s20.svg"
-                            alt="바로가기 아이콘"
-                          ></img>
-                        </button>
-                      </Link>
+                      {username !== "방문자" ? (
+                        babyInfo.length > 0 ? (
+                          <Link to="/GrowthDiary">
+                            <button
+                              className={`${button.btnSmBl} ${typography.textBsBd}`}
+                            >
+                              바로 시작하기
+                              <img
+                                src="/img/icons/i-chevron-right-s20.svg"
+                                alt="바로가기 아이콘"
+                              ></img>
+                            </button>
+                          </Link>
+                        ) : (
+                          <Link to="/Mypage">
+                            <button
+                              className={`${button.btnSmBl} ${typography.textBsBd}`}
+                            >
+                              바로 시작하기
+                              <img
+                                src="/img/icons/i-chevron-right-s20.svg"
+                                alt="바로가기 아이콘"
+                              ></img>
+                            </button>
+                          </Link>
+                        )
+                      ) : (
+                        <Link to="/SelectLogin">
+                          <button
+                            className={`${button.btnSmBl} ${typography.textBsBd}`}
+                          >
+                            바로 시작하기
+                            <img
+                              src="/img/icons/i-chevron-right-s20.svg"
+                              alt="바로가기 아이콘"
+                            ></img>
+                          </button>
+                        </Link>
+                      )}
                     </div>
                   </div>
                 )}
