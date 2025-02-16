@@ -103,61 +103,68 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={styles.modal_container}
+        className={styles.modalWrapW640}
       >
-        <div className={styles.modal_title_wrap}>
-          <div className={styles.modal_title}>아기 정보 수정</div>
-          <div onClick={onClose} className={styles.X_btn}>
-            X
+        <div className={styles.titleArea}>
+          <div className={`${styles.modal_title} ${typography.text4xlBd}`}>
+            아기 정보 수정
+          </div>
+          <div onClick={onClose} className={styles.closeBtn}>
+            <img src="/img/icons/i-modal-close-s32.svg" alt="" />
           </div>
         </div>
-        <div className={styles.modal_img_wrap}>
-          {defaultImg && <img src="/img/Profile.png" alt="아기 사진" />}
-          <div style={{ position: "relative", bottom: "60px", left: "30px" }}>
-            <ImageUploader
-              setDefaultImg={setDefaultImg}
-              onImageSelect={handleImageSelect}
-              resetTrigger={false}
-            />
+        <div className={styles.modalContentsArea}>
+          <div className={styles.modalContentsAreaWrap}>
+            <div className={styles.modal_img_wrap}>
+              {defaultImg && <img src="/img/Profile.png" alt="아기 사진" />}
+              <div
+                style={{ position: "relative", bottom: "60px", left: "30px" }}
+              >
+                <ImageUploader
+                  setDefaultImg={setDefaultImg}
+                  onImageSelect={handleImageSelect}
+                  resetTrigger={false}
+                />
+              </div>
+            </div>
+            <div className={styles.modal_Input_wrap}>
+              <Input
+                label="이름"
+                placeholder="이름 입력"
+                id="babyname"
+                value={rewriteData.babyname}
+                onChange={handleInputChange}
+              ></Input>
+              <Input
+                label="생년월일"
+                type="date"
+                id="birthday"
+                value={rewriteData.birthday}
+                onChange={handleInputChange}
+              ></Input>
+              <section>
+                <label>성별</label>
+                <GenderInput
+                  setSelectedGender={handleGenderChange}
+                  selectedGender={selectedGender}
+                />
+              </section>
+            </div>
           </div>
-        </div>
-        <div className={styles.modal_Input_wrap}>
-          <Input
-            label="이름"
-            placeholder="이름 입력"
-            id="babyname"
-            value={rewriteData.babyname}
-            onChange={handleInputChange}
-          ></Input>
-          <Input
-            label="생년월일"
-            type="date"
-            id="birthday"
-            value={rewriteData.birthday}
-            onChange={handleInputChange}
-          ></Input>
-          <section>
-            <label>성별</label>
-            <GenderInput
-              setSelectedGender={handleGenderChange}
-              selectedGender={selectedGender}
-            />
-          </section>
-        </div>
-
-        <div className={styles.modal_button_container}>
-          <button
-            className={`${button.btnXlYw} ${typography.textXlBd}`}
-            onClick={onClose}
-          >
-            취소
-          </button>
-          <button
-            onClick={rewrite}
-            className={`${button.btnXlGr} ${typography.textXlBd}`}
-          >
-            완료
-          </button>
+          <div className={styles.modal_button_container}>
+            <button
+              className={`${button.btnXlYw} ${typography.textXlBd}`}
+              onClick={onClose}
+            >
+              취소
+            </button>
+            <button
+              onClick={rewrite}
+              className={`${button.btnXlGr} ${typography.textXlBd}`}
+            >
+              완료
+            </button>
+          </div>
         </div>
       </div>
     </div>

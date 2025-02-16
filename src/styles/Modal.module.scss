@@ -16,7 +16,62 @@
   z-index: 1000;
   backdrop-filter: blur(2px);
 
+  // 마이페이지 수정 모달 영역
+  .modalWrapW640 {
+    width: 640px;
+    min-height: 0;
+    flex-grow: 1;
+    padding: 56px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    background-color: $color-white;
+    border: 2px solid $color-gray-6;
+    border-radius: 40px;
+    overflow: hidden;
+
+    .titleArea {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-self: start;
+
+      .textWrap {
+        display: flex;
+        gap: 16px;
+      }
+
+      .pageGuide {
+        align-self: end;
+        color: $color-gray-5;
+      }
+
+      // 닫기 버튼
+      .closeBtn {
+        width: 48px;
+        height: 48px;
+        padding: 8px;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .modalContentsArea {
+      flex-grow: 1;
+      width: 100%;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      overflow-y: scroll;
+    }
+  }
+
   // 모달 영역
+  .modalWrapWidth,
   .modalWrap {
     flex-grow: 1;
     width: 100%;
@@ -68,6 +123,7 @@
       flex-direction: column;
       gap: 24px;
 
+
       // 로딩 화면
       .loadingContens {
         position: absolute;
@@ -91,6 +147,22 @@
   }
 }
 
+
+.modalContentsAreaWrap {
+  width: 100%;
+  padding-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.modal_button_container {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+}
+
 .modal_container {
   width: 640px;
   min-height: 0;
@@ -105,74 +177,15 @@
   gap: 20px;
   // justify-content: space-between;
 }
+
 .modal_img_wrap {
-  height: 240px;
+  width: 200px;
   display: flex;
   flex-direction: column;
-}
 
-.modal_title {
-  font-size: 32px;
-  font-weight: bold;
-}
-
-.modal_button_container {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  width: 100%;
-  margin-top: 44px;
-}
-
-.modal_btn {
-  width: 248px;
-  height: 80px;
-  font-size: 24px;
-  font-weight: bold;
-  border: none;
-  border-radius: 20px;
-}
-
-.modal_cancel_button {
-  background-color: #f6d9a7;
-  margin-right: 16px;
-}
-
-.modal_done_button {
-  background-color: #3b3b41;
-  color: #ffffff;
-}
-
-.modal_input {
-  width: 512px;
-  height: 64px;
-  background-color: #fef9f1;
-  border-radius: 8px;
-  padding: 18px 24px;
-  font-size: 22px;
-}
-
-.modal_img_button {
-  width: 111px;
-  height: 42px;
-  padding: 10px 14px;
-  background-color: #bbdeeb;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: bold;
-  display: flex;
-  gap: 3px;
-}
-
-.input_set {
-  display: flex;
-  flex-direction: column;
-}
-.input_set_row {
-  width: 512px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  img {
+    width: 100%;
+  }
 }
 
 // <로그인이 필요한 서비스입니다.> 모달 스타일
@@ -197,6 +210,7 @@
     }
   }
 }
+
 .check_wrap {
   display: flex;
   justify-content: space-between;
@@ -233,4 +247,16 @@
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
+}
+
+.imgUpModalWrap {
+  
+  .btnSmBl {
+    
+    .iconPhoto {
+      width: 20px;
+    }
+  
+  }
+
 }

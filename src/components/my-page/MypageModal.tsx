@@ -45,7 +45,7 @@ export function BabyModal() {
       <img src="/img/Profile.png" alt="아기 사진" />
       <button className={styles.modal_img_button}>
         사진 등록
-        <img src="img/image-add.png" alt="이미지 아이콘" />
+        <img src="img/icons/i-profile-photo-s20.svg" alt="이미지 아이콘" />
       </button>
       <Input label="이름" placeholder="이름을 입력해주세요."></Input>
       <Input label="생년월일" placeholder="생년월일을 선택해주세요."></Input>
