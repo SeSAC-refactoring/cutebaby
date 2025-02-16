@@ -9,6 +9,7 @@ import { useFilteredLmsDataByMonths } from "./hooks/useFilteredLmsDataByMonths "
 import { useFilteredLmsDataByGender } from "./hooks/useFilteredLmsDataByGender ";
 import { babyinfo } from "../types";
 import modal from "../../styles/Modal.module.scss";
+import typography from "../../styles/commons/Typography.module.scss";
 
 interface GrowthCalculateProps {
   setOpenCalModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -49,96 +50,60 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
       className={modal.modal_overlay}
     >
       <div
+        className={modal.modalWrap}
         onClick={(e) => {
           e.stopPropagation();
         }}
-        style={{
-          backgroundColor: "white",
-          width: "1160px",
-          // height: "1148px",
-          position: "absolute",
-          top: "30%",
-          left: "20%",
-          border: "2px solid #838391",
-          borderRadius: "40px",
-          // transform: "translate(-50%,-50%)",
-          display: "flex",
-          // justifyContent: "center",
-          padding: "80px",
-          boxSizing: "border-box",
-        }}
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "1000px",
-          }}
-        >
+        <div className={modal.titleArea}>
+          <div className={modal.textWrap}>
+            <h2 className={`${modal.modalTitle} ${typography.text4xlBd}`}>
+              성장상태 측정계산기
+            </h2>
+            <p className={`${modal.pageGuide} ${typography.textXlMd}`}>
+              우리 아이의 성장 상태를 확인해보세요:)
+            </p>
+          </div>
           <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              marginBottom: "48px",
+            className={modal.closeBtn}
+            onClick={() => {
+              setOpenCalModal(false);
             }}
           >
-            <div>
-              <div
-                style={{
-                  fontSize: "40px",
-                  fontWeight: "bold",
-                  marginBottom: "16px",
-                }}
-              >
-                성장상태 측정계산기
-              </div>
-              <p style={{ color: "#9999A5" }}>
-                우리 아이의 성장 상태를 확인해보세요:)
-              </p>
-            </div>
-            <div
-              style={{
-                color: "#3B3B41",
-                fontSize: "48px",
-                height: "48px",
-                cursor: "pointer",
-              }}
-              onClick={() => {
-                setOpenCalModal(false);
-              }}
-            >
-              X
-            </div>
+            <img src="/img/icons/i-modal-close-s32.svg" alt="" />
           </div>
-          <div style={{ width: "1000px" }}>
-            {/* 사용자 입력값 설정 */}
-            <CalculateInputArea
-              childData={childData}
-              setChildData={setChildData}
-              setShow={setShow}
-            />
-            {/* 차트 */}
-            {/* 차트 표시 여부에 따라 렌더링 */}{" "}
-            {show ? (
-              isLoading ? (
-                <p>
+        </div>
+        <div className={modal.modalContentsArea}>
+          {/* 사용자 입력값 설정 */}
+          <CalculateInputArea
+            childData={childData}
+            setChildData={setChildData}
+            setShow={setShow}
+          />
+          {/* 차트 */}
+          {/* 차트 표시 여부에 따라 렌더링 */}{" "}
+          {show ? (
+            isLoading ? (
+              <div className={modal.loadingContens}>
+                <img src="/img/visuals/visual_loading_ggomul_04.svg" alt="" />
+                <p className={typography.textLgMd}>
                   자료를 가져오고 있어요..
                   <br />
                   조금만 기다려주세요..
                 </p>
-              ) : (
-                <CalculateChart
-                  childData={childData}
-                  filteredLmsDataByGender={filteredLmsDataByGender}
-                  filteredLmsDataByMonths={filteredLmsDataByMonths}
-                  percentileData={percentileData}
-                  percentiles={percentiles}
-                />
-              )
+              </div>
             ) : (
-              <CalculateDefaultState />
-            )}
-          </div>
+              <CalculateChart
+                childData={childData}
+                filteredLmsDataByGender={filteredLmsDataByGender}
+                filteredLmsDataByMonths={filteredLmsDataByMonths}
+                percentileData={percentileData}
+                percentiles={percentiles}
+              />
+            )
+          ) : (
+            <CalculateDefaultState />
+          )}
         </div>
       </div>
     </div>

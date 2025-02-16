@@ -9,16 +9,15 @@
       flex-grow: 1;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 2.4rem;
       margin-bottom: 34px;
 
       .formWrap {
+        position: relative;
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 20px;
-        position: relative;
-        margin: 5px;
+        gap: 16px;
 
         .mailWrap {
           display: flex;
@@ -41,6 +40,23 @@
     a {
       display: block;
       width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .contentsArea {
+    max-width: 640px;
+    gap: 56px;
+
+    .contentsWrap {
+      .formsWrapper {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 34px;
+      }
     }
   }
 }

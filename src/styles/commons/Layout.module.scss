@@ -14,6 +14,7 @@
   .container {
     flex-grow: 1;
     width: 100%;
+    min-height: 0;
     position: relative;
     min-width: 390px;
     max-width: 1280px;
@@ -29,6 +30,7 @@
   .contentsArea {
     flex-grow: 1;
     width: 100%;
+    min-height: 0;
     padding: 56px 80px;
     display: flex;
     flex-direction: column;
@@ -58,6 +60,7 @@
 
     .contentsWrap {
       width: 100%;
+      min-height: 0;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
@@ -78,39 +81,37 @@
     }
   }
 }
-
 @media screen and (max-width: 390px) {
   .mainAreaWrap {
     background-color: $color-white;
     height: 100vh;
-    // 매인 컨텐츠 영역
+
     .container {
-      flex-grow: 1;
+      flex-grow: 0;
       width: 100%;
-      position: relative;
-      min-width: 390px;
-      max-width: 1280px;
-      padding-top: 64px;
-      padding-bottom: 64px;
-      overflow: hidden;
+      height: calc(100vh - 140px);
+      padding-top: 0px;
+      padding-bottom: 0px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
     }
 
     .contentsArea {
-      padding: 10%;
+      flex-grow: 0;
+      height: 90vh;
+      width: 100%;
+      padding: 6%;
       background-color: $color-white;
-      border: 0px;
+      border: none;
       border-radius: 0px;
+      overflow: auto; /* 내부 내용이 넘칠 경우 스크롤 */
 
       .titleArea {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-self: start;
-        word-break: break-word; // 단어가 길면 줄바꿈
+        word-break: break-word;
 
         .textWrap {
           display: flex;
