@@ -38,7 +38,7 @@ export default function GrowthDiary() {
     const navigate = useNavigate();
     useEffect(() => {
         if (!user) {
-            navigate('/');
+            // navigate("/");
         }
     });
 
@@ -140,7 +140,6 @@ export default function GrowthDiary() {
                                     을 기록하고 상태를 확인해보세요:)
                                 </div>
                             </div>
-
                             <button
                                 className={[
                                     button.btnSmYw,
@@ -211,6 +210,7 @@ export default function GrowthDiary() {
                                                         <div
                                                             style={{
                                                                 padding: '2%',
+                                                                height: '100%',
                                                             }}
                                                         >
                                                             <DiaryChart

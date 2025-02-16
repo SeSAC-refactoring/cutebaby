@@ -52,6 +52,30 @@ export const AiChatComponent = () => {
                 </div>
             </div>
 
+      {/* 입력받는 곳 */}
+      <div className={styles.chat_input_wrapper}>
+        <Input
+          className={styles.inputWrap}
+          type="text"
+          value={input}
+          onChange={handleInputChange}
+          placeholder="질문을 입력해주세요."
+          onKeyDown={handleKeyDown}
+        />
+        <button
+          onClick={() => handleSendMessage(input, setInput)}
+          disabled={isLoading}
+          className={styles.chat_input_button}
+        >
+          {isLoading ? (
+            <div className={`${styles.btnLoading}`}></div>
+          ) : (
+            <img src="img/icons/i-send-s32.svg" alt="입력 아이콘" />
+          )}
+        </button>
+      </div>
+    </div>
+  );
             {/* 입력받는 곳 */}
             <div className={styles.chat_input_wrapper}>
                 <Input
