@@ -169,7 +169,7 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
     <div onClick={modalState} className={modal.modal_overlay}>
       <div
         onClick={(e) => e.stopPropagation()}
-        className={modal.modal_container}
+        className={modal.modalWrap}
       >
         <div className={modal.modal_title_wrap}>
           <div className={modal.modal_title}>개인 정보 수정</div>

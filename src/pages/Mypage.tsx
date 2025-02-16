@@ -89,6 +89,22 @@ export default function Mypage() {
         </div>
       )}
       <div className={layout.mainAreaWrap}>
+        {/* 수정 모달 */}
+        {updateModal && (
+          <UserupdateModal
+            modalState={() => {
+              setOpenUpdate(false);
+              // 정보가 수정되면 상태 업데이트
+              const updatedEmail = sessionStorage.getItem("useremail") ?? "";
+              const kakaoLogin = !updatedEmail.includes("@");
+
+              setUserInfo({
+                username: sessionStorage.getItem("username") ?? "방문자님",
+                userid: kakaoLogin ? "카카오 로그인" : updatedEmail,
+              });
+            }}
+          />
+        )}
         {/* 로그인 필요 모달 */}
         {/* {openModal && (
                   <NeedLoginModal modalState={() => setOpenModal(false)} />
@@ -104,7 +120,7 @@ export default function Mypage() {
               {babyInfo.length === 0 && (
                 <button
                   onClick={() => setBabyPlus(true)}
-                  className={`${button.btnLgBl} ${typography.textLgBd}`}
+                  className={`${styles.addButton} ${button.btnLgBl} ${typography.textLgBd}`}
                 >
                   아이 등록 +
                 </button>
@@ -146,23 +162,6 @@ export default function Mypage() {
             {/* 애기 정보 출력 */}
             {babyInfo.length > 0 && <BabyInfo babyInfo={babyInfo} />}
           </div>
-
-          {/* 수정 모달 */}
-          {updateModal && (
-            <UserupdateModal
-              modalState={() => {
-                setOpenUpdate(false);
-                // 정보가 수정되면 상태 업데이트
-                const updatedEmail = sessionStorage.getItem("useremail") ?? "";
-                const kakaoLogin = !updatedEmail.includes("@");
-
-                setUserInfo({
-                  username: sessionStorage.getItem("username") ?? "방문자님",
-                  userid: kakaoLogin ? "카카오 로그인" : updatedEmail,
-                });
-              }}
-            />
-          )}
         </div>
       </div>
     </>
