@@ -37,15 +37,6 @@ export default function Header() {
               className={[styles.menu_container, typography.textMdMd].join(" ")}
             >
               <div className={styles.icon_container}>
-                <img
-                  className={styles.header_icons}
-                  src={
-                    location.pathname == "/Home"
-                      ? "/img/icons/i-home-s32.svg"
-                      : "/img/icons/i-home-s32.svg"
-                  }
-                  //   src="/img/icons/i-home-s32.svg"
-                ></img>
                 <Link
                   to="/Home"
                   className={
@@ -54,14 +45,19 @@ export default function Header() {
                       : styles.menu
                   }
                 >
+                  <img
+                    className={styles.header_icons}
+                    src={
+                      location.pathname == "/Home"
+                        ? "/img/icons/i-home-s32.svg"
+                        : "/img/icons/i-home-s32.svg"
+                    }
+                    //   src="/img/icons/i-home-s32.svg"
+                  ></img>
                   홈
                 </Link>
               </div>
               <div className={styles.icon_container}>
-                <img
-                  className={styles.header_icons}
-                  src="/img/icons/i-login-s32.svg"
-                ></img>
                 <a
                   className={
                     location.pathname === "/Login" || location.pathname === "/"
@@ -70,6 +66,10 @@ export default function Header() {
                   }
                   onClick={gotoLogin}
                 >
+                  <img
+                    className={styles.header_icons}
+                    src="/img/icons/i-login-s32.svg"
+                  ></img>
                   로그인
                 </a>
               </div>
@@ -89,10 +89,6 @@ export default function Header() {
               className={[styles.menu_container, typography.textMdMd].join(" ")}
             >
               <div className={styles.icon_container}>
-                <img
-                  className={styles.header_icons}
-                  src="/img/icons/i-home-s32.svg"
-                ></img>
                 <Link
                   to="/Home"
                   className={
@@ -101,14 +97,14 @@ export default function Header() {
                       : styles.menu
                   }
                 >
+                  <img
+                    className={styles.header_icons}
+                    src="/img/icons/i-home-s32.svg"
+                  ></img>
                   홈
                 </Link>
               </div>
               <div className={styles.icon_container}>
-                <img
-                  className={styles.header_icons}
-                  src="/img/icons/i-vaccination-s32.svg"
-                ></img>
                 <Link
                   to="/Vaccination"
                   className={
@@ -117,15 +113,15 @@ export default function Header() {
                       : styles.menu
                   }
                 >
+                  <img
+                    className={styles.header_icons}
+                    src="/img/icons/i-vaccination-s32.svg"
+                  ></img>
                   예방접종
                 </Link>
               </div>
 
               <div className={styles.icon_container}>
-                <img
-                  className={styles.header_icons}
-                  src="/img/icons/i-ruler-s32.svg"
-                ></img>
                 <Link
                   to="/GrowthDiary"
                   className={
@@ -134,14 +130,14 @@ export default function Header() {
                       : styles.menu
                   }
                 >
+                  <img
+                    className={styles.header_icons}
+                    src="/img/icons/i-ruler-s32.svg"
+                  ></img>
                   성장일지
                 </Link>
               </div>
               <div className={styles.icon_container}>
-                <img
-                  className={styles.header_icons}
-                  src="/img/icons/i-mypage-s32.svg"
-                ></img>
                 <Link
                   to="/Mypage"
                   className={
@@ -150,15 +146,19 @@ export default function Header() {
                       : styles.menu
                   }
                 >
+                  <img
+                    className={styles.header_icons}
+                    src="/img/icons/i-mypage-s32.svg"
+                  ></img>
                   마이페이지
                 </Link>
               </div>
               <div className={styles.icon_container}>
-                <img
-                  className={styles.header_icons}
-                  src="/img/icons/i-login-s32.svg"
-                ></img>
                 <a className={styles.menu} onClick={Logout}>
+                  <img
+                    className={styles.header_icons}
+                    src="/img/icons/i-login-s32.svg"
+                  ></img>
                   로그아웃
                 </a>
               </div>
