@@ -118,7 +118,9 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
           <div className={styles.modalContentsAreaWrap}>
             <div className={styles.modal_img_wrap}>
               {defaultImg && <img src="/img/Profile.png" alt="아기 사진" />}
-              <button className={button.btnSmBl}>
+              <div
+                style={{ position: "relative", bottom: "60px", left: "30px" }}
+              >
                 <ImageUploader
                   setDefaultImg={setDefaultImg}
                   onImageSelect={(file) =>
@@ -126,7 +128,7 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
                   }
                   resetTrigger={resetImage}
                 />
-              </button>
+              </div>
             </div>
             <div className={styles.modal_Input_wrap}>
               <Input

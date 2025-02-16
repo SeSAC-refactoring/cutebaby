@@ -165,11 +165,11 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
             className={`${button.btnSmBl} ${typography.textBsBd}`}
           >
             사진 등록
-            <img
+            {/* <img
               className={styles.iconPhoto}
               src="img/icons/i-profile-photo-s20.svg"
               alt="이미지 아이콘"
-            />
+            /> */}
           </button>
         </>
       )}

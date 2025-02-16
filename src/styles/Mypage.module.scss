@@ -1,5 +1,9 @@
 @import "./commons/Colors.module.scss";
 
+.mainAreaWrap {
+  padding-bottom: 0;
+}
+
 .wrap {
   display: flex;
   justify-content: center;
@@ -127,7 +131,6 @@
   width: 100%;
   background-color: #fef9f1;
   border-radius: 32px;
-  margin-bottom: 48px;
   padding: 48px 56px;
   display: flex;
   flex-direction: column;
@@ -261,6 +264,23 @@
   }
   .babyInfo_btn_wrap {
     margin-top: 3px;
+    width: 100%;
+  }
+}
+
+.mypageContentsWrap {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  .user_info_wrap {
+    width: 100%;
+  }
+  .babyInfo_background {
     width: 100%;
   }
 }
