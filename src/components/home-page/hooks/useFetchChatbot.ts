@@ -35,7 +35,7 @@ export const useChatbot = () => {
         };
         setMessages((prev) => [...prev, chatbotMessage]); // Gemini 응답 추가
       } catch (error) {
-        console.error("Gemini 응답 처리 중 오류 발생", error);
+        // console.error("Gemini 응답 처리 중 오류 발생", error);
         setMessages((prev) => [
           ...prev,
           {
