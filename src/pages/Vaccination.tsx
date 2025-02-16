@@ -38,7 +38,7 @@ export default function Vaccination() {
 
   const user = sessionStorage.getItem("user");
   const babyId: number = selectedBabyId ?? 0;
-  console.log("👼👼👼👼👼👼user", user);
+  // console.log("👼👼👼👼👼👼user", user);
 
   //  로그인 안했을 시 로그인 페이지로 리디렉션 // 로그인 되면 데이터 가져오기
   const navigate = useNavigate();

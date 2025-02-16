@@ -60,6 +60,10 @@
   display: flex;
   gap: 16px;
 
+  button {
+    width: auto;
+  }
+
   .formArea {
     flex-grow: 1;
     display: flex;

@@ -29,7 +29,7 @@ export const fetchVaccinationData = createAsyncThunk(
   async (babyid: number, { rejectWithValue }) => {
     const API_URL = process.env.REACT_APP_API_URL;
 
-    console.log("store에서 babyid", babyid);
+    // console.log("store에서 babyid", babyid);
     try {
       // 백엔드 서버에 요청 보내기
       const response = await axios.post(
@@ -68,8 +68,8 @@ const vaccinationSlice = createSlice({
         (state, action: PayloadAction<VaccinationData[]>) => {
           state.loading = false;
           state.vaccinationData = action.payload;
-          console.log("action payload", action.payload);
-          console.log("Redux store vaccinationData:", state.vaccinationData);
+          // console.log("action payload", action.payload);
+          // console.log("Redux store vaccinationData:", state.vaccinationData);
 
           let babyids = state.vaccinationData.map((value) => {
             return value.babyid;

@@ -56,7 +56,7 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
   // };
   const handleGenderChange = useCallback((gender: string) => {
     setSelectedGender(gender);
-    console.log(gender);
+    // console.log(gender);
     setNewBabyData((prev) => ({ ...prev, gender }));
   }, []);
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

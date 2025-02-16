@@ -26,7 +26,7 @@ export const useCreatebaby = () => {
         formData.append("picture", data.picture);
       }
 
-      console.log("📦 전송할 FormData:", formData); //FormData 확인
+      // console.log("📦 전송할 FormData:", formData); //FormData 확인
 
       const response = await axios.post(`${API_URL}/babycreate`, formData, {
         headers: {
@@ -34,11 +34,11 @@ export const useCreatebaby = () => {
         },
       });
 
-      console.log("데이터 전송 성공:", response);
+      // console.log("데이터 전송 성공:", response);
       setCreateBaby(response.data);
       return response.data;
     } catch (error) {
-      console.error("데이터 전송 실패:", error);
+      // console.error("데이터 전송 실패:", error);
       throw error;
     }
   };

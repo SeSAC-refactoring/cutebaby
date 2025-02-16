@@ -22,7 +22,7 @@ export const VaccineInfo: React.FC<VaccineInfoProps> = ({
           e.stopPropagation();
         }}
       >
-        <div className={modal.modal_title_wrap}>
+        <div className={modal.titleArea}>
           <h2 className={`${modal.title} ${typography.text4xlBd}`}>
             백신 정보
           </h2>

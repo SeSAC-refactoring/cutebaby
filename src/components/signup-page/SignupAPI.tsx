@@ -10,7 +10,7 @@ export const checkEmailDuplication = async (email: string) => {
     });
     return response.data;
   } catch (error) {
-    console.error("이메일 중복 검사 실패:", error);
+    // console.error("이메일 중복 검사 실패:", error);
     return { success: false, message: "서버 오류 발생" };
   }
 };
@@ -21,7 +21,7 @@ export const registerUser = async (formData: any) => {
 
     return response.data;
   } catch (error) {
-    console.error("회원가입 중 오류 발생:", error);
+    // console.error("회원가입 중 오류 발생:", error);
     return { success: false, message: "서버 오류 발생" };
   }
 };

@@ -38,7 +38,7 @@ export default function Home() {
         // userinfo 가져오기
         const userinfo = sessionStorage.getItem("user"); // 올바른 키 이름 사용
         if (!userinfo) {
-          console.warn("Userinfo not found in sessionStorage");
+          // console.warn("Userinfo not found in sessionStorage");
           return; // userinfo가 없으면 로딩 종료
         }
 
@@ -47,7 +47,7 @@ export default function Home() {
           await dispatch(fetchgrowInfo(babyInfo));
         }
       } catch (error) {
-        console.error("데이터 가져오기 실패:", error);
+        // console.error("데이터 가져오기 실패:", error);
       } finally {
         setLoading(false); // 로딩 종료
       }
@@ -60,7 +60,7 @@ export default function Home() {
   const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
   const { growData } = useGrowData(growInfo, selectedBabyId);
 
-  console.log(1111, username);
+  // console.log(1111, username);
 
   return (
     <div className={layout.mainAreaWrap}>
@@ -80,10 +80,8 @@ export default function Home() {
           {/* 왼쪽 | 사용자 영역 */}
           <div className={styles.userArea}>
             <div className={`${styles.userGreeting} ${typography.text4xlMd}`}>
-              <div>
-                <strong className={`${styles.user} ${typography.text4xlBd}`}>
-                  {username}
-                </strong>
+              <div className={`${styles.user} ${typography.text4xlBd}`}>
+                <strong>{username}</strong>
                 님,
                 <br />
                 안녕하세요👋🏼

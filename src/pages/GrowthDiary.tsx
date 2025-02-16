@@ -38,7 +38,9 @@ export default function GrowthDiary() {
   const navigate = useNavigate();
   useEffect(() => {
     if (!user) {
+
       navigate("/");
+
     }
   });
 
@@ -46,8 +48,10 @@ export default function GrowthDiary() {
   const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
   const { growData } = useGrowData(growInfo, selectedBabyId);
 
-  console.log("애기 성장정보 입니다 >>>>", growInfo);
-  console.log("selectedBabyId에 따른 성장정보 입니다 >>>>", growData);
+
+  // console.log("애기 성장정보 입니다 >>>>", growInfo);
+  // console.log("selectedBabyId에 따른 성장정보 입니다 >>>>", growData);
+
 
   // 수정 모달 열기
   const handleEdit = (growId: number) => {
@@ -133,6 +137,7 @@ export default function GrowthDiary() {
                 </div>
               </div>
 
+
               <button
                 className={[button.btnSmYw, typography.textBsBd].join(" ")}
                 onClick={() => setOpenCalModal(true)}
@@ -141,6 +146,7 @@ export default function GrowthDiary() {
                 <img src="../img/icons/i-chevron-right-s20.svg" alt=">" />
               </button>
             </div>
+
 
             <div className={styles.contentsArea}>
               {babyInfo.length > 0 && (
@@ -200,6 +206,7 @@ export default function GrowthDiary() {
                             등록된 기록이 없습니다!
                           </div>
 
+
                           <button
                             onClick={() => {
                               setOpenAddModal(true);
@@ -233,13 +240,17 @@ export default function GrowthDiary() {
                       <div className={styles.blur_text}>
                         등록된 아이가 없습니다!
                       </div>
+
                       <Link className={styles.Link} to="/Mypage">
+
                         <button
                           className={`${button.btnLgGr} ${typography.textLgBd}`}
                         >
                           아이 등록하기
                           <img
+
                             src="../img/icons/i-chevron-right-s28.svg"
+
                             alt="바로가기 아이콘"
                           ></img>
                         </button>

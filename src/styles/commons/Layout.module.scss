@@ -85,7 +85,9 @@
   .mainAreaWrap {
     background-color: $color-white;
     height: 100vh;
-
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     .container {
       flex-grow: 0;
       width: 100%;

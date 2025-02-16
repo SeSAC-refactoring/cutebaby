@@ -13,14 +13,14 @@ interface InputProps {
   placeholder?: string;
   label?: string;
   id?: string;
-  onKeyDown?: any;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   className?: any;
   onFocus?: any;
   onBlur?: any;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ id, type, name, value, onChange, placeholder, label }, ref) => {
+  ({ id, type, name, value, onChange, placeholder, label, onKeyDown }, ref) => {
     const inputRef = useRef<HTMLInputElement>(null);
 
     // 부모에서 ref를 사용하도록 하기 위해 useImperativeHandle 사용
@@ -38,6 +38,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           value={value}
           onChange={onChange}
           placeholder={placeholder}
+          onKeyDown={onKeyDown}
         />
       </div>
     );

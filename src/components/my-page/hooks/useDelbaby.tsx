@@ -9,22 +9,22 @@ export const useDelbaby = () => {
   const delbaby = async (babyId: number | null) => {
     const API_URL = process.env.REACT_APP_API_URL;
 
-    console.log(babyId);
+    // console.log(babyId);
     const babyid = Number(babyId);
     if (!babyId) {
       alert("삭제할 아이를 선택하세요.");
       return;
     }
 
-        try {
-            const response = await axios.post(`${API_URL}/delbaby`, { babyid });
+    try {
+      const response = await axios.post(`${API_URL}/delbaby`, { babyid });
 
       dispatch(fetchBabyInfo());
 
-      console.log("아기 삭제 완료:", babyId);
+      // console.log("아기 삭제 완료:", babyId);
       return true;
     } catch (error) {
-      console.error("아기 삭제 실패:", error);
+      // console.error("아기 삭제 실패:", error);
       alert("아기 삭제에 실패했습니다.");
     }
   };

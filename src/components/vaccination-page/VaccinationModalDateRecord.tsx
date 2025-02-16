@@ -55,10 +55,10 @@ export const VaccinationModalDateRecord: React.FC<
   const [doseDate, setDoseDate] = useState<string>("");
 
   useEffect(() => {
-    console.log(
-      "🔍 클릭한 예방접종 ID에 해당하는 기록:",
-      specificVaccinationData
-    );
+    // console.log(
+    //   "🔍 클릭한 예방접종 ID에 해당하는 기록:",
+    //   specificVaccinationData
+    // );
   }, [specificVaccinationData]);
 
   if (vaccinationid === 17)
@@ -109,7 +109,7 @@ export const VaccinationModalDateRecord: React.FC<
       dispatch(fetchVaccinationData(babyId));
       setDoseDate("");
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   };
 
@@ -126,7 +126,7 @@ export const VaccinationModalDateRecord: React.FC<
       setSelectedDose(null);
       dispatch(fetchVaccinationData(babyId));
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   };
 
