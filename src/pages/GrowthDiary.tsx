@@ -38,7 +38,9 @@ export default function GrowthDiary() {
   const navigate = useNavigate();
   useEffect(() => {
     if (!user) {
-      // navigate("/");
+
+      navigate("/");
+
     }
   });
 
@@ -46,8 +48,10 @@ export default function GrowthDiary() {
   const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
   const { growData } = useGrowData(growInfo, selectedBabyId);
 
+
   // console.log("애기 성장정보 입니다 >>>>", growInfo);
   // console.log("selectedBabyId에 따른 성장정보 입니다 >>>>", growData);
+
 
   // 수정 모달 열기
   const handleEdit = (growId: number) => {
@@ -132,6 +136,8 @@ export default function GrowthDiary() {
                   을 기록하고 상태를 확인해보세요:)
                 </div>
               </div>
+
+
               <button
                 className={[button.btnSmYw, typography.textBsBd].join(" ")}
                 onClick={() => setOpenCalModal(true)}
@@ -140,6 +146,7 @@ export default function GrowthDiary() {
                 <img src="../img/icons/i-chevron-right-s20.svg" alt=">" />
               </button>
             </div>
+
 
             <div className={styles.contentsArea}>
               {babyInfo.length > 0 && (
@@ -155,41 +162,12 @@ export default function GrowthDiary() {
                   {growData.length > 0 ? (
                     <>
                       <div className={styles.recent_record_wrap}>
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignContent: "center",
-                            width: "100%",
-                            height: "100%",
-                          }}
-                        >
-                          <div
-                            style={{
-                              width: "808px",
-                              height: "476px",
-                              marginTop: "24px",
-                              border: "3px solid #D1E9F1",
-                              borderRadius: "32px",
-                              display: "flex",
-                              flexDirection: "column",
-                            }}
-                          >
-                            <div
-                              style={{
-                                margin: "32px 0px 0px 40px",
-                                fontSize: "18px",
-                                fontWeight: "bold",
-                              }}
-                            >
+                        <div className={styles.recent_contents_wrap}>
+                          <div className={styles.recent_graph_wrap}>
+                            <div className={styles.recent_graph_title}>
                               우리 아이 성장 추이
                             </div>
-                            <div
-                              style={{
-                                padding: "2%",
-                                height: "100%",
-                              }}
-                            >
+                            <div className={styles.recent_graph}>
                               <DiaryChart growData={growData} />
                             </div>
                           </div>
@@ -228,6 +206,7 @@ export default function GrowthDiary() {
                             등록된 기록이 없습니다!
                           </div>
 
+
                           <button
                             onClick={() => {
                               setOpenAddModal(true);
@@ -261,13 +240,17 @@ export default function GrowthDiary() {
                       <div className={styles.blur_text}>
                         등록된 아이가 없습니다!
                       </div>
-                      <Link to="/Mypage">
+
+                      <Link className={styles.Link} to="/Mypage">
+
                         <button
                           className={`${button.btnLgGr} ${typography.textLgBd}`}
                         >
                           아이 등록하기
                           <img
-                            src="/img/icons/i-chevron-right-s20.svg"
+
+                            src="../img/icons/i-chevron-right-s28.svg"
+
                             alt="바로가기 아이콘"
                           ></img>
                         </button>
