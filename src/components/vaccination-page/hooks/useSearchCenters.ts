@@ -27,15 +27,15 @@ export const useSearchCenters = (
       startLoading();
       try {
         const searchType = inputAddress.trim() ? "ADDR" : "";
-        console.log(
-          "API 호출: ",
-          pageNo,
-          numOfRows,
-          selectedLocation.province,
-          selectedLocation.city,
-          searchType,
-          inputAddress.trim()
-        );
+        // console.log(
+        //   "API 호출: ",
+        //   pageNo,
+        //   numOfRows,
+        //   selectedLocation.province,
+        //   selectedLocation.city,
+        //   searchType,
+        //   inputAddress.trim()
+        // );
 
         const data = await fetchVaccinationCenters(
           pageNo,
