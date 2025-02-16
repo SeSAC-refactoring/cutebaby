@@ -2,7 +2,6 @@
 
 //Vaccination.tsx
 .contentsArea {
-
   .button_wrap {
     display: flex;
     justify-content: space-between;
@@ -274,4 +273,50 @@ ul {
   height: 64px;
   border: none;
   background-color: $color-yellow-4;
+}
+.inputBtn_wrap {
+  width: 512px;
+  display: flex;
+  justify-content: space-between;
+}
+.input_wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.complete_input {
+  background-color: $color-green-1;
+  width: 314px;
+  height: 64px;
+  font-size: 22px;
+  font-weight: 700;
+  border-radius: 16px;
+  color: $color-green-7;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+}
+.not_complete_input {
+  background-color: $color-gray-1;
+  width: 314px;
+  height: 64px;
+  font-size: 22px;
+  font-weight: 700;
+  border-radius: 16px;
+  color: $color-gray-7;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+}
+.date_input {
+  background-color: $color-yellow-1;
+  border: 2px solid $color-gray-6;
+  width: 314px;
+  height: 64px;
+  font-size: 22px;
+  border-radius: 16px;
+  color: $color-gray-10;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
 }
