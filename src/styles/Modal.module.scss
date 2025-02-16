@@ -246,3 +246,10 @@
   font-style: normal;
   font-weight: 700;
 }
+.modal_title_wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 42px;
+}

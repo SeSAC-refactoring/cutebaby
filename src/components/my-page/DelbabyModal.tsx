@@ -43,7 +43,11 @@ export const DelbabyModal: React.FC<DelbabyProps> = ({
   };
 
   return (
-    <div className={styles.modal_overlay} onClick={goBack}>
+    <div
+      style={{ left: "0" }}
+      className={styles.modal_overlay}
+      onClick={goBack}
+    >
       <div className={styles.modal_container} style={{ padding: "50px" }}>
         <div
           className={styles.modal_title_wrap}

@@ -94,7 +94,11 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
   const [selectedGender, setSelectedGender] = useState(rewriteData.gender);
 
   return (
-    <div onClick={onClose} className={styles.modal_overlay}>
+    <div
+      onClick={onClose}
+      style={{ left: "0" }}
+      className={styles.modal_overlay}
+    >
       <div
         onClick={(e) => e.stopPropagation()}
         className={styles.modal_container}

@@ -5,6 +5,7 @@ import { doses, vaccinesName } from "./VaccinationTableData";
 import typography from "../../../styles/commons/Typography.module.scss";
 import button from "../../../styles/commons/Button.module.scss";
 import styles from "../../../styles/Vaccination.module.scss";
+import modal from "../../../styles/Modal.module.scss";
 
 interface VaccineTypeProps {
   selectedBabyId: number | null;
@@ -31,33 +32,34 @@ export const VaccineType: React.FC<VaccineTypeProps> = ({ selectedBabyId }) => {
   // useEffect(() => console.log(newVaccinationData), [newVaccinationData]); // 서버로 보낼 추가/수정된 백신 정보
 
   return (
-    <div className={styles.VaccineTypeWrap}>
-      <div
-        className={`${styles.cell} ${styles.th} ${typography.textBsBd} ${styles.thVaccineType}`}
-        style={{}}
-      >
-        백신 종류 및 방법
+    <>
+      <div className={styles.VaccineTypeWrap}>
+        <div
+          className={`${styles.cell} ${styles.th} ${typography.textBsBd} ${styles.thVaccineType}`}
+          style={{}}
+        >
+          백신 종류 및 방법
+        </div>
+        <ul className={`${styles.ulVaccineType} ${typography.textSmRg}`}>
+          {vaccinesName.map((vaccine, i) => (
+            <li
+              className={`${styles.liVaccineType} ${styles.td}`}
+              key={i}
+              style={{
+                height: i === 10 ? "100px" : "50px",
+              }}
+              onClick={() => handleOpenModal(i + 1)} // 클릭 시 해당 백신의 vaccinationid 저장
+            >
+              <span className={styles.vaccineName}>{vaccine} </span>
+              {/* <span style={{ fontSize: "10px", color: "red" }}>{i + 1}</span> */}
+              <button className={`${button.btn2xsRd} ${typography.text2xsMd}`}>
+                <img src="/img/icons/i-edit-s12.svg" />
+                관리
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
-      <ul className={`${styles.ulVaccineType} ${typography.textSmRg}`}>
-        {vaccinesName.map((vaccine, i) => (
-          <li
-            className={`${styles.liVaccineType} ${styles.td}`}
-            key={i}
-            style={{
-              height: i === 10 ? "100px" : "50px",
-            }}
-            onClick={() => handleOpenModal(i + 1)} // 클릭 시 해당 백신의 vaccinationid 저장
-          >
-            <span className={styles.vaccineName}>{vaccine} </span>
-            {/* <span style={{ fontSize: "10px", color: "red" }}>{i + 1}</span> */}
-            <button className={`${button.btn2xsRd} ${typography.text2xsMd}`}>
-              <img src="/img/icons/i-edit-s12.svg" />
-              관리
-            </button>
-          </li>
-        ))}
-      </ul>
-
       {/* 선택된 백신접종 CURD 모달 열기 */}
       {isOpen && selectedVaccineId !== null && (
         <VaccinationModal
@@ -68,6 +70,6 @@ export const VaccineType: React.FC<VaccineTypeProps> = ({ selectedBabyId }) => {
           selectedBabyId={selectedBabyId}
         />
       )}
-    </div>
+    </>
   );
 };
