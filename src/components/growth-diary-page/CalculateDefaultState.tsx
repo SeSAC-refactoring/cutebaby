@@ -3,7 +3,7 @@ import React from "react";
 export const CalculateDefaultState = () => {
   return (
     <div>
-      <img src="/img/Result_area.png" />
+      <img style={{ width: "1120px" }} src="/img/Result_area.png" />
     </div>
   );
 };
