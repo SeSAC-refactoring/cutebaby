@@ -36,7 +36,8 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
         marginBottom: "48px",
         backgroundColor: "#FEF9F1",
         borderRadius: "32px",
-        width: "1000px",
+        // width: "1000px",
+        width: "100%",
         boxSizing: "border-box",
       }}
     >

@@ -161,6 +161,12 @@
   display: flex;
   flex-direction: column;
 }
+.input_set_row {
+  width: 512px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 // <로그인이 필요한 서비스입니다.> 모달 스타일
 .loginModalBackground {

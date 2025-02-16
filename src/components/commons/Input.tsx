@@ -15,6 +15,8 @@ interface InputProps {
   id?: string;
   onKeyDown?: any;
   className?: any;
+  onFocus?: any;
+  onBlur?: any;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(

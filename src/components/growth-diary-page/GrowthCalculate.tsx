@@ -54,11 +54,12 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
         }}
         style={{
           backgroundColor: "white",
-          width: "1160px",
+          width: "100%",
+          maxWidth: "1280px",
           // height: "1148px",
           position: "absolute",
-          top: "30%",
-          left: "20%",
+          top: "19%",
+          left: "320px",
           border: "2px solid #838391",
           borderRadius: "40px",
           // transform: "translate(-50%,-50%)",
@@ -72,7 +73,7 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "1000px",
+            width: "100%",
           }}
         >
           <div
@@ -110,7 +111,7 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
               X
             </div>
           </div>
-          <div style={{ width: "1000px" }}>
+          <div style={{ width: "100%" }}>
             {/* 사용자 입력값 설정 */}
             <CalculateInputArea
               childData={childData}

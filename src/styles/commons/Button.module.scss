@@ -170,6 +170,7 @@ $kakao-yellow-pressed: $color-kakao-yellow-7;
   color: $color-gray-10;
   border-radius: 16px;
   background-color: $blue-default;
+  width: 100%;
 
   &:disabled {
     background-color: $blue-disabled;
@@ -181,6 +182,29 @@ $kakao-yellow-pressed: $color-kakao-yellow-7;
 
   &:active {
     background-color: $blue-pressed;
+  }
+}
+
+// → coral
+.btnLgCo {
+  height: 64px;
+  padding: 16px 24px;
+  gap: 8px;
+  color: $color-gray-10;
+  border-radius: 16px;
+  background-color: $color-coral-4;
+  width: 100%;
+
+  &:disabled {
+    // background-color: $coral-disabled;
+  }
+
+  &:hover {
+    // background-color: $coral-hovered;
+  }
+
+  &:active {
+    // background-color: $coral-pressed;
   }
 }
 
