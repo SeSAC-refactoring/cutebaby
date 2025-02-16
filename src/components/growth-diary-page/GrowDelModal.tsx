@@ -26,7 +26,7 @@ export const GrowDelModal: React.FC<GrowDelModalProps> = ({
   const onDelGrow = async (e: React.MouseEvent<HTMLButtonElement>) => {
     const API_URL = process.env.REACT_APP_API_URL;
 
-    console.log(e.currentTarget.value);
+    // console.log(e.currentTarget.value);
     // const selectedGrowId = Number(e.currentTarget.value);
 
     try {

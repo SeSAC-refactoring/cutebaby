@@ -82,7 +82,7 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
       formData.append("existingPicture", picture); // 기존 이미지 URL을 서버에 전달
     }
 
-    console.log("📦 서버로 전송할 변경된 데이터:", [...formData.entries()]);
+    // console.log("📦 서버로 전송할 변경된 데이터:", [...formData.entries()]);
 
     try {
       await requestbaby(formData);
@@ -90,7 +90,7 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
       dispatch(fetchBabyInfo());
       onClose();
     } catch (error) {
-      console.error("업데이트 오류:", error);
+      // console.error("업데이트 오류:", error);
     }
   };
   const [selectedGender, setSelectedGender] = useState(rewriteData.gender);

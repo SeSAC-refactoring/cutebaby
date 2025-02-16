@@ -15,10 +15,10 @@ export const UpdateVac = () => {
     try {
       const response = await axios.post(`${API_URL}/updateVac`, data);
       setupdateVac(response.data); // 서버 응답을 상태에 저장
-      console.log("delvac>>>>", updateVac);
+      // console.log("delvac>>>>", updateVac);
       return response.data;
     } catch (error) {
-      console.error("데이터 전송 실패:", error);
+      // console.error("데이터 전송 실패:", error);
       throw error;
     }
   };

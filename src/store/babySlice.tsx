@@ -16,9 +16,9 @@ export const fetchBabyInfo = createAsyncThunk(
 
     try {
       const user = sessionStorage.getItem("usernumber");
-      console.log("user number redux에 전달 >>>>>", user);
+      // console.log("user number redux에 전달 >>>>>", user);
       const response = await axios.post(`${API_URL}/babyinfo`, { user });
-      console.log("reduxer 안에 reponse >>", response);
+      // console.log("reduxer 안에 reponse >>", response);
       if (!response.data || response.data.length === 0) {
         return [];
       } else {
@@ -50,7 +50,7 @@ const babySlice = createSlice({
           state.loading = false;
           state.babyInfo = action.payload;
           state.nothingBaby = action.payload.length > 0;
-          console.log("action payload >>>>", action.payload);
+          // console.log("action payload >>>>", action.payload);
 
           let babyids = state.babyInfo.map((value) => {
             return value.babyid;

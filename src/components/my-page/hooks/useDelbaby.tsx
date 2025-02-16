@@ -16,15 +16,15 @@ export const useDelbaby = () => {
       return;
     }
 
-        try {
-            const response = await axios.post(`${API_URL}/delbaby`, { babyid });
+    try {
+      const response = await axios.post(`${API_URL}/delbaby`, { babyid });
 
       dispatch(fetchBabyInfo());
 
-      console.log("아기 삭제 완료:", babyId);
+      // console.log("아기 삭제 완료:", babyId);
       return true;
     } catch (error) {
-      console.error("아기 삭제 실패:", error);
+      // console.error("아기 삭제 실패:", error);
       alert("아기 삭제에 실패했습니다.");
     }
   };
