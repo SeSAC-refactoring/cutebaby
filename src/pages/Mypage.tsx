@@ -127,40 +127,43 @@ export default function Mypage() {
                 </button>
               )}
             </div>
+            <div className={styles.mypageContentsWrap}>
+              {/* 사용자 정보 출력하기 */}
+              <div className={styles.user_info_wrap}>
+                <div className={`${styles.info_title} ${typography.textXlBd}`}>
+                  내 정보
+                </div>
+                <div className={styles.info_detail_wrap}>
+                  <div className={styles.detail_set}>
+                    <div className={typography.textSmBd}>이름</div>
+                    <div className={typography.textXlBd}>
+                      {userInfo.username}
+                    </div>
+                  </div>
+                  <div className={styles.detail_set}>
+                    <div className={typography.textSmBd}>이메일</div>
+                    <div className={typography.textXlBd}>{userInfo.userid}</div>
+                  </div>
+                  <button
+                    className={`${button.btnLgYw} ${typography.textMdBd}${
+                      isKakaoLogin ? styles.disabled : ""
+                    }`}
+                    onClick={update}
+                    disabled={isKakaoLogin}
+                  >
+                    개인정보 수정
+                    <img
+                      className={styles.img}
+                      src="/img/edit-01.png"
+                      alt="수정 아이콘"
+                    />
+                  </button>
+                </div>
+              </div>
 
-            {/* 사용자 정보 출력하기 */}
-            <div className={styles.user_info_wrap}>
-              <div className={`${styles.info_title} ${typography.textXlBd}`}>
-                내 정보
-              </div>
-              <div className={styles.info_detail_wrap}>
-                <div className={styles.detail_set}>
-                  <div className={typography.textSmBd}>이름</div>
-                  <div className={typography.textXlBd}>{userInfo.username}</div>
-                </div>
-                <div className={styles.detail_set}>
-                  <div className={typography.textSmBd}>이메일</div>
-                  <div className={typography.textXlBd}>{userInfo.userid}</div>
-                </div>
-                <button
-                  className={`${button.btnLgYw} ${typography.textMdBd}${
-                    isKakaoLogin ? styles.disabled : ""
-                  }`}
-                  onClick={update}
-                  disabled={isKakaoLogin}
-                >
-                  개인정보 수정
-                  <img
-                    className={styles.img}
-                    src="/img/edit-01.png"
-                    alt="수정 아이콘"
-                  />
-                </button>
-              </div>
+              {/* 애기 정보 출력 */}
+              {babyInfo.length > 0 && <BabyInfo babyInfo={babyInfo} />}
             </div>
-
-            {/* 애기 정보 출력 */}
-            {babyInfo.length > 0 && <BabyInfo babyInfo={babyInfo} />}
           </div>
         </div>
       </div>

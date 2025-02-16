@@ -147,7 +147,6 @@ export default function GrowthDiary() {
               </button>
             </div>
 
-
             <div className={styles.contentsArea}>
               {babyInfo.length > 0 && (
                 <>
@@ -205,7 +204,6 @@ export default function GrowthDiary() {
                           <div className={styles.blur_text}>
                             등록된 기록이 없습니다!
                           </div>
-
 
                           <button
                             onClick={() => {

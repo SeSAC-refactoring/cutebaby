@@ -1,6 +1,7 @@
 @import "./Colors.module.scss";
 
 button {
+  width: max-content;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -190,7 +191,6 @@ $kakao-yellow-pressed: $color-kakao-yellow-7;
   color: $color-gray-10;
   border-radius: 16px;
   background-color: $blue-default;
-  width: 100%;
 
   &:disabled {
     background-color: $blue-disabled;

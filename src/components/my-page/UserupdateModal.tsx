@@ -167,9 +167,12 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
 
   return (
     <div onClick={modalState} className={modal.modal_overlay}>
-      <div onClick={(e) => e.stopPropagation()} className={modal.modalWrap}>
-        <div className={modal.modal_title_wrap}>
-          <div className={modal.modal_title}>개인 정보 수정</div>
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className={`${modal.modalWrapW640}`}
+      >
+        <div className={modal.titleArea}>
+          <div className={`${modal.modal_title} ${typography.text4xlBd}`}>개인 정보 수정</div>
           <div
             onClick={() => {
               modalState();
@@ -178,60 +181,60 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
           >
             <img src="/img/icons/i-modal-close-s32.svg" alt="" />
           </div>
-          {/* <div onClick={modalState} className={styles.X_btn}>
-            X
-          </div> */}
         </div>
-        <div className={styles.modal_Input_wrap}>
-          {/* 이름 입력 */}
-          <Input
-            label="이름"
-            name="name"
-            placeholder="이름 입력"
-            value={formData.name}
-            onChange={handleChange}
-          ></Input>
-          <p className={`${styles.error_message} ${typography.textBsMd}`}>
-            {messages.name}
-          </p>
-          {/* 이메일 입력 */}
-          <div className={styles.check_wrap}>
-            <InputSignupEmail
-              label="이메일"
-              type="email"
-              name="email"
-              placeholder="이메일 입력"
-              value={formData.email}
-              onChange={handleChange}
-            ></InputSignupEmail>
+        <div className={modal.modalContentsArea}>
+          <div className={styles.modalContentsAreaWrap}>
+            <div className={styles.modal_Input_wrap}>
+              {/* 이름 입력 */}
+              <Input
+                label="이름"
+                name="name"
+                placeholder="이름 입력"
+                value={formData.name}
+                onChange={handleChange}
+              ></Input>
+              <p className={`${styles.error_message} ${typography.textBsMd}`}>
+                {messages.name}
+              </p>
+              {/* 이메일 입력 */}
+              <div className={styles.check_wrap}>
+                <InputSignupEmail
+                  label="이메일"
+                  type="email"
+                  name="email"
+                  placeholder="이메일 입력"
+                  value={formData.email}
+                  onChange={handleChange}
+                ></InputSignupEmail>
+                <button
+                  className={`${button.btnLgBl} ${typography.textXlBd}`}
+                  onClick={emailCheck}
+                >
+                  중복 체크
+                </button>
+              </div>
+              <p className={`${styles.error_message} ${typography.textBsMd}`}>
+                {messages.email}
+              </p>
+              {/* </label> */}
+
+              {/* 이메일 중복 확인 버튼 */}
+            </div>
+          </div>
+          <div className={styles.modal_button_container}>
             <button
-              className={`${button.btnLgBl} ${typography.textXlBd}`}
-              onClick={emailCheck}
+              className={`${button.btnXlYw} ${typography.textXlBd}`}
+              onClick={modalState}
             >
-              중복 체크
+              취소
+            </button>
+            <button
+              className={`${button.btnXlGr} ${typography.textXlBd}`}
+              onClick={handleUpdate}
+            >
+              완료
             </button>
           </div>
-          <p className={`${styles.error_message} ${typography.textBsMd}`}>
-            {messages.email}
-          </p>
-          {/* </label> */}
-
-          {/* 이메일 중복 확인 버튼 */}
-        </div>
-        {/* 버튼 */}
-        <div className={styles.modal_button_container}>
-          <button
-            className={`${button.btnXlYw} ${typography.textXlBd}`}
-            onClick={modalState}
-          >
-            취소
-          </button>
-          <button
-            className={`${button.btnXlGr} ${typography.textXlBd}`}
-            onClick={handleUpdate}
-          >
-            완료
-          </button>
         </div>
       </div>
     </div>
