@@ -46,7 +46,30 @@ $kakao-yellow-pressed: $color-kakao-yellow-7;
 // Xsmall
 
 // Small
-// → yellow
+// → gray
+.btnSmGr {
+  height: 44px;
+  padding-left: 14px;
+  padding-right: 14px;
+  gap: 4px;
+  color: $color-white;
+  border-radius: 12px;
+  background-color: $gray-default;
+
+  &:disabled {
+    color: $gray-disabled;
+    background-color: $gray-disabled;
+  }
+
+  &:hover {
+    background-color: $gray-hovered;
+  }
+
+  &:active {
+    background-color: $gray-pressed;
+  }
+}
+
 .btnSmYw {
   height: 44px;
   padding-left: 14px;

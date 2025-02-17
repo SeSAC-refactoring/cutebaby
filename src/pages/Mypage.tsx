@@ -75,7 +75,7 @@ export default function Mypage() {
   }, []);
 
   return (
-    <>
+    <div className={layout.mainAreaWrap}>
       {babyPlus && (
         <div
           onClick={() => setBabyPlus(false)}
@@ -88,85 +88,82 @@ export default function Mypage() {
           />
         </div>
       )}
-      <div className={layout.mainAreaWrap}>
-        {/* 수정 모달 */}
-        {updateModal && (
-          <UserupdateModal
-            modalState={() => {
-              setOpenUpdate(false);
-              // 정보가 수정되면 상태 업데이트
-              const updatedEmail = sessionStorage.getItem("useremail") ?? "";
-              const kakaoLogin = !updatedEmail.includes("@");
 
-              setUserInfo({
-                username: sessionStorage.getItem("username") ?? "방문자님",
-                userid: kakaoLogin ? "카카오 로그인" : updatedEmail,
-              });
-            }}
-          />
-        )}
-        {/* 로그인 필요 모달 */}
-        {/* {openModal && (
-                  <NeedLoginModal modalState={() => setOpenModal(false)} />
-              )} */}
-        <div className={layout.container}>
-          <div className={`${layout.contentsArea} ${styles.contentsArea}`}>
-            <div className={layout.titleArea}>
-              <div className={layout.textWrap}>
-                <h1 className={[layout.title, typography.text4xlBd].join(" ")}>
-                  마이페이지
-                </h1>
+      {/* 수정 모달 */}
+      {updateModal && (
+        <UserupdateModal
+          modalState={() => {
+            setOpenUpdate(false);
+            // 정보가 수정되면 상태 업데이트
+            const updatedEmail = sessionStorage.getItem("useremail") ?? "";
+            const kakaoLogin = !updatedEmail.includes("@");
+
+            setUserInfo({
+              username: sessionStorage.getItem("username") ?? "방문자님",
+              userid: kakaoLogin ? "카카오 로그인" : updatedEmail,
+            });
+          }}
+        />
+      )}
+      {/* 로그인 필요 모달 */}
+      {/* {openModal && (
+                <NeedLoginModal modalState={() => setOpenModal(false)} />
+            )} */}
+      <div className={layout.container}>
+        <div className={`${layout.contentsArea} ${styles.contentsArea}`}>
+          <div className={layout.titleArea}>
+            <div className={layout.textWrap}>
+              <h1 className={[layout.title, typography.text4xlBd].join(" ")}>
+                마이페이지
+              </h1>
+            </div>
+            {babyInfo.length === 0 && (
+              <button
+                style={{ width: "30%" }}
+                onClick={() => setBabyPlus(true)}
+                className={`${styles.addButton} ${button.btnLgBl} ${typography.textLgBd}`}
+              >
+                아이 등록 +
+              </button>
+            )}
+          </div>
+          <div className={styles.mypageContentsWrap}>
+            {/* 사용자 정보 출력하기 */}
+            <div className={styles.user_info_wrap}>
+              <div className={`${styles.info_title} ${typography.textXlBd}`}>
+                내 정보
               </div>
-              {babyInfo.length === 0 && (
+              <div className={styles.info_detail_wrap}>
+                <div className={styles.detail_set}>
+                  <div className={typography.textSmBd}>이름</div>
+                  <div className={typography.textXlBd}>{userInfo.username}</div>
+                </div>
+                <div className={styles.detail_set}>
+                  <div className={typography.textSmBd}>이메일</div>
+                  <div className={typography.textXlBd}>{userInfo.userid}</div>
+                </div>
                 <button
-                  style={{ width: "30%" }}
-                  onClick={() => setBabyPlus(true)}
-                  className={`${styles.addButton} ${button.btnLgBl} ${typography.textLgBd}`}
+                  className={`${button.btnLgYw} ${typography.textMdBd}${
+                    isKakaoLogin ? styles.disabled : ""
+                  }`}
+                  onClick={update}
+                  disabled={isKakaoLogin}
                 >
-                  아이 등록 +
+                  개인정보 수정
+                  <img
+                    className={styles.img}
+                    src="/img/edit-01.png"
+                    alt="수정 아이콘"
+                  />
                 </button>
-              )}
-            </div>
-            <div className={styles.mypageContentsWrap}>
-              {/* 사용자 정보 출력하기 */}
-              <div className={styles.user_info_wrap}>
-                <div className={`${styles.info_title} ${typography.textXlBd}`}>
-                  내 정보
-                </div>
-                <div className={styles.info_detail_wrap}>
-                  <div className={styles.detail_set}>
-                    <div className={typography.textSmBd}>이름</div>
-                    <div className={typography.textXlBd}>
-                      {userInfo.username}
-                    </div>
-                  </div>
-                  <div className={styles.detail_set}>
-                    <div className={typography.textSmBd}>이메일</div>
-                    <div className={typography.textXlBd}>{userInfo.userid}</div>
-                  </div>
-                  <button
-                    className={`${button.btnLgYw} ${typography.textMdBd}${
-                      isKakaoLogin ? styles.disabled : ""
-                    }`}
-                    onClick={update}
-                    disabled={isKakaoLogin}
-                  >
-                    개인정보 수정
-                    <img
-                      className={styles.img}
-                      src="/img/edit-01.png"
-                      alt="수정 아이콘"
-                    />
-                  </button>
-                </div>
               </div>
-
-              {/* 애기 정보 출력 */}
-              {babyInfo.length > 0 && <BabyInfo babyInfo={babyInfo} />}
             </div>
+
+            {/* 애기 정보 출력 */}
+            {babyInfo.length > 0 && <BabyInfo babyInfo={babyInfo} />}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

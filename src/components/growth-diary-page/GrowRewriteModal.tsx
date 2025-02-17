@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import styles from "../../styles/Modal.module.scss";
+import modal from "../../styles/Modal.module.scss";
+import styles from "../../styles/GrowthDiary.module.scss";
 import typography from "../../styles/commons/Typography.module.scss";
 import button from "../../styles/commons/Button.module.scss";
 import { newGrowData } from "../types";
@@ -95,123 +96,93 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
   };
 
   return (
-    <div onClick={onClose} className={styles.modal_overlay}>
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className={styles.modal_container}
-      >
-        <div className={styles.modal_title_wrap}>
-          <div className={styles.modal_title}>기록 수정</div>
-          <div
-            onClick={onClose}
-            style={{
-              fontSize: "40px",
-              cursor: "pointer",
-            }}
-          >
-            X
+    <div onClick={onClose} className={modal.modal_overlay}>
+      <div onClick={(e) => e.stopPropagation()} className={modal.modalWrapW640}>
+        <div className={modal.titleArea}>
+          <div className={typography.text4xlBd}>기록 수정</div>
+          <div onClick={onClose} className={modal.closeBtn}>
+            <img src="/img/icons/i-modal-close-s32.svg" alt="" />
           </div>
         </div>
-        <div style={{ display: "flex", gap: "32px", flexDirection: "column" }}>
-          <div className={styles.input_set_row}>
-            {/* <label>측정날짜</label> */}
-            <Input
-              label="측정날짜"
-              type="date"
-              className={styles.modal_input}
-              id="inputData"
-              value={rewriteData.inputData}
-              onChange={handleInputChange}
-            />
+        <div className={modal.modalContentsArea}>
+          <div className={modal.modalContentsAreaWrap}>
+            <div className={styles.formArea}>
+              <div>
+                <Input
+                  label="측정날짜"
+                  type="date"
+                  className={styles.input}
+                  id="inputData"
+                  value={rewriteData.inputData}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div>
+                <Input
+                  label="키"
+                  className={styles.input}
+                  id="height"
+                  placeholder="숫자만"
+                  // value={rewriteData.height}
+                  value={String(rewriteData.height)}
+                  onChange={handleInputChange}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                />
+                <span className={`${modal.unit} ${typography.textSmBd}`}>
+                  cm
+                </span>
+              </div>
+              <div>
+                <Input
+                  label="몸무게"
+                  className={modal.modal_input}
+                  id="weight"
+                  placeholder="숫자만"
+                  // value={rewriteData.weight}
+                  value={String(rewriteData.weight)}
+                  onChange={handleInputChange}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                />
+                <span className={`${modal.unit} ${typography.textSmBd}`}>
+                  kg
+                </span>
+              </div>
+              <div>
+                {/* <label>머리둘레</label> */}
+                <Input
+                  label="머리둘레"
+                  className={modal.modal_input}
+                  id="head"
+                  placeholder="숫자만"
+                  value={rewriteData.head}
+                  onChange={handleInputChange}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                />
+                <span className={`${modal.unit} ${typography.textSmBd}`}>
+                  cm
+                </span>
+              </div>
+            </div>
           </div>
-
-          <div className={styles.input_set_row}>
-            {/* <label>신장</label> */}
-            <Input
-              label="신장"
-              className={styles.modal_input}
-              id="height"
-              placeholder="숫자만"
-              // value={rewriteData.height}
-              value={String(rewriteData.height)}
-              onChange={handleInputChange}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-            />
-            <span
-              style={{
-                marginLeft: "8px",
-                position: "relative",
-                top: "15px",
-              }}
+          <div className={modal.modal_button_container}>
+            <button
+              // className={`${modal.modal_btn} ${modal.modal_cancel_button}`}
+              className={`${button.btnXlYw} ${typography.textXlBd}`}
+              onClick={onClose}
             >
-              cm
-            </span>
-          </div>
-
-          <div className={styles.input_set_row}>
-            {/* <label>체중</label> */}
-            <Input
-              label="체중"
-              className={styles.modal_input}
-              id="weight"
-              placeholder="숫자만"
-              // value={rewriteData.weight}
-              value={String(rewriteData.weight)}
-              onChange={handleInputChange}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-            />
-            <span
-              style={{
-                marginLeft: "8px",
-                position: "relative",
-                top: "15px",
-              }}
+              취소
+            </button>
+            <button
+              onClick={handleRewrite}
+              // className={`${modal.modal_btn} ${modal.modal_done_button}`}
+              className={`${button.btnXlGr} ${typography.textXlBd}`}
             >
-              kg
-            </span>
+              완료
+            </button>
           </div>
-
-          <div className={styles.input_set_row}>
-            {/* <label>머리둘레</label> */}
-            <Input
-              label="머리둘레"
-              className={styles.modal_input}
-              id="head"
-              placeholder="숫자만"
-              value={rewriteData.head}
-              onChange={handleInputChange}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-            />
-            <span
-              style={{
-                marginLeft: "8px",
-                position: "relative",
-                top: "15px",
-              }}
-            >
-              cm
-            </span>
-          </div>
-        </div>
-
-        <div className={styles.modal_button_container}>
-          <button
-            // className={`${styles.modal_btn} ${styles.modal_cancel_button}`}
-            className={`${button.btnXlYw} ${typography.textXlBd}`}
-            onClick={onClose}
-          >
-            취소
-          </button>
-          <button
-            onClick={handleRewrite}
-            // className={`${styles.modal_btn} ${styles.modal_done_button}`}
-            className={`${button.btnXlGr} ${typography.textXlBd}`}
-          >
-            완료
-          </button>
         </div>
       </div>
     </div>

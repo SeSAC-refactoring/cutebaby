@@ -245,8 +245,8 @@ export default function Home() {
                     <div className={typography.textSmBd}>
                       궁금한 내용이 있으신가요?
                     </div>
-                    <div className={AI.chatTitleGuide}>
-                      무엇이든 <span>AI챗봇</span>에게 물어보세요😉
+                    <div className={`${AI.chatTitleGuide} ${typography.textBsMd}`}>
+                      무엇이든 <span className={typography.textBsBd}>AI챗봇</span>에게 물어보세요😉
                     </div>
                   </div>
                 </div>
