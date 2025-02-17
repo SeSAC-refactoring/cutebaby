@@ -50,7 +50,7 @@ export default function Header() {
                     src={
                       location.pathname == "/Home"
                         ? "/img/icons/i-home-s32.svg"
-                        : "/img/icons/i-home-s32.svg"
+                        : "/img/icons/i-home-s32-active.svg"
                     }
                     //   src="/img/icons/i-home-s32.svg"
                   ></img>
@@ -68,7 +68,11 @@ export default function Header() {
                 >
                   <img
                     className={styles.header_icons}
-                    src="/img/icons/i-login-s32.svg"
+                    src={
+                      location.pathname == "/Login"
+                        ? "/img/icons/i-login-s32.svg"
+                        : "/img/icons/i-login-s32-active.svg"
+                    }
                   ></img>
                   로그인
                 </a>
@@ -99,7 +103,11 @@ export default function Header() {
                 >
                   <img
                     className={styles.header_icons}
-                    src="/img/icons/i-home-s32.svg"
+                    src={
+                      location.pathname == "/Login"
+                        ? "/img/icons/i-login-s32.svg"
+                        : "/img/icons/i-login-s32-active.svg"
+                    }
                   ></img>
                   홈
                 </Link>
@@ -115,7 +123,11 @@ export default function Header() {
                 >
                   <img
                     className={styles.header_icons}
-                    src="/img/icons/i-vaccination-s32.svg"
+                    src={
+                      location.pathname == "/Vaccination"
+                        ? "/img/icons/i-injection-s32.svg"
+                        : "/img/icons/i-injection-s32-active.svg"
+                    }
                   ></img>
                   예방접종
                 </Link>
@@ -132,7 +144,11 @@ export default function Header() {
                 >
                   <img
                     className={styles.header_icons}
-                    src="/img/icons/i-ruler-s32.svg"
+                    src={
+                      location.pathname == "/GrowthDiary"
+                        ? "/img/icons/i-ruler-s32.svg"
+                        : "/img/icons/i-ruler-s32-active.svg"
+                    }
                   ></img>
                   성장일지
                 </Link>
