@@ -21,8 +21,8 @@ interface UserInfo {
 
 const EmailLogin: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const [email, setEmail] = useState<string>(""); // 이메일 상태관리하기
-  const [inputpassword, setinputPassword] = useState<string>(""); // 비밀번호 상태관리하기
+  const [email, setEmail] = useState<string>("test@sesac.com"); // 이메일 상태관리하기
+  const [inputpassword, setinputPassword] = useState<string>("testuser1!"); // 비밀번호 상태관리하기
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null); // 사용자 정보 상태관리하기
   const [error, setError] = useState<string>(""); // 에러 상태
   const [loading, setLoading] = useState<boolean>(false); // 로딩 상태 추가
