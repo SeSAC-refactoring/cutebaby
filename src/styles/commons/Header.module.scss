@@ -106,3 +106,10 @@
   }
 }
 
+@media screen and (min-width: 1920px) {
+  .headerWrapper {
+    transform: scale(0.8);
+    width: 125%;
+  }
+}
+
