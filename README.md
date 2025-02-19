@@ -62,6 +62,7 @@
 
 - 서비스 접속 시 초기화면으로 로그인이 진행되어있지 않으면 "방문자님, 안녕하세요" 문구가 출력 되며
   상단 헤더 탭에 홈, 로그인 탭만 출력하게 됩니다.
-  ![alt text](<스크린샷 2025-02-19 오후 4.38.06.png>)
+  <img width="1076" alt="스크린샷 2025-02-19 오후 4 38 06" src="https://github.com/user-attachments/assets/14a4fa6a-9ff8-4d44-a475-d3f7b36e8d9d" />
+
 - 우측 채팅창은 구글ai와 채팅할 수 있는 영역으로, ai에게 질문하는 용도로 구현했습니다.
-  ![alt text](2025-02-194.43.21-ezgif.com-video-to-gif-converter.gif)
+![2025-02-194 43 21-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/b6e51577-a659-44f9-9651-36452b358de4)
