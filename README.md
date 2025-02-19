@@ -65,5 +65,14 @@
   <img width="1076" alt="스크린샷 2025-02-19 오후 4 38 06" src="https://github.com/user-attachments/assets/14a4fa6a-9ff8-4d44-a475-d3f7b36e8d9d" />
 
 - 우측 채팅창은 구글ai와 채팅할 수 있는 영역으로, ai에게 질문하는 용도로 구현했습니다.
-  
-  <img height="400" src="https://github.com/user-attachments/assets/b6e51577-a659-44f9-9651-36452b358de4">
+  <div align=center>
+    <img height="500" src="https://github.com/user-attachments/assets/b6e51577-a659-44f9-9651-36452b358de4">
+</div>
+
+- 로그인은 mysql과 연동하여 로그인이 진행되게 구현했습니다. 일반 로그인 및 카카오 로그인 성공시 홈화면으로 이동되게 됩니다.
+<div align=center>
+
+| 로그인 | 카카오 로그인 | 회원가입 |
+|------| ----------| --------|
+
+</div>
