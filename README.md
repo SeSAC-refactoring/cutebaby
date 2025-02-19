@@ -1,9 +1,7 @@
 #  <img height="50" src="https://github.com/user-attachments/assets/f8996eec-246d-44d8-acb9-182b095929e7"> 디지털 아기 수첩, 꼬물꼬물
 
 
-### **아기수첩,** 알고계신가요?
-
-<img width="260" alt="스크린샷 2025-02-19 오후 3 49 14" align="right" src="https://github.com/user-attachments/assets/381e6271-a795-42de-8177-7ec4017ff051" />
+### **아기수첩,** 알고계신가요?<img width="260" alt="스크린샷 2025-02-19 오후 3 49 14" align="right" src="https://github.com/user-attachments/assets/381e6271-a795-42de-8177-7ec4017ff051" />
 
 
 신생아들은 태어나면서 아기수첩을 받습니다.
