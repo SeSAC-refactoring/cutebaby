@@ -1,4 +1,4 @@
-# 꼬물꼬물
+# 디지털 아기 수첩, 꼬물꼬물
 
 <img width="260" alt="스크린샷 2025-02-19 오후 3 49 14" align="right" src="https://github.com/user-attachments/assets/381e6271-a795-42de-8177-7ec4017ff051" />
 
