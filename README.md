@@ -24,6 +24,8 @@
 ## 팀원소개
 <div align=center>
   <img width="836" alt="스크린샷 2025-02-19 오후 4 02 49" src="https://github.com/user-attachments/assets/3d377d25-811a-444b-948c-1c40c159fd12" />
+  
+### 기획/퍼블리싱 : 1명 , 디자인/퍼블리싱 : 1명, 프론트엔드 : 1명 , 프론트엔드/백엔드 : 1명
 </div>
 
 - 이유진 : 기획+퍼블리싱
