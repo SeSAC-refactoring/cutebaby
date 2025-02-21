@@ -75,7 +75,7 @@
   <img src="https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=github&logoColor=white">
 </div>
 
-- **상태 관리** : **🚩Redux**
+- **상태 관리** : **Redux**
   - 사용자 정보: 이름, 아이디, 비밀번호
   - 사용자의 아기 정보: 이름, 생년월일, 성별
   - 예방접종 정보: 아기아이디, 접종일, 백신이름, 접종회차, 접종일
@@ -83,22 +83,22 @@
 <br/>
 
 - **프론트엔드**
-  - **🚩React** : 컴포넌트 기반 구조로 재사용성 증가, 페이지 리로드 없이 동적인 웹페이지 구현 가능, 다양한 라이브러리와의 연동 가능
-  - **🚩TypeScript** : 타입을 명시해 코드의 의도 전달, 타입 안전성을 제공하여 Props, State 등의 오류를 사전에 방지
-  - **🚩@google/generative-ai** : Google Generative AI API 사용을 위한 라이브러리로 홈페이지의 챗봇 기능에 활용
-  - **🚩chart.js** : 다양한 유형의 차트를 쉽고 직관적으로 생성이 가능한 라이브러리로 성장일지의 그래프와 성장상태 측정계산기의 그래프에서 활용
-  - **🚩react-markdown** : React에서 Markdown을 렌더링할 수 있도록 도와주는 라이브러리로 홈페이지의 챗봇 기능에 활용
-  - **🚩fast-xml-parser** : XML 데이터를 JSON으로 변환하는 라이브러리로 프론트에서 Open API 데이터를 직접 요청할 때 API에서 불러온 XML 데이터를 JSON으로 변환한 후 UI에 표시
+  - **React** : 컴포넌트 기반 구조로 재사용성 증가, 페이지 리로드 없이 동적인 웹페이지 구현 가능, 다양한 라이브러리와의 연동 가능
+  - **TypeScript** : 타입을 명시해 코드의 의도 전달, 타입 안전성을 제공하여 Props, State 등의 오류를 사전에 방지
+  - **@google/generative-ai** : Google Generative AI API 사용을 위한 라이브러리로 홈페이지의 챗봇 기능에 활용
+  - **chart.js** : 다양한 유형의 차트를 쉽고 직관적으로 생성이 가능한 라이브러리로 성장일지의 그래프와 성장상태 측정계산기의 그래프에서 활용
+  - **react-markdown** : React에서 Markdown을 렌더링할 수 있도록 도와주는 라이브러리로 홈페이지의 챗봇 기능에 활용
+  - **fast-xml-parser** : XML 데이터를 JSON으로 변환하는 라이브러리로 프론트에서 Open API 데이터를 직접 요청할 때 API에서 불러온 XML 데이터를 JSON으로 변환한 후 UI에 표시
 <br/>
 
 - **백엔드**
-  - **🚩Node.js** : 백엔드 개발에 JavaScript 사용할 수 있도록
-  - **🚩Express 프레임워크**: Node.js 환경에서 MySQL과 연동할때 유용한 기능을 제공하여 서버 구축을 쉽게 할 수 있도록 도움받음
-  - **🚩MVC 패턴 적용**: 백엔드 로직을 Model / View / Controller 로 나누어 관리하여 파일 구조를 체계적으로 분리고 코드 가독성 향상, 유지보수성 챙김
-  - **🚩CORS 모듈**: CORS 에러를 해결하기 위해 Express(Node.js)에서 cors 모듈을 사용하여 특정 도메인에서의 요청을 허용할 수 있도록 설정
+  - **Node.js** : 백엔드 개발에 JavaScript 사용할 수 있도록
+  - **Express 프레임워크**: Node.js 환경에서 MySQL과 연동할때 유용한 기능을 제공하여 서버 구축을 쉽게 할 수 있도록 도움받음
+  - **MVC 패턴 적용**: 백엔드 로직을 Model / View / Controller 로 나누어 관리하여 파일 구조를 체계적으로 분리고 코드 가독성 향상, 유지보수성 챙김
+  - **CORS 모듈**: CORS 에러를 해결하기 위해 Express(Node.js)에서 cors 모듈을 사용하여 특정 도메인에서의 요청을 허용할 수 있도록 설정
 <br/>
 
-- **스타일링** : **🚩SASS**
+- **스타일링** : **SASS**
   - 변수를 사용해 **일관된 디자인**을 유지, 유지보수성 향상
   - 중첩 문법 지원, mixin과 extend로 코드 재사용성 증가
   - 모듈화로 코드 관리가 쉽고, 협업 시 충돌 방지
