@@ -9,7 +9,7 @@ export const handleClearInput = (
     setInputData((prev) => ({
         ...prev,
         measurementDate: new Date(),
-        months: null,
+        // months: null,
         height: null,
         weight: null,
         headCircumference: null,
@@ -18,7 +18,7 @@ export const handleClearInput = (
     setChildData((prev) => ({
         ...prev,
         measurementDate: new Date(),
-        months: null,
+        // months: null,
         height: null,
         weight: null,
         headCircumference: null,
