@@ -9,12 +9,9 @@ import { useSelectBaby } from '../hooks/useSelectBaby';
 import { useEffect, useState } from 'react';
 import { useGrowData } from '../components/growth-diary-page/hooks/useGrowData';
 import { RecentGrowthRecord } from '../components/growth-diary-page/RecentGrowthRecord';
-import { NeedLoginModal } from '../components/my-page/NeedLoginModal';
-import { BabyListColumn } from '../components/commons/BabyListColumn';
 import { Link, useNavigate } from 'react-router-dom';
 import { GrowRewriteModal } from '../components/growth-diary-page/GrowRewriteModal';
 import { GrowDelModal } from '../components/growth-diary-page/GrowDelModal';
-import { CenterList } from '../components/vaccination-page/CenterList';
 
 import modal from '../styles/Modal.module.scss';
 import layout from '../styles/commons/Layout.module.scss';
