@@ -34,7 +34,7 @@ const EmailLogin: React.FC = () => {
   const user = sessionStorage.getItem("user");
   useEffect(() => {
     if (user) {
-      navigate("/Home");
+      navigate("/");
     }
   });
 
@@ -140,7 +140,7 @@ const EmailLogin: React.FC = () => {
 
   // 메인 페이지로 이동
   const gotoMain = () => {
-    navigate("/Home", { state: userInfo });
+    navigate("/", { state: userInfo });
   };
 
   return (
@@ -176,7 +176,7 @@ const EmailLogin: React.FC = () => {
               )}
             </div>
             <div className={`${layout.buttonArea} ${styles.buttonArea}`}>
-              <Link to="/">
+              <Link to="/SelectLogin">
                 <button className={`${button.btnXlYw} ${typography.textXlBd}`}>
                   취소
                 </button>

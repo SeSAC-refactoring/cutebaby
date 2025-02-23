@@ -46,7 +46,7 @@ export default function SelectLogin() {
         sessionStorage.setItem("username", user.username);
         dispatch(fetchBabyInfo());
 
-        navigate("/Home");
+        navigate("/");
       } else {
         alert("테스트 계정 로그인 실패: 사용자를 찾을 수 없습니다.");
       }
@@ -60,7 +60,7 @@ export default function SelectLogin() {
   const navigate = useNavigate();
   useEffect(() => {
     if (user) {
-      navigate("/Home");
+      navigate("/");
     }
   });
 
