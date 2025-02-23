@@ -107,103 +107,109 @@ export default function Home() {
                         <div className={styles.mainContents}>
                             {/* 성장 그래프 영역 */}
                             <div className={styles.diaryChartWrap}>
-                                {growData.length > 0 ? (
-                                    <div className={styles.chartContentsArea}>
-                                        <div className={styles.titleArea}>
-                                            <h4 className={typography.textLgBd}>
-                                                우리 아이 성장 그래프
-                                            </h4>
-                                            <button
-                                                className={`${button.btnSmYw} ${typography.textBsBd}`}
-                                            >
-                                                <Link to="/GrowthDiary">
-                                                    성장일지 보러가기
-                                                    <img
-                                                        src="../img/icons/i-chevron-right-s20.svg"
-                                                        alt=""
-                                                    />
-                                                </Link>
-                                            </button>
-                                        </div>
+                                <div className={styles.chartContentsArea}>
+                                    <div className={styles.titleArea}>
+                                        <h4 className={typography.textLgBd}>
+                                            우리 아이 성장 그래프
+                                        </h4>
+                                        <button
+                                            className={`${button.btnSmYw} ${typography.textBsBd}`}
+                                        >
+                                            <Link to="/GrowthDiary">
+                                                성장일지 보러가기
+                                                <img
+                                                    src="../img/icons/i-chevron-right-s20.svg"
+                                                    alt=""
+                                                />
+                                            </Link>
+                                        </button>
+                                    </div>
+                                    <BabyList
+                                        babyInfo={babyInfo}
+                                        handleSelectBaby={handleSelectBaby}
+                                        selectedBabyId={selectedBabyId}
+                                    />
+
+                                    {growData.length > 0 ? (
                                         <div className={styles.dataChartArea}>
                                             <DiaryChart growData={growData} />
                                         </div>
-                                    </div>
-                                ) : (
-                                    // 성장기록 데이터가 없을 때
-                                    <div className={styles.no_diary_chart}>
-                                        <div
-                                            className={
-                                                styles.no_diary_chart_top
-                                            }
-                                        >
-                                            <img
-                                                className={
-                                                    styles.no_diary_chart_img
-                                                }
-                                                src="img/visuals/visuals-home-barLineChart.svg"
-                                                alt="그래프 이미지"
-                                            />
-                                        </div>
-                                        <div
-                                            className={
-                                                styles.no_diary_chart_bottom
-                                            }
-                                        >
+                                    ) : (
+                                        // 성장기록 데이터가 없을 때
+                                        <div className={styles.no_diary_chart}>
                                             <div
-                                                className={`${typography.textSmRg} ${styles.bottom_text}`}
+                                                className={
+                                                    styles.no_diary_chart_top
+                                                }
                                             >
-                                                우리아이의 성장상태 확인하고
-                                                <br />
-                                                <span
-                                                    className={`${typography.textSmMd} ${styles.highlight}`}
-                                                >
-                                                    성장추이 그래프
-                                                </span>
-                                                로 확인할 수 있어요!
+                                                <img
+                                                    className={
+                                                        styles.no_diary_chart_img
+                                                    }
+                                                    src="img/visuals/visuals-home-barLineChart.svg"
+                                                    alt="그래프 이미지"
+                                                />
                                             </div>
-                                            {username !== '방문자' ? (
-                                                babyInfo.length > 0 ? (
-                                                    <Link to="/GrowthDiary">
-                                                        <button
-                                                            className={`${button.btnSmBl} ${typography.textBsBd}`}
-                                                        >
-                                                            바로 시작하기
-                                                            <img
-                                                                src="/img/icons/i-chevron-right-s20.svg"
-                                                                alt="바로가기 아이콘"
-                                                            ></img>
-                                                        </button>
-                                                    </Link>
-                                                ) : (
-                                                    <Link to="/Mypage">
-                                                        <button
-                                                            className={`${button.btnSmBl} ${typography.textBsBd}`}
-                                                        >
-                                                            바로 시작하기
-                                                            <img
-                                                                src="/img/icons/i-chevron-right-s20.svg"
-                                                                alt="바로가기 아이콘"
-                                                            ></img>
-                                                        </button>
-                                                    </Link>
-                                                )
-                                            ) : (
-                                                <Link to="/SelectLogin">
-                                                    <button
-                                                        className={`${button.btnSmBl} ${typography.textBsBd}`}
+                                            <div
+                                                className={
+                                                    styles.no_diary_chart_bottom
+                                                }
+                                            >
+                                                <div
+                                                    className={`${typography.textSmRg} ${styles.bottom_text}`}
+                                                >
+                                                    우리아이의 성장상태 확인하고
+                                                    <br />
+                                                    <span
+                                                        className={`${typography.textSmMd} ${styles.highlight}`}
                                                     >
-                                                        바로 시작하기
-                                                        <img
-                                                            src="/img/icons/i-chevron-right-s20.svg"
-                                                            alt="바로가기 아이콘"
-                                                        ></img>
-                                                    </button>
-                                                </Link>
-                                            )}
+                                                        성장추이 그래프
+                                                    </span>
+                                                    로 확인할 수 있어요!
+                                                </div>
+                                                {username !== '방문자' ? (
+                                                    babyInfo.length > 0 ? (
+                                                        <Link to="/GrowthDiary">
+                                                            <button
+                                                                className={`${button.btnSmBl} ${typography.textBsBd}`}
+                                                            >
+                                                                바로 시작하기
+                                                                <img
+                                                                    src="/img/icons/i-chevron-right-s20.svg"
+                                                                    alt="바로가기 아이콘"
+                                                                ></img>
+                                                            </button>
+                                                        </Link>
+                                                    ) : (
+                                                        <Link to="/Mypage">
+                                                            <button
+                                                                className={`${button.btnSmBl} ${typography.textBsBd}`}
+                                                            >
+                                                                바로 시작하기
+                                                                <img
+                                                                    src="/img/icons/i-chevron-right-s20.svg"
+                                                                    alt="바로가기 아이콘"
+                                                                ></img>
+                                                            </button>
+                                                        </Link>
+                                                    )
+                                                ) : (
+                                                    <Link to="/SelectLogin">
+                                                        <button
+                                                            className={`${button.btnSmBl} ${typography.textBsBd}`}
+                                                        >
+                                                            바로 시작하기
+                                                            <img
+                                                                src="/img/icons/i-chevron-right-s20.svg"
+                                                                alt="바로가기 아이콘"
+                                                            ></img>
+                                                        </button>
+                                                    </Link>
+                                                )}
+                                            </div>
                                         </div>
-                                    </div>
-                                )}
+                                    )}
+                                </div>
                             </div>
 
                             {/* 배너 영역 */}
