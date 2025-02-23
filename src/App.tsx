@@ -10,6 +10,7 @@ import { loadKakaoSDK } from "./services/loadKakaoSDK";
 import Header from "./components/commons/Header";
 import SelectLogin from "./pages/SelectLogin";
 import GrowthDiary from "./pages/GrowthDiary";
+import { NotFound } from "./pages/NotFound";
 
 export interface UserData {
   userid: number;
@@ -37,6 +38,7 @@ function App() {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Vaccination" element={<Vaccination />} />
         <Route path="/SelectLogin" element={<SelectLogin />} />
+        <Route path="*" element={<NotFound />} />
         {/* <Route path="/VaccinationDetails" element={<VaccinationDetails />} />
         <Route path="/VaccinationCenters" element={<VaccinationCenters />} /> */}
       </Routes>
