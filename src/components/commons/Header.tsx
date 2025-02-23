@@ -19,7 +19,7 @@ export default function Header() {
     }
   });
   const gotoLogin = () => {
-    navigate("/");
+    navigate("/SelectLogin");
   };
 
   return (
@@ -28,7 +28,7 @@ export default function Header() {
         <div className={[styles.container, styles.headerWrapper].join(" ")}>
           <div className={styles.header}>
             <div>
-              <Link to="/Home">
+              <Link to="/">
                 <img className={styles.logo} src="/img/BI.svg" alt="Logo" />
               </Link>
             </div>
@@ -38,9 +38,9 @@ export default function Header() {
             >
               <div className={styles.icon_container}>
                 <Link
-                  to="/Home"
+                  to="/"
                   className={
-                    location.pathname === "/Home"
+                    location.pathname === "/"
                       ? [styles.menu_active, typography.textMdBd].join(" ")
                       : styles.menu
                   }
@@ -48,7 +48,7 @@ export default function Header() {
                   <img
                     className={styles.header_icons}
                     src={
-                      location.pathname == "/Home"
+                      location.pathname == "/"
                         ? "/img/icons/i-home-s32.svg"
                         : "/img/icons/i-home-s32-active.svg"
                     }
@@ -60,7 +60,8 @@ export default function Header() {
               <div className={styles.icon_container}>
                 <a
                   className={
-                    location.pathname === "/Login" || location.pathname === "/"
+                    location.pathname === "/SelectLogin" ||
+                    location.pathname === "/Home"
                       ? [styles.menu_active, typography.textMdBd].join(" ")
                       : styles.menu
                   }
@@ -69,7 +70,7 @@ export default function Header() {
                   <img
                     className={styles.header_icons}
                     src={
-                      location.pathname == "/Login"
+                      location.pathname == "/SelectLogin"
                         ? "/img/icons/i-login-s32.svg"
                         : "/img/icons/i-login-s32-active.svg"
                     }
@@ -84,7 +85,7 @@ export default function Header() {
         <div className={[styles.container, styles.headerWrapper].join(" ")}>
           <div className={styles.header}>
             <div>
-              <Link to="/Home">
+              <Link to="/">
                 <img className={styles.logo} src="/img/BI.svg" alt="Logo" />
               </Link>
             </div>
@@ -94,9 +95,9 @@ export default function Header() {
             >
               <div className={styles.icon_container}>
                 <Link
-                  to="/Home"
+                  to="/"
                   className={
-                    location.pathname === "/Home"
+                    location.pathname === "/"
                       ? [styles.menu_active, typography.textMdBd].join(" ")
                       : styles.menu
                   }

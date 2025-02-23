@@ -224,7 +224,7 @@ const SignupForm: React.FC = () => {
               </div>
             </div>
             <div className={`${layout.buttonArea} ${styles.buttonArea}`}>
-              <Link to="/">
+              <Link to="/SelectLogin">
                 <button className={`${button.btnXlYw} ${typography.textXlBd}`}>
                   취소
                 </button>
