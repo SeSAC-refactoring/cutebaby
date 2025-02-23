@@ -10,6 +10,10 @@
   justify-content: center;
   align-items: center;
 
+  .errorpage {
+    width: 60%;
+  }
+
   // 매인 컨텐츠 영역
   .container {
     flex-grow: 1;
