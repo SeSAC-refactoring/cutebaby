@@ -40,6 +40,11 @@ export const VaccinationModalDateRecord: React.FC<
   const specificVaccinationData = selectedBabyVaccinationData.filter(
     (data) => data.vaccinationid === vaccinationid
   );
+  // 데이터 중에 날짜만 나오게 필터링
+  const filterDoseDate = specificVaccinationData
+  .map((data) => data.dosedate)
+  .filter((date): date is string => date !== null); // `null` 제외
+
 
   useEffect(() => {
     if (babyId > 0) {
@@ -54,12 +59,6 @@ export const VaccinationModalDateRecord: React.FC<
   const [selectedDose, setSelectedDose] = useState<number | null>(null);
   const [doseDate, setDoseDate] = useState<string>("");
 
-  useEffect(() => {
-    console.log(
-      "🔍 클릭한 예방접종 ID에 해당하는 기록:",
-      specificVaccinationData
-    );
-  }, [specificVaccinationData]);
 
   if (vaccinationid === 17)
     return (
@@ -80,19 +79,28 @@ export const VaccinationModalDateRecord: React.FC<
 
   // 신규 데이터 등록
   const handleSaveData = async (doseNum: number) => {
-    try {
-      await requestVac({
-        babyid: babyId,
-        vaccinationid: vaccinationid,
-        dosenumber: doseNum,
-        dosedate: doseDate,
-      });
+    // console.log('등록할때',filterDoseDate[...prev , 1])
+    console.log(doseDate)
+    
+    if(doseDate < filterDoseDate[filterDoseDate.length-1]){
+      console.log('야야 전에꺼보다 더 적게 입력했다.')
+    }else{
+      try {
+        await requestVac({
+          babyid: babyId,
+          vaccinationid: vaccinationid,
+          dosenumber: doseNum,
+          dosedate: doseDate,
+        });
+  
+        setSelectedDose(null);
+        dispatch(fetchVaccinationData(babyId));
+      } catch (error) {
+        console.error(error);
+      }
 
-      setSelectedDose(null);
-      dispatch(fetchVaccinationData(babyId));
-    } catch (error) {
-      console.error(error);
     }
+
   };
 
   // 데이터 삭제
@@ -113,8 +121,7 @@ export const VaccinationModalDateRecord: React.FC<
     }
   };
 
-  // 기존 데이터 수정
-  const handleupDate = async (doseNum: number) => {
+  const upDateVac =async (doseNum:number) => {
     try {
       await requestupdateVac({
         babyid: babyId,
@@ -128,6 +135,34 @@ export const VaccinationModalDateRecord: React.FC<
     } catch (error) {
       console.error(error);
     }
+    
+  }
+
+  // 기존 데이터 수정
+  const handleupDate = async (doseNum: number , lastDose : number) => {
+    console.log('dosenum',doseNum)
+    console.log('lastDose',lastDose)
+    console.log('doseDate',doseDate)
+    console.log('filterDoseDate>>',filterDoseDate)
+
+    filterDoseDate[doseNum-1] = doseDate
+
+    const dateCheck = filterDoseDate.filter((data)=>{
+     return data < doseDate
+    })
+    console.log('date Check',dateCheck)
+    if(dateCheck.length == 0) {
+      upDateVac(doseNum)
+    }else {
+      console.log('날짜를 확인하세요');
+      
+    }
+
+    // if(doseDate.length-1 == lastDose) {// 마지막 인덱스인지 확인하기
+
+    // }
+
+
   };
 
   // 접종일이 있는 차수 중 마지막 차수 찾기
@@ -139,8 +174,9 @@ export const VaccinationModalDateRecord: React.FC<
     .sort((a, b) => a - b);
 
   const lastDose =
-    existingDoses.length > 0 ? existingDoses[existingDoses.length - 1] : null;
+    existingDoses.length > 0 ? existingDoses[existingDoses.length - 1] : 0;
 
+    console.log(lastDose)
   return (
     <div
       style={{
@@ -157,7 +193,6 @@ export const VaccinationModalDateRecord: React.FC<
           (data) =>
             data.vaccinationid === vaccinationid && data.dosenumber === doseNum
         );
-
         // 앞 차수(doseNum - 1)에 접종 기록이 있는지 확인
         const prevDose = selectedBabyVaccinationData.find(
           (data) =>
@@ -187,8 +222,11 @@ export const VaccinationModalDateRecord: React.FC<
                 <input
                   className={styles.date_input}
                   type="date"
+                  id={String(doseNum)}
                   value={doseDate}
-                  onChange={(e) => setDoseDate(e.target.value)}
+                  onChange={(e) =>
+                     setDoseDate(e.target.value)
+                  }
                 />
               ) : (
                 // 첫 화면 // [입력하기]/[수정] 버튼 누르기 전
@@ -219,7 +257,7 @@ export const VaccinationModalDateRecord: React.FC<
                   className={`${button.btnLgBl} ${typography.textLgBd}`}
                   onClick={() =>
                     matchedDose
-                      ? handleupDate(doseNum)
+                      ? handleupDate(doseNum, lastDose) 
                       : handleSaveData(doseNum)
                   }
                 >

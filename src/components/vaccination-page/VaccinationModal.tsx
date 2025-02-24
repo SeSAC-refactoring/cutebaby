@@ -1,7 +1,7 @@
 // import styles from "../../styles/Vaccination.module.scss";
 import styles from "../../styles/Modal.module.scss";
 import { VaccinationData } from "../types";
-import { VaccinationModalBtns } from "./VaccinationModalBtns";
+// import { VaccinationModalBtns } from "./VaccinationModalBtns";
 import { VaccinationModalDateRecord } from "./VaccinationModalDateRecord";
 import { VaccinationModalTitle } from "./VaccinationModalTitle";
 
