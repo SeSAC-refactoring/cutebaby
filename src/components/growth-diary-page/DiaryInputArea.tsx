@@ -23,6 +23,7 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
         handleDiaryInputChange,
         handleKeyDown,
         handleDiarySubmit,
+        isSubmitting,
     } = useDiaryHandler(selectedBabyId);
 
     return (
@@ -63,7 +64,6 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
                                 type="number"
                                 id="height"
                                 placeholder="숫자 입력"
-                                // value={newGrowData.height}
                                 value={String(newGrowData.height)}
                                 onChange={handleDiaryInputChange}
                                 onKeyDown={handleKeyDown}
@@ -80,7 +80,6 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
                                 type="number"
                                 id="weight"
                                 placeholder="숫자 입력"
-                                // value={newGrowData.weight}
                                 value={String(newGrowData.weight)}
                                 onChange={handleDiaryInputChange}
                                 onKeyDown={handleKeyDown}
@@ -97,7 +96,7 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
                                 type="number"
                                 id="head"
                                 placeholder="숫자 입력"
-                                value={newGrowData.head}
+                                value={String(newGrowData.head)}
                                 onChange={handleDiaryInputChange}
                                 onKeyDown={handleKeyDown}
                                 ref={(el) => {
@@ -107,10 +106,7 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
                             <span className={typography.textSmBd}>cm</span>
                         </div>
                     </div>
-                    {/* <p>
-            백분위수란 같은 성별과 연령을 가진 100명을 오름차순으로 나열했을 때 이
-            중 몇 번째에 해당되는지를 의미합니다. (예: 97%는 상위 3%를 의미)
-          </p> */}
+
                     <div className={styles.diaryCalBtnArea}>
                         <button
                             className={`${button.btnLgYw} ${typography.textLgBd}`}
@@ -136,12 +132,22 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
                         <button
                             className={`${button.btnLgGr} ${typography.textLgBd}`}
                             onClick={handleDiarySubmit}
+                            style={{
+                                cursor: isSubmitting
+                                    ? 'not-allowed'
+                                    : 'pointer',
+                            }}
                         >
-                            추가하기
+                            {isSubmitting ? '저장 중' : '추가하기'}
                         </button>
                     </div>
                 </div>
             </div>
+            <p>
+                백분위수란 같은 성별과 연령을 가진 100명을 오름차순으로 나열했을
+                때 이 중 몇 번째에 해당되는지를 의미합니다. (예: 97%는 상위 3%를
+                의미)
+            </p>
         </div>
     );
 };
