@@ -15,7 +15,9 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({
   growData,
   onEdit,
   onDelete,
+  
 }) => {
+  console.log(growData)
   return (
     <div className={styles.list_wrap}>
       <div className={styles.row_title}>
@@ -33,13 +35,13 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({
                   {info.inputData}
                 </div>
                 <div className={`${styles.list_el} ${typography.textLgRg}`}>
-                  {info.height}
+                  {Number(info.height)}
                 </div>
                 <div className={`${styles.list_el} ${typography.textLgRg}`}>
-                  {info.weight}
+                  {Number(info.weight)}
                 </div>
                 <div className={`${styles.list_el} ${typography.textLgRg}`}>
-                  {info.head}
+                  {Number(info.head)}
                 </div>
                 <div className={styles.btn_wrap}>
                   <button
