@@ -45,8 +45,8 @@ export default function GrowthDiary() {
     const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
     const { growData } = useGrowData(growInfo, selectedBabyId);
 
-    // console.log("애기 성장정보 입니다 >>>>", growInfo);
-    // console.log("selectedBabyId에 따른 성장정보 입니다 >>>>", growData);
+    // console.log('애기 성장정보 입니다 >>>>', growInfo);
+    // console.log('selectedBabyId에 따른 성장정보 입니다 >>>>', growData);
 
     // 수정 모달 열기
     const handleEdit = (growId: number) => {
@@ -59,7 +59,6 @@ export default function GrowthDiary() {
         setSelectedGrowId(growId);
         setOpenDelModal(true);
     };
-    // console.log(page1, page2, page3);
 
     return (
         <div className={layout.mainAreaWrap}>
