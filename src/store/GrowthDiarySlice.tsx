@@ -14,7 +14,7 @@ const initialState: BabyState = {
   error: null,
 };
 
-// ✅ Redux에서 `babyInfo`를 매개변수로 받도록 수정
+//  Redux에서 `babyInfo`를 매개변수로 받도록 수정
 export const fetchgrowInfo = createAsyncThunk(
   "baby/fetchgrowInfo",
   async (babyInfo: { babyid: number }[], { rejectWithValue }) => {
@@ -28,14 +28,14 @@ export const fetchgrowInfo = createAsyncThunk(
         return rejectWithValue("성장 정보를 요청할 babyInfo가 없습니다.");
       }
 
-      // ✅ babyid 배열을 이용해 API 요청
+      // babyid 배열을 이용해 API 요청
       const responses = await Promise.all(
         babyInfo.map((baby) =>
           axios.post(`${API_URL}/babygrow`, { babyid: baby.babyid })
         )
       );
 
-      // console.log("✅ 성장 정보 응답 받음:", responses);
+      // console.log(" 성장 정보 응답 받음:", responses);
       sessionStorage.setItem("babygrow", JSON.stringify(responses));
       return responses.map((res) => res.data);
     } catch (error: any) {
