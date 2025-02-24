@@ -25,6 +25,8 @@ export const BabyList: React.FC<BabyListProps> = ({
     dispatch(fetchBabyInfo());
   }, [dispatch, babyInfo.length]);
 
+  
+
   return (
     // 마이페이지의 babylist 스타일의 경우 아이 등록 버튼까지 감는 div
     <div className={styles.container}>
@@ -45,7 +47,7 @@ export const BabyList: React.FC<BabyListProps> = ({
               //   fontWeight: baby.babyid === selectedBabyId ? "bold" : "normal",
               // }}
             >
-              {baby.babyname}
+              {baby.babyname.length > 3 ? baby.babyname.slice(0, 3) + "..." : baby.babyname}       
               <img
                 className={
                   baby.babyid === selectedBabyId
