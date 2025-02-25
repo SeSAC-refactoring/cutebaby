@@ -1,6 +1,4 @@
 import React from "react";
-import typography from "../../../styles/commons/Typography.module.scss";
-import styles from "../../../styles/Vaccination.module.scss";
 
 export const DoseDate = () => {
   const headers = [
@@ -23,11 +21,9 @@ export const DoseDate = () => {
 
   return (
     <div>
-      <div className={styles.thDoseDateWrap}>
+      <div>
         {headers.map((header, i) => (
-            <div className={`${styles.cell} ${styles.thDoseDate} ${typography.textBsBd}`} key={i}>
-            {header}
-            </div>
+          <div key={i}>{header}</div>
         ))}
       </div>
     </div>

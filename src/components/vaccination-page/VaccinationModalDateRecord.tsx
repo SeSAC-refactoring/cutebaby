@@ -1,7 +1,3 @@
-import styles from "../../styles/Vaccination.module.scss";
-import typography from "../../styles/commons/Typography.module.scss";
-import button from "../../styles/commons/Button.module.scss";
-
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
@@ -10,7 +6,7 @@ import { VaccinationData } from "../types";
 import { InputVac } from "./vaccination-table/InputVac";
 import { DelVac } from "./vaccination-table/DelVac";
 import { UpdateVac } from "./vaccination-table/UpdateVac";
-import { Input } from "../commons/Input";
+
 // import { DateCompleteInput } from '../commons/Input';
 
 interface VaccinationModalDateRecordProps {
@@ -42,9 +38,8 @@ export const VaccinationModalDateRecord: React.FC<
   );
   // 데이터 중에 날짜만 나오게 필터링
   const filterDoseDate = specificVaccinationData
-  .map((data) => data.dosedate)
-  .filter((date): date is string => date !== null); // `null` 제외
-
+    .map((data) => data.dosedate)
+    .filter((date): date is string => date !== null); // `null` 제외
 
   useEffect(() => {
     if (babyId > 0) {
@@ -58,7 +53,6 @@ export const VaccinationModalDateRecord: React.FC<
 
   const [selectedDose, setSelectedDose] = useState<number | null>(null);
   const [doseDate, setDoseDate] = useState<string>("");
-
 
   if (vaccinationid === 17)
     return (
@@ -80,11 +74,11 @@ export const VaccinationModalDateRecord: React.FC<
   // 신규 데이터 등록
   const handleSaveData = async (doseNum: number) => {
     // console.log('등록할때',filterDoseDate[...prev , 1])
-    console.log(doseDate)
-    
-    if(doseDate < filterDoseDate[filterDoseDate.length-1]){
-      console.log('야야 전에꺼보다 더 적게 입력했다.')
-    }else{
+    console.log(doseDate);
+
+    if (doseDate < filterDoseDate[filterDoseDate.length - 1]) {
+      console.log("야야 전에꺼보다 더 적게 입력했다.");
+    } else {
       try {
         await requestVac({
           babyid: babyId,
@@ -92,15 +86,13 @@ export const VaccinationModalDateRecord: React.FC<
           dosenumber: doseNum,
           dosedate: doseDate,
         });
-  
+
         setSelectedDose(null);
         dispatch(fetchVaccinationData(babyId));
       } catch (error) {
         console.error(error);
       }
-
     }
-
   };
 
   // 데이터 삭제
@@ -121,7 +113,7 @@ export const VaccinationModalDateRecord: React.FC<
     }
   };
 
-  const upDateVac =async (doseNum:number) => {
+  const upDateVac = async (doseNum: number) => {
     try {
       await requestupdateVac({
         babyid: babyId,
@@ -135,34 +127,30 @@ export const VaccinationModalDateRecord: React.FC<
     } catch (error) {
       console.error(error);
     }
-    
-  }
+  };
 
   // 기존 데이터 수정
-  const handleupDate = async (doseNum: number , lastDose : number) => {
-    console.log('dosenum',doseNum)
-    console.log('lastDose',lastDose)
-    console.log('doseDate',doseDate)
-    console.log('filterDoseDate>>',filterDoseDate)
+  const handleupDate = async (doseNum: number, lastDose: number) => {
+    console.log("dosenum", doseNum);
+    console.log("lastDose", lastDose);
+    console.log("doseDate", doseDate);
+    console.log("filterDoseDate>>", filterDoseDate);
 
-    filterDoseDate[doseNum-1] = doseDate
+    filterDoseDate[doseNum - 1] = doseDate;
 
-    const dateCheck = filterDoseDate.filter((data)=>{
-     return data < doseDate
-    })
-    console.log('date Check',dateCheck)
-    if(dateCheck.length == 0) {
-      upDateVac(doseNum)
-    }else {
-      console.log('날짜를 확인하세요');
-      
+    const dateCheck = filterDoseDate.filter((data) => {
+      return data < doseDate;
+    });
+    console.log("date Check", dateCheck);
+    if (dateCheck.length == 0) {
+      upDateVac(doseNum);
+    } else {
+      console.log("날짜를 확인하세요");
     }
 
     // if(doseDate.length-1 == lastDose) {// 마지막 인덱스인지 확인하기
 
     // }
-
-
   };
 
   // 접종일이 있는 차수 중 마지막 차수 찾기
@@ -176,7 +164,7 @@ export const VaccinationModalDateRecord: React.FC<
   const lastDose =
     existingDoses.length > 0 ? existingDoses[existingDoses.length - 1] : 0;
 
-    console.log(lastDose)
+  console.log(lastDose);
   return (
     <div
       style={{
@@ -205,10 +193,10 @@ export const VaccinationModalDateRecord: React.FC<
         const isDisabled = doseNum > 1 && !prevDose;
 
         return (
-          <div className={styles.inputBtn_wrap} key={i}>
+          <div key={i}>
             {/* 왼쪽 날짜나 미접종을 보여주는 부분 // input 창 */}
-            <div className={styles.input_wrap}>
-              <p className={typography.textSmBd}>
+            <div>
+              <p>
                 {vaccinationid === 8
                   ? "고위험군에 한하여 접종"
                   : vaccinationid === 4
@@ -220,22 +208,19 @@ export const VaccinationModalDateRecord: React.FC<
               {selectedDose === doseNum ? (
                 // [입력하기]/[수정] 버튼을 눌렀을 때
                 <input
-                  className={styles.date_input}
                   type="date"
                   id={String(doseNum)}
                   value={doseDate}
-                  onChange={(e) =>
-                     setDoseDate(e.target.value)
-                  }
+                  onChange={(e) => setDoseDate(e.target.value)}
                 />
               ) : (
                 // 첫 화면 // [입력하기]/[수정] 버튼 누르기 전
                 <div
-                  className={
-                    matchedDose
-                      ? `${styles.complete_input}`
-                      : `${styles.not_complete_input}`
-                  }
+                // className={
+                //   matchedDose
+                //     ? `
+                //     : `
+                // }
                 >
                   {matchedDose ? `${matchedDose.dosedate} 완료` : "미접종"}
                 </div>
@@ -245,19 +230,18 @@ export const VaccinationModalDateRecord: React.FC<
             {/* 버튼 */}
             {selectedDose === doseNum ? (
               // [입력하기] 버튼을 눌렀을 때
-              <div className={styles.complete_btn_wrap}>
+              <div>
                 <button
-                  // className={styles.date_cancel_btn}
-                  className={`${button.btnLgYw} ${typography.textLgBd}`}
+                  //
+
                   onClick={() => setSelectedDose(null)}
                 >
                   취소
                 </button>
                 <button
-                  className={`${button.btnLgBl} ${typography.textLgBd}`}
                   onClick={() =>
                     matchedDose
-                      ? handleupDate(doseNum, lastDose) 
+                      ? handleupDate(doseNum, lastDose)
                       : handleSaveData(doseNum)
                   }
                 >
@@ -266,28 +250,22 @@ export const VaccinationModalDateRecord: React.FC<
               </div>
             ) : // 첫 화면
             matchedDose ? (
-              <div
-                className={styles.complete_btn_wrap}
-                style={{ display: "flex" }}
-              >
+              <div style={{ display: "flex" }}>
                 <button
-                  className={`${button.btnLgCo} ${typography.textLgBd}`}
                   onClick={() => handleDeleteData(doseNum)}
                   disabled={doseNum !== lastDose}
                 >
                   삭제
                 </button>
                 <button
-                  className={`${button.btnLgBl} ${typography.textLgBd}`}
                   onClick={() => handleOpenInput(doseNum, matchedDose.dosedate)}
                 >
                   수정
                 </button>
               </div>
             ) : (
-              <div className={styles.complete_btn_wrap}>
+              <div>
                 <button
-                  className={`${button.btnLgBl} ${typography.textLgBd}`}
                   onClick={() => handleOpenInput(doseNum, null)}
                   disabled={isDisabled}
                 >

@@ -1,5 +1,3 @@
-import styles from "../../styles/Modal.module.scss";
-import typography from "../../styles/commons/Typography.module.scss";
 import { vaccinesName } from "./vaccination-table/VaccinationTableData";
 
 interface VaccinationModalTitleProps {
@@ -11,9 +9,9 @@ export const VaccinationModalTitle: React.FC<VaccinationModalTitleProps> = ({
   setIsOpen,
 }) => {
   return (
-    <div className={styles.titleArea}>
+    <div>
       {/* Title // 백신이름 */}
-      <div className={`${typography.text4xlBd}`}>
+      <div>
         {vaccinesName[vaccinationid - 1]}
         {vaccinationid !== 17 && " 실접종일 입력"}
       </div>
@@ -23,7 +21,6 @@ export const VaccinationModalTitle: React.FC<VaccinationModalTitleProps> = ({
         onClick={() => {
           setIsOpen(false);
         }}
-        className={styles.closeBtn}
       >
         <img src="/img/icons/i-modal-close-s32.svg" alt="" />
       </div>

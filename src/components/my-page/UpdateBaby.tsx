@@ -1,7 +1,4 @@
 import React, { useCallback, useState } from "react";
-import styles from "../../styles/Modal.module.scss";
-import typography from "../../styles/commons/Typography.module.scss";
-import button from "../../styles/commons/Button.module.scss";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
 import { ImageUploader } from "./ImageUploader";
@@ -96,26 +93,17 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
   const [selectedGender, setSelectedGender] = useState(rewriteData.gender);
 
   return (
-    <div
-      onClick={onClose}
-      style={{ left: "0" }}
-      className={styles.modal_overlay}
-    >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className={styles.modalWrapW640}
-      >
-        <div className={styles.titleArea}>
-          <div className={`${styles.modal_title} ${typography.text4xlBd}`}>
-            아기 정보 수정
-          </div>
-          <div onClick={onClose} className={styles.closeBtn}>
+    <div onClick={onClose} style={{ left: "0" }}>
+      <div onClick={(e) => e.stopPropagation()}>
+        <div>
+          <div>아기 정보 수정</div>
+          <div onClick={onClose}>
             <img src="/img/icons/i-modal-close-s32.svg" alt="" />
           </div>
         </div>
-        <div className={styles.modalContentsArea}>
-          <div className={styles.modalContentsAreaWrap}>
-            <div className={styles.modal_img_wrap}>
+        <div>
+          <div>
+            <div>
               {defaultImg && <img src="/img/Profile.png" alt="아기 사진" />}
               <div
                 style={{ position: "relative", bottom: "60px", left: "30px" }}
@@ -127,7 +115,7 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
                 />
               </div>
             </div>
-            <div className={styles.modal_Input_wrap}>
+            <div>
               <Input
                 label="이름"
                 placeholder="이름 입력"
@@ -151,19 +139,9 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
               </section>
             </div>
           </div>
-          <div className={styles.modal_button_container}>
-            <button
-              className={`${button.btnXlYw} ${typography.textXlBd}`}
-              onClick={onClose}
-            >
-              취소
-            </button>
-            <button
-              onClick={rewrite}
-              className={`${button.btnXlGr} ${typography.textXlBd}`}
-            >
-              완료
-            </button>
+          <div>
+            <button onClick={onClose}>취소</button>
+            <button onClick={rewrite}>완료</button>
           </div>
         </div>
       </div>

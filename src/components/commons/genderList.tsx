@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "../../styles/commons/ChildrenTabs.module.scss";
 
 interface GenderInputProps {
   selectedGender: string;
@@ -18,18 +17,19 @@ const GenderInputComponent: React.FC<GenderInputProps> = ({
   return (
     <div
       style={{ display: "flex", gap: "20px" }}
-      onClick={(e) => e.stopPropagation()} >
-      <div className={styles.segments}>
+      onClick={(e) => e.stopPropagation()}
+    >
+      <div>
         {genderOptions.map((el) => (
           <button
             key={el.value}
-            className={
-              el.value === selectedGender
-                ? styles.segmentsItem_selected
-                : styles.segmentsItem
-            }
+            // className={
+            //   el.value === selectedGender
+            //     ? styles.segmentsItem_selected
+            //     : styles.segmentsItem
+            // }
             onClick={(e) => {
-              e.stopPropagation(); 
+              e.stopPropagation();
               if (selectedGender !== el.value) {
                 setSelectedGender(el.value);
               }

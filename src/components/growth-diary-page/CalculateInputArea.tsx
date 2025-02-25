@@ -1,15 +1,12 @@
 import React from "react";
 import { useRefs } from "../../hooks/useRefs";
-import { ChildData, LmsData, Percentiles } from "../types";
+import { ChildData } from "../types";
 
 import { handleClearInput } from "./functions/handleClearInput";
 import { useHandleInputChange } from "./hooks/useHandleInputChange";
 import { handleKeyDown } from "./functions/handleKeyDown";
 import { handleCalculateChart } from "./functions/handleCalculateChart";
 import { Input } from "../commons/Input";
-
-import typography from "../../styles/commons/Typography.module.scss";
-import button from "../../styles/commons/Button.module.scss";
 
 // 사용자 입력값 설정
 interface CalculateInputAreaProps {
@@ -79,7 +76,6 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
               placeholder="숫자만"
             />
             <span
-              className={typography.textSmBd}
               style={{
                 marginLeft: "8px",
                 marginRight: "12px",
@@ -108,7 +104,6 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
               placeholder="숫자만"
             />
             <span
-              className={typography.textSmBd}
               style={{
                 marginLeft: "8px",
                 marginRight: "12px",
@@ -137,7 +132,6 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
               placeholder="숫자만"
             />
             <span
-              className={typography.textSmBd}
               style={{ marginLeft: "8px", position: "relative", top: "13px" }}
             >
               cm
@@ -159,14 +153,12 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
           중 몇 번째에 해당되는지를 의미합니다. (예: 97%는 상위 3%를 의미)
         </p> */}
         <button
-          className={`${button.btnLgYw} ${typography.textLgBd}`}
           onClick={() => handleClearInput(setInputData, setChildData, setShow)}
         >
           초기화
           <img src="/img/arrow-rotate-left-01.png" alt="초기화 아이콘"></img>
         </button>
         <button
-          className={`${button.btnLgGr} ${typography.textLgBd}`}
           onClick={() =>
             handleCalculateChart(refs, inputData, setChildData, setShow)
           }

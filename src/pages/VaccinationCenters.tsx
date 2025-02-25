@@ -3,16 +3,13 @@ import { useLocationSelect } from "../components/vaccination-page/hooks/useLocat
 import { useToggleVaccineList } from "../components/vaccination-page/hooks/useToggleVaccineList";
 import { usePagenation } from "../components/vaccination-page/hooks/usePagenation";
 import { useSearchCenters } from "../components/vaccination-page/hooks/useSearchCenters";
-import { PagenationBtns } from "../components/vaccination-page/PagenationBtns";
 import { useHandleSearch } from "../components/vaccination-page/hooks/useHandleSearch";
 import { useRefs } from "../hooks/useRefs";
-import { CenterList } from "../components/vaccination-page/CenterList";
 
 import styles from "../styles/VaccinationCenters.module.scss";
-import modal from "../styles/Modal.module.scss";
-import layout from "../styles/commons/Layout.module.scss";
 import typography from "../styles/commons/Typography.module.scss";
-import button from "../styles/commons/Button.module.scss";
+import { PagenationBtns } from "../components/vaccination-page/PagenationBtns";
+import { CenterList } from "../components/vaccination-page/CenterList";
 
 export default function VaccinationCenters({ setOpenCentersModal }: any) {
   // hook 사용
@@ -48,24 +45,19 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
 
   return (
     <div
-      className={modal.modal_overlay}
       onClick={() => {
         setOpenCentersModal(false);
       }}
     >
       <div
-        className={modal.modalWrap}
         onClick={(e) => {
           e.stopPropagation();
         }}
         style={{ height: centers.length === 0 ? "400px" : "900px" }}
       >
-        <div className={modal.titleArea}>
-          <h2 className={`${layout.title} ${typography.text4xlBd}`}>
-            위탁의료기관 찾기
-          </h2>
+        <div>
+          <h2>위탁의료기관 찾기</h2>
           <div
-            className={modal.closeBtn}
             onClick={() => {
               setOpenCentersModal(false);
             }}
@@ -73,7 +65,7 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
             <img src="/img/icons/i-modal-close-s32.svg" alt="" />
           </div>
         </div>
-        {/* <div className={`${typography.textSmRg} ${styles.description}`}>
+        {/* <div }>
           <p>어린이 국가예방접종 사업 위탁의료기관이란?</p>
           <p>
             어린이 국가예방접종 대상자가 비용 부담없이 접종받을 수 있는
@@ -84,12 +76,12 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
             접종하고자 할 때는 방문할 의료기관에 사전 확인하시기 바랍니다.
           </p>
         </div> */}
-        <div className={modal.modalContentsArea}>
+        <div>
           {/* 데이터를 불러오는 로딩 화면 */}
           {isFirstLoading && (
-            <div className={`${modal.loadingContens} ${styles.pageLoading}`}>
+            <div>
               <img src="/img/visuals/visual_loading_ggomul_04.svg" alt="" />
-              <p className={typography.textLgMd}>
+              <p>
                 자료를 가져오고 있어요..
                 <br />
                 조금만 기다려주세요..
@@ -97,10 +89,9 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
             </div>
           )}
           {/* 지역(시/도) 선택 드롭다운 */}
-          <div className={styles.select_wrap}>
-            <div className={styles.formArea}>
+          <div>
+            <div>
               <select
-                className={typography.textLgRg}
                 ref={refs.province}
                 value={selectedLocation.province}
                 disabled={isFirstLoading} // 데이터 불러오는 동안은 드롭다운으로 지역 선택 불가
@@ -116,7 +107,6 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
 
               {/* 도시(시/군/구) 선택 드롭다운 (지역이 선택되지 않으면 disabled) */}
               <select
-                className={typography.textLgRg}
                 ref={refs.city}
                 value={selectedLocation.city}
                 disabled={!selectedLocation.province}
@@ -131,7 +121,6 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
               </select>
 
               <input
-                className={typography.textLgRg}
                 type="text"
                 value={inputAddress}
                 placeholder="주소"
@@ -145,42 +134,35 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
               />
             </div>
             {/* 검색 버튼 */}
-            <button
-              className={`${button.btnLgBl} ${typography.textLgBd}`}
-              onClick={handleSearch}
-            >
+            <button onClick={handleSearch}>
               검색
               <img src="/img/search-01.png" alt="검색"></img>
             </button>
           </div>
 
           {/* 검색 결과(병원 리스트) 표시 */}
-          <div className={styles.contents_wrap}>
+          <div>
             {!hasSearched ? (
-              <div className={`${styles.loadingContens}`}>
+              <div>
                 <img src="/img/visuals/visual_loading_ggomul_03.svg" alt="" />
-                <p className={typography.textLgMd}>
-                  찾으시는 주소를 선택하시고 검색해주세요:)
-                </p>
+                <p>찾으시는 주소를 선택하시고 검색해주세요:)</p>
               </div>
             ) : isLoading ? (
-              <div className={`${styles.loadingContens}`}>
+              <div>
                 <img src="/img/visuals/visual_loading_ggomul_04.svg" alt="" />
-                <p className={typography.textLgMd}>
+                <p>
                   자료를 가져오고 있어요..
                   <br />
                   조금만 기다려주세요..
                 </p>
               </div>
             ) : !centers || (centers || []).filter(Boolean).length < 1 ? (
-              <div className={`${styles.loadingContens}`}>
+              <div>
                 <img src="/img/visuals/visual_loading_ggomul_06.svg" alt="" />
-                <p className={typography.textLgMd}>
-                  찾으시는 병원 정보가 없습니다...
-                </p>
+                <p>찾으시는 병원 정보가 없습니다...</p>
               </div>
             ) : (
-              <div className={styles.centerListWrap}>
+              <div>
                 <CenterList
                   centers={centers}
                   toggleVaccineList={toggleVaccineList}

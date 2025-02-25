@@ -15,11 +15,11 @@
 //   setNewVaccinationData,
 // }) => {
 //   return (
-//     <div className={styles.modal_button_container}>
+//     <div >
 //       {/* 인플루엔자의 경우 (vaccinationid === 17) */}
 //       {vaccinationid === 17 ? (
 //         <button
-//           className={`${styles.modal_btn} ${styles.modal_done_button}`}
+//           }
 //           onClick={() => setIsOpen(false)}
 //         >
 //           확인
@@ -27,7 +27,7 @@
 //       ) : (
 //         <>
 //           <button
-//             className={`${styles.modal_btn} ${styles.modal_done_button}`}
+//             }
 //             onClick={() => {
 //               setIsOpen(false);
 //             }}

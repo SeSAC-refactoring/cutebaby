@@ -1,19 +1,12 @@
 import React, { useCallback, useRef, useState } from "react";
-// import styles from "../../styles/Mypage.module.scss";
-import styles from "../../styles/Modal.module.scss";
-import typography from "../../styles/commons/Typography.module.scss";
-import button from "../../styles/commons/Button.module.scss";
 
-import tabs from "../../styles/commons/ChildrenTabs.module.scss";
 import { babyinfo } from "../types";
 import { useCreatebaby } from "./hooks/useCreatebaby";
 import { ImageUploader } from "./ImageUploader";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
 import { fetchBabyInfo } from "../../store/babySlice";
-import { BabyModal } from "./MypageModal";
 import { Input } from "../commons/Input";
-import { BabyList } from "../commons/BabyList";
 import { GenderInput } from "../commons/genderList";
 
 interface BabyInputProps {
@@ -102,21 +95,16 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
 
   return (
     <>
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className={styles.modalWrapW640}
-      >
-        <div className={styles.titleArea}>
-          <div className={`${styles.modal_title} ${typography.text4xlBd}`}>
-            아이 정보 등록
-          </div>
-          <div onClick={onClose} className={styles.closeBtn}>
+      <div onClick={(e) => e.stopPropagation()}>
+        <div>
+          <div>아이 정보 등록</div>
+          <div onClick={onClose}>
             <img src="/img/icons/i-modal-close-s32.svg" alt="" />
           </div>
         </div>
-        <div className={styles.modalContentsArea}>
-          <div className={styles.modalContentsAreaWrap}>
-            <div className={styles.modal_img_wrap}>
+        <div>
+          <div>
+            <div>
               {defaultImg && <img src="/img/Profile.png" alt="아기 사진" />}
               <div
                 style={{ position: "relative", bottom: "60px", left: "30px" }}
@@ -130,7 +118,7 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
                 />
               </div>
             </div>
-            <div className={styles.modal_Input_wrap}>
+            <div>
               <Input
                 label="이름"
                 placeholder="이름을 입력해주세요."
@@ -161,19 +149,11 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
               </section>
             </div>
           </div>
-          <div className={styles.modal_button_container}>
-            <button
-              className={`${button.btnXlYw} ${typography.textXlBd}`}
-              type="button"
-              onClick={onClose}
-            >
+          <div>
+            <button type="button" onClick={onClose}>
               취소
             </button>
-            <button
-              className={`${button.btnXlGr} ${typography.textXlBd}`}
-              onClick={createBaby}
-              type="button"
-            >
+            <button onClick={createBaby} type="button">
               완료
             </button>
           </div>

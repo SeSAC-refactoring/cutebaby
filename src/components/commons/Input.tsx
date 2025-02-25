@@ -1,7 +1,4 @@
 import React, { forwardRef, useRef } from "react";
-import "../../styles/commons/Reset.module.scss";
-import typography from "../../styles/commons/Typography.module.scss";
-import styles from "../../styles/commons/Input.module.scss";
 
 interface InputProps {
   style?: string;
@@ -27,11 +24,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     React.useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
     return (
-      <div className={styles.inputWrap}>
-        <label className={typography.textSmBd}>{label}</label>
+      <div>
+        <label>{label}</label>
         <input
           id={id}
-          className={typography.textMdRg}
           ref={inputRef}
           type={type}
           name={name}
@@ -52,10 +48,9 @@ export const InputSignupEmail = forwardRef<HTMLInputElement, InputProps>(
     React.useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
     return (
-      <div className={styles.input_email_check}>
-        <label className={typography.textSmBd}>{label}</label>
+      <div>
+        <label>{label}</label>
         <input
-          className={typography.textLgRg}
           ref={inputRef}
           type={type}
           name={name}
@@ -78,9 +73,8 @@ export const Input_Error = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <>
-        <label className={typography.textSmBd}>{label}</label>
+        <label>{label}</label>
         <input
-          className={typography.textLgRg}
           ref={inputRef}
           type={type}
           name={name}
@@ -125,10 +119,10 @@ export const Input_Error = forwardRef<HTMLInputElement, InputProps>(
 //                         : styles.DateCompleteInputWrap
 //                 }
 //             >
-//                 <label className={typography.textSmBd}>{label}</label>
+//                 <label >{label}</label>
 //                 <input
 //                     id={id}
-//                     className={typography.textLgRg}
+//
 //                     ref={inputRef}
 //                     type={type}
 //                     name={name}

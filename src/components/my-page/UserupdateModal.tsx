@@ -1,11 +1,7 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import styles from "../../styles/Modal.module.scss";
-import modal from "../../styles/Modal.module.scss";
+
 import { Input, InputSignupEmail } from "../commons/Input";
-// import typography from "../styles/commons/Typography.module.scss";
-import typography from "../../styles/commons/Typography.module.scss";
-import button from "../../styles/commons/Button.module.scss";
 
 interface UserupdateProps {
   modalState: () => void;
@@ -166,25 +162,21 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
   };
 
   return (
-    <div onClick={modalState} className={modal.modal_overlay}>
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className={`${modal.modalWrapW640}`}
-      >
-        <div className={modal.titleArea}>
-          <div className={`${modal.modal_title} ${typography.text4xlBd}`}>개인 정보 수정</div>
+    <div onClick={modalState}>
+      <div onClick={(e) => e.stopPropagation()}>
+        <div>
+          <div>개인 정보 수정</div>
           <div
             onClick={() => {
               modalState();
             }}
-            className={modal.closeBtn}
           >
             <img src="/img/icons/i-modal-close-s32.svg" alt="" />
           </div>
         </div>
-        <div className={modal.modalContentsArea}>
-          <div className={styles.modalContentsAreaWrap}>
-            <div className={styles.modal_Input_wrap}>
+        <div>
+          <div>
+            <div>
               {/* 이름 입력 */}
               <Input
                 label="이름"
@@ -193,11 +185,9 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
                 value={formData.name}
                 onChange={handleChange}
               ></Input>
-              <p className={`${styles.error_message} ${typography.textBsMd}`}>
-                {messages.name}
-              </p>
+              <p>{messages.name}</p>
               {/* 이메일 입력 */}
-              <div className={styles.check_wrap}>
+              <div>
                 <InputSignupEmail
                   label="이메일"
                   type="email"
@@ -206,34 +196,17 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
                   value={formData.email}
                   onChange={handleChange}
                 ></InputSignupEmail>
-                <button
-                  className={`${button.btnLgBl} ${typography.textXlBd}`}
-                  onClick={emailCheck}
-                >
-                  중복 체크
-                </button>
+                <button onClick={emailCheck}>중복 체크</button>
               </div>
-              <p className={`${styles.error_message} ${typography.textBsMd}`}>
-                {messages.email}
-              </p>
+              <p>{messages.email}</p>
               {/* </label> */}
 
               {/* 이메일 중복 확인 버튼 */}
             </div>
           </div>
-          <div className={styles.modal_button_container}>
-            <button
-              className={`${button.btnXlYw} ${typography.textXlBd}`}
-              onClick={modalState}
-            >
-              취소
-            </button>
-            <button
-              className={`${button.btnXlGr} ${typography.textXlBd}`}
-              onClick={handleUpdate}
-            >
-              완료
-            </button>
+          <div>
+            <button onClick={modalState}>취소</button>
+            <button onClick={handleUpdate}>완료</button>
           </div>
         </div>
       </div>
