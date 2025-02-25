@@ -8,8 +8,6 @@ import { usePercentiles } from "./hooks/usePercentiles";
 import { useFilteredLmsDataByMonths } from "./hooks/useFilteredLmsDataByMonths ";
 import { useFilteredLmsDataByGender } from "./hooks/useFilteredLmsDataByGender ";
 import { babyinfo } from "../types";
-import modal from "../../styles/Modal.module.scss";
-import typography from "../../styles/commons/Typography.module.scss";
 
 interface GrowthCalculateProps {
   setOpenCalModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -47,26 +45,19 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
       onClick={() => {
         setOpenCalModal(false);
       }}
-      className={modal.modal_overlay}
     >
       <div
-        className={modal.modalWrap}
         onClick={(e) => {
           e.stopPropagation();
         }}
       >
-        <div className={modal.titleArea}>
-          <div className={modal.textWrap}>
-            <h2 className={`${modal.modalTitle} ${typography.text4xlBd}`}>
-              성장상태 측정계산기
-            </h2>
-            <p className={`${modal.pageGuide} ${typography.textXlMd}`}>
-              우리 아이의 성장 상태를 확인해보세요:)
-            </p>
+        <div>
+          <div>
+            <h2>성장상태 측정계산기</h2>
+            <p>우리 아이의 성장 상태를 확인해보세요:)</p>
           </div>
 
           <div
-            className={modal.closeBtn}
             onClick={() => {
               setOpenCalModal(false);
             }}
@@ -74,7 +65,7 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
             <img src="/img/icons/i-modal-close-s32.svg" alt="" />
           </div>
         </div>
-        <div className={modal.modalContentsArea}>
+        <div>
           {/* 사용자 입력값 설정 */}
           <CalculateInputArea
             childData={childData}
@@ -85,9 +76,9 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
           {/* 차트 표시 여부에 따라 렌더링 */}{" "}
           {show ? (
             isLoading ? (
-              <div className={modal.loadingContens}>
+              <div>
                 <img src="/img/visuals/visual_loading_ggomul_04.svg" alt="" />
-                <p className={typography.textLgMd}>
+                <p>
                   자료를 가져오고 있어요..
                   <br />
                   조금만 기다려주세요..

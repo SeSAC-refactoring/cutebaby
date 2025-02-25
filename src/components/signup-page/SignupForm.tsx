@@ -8,10 +8,7 @@ import {
 import { checkEmailDuplication, registerUser } from "./SignupAPI";
 import { Link, useNavigate } from "react-router-dom";
 import { Input, InputSignupEmail } from "../commons/Input";
-import styles from "../../styles/Signup.module.scss";
-import button from "../../styles/commons/Button.module.scss";
-import typography from "../../styles/commons/Typography.module.scss";
-import layout from "../../styles/commons/Layout.module.scss";
+
 import axios from "axios";
 
 const SignupForm: React.FC = () => {
@@ -129,16 +126,14 @@ const SignupForm: React.FC = () => {
   };
 
   return (
-    <div className={layout.mainAreaWrap}>
-      <div className={layout.container}>
-        <div className={`${layout.contentsArea} ${styles.contentsArea}`}>
-          <div className={`${layout.titleArea} ${typography.text4xlBd}`}>
-            이메일로 가입하기
-          </div>
+    <div>
+      <div>
+        <div>
+          <div>이메일로 가입하기</div>
 
-          <div className={`${layout.contentsWrap} ${styles.contentsWrap}`}>
-            <div className={styles.formsWrapper}>
-              <div className={styles.formWrap}>
+          <div>
+            <div>
+              <div>
                 <Input
                   label="이름"
                   type="text"
@@ -150,15 +145,11 @@ const SignupForm: React.FC = () => {
                     inputRef.current.name = el;
                   }}
                 />
-                {messages.name && (
-                  <p className={`${styles.error} ${typography.textBsMd}`}>
-                    {messages.name}
-                  </p>
-                )}
+                {messages.name && <p>{messages.name}</p>}
               </div>
 
-              <div className={`${styles.formWrap} ${styles.formWrapEmail}`}>
-                <div className={styles.mailWrap}>
+              <div>
+                <div>
                   <InputSignupEmail
                     label="이메일"
                     type="email"
@@ -170,22 +161,14 @@ const SignupForm: React.FC = () => {
                       inputRef.current.email = el;
                     }}
                   />
-                  <button
-                    className={`${button.btnLgBl} ${typography.textLgBd}`}
-                    style={{ color: "#3B3B41" }}
-                    onClick={emailCheck}
-                  >
+                  <button style={{ color: "#3B3B41" }} onClick={emailCheck}>
                     중복체크
                   </button>
                 </div>
-                {messages.email && (
-                  <p className={`${styles.error} ${typography.textBsMd}`}>
-                    {messages.email}
-                  </p>
-                )}
+                {messages.email && <p>{messages.email}</p>}
               </div>
 
-              <div className={styles.formWrap}>
+              <div>
                 <Input
                   label="비밀번호"
                   type="password"
@@ -197,14 +180,10 @@ const SignupForm: React.FC = () => {
                     inputRef.current.password = el;
                   }}
                 />
-                {messages.password && (
-                  <p className={`${styles.error} ${typography.textBsMd}`}>
-                    {messages.password}
-                  </p>
-                )}
+                {messages.password && <p>{messages.password}</p>}
               </div>
 
-              <div className={styles.formWrap}>
+              <div>
                 <Input
                   label="비밀번호 확인"
                   type="password"
@@ -216,25 +195,15 @@ const SignupForm: React.FC = () => {
                     inputRef.current.checkPassword = el;
                   }}
                 />
-                {messages.confirmPassword && (
-                  <p className={`${styles.error} ${typography.textBsMd}`}>
-                    {messages.confirmPassword}
-                  </p>
-                )}
+                {messages.confirmPassword && <p>{messages.confirmPassword}</p>}
               </div>
             </div>
-            <div className={`${layout.buttonArea} ${styles.buttonArea}`}>
+            <div>
               <Link to="/SelectLogin">
-                <button className={`${button.btnXlYw} ${typography.textXlBd}`}>
-                  취소
-                </button>
+                <button>취소</button>
               </Link>
 
-              <button
-                className={`${button.btnXlGr} ${typography.textXlBd}`}
-                disabled={!isFormValid}
-                onClick={handleSubmit}
-              >
+              <button disabled={!isFormValid} onClick={handleSubmit}>
                 완료
               </button>
             </div>

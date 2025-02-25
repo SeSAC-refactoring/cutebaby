@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import modal from "../../styles/Modal.module.scss";
-import styles from "../../styles/GrowthDiary.module.scss";
-import typography from "../../styles/commons/Typography.module.scss";
-import button from "../../styles/commons/Button.module.scss";
+
 import { newGrowData } from "../types";
 import { useUpdateGrow } from "./hooks/useUpdateGrow";
 import { useDispatch, useSelector } from "react-redux";
@@ -96,22 +93,21 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
   };
 
   return (
-    <div onClick={onClose} className={modal.modal_overlay}>
-      <div onClick={(e) => e.stopPropagation()} className={modal.modalWrapW640}>
-        <div className={modal.titleArea}>
-          <div className={typography.text4xlBd}>기록 수정</div>
-          <div onClick={onClose} className={modal.closeBtn}>
+    <div onClick={onClose}>
+      <div onClick={(e) => e.stopPropagation()}>
+        <div>
+          <div>기록 수정</div>
+          <div onClick={onClose}>
             <img src="/img/icons/i-modal-close-s32.svg" alt="" />
           </div>
         </div>
-        <div className={modal.modalContentsArea}>
-          <div className={modal.modalContentsAreaWrap}>
-            <div className={styles.formArea}>
+        <div>
+          <div>
+            <div>
               <div>
                 <Input
                   label="측정날짜"
                   type="date"
-                  className={styles.input}
                   id="inputData"
                   value={rewriteData.inputData}
                   onChange={handleInputChange}
@@ -120,7 +116,6 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
               <div>
                 <Input
                   label="키"
-                  className={styles.input}
                   id="height"
                   placeholder="숫자만"
                   // value={rewriteData.height}
@@ -129,14 +124,11 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
                   onFocus={handleFocus}
                   onBlur={handleBlur}
                 />
-                <span className={`${modal.unit} ${typography.textSmBd}`}>
-                  cm
-                </span>
+                <span>cm</span>
               </div>
               <div>
                 <Input
                   label="몸무게"
-                  className={modal.modal_input}
                   id="weight"
                   placeholder="숫자만"
                   // value={rewriteData.weight}
@@ -145,15 +137,12 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
                   onFocus={handleFocus}
                   onBlur={handleBlur}
                 />
-                <span className={`${modal.unit} ${typography.textSmBd}`}>
-                  kg
-                </span>
+                <span>kg</span>
               </div>
               <div>
                 {/* <label>머리둘레</label> */}
                 <Input
                   label="머리둘레"
-                  className={modal.modal_input}
                   id="head"
                   placeholder="숫자만"
                   value={rewriteData.head}
@@ -161,24 +150,21 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
                   onFocus={handleFocus}
                   onBlur={handleBlur}
                 />
-                <span className={`${modal.unit} ${typography.textSmBd}`}>
-                  cm
-                </span>
+                <span>cm</span>
               </div>
             </div>
           </div>
-          <div className={modal.modal_button_container}>
+          <div>
             <button
-              // className={`${modal.modal_btn} ${modal.modal_cancel_button}`}
-              className={`${button.btnXlYw} ${typography.textXlBd}`}
+              // ${modal.modal_cancel_button}`}
+
               onClick={onClose}
             >
               취소
             </button>
             <button
               onClick={handleRewrite}
-              // className={`${modal.modal_btn} ${modal.modal_done_button}`}
-              className={`${button.btnXlGr} ${typography.textXlBd}`}
+              // ${modal.modal_done_button}`}
             >
               완료
             </button>

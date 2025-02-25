@@ -1,7 +1,4 @@
 import React, { useEffect } from "react";
-import styles from "../../styles/Modal.module.scss";
-import typography from "../../styles/commons/Typography.module.scss";
-import button from "../../styles/commons/Button.module.scss";
 import { useDelbaby } from "./hooks/useDelbaby";
 import { babyinfo } from "../types";
 
@@ -44,30 +41,13 @@ export const DelbabyModal: React.FC<DelbabyProps> = ({
   };
 
   return (
-    <div
-      style={{ left: "0" }}
-      className={styles.modal_overlay}
-      onClick={goBack}
-    >
-      <div className={styles.modal_container} style={{ padding: "50px" }}>
-        <div
-          className={styles.modal_title_wrap}
-          style={{ flexDirection: "column", alignItems: "center" }}
-        >
-          <div className={styles.modal_title}>정말 삭제하시겠습니까?</div>
-          <div className={styles.del_modal_button_wrap}>
-            <button
-              onClick={goBack}
-              className={`${button.btnXlYw} ${typography.textXlBd}`}
-            >
-              취소
-            </button>
-            <button
-              onClick={handleDelete}
-              className={`${button.btnXlGr} ${typography.textXlBd}`}
-            >
-              삭제
-            </button>
+    <div style={{ left: "0" }} onClick={goBack}>
+      <div style={{ padding: "50px" }}>
+        <div style={{ flexDirection: "column", alignItems: "center" }}>
+          <div>정말 삭제하시겠습니까?</div>
+          <div>
+            <button onClick={goBack}>취소</button>
+            <button onClick={handleDelete}>삭제</button>
           </div>
         </div>
       </div>

@@ -1,5 +1,3 @@
-import styles from "../../../styles/Vaccination.module.scss";
-
 import React from "react";
 import { useSelector } from "react-redux";
 import { Disease } from "./Disease";
@@ -63,14 +61,14 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
 
   return (
     <>
-      <div className={styles.vacTableWrap}>
-        <div className={styles.vacTable}>
+      <div>
+        <div>
           <Disease />
           <VaccineType selectedBabyId={selectedBabyId} />
           <TotalDoses />
 
-          <div className={styles.vacTableScheduleArea}>
-            <div className={styles.thDoseDateWrap}>
+          <div>
+            <div>
               <DoseDate />
             </div>
             <VaccinationSchedule matchedVaccineList={matchedVaccineList} />

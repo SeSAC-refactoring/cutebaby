@@ -5,16 +5,11 @@ import styles from "../../../styles/Vaccination.module.scss";
 
 export const Disease: React.FC = () => {
   return (
-    <div className={styles.diseaseWrap}>
-      <div
-        className={`${styles.cell} ${styles.th} ${styles.thDiseases} ${typography.textBsBd}`}
-      >
-        대상 감염병
-      </div>
-      <ul className={`${typography.textSmRg} ${styles.ulDiseases}`}>
+    <div>
+      <div>대상 감염병</div>
+      <ul>
         {diseasesName.map((disease, i) => (
           <li
-            className={`${styles.cell} ${styles.td} ${styles.li} ${styles.liDiseases}`}
             key={i}
             style={{
               height:

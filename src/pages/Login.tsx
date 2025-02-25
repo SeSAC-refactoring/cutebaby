@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import layout from "../styles/commons/Layout.module.scss";
-import typography from "../styles/commons/Typography.module.scss";
-import button from "../styles/commons/Button.module.scss";
-import styles from "../styles/Login.module.scss";
 import { Input } from "../components/commons/Input";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBabyInfo } from "../store/babySlice";
@@ -144,17 +140,15 @@ const EmailLogin: React.FC = () => {
   };
 
   return (
-    <div className={layout.mainAreaWrap}>
+    <div>
       {/* 로딩 창 */}
       {loading && <Loading />}
 
-      <div className={layout.container}>
-        <div className={`${layout.contentsArea} ${styles.contentsArea}`}>
-          <div className={`${layout.titleArea} ${typography.text4xlBd}`}>
-            이메일로 로그인하기
-          </div>
-          <section className={layout.contentsWrap} onKeyDown={enter}>
-            <div className={styles.formWrap}>
+      <div>
+        <div>
+          <div>이메일로 로그인하기</div>
+          <section onKeyDown={enter}>
+            <div>
               <Input
                 label="이메일"
                 type="email"
@@ -169,24 +163,13 @@ const EmailLogin: React.FC = () => {
                 onChange={handleInputPassword}
                 placeholder="비밀번호를 입력해주세요."
               />
-              {error && (
-                <p style={{ color: "red" }} className={typography.textBsMd}>
-                  {error}
-                </p>
-              )}
+              {error && <p style={{ color: "red" }}>{error}</p>}
             </div>
-            <div className={`${layout.buttonArea} ${styles.buttonArea}`}>
+            <div>
               <Link to="/SelectLogin">
-                <button className={`${button.btnXlYw} ${typography.textXlBd}`}>
-                  취소
-                </button>
+                <button>취소</button>
               </Link>
-              <button
-                className={`${button.btnXlGr} ${typography.textXlBd}`}
-                onClick={handleSubmit}
-              >
-                완료
-              </button>
+              <button onClick={handleSubmit}>완료</button>
             </div>
           </section>
         </div>
