@@ -1,18 +1,128 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{js,jsx,ts,tsx}", "./index.tsx"], // 프로젝트 전체의 모든 JSX, TSX 파일에서 Tailwind 사용 가능
-  theme: {
-    extend: {
-      screens: {
-        xs: "390px", // 390px 이상일 때 적용
-      },
-      colors: {
-        "yellow-1": "#FEF9F1",
-        "yellow-4": "#F6D9A7",
-        "gray-10": "#3B3B41",
-        "gray-8": "#5D5D67",
-      },
-      fontSize: {
+
+    content: ['./src/**/*.{js,jsx,ts,tsx}', './index.tsx'], // 프로젝트 전체의 모든 JSX, TSX 파일에서 Tailwind 사용 가능
+    theme: {
+        extend: {
+            screens: {
+                xs: '390px', // 390px 이상일 때 적용
+            },
+
+            colors: {
+                white: '#FFFFFF', // bg-white 형식으로 사용하세요
+                black: '#000000',
+                gray: {
+                    bg: '#fdfdfd', // background 컬러 // bg-gray-bg 형식으로 사용하세요
+                    0: '#f9f9f9', // text-gray-0 형식으로 사용하세요
+                    1: '#f3f3f4',
+                    2: '#e1e1e5',
+                    3: '#cacad0',
+                    4: '#b1b1ba',
+                    5: '#9999a5',
+                    6: '#838391',
+                    7: '#6f6f7b',
+                    8: '#5d5d67',
+                    9: '#4b4b53',
+                    10: '#3b3b41',
+                },
+                coral: {
+                    1: '#fef6f6',
+                    2: '#fceae9',
+                    3: '#f9d9d8',
+                    4: '#f6c7c6',
+                    5: '#f4b6b4',
+                    6: '#f1a6a4',
+                    8: '#ab7674',
+                    7: '#cd8d8b',
+                    9: '#895f5d',
+                    0: '#6c4b4a',
+                },
+                red: {
+                    1: '#ffeeef',
+                    2: '#fed7d9',
+                    3: '#feb7bb',
+                    4: '#fd959b',
+                    5: '#fd757d',
+                    6: '#fc5760',
+                    7: '#d64a52',
+                    8: '#b33e44',
+                    9: '#903237',
+                    0: '#71272b',
+                },
+                yellow: {
+                    1: '#fef9f1',
+                    2: '#fcf0de',
+                    3: '#f9e5c3',
+                    4: '#f6d9a7',
+                    5: '#f4cd8d',
+                    6: '#f1c274',
+                    7: '#cda563',
+                    8: '#ab8a52',
+                    9: '#896f42',
+                    0: '#6c5734',
+                },
+                orange: {
+                    1: '#fef6f1',
+                    2: '#fdeadc',
+                    3: '#fbd9c1',
+                    4: '#f9c7a4',
+                    5: '#f8b688',
+                    6: '#f6a66e',
+                    7: '#d18d5e',
+                    8: '#af764e',
+                    9: '#8c5f3f',
+                    0: '#6f4b31',
+                },
+                green: {
+                    1: '#f3faf8',
+                    2: '#e3f4ef',
+                    3: '#ccebe3',
+                    4: '#b5e2d5',
+                    5: '#9ed9c9',
+                    6: '#89d1bd',
+                    7: '#74b2a1',
+                    8: '#619486',
+                    9: '#4e776c',
+                    $0: '#3e5e55',
+                },
+                blue: {
+                    1: '#f4fafc',
+                    2: '#e5f3f7',
+                    3: '#d1e9f1',
+                    4: '#bbdeeb',
+                    5: '#a6d4e5',
+                    6: '#93cbdf',
+                    7: '#7dadbe',
+                    8: '#68909e',
+                    9: '#54747f',
+                    0: '#425b64',
+                },
+                purple: {
+                    1: '#f7f6fd',
+                    2: '#ece9f9',
+                    3: '#ddd8f5',
+                    4: '#cdc6f1',
+                    5: '#beb5ec',
+                    6: '#b0a5e8',
+                    7: '#968cc5',
+                    8: '#7d75a5',
+                    9: '#645e84',
+                    0: '#4f4a68',
+                },
+                kakao: {
+                    1: '#fffce6',
+                    2: '#fff7b0',
+                    3: '#fff38a',
+                    4: '#feee54',
+                    5: '#feea33',
+                    6: '#fee500',
+                    7: '#e7d000',
+                    8: '#b4a300',
+                    9: '#8c7e00',
+                    0: '#6b6000',
+                },
+            },
+                fontSize: {
         "3xs": ["10px", "14px"], // font-size: 10px; line-height: 14px; text-3xs로 사용
         "2xs": ["12px", "16px"],
         xs: ["14px", "18px"],
@@ -30,6 +140,8 @@ export default {
         md: "500",
         bd: "700",
       },
+        },
+
     },
   },
   plugins: [],
