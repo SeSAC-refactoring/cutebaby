@@ -26,7 +26,7 @@ function App() {
     }, []);
 
     return (
-        <>
+        <div>
             <Header></Header>
             <Routes>
                 <Route path="/" element={<Home />}></Route>
@@ -40,7 +40,7 @@ function App() {
                 <Route path="/SelectLogin" element={<SelectLogin />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
-        </>
+        </div>
     );
 }
 

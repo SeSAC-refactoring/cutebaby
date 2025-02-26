@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { store, persistor } from './store';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import './index.scss';
+import './styles/index.scss';
 
 const rootElement = document.getElementById('root') as HTMLElement;
 

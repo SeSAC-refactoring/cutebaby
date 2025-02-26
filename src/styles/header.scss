@@ -1,0 +1,17 @@
+.menu {
+    background-color: aqua;
+    display: flex;
+    gap: 16px;
+    // align-items: center;
+
+    a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            width: 32px;
+            height: 32px;
+        }
+    }
+}
