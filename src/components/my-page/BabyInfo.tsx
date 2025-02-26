@@ -66,7 +66,7 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
   }, [selectedBabyId, babyInfo]);
 
   return (
-    <div>
+    <div className="flex flex-col items-start gap-4 pt-5 px-6 pb-6 self-stretch bg-yellow-1 rounded-[24px]">
       <div>우리아이 정보</div>
 
       <div>
@@ -77,8 +77,8 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
           onOpenModal={() => setBabyPlus(true)}
         />
 
-        <div>
-          <div>
+        <div className="flex gap-4">
+          <div className="bg-white rounded-[16px] border-2 border-[#E1E1E5] ">
             {!(selectedBaby.picture === "data:image/jpeg;base64,") ? (
               <img
                 src={selectedBaby?.picture || "img/babybasic.png"}
@@ -90,7 +90,7 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
           </div>
           <div>
             <div>
-              <div style={{ marginBottom: "32px" }}>
+              <div>
                 <div>생년월일</div>
                 <div>{selectedBaby.birthday}</div>
               </div>
@@ -102,9 +102,8 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
                 <div>개월 수</div>
                 <div>{babyMonths}</div>
               </div>
-              '
             </div>
-            <div>
+            <div className="flex">
               <button onClick={() => setDelModal(true)}>삭제</button>
               {delModal && (
                 <DelbabyModal
@@ -114,11 +113,7 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
                 />
               )}
 
-              <button
-                //
-
-                onClick={() => setUpdateBaby(true)}
-              >
+              <button className="flex" onClick={() => setUpdateBaby(true)}>
                 수정
                 <img alt="수정 아이콘" src="/img/edit-01.png" />
               </button>
