@@ -1,29 +1,30 @@
-import Signup from './pages/Signup';
-import { Route, Routes } from 'react-router-dom';
-import Mypage from './pages/Mypage';
-import KakaoLogin from './components/login-page/KakaoLogin';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Vaccination from './pages/Vaccination';
-import { useEffect } from 'react';
-import { loadKakaoSDK } from './services/loadKakaoSDK';
-import Header from './components/commons/Header';
-import SelectLogin from './pages/SelectLogin';
-import GrowthDiary from './pages/GrowthDiary';
-import { NotFound } from './pages/NotFound';
+import Signup from "./pages/Signup";
+import { Route, Routes } from "react-router-dom";
+import Mypage from "./pages/Mypage";
+import KakaoLogin from "./components/login-page/KakaoLogin";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Vaccination from "./pages/Vaccination";
+import { useEffect } from "react";
+import { loadKakaoSDK } from "./services/loadKakaoSDK";
+import Header from "./components/commons/Header";
+import SelectLogin from "./pages/SelectLogin";
+import GrowthDiary from "./pages/GrowthDiary";
+import { NotFound } from "./pages/NotFound";
 
 export interface UserData {
-    userid: number;
-    username: string;
-    email: string;
+  userid: number;
+  username: string;
+  email: string;
 }
 
 function App() {
-    useEffect(() => {
-        loadKakaoSDK();
-        // .then(() => console.log("Kakao SDK 준비 완료"))
-        // .catch((error) => console.error("Kakao SDK 로드 실패:", error));
-    }, []);
+  useEffect(() => {
+    loadKakaoSDK();
+    // .then(() => console.log("Kakao SDK 준비 완료"))
+    // .catch((error) => console.error("Kakao SDK 로드 실패:", error));
+  }, []);
+
 
     return (
         <div>
@@ -42,6 +43,7 @@ function App() {
             </Routes>
         </div>
     );
+
 }
 
 export default App;
