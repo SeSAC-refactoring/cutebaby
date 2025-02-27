@@ -8,11 +8,12 @@
 
 // 전역 root div 스타일
 #root {
-    width: 100%;
-    min-height: 100vh;
-    margin: 0 auto;
-    position: relative;
-    @apply bg-yellow-1;
+    @apply w-full min-h-[calc(100vh-106px)] mx-auto relative bg-yellow-1;
+
+    // 390px 이상일 때
+    @media (min-width: 390x) {
+        min-height: calc(100vh - 96px); // 큰큰 화면에서는 header 높이가 96px
+    }
 }
 
 // header를 제외한 나머지 영역 main 태그 스타일
