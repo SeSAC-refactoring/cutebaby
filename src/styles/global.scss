@@ -1,0 +1,22 @@
+// 전체 reset
+* {
+    box-sizing: border-box;
+    font-family: 'Pretendard-Regular';
+    margin: 0;
+    padding: 0;
+}
+
+// 전역 root div 스타일
+#root {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+    position: relative;
+    @apply bg-yellow-1;
+}
+
+// header를 제외한 나머지 영역 main 태그 스타일
+main {
+    // @apply min-h-screen; // 최소한 화면 높이를 100vh로 유지
+    @apply mb-[106px] xs:mb-0 xs:mt-[96px]; // header 높이만큼 margin 추가
+}

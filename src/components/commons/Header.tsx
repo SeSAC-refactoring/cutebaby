@@ -1,13 +1,13 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Logout from '../login-page/Logout';
 import { useEffect, useState } from 'react';
-// import logo from "/logo.png";
 
 export default function Header() {
     const location = useLocation(); // 현재 URL 정보를 가져옴
-
     const user = sessionStorage.getItem('user');
+
     const [Logined, setLogined] = useState<boolean>(false);
+
     useEffect(() => {
         if (!user) {
             setLogined(false);
@@ -27,7 +27,7 @@ export default function Header() {
 
             {/* 로그인 안했을 때 메뉴*/}
             {!Logined ? (
-                <div className="menu">
+                <nav>
                     <Link to="/">
                         <img
                             src={
@@ -65,10 +65,10 @@ export default function Header() {
                             로그인
                         </p>
                     </Link>
-                </div>
+                </nav>
             ) : (
                 // 로그인 했을 떄 메뉴
-                <div className="menu">
+                <nav>
                     <Link to="/">
                         <img
                             src={
@@ -149,7 +149,7 @@ export default function Header() {
                         <img src="/img/icons/i-logout-s32.svg" alt="로그아웃" />
                         <p>로그아웃</p>
                     </a>
-                </div>
+                </nav>
             )}
         </header>
     );

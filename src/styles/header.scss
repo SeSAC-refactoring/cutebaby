@@ -11,7 +11,7 @@ header {
         @apply xs:w-[53px] sm:w-[100px] md:w-[135px];
     }
 
-    .menu {
+    nav {
         @apply flex gap-4 xs:gap-4 sm:gap-6;
 
         a {
