@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    content: ['./src/**/*.{js,jsx,ts,tsx}', './index.tsx'], // Tailwind 사용할 파일
+    content: ['./src/**/*.{js,jsx,ts,tsx,scss}', './index.tsx'], // Tailwind 사용할 파일
     theme: {
         extend: {
             screens: {
@@ -121,6 +121,7 @@ export default {
                     9: '#8c7e00',
                 },
             },
+
             fontSize: {
                 '3xs': ['10px', '14px'], // font-size: 10px; line-height: 14px; // text-3xs로 사용
                 '2xs': ['12px', '16px'],
