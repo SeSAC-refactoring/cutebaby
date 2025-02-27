@@ -122,7 +122,7 @@ export default {
                 },
             },
             fontSize: {
-                '3xs': ['10px', '14px'], // font-size: 10px; line-height: 14px; text-3xs로 사용
+                '3xs': ['10px', '14px'], // font-size: 10px; line-height: 14px; // text-3xs로 사용
                 '2xs': ['12px', '16px'],
                 xs: ['14px', '18px'],
                 bs: ['16px', '20px'],
@@ -136,7 +136,7 @@ export default {
             },
 
             fontWeight: {
-                rg: '400', // font-weight: 400; font-rg로 사용
+                rg: '400', // font-weight: 400; // font-rg로 사용
                 md: '500',
                 bd: '700',
             },
