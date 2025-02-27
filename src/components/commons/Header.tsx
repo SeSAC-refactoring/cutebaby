@@ -17,9 +17,9 @@ export default function Header() {
     });
 
     return (
-        <header className="bg-blue-1 flex items-center  justify-center xs:justify-between h-[106px] fixed left-0 w-full bottom-0 xs:bottom-auto xs:top-0 ">
+        <header>
             {/* 로고 */}
-            <div className="hidden xs:block">
+            <div className="logo">
                 <Link to="/">
                     <img src="/img/BI.svg" alt="Logo" />
                 </Link>
@@ -31,24 +31,39 @@ export default function Header() {
                     <Link to="/">
                         <img
                             src={
-                                location.pathname == '/'
-                                    ? '/img/icons/i-home-s32.svg'
-                                    : '/img/icons/i-home-s32-active.svg'
+                                location.pathname === '/'
+                                    ? '/img/icons/i-home-s32-active.svg'
+                                    : '/img/icons/i-home-s32.svg'
                             }
                             alt="홈"
                         />
-                        홈
+                        <p
+                            className={
+                                location.pathname === '/' ? 'active' : ''
+                            }
+                        >
+                            홈
+                        </p>
                     </Link>
 
                     <Link to="/SelectLogin">
                         <img
                             src={
-                                location.pathname == '/SelectLogin'
-                                    ? '/img/icons/i-login-s32.svg'
-                                    : '/img/icons/i-login-s32-active.svg'
+                                location.pathname === '/SelectLogin'
+                                    ? '/img/icons/i-login-s32-active.svg'
+                                    : '/img/icons/i-login-s32.svg'
                             }
+                            alt="로그인"
                         />
-                        로그인
+                        <p
+                            className={
+                                location.pathname === '/SelectLogin'
+                                    ? 'active'
+                                    : ''
+                            }
+                        >
+                            로그인
+                        </p>
                     </Link>
                 </div>
             ) : (
@@ -57,44 +72,82 @@ export default function Header() {
                     <Link to="/">
                         <img
                             src={
-                                location.pathname == '/Login'
-                                    ? '/img/icons/i-login-s32.svg'
-                                    : '/img/icons/i-login-s32-active.svg'
+                                location.pathname === '/'
+                                    ? '/img/icons/i-home-s32-active.svg'
+                                    : '/img/icons/i-home-s32.svg'
                             }
-                        ></img>
-                        홈
+                            alt="홈"
+                        />
+                        <p
+                            className={
+                                location.pathname === '/' ? 'active' : ''
+                            }
+                        >
+                            홈
+                        </p>
                     </Link>
 
                     <Link to="/Vaccination">
                         <img
                             src={
-                                location.pathname == '/Vaccination'
-                                    ? '/img/icons/i-injection-s32.svg'
-                                    : '/img/icons/i-injection-s32-active.svg'
+                                location.pathname === '/Vaccination'
+                                    ? '/img/icons/i-vaccination-s32-active.svg'
+                                    : '/img/icons/i-vaccination-s32.svg'
                             }
-                        ></img>
-                        예방접종
+                            alt="예방접종"
+                        />
+                        <p
+                            className={
+                                location.pathname === '/Vaccination'
+                                    ? 'active'
+                                    : ''
+                            }
+                        >
+                            예방접종
+                        </p>
                     </Link>
 
                     <Link to="/GrowthDiary">
                         <img
                             src={
-                                location.pathname == '/GrowthDiary'
-                                    ? '/img/icons/i-ruler-s32.svg'
-                                    : '/img/icons/i-ruler-s32-active.svg'
+                                location.pathname === '/GrowthDiary'
+                                    ? '/img/icons/i-ruler-s32-active.svg'
+                                    : '/img/icons/i-ruler-s32.svg'
                             }
-                        ></img>
-                        성장일지
+                            alt="성장일지"
+                        />
+                        <p
+                            className={
+                                location.pathname === '/GrowthDiary'
+                                    ? 'active'
+                                    : ''
+                            }
+                        >
+                            성장일지
+                        </p>
                     </Link>
 
                     <Link to="/Mypage">
-                        <img src="/img/icons/i-mypage-s32.svg"></img>
-                        마이페이지
+                        <img
+                            src={
+                                location.pathname === '/Mypage'
+                                    ? '/img/icons/i-mypage-s32-active.svg'
+                                    : '/img/icons/i-mypage-s32.svg'
+                            }
+                            alt="마이페이지"
+                        />
+                        <p
+                            className={
+                                location.pathname === '/Mypage' ? 'active' : ''
+                            }
+                        >
+                            마이페이지
+                        </p>
                     </Link>
 
                     <a onClick={Logout}>
-                        <img src="/img/icons/i-login-s32.svg"></img>
-                        로그아웃
+                        <img src="/img/icons/i-logout-s32.svg" alt="로그아웃" />
+                        <p>로그아웃</p>
                     </a>
                 </div>
             )}
