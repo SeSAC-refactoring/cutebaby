@@ -158,7 +158,10 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
             ref={fileInputRef}
             style={{ display: "none" }}
           />
-          <button onClick={() => fileInputRef.current?.click()}>
+          <button
+            className="flex h-8 px-3 justify-center items-center gap-0.5 bg-blue-4 rounded-[10px] text-2xs font-bd"
+            onClick={() => fileInputRef.current?.click()}
+          >
             사진 등록
             {/* <img
               
