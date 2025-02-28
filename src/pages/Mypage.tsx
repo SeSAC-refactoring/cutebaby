@@ -105,42 +105,40 @@ export default function Mypage() {
                 아이 등록 +
               </button>
             )} */}
-                    </div>
-                    <div className="flex flex-col gap-6">
-                        {/* 사용자 정보 출력하기 */}
-                        <div className="flex flex-col items-start gap-4 pt-5 px-6 pb-6 self-stretch bg-yellow-1 rounded-[24px]">
-                            <div className="flex justify-between w-full">
-                                <div className="">내 정보</div>
-                                <button
-                                    className="flex items-center justify-center h-8 px-3 gap-0.5 rounded-[10px] bg-yellow-4"
-                                    onClick={update}
-                                    disabled={isKakaoLogin}
-                                >
-                                    개인정보 수정
-                                    <img
-                                        src="/img/edit-01.png"
-                                        alt="수정 아이콘"
-                                    />
-                                </button>
-                            </div>
 
-                            <div>
-                                <div>
-                                    <div>이름</div>
-                                    <div>{userInfo.username}</div>
-                                </div>
-                                <div>
-                                    <div>이메일</div>
-                                    <div>{userInfo.userid}</div>
-                                </div>
-                            </div>
-                        </div>
+          </div>
+          <div className="flex flex-col gap-6">
+            {/* 사용자 정보 출력하기 */}
+            <div className="flex flex-col items-start gap-4 pt-5 px-6 pb-6 self-stretch bg-yellow-1 rounded-[24px]">
+              <div className="flex justify-between w-full">
+                <div className="text-md font-bd text-gray-10">내 정보</div>
+                <button
+                  className="text-2xs font-bd flex items-center justify-center h-8 px-3 gap-0.5 rounded-[10px] bg-yellow-4"
+                  onClick={update}
+                  disabled={isKakaoLogin}
+                >
+                  개인정보 수정
+                  <img
+                    src="/img/edit-01.png"
+                    alt="수정 아이콘"
+                    className="w-[14px] h-[14px]"
+                  />
+                </button>
+              </div>
 
-                        {/* 애기 정보 출력 */}
-                        {babyInfo.length > 0 && (
-                            <BabyInfo babyInfo={babyInfo} />
-                        )}
-                    </div>
+              <div className="flex flex-col gap-[16px]">
+                <div className="flex flex-col gap-[4px]">
+                  <div className="text-sm font-bd text-gray-8">이름</div>
+                  <div className="text-bs font-md text-gray-10">
+                    {userInfo.username}
+                  </div>
+                </div>
+                <div className="flex flex-col gap-[4px]">
+                  <div className="text-sm font-bd text-gray-8">이메일</div>
+                  <div className="text-bs font-md text-gray-10">
+                    {userInfo.userid}
+                  </div>
+
                 </div>
             </div>
         </main>

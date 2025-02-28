@@ -17,9 +17,10 @@ const GenderInputComponent: React.FC<GenderInputProps> = ({
   return (
     <div
       style={{ display: "flex", gap: "20px" }}
+      className="flex gap-5 bg-blue-1 border-2 border-blue-5 rounded-[16px] mb-[49px]"
       onClick={(e) => e.stopPropagation()}
     >
-      <div>
+      <div className="w-full flex">
         {genderOptions.map((el) => (
           <button
             key={el.value}
@@ -38,6 +39,12 @@ const GenderInputComponent: React.FC<GenderInputProps> = ({
               cursor: "pointer",
               fontWeight: el.value === selectedGender ? "bold" : "normal",
             }}
+            // className="rounded-[16px] p-4 gap-2 flex-[1_0_0] justify-around"
+            className={`${
+              el.value === selectedGender
+                ? "rounded-[16px] p-4 gap-2 flex-[1_0_0] justify-around bg-blue-3 border-2 border-blue-7 text-sm font-bd text-blue-9"
+                : "rounded-[16px] p-4 gap-2 flex-[1_0_0] justify-around text-sm font-md text-blue-8"
+            }`}
           >
             {el.text}
           </button>

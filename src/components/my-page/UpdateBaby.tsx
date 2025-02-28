@@ -93,18 +93,25 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
   const [selectedGender, setSelectedGender] = useState(rewriteData.gender);
 
   return (
-    <div onClick={onClose} style={{ left: "0" }}>
+    <div onClick={onClose} className="bg-white px-6 py-6">
       <div onClick={(e) => e.stopPropagation()}>
-        <div>
-          <div>아기 정보 수정</div>
+        <div className="flex justify-between">
+          <div className="text-2xl font-bd mb-10">아기 정보 수정</div>
           <div onClick={onClose}>
-            <img src="/img/icons/i-modal-close-s32.svg" alt="" />
+            {/* <img src="/img/icons/i-modal-close-s32.svg" alt="" /> */}
+            <img src="img/Button-close.png" alt="button" />
           </div>
         </div>
         <div>
-          <div>
+          <div className="w-full flex justify-center flex-col items-center">
             <div>
-              {defaultImg && <img src="/img/Profile.png" alt="아기 사진" />}
+              {defaultImg && (
+                <img
+                  src="/img/Profile.png"
+                  alt="아기 사진"
+                  className="w-[140px] h-[140px]"
+                />
+              )}
               <div
                 style={{ position: "relative", bottom: "60px", left: "30px" }}
               >
@@ -115,7 +122,7 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
                 />
               </div>
             </div>
-            <div>
+            <div className="w-full ">
               <Input
                 label="이름"
                 placeholder="이름 입력"
@@ -131,7 +138,12 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
                 onChange={handleInputChange}
               ></Input>
               <section>
-                <label>성별</label>
+                <div className="flex gap-1">
+                  <label className="text-xs font-bd text-gray-8 mb-[6px]">
+                    성별
+                  </label>
+                  <div className="w-[6px] h-[6px] bg-red-5 rounded-[4px]"></div>
+                </div>
                 <GenderInput
                   setSelectedGender={handleGenderChange}
                   selectedGender={selectedGender}
@@ -139,9 +151,19 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
               </section>
             </div>
           </div>
-          <div>
-            <button onClick={onClose}>취소</button>
-            <button onClick={rewrite}>완료</button>
+          <div className="flex gap-4">
+            <button
+              onClick={onClose}
+              className="flex h-16 px-[22px] justify-center items-center gap-[6px] flex-[1_0_0] bg-yellow-4 rounded-[18px] text-lg font-bd text-gray-10"
+            >
+              취소
+            </button>
+            <button
+              onClick={rewrite}
+              className="flex h-16 px-[22px] justify-center items-center gap-[6px] flex-[1_0_0] bg-gray-3 rounded-[18px] text-lg font-bd text-white"
+            >
+              완료
+            </button>
           </div>
         </div>
       </div>
