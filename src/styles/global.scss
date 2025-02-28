@@ -6,18 +6,27 @@
     padding: 0;
 }
 
-// 전역 root div 스타일
+body {
+    width: 100%;
+}
+
+// 전역 root div 스타일 // header를 제외한 나머지 영역
 #root {
-    @apply w-full min-h-[calc(100vh-106px)] mx-auto relative bg-yellow-1;
+    @apply flex flex-col;
+    @apply bg-white xs:bg-yellow-1;
+    @apply mx-auto mb-[130px]; // margin-bottom은 106+24px (header에 가리는 것 방지)
+    min-height: calc(100vh - 106px);
 
     // 390px 이상일 때
-    @media (min-width: 390x) {
-        min-height: calc(100vh - 96px); // 큰큰 화면에서는 header 높이가 96px
+    @media (min-width: 390px) {
+        min-height: calc(100vh - 96px); // 큰 화면에서는 header 높이가 96px
+        margin-top: 96px;
     }
 }
 
-// header를 제외한 나머지 영역 main 태그 스타일
+// main 태그 스타일
 main {
-    // @apply min-h-screen; // 최소한 화면 높이를 100vh로 유지
-    @apply mb-[106px] xs:mb-0 xs:mt-[96px]; // header 높이만큼 margin 추가
+    flex-grow: 1; // root div의 height 만큼
+    overflow: auto; // 내용이 넘치면 스크롤
+    min-width: 342px; // 최소 너비를 390px(- padding 24px *2)로 유지하여 더 작아지지 않도록
 }

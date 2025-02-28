@@ -8,8 +8,8 @@ interface ButtonAreaProps {
 
 export const ButtonArea: React.FC<ButtonAreaProps> = ({ link, buttonText }) => {
     return (
-        <>
-            <div>
+        <div className="buttonArea">
+            <div className="text">
                 우리아이의 성장상태를
                 <br />
                 <span>성장추이 그래프</span>로 확인할 수 있어요!
@@ -23,6 +23,6 @@ export const ButtonArea: React.FC<ButtonAreaProps> = ({ link, buttonText }) => {
                     />
                 </Link>
             </button>
-        </>
+        </div>
     );
 };
