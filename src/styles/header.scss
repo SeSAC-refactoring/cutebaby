@@ -1,17 +1,38 @@
-.menu {
-    background-color: aqua;
-    display: flex;
-    gap: 16px;
-    // align-items: center;
+header {
+    @apply flex items-center justify-center;
+    @apply fixed left-0  bottom-0;
+    @apply h-[106px] w-full bg-white border-t border-gray-2;
+    @apply xs:justify-center xs:gap-[6vw] sm:gap-[20vw] md:gap-[32vw] lg:gap-[48vw] xs:bottom-auto xs:top-0;
+    @apply xs:h-[96px] xs:border-t-0 xs:border-b-2 xs:border-gray-6;
 
-    a {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .logo {
+        @apply hidden;
+        @apply xs:block;
+        @apply xs:w-[53px] sm:w-[100px] md:w-[135px];
+    }
 
-        img {
-            width: 32px;
-            height: 32px;
+    nav {
+        @apply flex gap-4 xs:gap-4 sm:gap-6;
+
+        a {
+            @apply flex flex-col items-center justify-center gap-1;
+            @apply w-[55.6px] h-[64px];
+            @apply xs:flex-row xs:w-auto xs:h-auto;
+
+            img {
+                @apply w-8 h-8;
+                @apply xs:hidden;
+            }
+
+            p {
+                @apply text-gray-4 text-2xs font-bd;
+                @apply xs:text-gray-5 xs:text-bs sm:text-sm xs:font-md;
+
+                &.active {
+                    @apply text-gray-8;
+                    @apply xs:text-gray-10 xs:font-bd;
+                }
+            }
         }
     }
 }

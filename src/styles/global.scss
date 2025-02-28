@@ -1,0 +1,23 @@
+// 전체 reset
+* {
+    box-sizing: border-box;
+    font-family: 'Pretendard-Regular';
+    margin: 0;
+    padding: 0;
+}
+
+// 전역 root div 스타일
+#root {
+    @apply w-full min-h-[calc(100vh-106px)] mx-auto relative bg-yellow-1;
+
+    // 390px 이상일 때
+    @media (min-width: 390x) {
+        min-height: calc(100vh - 96px); // 큰큰 화면에서는 header 높이가 96px
+    }
+}
+
+// header를 제외한 나머지 영역 main 태그 스타일
+main {
+    // @apply min-h-screen; // 최소한 화면 높이를 100vh로 유지
+    @apply mb-[106px] xs:mb-0 xs:mt-[96px]; // header 높이만큼 margin 추가
+}

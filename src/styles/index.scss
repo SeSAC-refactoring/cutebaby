@@ -1,14 +1,17 @@
-// 변수, 기본 스타일 import
-@import './header.scss';
-
 // Tailwind import
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-// 전역 root div 스타일
-#root {
-    width: 100%;
-    min-height: 100vh;
-    margin: 0 auto;
+// Pretendard 폰트 import
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+        format('woff');
+    font-weight: 400;
+    font-style: normal;
 }
+
+// styles import
+@import './global.scss'; // 스타일초기화, root div, main 태그 설정
+@import './header.scss'; // header style
