@@ -1,0 +1,28 @@
+@import '../abstracts/mixins'; // mixin import
+
+.banner {
+    @apply flex flex-col gap-1;
+    @apply px-6 py-4 h-[96px] rounded-3xl border-2 border-blue-3;
+
+    &.banner_first {
+        @include banner-style('first');
+    }
+    &.banner_second {
+        @include banner-style('second');
+    }
+
+    h3 {
+        @apply text-gray-8 text-bs font-bd;
+    }
+
+    button {
+        @apply flex;
+
+        p {
+            @apply text-gray-6 text-xs font-md;
+        }
+        img {
+            @apply w-3.5 h-3.5;
+        }
+    }
+}

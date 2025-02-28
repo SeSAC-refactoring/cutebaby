@@ -1,0 +1,8 @@
+// 홈페이지 배너 스타일
+@mixin banner-style($order) {
+    $img-url: '../../assets/visual_home_banner_#{$order}.png';
+    background:
+        url(#{$img-url}) no-repeat bottom right,
+        theme('colors.blue.1');
+    background-size: 88px;
+}

@@ -1,0 +1,63 @@
+@import './home_banners.scss';
+
+.dashboard {
+    @apply flex flex-col gap-6 items-center;
+
+    // growthDiaryArea & vaccinationArea 공통부분
+    .growthDiaryArea,
+    .vaccinationArea {
+        @apply flex flex-col gap-4 w-[342px];
+
+        h2 {
+            @apply text-gray-10 text-md font-bd;
+        }
+    }
+
+    // growthDiaryArea
+    .growthDiaryArea {
+        figure.noBabyList,
+        .graphBtnArea {
+            @apply flex flex-col gap-2;
+
+            & > img,
+            .graphArea {
+                @apply h-[212px];
+                @apply bg-orange-1 rounded-2xl;
+            }
+        }
+
+        figure.GrowData {
+            @apply flex flex-col gap-4;
+        }
+
+        // buttonArea
+        .buttonArea {
+            @apply flex ml-auto;
+
+            .text {
+                @apply text-gray-8 text-2xs font-md;
+
+                span {
+                    @apply text-blue-8;
+                }
+            }
+
+            a {
+                @apply flex gap-0.5 justify-center items-center;
+                @apply px-3 py-2.5 rounded-[10px]  bg-yellow-4;
+
+                p {
+                    @apply text-gray-10 text-2xs font-bd;
+                }
+
+                & > img {
+                    @apply w-3.5 h-3.5;
+                }
+            }
+        }
+
+        .buttonArea:has(.text) {
+            @apply ml-0 justify-between;
+        }
+    }
+}

@@ -71,15 +71,17 @@ export default function Home() {
 
             <section className="userArea">
                 <section className="topArea">
-                    <div className="greeting">
-                        <strong>{username}</strong>
-                        님,
-                        <br />
-                        안녕하세요👋🏼
-                    </div>
-                    <div className="description">
-                        우리아이 예방접종을 관리 하고, 성장일지를 기록
-                        해보세요:)
+                    <div>
+                        <div className="greeting">
+                            <strong>{username}</strong>
+                            님,
+                            <br />
+                            안녕하세요👋🏼
+                        </div>
+                        <div className="description">
+                            우리아이 예방접종을 관리 하고, 성장일지를 기록
+                            해보세요:)
+                        </div>
                     </div>
                 </section>
 
