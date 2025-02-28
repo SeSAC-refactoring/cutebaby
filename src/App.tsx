@@ -19,6 +19,8 @@ export interface UserData {
 }
 
 function App() {
+
+
     useEffect(() => {
         loadKakaoSDK();
         // .then(() => console.log("Kakao SDK 준비 완료"))
@@ -42,6 +44,7 @@ function App() {
             </Routes>
         </>
     );
+
 }
 
 export default App;

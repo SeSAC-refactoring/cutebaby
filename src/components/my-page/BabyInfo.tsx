@@ -66,8 +66,8 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
   }, [selectedBabyId, babyInfo]);
 
   return (
-    <div className="flex flex-col items-start gap-4 pt-5 px-6 pb-6 self-stretch bg-yellow-1 rounded-[24px]">
-      <div>우리아이 정보</div>
+    <div className="flex flex-col items-start gap-4 pt-5 px-6 pb-6 self-stretch bg-yellow-1 rounded-[24px] ">
+      <div className="text-md font-bd text-gray-10">우리아이 정보</div>
 
       <div>
         <BabyList
@@ -78,45 +78,68 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
         />
 
         <div className="flex gap-4">
-          <div className="bg-white rounded-[16px] border-2 border-[#E1E1E5] ">
+          <div className="bg-white rounded-[16px] border-2 border-[#E1E1E5] w-[120px] h-[120px] flex justify-center items-center">
             {!(selectedBaby.picture === "data:image/jpeg;base64,") ? (
               <img
+                className="w-[80px] h-[96px]"
                 src={selectedBaby?.picture || "img/babybasic.png"}
                 alt="아기 사진"
               />
             ) : (
-              <img src="img/babybasic.png" alt="기본 아기 사진"></img>
+              <img
+                className="w-[80px] h-[96px]"
+                src="img/babybasic.png"
+                alt="기본 아기 사진"
+              ></img>
             )}
           </div>
-          <div>
-            <div>
-              <div>
-                <div>생년월일</div>
-                <div>{selectedBaby.birthday}</div>
+          <div className="w-full">
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-1">
+                <div className="text-xs font-bd text-gray-8">생년월일</div>
+                <div className="text-bs font-md text-gray-10">
+                  {selectedBaby.birthday}
+                </div>
               </div>
-              <div>
-                <div>성별</div>
-                <div>{selectedBaby.gender === "boy" ? "남아" : "여아"}</div>
+              <div className="flex flex-col gap-1">
+                <div className="text-xs font-bd text-gray-8">성별</div>
+                <div className="text-bs font-md text-gray-10">
+                  {selectedBaby.gender === "boy" ? "남아" : "여아"}
+                </div>
               </div>
-              <div>
-                <div>개월 수</div>
-                <div>{babyMonths}</div>
+              <div className="flex flex-col gap-1">
+                <div className="text-xs font-bd text-gray-8">개월 수</div>
+                <div className="text-bs font-md text-gray-10">{babyMonths}</div>
               </div>
             </div>
-            <div className="flex">
-              <button onClick={() => setDelModal(true)}>삭제</button>
-              {delModal && (
-                <DelbabyModal
-                  handleSelectBaby={selectedBaby.babyid}
-                  babyInfo={babyInfo}
-                  onClose={() => setDelModal(false)}
-                />
-              )}
+            <div className="flex justify-end ">
+              <div className="flex gap-2 w-1/5 h-[26px]">
+                <button
+                  className="bg-coral-4 rounded-[8px] text-3xs font-md text-gray-10 w-full"
+                  onClick={() => setDelModal(true)}
+                >
+                  삭제
+                </button>
+                {delModal && (
+                  <DelbabyModal
+                    handleSelectBaby={selectedBaby.babyid}
+                    babyInfo={babyInfo}
+                    onClose={() => setDelModal(false)}
+                  />
+                )}
 
-              <button className="flex" onClick={() => setUpdateBaby(true)}>
-                수정
-                <img alt="수정 아이콘" src="/img/edit-01.png" />
-              </button>
+                <button
+                  className="bg-yellow-4 flex rounded-[8px] text-3xs font-md text-gray-10 w-full gap-[2px] items-center justify-center "
+                  onClick={() => setUpdateBaby(true)}
+                >
+                  수정
+                  <img
+                    alt="수정 아이콘"
+                    src="/img/edit-01.png"
+                    className="w-[12px] h-[12px]"
+                  />
+                </button>
+              </div>
             </div>
             {updateBaby && (
               <UpdateBaby
