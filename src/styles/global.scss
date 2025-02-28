@@ -12,7 +12,7 @@ body {
 
 // 전역 root div 스타일 // header를 제외한 나머지 영역
 #root {
-    @apply flex flex-col;
+    @apply flex flex-col items-center;
     @apply bg-white xs:bg-yellow-1;
     @apply mx-auto mb-[130px]; // margin-bottom은 106+24px (header에 가리는 것 방지)
     min-height: calc(100vh - 106px);
@@ -21,6 +21,7 @@ body {
     @media (min-width: 390px) {
         min-height: calc(100vh - 96px); // 큰 화면에서는 header 높이가 96px
         margin-top: 96px;
+        margin-bottom: 0;
     }
 }
 
@@ -29,4 +30,5 @@ main {
     flex-grow: 1; // root div의 height 만큼
     overflow: auto; // 내용이 넘치면 스크롤
     min-width: 342px; // 최소 너비를 390px(- padding 24px *2)로 유지하여 더 작아지지 않도록
+    width: 100%;
 }

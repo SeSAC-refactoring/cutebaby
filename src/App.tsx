@@ -11,6 +11,7 @@ import Header from './components/commons/Header';
 import SelectLogin from './pages/SelectLogin';
 import GrowthDiary from './pages/GrowthDiary';
 import { NotFound } from './pages/NotFound';
+import { Footer } from './components/commons/Footer';
 
 export interface UserData {
     userid: number;
@@ -19,8 +20,6 @@ export interface UserData {
 }
 
 function App() {
-
-
     useEffect(() => {
         loadKakaoSDK();
         // .then(() => console.log("Kakao SDK 준비 완료"))
@@ -29,7 +28,7 @@ function App() {
 
     return (
         <>
-            <Header></Header>
+            <Header />
             <Routes>
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/oauth/callback/kakao" element={<KakaoLogin />} />
@@ -42,9 +41,9 @@ function App() {
                 <Route path="/SelectLogin" element={<SelectLogin />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
+            <Footer />
         </>
     );
-
 }
 
 export default App;
