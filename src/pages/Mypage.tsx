@@ -58,7 +58,7 @@ export default function Mypage() {
   }, []);
 
   return (
-    <div className="bg-white">
+    <main>
       {babyPlus && (
         <div
           onClick={() => setBabyPlus(false)}
@@ -143,6 +143,6 @@ export default function Mypage() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
