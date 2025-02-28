@@ -1,0 +1,126 @@
+// mixin 정의
+@mixin banner-style($order) {
+    background:
+        url('../../public/img/visuals/visual_home_banner_#{$order}.png')
+            no-repeat bottom right,
+        theme('colors.blue.1');
+    background-size: 88px;
+}
+
+// 홈페이지 style
+h1 {
+    @apply hidden;
+}
+
+.userArea {
+    @apply flex flex-col gap-6;
+
+    .topArea {
+        @apply px-6 py-8 flex flex-col gap-2;
+        background:
+            url('../../public/img/visuals/visual_home_ggomul_small.svg')
+                no-repeat bottom right,
+            linear-gradient(180deg, white 0%, theme('colors.yellow.1') 100%);
+
+        .greeting {
+            @apply text-gray-10 text-2xl font-md;
+            @apply w-[200px];
+        }
+
+        .description {
+            @apply text-gray-7 text-bs font-rg;
+            @apply w-[200px];
+            // @apply sm:w-auto; // 반응형 추가하기
+        }
+    }
+
+    .dashboard {
+        @apply px-6 flex flex-col gap-6;
+
+        // growthDiaryArea & vaccinationArea 공통부분
+        .growthDiaryArea,
+        .vaccinationArea {
+            @apply flex flex-col gap-4;
+
+            h2 {
+                @apply text-gray-10 text-md font-bd;
+            }
+        }
+
+        // growthDiaryArea
+        .growthDiaryArea {
+            figure.noBabyList,
+            .graphBtnArea {
+                @apply flex flex-col gap-2;
+
+                & > img,
+                .graphArea {
+                    @apply h-[212px];
+                    @apply bg-orange-1 rounded-2xl;
+                }
+            }
+
+            figure.GrowData {
+                @apply flex flex-col gap-4;
+            }
+
+            .buttonArea {
+                @apply flex justify-between ml-auto;
+
+                .text {
+                    @apply text-gray-8 text-2xs font-md;
+
+                    span {
+                        @apply text-blue-8;
+                    }
+                }
+
+                a {
+                    @apply flex gap-0.5 justify-center items-center;
+                    @apply px-3 py-2.5 rounded-[10px]  bg-yellow-4;
+
+                    p {
+                        @apply text-gray-10 text-2xs font-bd;
+                    }
+
+                    & > img {
+                        @apply w-3.5 h-3.5;
+                    }
+                }
+            }
+        }
+
+        // vaccinationArea
+        .vaccinationArea {
+            .banner {
+                @apply flex flex-col gap-1;
+                @apply px-6 py-4 h-[96px] rounded-3xl border-2 border-blue-3;
+                // background-repeat: no-repeat;
+                // background-position: bottom right;
+
+                &.banner_first {
+                    @include banner-style('first');
+                }
+
+                &.banner_second {
+                    @include banner-style('second');
+                }
+
+                h3 {
+                    @apply text-gray-8 text-bs font-bd;
+                }
+
+                button {
+                    @apply flex;
+
+                    p {
+                        @apply text-gray-6 text-xs font-md;
+                    }
+                    & > img {
+                        @apply w-3.5 h-3.5;
+                    }
+                }
+            }
+        }
+    }
+}

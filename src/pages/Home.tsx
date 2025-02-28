@@ -6,13 +6,12 @@ import { useGrowData } from '../components/growth-diary-page/hooks/useGrowData';
 import { DiaryChart } from '../components/growth-diary-page/DiaryChart';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import VaccinationCenters from './VaccinationCenters';
-import VaccinationDetails from './VaccinationDetails';
 import { fetchgrowInfo } from '../store/GrowthDiarySlice';
-import Loading from '../components/home-page/Loading';
 import { BabyList } from '../components/commons/BabyList';
 import { ButtonArea } from '../components/home-page/ButtonArea';
-// import Icon from "../img/icons/i-chevron-right-s20.svg";
+import VaccinationCenters from './VaccinationCenters';
+import VaccinationDetails from './VaccinationDetails';
+import Loading from '../components/home-page/Loading';
 
 export default function Home() {
     const [openCentersModal, setOpenCentersModal] = useState<boolean>(false);
@@ -58,6 +57,7 @@ export default function Home() {
 
     return (
         <main>
+            <h1>홈페이지</h1>
             {/* 로딩 창 */}
             {loading && <Loading />}
 
@@ -71,25 +71,24 @@ export default function Home() {
 
             <section className="userArea">
                 <section className="topArea">
-                    <div>
+                    <div className="greeting">
                         <strong>{username}</strong>
                         님,
                         <br />
                         안녕하세요👋🏼
                     </div>
-                    <div>
-                        우리아이 <span>예방접종을 관리</span>
-                        하고, <span>성장일지를 기록</span>
+                    <div className="description">
+                        우리아이 예방접종을 관리 하고, 성장일지를 기록
                         해보세요:)
                     </div>
                 </section>
 
                 <section className="dashboard">
                     <article className="growthDiaryArea">
-                        <h4>우리 아이 성장 그래프</h4>
+                        <h2>우리 아이 성장 그래프</h2>
                         {/* 로그인 X */}
                         {username === '방문자' ? (
-                            <figure>
+                            <figure className="noBabyList">
                                 <img
                                     src="img/visuals/visuals-home-barLineChart.svg"
                                     alt="그래프 이미지"
@@ -101,7 +100,7 @@ export default function Home() {
                             </figure>
                         ) : babyInfo.length === 0 ? (
                             // 로그인 O + 아기등록 X
-                            <figure>
+                            <figure className="noBabyList">
                                 <img
                                     src="img/visuals/visuals-home-barLineChart.svg"
                                     alt="그래프 이미지"
@@ -112,7 +111,7 @@ export default function Home() {
                                 />
                             </figure>
                         ) : (
-                            <figure>
+                            <figure className="GrowData">
                                 {/* 로그인 O + 아기등록 O + 성장기록 X */}
                                 <BabyList
                                     babyInfo={babyInfo}
@@ -120,7 +119,7 @@ export default function Home() {
                                     selectedBabyId={selectedBabyId}
                                 />
                                 {growData.length === 0 ? (
-                                    <div>
+                                    <div className="graphBtnArea">
                                         <img
                                             src="img/visuals/visuals-home-barLineChart.svg"
                                             alt="그래프 이미지"
@@ -132,13 +131,13 @@ export default function Home() {
                                     </div>
                                 ) : (
                                     // 로그인 O + 아기등록 O + 성장기록 O
-                                    <div>
-                                        <div>
+                                    <div className="graphBtnArea">
+                                        <div className="graphArea">
                                             <DiaryChart growData={growData} />
                                         </div>
-                                        <button>
+                                        <button className="buttonArea">
                                             <Link to="/GrowthDiary">
-                                                성장일지 보러가기
+                                                <p>성장일지 보러가기</p>
                                                 <img
                                                     src="../img/icons/i-chevron-right-s20.svg"
                                                     alt=""
@@ -153,25 +152,32 @@ export default function Home() {
 
                     {/* 배너 영역 */}
                     <article className="vaccinationArea">
-                        <div onClick={() => setOpenDetailsModal(true)}>
-                            <h4>예방접종 대상 감염병 정보</h4>
-                            <div>
-                                바로가기
+                        <h2>예방접종 관련 정보</h2>
+                        <div
+                            className="banner banner_first"
+                            onClick={() => setOpenDetailsModal(true)}
+                        >
+                            <h3>예방접종 대상 감염병 정보</h3>
+                            <button>
+                                <p>바로가기</p>
                                 <img
-                                    src="/img/icons/i-chevron-right-s20.svg"
+                                    src="/img/icons/i-chevron-right-s20-gray6.svg"
                                     alt="바로가기 아이콘"
                                 />
-                            </div>
+                            </button>
                         </div>
-                        <div onClick={() => setOpenCentersModal(true)}>
-                            <h4>위탁의료기관 찾기</h4>
-                            <div>
-                                바로가기
+                        <div
+                            className="banner banner_second"
+                            onClick={() => setOpenCentersModal(true)}
+                        >
+                            <h3>위탁의료기관 찾기</h3>
+                            <button>
+                                <p>바로가기</p>
                                 <img
-                                    src="/img/icons/i-chevron-right-s20.svg"
+                                    src="/img/icons/i-chevron-right-s20-gray6.svg"
                                     alt="바로가기 아이콘"
                                 />
-                            </div>
+                            </button>
                         </div>
                     </article>
                 </section>
