@@ -12,6 +12,7 @@ import { ButtonArea } from '../components/home-page/ButtonArea';
 import VaccinationCenters from './VaccinationCenters';
 import VaccinationDetails from './VaccinationDetails';
 import Loading from '../components/home-page/Loading';
+import { TopArea } from '../components/home-page/TopArea';
 
 export default function Home() {
     const [openCentersModal, setOpenCentersModal] = useState<boolean>(false);
@@ -56,8 +57,7 @@ export default function Home() {
     const { growData } = useGrowData(growInfo, selectedBabyId);
 
     return (
-        <main>
-            <h1>홈페이지</h1>
+        <main className="home">
             {/* 로딩 창 */}
             {loading && <Loading />}
 
@@ -70,20 +70,9 @@ export default function Home() {
             )}
 
             <section className="userArea">
-                <section className="topArea">
-                    <div>
-                        <div className="greeting">
-                            <strong>{username}</strong>
-                            님,
-                            <br />
-                            안녕하세요👋🏼
-                        </div>
-                        <div className="description">
-                            우리아이 예방접종을 관리 하고, 성장일지를 기록
-                            해보세요:)
-                        </div>
-                    </div>
-                </section>
+                <h1>홈페이지</h1>
+
+                <TopArea />
 
                 <section className="dashboard">
                     <article className="growthDiaryArea">
@@ -155,38 +144,40 @@ export default function Home() {
                     {/* 배너 영역 */}
                     <article className="vaccinationArea">
                         <h2>예방접종 관련 정보</h2>
-                        <div
-                            className="banner banner_first"
-                            onClick={() => setOpenDetailsModal(true)}
-                        >
-                            <h3>예방접종 대상 감염병 정보</h3>
-                            <button>
-                                <p>바로가기</p>
-                                <img
-                                    src="/img/icons/i-chevron-right-s20-gray6.svg"
-                                    alt="바로가기 아이콘"
-                                />
-                            </button>
-                        </div>
-                        <div
-                            className="banner banner_second"
-                            onClick={() => setOpenCentersModal(true)}
-                        >
-                            <h3>위탁의료기관 찾기</h3>
-                            <button>
-                                <p>바로가기</p>
-                                <img
-                                    src="/img/icons/i-chevron-right-s20-gray6.svg"
-                                    alt="바로가기 아이콘"
-                                />
-                            </button>
+                        <div className="bannerArea">
+                            <div
+                                className="banner banner_first"
+                                onClick={() => setOpenDetailsModal(true)}
+                            >
+                                <h3>예방접종 대상 감염병 정보</h3>
+                                <button>
+                                    <p>바로가기</p>
+                                    <img
+                                        src="/img/icons/i-chevron-right-s20-gray6.svg"
+                                        alt="바로가기 아이콘"
+                                    />
+                                </button>
+                            </div>
+                            <div
+                                className="banner banner_second"
+                                onClick={() => setOpenCentersModal(true)}
+                            >
+                                <h3>위탁의료기관 찾기</h3>
+                                <button>
+                                    <p>바로가기</p>
+                                    <img
+                                        src="/img/icons/i-chevron-right-s20-gray6.svg"
+                                        alt="바로가기 아이콘"
+                                    />
+                                </button>
+                            </div>
                         </div>
                     </article>
                 </section>
             </section>
 
             {/* 챗봇 */}
-            {/* <aside>
+            <aside className="chatbotArea hidden xl:block xs:w-[400px] xs:mt-20 bg-white border-2">
                 <div>
                     <div>
                         <img
@@ -210,7 +201,7 @@ export default function Home() {
                     })}
                 </div>
                 <AiChatComponent />
-            </aside> */}
+            </aside>
         </main>
     );
 }

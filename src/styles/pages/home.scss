@@ -6,28 +6,52 @@ h1 {
     @apply hidden;
 }
 
+h2 {
+    @apply text-gray-10 text-md font-bd;
+}
+
+h3 {
+    @apply text-gray-8 text-bs font-bd;
+    @apply xs:text-sm font-bd;
+}
+
+main.home {
+    @apply xs:flex xs:justify-center xs:gap-10;
+}
+
 .userArea {
     @apply flex flex-col gap-6;
+    @apply xs:gap-0;
 
     .topArea {
         @apply py-8 flex flex-col gap-2 items-center;
+        @apply xs:py-0;
+
         background:
             url('../../../public/img/visuals/visual_home_ggomul_small.svg')
                 no-repeat bottom right,
             linear-gradient(180deg, white 0%, theme('colors.yellow.1') 100%);
 
+        // 390px 이상일 때
+        @media (min-width: 390px) {
+            background:
+                url('../../../public/img/visuals/visual_home_ggomul_big.svg')
+                    no-repeat bottom right,
+                transparent;
+        }
+
         & > div {
             @apply w-[342px];
+            @apply xs:w-[840px] xs:mb-16 xs:mt-20;
 
             .greeting {
-                @apply text-gray-10 text-2xl font-md;
-                @apply w-[200px];
+                @apply text-gray-10 text-2xl font-md w-[200px];
+                @apply xs:w-auto xs:text-4xl;
             }
 
             .description {
-                @apply text-gray-7 text-bs font-rg;
-                @apply w-[200px];
-                // @apply sm:w-auto; // 반응형 추가하기
+                @apply text-gray-7 text-bs font-rg w-[200px];
+                @apply xs:w-auto xs:text-lg;
             }
         }
     }

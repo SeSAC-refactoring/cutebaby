@@ -1,28 +1,35 @@
 @import '../abstracts/mixins'; // mixin import
+.vaccinationArea {
+    @apply flex flex-col gap-4 w-[342px];
+    @apply xs:w-full;
 
-.banner {
-    @apply flex flex-col gap-1;
-    @apply px-6 py-4 h-[96px] rounded-3xl border-2 border-blue-3;
-
-    &.banner_first {
-        @include banner-style('first');
-    }
-    &.banner_second {
-        @include banner-style('second');
+    .bannerArea {
+        @apply flex flex-col gap-4;
+        @apply xs:flex-row justify-between;
     }
 
-    h3 {
-        @apply text-gray-8 text-bs font-bd;
-    }
+    .banner {
+        @apply flex flex-col gap-1;
+        @apply px-6 py-6 h-[96px] rounded-3xl border-2 border-blue-3;
+        @apply xs:w-[376px] xs:h-[120px];
 
-    button {
-        @apply flex;
-
-        p {
-            @apply text-gray-6 text-xs font-md;
+        &.banner_first {
+            @include banner-style('first');
         }
-        img {
-            @apply w-3.5 h-3.5;
+        &.banner_second {
+            @include banner-style('second');
+        }
+
+        button {
+            @apply flex;
+
+            p {
+                @apply text-gray-6 text-xs font-md;
+                @apply xs:text-bs;
+            }
+            img {
+                @apply w-5 h-5;
+            }
         }
     }
 }

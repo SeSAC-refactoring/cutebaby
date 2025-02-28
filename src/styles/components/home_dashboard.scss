@@ -2,15 +2,12 @@
 
 .dashboard {
     @apply flex flex-col gap-6 items-center;
+    @apply xs:h-[572px] xs:bg-white xs:border-2 xs:border-gray-6 xs:rounded-[32px] xs:px-8 xs:py-6;
 
     // growthDiaryArea & vaccinationArea 공통부분
-    .growthDiaryArea,
-    .vaccinationArea {
+    .growthDiaryArea {
         @apply flex flex-col gap-4 w-[342px];
-
-        h2 {
-            @apply text-gray-10 text-md font-bd;
-        }
+        @apply xs:w-full;
     }
 
     // growthDiaryArea
@@ -18,11 +15,12 @@
         figure.noBabyList,
         .graphBtnArea {
             @apply flex flex-col gap-2;
+            @apply xs:gap-4;
 
             & > img,
             .graphArea {
-                @apply h-[212px];
-                @apply bg-orange-1 rounded-2xl;
+                @apply h-[212px]  bg-orange-1 rounded-2xl;
+                // @apply xs:flex-1;
             }
         }
 
