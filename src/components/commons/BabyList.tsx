@@ -26,7 +26,22 @@ export const BabyList: React.FC<BabyListProps> = ({
   return (
     // 마이페이지의 babylist 스타일의 경우 아이 등록 버튼까지 감는 div
     <div>
-      <div>
+      <div className="flex gap-2 py-4">
+        {/* 마이페이지의 경우에만 아이등록 버튼 생김 */}
+        {onOpenModal && (
+          <div className="flex gap-2">
+            <button
+              className="px-3 py-0 flex justify-center items-center gap-0.5 rounded-[10px] bg-blue-4 text-2xs font-bold"
+              onClick={onOpenModal}
+            >
+              아이 등록
+              <img src="img/plus-01.png" alt="plus icon" />
+            </button>
+            <div className="flex justify-center items-center">
+              <div className="h-[20px] w-[1px] bg-gray-2 "></div>
+            </div>
+          </div>
+        )}
         {babyInfo.length === 0 ? (
           <p>등록된 아이가 없습니다!</p>
         ) : (
@@ -38,30 +53,21 @@ export const BabyList: React.FC<BabyListProps> = ({
               //     ? `// 선택된 경우 클래스 적용
               //     : `
               // }
+
               onClick={() => handleSelectBaby(baby.babyid)}
-              // style={{
-              //   fontWeight: baby.babyid === selectedBabyId ? "bold" : "normal",
-              // }}
+              className={`${
+                baby.babyid === selectedBabyId
+                  ? "flex px-3 py-0 justify-center items-center gap-0.5 bg-blue-7 rounded-full text-xs font-bd text-white h-8"
+                  : "flex px-3 py-0 justify-center items-center gap-0.5 bg-blue-2 rounded-full text-xs font-bd text-blue-7 h-8"
+              }`}
             >
               {baby.babyname.length > 3
                 ? baby.babyname.slice(0, 3) + "..."
                 : baby.babyname}
-              <img
-                // className={
-                //   baby.babyid === selectedBabyId
-                //     ? styles.showCheckIcon // 선택된 경우 클래스 적용
-                //     : styles.hiddenCheckIcon
-                // }
-                src="/img/icons/i-tabs-check-s24.svg"
-                alt="체크 아이콘"
-              />
             </button>
           ))
         )}
       </div>
-
-      {/* 마이페이지의 경우에만 아이등록 버튼 생김 */}
-      {onOpenModal && <button onClick={onOpenModal}>아이 등록 +</button>}
     </div>
   );
 };

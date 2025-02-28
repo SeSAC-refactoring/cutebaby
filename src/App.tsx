@@ -25,25 +25,23 @@ function App() {
     // .catch((error) => console.error("Kakao SDK 로드 실패:", error));
   }, []);
 
-
-    return (
-        <div>
-            <Header></Header>
-            <Routes>
-                <Route path="/" element={<Home />}></Route>
-                <Route path="/oauth/callback/kakao" element={<KakaoLogin />} />
-                <Route path="/GrowthDiary" element={<GrowthDiary />} />
-                <Route path="/Home" element={<Home />} />
-                <Route path="/Login" element={<Login />} />
-                <Route path="/Mypage" element={<Mypage />} />
-                <Route path="/Signup" element={<Signup />} />
-                <Route path="/Vaccination" element={<Vaccination />} />
-                <Route path="/SelectLogin" element={<SelectLogin />} />
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-        </div>
-    );
-
+  return (
+    <div>
+      {/* <Header></Header> */}
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/oauth/callback/kakao" element={<KakaoLogin />} />
+        <Route path="/GrowthDiary" element={<GrowthDiary />} />
+        <Route path="/Home" element={<Home />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Mypage" element={<Mypage />} />
+        <Route path="/Signup" element={<Signup />} />
+        <Route path="/Vaccination" element={<Vaccination />} />
+        <Route path="/SelectLogin" element={<SelectLogin />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
