@@ -1,0 +1,56 @@
+.growthDiaryArea {
+    @apply flex flex-col gap-4 w-[342px];
+    @apply xs:w-full;
+}
+
+.growthDiaryArea {
+    figure.noBabyList,
+    .graphBtnArea {
+        @apply flex flex-col gap-2;
+        @apply xs:gap-4 xs:h-[296px] xs:px-8 xs:py-6 xs:bg-green-1 xs:rounded-2xl;
+
+        & > img,
+        .graphArea {
+            @apply h-[212px] bg-green-1 rounded-2xl;
+            @apply xs:flex-1 xs:min-h-0;
+        }
+    }
+
+    figure.GrowData {
+        @apply flex flex-col gap-4;
+    }
+
+    // buttonArea
+    .buttonArea {
+        @apply flex ml-auto;
+
+        .text {
+            @apply text-gray-8 text-2xs font-md;
+            @apply xs:text-bs;
+
+            span {
+                @apply text-green-8;
+            }
+        }
+
+        a {
+            @apply flex gap-0.5 justify-center items-center;
+            @apply px-3 py-2.5 rounded-[10px] bg-green-4;
+            @apply xs:px-[18px] xs:py-3.5;
+
+            p {
+                @apply text-gray-10 text-2xs font-bd;
+                @apply xs:text-bs;
+            }
+
+            & > img {
+                @apply w-3.5 h-3.5;
+                @apply xs:w-5 xs:h-5;
+            }
+        }
+    }
+
+    .buttonArea:has(.text) {
+        @apply ml-0 justify-between;
+    }
+}

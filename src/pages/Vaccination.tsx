@@ -6,8 +6,8 @@ import { fetchVaccinationData } from '../store/vaccinationSlice';
 import { BabyList } from '../components/commons/BabyList';
 import { useSelectBaby } from '../hooks/useSelectBaby';
 import { VaccineInfo } from '../components/vaccination-page/VaccineInfo';
-import VaccinationCenters from './VaccinationCenters';
-import VaccinationDetails from './VaccinationDetails';
+import VaccinationCenters from '../components/vaccination-page/VaccinationCenters';
+import VaccinationDetails from '../components/vaccination-page/VaccinationDetails';
 import { useNavigate } from 'react-router-dom';
 
 export default function Vaccination() {

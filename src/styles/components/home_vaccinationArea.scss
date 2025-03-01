@@ -11,7 +11,7 @@
     .banner {
         @apply flex flex-col gap-1;
         @apply px-6 py-6 h-[96px] rounded-3xl border-2 border-blue-3;
-        @apply xs:w-[376px] xs:h-[120px];
+        @apply xs:w-[336px] xs:h-[120px];
 
         &.banner_first {
             @include banner-style('first');

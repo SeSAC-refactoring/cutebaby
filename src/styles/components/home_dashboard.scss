@@ -1,61 +1,7 @@
-@import './home_banners.scss';
+@import './home_growthDiaryArea.scss';
+@import './home_vaccinationArea.scss';
 
 .dashboard {
     @apply flex flex-col gap-6 items-center;
     @apply xs:h-[572px] xs:bg-white xs:border-2 xs:border-gray-6 xs:rounded-[32px] xs:px-8 xs:py-6;
-
-    // growthDiaryArea & vaccinationArea 공통부분
-    .growthDiaryArea {
-        @apply flex flex-col gap-4 w-[342px];
-        @apply xs:w-full;
-    }
-
-    // growthDiaryArea
-    .growthDiaryArea {
-        figure.noBabyList,
-        .graphBtnArea {
-            @apply flex flex-col gap-2;
-            @apply xs:gap-4;
-
-            & > img,
-            .graphArea {
-                @apply h-[212px]  bg-orange-1 rounded-2xl;
-                // @apply xs:flex-1;
-            }
-        }
-
-        figure.GrowData {
-            @apply flex flex-col gap-4;
-        }
-
-        // buttonArea
-        .buttonArea {
-            @apply flex ml-auto;
-
-            .text {
-                @apply text-gray-8 text-2xs font-md;
-
-                span {
-                    @apply text-blue-8;
-                }
-            }
-
-            a {
-                @apply flex gap-0.5 justify-center items-center;
-                @apply px-3 py-2.5 rounded-[10px]  bg-yellow-4;
-
-                p {
-                    @apply text-gray-10 text-2xs font-bd;
-                }
-
-                & > img {
-                    @apply w-3.5 h-3.5;
-                }
-            }
-        }
-
-        .buttonArea:has(.text) {
-            @apply ml-0 justify-between;
-        }
-    }
 }
