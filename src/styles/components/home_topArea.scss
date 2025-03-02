@@ -1,5 +1,5 @@
 $visual-home: url("../../../public/img/visuals/visual_home_ggomul_big.svg") no-repeat right calc(100% + 24px);
-$gradient-w-y: linear-gradient(180deg, #FFF 0%, #FEF9F1 100%) center;
+$gradient-w-y: linear-gradient(180deg, #FFF 0%, theme('colors.yellow.1') 100%) center;
 
 .topArea {
   @apply px-6 py-8 mt-[53px] flex flex-col gap-2 items-start
