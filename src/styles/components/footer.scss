@@ -1,4 +1,3 @@
 footer {
-    @apply w-full text-gray-6 text-bs font-md py-12 text-center hidden;
-    @apply xs:block;
+  @apply min-h-14 grow flex justify-center items-center text-gray-6 text-bs font-md;
 }

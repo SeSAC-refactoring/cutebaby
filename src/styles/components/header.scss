@@ -1,38 +1,41 @@
 header {
-    @apply flex items-center justify-center;
-    @apply fixed left-0 bottom-0;
-    @apply h-[106px] w-full bg-white border-t border-gray-2;
-    @apply xs:justify-center xs:gap-[6vw] sm:gap-[20vw] md:gap-[32vw] lg:gap-[48vw] xs:bottom-auto xs:top-0;
-    @apply xs:h-[96px] xs:border-t-0 xs:border-b-2 xs:border-gray-6;
+  @apply sm:min-h-20 bg-white border-t border-gray-2;
+  @apply sm:border-t-0 sm:border-b-2 sm:border-gray-6;
 
-    .logo {
-        @apply hidden;
-        @apply xs:block;
-        @apply xs:w-[53px] sm:w-[100px] md:w-[135px];
-    }
+  .centerWrapper {
+    @apply sm:place-content-between;
+  }
 
-    nav {
-        @apply flex gap-4 xs:gap-4 sm:gap-6;
+  .logo {
+    @apply hidden sm:flex items-center;
+  }
 
-        a {
-            @apply flex flex-col items-center justify-center gap-1;
-            @apply w-[55.6px] h-[64px];
-            @apply xs:flex-row xs:w-auto xs:h-auto;
+  nav {
+    @apply w-full h-[106px] pt-2 pb-[34px] px-6 flex gap-6
+    sm:w-auto sm:h-auto sm:p-0;
 
-            img {
-                @apply w-8 h-8;
-                @apply xs:hidden;
-            }
+    a {
+      @apply grow py-2 px-4 flex flex-col items-center justify-center gap-1 rounded-[8px]
+      sm:self-center sm:p-2;
 
-            p {
-                @apply text-gray-4 text-2xs font-bd;
-                @apply xs:text-gray-5 xs:text-bs sm:text-sm xs:font-md;
+      &:hover {
+        @apply bg-gray-1
+      }
 
-                &.active {
-                    @apply text-gray-8;
-                    @apply xs:text-gray-10 xs:font-bd;
-                }
-            }
+      img {
+        @apply w-8 h-8;
+        @apply sm:hidden;
+      }
+
+      p {
+        @apply text-gray-4 text-2xs font-bd;
+        @apply sm:text-gray-5 sm:text-bs sm:text-sm sm:font-md;
+
+        &.active {
+          @apply text-gray-8;
+          @apply xs:text-gray-10 xs:font-bd;
         }
+      }
     }
+  }
 }
