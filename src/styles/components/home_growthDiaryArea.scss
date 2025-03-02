@@ -7,14 +7,14 @@
   .graphBtnArea {
     @apply grow flex flex-col justify-center gap-2
     sm:p-4 sm:bg-blue-1 sm:rounded-2xl;
-    @apply sm:min-h-0 sm:flex-row sm:gap-4;
+    @apply min-h-0 sm:flex-row sm:gap-4;
 
     .chartImgWrapper {
       @apply w-full grow flex bg-white border-2 border-blue-3 rounded-2xl
       sm:min-h-0;
 
       img {
-        @apply sm:w-full sm:h-full object-fill;
+        @apply min-h-60 sm:w-full sm:h-full object-fill;
       }
     }
   }
@@ -27,13 +27,12 @@
     @apply flex flex-col gap-4;
   }
 
-  // buttonArea
   .buttonArea {
-    @apply flex justify-between items-center
+    @apply flex justify-between items-center gap-2
     sm:w-[30%] sm:flex-col sm:justify-between sm:items-end sm:gap-2;
 
     .text {
-      @apply grow text-gray-8 font-md;
+      @apply grow text-xs text-gray-8 font-md;
 
       span {
         @apply text-green-8;
