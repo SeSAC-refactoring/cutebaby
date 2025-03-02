@@ -47,6 +47,10 @@ main {
   }
 }
 
+footer {
+  @apply min-h-20 grow flex justify-center items-center text-gray-6;
+}
+
 // 제목 태그 스타일
 h2,
 h3,
