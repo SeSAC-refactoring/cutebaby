@@ -94,16 +94,17 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
   };
 
   return (
-    <>
+    <div onClick={onClose} className="bg-white px-6 py-6">
       <div onClick={(e) => e.stopPropagation()}>
-        <div>
-          <div>아이 정보 등록</div>
+        <div className="flex justify-between">
+          <div className="text-2xl font-bd mb-10">아이 정보 등록</div>
           <div onClick={onClose}>
-            <img src="/img/icons/i-modal-close-s32.svg" alt="" />
+            {/* <img src="/img/icons/i-modal-close-s32.svg" alt="" /> */}
+            <img src="img/Button-close.png" alt="button" />
           </div>
         </div>
         <div>
-          <div>
+          <div className="w-full flex justify-center flex-col items-center">
             <div>
               {defaultImg && <img src="/img/Profile.png" alt="아기 사진" />}
               <div
@@ -140,7 +141,13 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
                 }}
               ></Input>
               <section>
-                <label>성별</label>
+                {/* <label>성별</label> */}
+                <div className="flex gap-1">
+                  <label className="text-xs font-bd text-gray-8 mb-[6px]">
+                    성별
+                  </label>
+                  <div className="w-[6px] h-[6px] bg-red-5 rounded-[4px]"></div>
+                </div>
                 <GenderInput
                   setSelectedGender={handleGenderChange}
                   selectedGender={selectedGender}
@@ -149,16 +156,24 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
               </section>
             </div>
           </div>
-          <div>
-            <button type="button" onClick={onClose}>
+          <div className="flex gap-4">
+            <button
+              type="button"
+              onClick={onClose}
+              className="flex h-16 px-[22px] justify-center items-center gap-[6px] flex-[1_0_0] bg-yellow-4 rounded-[18px] text-lg font-bd text-gray-10"
+            >
               취소
             </button>
-            <button onClick={createBaby} type="button">
+            <button
+              onClick={createBaby}
+              type="button"
+              className="flex h-16 px-[22px] justify-center items-center gap-[6px] flex-[1_0_0] bg-gray-3 rounded-[18px] text-lg font-bd text-white"
+            >
               완료
             </button>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
