@@ -66,10 +66,10 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
   }, [selectedBabyId, babyInfo]);
 
   return (
-    <div className="flex flex-col items-start gap-4 pt-5 px-6 pb-6 self-stretch bg-yellow-1 rounded-[24px] ">
-      <div className="text-md font-bd text-gray-10">우리아이 정보</div>
+    <div className="w-full flex flex-col items-start gap-4 pt-5 px-6 pb-6 self-stretch bg-yellow-1 rounded-[24px] ">
+      <div className=" w-full text-md font-bd text-gray-10">우리아이 정보</div>
 
-      <div>
+      <div className="w-full ">
         <BabyList
           babyInfo={babyInfo}
           handleSelectBaby={handleSelectBaby}
@@ -77,8 +77,8 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
           onOpenModal={() => setBabyPlus(true)}
         />
 
-        <div className="flex gap-4">
-          <div className="bg-white rounded-[16px] border-2 border-[#E1E1E5] w-[120px] h-[120px] flex justify-center items-center">
+        <div className="w-full  flex gap-4 xs:bg-white xs:p-[16px] xs:gap-6 xs:rounded-[32px] xs:border-[3px] border-blue-3">
+          <div className="bg-white rounded-[16px] border-2 border-[#E1E1E5] w-[120px] h-[120px] flex justify-center items-center ">
             {!(selectedBaby.picture === "data:image/jpeg;base64,") ? (
               <img
                 className="w-[80px] h-[96px]"
@@ -112,8 +112,8 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
                 <div className="text-bs font-md text-gray-10">{babyMonths}</div>
               </div>
             </div>
-            <div className="flex justify-end ">
-              <div className="flex gap-2 w-1/5 h-[26px]">
+            <div className="w-full  flex justify-end ">
+              <div className="w-[90px] flex gap-2 h-[26px]">
                 <button
                   className="bg-coral-4 rounded-[8px] text-3xs font-md text-gray-10 w-full"
                   onClick={() => setDelModal(true)}
