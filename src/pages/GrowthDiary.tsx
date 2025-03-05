@@ -13,6 +13,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { GrowRewriteModal } from "../components/growth-diary-page/GrowRewriteModal";
 import { GrowDelModal } from "../components/growth-diary-page/GrowDelModal";
 
+import "../styles/pages/GrowthDiary.scss";
+
 export default function GrowthDiary() {
   const [openCalModal, setOpenCalModal] = useState<boolean>(false);
   const [openAddModal, setOpenAddModal] = useState<boolean>(false);
@@ -55,7 +57,7 @@ export default function GrowthDiary() {
   };
 
   return (
-    <main className="flex justify-center items-center">
+    <main className="grow">
       {/* 성장 계산기 모달 */}
       {openCalModal && (
         <GrowthCalculate
@@ -106,10 +108,10 @@ export default function GrowthDiary() {
         />
       )}
       <div>
-        <div className="dashboard">
+        <div className="growdashboard">
           <div>
             <div>
-              <div>성장일지</div>
+              <div className="max-sm:text-2xl font-bd">성장일지</div>
               <div>
                 <strong>우리 아이의 성장</strong>을 기록하고 상태를
                 확인해보세요:)
@@ -137,9 +139,9 @@ export default function GrowthDiary() {
                   <>
                     <div>
                       <div>
-                        <div>
+                        <div className="graphBtnArea">
                           <div>우리 아이 성장 추이</div>
-                          <div>
+                          <div className="graphArea">
                             <DiaryChart growData={growData} />
                           </div>
                         </div>
