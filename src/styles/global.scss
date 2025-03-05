@@ -1,33 +1,73 @@
 // 전체 reset
 * {
-    box-sizing: border-box;
-    font-family: 'Pretendard-Regular';
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    width: 100%;
-    @apply bg-white xs:bg-yellow-1;
+  font-family: "Pretendard";
+  overflow: hidden;
+  @apply h-[100vh] flex flex-col sm:bg-yellow-1;
+  @apply text-gray-10 text-bs font-rg;
 }
 
 // 전역 root div 스타일 // header를 제외한 나머지 영역
 #root {
-    @apply flex flex-col items-center;
-    @apply mx-auto mb-[130px]; // margin-bottom은 106+24px (header에 가리는 것 방지)
-    min-height: calc(100vh - 106px);
+  @apply min-h-0 grow flex flex-col;
 
-    // 390px 이상일 때
-    @media (min-width: 390px) {
-        min-height: calc(100vh - 96px); // 큰 화면에서는 header 높이가 96px
-        margin-top: 96px;
-        margin-bottom: 0;
+  // 768px 이하일 때
+  @media (max-width: 768px) {
+    @apply flex-col-reverse;
+
+    footer {
+      display: none;
     }
+  }
 }
 
-// main 태그 스타일
+// header, main 중앙 정렬
+header,
 main {
-    flex-grow: 1; // root div의 height 만큼
-    min-width: 342px; // 최소 너비를 390px(- padding 24px *2)로 유지하여 더 작아지지 않도록
-    width: 100%;
+  @apply w-full flex justify-center;
+
+  .centerWrapper {
+    @apply min-w-[390px] max-w-[1280px] w-full min-h-0 h-full grow flex flex-wrap
+    sm:flex-nowrap;
+  }
+}
+
+main {
+  @apply grow items-start;
+
+  @media (max-width: 768px) {
+    .centerWrapper {
+      @apply overflow-x-hidden overflow-y-scroll;
+    }
+  }
+}
+
+footer {
+  @apply min-h-20 grow flex justify-center items-center text-gray-6;
+}
+
+// 제목 태그 스타일
+h2,
+h3,
+h4 {
+  @apply font-bd;
+}
+
+h2 {
+  @apply text-2xl;
+}
+h3 {
+  @apply text-md;
+}
+h4 {
+  @apply text-bs text-gray-8;
+}
+
+button {
+  min-width: max-content;
 }

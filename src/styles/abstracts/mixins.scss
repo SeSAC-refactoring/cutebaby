@@ -6,10 +6,4 @@
         theme('colors.blue.1');
     background-position: calc(100% - 24px) 12px;
     background-size: 88px;
-
-    // 390px 이상일 때
-    @media (min-width: 390px) {
-        background-position: calc(100% - 24px) 16px;
-        background-size: 112px;
-    }
 }

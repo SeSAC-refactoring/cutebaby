@@ -4,6 +4,9 @@ export default {
     theme: {
         extend: {
             screens: {
+                lg: '1280px',
+                md: '1024px', // 768px 이상일 때 적용
+                sm: '768px', // 768px 이상일 때 적용
                 xs: '390px', // 390px 이상일 때 적용
             },
 
@@ -129,11 +132,11 @@ export default {
                 bs: ['16px', '20px'],
                 sm: ['18px', '22px'],
                 md: ['20px', '24px'],
-                lg: ['22px', '28px'],
+                lg: ['22px', '26px'],
                 xl: ['24px', '28px'],
-                '2xl': ['28px', '34px'],
-                '3xl': ['32px', '38px'],
-                '4xl': ['40px', '46px'],
+                '2xl': ['28px', '32px'],
+                '3xl': ['32px', '40px'],
+                '4xl': ['40px', '48px'],
             },
 
             fontWeight: {

@@ -1,7 +1,6 @@
-@import '../components/home_topArea.scss';
-@import '../components/home_dashboard.scss';
+@import "../components/home_topArea.scss";
+@import "../components/home_dashboard.scss";
 
 .userArea {
-    @apply flex flex-col gap-6;
-    @apply xs:gap-0;
+  @apply min-h-0 grow flex flex-col;
 }
