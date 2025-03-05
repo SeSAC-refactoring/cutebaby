@@ -47,8 +47,6 @@ export default function Home() {
                 {/* 챗봇 */}
                 <ChatbotArea />
             </div>
-
-            <VaccinationCenters />
         </main>
     );
 }
