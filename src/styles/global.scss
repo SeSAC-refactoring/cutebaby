@@ -1,64 +1,64 @@
 // 전체 reset
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  font-family: "Pretendard";
-  overflow: hidden;
-  @apply h-[100vh] flex flex-col sm:bg-yellow-1;
-  @apply text-gray-10 text-bs font-rg;
+    font-family: 'Pretendard';
+    overflow: hidden;
+    @apply h-[100vh] flex flex-col sm:bg-yellow-1;
+    @apply text-gray-10 text-bs font-rg;
 }
 
 // 전역 root div 스타일 // header를 제외한 나머지 영역
 #root {
-  @apply sm:min-h-0 grow flex flex-col;
+    @apply sm:min-h-0 grow flex flex-col;
 
-  // 768px 이하일 때
-  @media (max-width: 768px) {
-    @apply flex-col-reverse;
+    // 768px 이하일 때
+    @media (max-width: 768px) {
+        @apply flex-col-reverse;
 
-    footer {
-      display: none;
+        footer {
+            display: none;
+        }
     }
-  }
 }
 
 // header, main 중앙 정렬
 header,
 main {
-  @apply w-full flex justify-center;
+    @apply w-full flex justify-center relative;
 }
 
 .centerWrapper {
-  min-width: 390px;
-  max-width: 1280px;
-  @apply grow w-full h-full flex;
+    min-width: 390px;
+    max-width: 1280px;
+    @apply grow w-full h-full flex;
 }
 
 main {
-  @apply grow items-start;
+    @apply grow items-start;
 }
 
 // 제목 태그 스타일
 h2,
 h3,
 h4 {
-  @apply font-bd;
+    @apply font-bd;
 }
 
 h2 {
-  @apply text-2xl;
+    @apply text-2xl;
 }
 h3 {
-  @apply text-md;
+    @apply text-md;
 }
 h4 {
-  @apply text-bs text-gray-8;
+    @apply text-bs text-gray-8;
 }
 
 button {
-  min-width: max-content;
+    min-width: max-content;
 }

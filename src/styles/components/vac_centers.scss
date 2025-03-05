@@ -1,0 +1,11 @@
+@import './modal.scss';
+@import './vac_centers_formArea.scss';
+@import './vac_centers_centerListArea.scss';
+
+.TopArea {
+    @apply flex justify-between;
+}
+
+.contentsArea {
+    @apply flex flex-col gap-6 h-full;
+}
