@@ -19,6 +19,7 @@
 @mixin button-size($size) {
     display: flex;
     align-items: center;
+    min-width: max-content;
 
     // large
     @if $size == large {

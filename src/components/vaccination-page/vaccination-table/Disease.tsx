@@ -1,7 +1,5 @@
 import React from "react";
 import { diseasesName } from "./VaccinationTableData";
-import typography from "../../../styles/commons/Typography.module.scss";
-import styles from "../../../styles/Vaccination.module.scss";
 
 export const Disease: React.FC = () => {
   return (
