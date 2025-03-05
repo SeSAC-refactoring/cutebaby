@@ -1,0 +1,24 @@
+@import './form.scss';
+@import './button.scss';
+
+.formArea {
+    @apply flex gap-2 flex-wrap;
+    @apply sm:flex-nowrap;
+
+    select {
+        @apply flex-1 w-full min-w-36;
+    }
+
+    div {
+        @apply flex gap-1 w-full flex-wrap;
+
+        input {
+            @apply flex-[2]  min-w-36;
+        }
+
+        button.searchBtn {
+            @include button-color(blue);
+            @include button-size(medium);
+        }
+    }
+}

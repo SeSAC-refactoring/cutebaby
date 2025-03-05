@@ -1,73 +1,69 @@
 // 전체 reset
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  font-family: "Pretendard";
-  overflow: hidden;
-  @apply h-[100vh] flex flex-col sm:bg-yellow-1;
-  @apply text-gray-10 text-bs font-rg;
+    font-family: 'Pretendard';
+    overflow: hidden;
+    @apply h-[100vh] flex flex-col sm:bg-yellow-1;
+    @apply text-gray-10 text-bs font-rg;
 }
 
 // 전역 root div 스타일 // header를 제외한 나머지 영역
 #root {
-  @apply min-h-0 grow flex flex-col;
+    @apply min-h-0 grow flex flex-col;
 
-  // 768px 이하일 때
-  @media (max-width: 768px) {
-    @apply flex-col-reverse;
+    // 768px 이하일 때
+    @media (max-width: 768px) {
+        @apply flex-col-reverse;
 
-    footer {
-      display: none;
+        footer {
+            display: none;
+        }
     }
-  }
 }
 
 // header, main 중앙 정렬
 header,
 main {
-  @apply w-full flex justify-center;
+    @apply w-full flex justify-center relative;
 
-  .centerWrapper {
-    @apply min-w-[390px] max-w-[1280px] w-full min-h-0 h-full grow flex flex-wrap
+    .centerWrapper {
+        @apply min-w-[390px] max-w-[1280px] w-full min-h-0 h-full grow flex flex-wrap
     sm:flex-nowrap;
-  }
+    }
 }
 
 main {
-  @apply grow items-start;
+    @apply grow items-start;
 
-  @media (max-width: 768px) {
-    .centerWrapper {
-      @apply overflow-x-hidden overflow-y-scroll;
+    @media (max-width: 768px) {
+        .centerWrapper {
+            @apply overflow-x-hidden overflow-y-scroll;
+        }
     }
-  }
-}
-
-footer {
-  @apply min-h-20 grow flex justify-center items-center text-gray-6;
 }
 
 // 제목 태그 스타일
 h2,
 h3,
 h4 {
-  @apply font-bd;
+    @apply font-bd;
 }
 
 h2 {
-  @apply text-2xl;
+    @apply text-2xl;
 }
 h3 {
-  @apply text-md;
+    @apply text-md;
 }
 h4 {
-  @apply text-bs text-gray-8;
+    @apply text-bs text-gray-8;
 }
 
 button {
-  min-width: max-content;
+    min-width: max-content;
 }
