@@ -6,7 +6,7 @@ main.grow {
   // @apply max-xs:w-[100vw];
   @apply max-xs:max-w-full;
   // @apply max-md:max-w-[90vw]  flex justify-center;
-  @apply max-sm:justify-start max-sm:items-start  max-sm:max-w-[90vw];
+  @apply max-sm:justify-center max-sm:items-start  max-sm:max-w-[90vw];
 }
 button.growCalBtn {
   @include button-color(yellow);
