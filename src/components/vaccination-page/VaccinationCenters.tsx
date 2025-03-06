@@ -48,7 +48,7 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
             }}
         >
             <div
-                className="modal"
+                className="whiteboxModal"
                 onClick={(e) => {
                     e.stopPropagation();
                 }}
@@ -121,7 +121,6 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                                 </option>
                             ))}
                         </select>
-
                         <div>
                             <input
                                 type="text"

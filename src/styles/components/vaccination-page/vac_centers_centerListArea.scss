@@ -1,5 +1,5 @@
 .centerListArea {
-    @apply h-full flex flex-col;
+    @apply h-full flex flex-col gap-4;
 
     div.image {
         @apply h-full flex flex-col gap-6 justify-center items-center;
@@ -15,6 +15,22 @@
     }
 
     div.centerList {
+        @apply flex flex-col gap-4;
+
+        .center {
+            @apply border-2 border-blue-4 rounded-[2rem] px-4 py-4;
+            @apply flex flex-col gap-2;
+
+            .name {
+                @apply flex justify-between;
+            }
+
+            // 줄개행 안하고 텍스트 넘치면 ...으로
+            & h3,
+            & .text {
+                @apply overflow-hidden whitespace-nowrap text-ellipsis;
+            }
+        }
     }
 
     div.pagenationBtns {
