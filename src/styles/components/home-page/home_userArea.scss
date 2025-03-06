@@ -1,0 +1,6 @@
+@import './home_topArea.scss';
+@import './home_dashboard.scss';
+
+.userArea {
+    @apply min-h-0 grow flex flex-col;
+}

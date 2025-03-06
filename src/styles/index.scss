@@ -11,9 +11,19 @@
 }
 
 // styles import
+// global
 @import './global.scss'; // 스타일초기화, root div, main 태그 설정
+
+// component
 @import './components/header.scss'; // header style
 @import './components/footer.scss'; // footer style
+@import './components/button.scss'; // buttons style
+@import './components/form.scss'; // form style
+@import './components/modal.scss'; // modal style
+@import './components/whitebox.scss'; // whitebox style
 
+// pages
 @import './pages/home.scss'; // 홈페이지 style
-@import './pages/vaccination.scss'; // 예방접종 페이지 style
+@import './pages/vaccination.scss'; // 예방접종페이지 style
+@import './pages/growthDiary.scss'; // 성장일지페이지 style
+@import './pages/mypage.scss'; // 마이페이지 style
