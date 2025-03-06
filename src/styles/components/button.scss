@@ -76,4 +76,21 @@
       height: 1.25rem; // 20px
     }
   }
+  //Xsmall
+  @else if $size == xsmall {
+    gap: 0.125rem; // 2px
+    height: 2rem; // 32px
+    padding: 0rem 0.75rem; // 0 12px
+    border-radius: 0.625rem; // 10px
+
+    p {
+      font-size: 0.75rem; // 12px
+      line-height: 0.875rem; // 14px
+      font-weight: 700;
+    }
+
+    img {
+      display: none;
+    }
+  }
 }
