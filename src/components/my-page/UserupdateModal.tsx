@@ -163,7 +163,7 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
 
   return (
     <div onClick={modalState} className="modalBg">
-      <div onClick={(e) => e.stopPropagation()} className="smallModal">
+      <div onClick={(e) => e.stopPropagation()} className="mediumModal">
         <div>
           <div>개인 정보 수정</div>
           <div

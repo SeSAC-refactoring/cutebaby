@@ -95,7 +95,7 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
 
   return (
     <div onClick={onClose} className="modalBg">
-      <div onClick={(e) => e.stopPropagation()} className="smallModal">
+      <div onClick={(e) => e.stopPropagation()} className="mediumModal">
         <div className="flex justify-between">
           <div className="text-2xl font-bd mb-10">아이 정보 등록</div>
           <div onClick={onClose}>

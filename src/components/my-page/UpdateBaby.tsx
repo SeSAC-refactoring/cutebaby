@@ -94,7 +94,7 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
 
   return (
     <div onClick={onClose} className="modalBg">
-      <div onClick={(e) => e.stopPropagation()} className="smallModal">
+      <div onClick={(e) => e.stopPropagation()} className="mediumModal">
         <div className="flex justify-between">
           <div className="text-2xl font-bd mb-10">아기 정보 수정</div>
           <div onClick={onClose}>
