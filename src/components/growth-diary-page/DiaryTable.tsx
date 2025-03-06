@@ -14,27 +14,58 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({
 }) => {
   console.log(growData);
   return (
-    <div>
-      <div>
-        <div>측정날짜</div>
-        <div>키(cm)</div>
-        <div>몸무게(kg)</div>
-        <div>머리둘레(cm)</div>
+    <div className="min-h-0 flex flex-col w-1/3 sm:w-full">
+      <div className="flex flex-row h-14 pl-[50px] items-center bg-blue-3 rounded-[16px]">
+        <div className="w-[198px] h-14 text-lg font-bd items-center flex justify-center">
+          날짜
+        </div>
+        <div className="w-[198px] h-14 text-lg font-bd items-center flex justify-center">
+          키(cm)
+        </div>
+        <div className="w-[198px] h-14 text-lg font-bd items-center flex justify-center">
+          몸무게(kg)
+        </div>
+        <div className="w-[198px] h-14 text-lg font-bd items-center flex justify-center">
+          머리둘레(cm)
+        </div>
       </div>
-      <div>
+      <div className="flex-grow overflow-y-scroll pb-14 text-lg font-rg">
         {growData.length > 0 ? (
-          <ul>
+          <ul className="text-lg font-rg">
             {growData.map((info, i) => (
-              <li key={i}>
-                <div>{info.inputData}</div>
-                <div>{Number(info.height)}</div>
-                <div>{Number(info.weight)}</div>
-                <div>{Number(info.head)}</div>
-                <div>
-                  <button onClick={() => onDelete(info.id)}>삭제</button>
-                  <button onClick={() => onEdit(info.id)}>
+              <li
+                key={i}
+                className="flex flex-row h-18 pl-[50px] items-center rounded-[16px] justify-start even:bg-blue-1"
+              >
+                <div className="w-[198px] h-full flex justify-center items-center text-center text-lg font-rg">
+                  {info.inputData}
+                </div>
+                <div className="w-[198px] h-full flex justify-center items-center text-center text-lg font-rg">
+                  {Number(info.height)}
+                </div>
+                <div className="w-[198px] h-full flex justify-center items-center text-center text-lg font-rg">
+                  {Number(info.weight)}
+                </div>
+                <div className="w-[198px] h-full flex justify-center items-center text-center text-lg font-rg">
+                  {Number(info.head)}
+                </div>
+                <div className="flex w-[200px] h-full ml-4 px-7 py-[14px] items-center justify-center gap-2">
+                  <button
+                    onClick={() => onEdit(info.id)}
+                    className="h-12 rounded-[12px] text-bs font-bd flex bg-blue-4 justify-center items-center p-[14px_18px]"
+                  >
                     수정
-                    <img src="/img/edit-02.png" alt="수정아이콘"></img>
+                    <img
+                      src="/img/edit-02.png"
+                      alt="수정아이콘"
+                      className="w-5 h-5"
+                    ></img>
+                  </button>
+                  <button
+                    onClick={() => onDelete(info.id)}
+                    className="h-12 rounded-[12px] text-bs font-bd bg-coral-4 p-[14px_18px]"
+                  >
+                    삭제
                   </button>
                 </div>
               </li>
