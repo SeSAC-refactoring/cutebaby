@@ -15,11 +15,11 @@
     min-h-0;
 
     .chartImgWrapper {
-        @apply min-h-0 flex sm:self-start;
-  
-        img {
-          @apply min-h-56 w-full h-full object-fill;
-        }
+      @apply min-h-0 flex sm:self-start;
+
+      img {
+        @apply min-h-56 w-full h-full object-fill;
+      }
     }
   }
 

@@ -31,7 +31,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "SKIP_PREFLIGHT_CHECK=true react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false SKIP_PREFLIGHT_CHECK=true react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -62,6 +62,7 @@
     "browserify-zlib": "^0.2.0",
     "css-loader": "^7.1.2",
     "https-browserify": "^1.0.0",
+    "resolve-url-loader": "^4.0.0",
     "sass": "^1.83.4",
     "sass-loader": "^16.0.4",
     "stream-browserify": "^3.0.0",

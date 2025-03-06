@@ -1,12 +1,12 @@
-@import "../components/home_userArea.scss";
-@import "../components/home_chatbotArea.scss";
+@import '../components/home_userArea.scss';
+@import '../components/home_chatbotArea.scss';
 
 // 홈페이지 style
 
 main.home {
-  @apply min-h-0 sm:mt-12;
+    @apply min-h-0 sm:mt-12;
 
-  .centerWrapper {
-    @apply gap-6;
-  }
+    .centerWrapper {
+        @apply gap-6;
+    }
 }
