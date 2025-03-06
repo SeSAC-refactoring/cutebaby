@@ -1,18 +1,23 @@
 @import './vac_centers_formArea.scss';
 @import './vac_centers_centerListArea.scss';
 
-.TopArea {
+.whiteboxModal {
     @apply flex justify-between;
+    @apply flex-1 overflow-auto;
 
-    & > div {
-        @apply cursor-pointer;
+    .TopArea {
+        @apply flex justify-between;
 
-        img {
-            // @apply sm:w-12 sm:h-12;
+        & > div {
+            @apply cursor-pointer;
+
+            img {
+                // @apply sm:w-12 sm:h-12;
+            }
         }
     }
-}
 
-.contentsArea {
-    @apply flex flex-col gap-6 w-full h-full;
+    .contentsArea {
+        @apply flex flex-col gap-6 w-full h-full;
+    }
 }

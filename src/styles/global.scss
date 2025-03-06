@@ -29,11 +29,11 @@ body {
 // header, main 중앙 정렬
 header,
 main {
-    @apply w-full flex justify-center relative;
+    @apply w-full flex justify-center relative mb-6;
 
     .centerWrapper {
-        @apply min-w-[390px] max-w-[1280px] w-full min-h-0 h-full grow flex flex-wrap
-    sm:flex-nowrap;
+        @apply min-w-[390px] max-w-[1280px] w-full min-h-0 h-full grow flex flex-wrap;
+        @apply sm:flex-nowrap;
     }
 }
 
