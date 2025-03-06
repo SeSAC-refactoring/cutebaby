@@ -1,5 +1,7 @@
+@import './vac_centers_vaccineList.scss';
+
 .centerListArea div.centerList {
-    @apply flex flex-col gap-4;
+    @apply flex flex-col gap-6;
 
     .center {
         @apply flex flex-col gap-2;
@@ -8,6 +10,7 @@
 
         .name {
             @apply flex justify-between;
+            @apply relative; // 백신접종목록을 위치시키기 위한 기준점
 
             button {
                 @include button-color(yellow);
