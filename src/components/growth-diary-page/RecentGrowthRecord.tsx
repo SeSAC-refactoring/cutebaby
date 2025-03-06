@@ -16,8 +16,8 @@ export const RecentGrowthRecord: React.FC<RecentGrowthRecordProps> = ({
   setOpenAddModal,
 }) => {
   return (
-    <div>
-      <div>
+    <div className="w-[30%]">
+      <div className="gird grid-cols-1">
         <span>가장 최근 기록</span>
         <span>
           {new Date(growData[0].inputData).toLocaleDateString("ko-KR", {

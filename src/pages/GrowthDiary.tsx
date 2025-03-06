@@ -136,19 +136,17 @@ export default function GrowthDiary() {
 
               {growData.length > 0 ? (
                 <>
-                  <div>
-                    <div>
+                  <div className="flex justify-between gap-[2rem] w-full">
+                    <div className="border-[3px] border-blue-3 w-[70%]">
                       <div>우리 아이 성장 추이</div>
-                      <div className="graphBtnArea">
-                        <div className="graphArea">
-                          <DiaryChart growData={growData} />
-                        </div>
+                      <div className="graphArea min-h-[10vh] max-h-[50vh]">
+                        <DiaryChart growData={growData} />
                       </div>
-                      <RecentGrowthRecord
-                        growData={growData}
-                        setOpenAddModal={setOpenAddModal}
-                      />
                     </div>
+                    <RecentGrowthRecord
+                      growData={growData}
+                      setOpenAddModal={setOpenAddModal}
+                    />
                   </div>
                 </>
               ) : (
@@ -159,10 +157,7 @@ export default function GrowthDiary() {
                 <></>
               ) : (
                 <>
-                  <div style={{ marginTop: "32px" }}>
-                    <div></div>
-                    <div></div>
-                  </div>
+                  {/* <div style={{ marginTop: "32px" }}></div> */}
                   <div
                     style={{
                       height: "512px",

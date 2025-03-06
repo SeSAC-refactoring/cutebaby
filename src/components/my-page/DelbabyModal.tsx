@@ -41,8 +41,8 @@ export const DelbabyModal: React.FC<DelbabyProps> = ({
   };
 
   return (
-    <div style={{ left: "0" }} onClick={goBack}>
-      <div style={{ padding: "50px" }}>
+    <div style={{ left: "0" }} onClick={goBack} className="modalBg">
+      <div style={{ padding: "50px" }} className="smallModal">
         <div style={{ flexDirection: "column", alignItems: "center" }}>
           <div>정말 삭제하시겠습니까?</div>
           <div>
