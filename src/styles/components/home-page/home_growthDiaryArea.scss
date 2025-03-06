@@ -1,8 +1,7 @@
-.growthDiaryArea {
-  @apply min-h-0 grow w-full flex flex-col gap-4;
-}
 
 .growthDiaryArea {
+  @apply min-h-0 grow;
+
   figure.noBabyList {
     @apply relative
     flex justify-center items-center

@@ -11,42 +11,38 @@ export const AiChatComponent = () => {
   const handleKeyDown = useHandleKeyDown(handleSendMessage, input, setInput);
 
   return (
-    <div>
+    <div className="chatbotMsgAreaWrap">
       {/* 메세지를 보여주는 곳 */}
-      <div>
-        <div>
+      <div className="msgAreaWrap">
+        <div className="msgArea">
           {messages.map((msg, i) => (
             <div
+              className={`msgWrap ${
+                msg.role === "user"
+                  ? "userMsg"
+                  : "AiMsg"
+              }`}
               key={i}
               style={{
                 textAlign: msg.role === "user" ? "right" : "left",
               }}
             >
-              <div
-              // ${
-              //     msg.role === 'user'
-              //         ? styles.chat_user_message
-              //         : styles.chat_ai_message
-              // }`}
-              >
-                <strong>
-                  {msg.role === "user" ? "나" : "팀 꼬물"}
-                  <br />
-                </strong>
-                <div>
-                  <ReactMarkdown>{`${msg.content}`}</ReactMarkdown>
-                </div>
-              </div>
+              <strong>{msg.role === "user" ? "나" : "팀 꼬물"}</strong>
+              <p className="msgContents">
+                <ReactMarkdown>{`${msg.content}`}</ReactMarkdown>
+              </p>
             </div>
           ))}
           {isLoading && (
-            <div>답변을 기다리고 있어요, 조금만 기다려주세요..</div>
+            <p className="loadingMsg">
+              답변을 기다리고 있어요, 조금만 기다려주세요..
+            </p>
           )}
         </div>
       </div>
 
       {/* 입력받는 곳 */}
-      <div>
+      <div className="inputArea">
         <Input
           type="text"
           value={input}
@@ -59,7 +55,7 @@ export const AiChatComponent = () => {
           disabled={isLoading}
         >
           {isLoading ? (
-            <div></div>
+            <div className="btnLoading"></div>
           ) : (
             <img src="img/icons/i-send-s32.svg" alt="입력 아이콘" />
           )}

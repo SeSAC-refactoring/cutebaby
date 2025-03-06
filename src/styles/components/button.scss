@@ -1,98 +1,100 @@
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: max-content;
+}
+
 // 버튼 색상
 @mixin button-color($color) {
-    @if $color == blue {
-        background-color: theme('colors.blue.4');
-        color: theme('colors.gray.10');
-    } @else if $color == yellow {
-        background-color: theme('colors.yellow.4');
-        color: theme('colors.gray.10');
-    } @else if $color == black {
-        background-color: theme('colors.gray.10');
-        color: theme('colors.white');
-    } @else if $color == coral {
-        background-color: theme('colors.coral.4');
-        color: theme('colors.gray.10');
-    }
+  @if $color == blue {
+    background-color: theme("colors.blue.4");
+    color: theme("colors.gray.10");
+  } @else if $color == yellow {
+    background-color: theme("colors.yellow.4");
+    color: theme("colors.gray.10");
+  } @else if $color == black {
+    background-color: theme("colors.gray.10");
+    color: theme("colors.white");
+  } @else if $color == coral {
+    background-color: theme("colors.coral.4");
+    color: theme("colors.gray.10");
+  }
 }
 
 // 버튼 사이즈
 @mixin button-size($size) {
-    display: flex;
-    align-items: center;
-    min-width: max-content;
+  // large
+  @if $size == large {
+    gap: 0.375rem; // 6px
+    height: 4rem; // 64px
+    padding: 0rem 1.375rem; // 0px 22px
+    border-radius: 1.125rem; // 18px
 
-    // large
-    @if $size == large {
-        gap: 0.375rem; // 6px
-        height: 4rem; // 64px
-        padding: 0rem 1.375rem; // 0px 22px
-        border-radius: 1.125rem; // 18px
-
-        p {
-            font-size: 1.375rem; // 22px
-            line-height: 1.625rem; // 26px
-            font-weight: 700;
-        }
-
-        img {
-            width: 1.75rem; // 28px
-            height: 1.75rem; // 28px
-        }
+    p {
+      font-size: 1.375rem; // 22px
+      line-height: 1.625rem; // 26px
+      font-weight: 700;
     }
 
-    // medium
-    @else if $size == medium {
-        gap: 0.25rem; // 4px
-        height: 3.5rem; // 56px
-        padding: 0rem 1.125rem; // 0 18px
-        border-radius: 1rem; // 16px
+    img {
+      width: 1.75rem; // 28px
+      height: 1.75rem; // 28px
+    }
+  }
+  // medium
+  @else if $size == medium {
+    gap: 0.25rem; // 4px
+    height: 3.5rem; // 56px
+    padding: 0rem 1.125rem; // 0 18px
+    border-radius: 1rem; // 16px
 
-        p {
-            font-size: 1.125rem; // 18px
-            line-height: 1.375rem; // 22px
-            font-weight: 700;
-        }
-
-        img {
-            width: 1.5rem; // 24px
-            height: 1.5rem; // 24px
-        }
+    p {
+      font-size: 1.125rem; // 18px
+      line-height: 1.375rem; // 22px
+      font-weight: 700;
     }
 
-    // small
-    @else if $size == small {
-        gap: 0.25rem; // 4px
-        height: 3rem; // 48px
-        padding: 0rem 1.125rem; // 0 18px
-        border-radius: 0.875rem; // 14px
+    img {
+      width: 1.5rem; // 24px
+      height: 1.5rem; // 24px
+    }
+  }
 
-        p {
-            font-size: 1rem; // 16px
-            line-height: 1.25rem; // 20px
-            font-weight: 700;
-        }
+  // small
+  @else if $size == small {
+    gap: 0.25rem; // 4px
+    height: 3rem; // 48px
+    padding: 0rem 1.125rem; // 0 18px
+    border-radius: 0.875rem; // 14px
 
-        img {
-            width: 1.25rem; // 20px
-            height: 1.25rem; // 20px
-        }
+    p {
+      font-size: 1rem; // 16px
+      line-height: 1.25rem; // 20px
+      font-weight: 700;
     }
 
-    //Xsmall
-    @else if $size == xsmall {
-        gap: 0.125rem; // 2px
-        height: 2rem; // 32px
-        padding: 0rem 0.75rem; // 0 12px
-        border-radius: 0.625rem; // 10px
-
-        p {
-            font-size: 0.75rem; // 12px
-            line-height: 0.875rem; // 14px
-            font-weight: 700;
-        }
-
-        img {
-            display: none;
-        }
+    img {
+      width: 1.25rem; // 20px
+      height: 1.25rem; // 20px
     }
+  }
+
+  //Xsmall
+  @else if $size == xsmall {
+    gap: 0.125rem; // 2px
+    height: 2rem; // 32px
+    padding: 0rem 0.75rem; // 0 12px
+    border-radius: 0.625rem; // 10px
+
+    p {
+      font-size: 0.75rem; // 12px
+      line-height: 0.875rem; // 14px
+      font-weight: 700;
+    }
+
+    img {
+      display: none;
+    }
+  }
 }
