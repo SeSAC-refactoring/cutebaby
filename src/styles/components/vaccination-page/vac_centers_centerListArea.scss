@@ -1,3 +1,5 @@
+@import './vac_centers_centerList.scss';
+
 .centerListArea {
     @apply h-full flex flex-col gap-4;
 
@@ -10,25 +12,6 @@
             p {
                 @apply text-gray-6 text-lg font-md;
                 @apply sm:text-xl;
-            }
-        }
-    }
-
-    div.centerList {
-        @apply flex flex-col gap-4;
-
-        .center {
-            @apply border-2 border-blue-4 rounded-[2rem] px-4 py-4;
-            @apply flex flex-col gap-2;
-
-            .name {
-                @apply flex justify-between;
-            }
-
-            // 줄개행 안하고 텍스트 넘치면 ...으로
-            & h3,
-            & .text {
-                @apply overflow-hidden whitespace-nowrap text-ellipsis;
             }
         }
     }

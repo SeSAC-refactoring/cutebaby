@@ -1,0 +1,44 @@
+.centerListArea div.centerList {
+    @apply flex flex-col gap-4;
+
+    .center {
+        @apply flex flex-col gap-2;
+        @apply border-2 border-blue-4 rounded-3xl px-6 py-6;
+        @apply sm:rounded-[2rem];
+
+        .name {
+            @apply flex justify-between;
+
+            button {
+                @include button-color(yellow);
+                @include button-size(xsmall);
+            }
+        }
+
+        .address,
+        .phonenumber {
+            @apply flex gap-2;
+        }
+
+        .title {
+            @apply text-gray-7 text-bs font-md whitespace-nowrap;
+        }
+
+        .imgDetail {
+            @apply flex;
+
+            img {
+                @apply w-5 h-5 mr-1;
+            }
+        }
+
+        .phonenumber .detail {
+            @apply text-blue-7;
+        }
+
+        // 줄개행 안하고 텍스트 넘치면 ...으로
+        & h3 {
+            @apply overflow-hidden whitespace-nowrap text-ellipsis;
+        }
+    }
+}
