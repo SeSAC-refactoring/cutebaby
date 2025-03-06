@@ -8,8 +8,10 @@ export default {
         md: "1024px", // 768px 이상일 때 적용
         sm: "768px", // 768px 이상일 때 적용
         xs: "390px", // 390px 이상일 때 적용
-        "max-xs": { max: "389px" }, // 389px 이하
+        "max-lg": { max: "1279px" }, // 1279px 이하
+        "max-md": { max: "1023px" }, // 1023px 이하
         "max-sm": { max: "767px" }, // 767px 이하
+        "max-xs": { max: "389px" }, // 389px 이하
       },
 
       colors: {
