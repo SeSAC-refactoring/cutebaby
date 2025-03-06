@@ -92,7 +92,7 @@ export default function Mypage() {
         <div className="w-full flex flex-col gap-6 xs:bg-white xs:p-[48px_56px] rounded-[40px] xs:border-2 border-gray-6 xs:mt-20 xs:w-[1280px]">
           <div>
             <div>
-              <div className="text-2xl font-bd">마이페이지</div>
+              <header className="text-2xl font-bd">마이페이지</header>
             </div>
             {/* {babyInfo.length === 0 && (
               <button
