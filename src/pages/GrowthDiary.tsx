@@ -14,6 +14,7 @@ import { GrowRewriteModal } from "../components/growth-diary-page/GrowRewriteMod
 import { GrowDelModal } from "../components/growth-diary-page/GrowDelModal";
 
 import "../styles/pages/GrowthDiary.scss";
+import "../styles/components/maincontents.scss";
 
 export default function GrowthDiary() {
   const [openCalModal, setOpenCalModal] = useState<boolean>(false);
@@ -108,7 +109,7 @@ export default function GrowthDiary() {
         />
       )}
       <div>
-        <div className="growdashboard">
+        <div className="maincontents">
           <div>
             <div>
               <div className="max-sm:text-2xl font-bd">성장일지</div>
@@ -139,8 +140,8 @@ export default function GrowthDiary() {
                   <>
                     <div>
                       <div>
+                        <div>우리 아이 성장 추이</div>
                         <div className="graphBtnArea">
-                          <div>우리 아이 성장 추이</div>
                           <div className="graphArea">
                             <DiaryChart growData={growData} />
                           </div>
