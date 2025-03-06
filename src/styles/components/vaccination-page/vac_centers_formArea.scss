@@ -1,16 +1,16 @@
 .formArea {
-    @apply flex gap-2 flex-wrap;
-    @apply sm:flex-nowrap;
+    @apply flex flex-wrap gap-2 w-full;
+    // @apply sm:flex-nowrap;
 
     select {
-        @apply flex-1 w-full min-w-36;
+        @apply flex-1 min-w-48;
     }
 
-    div {
-        @apply flex gap-1 w-full flex-wrap;
+    & > div {
+        @apply flex gap-2 flex-1 w-full;
 
         input {
-            @apply flex-[2]  min-w-36;
+            @apply flex-1 min-w-0;
         }
 
         button.searchBtn {

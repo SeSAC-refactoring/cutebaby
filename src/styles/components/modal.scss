@@ -1,11 +1,14 @@
 .modalBg {
     @apply absolute inset-0 flex justify-center items-center;
 
-    .modal {
+    .whiteboxModal {
+        // @extend .whitebox;
         @apply bg-white w-full min-w-80 h-full px-6 py-6;
         @apply flex flex-col gap-6;
+        z-index: 20;
 
-        @apply sm:w-auto sm:h-auto; // 수정 필요
+        @apply sm:w-auto sm:h-[944px] overflow-auto; // 수정 필요
+        @apply sm:px-20 sm:py-20;
         @apply sm:border-2 sm:border-gray-6 sm:rounded-[40px];
     }
 }

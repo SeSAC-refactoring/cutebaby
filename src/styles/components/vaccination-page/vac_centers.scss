@@ -3,8 +3,16 @@
 
 .TopArea {
     @apply flex justify-between;
+
+    & > div {
+        @apply cursor-pointer;
+
+        img {
+            @apply sm:w-12 sm:h-12;
+        }
+    }
 }
 
 .contentsArea {
-    @apply flex flex-col gap-6 h-full;
+    @apply flex flex-col gap-6 w-full h-full;
 }
