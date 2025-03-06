@@ -5,6 +5,7 @@ import { UserupdateModal } from "../components/my-page/UserupdateModal";
 import { BabyInfo } from "../components/my-page/BabyInfo";
 import { useNavigate } from "react-router-dom";
 import { BabyInputPlus } from "../components/my-page/BabyInputPlus";
+import "../styles/components/maincontents.scss";
 
 export default function Mypage() {
   // const dispatch = useDispatch<AppDispatch>();
@@ -89,7 +90,7 @@ export default function Mypage() {
       )}
 
       <div className="w-full flex flex-col items-center justify-center  ">
-        <div className="w-full flex flex-col gap-6 xs:bg-white xs:p-[48px_56px] rounded-[40px] xs:border-2 border-gray-6 xs:mt-20 xs:w-[1280px]">
+        <div className="maincontents">
           <div>
             <div>
               <header className="text-2xl font-bd">마이페이지</header>
