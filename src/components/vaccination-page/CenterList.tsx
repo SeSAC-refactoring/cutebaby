@@ -36,19 +36,21 @@ export const CenterList: React.FC<CenterListProps> = ({
                               )}
                           </div>
                           <div className="address">
-                              <div>병원주소</div>
-                              <div className="text">
+                              <div className="title">병원주소</div>
+                              <div className="detail">
                                   {center.orgAddr || '주소 없음'}
                               </div>
                           </div>
                           <div className="phonenumber">
-                              <div>대표번호</div>
-                              <img
-                                  src="/img/phone-call-01.png"
-                                  alt="전화기"
-                              ></img>
-                              <div className="text">
-                                  {center.orgTlno || '전화번호 없음'}
+                              <div className="title">대표번호</div>
+                              <div className="imgDetail">
+                                  <img
+                                      src="/img/phone-call-01.png"
+                                      alt="전화기"
+                                  />
+                                  <div className="detail">
+                                      {center.orgTlno || '전화번호 없음'}
+                                  </div>
                               </div>
                           </div>
                       </div>
