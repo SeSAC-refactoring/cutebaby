@@ -19,6 +19,9 @@ button {
   } @else if $color == coral {
     background-color: theme("colors.coral.4");
     color: theme("colors.gray.10");
+  } @else if $color == kakao {
+    background-color: #fee500;
+    color: theme("colors.gray.10");
   }
 }
 
@@ -42,7 +45,6 @@ button {
       height: 1.75rem; // 28px
     }
   }
-
   // medium
   @else if $size == medium {
     gap: 0.25rem; // 4px
@@ -62,40 +64,40 @@ button {
     }
   }
 
-    // small
-    @else if $size == small {
-        gap: 0.25rem; // 4px
-        height: 3rem; // 48px
-        padding: 0rem 1.125rem; // 0 18px
-        border-radius: 0.875rem; // 14px
+  // small
+  @else if $size == small {
+    gap: 0.25rem; // 4px
+    height: 3rem; // 48px
+    padding: 0rem 1.125rem; // 0 18px
+    border-radius: 0.875rem; // 14px
 
-        p {
-            font-size: 1rem; // 16px
-            line-height: 1.25rem; // 20px
-            font-weight: 700;
-        }
-
-        img {
-            width: 1.25rem; // 20px
-            height: 1.25rem; // 20px
-        }
+    p {
+      font-size: 1rem; // 16px
+      line-height: 1.25rem; // 20px
+      font-weight: 700;
     }
 
-    //Xsmall
-    @else if $size == xsmall {
-        gap: 0.125rem; // 2px
-        height: 2rem; // 32px
-        padding: 0rem 0.75rem; // 0 12px
-        border-radius: 0.625rem; // 10px
-
-        p {
-            font-size: 0.75rem; // 12px
-            line-height: 0.875rem; // 14px
-            font-weight: 700;
-        }
-
-        img {
-            display: none;
-        }
+    img {
+      width: 1.25rem; // 20px
+      height: 1.25rem; // 20px
     }
+  }
+
+  //Xsmall
+  @else if $size == xsmall {
+    gap: 0.125rem; // 2px
+    height: 2rem; // 32px
+    padding: 0rem 0.75rem; // 0 12px
+    border-radius: 0.625rem; // 10px
+
+    p {
+      font-size: 0.75rem; // 12px
+      line-height: 0.875rem; // 14px
+      font-weight: 700;
+    }
+
+    img {
+      display: none;
+    }
+  }
 }
