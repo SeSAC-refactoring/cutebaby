@@ -72,7 +72,7 @@ export default function Vaccination() {
             )}
 
             <div>
-                <div>
+                <div className="whitebox">
                     <div>
                         <div>
                             <div>예방접종 관리</div>

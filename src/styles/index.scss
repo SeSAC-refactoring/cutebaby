@@ -1,19 +1,29 @@
 // Tailwind import
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 // Pretendard 폰트 import
 @font-face {
-    font-family: 'Pretendard';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard.woff')
-        format('woff');
+  font-family: "Pretendard";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard.woff")
+    format("woff");
 }
 
 // styles import
-@import './global.scss'; // 스타일초기화, root div, main 태그 설정
-@import './components/header.scss'; // header style
-@import './components/footer.scss'; // footer style
+// global
+@import "./global.scss"; // 스타일초기화, root div, main 태그 설정
 
-@import './pages/home.scss'; // 홈페이지 style
-@import './pages/vaccination.scss'; // 예방접종 페이지 style
+// component
+@import "./components/header.scss"; // header style
+@import "./components/footer.scss"; // footer style
+@import "./components/button.scss"; // buttons style
+@import "./components/form.scss"; // form style
+@import "./components/modal.scss"; // modal style
+@import "./components/whitebox.scss"; // whitebox style
+
+// pages
+@import "./pages/home.scss"; // 홈페이지 style
+@import "./pages/vaccination.scss"; // 예방접종페이지 style
+@import "./pages/growthDiary.scss"; // 성장일지페이지 style
+@import "./pages/mypage.scss"; // 마이페이지 style
