@@ -1,7 +1,8 @@
 main.grow {
-  @apply min-h-0 sm:mt-12 flex justify-center;
+  @apply min-h-0 flex justify-center w-full;
   // @apply min-h-0 grow px-6 pt-6 pb-12 flex flex-col gap-6 items-center;
   // @apply max-xs:w-[100vw];
-  @apply max-xs:max-w-full max-sm:max-w-full;
-  @apply max-sm:justify-start max-sm:items-start;
+  @apply max-xs:max-w-full;
+  // @apply max-md:max-w-[90vw]  flex justify-center;
+  @apply max-sm:justify-start max-sm:items-start  max-sm:max-w-[90vw];
 }
