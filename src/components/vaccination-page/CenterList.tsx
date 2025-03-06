@@ -19,34 +19,38 @@ export const CenterList: React.FC<CenterListProps> = ({
         <div className="centerList">
             {validCenters && validCenters.length > 0
                 ? validCenters.map((center) => (
-                      <div key={center.orgcd}>
-                          <div>
-                              <div>
-                                  <h3>{center.orgnm || '이름 없음'}</h3>
-                                  <button
-                                      onClick={() =>
-                                          toggleVaccineList(center.orgcd)
-                                      }
-                                  >
-                                      {showVaccineList[center.orgcd]
-                                          ? '접종 가능 목록 ▲'
-                                          : '접종 가능 목록 ▼'}
-                                  </button>
-                                  {showVaccineList[center.orgcd] && (
-                                      <VaccineList center={center} />
-                                  )}
+                      <div key={center.orgcd} className="center">
+                          <div className="name">
+                              <h3>{center.orgnm || '이름 없음'}</h3>
+                              <button
+                                  onClick={() =>
+                                      toggleVaccineList(center.orgcd)
+                                  }
+                              >
+                                  {showVaccineList[center.orgcd]
+                                      ? '접종 가능 목록 ▲'
+                                      : '접종 가능 목록 ▼'}
+                              </button>
+                              {showVaccineList[center.orgcd] && (
+                                  <VaccineList center={center} />
+                              )}
+                          </div>
+                          <div className="address">
+                              <div className="title">병원주소</div>
+                              <div className="detail">
+                                  {center.orgAddr || '주소 없음'}
                               </div>
-                              <div>
-                                  <div>병원주소</div>
-                                  <div>{center.orgAddr || '주소 없음'}</div>
-                              </div>
-                              <div>
-                                  <div>대표번호</div>
+                          </div>
+                          <div className="phonenumber">
+                              <div className="title">대표번호</div>
+                              <div className="imgDetail">
                                   <img
                                       src="/img/phone-call-01.png"
                                       alt="전화기"
-                                  ></img>
-                                  <div>{center.orgTlno || '전화번호 없음'}</div>
+                                  />
+                                  <div className="detail">
+                                      {center.orgTlno || '전화번호 없음'}
+                                  </div>
                               </div>
                           </div>
                       </div>

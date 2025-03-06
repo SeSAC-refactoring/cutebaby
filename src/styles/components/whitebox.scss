@@ -1,8 +1,10 @@
 .whitebox {
-    @apply w-full flex flex-col gap-6 xs:bg-white xs:p-[48px_56px] rounded-[40px] sm:border-2 border-gray-6 xs:mt-20 xs:w-[1280px];
-    @apply max-xs:w-[100vw] max-sm:w-[100vw];
-    @apply max-md:w-full;
-    @apply max-lg:w-[90vw];
+  @apply w-full h-auto flex flex-col gap-6 xs:bg-white xs:p-[3rem_3.5rem] rounded-[40px] sm:border-2 border-gray-6 sm:mt-14 xs:w-[1280px];
+  @apply max-xs:w-[100vw] max-sm:w-[100vw];
+  @apply max-md:w-full;
+  @apply max-lg:w-[90vw];
+  @apply max-xs:pt-[1.5rem];
+  @apply max-sm:pt-[1.5rem] max-sm:pr-[0rem] max-sm:pl-[0rem];
 
-    //   @apply max-sm:border-0;
+  //   @apply max-sm:border-0;;
 }

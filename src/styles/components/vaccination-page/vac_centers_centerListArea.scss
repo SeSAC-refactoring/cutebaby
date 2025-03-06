@@ -1,5 +1,9 @@
+@import './vac_centers_centerList.scss';
+@import './vac_centers_pagenationBtns.scss';
+
 .centerListArea {
-    @apply h-full flex flex-col;
+    @apply h-full flex flex-col gap-4;
+    @apply sm:gap-6;
 
     div.image {
         @apply h-full flex flex-col gap-6 justify-center items-center;
@@ -12,11 +16,5 @@
                 @apply sm:text-xl;
             }
         }
-    }
-
-    div.centerList {
-    }
-
-    div.pagenationBtns {
     }
 }

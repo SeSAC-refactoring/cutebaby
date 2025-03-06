@@ -144,9 +144,9 @@ const EmailLogin: React.FC = () => {
       {/* 로딩 창 */}
       {loading && <Loading />}
 
-      <div>
-        <div>
-          <h2>이메일로 로그인하기</h2>
+      <div className="modalBg">
+        <div className="mediumModal">
+          <div>이메일로 로그인하기</div>
           <section onKeyDown={enter}>
             <div>
               <Input

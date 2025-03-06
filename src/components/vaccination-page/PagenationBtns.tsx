@@ -18,10 +18,11 @@ export const PagenationBtns: React.FC<PaginationProps> = ({
     return (
         <div className="pagenationBtns">
             <button
+                className="noNumber"
                 onClick={() => handlePageChange(startPage - 1)}
                 disabled={startPage <= 1} // startPage가 1보다 작을 수 없음
             >
-                ◀ 이전
+                {`<`}
             </button>
 
             {/* 5개씩 페이지 번호 표시  */}
@@ -30,6 +31,7 @@ export const PagenationBtns: React.FC<PaginationProps> = ({
                 const pageNumber = startPage + index;
                 return (
                     <button
+                        className="number"
                         key={pageNumber}
                         onClick={() => handlePageChange(pageNumber)}
                         disabled={
@@ -43,10 +45,11 @@ export const PagenationBtns: React.FC<PaginationProps> = ({
             })}
 
             <button
+                className="noNumber"
                 onClick={() => handlePageChange(endPage + 1)}
                 disabled={endPage >= totalPages} // 마지막 페이지 그룹이면 비활성화
             >
-                다음 ▶
+                {`>`}
             </button>
         </div>
     );
