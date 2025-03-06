@@ -1,5 +1,5 @@
 .whitebox {
-  @apply w-full flex flex-col gap-6 xs:bg-white xs:p-[3rem_3.5rem] rounded-[40px] sm:border-2 border-gray-6 sm:mt-20 xs:w-[1280px];
+  @apply w-full h-auto flex flex-col gap-6 xs:bg-white xs:p-[3rem_3.5rem] rounded-[40px] sm:border-2 border-gray-6 sm:mt-14 xs:w-[1280px];
   @apply max-xs:w-[100vw] max-sm:w-[100vw];
   @apply max-md:w-full;
   @apply max-lg:w-[90vw];
