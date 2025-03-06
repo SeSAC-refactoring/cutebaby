@@ -1,5 +1,7 @@
+@import './vac_centers_centerList.scss';
+
 .centerListArea {
-    @apply h-full flex flex-col;
+    @apply h-full flex flex-col gap-4;
 
     div.image {
         @apply h-full flex flex-col gap-6 justify-center items-center;
@@ -14,9 +16,24 @@
         }
     }
 
-    div.centerList {
-    }
-
     div.pagenationBtns {
+        @apply flex gap-4 justify-center items-center min-h-32;
+        @apply sm:pb-20;
+
+        // @apply bg-blue-4;
+        @apply text-gray-7 text-lg;
+
+        button {
+            @apply w-10;
+        }
+
+        // 누른 버튼의 스타일
+        button.number.disabled {
+            @apply text-gray-10 font-bd;
+        }
+        // hover시 버튼의 스타일
+        button:hover {
+            // @apply;
+        }
     }
 }

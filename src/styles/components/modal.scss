@@ -1,11 +1,21 @@
 .modalBg {
-    @apply absolute inset-0 flex justify-center items-center;
+  @apply absolute inset-0 flex justify-center items-center;
 
-    .modal {
-        @apply bg-white w-full min-w-80 h-full px-6 py-6;
-        @apply flex flex-col gap-6;
+  .whiteboxModal {
+    // @extend .whitebox;
+    @apply bg-white w-full min-w-80 h-full px-6 pt-6;
+    @apply flex flex-col gap-6;
+    z-index: 20;
 
-        @apply sm:w-auto sm:h-auto; // 수정 필요
-        @apply sm:border-2 sm:border-gray-6 sm:rounded-[40px];
-    }
+    @apply sm:w-auto sm:h-[944px]; // 수정 필요
+    @apply sm:px-20 sm:py-20;
+    @apply sm:border-2 sm:border-gray-6 sm:rounded-[2.5rem];
+  }
+  .smallModal {
+    @apply bg-white w-full min-w-80 h-full px-6 py-6;
+    @apply flex flex-col gap-6;
+
+    @apply sm:w-auto sm:h-auto; // 수정 필요
+    @apply sm:border-2 sm:border-gray-6 sm:rounded-[40px];
+  }
 }

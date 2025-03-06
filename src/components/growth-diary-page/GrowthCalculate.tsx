@@ -45,11 +45,13 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
       onClick={() => {
         setOpenCalModal(false);
       }}
+      className="modalBg"
     >
       <div
         onClick={(e) => {
           e.stopPropagation();
         }}
+        className="modal"
       >
         <div>
           <div>
