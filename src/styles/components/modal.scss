@@ -14,9 +14,9 @@
   .mediumModal {
     @apply bg-white w-full min-w-80 h-full px-14 py-12;
     @apply flex flex-col gap-6;
-
     @apply sm:w-[32.5rem] sm:h-auto;
     @apply sm:border-2 sm:border-gray-6 sm:rounded-[2.5rem];
+    @apply max-sm:px-6 max-sm:py-0 max-sm:gap-14;
   }
   .smallModal {
     @apply bg-white p-10 w-full min-w-80 h-full;

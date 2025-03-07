@@ -60,7 +60,7 @@ export default function SelectLogin() {
   });
 
   return (
-    <main className="selectLoginMain">
+    <main>
       <div className="centerWrapper">
         <section className="contentsSectionWrap max-w-[35rem]">
           <h2>{!selectSignup ? "로그인" : "회원가입"}</h2>
