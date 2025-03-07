@@ -62,50 +62,58 @@ export default function SelectLogin() {
   return (
     <main className="selectLoginMain">
       <div className="centerWrapper">
-        <section className="contentsSectionWrap sm:max-w-[560px]">
-          <h2 className="">{!selectSignup ? "로그인" : "회원가입"}</h2>
-          <div className="contentsArea">
-            <img src="/img/visuals/visual_login_ggomul_01_.svg" />
-            <div className="confirmBtnArea">
-              {!selectSignup ? (
-                <Link to="/Login">
-                  <button className="button-blue">
-                    <img src="/img/icons/i-mail-s32.svg"></img>
-                    이메일로 로그인하기
-                  </button>
-                </Link>
-              ) : (
-                <Link to="/Signup">
-                  <button>
-                    <img src="/img/icons/i-mail-s32.svg"></img>
-                    이메일로 회원가입하기
-                  </button>
-                </Link>
-              )}
-
-              <a
-                href={getKakaoLoginUrl()}
-                style={{ textDecorationLine: "none" }}
-              >
+        <section className="contentsSectionWrap max-w-[35rem]">
+          <h2>{!selectSignup ? "로그인" : "회원가입"}</h2>
+          <div className=" flex flex-col gap-[3rem] h-full w-full">
+            <img
+              src="/img/visuals/visual_login_ggomul_01_.svg"
+              className="h-[40%]"
+            />
+            <section className="flex items-center flex-col gap-[2.5rem] w-full">
+              <div className="confirmBtnArea w-full flex flex-col items-center gap-2">
                 {!selectSignup ? (
-                  <button>
-                    <img src="/img/icons/i-kakaotalk-s32.svg"></img>
-                    카카오톡으로 로그인하기
-                  </button>
+                  <Link to="/Login" className="w-full">
+                    <button className="emailLoginBtn w-full">
+                      <img src="/img/icons/i-mail-s32.svg"></img>
+                      이메일로 로그인하기
+                    </button>
+                  </Link>
                 ) : (
-                  ""
+                  <Link to="/Signup" className="w-full">
+                    <button>
+                      <img src="/img/icons/i-mail-s32.svg"></img>
+                      이메일로 회원가입하기
+                    </button>
+                  </Link>
                 )}
-              </a>
-            </div>
-            <div>
-              <div>
-                {!selectSignup ? "가입하지 않으셨나요?" : "계정이 있으신가요?"}
+
+                <a
+                  href={getKakaoLoginUrl()}
+                  style={{ textDecorationLine: "none" }}
+                  className="w-full"
+                >
+                  {!selectSignup ? (
+                    <button className="kakaoLoginBtn w-full">
+                      <img src="/img/icons/i-kakaotalk-s32.svg"></img>
+                      카카오톡으로 로그인하기
+                    </button>
+                  ) : (
+                    ""
+                  )}
+                </a>
               </div>
-              <div onClick={signup}>
-                {/* <Link to="/Signup">회원가입하기</Link> */}
-                {!selectSignup ? "회원가입하기" : "로그인하기"}
+              <div className="flex gap-1">
+                <div className="text-gray-8">
+                  {!selectSignup
+                    ? "가입하지 않으셨나요?"
+                    : "계정이 있으신가요?"}
+                </div>
+                <div onClick={signup} className="font-bd text-gray-8 underline">
+                  {/* <Link to="/Signup">회원가입하기</Link> */}
+                  {!selectSignup ? "회원가입하기" : "로그인하기"}
+                </div>
               </div>
-            </div>
+            </section>
           </div>
         </section>
       </div>
