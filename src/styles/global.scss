@@ -33,12 +33,12 @@ body {
 // header, main 중앙 정렬
 header,
 main {
-    @apply w-full flex justify-center relative;
+  @apply w-full flex justify-center relative;
 
-    .centerWrapper {
-        @apply min-w-[390px] max-w-[1280px] w-full min-h-0 h-full grow flex flex-wrap
+  .centerWrapper {
+    @apply min-w-[390px] max-w-[1280px] w-full min-h-0 h-full grow flex flex-wrap
     sm:flex-nowrap;
-    }
+  }
 }
 
 main {
@@ -50,7 +50,7 @@ main {
     .contentsSectionWrap {
       @apply min-h-0 grow px-6 pb-12 flex flex-col gap-6 items-center
       sm:bg-white sm:border-2 sm:border-gray-6 sm:rounded-3xl sm:p-10;
-
+      @apply max-sm:w-auto;
       h2 {
         @apply self-start;
       }
@@ -59,7 +59,6 @@ main {
         @apply grow w-full pt-6;
 
         .confirmBtnArea {
-          
         }
       }
     }
@@ -74,7 +73,7 @@ h4 {
 }
 
 h2 {
-    @apply text-2xl;
+  @apply text-2xl;
 }
 h3 {
   @apply text-md;
