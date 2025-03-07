@@ -51,7 +51,7 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
         onClick={(e) => {
           e.stopPropagation();
         }}
-        className="modal"
+        className="whiteboxModal"
       >
         <div>
           <div>

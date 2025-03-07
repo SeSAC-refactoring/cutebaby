@@ -1,0 +1,9 @@
+button.emailLoginBtn {
+  @include button-color(black);
+  @include button-size(large);
+}
+
+button.kakaoLoginBtn {
+  @include button-color(kakao);
+  @include button-size(large);
+}
