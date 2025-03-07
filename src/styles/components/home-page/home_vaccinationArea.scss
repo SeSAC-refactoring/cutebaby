@@ -20,8 +20,8 @@
         }
 
         button {
-            @apply flex;
-
+            justify-content: start;
+            
             p {
                 @apply text-gray-6 text-xs font-md;
             }

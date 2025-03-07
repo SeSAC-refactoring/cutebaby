@@ -24,11 +24,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     React.useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
     return (
-      <div className="flex flex-col gap-[6px] mb-[24px]">
-        <div className="flex gap-1">
-          <label className="text-xs font-bd text-gray-8">{label}</label>
-          <div className="w-[6px] h-[6px] bg-red-5 rounded-[4px]"></div>
-        </div>
+      <div className="inputWrap grow flex flex-wrap flex-col gap-4">
+        <label className="grow text-xs font-bd text-gray-8">
+          {label}
+        </label>
         <input
           id={id}
           ref={inputRef}
@@ -38,7 +37,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           onChange={onChange}
           placeholder={placeholder}
           onKeyDown={onKeyDown}
-          className="rounded-[16px] border-2 border-gray-6 bg-yellow-1 flex p-4 gap-2 flex-[1_0_0]"
+          className="w-full grow flex p-4 text-sm font-rg rounded-[16px] border-2 border-gray-6 bg-yellow-1"
         />
       </div>
     );

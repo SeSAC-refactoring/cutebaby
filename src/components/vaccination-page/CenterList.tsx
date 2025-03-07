@@ -8,11 +8,11 @@ interface CenterListProps {
     showVaccineList: { [key: number]: boolean };
 }
 
-export const CenterList: React.FC<CenterListProps> = ({
+export const CenterList = ({
     centers,
     toggleVaccineList,
     showVaccineList,
-}) => {
+}: CenterListProps) => {
     const validCenters = (centers || []).filter(Boolean);
 
     return (
