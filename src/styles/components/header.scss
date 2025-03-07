@@ -1,5 +1,5 @@
 header {
-  @apply h-[106px] sm:min-h-20 sm:h-20 bg-white border-t-2 border-gray-6
+  @apply h-[10vh] sm:min-h-20 sm:h-20 bg-white border-t-2 border-gray-6
   sm:border-t-0 sm:border-b-2;
 
   .centerWrapper {
@@ -19,7 +19,7 @@ header {
       sm:self-center sm:p-2;
 
       &:hover {
-        @apply bg-gray-1
+        @apply bg-gray-1;
       }
 
       img {

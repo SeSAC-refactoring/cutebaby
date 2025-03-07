@@ -24,10 +24,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     React.useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
     return (
-      <div className="inputWrap grow flex flex-wrap flex-col gap-4">
-        <label className="grow text-xs font-bd text-gray-8">
-          {label}
-        </label>
+      <div className="inputWrap grow flex flex-wrap flex-col gap-[0.375rem]">
+        <label className="grow text-xs font-bd text-gray-8 ">{label}</label>
         <input
           id={id}
           ref={inputRef}

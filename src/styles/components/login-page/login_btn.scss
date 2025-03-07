@@ -7,3 +7,12 @@ button.kakaoLoginBtn {
   @include button-color(kakao);
   @include button-size(large);
 }
+
+button.cancleBtn {
+  @include button-color(yellow);
+  @include button-size(large);
+}
+button.completeBtn {
+  @include button-color(black);
+  @include button-size(large);
+}
