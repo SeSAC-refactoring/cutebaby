@@ -153,7 +153,7 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                     {/* 검색 결과(병원 리스트) 표시 */}
                     <div className="centerListArea">
                         {!hasSearched ? (
-                            <div className="image">
+                            <div className="response-state">
                                 <img
                                     src="/img/visuals/visual_loading_ggomul_03.svg"
                                     alt=""
@@ -164,7 +164,7 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                                 </div>
                             </div>
                         ) : isLoading ? (
-                            <div className="image">
+                            <div className="response-state">
                                 <img
                                     src="/img/visuals/visual_loading_ggomul_04.svg"
                                     alt=""
@@ -176,7 +176,7 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                             </div>
                         ) : !centers ||
                           (centers || []).filter(Boolean).length < 1 ? (
-                            <div className="image">
+                            <div className="response-state">
                                 <img
                                     src="/img/visuals/visual_loading_ggomul_06.svg"
                                     alt=""
