@@ -164,50 +164,59 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
   return (
     <div onClick={modalState} className="modalBg">
       <div onClick={(e) => e.stopPropagation()} className="mediumModal">
-        <div>
-          <div>개인 정보 수정</div>
+        <div className="flex justify-between">
+          <div className="text-2xl font-bd mb-10">개인 정보 수정</div>
           <div
             onClick={() => {
               modalState();
             }}
           >
-            <img src="/img/icons/i-modal-close-s32.svg" alt="" />
+            <img src="img/Button-close.png" alt="" />
           </div>
         </div>
-        <div>
-          <div>
+        <div className="flex flex-col h-full  justify-between w-full">
+          <div className="gap-2 mb-6 flex flex-col">
+            {/* 이름 입력 */}
+            <Input
+              label="이름"
+              name="name"
+              placeholder="이름 입력"
+              value={formData.name}
+              onChange={handleChange}
+            ></Input>
+            <p>{messages.name}</p>
+
+            {/* 이메일 입력 */}
             <div>
-              {/* 이름 입력 */}
-              <Input
-                label="이름"
-                name="name"
-                placeholder="이름 입력"
-                value={formData.name}
-                onChange={handleChange}
-              ></Input>
-              <p>{messages.name}</p>
-              {/* 이메일 입력 */}
-              <div>
-                <InputSignupEmail
+              <div className="flex items-end gap-4">
+                <Input
                   label="이메일"
                   type="email"
                   name="email"
                   placeholder="이메일 입력"
                   value={formData.email}
                   onChange={handleChange}
-                ></InputSignupEmail>
-                <button onClick={emailCheck}>중복 체크</button>
+                />
+                <button className="emailCheckBtn" onClick={emailCheck}>
+                  중복 체크
+                </button>
               </div>
               <p>{messages.email}</p>
-              {/* </label> */}
-
-              {/* 이메일 중복 확인 버튼 */}
             </div>
+            {/* </label> */}
+
+            {/* 이메일 중복 확인 버튼 */}
           </div>
-          <div>
-            <button onClick={modalState}>취소</button>
-            <button onClick={handleUpdate}>완료</button>
-          </div>
+          <section className="flex flex-col h-auto ">
+            <div className="flex justify-center gap-4">
+              <button onClick={modalState} className="cancleBtn w-full">
+                취소
+              </button>
+              <button className="completeBtn w-full" onClick={handleUpdate}>
+                완료
+              </button>{" "}
+            </div>
+          </section>
         </div>
       </div>
     </div>
