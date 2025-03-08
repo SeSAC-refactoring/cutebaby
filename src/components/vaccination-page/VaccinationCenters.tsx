@@ -62,7 +62,10 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                             setOpenCentersModal(false);
                         }}
                     >
-                        <img src="/img/icons/i-modal-close-s32.svg" alt="" />
+                        <img
+                            src="/img/icons/i-modal-close-s32.svg"
+                            alt="닫기"
+                        />
                     </div>
                 </section>
                 {/* <div>

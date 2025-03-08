@@ -68,7 +68,10 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
                             setOpenCalModal(false);
                         }}
                     >
-                        <img src="/img/icons/i-modal-close-s32.svg" alt="" />
+                        <img
+                            src="/img/icons/i-modal-close-s32.svg"
+                            alt="닫기"
+                        />
                     </div>
                 </section>
 
