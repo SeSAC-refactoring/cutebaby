@@ -1,12 +1,11 @@
 div.response-state {
-    // 아직 반응형 적용 안됨...
-
     @apply h-full flex flex-col gap-6 justify-center items-center;
 
     .text {
         @apply flex flex-col justify-center items-center;
 
         p {
+            // 글씨 스타일 아직 반응형 적용 안됨...
             @apply text-gray-6 text-lg font-md;
             @apply sm:text-xl;
         }

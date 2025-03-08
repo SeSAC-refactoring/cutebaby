@@ -1,83 +1,84 @@
 // 전체 reset
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 
-  &:focus-visible {
-    outline: none;
-  }
+    &:focus-visible {
+        outline: none;
+    }
 }
 
 body {
-  font-family: "Pretendard";
-  @apply min-h-[844px] h-[100vh] overflow-y-hidden flex flex-col
+    font-family: 'Pretendard';
+    @apply min-h-[844px] h-[100vh] overflow-y-hidden flex flex-col
     sm:bg-yellow-1;
-  @apply text-gray-10 text-bs font-rg;
+    @apply text-gray-10 text-bs font-rg;
 }
 
 // 전역 root div 스타일 // header를 제외한 나머지 영역
 #root {
-  @apply min-h-0 grow flex flex-col;
+    @apply min-h-0 grow flex flex-col;
 
-  // 768px 이하일 때
-  @media (max-width: 768px) {
-    @apply flex-col-reverse;
+    // 768px 이하일 때
+    @media (max-width: 768px) {
+        @apply flex-col-reverse;
 
-    footer {
-      display: none;
+        footer {
+            display: none;
+        }
     }
-  }
 }
 
 // header, main 중앙 정렬
 header,
 main {
-  @apply w-full flex justify-center relative;
+    @apply w-full flex justify-center relative;
 
-  .centerWrapper {
-    @apply min-w-[390px] max-w-[1280px] w-full min-h-0 h-full grow flex flex-wrap
+    .centerWrapper {
+        @apply min-w-[390px] max-w-[1280px] w-full min-h-0 h-full grow flex flex-wrap
     sm:flex-nowrap;
-  }
+    }
 }
 
 main {
-  @apply min-h-0 mt-[53px] sm:mt-12 grow items-start;
+    @apply min-h-0  sm:mt-12 grow items-start;
+    @apply mt-[53px];
 
-  .centerWrapper {
-    @apply justify-center max-md:overflow-x-hidden max-md:overflow-y-scroll;
+    .centerWrapper {
+        @apply justify-center max-md:overflow-x-hidden max-md:overflow-y-scroll;
 
-    .contentsSectionWrap {
-      @apply min-h-0 grow px-6 pb-12 flex flex-col gap-6 items-center
+        .contentsSectionWrap {
+            @apply min-h-0 grow px-6 pb-12 flex flex-col gap-6 items-center
       sm:bg-white sm:border-2 sm:border-gray-6 sm:rounded-3xl sm:p-10;
-      @apply max-sm:w-auto;
-      h2 {
-        @apply self-start;
-      }
+            @apply max-sm:w-auto;
+            h2 {
+                @apply self-start;
+            }
 
-      .contentsArea {
-        @apply grow w-full pt-6;
+            .contentsArea {
+                @apply grow w-full pt-6;
 
-        .confirmBtnArea {
+                .confirmBtnArea {
+                }
+            }
         }
-      }
     }
-  }
 }
 
 // 제목 태그 스타일
 h2,
 h3,
 h4 {
-  @apply font-bd;
+    @apply font-bd;
 }
 
 h2 {
-  @apply text-2xl;
+    @apply text-2xl;
 }
 h3 {
-  @apply text-md;
+    @apply text-md;
 }
 h4 {
-  @apply text-bs text-gray-8;
+    @apply text-bs text-gray-8;
 }

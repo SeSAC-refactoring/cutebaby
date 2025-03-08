@@ -1,25 +1,40 @@
 .modalBg {
-    @apply absolute inset-0 flex justify-center items-center  backdrop-blur-sm z-30;
+    @apply absolute inset-0 flex justify-center items-center;
+    @apply backdrop-blur-sm z-30;
 
     .whiteboxModal {
-        // @extend .whitebox;
         @apply bg-white w-full min-w-80 h-full px-6 pt-6;
         @apply flex flex-col gap-6;
-        z-index: 20;
 
         @apply sm:w-auto sm:h-[944px]; // 수정 필요
         @apply sm:px-20 sm:py-20;
         @apply sm:border-2 sm:border-gray-6 sm:rounded-[2.5rem];
 
         // 모달의 타이틀과 x 버튼 스타일
-        .TopArea {
-            @apply flex justify-between;
+        & > .topArea {
+            @apply flex justify-between min-w-[17rem];
 
-            & > div {
+            & > div.title {
+                @apply flex gap-4 items-end w-full;
+
+                & > h2 {
+                    @apply w-full max-w-[calc(100%)];
+                    @apply whitespace-nowrap overflow-hidden text-ellipsis;
+                    @apply sm:w-auto;
+                }
+
+                & > p {
+                    @apply hidden text-gray-5;
+                    @apply sm:block;
+                }
+            }
+
+            & > div.close {
                 @apply cursor-pointer;
 
                 img {
-                    // @apply sm:w-12 sm:h-12;
+                    @apply min-w-8 min-h-8 ml-1;
+                    // @apply sm:w-12 sm:h-12;;
                 }
             }
         }
