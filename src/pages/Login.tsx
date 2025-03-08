@@ -144,12 +144,12 @@ const EmailLogin: React.FC = () => {
       {/* 로딩 창 */}
       {loading && <Loading />}
 
-      <div className="modalBg h-auto">
-        <div className="mediumModal h-full">
+      <div className="centerWrapper">
+        <div className="contentsSectionWrap max-w-[35rem]">
           <h2>이메일로 로그인하기</h2>
           <section
             onKeyDown={enter}
-            className="flex flex-col h-full  max-sm:justify-between "
+            className="flex flex-col h-full  justify-between w-full"
           >
             <div className="gap-[1.5rem] flex flex-col">
               <Input
@@ -168,7 +168,7 @@ const EmailLogin: React.FC = () => {
               />
               {error && <p style={{ color: "red" }}>{error}</p>}
             </div>
-            <section className="flex flex-col h-auto max-sm:mb-4">
+            <section className="flex flex-col h-auto ">
               <div className="flex justify-center gap-4">
                 <Link to="/SelectLogin" className="w-full ">
                   <button className="cancleBtn w-full">취소</button>
