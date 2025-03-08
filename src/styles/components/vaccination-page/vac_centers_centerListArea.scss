@@ -4,17 +4,4 @@
 .centerListArea {
     @apply h-full flex flex-col gap-4;
     @apply sm:gap-6;
-
-    div.image {
-        @apply h-full flex flex-col gap-6 justify-center items-center;
-
-        .text {
-            @apply flex flex-col justify-center items-center;
-
-            p {
-                @apply text-gray-6 text-lg font-md;
-                @apply sm:text-xl;
-            }
-        }
-    }
 }
