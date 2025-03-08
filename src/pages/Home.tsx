@@ -43,6 +43,7 @@ export default function Home() {
                         />
                     </section>
                 </section>
+
                 {/* 챗봇 */}
                 <ChatbotArea />
             </div>
@@ -52,7 +53,6 @@ export default function Home() {
                     alt="입력 아이콘"
                 />
             </button>
-            {/* <Loading /> */}
         </main>
     );
 }

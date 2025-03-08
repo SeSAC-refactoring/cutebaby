@@ -3,7 +3,7 @@ $visual-home: url('../../../../public/img/visuals/visual_home_ggomul_big.svg')
 $gradient-w-y: linear-gradient(180deg, #fff 0%, theme('colors.yellow.1') 100%)
     center;
 
-.topArea {
+main.home .topArea {
     @apply px-6 py-8 mt-[53px] flex flex-col gap-2 items-start
   sm:mt-0 sm:pl-0 sm:pr-0 sm:pt-0 sm:pb-8;
     background: $visual-home, $gradient-w-y;

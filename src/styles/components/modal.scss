@@ -11,14 +11,30 @@
         @apply sm:border-2 sm:border-gray-6 sm:rounded-[2.5rem];
 
         // 모달의 타이틀과 x 버튼 스타일
-        .TopArea {
-            @apply flex justify-between;
+        & > .topArea {
+            @apply flex justify-between min-w-[17rem];
 
-            & > div {
+            & > div.title {
+                @apply flex gap-4 items-end w-full;
+
+                & > h2 {
+                    @apply w-full max-w-[calc(100%)];
+                    @apply whitespace-nowrap overflow-hidden text-ellipsis;
+                    @apply sm:w-auto;
+                }
+
+                & > p {
+                    @apply hidden text-gray-5;
+                    @apply sm:block;
+                }
+            }
+
+            & > div.close {
                 @apply cursor-pointer;
 
                 img {
-                    // @apply sm:w-12 sm:h-12;
+                    @apply min-w-8 min-h-8 ml-1;
+                    // @apply sm:w-12 sm:h-12;;
                 }
             }
         }
