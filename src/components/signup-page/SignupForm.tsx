@@ -126,14 +126,14 @@ const SignupForm: React.FC = () => {
   };
 
   return (
-    <main className="modalBg">
-      <div className="mediumModal">
-        <div>
-          <div>이메일로 가입하기</div>
+    <main>
+      <div className="centerWrapper">
+        <div className="contentsSectionWrap max-w-[35rem]">
+          <h2>이메일로 가입하기</h2>
 
-          <div>
+          <section className="flex flex-col h-full  justify-between w-full">
             <div>
-              <div>
+              <div className="gap-[1.5rem] flex flex-col">
                 <Input
                   label="이름"
                   type="text"
@@ -149,8 +149,8 @@ const SignupForm: React.FC = () => {
               </div>
 
               <div>
-                <div>
-                  <InputSignupEmail
+                <div className="flex items-end gap-4">
+                  <Input
                     label="이메일"
                     type="email"
                     name="email"
@@ -161,7 +161,7 @@ const SignupForm: React.FC = () => {
                       inputRef.current.email = el;
                     }}
                   />
-                  <button style={{ color: "#3B3B41" }} onClick={emailCheck}>
+                  <button className="emailCheckBtn" onClick={emailCheck}>
                     중복체크
                   </button>
                 </div>
@@ -207,7 +207,7 @@ const SignupForm: React.FC = () => {
                 완료
               </button>
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </main>
