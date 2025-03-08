@@ -132,8 +132,8 @@ const SignupForm: React.FC = () => {
           <h2>이메일로 가입하기</h2>
 
           <section className="flex flex-col h-full  justify-between w-full">
-            <div>
-              <div className="gap-[1.5rem] flex flex-col">
+            <div className="gap-[1.5rem] flex flex-col">
+              <div>
                 <Input
                   label="이름"
                   type="text"
@@ -198,15 +198,22 @@ const SignupForm: React.FC = () => {
                 {messages.confirmPassword && <p>{messages.confirmPassword}</p>}
               </div>
             </div>
-            <div>
-              <Link to="/SelectLogin">
-                <button>취소</button>
-              </Link>
-
-              <button disabled={!isFormValid} onClick={handleSubmit}>
-                완료
-              </button>
-            </div>
+            <section className="flex flex-col h-auto ">
+              <div className="flex justify-center gap-4">
+                <Link to="/SelectLogin" className="w-full ">
+                  <button className="cancleBtn w-full">취소</button>
+                </Link>
+                <div className="w-full">
+                  <button
+                    disabled={!isFormValid}
+                    className="completeBtn w-full"
+                    onClick={handleSubmit}
+                  >
+                    완료
+                  </button>
+                </div>
+              </div>
+            </section>
           </section>
         </div>
       </div>
