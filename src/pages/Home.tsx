@@ -52,7 +52,7 @@ export default function Home() {
                     alt="입력 아이콘"
                 />
             </button>
-            <Loading />
+            {/* <Loading /> */}
         </main>
     );
 }

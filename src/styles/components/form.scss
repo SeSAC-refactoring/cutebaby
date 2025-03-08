@@ -12,6 +12,13 @@ select {
     @apply bg-no-repeat bg-[length:1.75rem_1.75rem];
 }
 
+// input 태그 주소검색
+input {
+    @apply px-4 py-4 items-center;
+    @apply bg-yellow-1 rounded-2xl border-2 border-gray-6;
+    @apply text-sm font-rg;
+}
+
 // disabled 상태일 때
 select:disabled {
     background-image: url('../../../public/img/icons/i-chevron-down-s28-active.svg'); // v 모양 스타일
@@ -25,9 +32,10 @@ input:focus {
     @apply shadow-[0px_0px_0px_5px_rgba(176,165,232,0.4)];
 }
 
+// 로그인/회원가입 페이지 시
 label {
-  // 필수입력 표시
-  &::after {
-    @apply w-[6px] h-[6px] bg-red-5 rounded-[4px];
-  }
+    // 필수입력 표시
+    &::after {
+        @apply w-[6px] h-[6px] bg-red-5 rounded-[4px];
+    }
 }
