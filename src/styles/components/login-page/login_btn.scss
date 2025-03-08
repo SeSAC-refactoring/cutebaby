@@ -16,3 +16,7 @@ button.completeBtn {
   @include button-color(black);
   @include button-size(large);
 }
+button.emailCheckBtn {
+  @include button-color(blue);
+  @include button-size(medium);
+}

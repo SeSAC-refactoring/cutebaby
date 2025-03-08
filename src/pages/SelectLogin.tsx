@@ -64,10 +64,10 @@ export default function SelectLogin() {
       <div className="centerWrapper">
         <section className="contentsSectionWrap max-w-[35rem]">
           <h2>{!selectSignup ? "로그인" : "회원가입"}</h2>
-          <div className=" flex flex-col gap-[3rem] h-full w-full">
+          <div className=" flex flex-col gap-[3rem] h-full w-full ">
             <img
               src="/img/visuals/visual_login_ggomul_01_.svg"
-              className="h-[40%]"
+              className="h-[40%] max-sm:h-[50%]"
             />
             <section className="flex items-center flex-col gap-[2.5rem] w-full">
               <div className="confirmBtnArea w-full flex flex-col items-center gap-2">
@@ -80,7 +80,7 @@ export default function SelectLogin() {
                   </Link>
                 ) : (
                   <Link to="/Signup" className="w-full">
-                    <button>
+                    <button className="emailLoginBtn w-full">
                       <img src="/img/icons/i-mail-s32.svg"></img>
                       이메일로 회원가입하기
                     </button>
