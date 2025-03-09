@@ -1,33 +1,31 @@
-$visual-home: url('../../../../public/img/visuals/visual_home_ggomul_big.svg')
-    no-repeat calc(100% - 24px) calc(100% + 16px);
-$gradient-w-y: linear-gradient(180deg, #fff 0%, theme('colors.yellow.1') 100%)
-    center;
+$visual-home: url("../../../../public/img/visuals/visual_home_ggomul_big.svg")
+  no-repeat calc(100% - 24px) calc(100% + 16px);
+$gradient-w-y: linear-gradient(180deg, #fff 0%, theme("colors.yellow.1") 100%)
+  center;
 
 main.home .topArea {
-    @apply px-6 py-8 mt-[53px] flex flex-col gap-2 items-start
+  @apply pt-14 px-6 pb-8 flex flex-col gap-2 items-start
   sm:mt-0 sm:pl-0 sm:pr-0 sm:pt-0 sm:pb-8;
-    background: $visual-home, $gradient-w-y;
-    background-size: 150px, auto;
+  background: $visual-home, $gradient-w-y;
+  background-size: 150px, auto;
 
-    // 768px 이상일 때
-    @media (min-width: 768px) {
-        background-size: 168px, 0;
-        background-position:
-            right calc(100% + 24px),
-            center;
+  // 768px 이상일 때
+  @media (min-width: 768px) {
+    background-size: 168px, 0;
+    background-position: right calc(100% + 24px), center;
+  }
+
+  .greeting {
+    @apply text-xl font-md;
+    @apply sm:text-2xl;
+
+    strong {
+      @apply font-bd;
     }
+  }
 
-    .greeting {
-        @apply text-xl font-md;
-        @apply sm:text-2xl;
-
-        strong {
-            @apply font-bd;
-        }
-    }
-
-    .description {
-        @apply w-[50vw] h-10 text-gray-7 text-bs font-rg;
-        @apply sm:w-auto;
-    }
+  .description {
+    @apply w-[50vw] h-10 text-gray-7 text-bs font-rg;
+    @apply sm:w-auto;
+  }
 }

@@ -10,11 +10,3 @@
     @apply xs:justify-center;
 }
 
-button.growCalBtn {
-    @include button-color(yellow);
-    @include button-size(small);
-
-    @media (max-width: 767px) {
-        @include button-size(xsmall);
-    }
-}

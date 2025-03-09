@@ -119,7 +119,7 @@ export default function GrowthDiary() {
                     </div>
 
                     <button
-                        className="growCalBtn"
+                        className="button-yellow button-sm md:button-sm"
                         onClick={() => setOpenCalModal(true)}
                     >
                         성장상태 계산
@@ -177,7 +177,7 @@ export default function GrowthDiary() {
                                             <img src="/img/Ggoggo-002.png" />
                                             <div>등록된 기록이 없습니다!</div>
 
-                                            <button
+                                            <button className='button-black button-md'
                                                 onClick={() => {
                                                     setOpenAddModal(true);
                                                 }}
@@ -209,7 +209,7 @@ export default function GrowthDiary() {
                                     <div>등록된 아이가 없습니다!</div>
 
                                     <Link to="/Mypage">
-                                        <button>
+                                        <button className='button-black button-lg'>
                                             아이 등록하기
                                             <img
                                                 src="../img/icons/i-chevron-right-s28.svg"

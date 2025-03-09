@@ -128,10 +128,9 @@ const SignupForm: React.FC = () => {
   return (
     <main>
       <div className="centerWrapper">
-        <div className="contentsSectionWrap max-w-[35rem]">
+        <div className="contentsSectionWrap">
           <h2>이메일로 가입하기</h2>
-
-          <section className="flex flex-col h-full  justify-between w-full">
+          <section className="contentsArea">
             <div className="gap-[1.5rem] flex flex-col">
               <div>
                 <Input

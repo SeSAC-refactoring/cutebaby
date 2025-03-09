@@ -3,7 +3,7 @@ header {
   sm:border-t-0 sm:border-b-2;
 
   .centerWrapper {
-    @apply sm:place-content-between;
+    @apply sm:place-content-between flex-wrap sm:flex-nowrap;
   }
 
   .logo {
@@ -22,6 +22,11 @@ header {
         @apply bg-gray-1;
       }
 
+      &:focus {
+        @apply border-purple-7 border-2;
+        @apply shadow-[0px_0px_0px_4px_rgba(150,140,197,0.40)];
+      }
+
       img {
         @apply w-8 h-8;
         @apply sm:hidden;
@@ -33,7 +38,7 @@ header {
 
         &.active {
           @apply text-gray-8;
-          @apply xs:text-gray-10 xs:font-bd;
+          @apply xs:font-bd;
         }
       }
     }

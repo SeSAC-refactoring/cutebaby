@@ -12,12 +12,12 @@
         @apply flex flex-col gap-1;
         @apply px-6 py-4 h-[96px] rounded-3xl border-2 border-blue-3;
 
-        &.banner_first {
-            @include banner-style('first');
-        }
-        &.banner_second {
-            @include banner-style('second');
-        }
+        // &.banner_first {
+        //     @include banner-style('first');
+        // }
+        // &.banner_second {
+        //     @include banner-style('second');
+        // }
 
         button {
             justify-content: start;

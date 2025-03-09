@@ -62,25 +62,25 @@ export default function SelectLogin() {
   return (
     <main>
       <div className="centerWrapper">
-        <section className="contentsSectionWrap max-w-[35rem]">
+        <section className="contentsSectionWrap">
           <h2>{!selectSignup ? "로그인" : "회원가입"}</h2>
-          <div className=" flex flex-col gap-[3rem] h-full w-full ">
+          <div className="contentsArea">
             <img
-              src="/img/visuals/visual_login_ggomul_01_.svg"
-              className="h-[40%] max-sm:h-[50%]"
+              src="/img/visuals/visual_login_ggomul_01.svg"
+              className="loginJoinVisualArea"
             />
-            <section className="flex items-center flex-col gap-[2.5rem] w-full">
-              <div className="confirmBtnArea w-full flex flex-col items-center gap-2">
+            <section className="confirmBtnArea">
+              <div className="buttonsWrap">
                 {!selectSignup ? (
                   <Link to="/Login" className="w-full">
-                    <button className="emailLoginBtn w-full">
+                    <button className="button-black button-lg w-full">
                       <img src="/img/icons/i-mail-s32.svg"></img>
                       이메일로 로그인하기
                     </button>
                   </Link>
                 ) : (
                   <Link to="/Signup" className="w-full">
-                    <button className="emailLoginBtn w-full">
+                    <button className="button-black button-lg w-full">
                       <img src="/img/icons/i-mail-s32.svg"></img>
                       이메일로 회원가입하기
                     </button>
@@ -93,7 +93,7 @@ export default function SelectLogin() {
                   className="w-full"
                 >
                   {!selectSignup ? (
-                    <button className="kakaoLoginBtn w-full">
+                    <button className="button-kakao button-lg w-full">
                       <img src="/img/icons/i-kakaotalk-s32.svg"></img>
                       카카오톡으로 로그인하기
                     </button>

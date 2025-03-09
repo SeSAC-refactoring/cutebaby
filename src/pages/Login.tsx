@@ -145,7 +145,7 @@ const EmailLogin: React.FC = () => {
       {loading && <Loading />}
 
       <div className="centerWrapper">
-        <div className="contentsSectionWrap max-w-[35rem]">
+        <div className="contentsSectionWrap">
           <h2>이메일로 로그인하기</h2>
           <section
             onKeyDown={enter}
@@ -171,10 +171,10 @@ const EmailLogin: React.FC = () => {
             <section className="flex flex-col h-auto ">
               <div className="flex justify-center gap-4">
                 <Link to="/SelectLogin" className="w-full ">
-                  <button className="cancleBtn w-full">취소</button>
+                  <button className="button-yellow button-lg w-full">취소</button>
                 </Link>
                 <div className="w-full">
-                  <button className="completeBtn w-full" onClick={handleSubmit}>
+                  <button className="button-black button-lg w-full" onClick={handleSubmit}>
                     완료
                   </button>
                 </div>
