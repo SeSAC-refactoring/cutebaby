@@ -1,33 +1,33 @@
-@import '../../abstracts/mixins.scss'; // mixin import
+@import "../../abstracts/mixins.scss"; // mixin import
 
 .vaccinationArea {
-    @apply w-full flex-col gap-4;
+  @apply w-full flex-col gap-4;
 
-    .bannerArea {
-        @apply grid gap-4;
-        @apply sm:grid-cols-2;
+  .bannerArea {
+    @apply grid gap-4;
+    @apply sm:grid-cols-2;
+  }
+
+  .banner {
+    @apply flex flex-col gap-1;
+    @apply px-6 py-4 h-[96px] rounded-3xl border-2 border-blue-3;
+
+    &.banner_first {
+      @include banner-style("first");
+    }
+    &.banner_second {
+      @include banner-style("second");
     }
 
-    .banner {
-        @apply flex flex-col gap-1;
-        @apply px-6 py-4 h-[96px] rounded-3xl border-2 border-blue-3;
+    button {
+      justify-content: start;
 
-        &.banner_first {
-            @include banner-style('first');
-        }
-        &.banner_second {
-            @include banner-style('second');
-        }
-
-        button {
-            justify-content: start;
-            
-            p {
-                @apply text-gray-6 text-xs font-md;
-            }
-            img {
-                @apply w-5 h-5;
-            }
-        }
+      p {
+        @apply text-gray-6 text-xs font-md;
+      }
+      img {
+        @apply w-5 h-5;
+      }
     }
+  }
 }

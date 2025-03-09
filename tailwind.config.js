@@ -19,7 +19,7 @@ export default {
         black: "#000000",
         gray: {
           bg: "#fdfdfd", // background 컬러 // bg-gray-bg 형식으로 사용하세요
-          0: "#f9f9f9", // text-gray-0 형식으로 사용하세요
+          0: "#3B3B41", // text-gray-0 형식으로 사용하세요
           1: "#f3f3f4",
           2: "#e1e1e5",
           3: "#cacad0",
@@ -29,7 +29,6 @@ export default {
           7: "#6f6f7b",
           8: "#5d5d67",
           9: "#4b4b53",
-          10: "#3b3b41",
         },
         coral: {
           0: "#6c4b4a",
@@ -102,7 +101,6 @@ export default {
           7: "#7dadbe",
           8: "#68909e",
           9: "#54747f",
-          10: "#425B64",
         },
         purple: {
           0: "#4f4a68",

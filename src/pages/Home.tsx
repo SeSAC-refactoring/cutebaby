@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <main className="home relative mt-0 sm:mt-12">
-      <div className="centerWrapper gap-6">
+      <div className="centerWrapper">
         {/* 로딩 창 */}
         {loading && <Loading />}
 
@@ -39,6 +39,7 @@ export default function Home() {
             />
           </section>
         </section>
+
         {/* 챗봇 */}
         <ChatbotArea />
       </div>

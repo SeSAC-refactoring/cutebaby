@@ -54,16 +54,20 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                 }}
                 // style={{ height: centers.length === 0 ? '400px' : '900px' }}
             >
-                <div className="TopArea">
+                <section className="topArea">
                     <h2>위탁의료기관 찾기</h2>
                     <div
+                        className="close"
                         onClick={() => {
                             setOpenCentersModal(false);
                         }}
                     >
-                        <img src="/img/icons/i-modal-close-s32.svg" alt="" />
+                        <img
+                            src="/img/icons/i-modal-close-s32.svg"
+                            alt="닫기"
+                        />
                     </div>
-                </div>
+                </section>
                 {/* <div>
                     <p>어린이 국가예방접종 사업 위탁의료기관이란?</p>
                     <p>
@@ -76,7 +80,7 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                         확인하시기 바랍니다.
                     </p>
                 </div> */}
-                <div className="contentsArea">
+                <section className="contentsArea">
                     {/* 데이터를 불러오는 로딩 화면 */}
                     {isFirstLoading && (
                         <div>
@@ -92,7 +96,7 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                         </div>
                     )}
                     {/* 지역(시/도) 선택 드롭다운 */}
-                    <div className="formArea">
+                    <article className="formArea">
                         <select
                             ref={refs.province}
                             value={selectedLocation.province}
@@ -121,6 +125,7 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                                 </option>
                             ))}
                         </select>
+
                         <div>
                             <input
                                 type="text"
@@ -146,14 +151,14 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                                 <img src="/img/search-01.png" alt="검색"></img>
                             </button>
                         </div>
-                    </div>
+                    </article>
 
                     <hr />
 
                     {/* 검색 결과(병원 리스트) 표시 */}
-                    <div className="centerListArea">
+                    <article className="centerListArea">
                         {!hasSearched ? (
-                            <div className="image">
+                            <div className="response-state">
                                 <img
                                     src="/img/visuals/visual_loading_ggomul_03.svg"
                                     alt=""
@@ -164,10 +169,10 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                                 </div>
                             </div>
                         ) : isLoading ? (
-                            <div className="image">
+                            <div className="response-state">
                                 <img
                                     src="/img/visuals/visual_loading_ggomul_04.svg"
-                                    alt=""
+                                    alt="이미지"
                                 />
                                 <div className="text">
                                     <p>자료를 가져오고 있어요..</p>
@@ -176,7 +181,7 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                             </div>
                         ) : !centers ||
                           (centers || []).filter(Boolean).length < 1 ? (
-                            <div className="image">
+                            <div className="response-state">
                                 <img
                                     src="/img/visuals/visual_loading_ggomul_06.svg"
                                     alt=""
@@ -206,8 +211,8 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                                 />
                             </>
                         )}
-                    </div>
-                </div>
+                    </article>
+                </section>
             </div>
         </div>
     );
