@@ -103,7 +103,7 @@ export const GrowthDiaryArea: React.FC<GrowthDiaryAreaProps> = ({
                 <DiaryChart growData={growData} />
               </div>
               <button className="buttonArea">
-                <Link to="/GrowthDiary">
+                <Link to="/GrowthDiary" className="button button-sm button-black">
                   <p>성장일지 보러가기</p>
                   <img src="../img/icons/i-chevron-right-s20.svg" alt="" />
                 </Link>

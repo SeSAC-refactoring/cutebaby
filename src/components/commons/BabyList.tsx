@@ -31,7 +31,7 @@ export const BabyList: React.FC<BabyListProps> = ({
         {onOpenModal && (
           <div className=" flex gap-2">
             <button
-              className="w-[84px] px-3 py-0 flex justify-center items-center gap-0.2 rounded-[10px] bg-blue-4 text-2xs font-bold"
+              className="w-[84px] button-blue button-xs"
               onClick={onOpenModal}
             >
               아이 등록
@@ -57,8 +57,8 @@ export const BabyList: React.FC<BabyListProps> = ({
               onClick={() => handleSelectBaby(baby.babyid)}
               className={`min-w-20 ${
                 baby.babyid === selectedBabyId
-                  ? " flex px-3 py-0 justify-center items-center gap-0.5 bg-blue-7 rounded-full text-xs font-bd text-white h-8 "
-                  : " flex px-3 py-0 justify-center items-center gap-0.5 bg-blue-2 rounded-full text-xs font-bd text-blue-7 h-8"
+                  ? "button-blue button-sm"
+                  : "button-blue button-sm disabled"
               }`}
             >
               {baby.babyname.length > 3

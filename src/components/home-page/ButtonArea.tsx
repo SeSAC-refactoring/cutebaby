@@ -15,8 +15,8 @@ export const ButtonArea: React.FC<ButtonAreaProps> = ({ link, buttonText }) => {
         <span>성장추이 그래프</span>로 확인해보세요📌
       </p>
       <button>
-        <Link to={link}>
-          <p>{buttonText}</p>
+        <Link to={link} className="button button-xs button-blue">
+          {buttonText}
           <img
             src={"/img/icons/i-chevron-right-s20.svg"}
             alt="바로가기 아이콘"
