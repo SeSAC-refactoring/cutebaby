@@ -24,8 +24,8 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
 
   return (
     <div>
-      <div>
-        <h2>성장기록</h2>
+      <div className="flex justify-between">
+        <h2 className="text-4xl font-bd">성장기록</h2>
         <div
           onClick={() => {
             setOpenAddModal(false);
@@ -34,69 +34,68 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
           <img src="/img/icons/i-modal-close-s32.svg" alt="" />
         </div>
       </div>
-      <div>
-        <div>
-          <div>
-            <div>
-              <Input
-                label="측정날짜"
-                type="date"
-                id="inputData"
-                value={newGrowData.inputData}
-                onChange={handleDiaryInputChange}
-                ref={(el) => {
-                  inputRef.current.inputData = el;
-                }}
-              />
-            </div>
-            <div>
-              <Input
-                label="키"
-                type="number"
-                id="height"
-                placeholder="숫자 입력"
-                value={String(newGrowData.height)}
-                onChange={handleDiaryInputChange}
-                onKeyDown={handleKeyDown}
-                ref={(el) => {
-                  inputRef.current.height = el;
-                }}
-              />
-              <span>cm</span>
-            </div>
-            <div>
-              <Input
-                label="몸무게"
-                type="number"
-                id="weight"
-                placeholder="숫자 입력"
-                value={String(newGrowData.weight)}
-                onChange={handleDiaryInputChange}
-                onKeyDown={handleKeyDown}
-                ref={(el) => {
-                  inputRef.current.weight = el;
-                }}
-              />
-              <span>kg</span>
-            </div>
-            <div>
-              <Input
-                label="머리둘레"
-                type="number"
-                id="head"
-                placeholder="숫자 입력"
-                value={String(newGrowData.head)}
-                onChange={handleDiaryInputChange}
-                onKeyDown={handleKeyDown}
-                ref={(el) => {
-                  inputRef.current.head = el;
-                }}
-              />
-              <span>cm</span>
-            </div>
+      <article className="inputArea">
+        <div className="forms">
+          <Input
+            label="측정날짜"
+            type="date"
+            id="inputData"
+            value={newGrowData.inputData}
+            onChange={handleDiaryInputChange}
+            ref={(el) => {
+              inputRef.current.inputData = el;
+            }}
+          />
+
+          <div className="inputWrapper">
+            <Input
+              label="키"
+              type="number"
+              id="height"
+              placeholder="숫자 입력"
+              value={String(newGrowData.height)}
+              onChange={handleDiaryInputChange}
+              onKeyDown={handleKeyDown}
+              ref={(el) => {
+                inputRef.current.height = el;
+              }}
+            />
+            <span>cm</span>
           </div>
 
-          <div>
+          <div className="inputWrapper">
+            <Input
+              label="몸무게"
+              type="number"
+              id="weight"
+              placeholder="숫자 입력"
+              value={String(newGrowData.weight)}
+              onChange={handleDiaryInputChange}
+              onKeyDown={handleKeyDown}
+              ref={(el) => {
+                inputRef.current.weight = el;
+              }}
+            />
+            <span>kg</span>
+          </div>
+
+          <div className="inputWrapper">
+            <Input
+              label="머리둘레"
+              type="number"
+              id="head"
+              placeholder="숫자 입력"
+              value={String(newGrowData.head)}
+              onChange={handleDiaryInputChange}
+              onKeyDown={handleKeyDown}
+              ref={(el) => {
+                inputRef.current.head = el;
+              }}
+            />
+            <span>cm</span>
+          </div>
+
+          <div className="btns">
             <button
               onClick={() =>
                 setNewGrowData({
@@ -108,6 +107,7 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
                   inputData: new Date().toISOString().split("T")[0],
                 })
               }
+              className="button-yellow button-lg"
             >
               초기화
               <img
@@ -120,12 +120,13 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
               style={{
                 cursor: isSubmitting ? "not-allowed" : "pointer",
               }}
+              className="button-black button-lg"
             >
               {isSubmitting ? "저장 중" : "추가하기"}
             </button>
           </div>
         </div>
-      </div>
+      </article>
       <p>
         백분위수란 같은 성별과 연령을 가진 100명을 오름차순으로 나열했을 때 이
         중 몇 번째에 해당되는지를 의미합니다. (예: 97%는 상위 3%를 의미)

@@ -158,14 +158,11 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
           <div className="flex gap-4">
             <button
               onClick={onClose}
-              className="flex h-16 px-[22px] justify-center items-center gap-[6px] flex-[1_0_0] bg-yellow-4 rounded-[18px] text-lg font-bd"
+              className="button button-yellow button-lg w-full"
             >
               취소
             </button>
-            <button
-              onClick={rewrite}
-              className="flex h-16 px-[22px] justify-center items-center gap-[6px] flex-[1_0_0] bg-gray-3 rounded-[18px] text-lg font-bd text-white"
-            >
+            <button onClick={rewrite} className="button-black button-lg w-full">
               완료
             </button>
           </div>

@@ -50,13 +50,13 @@ export const DelbabyModal: React.FC<DelbabyProps> = ({
           <div className="flex gap-4">
             <button
               onClick={goBack}
-              className="flex h-16 px-[22px] justify-center items-center gap-[6px] flex-[1_0_0] bg-yellow-4 rounded-[18px] text-lg font-bd"
+              className="button button-yellow button-lg w-full"
             >
               취소
             </button>
             <button
               onClick={handleDelete}
-              className="flex h-16 px-[22px] justify-center items-center gap-[6px] flex-[1_0_0] bg-gray-0 rounded-[18px] text-lg font-bd text-white"
+              className="button-black button-lg w-full"
             >
               삭제
             </button>
