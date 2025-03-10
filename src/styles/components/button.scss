@@ -1,10 +1,16 @@
-button {
-  @apply flex justify-center items-center font-bd;
+button,
+.button {
+  @apply flex justify-center items-center font-bd border-2 border-transparent;
   min-width: max-content;
 
-  &:focus {
-    @apply border-purple-7 border-2;
+  &:focus,
+  &:focus-visible {
+    @apply border-purple-7;
     @apply shadow-[0px_0px_0px_4px_rgba(150,140,197,0.40)];
+  }
+
+  &:active {
+    @apply border-transparent shadow-none;
   }
 }
 
@@ -92,7 +98,8 @@ button {
 // 버튼 사이즈
 @mixin button-size($height, $padding, $gap, $rounded, $icon-size) {
   height: $height;
-  padding: auto $padding;
+  padding-left: $padding;
+  padding-right: $padding;
   gap: $gap;
   border-radius: $rounded;
 
@@ -123,7 +130,7 @@ button {
 }
 
 .button-xs {
-  @include button-size(32px, 12px, 2px, 10px, 14px);
+  @include button-size(36px, 12px, 2px, 10px, 14px);
   @apply text-2xs;
 }
 

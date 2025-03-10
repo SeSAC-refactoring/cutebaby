@@ -17,16 +17,31 @@ select {
   }
 }
 
-// input 태그 주소검색
-input {
-  @apply px-4 py-4 items-center;
-  @apply bg-yellow-1 rounded-2xl border-2 border-gray-6;
-  @apply text-sm font-rg;
+// input
+.inputWrap {
+  @apply grow flex flex-wrap flex-col gap-2;
 
-  &:focus {
-    @apply border-purple-7 border-2;
-    @apply shadow-[0px_0px_0px_4px_rgba(150,140,197,0.40)];
+  label {
+    @apply grow text-xs font-bd text-gray-8;
   }
+}
+
+input {
+  @apply w-full px-4 py-4 items-center bg-yellow-1 rounded-2xl border-2 border-gray-6 text-sm font-rg
+  transition-all duration-200 ease-in-out
+  focus:border-purple-7 focus:shadow-[0px_0px_0px_4px_rgba(150,140,197,0.40)];
+}
+
+// 크롬 기본스타일 리셋
+input:-webkit-autofill {
+  background-color: #fef9f1 !important;
+  box-shadow: 0 0 0px 1000px #fef9f1 inset !important;
+  -webkit-text-fill-color: #3b3b41 !important;
+}
+
+input:-webkit-autofill:focus {
+  box-shadow: 0 0 0 4px rgba(150, 140, 197, 0.4) !important;
+  border-color: #968cc5 !important;
 }
 
 // disabled 상태일 때

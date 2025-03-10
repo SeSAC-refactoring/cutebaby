@@ -1,8 +1,6 @@
 // 전체 reset
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  @apply box-border;
 
   &:focus-visible {
     outline: none;
@@ -12,8 +10,8 @@
 body {
   font-family: "Pretendard";
   @apply min-h-[844px] h-[100vh] overflow-y-hidden flex flex-col
-    sm:bg-yellow-1;
-  @apply text-gray-0 text-bs font-rg;
+  text-gray-0 text-bs font-rg
+  sm:bg-yellow-1;
 }
 
 // 전역 root div 스타일 // header를 제외한 나머지 영역
@@ -34,47 +32,8 @@ body {
   }
 }
 
-// header, main 중앙 정렬
-header,
-main {
-  @apply w-full flex justify-center relative;
-
-  .centerWrapper {
-    @apply min-w-[390px] max-w-[1280px] w-full min-h-0 h-full grow flex gap-0
-    sm:px-6 sm:gap-6;
-  }
-}
-
-main {
-  @apply min-h-0 sm:mt-12 grow items-start;
-
-  .centerWrapper {
-    @apply justify-center max-md:overflow-x-hidden max-md:overflow-y-scroll;
-
-    .contentsSectionWrap {
-      @apply w-full min-h-0 grow px-6 py-12 flex flex-col gap-6 items-center
-      sm:max-w-[35rem] sm:bg-white sm:border-2 sm:border-gray-6 sm:rounded-3xl sm:p-10;
-      h2 {
-        @apply self-start;
-      }
-
-      .contentsArea {
-        @apply grow w-full flex flex-col justify-between gap-12 flex-nowrap xs:flex-wrap;
-
-        .loginJoinVisualArea {
-          @apply grow py-6 sm:py-0;
-        }
-
-        .confirmBtnArea {
-          @apply flex flex-col items-center gap-8;
-
-          .buttonsWrap {
-            @apply w-full flex flex-col gap-2;
-          }
-        }
-      }
-    }
-  }
+a {
+  cursor: pointer;
 }
 
 // 제목 태그 스타일
@@ -92,6 +51,90 @@ h3 {
 }
 h4 {
   @apply text-bs text-gray-8;
+}
+
+// header, main 중앙 정렬
+header,
+main {
+  @apply w-full flex justify-center relative;
+
+  .centerWrapper {
+    @apply min-w-[390px] max-w-[1280px] w-full min-h-0 h-full grow flex gap-0
+    sm:px-6 sm:gap-6;
+  }
+}
+
+main {
+  @apply min-h-0 sm:mt-12 grow items-start;
+  height: -webkit-fill-available;
+
+  .centerWrapper {
+    @apply justify-center max-md:overflow-x-hidden max-md:overflow-y-scroll;
+
+    // 기본 main
+    .contentsWrap {
+      @apply w-full min-h-0 grow px-6 pt-10 pb-6 flex flex-col gap-6 items-center
+      sm:bg-white sm:border-2 sm:border-gray-6 sm:rounded-3xl sm:p-10;
+      h2 {
+        @apply self-start;
+      }
+
+      .contentsArea {
+        @apply grow w-full flex flex-col flex-nowrap overflow-y-auto;
+      }
+
+      .confirmBtnArea {
+        @apply w-full flex;
+
+        .buttonsWrap {
+          @apply w-full grid grid-cols-2 gap-4;
+        }
+      }
+    }
+
+    .loginSignupWrap,
+    .loginFormWrap,
+    .signupFormWrap {
+      background-image: var(--gradient-w-y-1);
+      @apply sm:max-w-[35rem] sm:bg-none;
+    }
+
+    // 로그인, 회원가입 선택
+    .loginSignupWrap {
+      @apply pb-10;
+      .contentsArea {
+        @apply flex-wrap overflow-y-hidden;
+
+        .loginSignupVisualArea {
+          @apply grow;
+        }
+      }
+
+      .loginSignupConfirmBtnArea {
+        @apply w-full flex flex-col items-center gap-8;
+
+        .buttonsWrap {
+          @apply w-full flex flex-col gap-0;
+
+          a:last-child button {
+            @apply mt-2;
+          }
+        }
+      }
+    }
+
+    // 이메일 회원가입 폼
+    .signupFormWrap {
+      .contentsArea {
+        @apply gap-6;
+      }
+
+      .confirmBtnArea {
+        .buttonsWrap {
+        }
+      }
+    }
+  }
 }
 
 :root {
@@ -224,4 +267,15 @@ h4 {
   --kakao-disabled: theme("colors.kakao.2");
   --kakao-hovered: theme("colors.kakao.4");
   --kakao-pressed: theme("colors.kakao.7");
+
+  --gradient-w-y-1: linear-gradient(
+    180deg,
+    white 0%,
+    theme("colors.yellow.1") 100%
+  );
+  --gradient-w-y-2: linear-gradient(
+    180deg,
+    white 25%,
+    theme("colors.yellow.2") 100%
+  );
 }

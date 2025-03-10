@@ -128,10 +128,9 @@ const SignupForm: React.FC = () => {
   return (
     <main>
       <div className="centerWrapper">
-        <div className="contentsSectionWrap">
+        <div className="contentsWrap signupFormWrap">
           <h2>이메일로 가입하기</h2>
           <section className="contentsArea">
-            <div className="gap-[1.5rem] flex flex-col">
               <div>
                 <Input
                   label="이름"
@@ -160,7 +159,10 @@ const SignupForm: React.FC = () => {
                       inputRef.current.email = el;
                     }}
                   />
-                  <button className="emailCheckBtn" onClick={emailCheck}>
+                  <button
+                    className="button-md button-blue"
+                    onClick={emailCheck}
+                  >
                     중복체크
                   </button>
                 </div>
@@ -196,23 +198,23 @@ const SignupForm: React.FC = () => {
                 />
                 {messages.confirmPassword && <p>{messages.confirmPassword}</p>}
               </div>
+          </section>
+          <section className="confirmBtnArea">
+            <div className="buttonsWrap signupFormBtnWrap">
+              <Link
+                to="/SelectLogin"
+                className="button button-yellow button-lg w-full"
+              >
+                취소
+              </Link>
+              <button
+                disabled={!isFormValid}
+                className="button-black button-lg w-full"
+                onClick={handleSubmit}
+              >
+                완료
+              </button>
             </div>
-            <section className="flex flex-col h-auto ">
-              <div className="flex justify-center gap-4">
-                <Link to="/SelectLogin" className="w-full ">
-                  <button className="cancleBtn w-full">취소</button>
-                </Link>
-                <div className="w-full">
-                  <button
-                    disabled={!isFormValid}
-                    className="completeBtn w-full"
-                    onClick={handleSubmit}
-                  >
-                    완료
-                  </button>
-                </div>
-              </div>
-            </section>
           </section>
         </div>
       </div>

@@ -1,12 +1,10 @@
 $visual-home: url("../../../../public/img/visuals/visual_home_ggomul_big.svg")
   no-repeat calc(100% - 24px) calc(100% + 16px);
-$gradient-w-y: linear-gradient(180deg, #fff 0%, theme("colors.yellow.1") 100%)
-  center;
 
 main.home .topArea {
   @apply pt-14 px-6 pb-8 flex flex-col gap-2 items-start
   sm:mt-0 sm:pl-0 sm:pr-0 sm:pt-0 sm:pb-8;
-  background: $visual-home, $gradient-w-y;
+  background: $visual-home, var(--gradient-w-y-2);
   background-size: 150px, auto;
 
   // 768px 이상일 때
