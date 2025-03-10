@@ -113,7 +113,7 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
             <div className="w-full flex justify-end ">
               <div className="w-[90px] flex gap-2 h-[26px]">
                 <button
-                  className="bg-coral-4 rounded-[8px] text-3xs font-md w-full"
+                  className="bg-coral-4 rounded-[8px] text-2xs font-bd w-full"
                   onClick={() => setDelModal(true)}
                 >
                   삭제
@@ -127,7 +127,7 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
                 )}
 
                 <button
-                  className="bg-yellow-4 flex rounded-[8px] text-3xs font-md w-full gap-[2px] items-center justify-center "
+                  className="bg-yellow-4 flex rounded-[8px] text-2xs font-bd w-full gap-[2px] items-center justify-center  "
                   onClick={() => setUpdateBaby(true)}
                 >
                   수정

@@ -118,31 +118,12 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
   }, [resetTrigger]);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
+    <div className="flex flex-col items-center">
       {imagePreview && (
-        <div
-          style={{
-            height: "240px",
-            position: "relative",
-            top: "60px",
-            right: "30px",
-          }}
-        >
+        <div className="h-[240px] top-[60px] right-[30px] relative">
           <img src={imagePreview} alt="아기 사진 미리보기" />
           <button
-            style={{
-              fontSize: "20px",
-              position: "relative",
-              bottom: "200px",
-              left: "186px",
-              fontWeight: "bold",
-            }}
+            className="text-bs relative bottom-[200px] left-[186px] font-bd"
             onClick={handleCancelImage}
           >
             X
@@ -163,11 +144,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
             onClick={() => fileInputRef.current?.click()}
           >
             사진 등록
-            {/* <img
-              
-              src="img/icons/i-profile-photo-s20.svg"
-              alt="이미지 아이콘"
-            /> */}
+            <img src="img/icons/i-profile-photo-s20.svg" alt="이미지 아이콘" />
           </button>
         </>
       )}
