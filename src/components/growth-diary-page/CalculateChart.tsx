@@ -104,129 +104,127 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
     const headChartOptions = calculateChartOptions('머리둘레 (cm)'); // 머리둘레 차트
 
     return (
-        <div>
-            {/* 그래프 */}
-            <div>
-                {/* 신장 그래프 */}
-                {childData.height && (
-                    <div className="result">
-                        <p>키</p>
-                        <div>
-                            <div>
-                                <span>우리아이 키</span>
-                                <strong>{childData.height} cm</strong>
-                            </div>
-                            <div>
-                                <p>
-                                    <span>백분위</span>
-                                    <strong>{percentiles.height} %</strong>
-                                </p>
-                                <p>
-                                    <span>또래의</span>
-                                    <strong>
-                                        {percentiles.height
-                                            ? `상위 ${100 - percentiles.height}%`
-                                            : '데이터 없음'}
-                                    </strong>
-                                    <span>에 해당</span>
-                                </p>
-                            </div>
+        <div className="results">
+            <p>계산 결과</p>
+            {/* 신장 그래프 */}
+            {childData.height && (
+                <div className="result">
+                    <p className="result-title">키</p>
+                    <div className="result-summary">
+                        <div className="result-value">
+                            <span>우리아이 키</span>
+                            <strong>{childData.height} cm</strong>
                         </div>
-                        <div>
-                            <Line
-                                data={createChartData(
-                                    p97Height,
-                                    p3Height,
-                                    currentChildHeight,
-                                    '키'
-                                )}
-                                options={heightChartOptions}
-                            />
+                        <div className="result-percentile">
+                            <p className="percentile-value">
+                                <span>백분위</span>
+                                <strong>{percentiles.height} %</strong>
+                            </p>
+                            <p className="percentile-description">
+                                <span>또래의 </span>
+                                <strong>
+                                    {percentiles.height
+                                        ? `상위 ${100 - percentiles.height}%`
+                                        : '데이터 없음'}
+                                </strong>
+                                <span>에 해당</span>
+                            </p>
                         </div>
                     </div>
-                )}
+                    <div className="result-chart">
+                        <Line
+                            data={createChartData(
+                                p97Height,
+                                p3Height,
+                                currentChildHeight,
+                                '키'
+                            )}
+                            options={heightChartOptions}
+                        />
+                    </div>
+                </div>
+            )}
 
-                {/* 몸무게 그래프 */}
-                {childData.weight && (
-                    <div>
-                        <p>몸무게</p>
-                        <div>
-                            <div>
-                                <span>우리아이 몸무게:</span>
-                                <strong>{childData.weight}cm</strong>
-                            </div>
-                            <div>
-                                <p>
-                                    <span>백분위</span>
-                                    <strong>{percentiles.weight}%</strong>
-                                </p>
-                                <p>
-                                    또래의
-                                    <strong>
-                                        {percentiles.weight
-                                            ? `상위 ${100 - percentiles.weight}%`
-                                            : '데이터 없음'}
-                                    </strong>
-                                    <span>에 해당</span>
-                                </p>
-                            </div>
+            {/* 몸무게 그래프 */}
+            {childData.weight && (
+                <div className="result">
+                    <p className="result-title">몸무게</p>
+                    <div className="result-summary">
+                        <div className="result-value">
+                            <span>우리아이 몸무게:</span>
+                            <strong>{childData.weight}cm</strong>
                         </div>
-                        <div>
-                            <Line
-                                data={createChartData(
-                                    p97Weight,
-                                    p3Weight,
-                                    currentChildWeight,
-                                    '몸무게'
-                                )}
-                                options={weightChartOptions}
-                            />
+                        <div className="result-percentile">
+                            <p className="percentile-value">
+                                <span>백분위</span>
+                                <strong>{percentiles.weight}%</strong>
+                            </p>
+                            <p className="percentile-discription">
+                                또래의
+                                <strong>
+                                    {percentiles.weight
+                                        ? `상위 ${100 - percentiles.weight}%`
+                                        : '데이터 없음'}
+                                </strong>
+                                <span>에 해당</span>
+                            </p>
                         </div>
                     </div>
-                )}
+                    <div className="result-chart">
+                        <Line
+                            data={createChartData(
+                                p97Weight,
+                                p3Weight,
+                                currentChildWeight,
+                                '몸무게'
+                            )}
+                            options={weightChartOptions}
+                        />
+                    </div>
+                </div>
+            )}
 
-                {/* 머리둘레 그래프 */}
-                {childData.headCircumference && (
-                    <div>
-                        <p>머리둘레</p>
-                        <div>
-                            <div>
-                                <span>우리아이 머리둘레</span>
-                                <strong>{childData.headCircumference}cm</strong>
-                            </div>
-                            <div>
-                                <p>
-                                    <span>백분위</span>
-                                    <strong>
-                                        {percentiles.headCircumference}%
-                                    </strong>
-                                </p>
-                                <p>
-                                    <span>또래의</span>
-                                    <strong>
-                                        {percentiles.headCircumference
-                                            ? `상위 ${100 - percentiles.headCircumference}%`
-                                            : '데이터 없음'}
-                                    </strong>
-                                    <span>에 해당</span>
-                                </p>
-                            </div>
+            {/* 머리둘레 그래프 */}
+            {childData.headCircumference && (
+                <div className="result">
+                    <p className="result-title">머리둘레</p>
+                    <div className="result-summary">
+                        <div className="result-value">
+                            <span>우리아이 머리둘레</span>
+                            <strong>{childData.headCircumference}cm</strong>
                         </div>
-
-                        <div>
-                            <Line
-                                data={createChartData(
-                                    p97HeadCircumference,
-                                    p3HeadCircumference,
-                                    currentChildHeadCircumference,
-                                    '머리둘레'
-                                )}
-                                options={headChartOptions}
-                            />
+                        <div className="result-percentile">
+                            <p className="percentile-value">
+                                <span>백분위</span>
+                                <strong>
+                                    {percentiles.headCircumference}%
+                                </strong>
+                            </p>
+                            <p className="percentile-description">
+                                <span>또래의</span>
+                                <strong>
+                                    {percentiles.headCircumference
+                                        ? `상위 ${100 - percentiles.headCircumference}%`
+                                        : '데이터 없음'}
+                                </strong>
+                                <span>에 해당</span>
+                            </p>
                         </div>
                     </div>
-                )}
-            </div>
+
+                    <div className="result-chart">
+                        <Line
+                            data={createChartData(
+                                p97HeadCircumference,
+                                p3HeadCircumference,
+                                currentChildHeadCircumference,
+                                '머리둘레'
+                            )}
+                            options={headChartOptions}
+                        />
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
