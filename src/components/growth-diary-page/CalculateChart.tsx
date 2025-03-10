@@ -151,7 +151,7 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
                     <p className="result-title">몸무게</p>
                     <div className="result-summary">
                         <div className="result-value">
-                            <span>우리아이 몸무게:</span>
+                            <span>우리아이 몸무게</span>
                             <strong>{childData.weight}cm</strong>
                         </div>
                         <div className="result-percentile">
@@ -160,7 +160,7 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
                                 <strong>{percentiles.weight}%</strong>
                             </p>
                             <p className="percentile-discription">
-                                또래의
+                                <span>또래의 </span>
                                 <strong>
                                     {percentiles.weight
                                         ? `상위 ${100 - percentiles.weight}%`
@@ -201,7 +201,7 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
                                 </strong>
                             </p>
                             <p className="percentile-description">
-                                <span>또래의</span>
+                                <span>또래의 </span>
                                 <strong>
                                     {percentiles.headCircumference
                                         ? `상위 ${100 - percentiles.headCircumference}%`
