@@ -3,7 +3,7 @@ header {
   sm:border-t-0 sm:border-b-2;
 
   .centerWrapper {
-    @apply sm:place-content-between;
+    @apply sm:place-content-between flex-wrap sm:flex-nowrap;
   }
 
   .logo {
@@ -33,7 +33,7 @@ header {
 
         &.active {
           @apply text-gray-8;
-          @apply xs:text-gray-10 xs:font-bd;
+          @apply xs:font-bd;
         }
       }
     }

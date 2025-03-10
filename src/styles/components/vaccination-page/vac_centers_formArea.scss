@@ -13,9 +13,9 @@
             @apply flex-1 min-w-0;
         }
 
-        button.searchBtn {
-            @include button-color(blue);
-            @include button-size(medium);
-        }
+        // button.searchBtn {
+        //     @include button-color(blue);
+        //     @include button-size(medium);
+        // }
     }
 }
