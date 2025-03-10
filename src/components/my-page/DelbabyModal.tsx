@@ -43,11 +43,23 @@ export const DelbabyModal: React.FC<DelbabyProps> = ({
   return (
     <div style={{ left: "0" }} onClick={goBack} className="modalBg">
       <div className="smallModal">
-        <div style={{ flexDirection: "column", alignItems: "center" }}>
-          <div>정말 삭제하시겠습니까?</div>
-          <div>
-            <button onClick={goBack}>취소</button>
-            <button onClick={handleDelete}>삭제</button>
+        <div className="flex flex-col justify-center items-center gap-8">
+          <div className="text-xl sm:text-2xl font-bd">
+            정말 삭제하시겠습니까?
+          </div>
+          <div className="flex gap-4">
+            <button
+              onClick={goBack}
+              className="flex h-16 px-[22px] justify-center items-center gap-[6px] flex-[1_0_0] bg-yellow-4 rounded-[18px] text-lg font-bd"
+            >
+              취소
+            </button>
+            <button
+              onClick={handleDelete}
+              className="flex h-16 px-[22px] justify-center items-center gap-[6px] flex-[1_0_0] bg-gray-0 rounded-[18px] text-lg font-bd text-white"
+            >
+              삭제
+            </button>
           </div>
         </div>
       </div>

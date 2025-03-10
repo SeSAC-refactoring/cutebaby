@@ -57,8 +57,8 @@ export const BabyList: React.FC<BabyListProps> = ({
               onClick={() => handleSelectBaby(baby.babyid)}
               className={`min-w-20 ${
                 baby.babyid === selectedBabyId
-                  ? "button-blue button-sm"
-                  : "button-blue button-sm disabled"
+                  ? "button-blue button-xs sm:button-sm"
+                  : "button-blue button-xs sm:button-sm disabled"
               }`}
             >
               {baby.babyname.length > 3
