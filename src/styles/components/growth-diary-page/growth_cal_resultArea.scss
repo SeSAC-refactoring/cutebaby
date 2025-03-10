@@ -1,0 +1,14 @@
+article.resultArea {
+    @apply flex flex-col gap-12;
+
+    // @apply sm:block;
+    & .defaultState {
+        @apply hidden sm:block;
+    }
+
+    & .result {
+        @apply flex flex-col;
+        @apply border-4 border-blue-3 rounded-[2rem];
+        @apply px-6 py-6;
+    }
+}

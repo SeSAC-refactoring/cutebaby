@@ -86,30 +86,60 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
                     {/* 차트 */}
                     <article className="resultArea">
                         {show ? (
-                            isLoading ? (
-                                <div className="response-state">
-                                    <img
-                                        src="/img/visuals/visual_loading_ggomul_04.svg"
-                                        alt="이미지"
-                                    />
-                                    <div className="text">
-                                        <p>자료를 가져오고 있어요..</p>
-                                        <p>조금만 기다려주세요..</p>
-                                    </div>
+                            <div
+                                onClick={() => {
+                                    setOpenCalModal(false);
+                                }}
+                                className="modalBg"
+                            >
+                                <div
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                    }}
+                                    className="whiteboxModal growthCalculate"
+                                >
+                                    <section className="topArea">
+                                        <h2>성장상태 측정계산 결과</h2>
+
+                                        <div
+                                            className="close"
+                                            onClick={() => {
+                                                setOpenCalModal(false);
+                                            }}
+                                        >
+                                            <img
+                                                src="/img/icons/i-modal-close-s32.svg"
+                                                alt="닫기"
+                                            />
+                                        </div>
+                                    </section>
+
+                                    {isLoading ? (
+                                        <div className="response-state">
+                                            <img
+                                                src="/img/visuals/visual_loading_ggomul_04.svg"
+                                                alt="이미지"
+                                            />
+                                            <div className="text">
+                                                <p>자료를 가져오고 있어요..</p>
+                                                <p>조금만 기다려주세요..</p>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <CalculateChart
+                                            childData={childData}
+                                            filteredLmsDataByGender={
+                                                filteredLmsDataByGender
+                                            }
+                                            filteredLmsDataByMonths={
+                                                filteredLmsDataByMonths
+                                            }
+                                            percentileData={percentileData}
+                                            percentiles={percentiles}
+                                        />
+                                    )}
                                 </div>
-                            ) : (
-                                <CalculateChart
-                                    childData={childData}
-                                    filteredLmsDataByGender={
-                                        filteredLmsDataByGender
-                                    }
-                                    filteredLmsDataByMonths={
-                                        filteredLmsDataByMonths
-                                    }
-                                    percentileData={percentileData}
-                                    percentiles={percentiles}
-                                />
-                            )
+                            </div>
                         ) : (
                             <CalculateDefaultState />
                         )}

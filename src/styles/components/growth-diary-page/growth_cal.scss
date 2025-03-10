@@ -1,12 +1,10 @@
 @import './growth_cal_inputArea.scss';
+@import './growth_cal_resultArea.scss';
 
 .growthCalculate {
     @apply pb-6;
 
     & .contentsArea {
-        & > article.resultArea {
-            @apply hidden;
-            @apply sm:block;
-        }
+        @apply sm:gap-12;
     }
 }
