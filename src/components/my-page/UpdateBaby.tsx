@@ -126,7 +126,7 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
                 />
               </div>
             </div>
-            <div className="w-full ">
+            <div className="w-full flex flex-col gap-6">
               <Input
                 label="이름"
                 placeholder="이름 입력"

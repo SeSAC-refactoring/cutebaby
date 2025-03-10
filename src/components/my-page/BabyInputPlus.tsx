@@ -106,7 +106,13 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
         <div>
           <div className="w-full flex justify-center flex-col items-center">
             <div>
-              {defaultImg && <img src="/img/Profile.png" alt="아기 사진" />}
+              {defaultImg && (
+                <img
+                  src="/img/Profile.png"
+                  alt="아기 사진"
+                  className="w-[140px] h-[140px]"
+                />
+              )}
               <div
                 style={{
                   position: "relative",
@@ -126,7 +132,7 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
                 />
               </div>
             </div>
-            <div>
+            <div className="w-full flex flex-col gap-6">
               <Input
                 label="이름"
                 placeholder="이름을 입력해주세요."
