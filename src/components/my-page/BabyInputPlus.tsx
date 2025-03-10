@@ -113,13 +113,7 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
                   className="w-[140px] h-[140px]"
                 />
               )}
-              <div
-                style={{
-                  position: "relative",
-                  bottom: "60px",
-                  left: "30px",
-                }}
-              >
+              <div className="relative bottom-[45px] left-[8px]">
                 <ImageUploader
                   setDefaultImg={setDefaultImg}
                   onImageSelect={(file) =>
