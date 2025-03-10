@@ -197,7 +197,7 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
                   value={formData.email}
                   onChange={handleChange}
                 />
-                <button className="emailCheckBtn" onClick={emailCheck}>
+                <button className="button-md button-blue" onClick={emailCheck}>
                   중복 체크
                 </button>
               </div>
@@ -209,10 +209,16 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
           </div>
           <section className="flex flex-col h-auto ">
             <div className="flex justify-center gap-4">
-              <button onClick={modalState} className="cancleBtn w-full">
+              <button
+                onClick={modalState}
+                className="button button-yellow button-lg w-full"
+              >
                 취소
               </button>
-              <button className="completeBtn w-full" onClick={handleUpdate}>
+              <button
+                className="button-black button-lg w-full"
+                onClick={handleUpdate}
+              >
                 완료
               </button>{" "}
             </div>

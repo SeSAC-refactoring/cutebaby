@@ -71,8 +71,12 @@ export default function GrowthDiary() {
           onClick={() => {
             setOpenAddModal(false);
           }}
+          className="modalBg"
         >
-          <div onClick={(e) => e.stopPropagation()}>
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="whiteboxModal growthCalculate"
+          >
             <div>
               <DiaryInputArea
                 setOpenAddModal={setOpenAddModal}
