@@ -1,29 +1,31 @@
-$visual-home: url("../../../../public/img/visuals/visual_home_ggomul_big.svg")
-  no-repeat calc(100% - 24px) calc(100% + 16px);
+$visual-home: url('../../../../public/img/visuals/visual_home_ggomul_big.svg')
+    no-repeat calc(100% - 24px) calc(100% + 16px);
 
-main.home .topArea {
-  @apply pt-14 px-6 pb-8 flex flex-col gap-2 items-start
-  sm:mt-0 sm:pl-0 sm:pr-0 sm:pt-0 sm:pb-8;
-  background: $visual-home, var(--gradient-w-y-2);
-  background-size: 150px, auto;
+main.home section.HomeTopArea {
+    @apply pt-14 px-6 pb-8 flex flex-col gap-2 items-start;
+    @apply sm:mt-0 sm:pl-0 sm:pr-0 sm:pt-0 sm:pb-8;
+    background: $visual-home, var(--gradient-w-y-2);
+    background-size: 150px, auto;
 
-  // 768px 이상일 때
-  @media (min-width: 768px) {
-    background-size: 168px, 0;
-    background-position: right calc(100% + 24px), center;
-  }
-
-  .greeting {
-    @apply text-xl font-md;
-    @apply sm:text-2xl;
-
-    strong {
-      @apply font-bd;
+    // 768px 이상일 때
+    @media (min-width: 768px) {
+        background-size: 168px, 0;
+        background-position:
+            right calc(100% + 24px),
+            center;
     }
-  }
 
-  .description {
-    @apply w-[50vw] h-10 text-gray-7 text-bs font-rg;
-    @apply sm:w-auto;
-  }
+    .greeting {
+        @apply text-xl font-md;
+        @apply sm:text-2xl;
+
+        strong {
+            @apply font-bd;
+        }
+    }
+
+    .description {
+        @apply w-[50vw] h-10 text-gray-7 text-bs font-rg;
+        @apply sm:w-auto;
+    }
 }

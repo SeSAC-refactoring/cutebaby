@@ -4,7 +4,7 @@
 
     .whiteboxModal {
         @apply bg-white w-full min-w-80 h-full px-6 pt-6;
-        @apply flex flex-col gap-6;
+        @apply flex flex-col gap-6 justify-start;
 
         @apply sm:w-auto sm:h-[944px] sm:gap-12; // 수정 필요
         @apply sm:px-20 sm:py-20;

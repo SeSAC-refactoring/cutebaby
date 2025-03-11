@@ -83,16 +83,15 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                 <section className="contentsArea">
                     {/* 데이터를 불러오는 로딩 화면 */}
                     {isFirstLoading && (
-                        <div>
+                        <div className="response-state">
                             <img
                                 src="/img/visuals/visual_loading_ggomul_04.svg"
                                 alt=""
                             />
-                            <p>
-                                자료를 가져오고 있어요..
-                                <br />
-                                조금만 기다려주세요..
-                            </p>
+                            <div className="text">
+                                <p>자료를 가져오고 있어요..</p>
+                                <p>조금만 기다려주세요..</p>
+                            </div>
                         </div>
                     )}
                     {/* 지역(시/도) 선택 드롭다운 */}
