@@ -12,10 +12,10 @@
             @apply flex justify-between;
             @apply relative; // 백신접종목록을 위치시키기 위한 기준점
 
-            // button {
-            //     @include button-color(yellow);
-            //     @include button-size(xsmall);
-            // }
+            button {
+                @extend .button-yellow;
+                @extend .button-xs;
+            }
         }
 
         .address,
