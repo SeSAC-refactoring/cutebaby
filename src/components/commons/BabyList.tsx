@@ -25,7 +25,7 @@ export const BabyList: React.FC<BabyListProps> = ({
 
     return (
         // 마이페이지의 babylist 스타일의 경우 아이 등록 버튼까지 감는 div
-        <div className="w-full overflow-auto">
+        <div className="w-full overflow-x-auto">
             <div className="flex gap-2 py-4">
                 {/* 마이페이지의 경우에만 아이등록 버튼 생김 */}
                 {onOpenModal && (
@@ -49,7 +49,7 @@ export const BabyList: React.FC<BabyListProps> = ({
                         <button
                             key={baby.babyid}
                             onClick={() => handleSelectBaby(baby.babyid)}
-                            className={`min-w-20 ${
+                            className={`${
                                 baby.babyid === selectedBabyId
                                     ? 'button-blue button-sm'
                                     : 'button-blue button-sm disabled'
