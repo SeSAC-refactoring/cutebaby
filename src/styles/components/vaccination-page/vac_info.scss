@@ -1,0 +1,35 @@
+.informationArea {
+    @apply flex flex-col gap-6;
+
+    & > .information-header {
+        @apply flex flex-col gap-2;
+        @apply bg-yellow-2 rounded-3xl px-6 py-6;
+
+        & > p {
+            @apply text-gray-8 text-sm font-md;
+        }
+    }
+
+    & > ul.information-list {
+        @apply flex flex-col gap-6;
+
+        & > li {
+            @apply flex flex-col gap-2;
+            @apply border-2 border-blue-4 rounded-3xl px-6 py-6;
+            @apply sm:rounded-[2rem];
+
+            & > div.information-title {
+                @apply flex gap-2;
+
+                & > span {
+                    @apply text-blue-7;
+                }
+            }
+
+            & > p {
+                @apply whitespace-pre-line; // \n을 인식하여 줄바꿈 적용
+                @apply text-gray-8;
+            }
+        }
+    }
+}
