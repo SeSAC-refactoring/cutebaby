@@ -9,6 +9,7 @@ export const Disease: React.FC = () => {
         {diseasesName.map((disease, i) => (
           <li
             key={i}
+            id={String(i)}
             style={{
               height:
                 i === 2 || i === 5 || i === 6 || i === 7 || i === 10

@@ -5,12 +5,16 @@ import { VaccineType } from "./VaccineType";
 import { DoseDate } from "./DoseDate";
 import { TotalDoses } from "./TotalDoses";
 import { VaccinationSchedule } from "./VaccinationSchedule";
+import { diseasesName } from "./VaccinationTableData";
 import { vaccinationScheduleData } from "./VaccinationTableData";
 
 import { RootState } from "../../../store";
+import { Input } from "../../commons/Input";
 interface VaccinationTableProps {
   selectedBabyId: number | null;
 }
+
+console.log(diseasesName);
 
 export const VaccinationTable: React.FC<VaccinationTableProps> = ({
   selectedBabyId,
@@ -61,16 +65,34 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
 
   return (
     <>
-      <div>
-        <div>
+      <div className="flex flex-col w-full">
+        <section className="flex gap-2 w-full">
+          <select className="w-full">
+            <option>개월 수</option>
+            {DoseDate.map((id, i) => (
+              <option key={i}>{id}</option>
+            ))}{" "}
+          </select>
+          <select className="w-full">
+            <option key={1}>접종</option>
+            <option key={2}>미접종</option>
+          </select>
+          <select className="w-full">
+            <option>대상 감염병</option>
+            {diseasesName.map((id, i) => (
+              <option key={i}>{id}</option>
+            ))}{" "}
+          </select>
+        </section>
+        <div className="flex justify-between">
           <Disease />
           <VaccineType selectedBabyId={selectedBabyId} />
           <TotalDoses />
 
           <div>
-            <div>
+            {/* <div>
               <DoseDate />
-            </div>
+            </div> */}
             <VaccinationSchedule matchedVaccineList={matchedVaccineList} />
           </div>
         </div>
