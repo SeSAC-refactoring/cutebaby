@@ -81,15 +81,26 @@ export default function Vaccination() {
                 있어요:)
               </div>
             </div>
-            <div className="flex">
-              <button onClick={() => setOpenCentersModal(true)}>
+            <div className="flex gap-2">
+              <button
+                className="w-full button button-yellow button-sm"
+                onClick={() => setOpenCentersModal(true)}
+              >
                 위탁의료기관{" "}
                 <img src="img/icons/i-search-s20.svg" alt="성장일지 이미지" />
               </button>
-              <button onClick={() => setOpenDetailsModal(true)}>
+              <button
+                className="w-full button button-yellow button-sm"
+                onClick={() => setOpenDetailsModal(true)}
+              >
                 감염병 정보
               </button>
-              <button onClick={() => setOpenInfoModal(true)}>백신 정보</button>
+              <button
+                className="w-full button button-yellow button-sm"
+                onClick={() => setOpenInfoModal(true)}
+              >
+                백신 정보
+              </button>
             </div>
           </div>
 
@@ -99,9 +110,9 @@ export default function Vaccination() {
               handleSelectBaby={handleSelectBaby}
               selectedBabyId={selectedBabyId}
             />
-
-            <VaccinationTable selectedBabyId={selectedBabyId} />
           </div>
+
+          <VaccinationTable selectedBabyId={selectedBabyId} />
         </div>
       </div>
     </main>

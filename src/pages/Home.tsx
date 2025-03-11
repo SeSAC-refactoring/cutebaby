@@ -6,6 +6,7 @@ import { TopArea } from '../components/home-page/TopArea';
 import { GrowthDiaryArea } from '../components/home-page/GrowthDiaryArea';
 import { VaccinationArea } from '../components/home-page/VaccinationArea';
 import { ChatbotArea } from '../components/home-page/ChatbotArea';
+import Mypage from './Mypage';
 
 export default function Home() {
     const [openCentersModal, setOpenCentersModal] = useState<boolean>(false);
