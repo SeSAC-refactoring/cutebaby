@@ -14,7 +14,7 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({
 }) => {
   console.log(growData);
   return (
-    <div className="min-h-0 flex flex-col w-1/3 sm:w-full">
+    <div className="min-h-0 flex flex-col  sm:w-full">
       <div className="flex flex-row h-14 pl-[50px] items-center bg-blue-3 rounded-[16px]">
         <div className="w-[198px] h-14 text-lg font-bd items-center flex justify-center">
           날짜

@@ -92,7 +92,7 @@ export default function Mypage() {
         <div className="whitebox">
           <div>
             <div>
-              <header className="text-2xl font-bd">마이페이지</header>
+              <div className="text-2xl font-bd">마이페이지</div>
             </div>
             {/* {babyInfo.length === 0 && (
               <button
@@ -125,15 +125,11 @@ export default function Mypage() {
               <div className="flex flex-col gap-[16px]">
                 <div className="flex flex-col gap-[4px]">
                   <div className="text-sm font-bd text-gray-8">이름</div>
-                  <div className="text-bs font-md">
-                    {userInfo.username}
-                  </div>
+                  <div className="text-bs font-md">{userInfo.username}</div>
                 </div>
                 <div className="flex flex-col gap-[4px]">
                   <div className="text-sm font-bd text-gray-8">이메일</div>
-                  <div className="text-bs font-md">
-                    {userInfo.userid}
-                  </div>
+                  <div className="text-bs font-md">{userInfo.userid}</div>
                 </div>
               </div>
             </div>

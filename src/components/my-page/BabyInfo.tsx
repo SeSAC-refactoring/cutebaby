@@ -78,10 +78,10 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
         />
 
         <div className="w-full  flex gap-4 xs:bg-white xs:p-[16px] xs:gap-6 xs:rounded-[32px] xs:border-[3px] border-blue-3">
-          <div className="bg-white rounded-[16px] border-2 border-[#E1E1E5] w-[120px] h-[120px] flex justify-center items-center ">
+          <div className="bg-white rounded-[16px] border-2 border-[#E1E1E5] w-[60%] sm:w-1/5 flex justify-center items-center ">
             {!(selectedBaby.picture === "data:image/jpeg;base64,") ? (
               <img
-                className="w-[80px] h-[96px]"
+                className="rounded-[16px] w-full h-full"
                 src={selectedBaby?.picture || "img/babybasic.png"}
                 alt="아기 사진"
               />
@@ -97,9 +97,7 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-1">
                 <div className="text-xs font-bd text-gray-8">생년월일</div>
-                <div className="text-bs font-md">
-                  {selectedBaby.birthday}
-                </div>
+                <div className="text-bs font-md">{selectedBaby.birthday}</div>
               </div>
               <div className="flex flex-col gap-1">
                 <div className="text-xs font-bd text-gray-8">성별</div>
@@ -112,10 +110,10 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
                 <div className="text-bs font-md">{babyMonths}</div>
               </div>
             </div>
-            <div className="w-full  flex justify-end ">
+            <div className="w-full flex justify-end ">
               <div className="w-[90px] flex gap-2 h-[26px]">
                 <button
-                  className="bg-coral-4 rounded-[8px] text-3xs font-md w-full"
+                  className="bg-coral-4 rounded-[8px] text-2xs font-bd w-full"
                   onClick={() => setDelModal(true)}
                 >
                   삭제
@@ -129,7 +127,7 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
                 )}
 
                 <button
-                  className="bg-yellow-4 flex rounded-[8px] text-3xs font-md w-full gap-[2px] items-center justify-center "
+                  className="bg-yellow-4 flex rounded-[8px] text-2xs font-bd w-full gap-[2px] items-center justify-center  "
                   onClick={() => setUpdateBaby(true)}
                 >
                   수정

@@ -165,7 +165,7 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
     <div onClick={modalState} className="modalBg">
       <div onClick={(e) => e.stopPropagation()} className="mediumModal">
         <div className="flex justify-between">
-          <div className="text-2xl font-bd mb-10">개인 정보 수정</div>
+          <div className="text-2xl font-bd sm:mb-10">개인 정보 수정</div>
           <div
             onClick={() => {
               modalState();
@@ -174,7 +174,7 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
             <img src="img/Button-close.png" alt="" />
           </div>
         </div>
-        <div className="flex flex-col h-full  justify-between w-full">
+        <div className="flex flex-col h-full   w-full">
           <div className="gap-2 mb-6 flex flex-col">
             {/* 이름 입력 */}
             <Input
@@ -197,7 +197,7 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
                   value={formData.email}
                   onChange={handleChange}
                 />
-                <button className="emailCheckBtn" onClick={emailCheck}>
+                <button className="button-md button-blue" onClick={emailCheck}>
                   중복 체크
                 </button>
               </div>
@@ -209,10 +209,16 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
           </div>
           <section className="flex flex-col h-auto ">
             <div className="flex justify-center gap-4">
-              <button onClick={modalState} className="cancleBtn w-full">
+              <button
+                onClick={modalState}
+                className="button button-yellow button-lg w-full"
+              >
                 취소
               </button>
-              <button className="completeBtn w-full" onClick={handleUpdate}>
+              <button
+                className="button-black button-lg w-full"
+                onClick={handleUpdate}
+              >
                 완료
               </button>{" "}
             </div>
