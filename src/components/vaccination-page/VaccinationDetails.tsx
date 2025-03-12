@@ -127,8 +127,8 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
                                         }}
                                         className={`min-w-20 ${
                                             focus === idx
-                                                ? ' flex px-4 py-[10px] justify-center items-center gap-1 bg-blue-3 rounded-full text-bs font-bd text-blue-10 border-2 border-blue-7 h-10'
-                                                : ' flex px-4 py-[10px] justify-center items-center gap-1 bg-blue-1 rounded-full text-bs font-bd text-blue-7 h-10'
+                                                ? ' chip-button-blue chip-button-sm selected'
+                                                : ' chip-button-blue chip-button-sm'
                                         }`}
                                     >
                                         {disease.cdNm.split(' ')[0]}
