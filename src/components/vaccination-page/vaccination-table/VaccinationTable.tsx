@@ -4,11 +4,10 @@ import { RootState } from "../../../store";
 
 import { DoseDate } from "./DoseDate";
 import {
-  diseasesName,
-  vaccinesName,
+  diseasesData,
+  vaccinesData,
   doses,
   diseasesNameID,
-  vaccinesNameID,
 } from "./VaccinationTableData";
 
 interface VaccinationTableProps {
@@ -26,29 +25,34 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
   const diseasesResult =
     selectedMonth !== undefined ? diseasesNameID[selectedMonth] : [];
 
-  // const vacResult = vaccinesNameID.map((value) =>
+  // const vacResult = vaccinesData.map((value) =>
   //   value.some((invalue) => invalue === selectedMonth)
   // );
 
+  // console.log("vacRe", vacResult);
+
   // const vacIndexes = vacResult
-  // .map((value, index) => (value ? index : -1))
-  // .filter((index) => index !== -1);
+  //   .map((value, index) => (value ? index : -1))
+  //   .filter((index) => index !== -1);
+
+  // console.log("vacIndex", vacIndexes);
+  // console.log("diseasesResult", diseasesResult);
 
   // const vacList = diseasesResult.map((value) => {
 
   // });
-  const vaccinationDataList = diseasesResult.map((diseaseIndex) => {
-    const vaccineIndexes = vaccinesNameID[diseaseIndex] || [];
-    return {
-      disease: diseasesName[diseaseIndex],
-      vaccines: vaccineIndexes.map((vaccineIndex) => ({
-        name: vaccinesName[vaccineIndex],
-        dose: doses[vaccineIndex],
-      })),
-    };
-  });
+  // const vaccinationDataList = diseasesResult.map((diseaseIndex) => {
+  //   const vaccineIndexes = vaccinesNameID[diseaseIndex] || [];
+  //   return {
+  //     disease: diseasesName[diseaseIndex],
+  //     vaccines: vaccineIndexes.map((vaccineIndex) => ({
+  //       name: vaccinesName[vaccineIndex],
+  //       dose: doses[vaccineIndex],
+  //     })),
+  //   };
+  // });
 
-  console.log(vaccinationDataList);
+  // console.log("asdf", vaccinationDataList);
 
   // console.log(vacIndexes);
 
@@ -81,8 +85,8 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
           <option disabled hidden selected>
             대상 감염병
           </option>
-          {diseasesName.map((id, i) => (
-            <option key={i}>{id}</option>
+          {diseasesData.map((disease) => (
+            <option>{disease.name}</option>
           ))}
         </select>
       </section>
@@ -97,12 +101,12 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
           </thead>
           <tbody>
             {diseasesResult.map((diseaseIndex) => {
-              const vaccineIndexes = vaccinesNameID[diseaseIndex] || [];
+              // const vaccineIndexes = vaccinesNameID[diseaseIndex] || [];
 
               return (
                 <tr key={diseaseIndex}>
                   <td className="border border-gray-300 p-2">
-                    {diseasesName[diseaseIndex]}
+                    {diseasesData[diseaseIndex].name}
                   </td>
                   <td className="border border-gray-300 p-2">{}</td>
                   {/* <td className="border border-gray-300 p-2">

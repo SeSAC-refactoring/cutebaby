@@ -1,12 +1,12 @@
 import React from "react";
-import { diseasesName } from "./VaccinationTableData";
+import { diseasesData } from "./VaccinationTableData";
 
 export const Disease: React.FC = () => {
   return (
     <div>
       <div>대상 감염병</div>
       <ul>
-        {diseasesName.map((disease, i) => (
+        {diseasesData.map((disease, i) => (
           <li
             key={i}
             value={i}
@@ -17,7 +17,7 @@ export const Disease: React.FC = () => {
                   : "50px",
             }}
           >
-            {disease}
+            {disease.name}
           </li>
         ))}
       </ul>
