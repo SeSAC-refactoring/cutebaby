@@ -5,11 +5,16 @@ article.resultArea {
     // @apply sm:block;
 
     & .defaultState {
-        @apply hidden sm:block;
+        @apply mb-20 hidden sm:block;
+
+        img {
+            @apply w-full;
+        }
     }
 
     & .results {
         @apply flex flex-col gap-6;
+        @apply sm:mb-20;
 
         & > p {
             @apply text-md font-bd;
