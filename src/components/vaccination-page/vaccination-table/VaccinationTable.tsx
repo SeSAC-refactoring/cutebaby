@@ -91,15 +91,19 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
         </select>
       </section>
 
-      <section>
+      <section className="w-full">
         <table className="w-full mt-6  border-separate border-spacing-0">
-          <thead className=" bg-blue-3 text-blue-8 ">
-            <tr>
-              <th className="text-left p-4 rounded-l-[0.5rem]">대상 감염병</th>
-              <th className="text-left p-4">백신 종류</th>
-              <th className="p-4">권장횟수</th>
-              <th>완료횟수</th>
-              <th className="p-4 rounded-r-[0.5rem]">관리</th>
+          <thead className=" bg-blue-3 text-blue-8 w-full">
+            <tr className="w-full">
+              <th className="text-left p-4 rounded-l-[0.5rem] w-[20%]">
+                대상 감염병
+              </th>
+              <div className="flex justify-between items-center m-4">
+                <th className="text-left w-[40%]">백신 종류</th>
+                <th className="w-[8%]">권장횟수</th>
+                <th className="w-[8%]">완료횟수</th>
+                <th className="rounded-r-[0.5rem] w-[8%]">관리</th>
+              </div>
             </tr>
             {/* 테이블 사이 넓히는 용도 */}
             <tr className="after:content-[''] after:block after:h-6 bg-white"></tr>
@@ -127,34 +131,39 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                   acc.push(
                     <tr
                       key={`${diseaseIndex}-${vaccine.vaccinationid}`}
-                      className={rowColor}
+                      className={` ${rowColor}`}
                     >
                       {index === 0 ? (
-                        <td className="p-4" rowSpan={matchedVaccines.length}>
+                        <td
+                          className="p-4 w-[20%] "
+                          rowSpan={matchedVaccines.length}
+                        >
                           {disease.name}
                         </td>
                       ) : null}
                       {/* 백신이름 */}
-                      <td className="w-[50%] p-4">{vaccine.name}</td>
-                      {/* 권장횟수 */}
-                      <td className="w-[10%] text-center p-4">
-                        {vaccine.doses}
-                      </td>
-                      {/* 완료횟수 */}
-                      <td className="w-[10%] text-center p-4">1</td>
-                      {/* 관리버튼 */}
-                      <td className="p-2">
-                        <div className="flex justify-center p-4items-center h-full">
-                          <VaccineType
-                            selectedBabyId={selectedBabyId}
-                            vaccineIds={
-                              Array.isArray(disease.vaccinationid)
-                                ? disease.vaccinationid
-                                : [disease.vaccinationid]
-                            }
-                          />
-                        </div>
-                      </td>
+                      <div className="flex justify-between items-center m-[0.1875rem] p-[0.625rem] border-2 border-blue-3 rounded-[0.5rem] h-full">
+                        <td className=" w-[40%] ">{vaccine.name}</td>
+                        {/* 권장횟수 */}
+                        <td className=" text-center  w-[8%]">
+                          {vaccine.doses}
+                        </td>
+                        {/* 완료횟수 */}
+                        <td className=" text-center w-[8%]">1</td>
+                        {/* 관리버튼 */}
+                        <td className="w-[8%]">
+                          <div className="flex justify-center items-center h-full   ">
+                            <VaccineType
+                              selectedBabyId={selectedBabyId}
+                              vaccineIds={
+                                Array.isArray(disease.vaccinationid)
+                                  ? disease.vaccinationid
+                                  : [disease.vaccinationid]
+                              }
+                            />
+                          </div>
+                        </td>
+                      </div>
                     </tr>
                   );
                 });
