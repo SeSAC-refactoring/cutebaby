@@ -1,140 +1,166 @@
 button,
 .button {
-  @apply flex justify-center items-center font-bd border-2 border-transparent;
-  min-width: max-content;
+    @apply flex justify-center items-center font-bd border-2 border-transparent;
+    min-width: max-content;
 
-  &:focus,
-  &:focus-visible {
-    @apply border-purple-7;
-    @apply shadow-[0px_0px_0px_4px_rgba(150,140,197,0.40)];
-  }
+    &:focus,
+    &:focus-visible {
+        @apply border-purple-7;
+        @apply shadow-[0px_0px_0px_4px_rgba(150,140,197,0.40)];
+    }
 
-  &:active {
-    @apply border-transparent shadow-none;
-  }
+    &:active {
+        @apply border-transparent shadow-none;
+    }
 }
 
 // 색상별
 @mixin button-color(
-  $bg,
-  $text,
-  $disabled-bg,
-  $disabled-text,
-  $hover-bg,
-  $pressed-bg
+    $bg,
+    $text,
+    $disabled-bg,
+    $disabled-text,
+    $hover-bg,
+    $pressed-bg
 ) {
-  background-color: var($bg);
-  color: var($text);
+    background-color: var($bg);
+    color: var($text);
 
-  &:disabled {
-    background-color: var($disabled-bg);
-    color: var($disabled-text);
-  }
+    &:disabled {
+        background-color: var($disabled-bg);
+        color: var($disabled-text);
+    }
 
-  &:hover {
-    background-color: var($hover-bg);
-  }
+    &:hover {
+        background-color: var($hover-bg);
+    }
 
-  &:active {
-    background-color: var($pressed-bg);
-  }
+    &:active {
+        background-color: var($pressed-bg);
+    }
 }
 
 .button-black {
-  @include button-color(
-    --color-gray-0,
-    --color-white,
-    --color-gray-3,
-    --color-white,
-    --color-gray-8,
-    --color-black
-  );
+    @include button-color(
+        --color-gray-0,
+        --color-white,
+        --color-gray-3,
+        --color-white,
+        --color-gray-8,
+        --color-black
+    );
 }
 
 .button-yellow {
-  @include button-color(
-    --color-yellow-4,
-    --color-gray-0,
-    --color-yellow-3,
-    --color-gray-4,
-    --color-yellow-6,
-    --color-yellow-7
-  );
+    @include button-color(
+        --color-yellow-4,
+        --color-gray-0,
+        --color-yellow-3,
+        --color-gray-4,
+        --color-yellow-6,
+        --color-yellow-7
+    );
 }
 
 .button-coral {
-  @include button-color(
-    --color-coral-0,
-    --color-gray-0,
-    --color-coral-2,
-    --color-gray-4,
-    --color-coral-6,
-    --color-coral-7
-  );
+    @include button-color(
+        --color-coral-0,
+        --color-gray-0,
+        --color-coral-2,
+        --color-gray-4,
+        --color-coral-6,
+        --color-coral-7
+    );
 }
 
 .button-blue {
-  @include button-color(
-    --color-blue-4,
-    --color-gray-0,
-    --color-blue-2,
-    --color-gray-4,
-    --color-blue-6,
-    --color-blue-7
-  );
+    @include button-color(
+        --color-blue-4,
+        --color-gray-0,
+        --color-blue-2,
+        --color-gray-4,
+        --color-blue-6,
+        --color-blue-7
+    );
 }
 
 .button-kakao {
-  @include button-color(
-    --color-kakao-6,
-    --color-gray-0,
-    --color-kakao-2,
-    --color-gray-4,
-    --color-kakao-4,
-    --color-kakao-7
-  );
+    @include button-color(
+        --color-kakao-6,
+        --color-gray-0,
+        --color-kakao-2,
+        --color-gray-4,
+        --color-kakao-4,
+        --color-kakao-7
+    );
+}
+
+.chip-button-blue {
+    background-color: theme('colors.blue.2');
+    color: theme('colors.blue.7');
+
+    &.selected {
+        background-color: theme('colors.blue.7');
+        color: theme('colors.white');
+    }
+
+    &:hover {
+        border: 2px solid theme('colors.blue.7');
+    }
+
+    // &:active {
+    //     background-color: var($pressed-bg);
+    // }
 }
 
 // 버튼 사이즈
 @mixin button-size($height, $padding, $gap, $rounded, $icon-size) {
-  height: $height;
-  padding-left: $padding;
-  padding-right: $padding;
-  gap: $gap;
-  border-radius: $rounded;
+    height: $height;
+    padding-left: $padding;
+    padding-right: $padding;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $gap;
+    border-radius: $rounded;
 
-  img {
-    width: $icon-size;
-    height: auto;
-  }
+    img {
+        width: $icon-size;
+        height: auto;
+    }
 }
 
 .button-xl {
-  @include button-size(80px, 24px, 8px, 22px, 32px);
-  @apply text-lg;
+    @include button-size(80px, 24px, 8px, 22px, 32px);
+    @apply text-lg;
 }
 
 .button-lg {
-  @include button-size(64px, 22px, 6px, 18px, 28px);
-  @apply text-md;
+    @include button-size(64px, 22px, 6px, 18px, 28px);
+    @apply text-md;
 }
 
 .button-md {
-  @include button-size(56px, 18px, 4px, 16px, 24px);
-  @apply text-sm;
+    @include button-size(56px, 18px, 4px, 16px, 24px);
+    @apply text-sm;
 }
 
 .button-sm {
-  @include button-size(48px, 18px, 4px, 14px, 20px);
-  @apply text-bs;
+    @include button-size(48px, 18px, 4px, 14px, 20px);
+    @apply text-bs;
 }
 
 .button-xs {
-  @include button-size(36px, 12px, 2px, 10px, 14px);
-  @apply text-2xs;
+    @include button-size(32px, 12px, 2px, 10px, 14px);
+    @apply text-2xs;
 }
 
 .button-2xs {
-  @include button-size(26px, 8px, 2px, 8px, 8px);
-  @apply text-3xs;
+    @include button-size(26px, 8px, 2px, 8px, 8px);
+    @apply text-3xs;
+}
+
+.chip-button-sm {
+    @include button-size(32px, 12px, 4px, 999px, 14px);
+    @apply text-xs font-bd;
 }
