@@ -95,6 +95,24 @@ button,
     );
 }
 
+.chip-button-blue {
+    background-color: theme('colors.blue.2');
+    color: theme('colors.blue.7');
+
+    &.selected {
+        background-color: theme('colors.blue.7');
+        color: theme('colors.white');
+    }
+
+    &:hover {
+        border: 2px solid theme('colors.blue.7');
+    }
+
+    // &:active {
+    //     background-color: var($pressed-bg);
+    // }
+}
+
 // 버튼 사이즈
 @mixin button-size($height, $padding, $gap, $rounded, $icon-size) {
     height: $height;
@@ -140,4 +158,9 @@ button,
 .button-2xs {
     @include button-size(26px, 8px, 2px, 8px, 8px);
     @apply text-3xs;
+}
+
+.chip-button-sm {
+    @include button-size(32px, 12px, 4px, 999px, 14px);
+    @apply text-xs font-bd;
 }
