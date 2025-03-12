@@ -1,4 +1,4 @@
-import { vaccinesName } from "./vaccination-table/VaccinationTableData";
+import { vaccinesData } from "./vaccination-table/VaccinationTableData";
 
 interface VaccinationModalTitleProps {
   vaccinationid: number;
@@ -12,7 +12,7 @@ export const VaccinationModalTitle: React.FC<VaccinationModalTitleProps> = ({
     <div>
       {/* Title // 백신이름 */}
       <div>
-        {vaccinesName[vaccinationid - 1]}
+        {vaccinesData[vaccinationid - 1]?.name}
         {vaccinationid !== 17 && " 실접종일 입력"}
       </div>
 

@@ -1,19 +1,19 @@
 import { VaccinationScheduleData } from "../../types";
 
-export const diseasesName = [
-  "B형간염",
-  "결핵",
-  "디프테리아/\n파상풍/\n백일해", // \n을 사용하여 줄바꿈
-  "폴리오",
-  "b형헤모필루스\n인플루엔자",
-  "폐렴구균\n감염증",
-  "로타바이러스\n감염증",
-  "홍역/\n유행성이하선염/\n풍진",
-  "수두",
-  "A형간염",
-  "일본뇌염",
-  "사람유두종\n바이러스감염증",
-  "인플루엔자",
+export const diseasesData = [
+  { name: "B형간염", vaccinationid: 1 },
+  { name: "결핵", vaccinationid: 2 },
+  { name: "디프테리아/\n파상풍/\n백일해", vaccinationid: [3, 4] },
+  { name: "폴리오", vaccinationid: 5 },
+  { name: "b형헤모필루스\n인플루엔자", vaccinationid: 6 },
+  { name: "폐렴구균\n감염증", vaccinationid: [7, 8] },
+  { name: "로타바이러스\n감염증", vaccinationid: [9, 10] }, // RV1/RV5 (두 개 중 하나)
+  { name: "홍역/\n유행성이하선염/\n풍진", vaccinationid: 11 },
+  { name: "수두", vaccinationid: 12 },
+  { name: "A형간염", vaccinationid: 13 },
+  { name: "일본뇌염", vaccinationid: [14, 15] }, // JEV(불활성화) / JEV(약독화) 둘 다 포함
+  { name: "사람유두종\n바이러스감염증", vaccinationid: 16 },
+  { name: "인플루엔자", vaccinationid: 17 },
 ];
 
 export const diseasesNameID = [
@@ -34,44 +34,32 @@ export const diseasesNameID = [
   [2, 5, 10, 11, 12], //만11세
 ];
 
-export const vaccinesNameID = [
-  [0, 2, 5], // "HepB" (B형간염)
-  [1], // "BCG(피내용)" (결핵)
-  [3, 4, 5, 7, 8, 11, 12], // "DTaP" (디프테리아, 파상풍, 백일해)
-  [13, 14], // "Tdap/Td" (디프테리아, 파상풍, 백일해 추가접종)
-  [3, 4, 5, 6, 7, 8, 11, 12], // "IPV" (폴리오)
-  [3, 4, 5, 6, 7], // "Hib" (b형헤모필루스 인플루엔자)
-  [3, 4, 5, 6, 7], // "PCV" (폐렴구균)
-  [10, 11, 12, 13, 14], // "PPSV" (폐렴구균 추가접종)
-  [3, 4], // "RV1" (로타바이러스)
-  [3, 4, 5], //RV5
-  [6, 7, 11, 12], // "MMR" (홍역, 유행성이하선염, 풍진)
-  [6, 7], // "VAR" (수두)
-  [6, 7, 8, 9, 10], // "HepA" (A형간염)
-  [6, 7, 8, 9, 10, 12, 14], // "JEV(불활성화 백신)" (일본뇌염)
-  [6, 7, 8, 9, 10], // "JEV(약독화 생백신)" (일본뇌염)
-  [14], // "HPV" (사람유두종바이러스 감염증)
-  [5, 6, 7, 8, 9, 10, 11, 12, 13, 14], // "IIV" (인플루엔자, 매년 접종)
-];
-
-export const vaccinesName = [
-  "HepB",
-  "BCG(피내용)",
-  "DTaP",
-  "Tdap/Td",
-  "IPV",
-  "Hib",
-  "PCV",
-  "PPSV",
-  "RV1",
-  "RV5",
-  "MMR",
-  "VAR",
-  "HepA",
-  "IJEV\n(불활성화 백신)",
-  "LJEV\n(약독화 생백신)",
-  "HPV",
-  "IIV",
+export const vaccinesData = [
+  { name: "HepB", months: [0, 2, 5], vaccinationid: 1 },
+  { name: "BCG(피내용)", months: [1], vaccinationid: 2 },
+  { name: "DTaP", months: [3, 4, 5, 7, 8, 11, 12], vaccinationid: 3 },
+  { name: "Tdap/Td", months: [13, 14], vaccinationid: 4 },
+  { name: "IPV", months: [3, 4, 5, 6, 7, 8, 11, 12], vaccinationid: 5 },
+  { name: "Hib", months: [3, 4, 5, 6, 7], vaccinationid: 6 },
+  { name: "PCV", months: [3, 4, 5, 6, 7], vaccinationid: 7 },
+  { name: "PPSV", months: [10, 11, 12, 13, 14], vaccinationid: 8 },
+  { name: "RV1", months: [3, 4], vaccinationid: 9 },
+  { name: "RV5", months: [3, 4, 5], vaccinationid: 10 },
+  { name: "MMR", months: [6, 7, 11, 12], vaccinationid: 11 },
+  { name: "VAR", months: [6, 7], vaccinationid: 12 },
+  { name: "HepA", months: [6, 7, 8, 9, 10], vaccinationid: 13 },
+  {
+    name: "JEV(불활성화 백신)",
+    months: [6, 7, 8, 9, 10, 12, 14],
+    vaccinationid: 14,
+  },
+  { name: "JEV(약독화 생백신)", months: [6, 7, 8, 9, 10], vaccinationid: 15 },
+  { name: "HPV", months: [14], vaccinationid: 16 },
+  {
+    name: "IIV",
+    months: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+    vaccinationid: 17,
+  },
 ];
 
 export const doses = [3, 1, 5, 1, 4, 4, 4, "-", 2, 3, 2, 1, 2, 5, 2, 2, "-"];

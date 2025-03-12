@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { VaccinationModal } from "../VaccinationModal";
 import { VaccinationData } from "../../types";
-import { doses, vaccinesName } from "./VaccinationTableData";
+import { doses, vaccinesData } from "./VaccinationTableData";
 
 interface VaccineTypeProps {
   selectedBabyId: number | null;
@@ -32,7 +32,7 @@ export const VaccineType: React.FC<VaccineTypeProps> = ({ selectedBabyId }) => {
       <div>
         <div style={{}}>백신 종류 및 방법</div>
         <ul>
-          {vaccinesName.map((vaccine, i) => (
+          {vaccinesData.map((vaccine, i) => (
             <li
               key={i}
               style={{
@@ -40,8 +40,7 @@ export const VaccineType: React.FC<VaccineTypeProps> = ({ selectedBabyId }) => {
               }}
               onClick={() => handleOpenModal(i + 1)} // 클릭 시 해당 백신의 vaccinationid 저장
             >
-              <span>{vaccine} </span>
-              {/* <span style={{ fontSize: "10px", color: "red" }}>{i + 1}</span> */}
+              <span>{vaccine.name} </span>
               <button>
                 <img src="/img/icons/i-edit-s12.svg" />
                 관리
