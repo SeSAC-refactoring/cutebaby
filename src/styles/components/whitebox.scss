@@ -9,4 +9,24 @@
     @apply max-sm:pt-[1.5rem] max-sm:pr-[0rem] max-sm:pl-[0rem];
 
     //   @apply max-sm:border-0;;
+
+    & div.title {
+        @apply flex gap-4 items-end max-w-full;
+
+        & > h2 {
+            @apply flex-shrink-0;
+        }
+
+        & > p {
+            @apply hidden text-gray-5;
+            @apply whitespace-nowrap overflow-hidden text-ellipsis; // 공간 없으면 ...
+
+            &.vaccination {
+                @apply md:block;
+            }
+            &.growthDiary {
+                @apply sm:block;
+            }
+        }
+    }
 }
