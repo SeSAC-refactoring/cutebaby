@@ -6,9 +6,10 @@
         @apply bg-white w-full min-w-80 h-full px-6 pt-6;
         @apply flex flex-col gap-6 justify-start;
 
-        @apply sm:w-auto sm:h-[944px] sm:gap-12; // 수정 필요
-        @apply sm:px-20 sm:py-20;
-        @apply sm:border-2 sm:border-gray-6 sm:rounded-[2.5rem];
+        @apply sm:absolute sm:top-0 sm:gap-12;
+        @apply sm:border-2 sm:border-gray-6 sm:rounded-3xl sm:p-20;
+        // 반응형 width height 재설정 필요 // whitebox 클래스랑 같게
+        @apply xs:w-[1280px] max-xs:w-[100vw] max-sm:w-[100vw] max-md:w-full max-lg:w-[90vw];
 
         // 모달의 타이틀과 x 버튼 스타일
         & > .topArea {
