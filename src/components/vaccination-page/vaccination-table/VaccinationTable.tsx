@@ -9,6 +9,7 @@ import {
   doses,
   diseasesNameID,
 } from "./VaccinationTableData";
+import { VaccineType } from "./VaccineType";
 
 interface VaccinationTableProps {
   selectedBabyId: number | null;
@@ -134,6 +135,16 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                     {/* 권장 접종횟수 */}
                     <td className="border border-gray-300 p-2">
                       {vaccine.doses}
+                    </td>
+                    <td>
+                      <VaccineType
+                        selectedBabyId={selectedBabyId}
+                        vaccineIds={
+                          Array.isArray(disease.vaccinationid)
+                            ? disease.vaccinationid
+                            : [disease.vaccinationid]
+                        }
+                      />
                     </td>
                   </tr>
                 ))
