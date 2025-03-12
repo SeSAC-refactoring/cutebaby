@@ -101,24 +101,40 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
           </thead>
           <tbody>
             {diseasesResult.map((diseaseIndex) => {
-              // const vaccineIndexes = vaccinesNameID[diseaseIndex] || [];
+              const disease = diseasesData[diseaseIndex];
 
-              return (
+              const matchedVaccines = Array.isArray(disease.vaccinationid)
+                ? vaccinesData.filter((v) =>
+                    (disease.vaccinationid as number[]).includes(
+                      Number(v.vaccinationid)
+                    )
+                  )
+                : vaccinesData.filter(
+                    (v) => v.vaccinationid === disease.vaccinationid
+                  );
+
+              return matchedVaccines.length > 0 ? (
+                matchedVaccines.map((vaccine, index) => (
+                  <tr key={`${diseaseIndex}-${vaccine.vaccinationid}`}>
+                    {/* 첫 번째 백신일 경우만 감염병명 td 출력 */}
+                    {index === 0 && (
+                      <td
+                        rowSpan={matchedVaccines.length}
+                        className="border border-gray-300 p-2"
+                      >
+                        {disease.name}
+                      </td>
+                    )}
+                    {/* 백신 종류 */}
+                    <td className="border border-gray-300 p-2">
+                      {vaccine.name}
+                    </td>
+                  </tr>
+                ))
+              ) : (
                 <tr key={diseaseIndex}>
-                  <td className="border border-gray-300 p-2">
-                    {diseasesData[diseaseIndex].name}
-                  </td>
-                  <td className="border border-gray-300 p-2">{}</td>
-                  {/* <td className="border border-gray-300 p-2">
-                    {vaccineIndexes.map((vaccineIndex) => (
-                      <div key={vaccineIndex}>{vaccinesName[vaccineIndex]}</div>
-                    ))}
-                  </td>
-                  <td className="border border-gray-300 p-2">
-                    {vaccineIndexes.map((vaccineIndex) => (
-                      <div key={vaccineIndex}>{doses[vaccineIndex]}</div>
-                    ))}
-                  </td> */}
+                  <td className="border border-gray-300 p-2">{disease.name}</td>
+                  <td className="border border-gray-300 p-2">해당 백신 없음</td>
                 </tr>
               );
             })}
