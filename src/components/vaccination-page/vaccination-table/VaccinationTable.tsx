@@ -26,8 +26,9 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
     (state: RootState) => state.vaccination
   );
 
-  const [selectedMonth, setMonth] = useState<number | undefined>();
-  const [selectedDis, setDis] = useState<number | undefined>();
+  const [selectedMonth, setMonth] = useState<number | undefined>(); //선택개월수 상태관리
+  const [selectedDis, setDis] = useState<number | undefined>(); // 선택감염병 상태관리
+  const [selectedDose, setDose] = useState<number | undefined>();
 
   // 선택한 개월 수에 따라 감염병 목록 필터링 (선택 안함 시 모든 데이터 표시)
   const filteredDiseases =
@@ -93,6 +94,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
               e.target.value === "" ? undefined : Number(e.target.value)
             );
             setDis(undefined); // 개월 수 변경 시 감염병 선택 초기화
+            setDose(undefined);
           }}
         >
           <option value="" disabled hidden selected>
@@ -107,14 +109,21 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
         </select>
 
         {/* 접종 여부 필터 */}
-        <select className="w-full">
-          <option disabled hidden selected>
+        <select
+          className="w-full"
+          value={selectedDose === undefined ? "" : selectedDose} // 선택된 값이 없으면 기본값 표시
+          onChange={(e) =>
+            setDose(e.target.value === "" ? undefined : Number(e.target.value))
+          }
+        >
+          <option value="" disabled hidden selected>
             접종여부
           </option>
-          <option>접종완료</option>
-          <option>미접종</option>
-          <option>접종진행</option>
-          <option>선택접종</option>
+          <option value="">선택 안함</option>
+          <option value="1">접종완료</option>
+          <option value="2">미접종</option>
+          <option value="3">접종진행</option>
+          <option value="4">선택접종</option>
         </select>
 
         {/* 대상 감염병 필터 (개월 수에 따라 목록 필터링) */}
@@ -169,53 +178,85 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                       (v) => v.vaccinationid === disease.vaccinationid
                     );
 
+                // 필터링을 먼저 진행하고  출력할 백신 리스트 결정
+                const filteredVaccines = matchedVaccines.filter((vaccine) => {
+                  const vacid = vaccine.vaccinationid;
+                  const completedDoses = matchedVaccineList.filter(
+                    (v) => v?.vaccinationid === vacid
+                  ).length;
+                  //"-" 인지 확인하기
+                  const isOptionalVaccine = vaccine.doses === "-";
+                  //숫자인지 확인하기
+                  const doseCount =
+                    typeof vaccine.doses === "number" ? vaccine.doses : 0;
+
+                  if (selectedDose === 1 && vaccine.doses !== completedDoses) {
+                    return false; // 접종 완료 필터 적용
+                  }
+                  if (selectedDose === 2 && completedDoses > 0) {
+                    return false; // 미접종 필터 적용
+                  }
+                  if (
+                    selectedDose === 3 &&
+                    (completedDoses === 0 ||
+                      completedDoses >= doseCount ||
+                      isOptionalVaccine)
+                  ) {
+                    // 접종진행 필터 적용
+                    {
+                      return false;
+                    }
+                  }
+                  if (selectedDose === 4 && !isOptionalVaccine) {
+                    return false; // 선택진행 필터적용
+                  }
+                  return true; // 필터 통과한 백신만 반환
+                });
+
+                // 필터링 후 남은 백신이 없다면 해당 질병은 출력하지 않음
+                if (filteredVaccines.length === 0) {
+                  return acc;
+                }
+
                 const isEvenDisease = diseaseIdx % 2 === 0;
-                //색깔바꾸기
                 const rowColor = isEvenDisease ? "bg-blue-1" : "bg-white";
 
-                matchedVaccines.forEach((vaccine, index) => {
-                  // `vaccinesData`에서 `disease.name`과 같은 백신 필터링
-                  const filteredVaccines = vaccinesData.filter(
-                    (value) => value.name.trim() === vaccine.name.trim()
-                  );
-                  const vacid = filteredVaccines.map((vaccine) => {
-                    return vaccine.vaccinationid;
-                  });
-
+                filteredVaccines.forEach((vaccine, index) => {
                   acc.push(
                     <tr
                       key={`${diseaseIndex}-${vaccine.vaccinationid}`}
                       className={` ${rowColor} h-[2.125rem]`}
                     >
+                      {/* 첫 번째 백신에서만 감염병 이름 출력 & rowSpan 설정 */}
                       {index === 0 ? (
                         <td
                           className="p-4 w-[20%] rounded-l-[0.5rem] border-r-0 border border-blue-3"
-                          rowSpan={matchedVaccines.length}
+                          rowSpan={filteredVaccines.length} // 필터링된 백신 수만큼 병합
                         >
                           {disease.name}
                         </td>
                       ) : null}
-                      {/* 백신이름 */}
-                      <td className="p-2 w-[30%] border-r-0 border border-blue-3 ">
+
+                      {/* 백신 이름 */}
+                      <td className="p-2 w-[30%] border-r-0 border border-blue-3">
                         {vaccine.name}
                       </td>
-                      {/* 최근접종일자 */}
-                      <td className=" w-[12%] border-x-0 border border-blue-3">
+                      {/* 최근 접종 일자 */}
+                      <td className="w-[12%] border-x-0 border border-blue-3">
                         <VaccinationSchedule
                           matchedVaccineList={matchedVaccineList}
-                          vaccinationid={disease.vaccinationid}
+                          vaccinationid={vaccine.vaccinationid}
                         />
                       </td>
                       {/* 권장횟수 */}
-                      <td className=" text-center  w-[8%] border-x-0 border border-blue-3">
+                      <td className="text-center w-[8%] border-x-0 border border-blue-3">
                         {vaccine.doses}
                       </td>
                       {/* 완료횟수 */}
-                      <td className=" text-center w-[8%] border-x-0 border border-blue-3">
-                        {}
+                      <td className="text-center w-[8%] border-x-0 border border-blue-3">
                         <VaccinationScheduleName
                           matchedVaccineList={matchedVaccineList}
-                          vaccinationid={vacid[0]}
+                          vaccinationid={vaccine.vaccinationid}
                         />
                       </td>
                       {/* 관리버튼 */}
@@ -223,7 +264,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                         <div className="flex justify-center items-center h-full">
                           <VaccineType
                             selectedBabyId={selectedBabyId}
-                            vaccineIds={vacid} // 개별적으로 백신 ID 전달
+                            vaccineIds={[vaccine.vaccinationid]} // 개별적으로 백신 ID 전달
                           />
                         </div>
                       </td>
