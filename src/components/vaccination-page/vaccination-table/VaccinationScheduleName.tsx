@@ -20,6 +20,9 @@ export const VaccinationScheduleName: React.FC<VaccinationScheduleProps> = ({
     .map((v) => {
       return v?.dosenumber;
     });
+  console.log(vaccinationid);
+  console.log(matchedVaccineList);
+  //   console.log(filterVacdoseDate);
   //   console.log(vaccinationScheduleData);
   //   console.log(vaccinationScheduleData);
   const filterVacdoseName = vaccinationScheduleData
