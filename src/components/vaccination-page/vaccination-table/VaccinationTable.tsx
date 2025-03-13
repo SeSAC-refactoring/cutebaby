@@ -174,6 +174,14 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                 const rowColor = isEvenDisease ? "bg-blue-1" : "bg-white";
 
                 matchedVaccines.forEach((vaccine, index) => {
+                  // `vaccinesData`에서 `disease.name`과 같은 백신 필터링
+                  const filteredVaccines = vaccinesData.filter(
+                    (value) => value.name.trim() === vaccine.name.trim()
+                  );
+                  const vacid = filteredVaccines.map((vaccine) => {
+                    return vaccine.vaccinationid;
+                  });
+
                   acc.push(
                     <tr
                       key={`${diseaseIndex}-${vaccine.vaccinationid}`}
@@ -204,36 +212,19 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                       </td>
                       {/* 완료횟수 */}
                       <td className=" text-center w-[8%] border-x-0 border border-blue-3">
+                        {}
                         <VaccinationScheduleName
                           matchedVaccineList={matchedVaccineList}
-                          vaccinationid={disease.vaccinationid}
+                          vaccinationid={vacid[0]}
                         />
                       </td>
                       {/* 관리버튼 */}
                       <td className="w-[8%] rounded-r-[0.5rem] border-l-0 border border-blue-3">
                         <div className="flex justify-center items-center h-full">
-                          {(() => {
-                            // `vaccinesData`에서 `disease.name`과 같은 백신 필터링
-                            const filteredVaccines = vaccinesData.filter(
-                              (value) =>
-                                value.name.trim() === vaccine.name.trim()
-                            );
-
-                            if (filteredVaccines.length === 0) {
-                              return (
-                                <span className="text-gray-400">
-                                  해당 백신 없음
-                                </span>
-                              ); // 데이터가 없을 때 처리
-                            }
-
-                            return filteredVaccines.map((vaccine) => (
-                              <VaccineType
-                                selectedBabyId={selectedBabyId}
-                                vaccineIds={[vaccine.vaccinationid]} // 개별적으로 백신 ID 전달
-                              />
-                            ));
-                          })()}
+                          <VaccineType
+                            selectedBabyId={selectedBabyId}
+                            vaccineIds={vacid} // 개별적으로 백신 ID 전달
+                          />
                         </div>
                       </td>
                     </tr>
