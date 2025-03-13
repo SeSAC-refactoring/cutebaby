@@ -8,8 +8,11 @@ import {
   vaccinesData,
   doses,
   diseasesNameID,
+  vaccinationScheduleData,
 } from "./VaccinationTableData";
+
 import { VaccineType } from "./VaccineType";
+import { VaccinationSchedule } from "./VaccinationSchedule";
 
 interface VaccinationTableProps {
   selectedBabyId: number | null;
@@ -36,6 +39,46 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
     selectedDis !== undefined
       ? filteredDiseases.filter((diseaseIndex) => diseaseIndex === selectedDis)
       : filteredDiseases;
+  // 서버에 있는 데이터와 일치하는 백신 찾기 matchedVaccine
+  const matchedVaccineList = vaccinationScheduleData.flat().map((data) => {
+    // flat()을 사용해 2차원 배열을 1차원 배열로 변환
+
+    // selectedBabyVaccinationData에 일치하는 데이터 있는지 찾기
+    let matchedVaccine = vaccinationData.find(
+      (item) =>
+        item.vaccinationid === data.vaccinationid &&
+        item.dosenumber === data.dosenumber
+    );
+
+    // 벡신 1~2차 로 되어있는 칸일 경우 // vaccinationid(13, 14, 16) && dosenumber === 0일 경우
+    // data.vaccinationid ===  13 || 14 ||16 이고 data.dosenumber === 0 인 항목은
+    // data.vaccinationid === item.vaccinationid 일 떄, item.dosenumber가 1인 것만 있으면 1이 있는 항목으로 반환하고,
+    // item.dosenumber가 2인 것이 있으면 2가 있는 걸로 반환
+    if (
+      data.vaccinationid &&
+      [13, 14, 16].includes(data.vaccinationid) &&
+      data.dosenumber === 0
+    ) {
+      const vaccine1 = vaccinationData.find(
+        (item) =>
+          item.vaccinationid === data.vaccinationid && item.dosenumber === 1
+      );
+      const vaccine2 = vaccinationData.find(
+        (item) =>
+          item.vaccinationid === data.vaccinationid && item.dosenumber === 2
+      );
+
+      if (vaccine2) {
+        matchedVaccine = vaccine2; // dosenumber가 2이면 반환
+      } else if (vaccine1) {
+        matchedVaccine = vaccine1; // dosenumber가 1이면 반환
+      }
+    }
+
+    return matchedVaccine || null; // 없는 경우 null
+  });
+
+  console.log("matchedVaccineList >>", matchedVaccineList);
 
   return (
     <div className="flex flex-col w-full ">
@@ -67,8 +110,10 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
           <option disabled hidden selected>
             접종여부
           </option>
-          <option>접종</option>
+          <option>접종완료</option>
           <option>미접종</option>
+          <option>접종진행</option>
+          <option>선택접종</option>
         </select>
 
         {/* 대상 감염병 필터 (개월 수에 따라 목록 필터링) */}
@@ -98,7 +143,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
               <th className="text-left p-4 rounded-l-[0.5rem] w-[20%]">
                 대상 감염병
               </th>
-              <th className="text-left w-[30%]">백신 종류</th>
+              <th className="text-left w-[30%] p-2">백신 종류</th>
               <th className="text-left w-[20%]">최근 접종 일자</th>
               <th className="w-[8%]">권장횟수</th>
               <th className="w-[8%]">완료횟수</th>
@@ -142,12 +187,15 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                         </td>
                       ) : null}
                       {/* 백신이름 */}
-                      <td className=" w-[30%] border-r-0 border border-blue-3 ">
+                      <td className="p-2 w-[30%] border-r-0 border border-blue-3 ">
                         {vaccine.name}
                       </td>
                       {/* 최근접종일자 */}
                       <td className=" w-[12%] border-x-0 border border-blue-3">
-                        {vaccine.name}
+                        <VaccinationSchedule
+                          matchedVaccineList={matchedVaccineList}
+                          vaccinationid={disease.vaccinationid}
+                        />
                       </td>
                       {/* 권장횟수 */}
                       <td className=" text-center  w-[8%] border-x-0 border border-blue-3">
