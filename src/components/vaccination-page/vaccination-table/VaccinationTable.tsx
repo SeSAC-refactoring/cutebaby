@@ -252,7 +252,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                           {vaccine.name}
                         </td>
                         {/* 최근 접종 일자 */}
-                        <td className="w-[12%] border-x-0 border border-blue-3">
+                        <td className="w-[20%] border-x-0 border border-blue-3 text-center">
                           <VaccinationSchedule
                             matchedVaccineList={matchedVaccineList}
                             vaccinationid={vaccine.vaccinationid}
