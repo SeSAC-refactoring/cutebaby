@@ -26,8 +26,9 @@ export const VaccinationModal: React.FC<VaccinationModalProps> = ({
       onClick={() => {
         setIsOpen(false);
       }}
+      className="modalBg"
     >
-      <div onClick={(e) => e.stopPropagation()}>
+      <div onClick={(e) => e.stopPropagation()} className="smallModal">
         {/* 🌟 모달 제목 */}
         <VaccinationModalTitle
           vaccinationid={vaccinationid}

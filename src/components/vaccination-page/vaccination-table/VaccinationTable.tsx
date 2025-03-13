@@ -38,7 +38,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
       : filteredDiseases;
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full ">
       <section className="flex gap-2 w-full">
         {/* 개월 수 필터 */}
         <select
@@ -91,24 +91,24 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
         </select>
       </section>
 
-      <section className="w-full">
-        <table className="w-full mt-6  border-separate border-spacing-0">
-          <thead className=" bg-blue-3 text-blue-8 w-full">
+      <section className="w-full block overflow-y-auto h-[50vh] scrollbar-hidden">
+        <table className="w-full mt-6  border-separate border-spacing-0 border-spacing-y-1">
+          <thead className=" bg-blue-3 text-blue-8 w-full sticky top-0">
             <tr className="w-full">
               <th className="text-left p-4 rounded-l-[0.5rem] w-[20%]">
                 대상 감염병
               </th>
-              <div className="flex justify-between items-center m-4">
-                <th className="text-left w-[40%]">백신 종류</th>
-                <th className="w-[8%]">권장횟수</th>
-                <th className="w-[8%]">완료횟수</th>
-                <th className="rounded-r-[0.5rem] w-[8%]">관리</th>
-              </div>
+              <th className="text-left w-[30%]">백신 종류</th>
+              <th className="text-left w-[20%]">최근 접종 일자</th>
+              <th className="w-[8%]">권장횟수</th>
+              <th className="w-[8%]">완료횟수</th>
+              <th className="rounded-r-[0.5rem] w-[8%]">관리</th>
             </tr>
             {/* 테이블 사이 넓히는 용도 */}
-            <tr className="after:content-[''] after:block after:h-6 bg-white"></tr>
+            <tr className="h-2 invisible"></tr>
           </thead>
-          <tbody>
+
+          <tbody className="w-full overflow-y-auto min-h-[40vh] max-h-[50vh]">
             {diseasesResult.reduce<React.ReactElement[]>(
               (acc, diseaseIndex, diseaseIdx) => {
                 const disease = diseasesData[diseaseIndex];
@@ -131,39 +131,45 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                   acc.push(
                     <tr
                       key={`${diseaseIndex}-${vaccine.vaccinationid}`}
-                      className={` ${rowColor}`}
+                      className={` ${rowColor} h-[2.125rem]`}
                     >
                       {index === 0 ? (
                         <td
-                          className="p-4 w-[20%] "
+                          className="p-4 w-[20%] rounded-l-[0.5rem] border-r-0 border border-blue-3"
                           rowSpan={matchedVaccines.length}
                         >
                           {disease.name}
                         </td>
                       ) : null}
                       {/* 백신이름 */}
-                      <div className="flex justify-between items-center m-[0.1875rem] p-[0.625rem] border-2 border-blue-3 rounded-[0.5rem] h-full">
-                        <td className=" w-[40%] ">{vaccine.name}</td>
-                        {/* 권장횟수 */}
-                        <td className=" text-center  w-[8%]">
-                          {vaccine.doses}
-                        </td>
-                        {/* 완료횟수 */}
-                        <td className=" text-center w-[8%]">1</td>
-                        {/* 관리버튼 */}
-                        <td className="w-[8%]">
-                          <div className="flex justify-center items-center h-full   ">
-                            <VaccineType
-                              selectedBabyId={selectedBabyId}
-                              vaccineIds={
-                                Array.isArray(disease.vaccinationid)
-                                  ? disease.vaccinationid
-                                  : [disease.vaccinationid]
-                              }
-                            />
-                          </div>
-                        </td>
-                      </div>
+                      <td className=" w-[30%] border-r-0 border border-blue-3 ">
+                        {vaccine.name}
+                      </td>
+                      {/* 최근접종일자 */}
+                      <td className=" w-[12%] border-x-0 border border-blue-3">
+                        {vaccine.name}
+                      </td>
+                      {/* 권장횟수 */}
+                      <td className=" text-center  w-[8%] border-x-0 border border-blue-3">
+                        {vaccine.doses}
+                      </td>
+                      {/* 완료횟수 */}
+                      <td className=" text-center w-[8%] border-x-0 border border-blue-3">
+                        1
+                      </td>
+                      {/* 관리버튼 */}
+                      <td className="w-[8%] rounded-r-[0.5rem] border-l-0 border border-blue-3">
+                        <div className="flex justify-center items-center h-full   ">
+                          <VaccineType
+                            selectedBabyId={selectedBabyId}
+                            vaccineIds={
+                              Array.isArray(disease.vaccinationid)
+                                ? disease.vaccinationid
+                                : [disease.vaccinationid]
+                            }
+                          />
+                        </div>
+                      </td>
                     </tr>
                   );
                 });
