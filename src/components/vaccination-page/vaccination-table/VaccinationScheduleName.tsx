@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { VaccinationData } from "../../types";
 import { vaccinationScheduleData } from "./VaccinationTableData";
+import { VaccinationData } from "../../types";
 
 interface VaccinationScheduleProps {
   matchedVaccineList: (VaccinationData | null)[];
+
   vaccinationid: number | number[];
 }
 
-export const VaccinationSchedule: React.FC<VaccinationScheduleProps> = ({
+export const VaccinationScheduleName: React.FC<VaccinationScheduleProps> = ({
   matchedVaccineList,
+
   vaccinationid,
 }) => {
   // const [filterva, setFiltervac] = useState<String | null>();
@@ -16,11 +18,17 @@ export const VaccinationSchedule: React.FC<VaccinationScheduleProps> = ({
   const filterVacdoseDate = matchedVaccineList
     .filter((value) => value?.vaccinationid === vaccinationid)
     .map((v) => {
-      return v?.dosedate;
+      return v?.dosenumber;
     });
-  // console.log(vaccinationScheduleData);
+  //   console.log(vaccinationScheduleData);
+  //   console.log(vaccinationScheduleData);
+  const filterVacdoseName = vaccinationScheduleData
+    .filter((value) => value?.vaccinationid === vaccinationid)
+    .map((v) => {
+      return v.text;
+    });
 
-  // console.log(">>>>", filterVacdoseDate);
+  //   console.log(filterVacdoseName);
   return (
     <>
       <div>
@@ -73,7 +81,7 @@ export const VaccinationSchedule: React.FC<VaccinationScheduleProps> = ({
           {/* {matchedVaccineList[0]?.babyid} */}
 
           {filterVacdoseDate.length == 0
-            ? "접종이력없음"
+            ? "0"
             : filterVacdoseDate[filterVacdoseDate.length - 1]}
           {/* {matchedVaccine == null ? "접종 이력 없음" : filtervac} */}
           {/* 접종일 보여주기 // 없으면 빈칸 */}
