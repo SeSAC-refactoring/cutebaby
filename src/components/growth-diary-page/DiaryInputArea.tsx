@@ -25,7 +25,7 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
   return (
     <div>
       <div className="flex justify-between">
-        <h2 className="text-4xl font-bd">성장기록</h2>
+        <h2 className="sm:text-4xl text-2xl font-bd mb-4">성장기록</h2>
         <div
           onClick={() => {
             setOpenAddModal(false);
@@ -94,37 +94,33 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
             />
             <span>cm</span>
           </div>
-
-          <div className="btns">
-            <button
-              onClick={() =>
-                setNewGrowData({
-                  babyid: newGrowData.babyid,
-                  id: 0,
-                  height: "",
-                  weight: "",
-                  head: "",
-                  inputData: new Date().toISOString().split("T")[0],
-                })
-              }
-              className="button-yellow button-lg"
-            >
-              초기화
-              <img
-                src="/img/arrow-rotate-left-01.png"
-                alt="초기화 아이콘"
-              ></img>
-            </button>
-            <button
-              onClick={handleDiarySubmit}
-              style={{
-                cursor: isSubmitting ? "not-allowed" : "pointer",
-              }}
-              className="button-black button-lg"
-            >
-              {isSubmitting ? "저장 중" : "추가하기"}
-            </button>
-          </div>
+        </div>
+        <div className="btns mt-4 mb-4">
+          <button
+            onClick={() =>
+              setNewGrowData({
+                babyid: newGrowData.babyid,
+                id: 0,
+                height: "",
+                weight: "",
+                head: "",
+                inputData: new Date().toISOString().split("T")[0],
+              })
+            }
+            className="button-yellow button-lg"
+          >
+            초기화
+            <img src="/img/arrow-rotate-left-01.png" alt="초기화 아이콘"></img>
+          </button>
+          <button
+            onClick={handleDiarySubmit}
+            style={{
+              cursor: isSubmitting ? "not-allowed" : "pointer",
+            }}
+            className="button-black button-lg"
+          >
+            {isSubmitting ? "저장 중" : "추가하기"}
+          </button>
         </div>
       </article>
       <p>
