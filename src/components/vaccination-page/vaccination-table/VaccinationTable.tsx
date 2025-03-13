@@ -153,8 +153,8 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
               <th className="text-left p-4 rounded-l-[0.5rem] w-[20%]">
                 대상 감염병
               </th>
-              <th className="text-left w-[30%] p-2">백신 종류</th>
-              <th className="text-left w-[20%]">최근 접종 일자</th>
+              <th className="text-left w-[20%] p-2">백신 종류</th>
+              <th className="text-center w-[20%]">최근 접종 일자</th>
               <th className="w-[8%]">권장횟수</th>
               <th className="w-[8%]">완료횟수</th>
               <th className="rounded-r-[0.5rem] w-[8%]">관리</th>
@@ -164,118 +164,142 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
           </thead>
 
           <tbody className="w-full overflow-y-auto min-h-[40vh] max-h-[50vh]">
-            {diseasesResult.reduce<React.ReactElement[]>(
-              (acc, diseaseIndex, diseaseIdx) => {
-                const disease = diseasesData[diseaseIndex];
+            {(() => {
+              let hasResults = false; // 결과가 있는지 확인하기위한 변수선언
 
-                const matchedVaccines = Array.isArray(disease.vaccinationid)
-                  ? vaccinesData.filter((v) =>
-                      (disease.vaccinationid as number[]).includes(
-                        Number(v.vaccinationid)
+              const filteredRows = diseasesResult.reduce<React.ReactElement[]>(
+                (acc, diseaseIndex, diseaseIdx) => {
+                  const disease = diseasesData[diseaseIndex];
+
+                  const matchedVaccines = Array.isArray(disease.vaccinationid)
+                    ? vaccinesData.filter((v) =>
+                        (disease.vaccinationid as number[]).includes(
+                          Number(v.vaccinationid)
+                        )
                       )
-                    )
-                  : vaccinesData.filter(
-                      (v) => v.vaccinationid === disease.vaccinationid
-                    );
+                    : vaccinesData.filter(
+                        (v) => v.vaccinationid === disease.vaccinationid
+                      );
 
-                // 필터링을 먼저 진행하고  출력할 백신 리스트 결정
-                const filteredVaccines = matchedVaccines.filter((vaccine) => {
-                  const vacid = vaccine.vaccinationid;
-                  const completedDoses = matchedVaccineList.filter(
-                    (v) => v?.vaccinationid === vacid
-                  ).length;
-                  //"-" 인지 확인하기
-                  const isOptionalVaccine = vaccine.doses === "-";
-                  //숫자인지 확인하기
-                  const doseCount =
-                    typeof vaccine.doses === "number" ? vaccine.doses : 0;
+                  //  필터링을 먼저 하고 최종적으로 출력할 백신 리스트 점검하기
+                  const filteredVaccines = matchedVaccines.filter((vaccine) => {
+                    const vacid = vaccine.vaccinationid;
+                    const completedDoses = matchedVaccineList.filter(
+                      (v) => v?.vaccinationid === vacid
+                    ).length;
 
-                  if (selectedDose === 1 && vaccine.doses !== completedDoses) {
-                    return false; // 접종 완료 필터 적용
-                  }
-                  if (selectedDose === 2 && completedDoses > 0) {
-                    return false; // 미접종 필터 적용
-                  }
-                  if (
-                    selectedDose === 3 &&
-                    (completedDoses === 0 ||
-                      completedDoses >= doseCount ||
-                      isOptionalVaccine)
-                  ) {
-                    // 접종진행 필터 적용
-                    {
+                    // vaccine.doses 값이 "-"인지 확인
+                    const isOptionalVaccine = vaccine.doses === "-";
+                    const doseCount =
+                      typeof vaccine.doses === "number" ? vaccine.doses : 0; // "-"일 경우 0 처리
+
+                    // "접종완료" 선택 시: 권장횟수와 완료횟수가 같은 경우만 표시
+                    if (selectedDose === 1 && doseCount !== completedDoses) {
                       return false;
                     }
+
+                    // "미접종" 선택 시: 완료횟수가 0인 경우만 표시
+                    if (selectedDose === 2 && completedDoses > 0) {
+                      return false;
+                    }
+
+                    //  "접종진행" 선택 시: 완료횟수가 1회 이상이면서, 권장횟수보다 적은 경우만 표시
+                    if (
+                      selectedDose === 3 &&
+                      (completedDoses === 0 ||
+                        completedDoses >= doseCount ||
+                        isOptionalVaccine)
+                    ) {
+                      return false;
+                    }
+
+                    // "선택접종" 선택 시: doses 값이 "-"인 백신만 표시
+                    if (selectedDose === 4 && !isOptionalVaccine) {
+                      return false;
+                    }
+
+                    return true; // 필터 통과한 백신만 반환
+                  });
+
+                  // 필터링 후 남은 백신이 없다면 해당 질병은 출력하지 않음
+                  if (filteredVaccines.length === 0) {
+                    return acc;
                   }
-                  if (selectedDose === 4 && !isOptionalVaccine) {
-                    return false; // 선택진행 필터적용
-                  }
-                  return true; // 필터 통과한 백신만 반환
-                });
 
-                // 필터링 후 남은 백신이 없다면 해당 질병은 출력하지 않음
-                if (filteredVaccines.length === 0) {
-                  return acc;
-                }
+                  hasResults = true; // 결과가 있으면 true로 설정
 
-                const isEvenDisease = diseaseIdx % 2 === 0;
-                const rowColor = isEvenDisease ? "bg-blue-1" : "bg-white";
+                  const isEvenDisease = diseaseIdx % 2 === 0;
+                  const rowColor = isEvenDisease ? "bg-blue-1" : "bg-white";
 
-                filteredVaccines.forEach((vaccine, index) => {
-                  acc.push(
-                    <tr
-                      key={`${diseaseIndex}-${vaccine.vaccinationid}`}
-                      className={` ${rowColor} h-[2.125rem]`}
-                    >
-                      {/* 첫 번째 백신에서만 감염병 이름 출력 & rowSpan 설정 */}
-                      {index === 0 ? (
-                        <td
-                          className="p-4 w-[20%] rounded-l-[0.5rem] border-r-0 border border-blue-3"
-                          rowSpan={filteredVaccines.length} // 필터링된 백신 수만큼 병합
-                        >
-                          {disease.name}
+                  filteredVaccines.forEach((vaccine, index) => {
+                    acc.push(
+                      <tr
+                        key={`${diseaseIndex}-${vaccine.vaccinationid}`}
+                        className={` ${rowColor} h-[2.125rem]`}
+                      >
+                        {/* 첫 번째 백신에서만 감염병 이름 출력 & rowSpan 설정 */}
+                        {index === 0 ? (
+                          <td
+                            className="p-4 w-[20%] rounded-l-[0.5rem] border-r-0 border border-blue-3"
+                            rowSpan={filteredVaccines.length} // 필터링된 백신 수만큼 병합
+                          >
+                            {disease.name}
+                          </td>
+                        ) : null}
+
+                        {/* 백신 이름 */}
+                        <td className="p-2 w-[30%] border-r-0 border border-blue-3">
+                          {vaccine.name}
                         </td>
-                      ) : null}
-
-                      {/* 백신 이름 */}
-                      <td className="p-2 w-[30%] border-r-0 border border-blue-3">
-                        {vaccine.name}
-                      </td>
-                      {/* 최근 접종 일자 */}
-                      <td className="w-[12%] border-x-0 border border-blue-3">
-                        <VaccinationSchedule
-                          matchedVaccineList={matchedVaccineList}
-                          vaccinationid={vaccine.vaccinationid}
-                        />
-                      </td>
-                      {/* 권장횟수 */}
-                      <td className="text-center w-[8%] border-x-0 border border-blue-3">
-                        {vaccine.doses}
-                      </td>
-                      {/* 완료횟수 */}
-                      <td className="text-center w-[8%] border-x-0 border border-blue-3">
-                        <VaccinationScheduleName
-                          matchedVaccineList={matchedVaccineList}
-                          vaccinationid={vaccine.vaccinationid}
-                        />
-                      </td>
-                      {/* 관리버튼 */}
-                      <td className="w-[8%] rounded-r-[0.5rem] border-l-0 border border-blue-3">
-                        <div className="flex justify-center items-center h-full">
-                          <VaccineType
-                            selectedBabyId={selectedBabyId}
-                            vaccineIds={[vaccine.vaccinationid]} // 개별적으로 백신 ID 전달
+                        {/* 최근 접종 일자 */}
+                        <td className="w-[12%] border-x-0 border border-blue-3">
+                          <VaccinationSchedule
+                            matchedVaccineList={matchedVaccineList}
+                            vaccinationid={vaccine.vaccinationid}
                           />
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                });
+                        </td>
+                        {/* 권장횟수 */}
+                        <td className="text-center w-[8%] border-x-0 border border-blue-3">
+                          {vaccine.doses}
+                        </td>
+                        {/* 완료횟수 */}
+                        <td className="text-center w-[8%] border-x-0 border border-blue-3">
+                          <VaccinationScheduleName
+                            matchedVaccineList={matchedVaccineList}
+                            vaccinationid={vaccine.vaccinationid}
+                          />
+                        </td>
+                        {/* 관리버튼 */}
+                        <td className="w-[8%] rounded-r-[0.5rem] border-l-0 border border-blue-3">
+                          <div className="flex justify-center items-center h-full">
+                            <VaccineType
+                              selectedBabyId={selectedBabyId}
+                              vaccineIds={[vaccine.vaccinationid]} // 개별적으로 백신 ID 전달
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  });
 
-                return acc;
-              },
-              [] // 빈 배열을 초기값으로 설정
-            )}
+                  return acc;
+                },
+                [] // 빈 배열을 초기값으로 설정
+              );
+
+              // 필터링 결과가 없을 경우 "검색 결과 없음" 메시지 추가
+              if (!hasResults) {
+                return (
+                  <tr>
+                    <td colSpan={6} className="text-center text-gray-500 py-4">
+                      검색 결과가 없습니다.
+                    </td>
+                  </tr>
+                );
+              }
+
+              return filteredRows;
+            })()}
           </tbody>
         </table>
       </section>
