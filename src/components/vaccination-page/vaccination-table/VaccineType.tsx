@@ -16,7 +16,6 @@ export const VaccineType: React.FC<VaccineTypeProps> = ({
     null
   );
   const [selectedDoseNumber, setSelectedDoseNumber] = useState<number>(1);
-
   const handleOpenModal = () => {
     if (vaccineIds.length === 0) return; // 백신이 없으면 실행 X
 
