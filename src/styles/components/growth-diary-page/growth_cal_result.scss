@@ -1,4 +1,4 @@
-article.resultArea .results .result {
+.results .result {
     @apply flex flex-col gap-6;
     @apply sm:border-4 sm:border-blue-3 sm:rounded-[2rem] sm:px-12 sm:py-12;
 
@@ -12,7 +12,6 @@ article.resultArea .results .result {
         & .result-value {
             @apply flex gap-2 items-center;
             @apply bg-orange-2 px-5 py-3 rounded-l-lg;
-
             @apply text-gray-7;
         }
 

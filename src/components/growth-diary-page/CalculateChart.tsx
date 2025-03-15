@@ -105,7 +105,6 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
 
     return (
         <div className="results">
-            <p>계산 결과</p>
             {/* 신장 그래프 */}
             {childData.height && (
                 <div className="result">
@@ -159,7 +158,7 @@ export const CalculateChart: React.FC<CalculateChartProps> = ({
                                 <span>백분위</span>
                                 <strong>{percentiles.weight}%</strong>
                             </p>
-                            <p className="percentile-discription">
+                            <p className="percentile-description">
                                 <span>또래의 </span>
                                 <strong>
                                     {percentiles.weight
