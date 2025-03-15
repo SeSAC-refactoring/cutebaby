@@ -8,6 +8,7 @@ import { usePercentiles } from './hooks/usePercentiles';
 import { useFilteredLmsDataByMonths } from './hooks/useFilteredLmsDataByMonths ';
 import { useFilteredLmsDataByGender } from './hooks/useFilteredLmsDataByGender ';
 import { babyinfo } from '../types';
+import { useState } from 'react';
 
 interface GrowthCalculateProps {
     setOpenCalModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -42,6 +43,8 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
     );
 
     // console.log("GrowthCalculate 모달의 childData", childData);
+
+    const [openResultModal, setOpenResultModal] = useState<boolean>(false);
 
     return (
         <div
@@ -81,39 +84,74 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
                         childData={childData}
                         setChildData={setChildData}
                         setShow={setShow}
+                        setOpenResultModal={setOpenResultModal}
                     />
 
-                    {/* 차트 */}
-                    <article className="resultArea">
-                        {show ? (
-                            isLoading ? (
-                                <div className="response-state">
-                                    <img
-                                        src="/img/visuals/visual_loading_ggomul_04.svg"
-                                        alt="이미지"
-                                    />
-                                    <div className="text">
-                                        <p>자료를 가져오고 있어요..</p>
-                                        <p>조금만 기다려주세요..</p>
-                                    </div>
+                    {/* 결과 (차트) 모달 */}
+                    {openResultModal && (
+                        <article className="resultArea">
+                            <div
+                                onClick={() => {
+                                    setOpenResultModal(false);
+                                }}
+                                className="resultModalBg"
+                            >
+                                <div
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="resultWhiteboxModal"
+                                >
+                                    <section className="topArea sm:hidden">
+                                        <div className="title">
+                                            <h2>계산 결과</h2>
+                                        </div>
+
+                                        <div
+                                            className="close"
+                                            onClick={() => {
+                                                setOpenResultModal(false);
+                                            }}
+                                        >
+                                            <img
+                                                src="/img/icons/i-modal-close-s32.svg"
+                                                alt="닫기"
+                                            />
+                                        </div>
+                                    </section>
+
+                                    {show ? (
+                                        isLoading ? (
+                                            <div className="response-state">
+                                                <img
+                                                    src="/img/visuals/visual_loading_ggomul_04.svg"
+                                                    alt="이미지"
+                                                />
+                                                <div className="text">
+                                                    <p>
+                                                        자료를 가져오고 있어요..
+                                                    </p>
+                                                    <p>조금만 기다려주세요..</p>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <CalculateChart
+                                                childData={childData}
+                                                filteredLmsDataByGender={
+                                                    filteredLmsDataByGender
+                                                }
+                                                filteredLmsDataByMonths={
+                                                    filteredLmsDataByMonths
+                                                }
+                                                percentileData={percentileData}
+                                                percentiles={percentiles}
+                                            />
+                                        )
+                                    ) : (
+                                        <CalculateDefaultState />
+                                    )}
                                 </div>
-                            ) : (
-                                <CalculateChart
-                                    childData={childData}
-                                    filteredLmsDataByGender={
-                                        filteredLmsDataByGender
-                                    }
-                                    filteredLmsDataByMonths={
-                                        filteredLmsDataByMonths
-                                    }
-                                    percentileData={percentileData}
-                                    percentiles={percentiles}
-                                />
-                            )
-                        ) : (
-                            <CalculateDefaultState />
-                        )}
-                    </article>
+                            </div>
+                        </article>
+                    )}
                 </section>
             </div>
         </div>

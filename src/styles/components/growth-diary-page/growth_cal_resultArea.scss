@@ -1,8 +1,17 @@
 @import './growth_cal_result.scss';
 
-article.resultArea {
-    @apply flex flex-col gap-12;
-    // @apply sm:block;
+.resultArea {
+    & .resultModalBg {
+        @screen max-sm {
+            @apply modalBg;
+        }
+
+        & .resultWhiteboxModal {
+            @screen max-sm {
+                @apply whiteboxModal;
+            }
+        }
+    }
 
     & .defaultState {
         @apply mb-20 hidden sm:block;

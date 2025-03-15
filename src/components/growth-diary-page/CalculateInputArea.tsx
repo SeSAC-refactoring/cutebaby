@@ -13,12 +13,14 @@ interface CalculateInputAreaProps {
     childData: ChildData;
     setChildData: React.Dispatch<React.SetStateAction<ChildData>>;
     setShow: React.Dispatch<React.SetStateAction<boolean>>;
+    setOpenResultModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
     childData,
     setChildData,
     setShow,
+    setOpenResultModal,
 }) => {
     const { handleInputChange, inputData, setInputData } =
         useHandleInputChange(childData);
@@ -128,14 +130,15 @@ export const CalculateInputArea: React.FC<CalculateInputAreaProps> = ({
                 </button>
                 <button
                     className="button-black button-lg"
-                    onClick={() =>
+                    onClick={() => {
+                        setOpenResultModal(true);
                         handleCalculateChart(
                             refs,
                             inputData,
                             setChildData,
                             setShow
-                        )
-                    }
+                        );
+                    }}
                 >
                     계산하기
                 </button>
