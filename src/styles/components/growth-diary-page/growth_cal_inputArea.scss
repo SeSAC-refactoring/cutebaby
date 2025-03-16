@@ -1,27 +1,38 @@
 article.inputArea {
-  @apply h-full flex flex-col justify-between items-center;
-  @apply sm:bg-yellow-1 rounded-[2rem] sm:px-8 sm:py-8;
-  @apply sm:h-auto sm:justify-start sm:gap-8 sm:items-end;
+    @apply h-full flex flex-col justify-between items-center;
+    @apply sm:bg-yellow-1 sm:rounded-[2rem] sm:px-8 sm:py-8;
+    @apply sm:h-auto sm:flex-row sm:gap-4 sm:flex-wrap sm:justify-end sm:items-end;
+    @apply md:flex-nowrap;
 
-  & .forms {
-    @apply flex flex-col gap-6 w-full;
-    @apply sm:flex-row;
+    & .forms {
+        @apply flex flex-col gap-6 w-full;
+        @apply sm:flex-row sm:gap-4;
 
-    & .inputWrapper {
-      @apply flex gap-2 items-end;
+        & .inputWrapper {
+            @apply flex gap-2 items-end;
+            @apply sm:min-w-[6.25rem];
 
-      & span {
-        @apply mb-[1.125rem];
-        @apply text-gray-6 font-md;
-      }
+            & span {
+                @apply mb-[1.125rem];
+                @apply text-gray-6 font-md;
+            }
+        }
     }
-  }
 
-  & .btns {
-    @apply flex gap-4;
+    & .btns {
+        @apply flex gap-4;
 
-    & button {
-      width: 8rem !important;
+        & button {
+            @apply button-lg;
+            @apply max-sm:w-[10rem];
+
+            @screen sm {
+                @apply button-sm;
+            }
+
+            & p {
+                @apply max-lg:hidden max-md:block;
+            }
+        }
     }
-  }
 }
