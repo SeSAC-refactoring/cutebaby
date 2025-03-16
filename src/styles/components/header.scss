@@ -1,41 +1,53 @@
 header {
-  @apply h-[10vh] sm:min-h-20 sm:h-20 bg-white border-t-2 border-gray-6
-  sm:border-t-0 sm:border-b-2;
+    @apply fixed bottom-0 z-50
+    w-full h-[6.625rem] px-4
+    bg-white border-t-2 border-gray-6;
+    @apply xs:px-6;
+    @apply sm:static sm:flex sm:justify-center sm:h-20 sm:border-t-0 sm:border-b-2;
 
-  .centerWrapper {
-    @apply sm:place-content-between flex-wrap sm:flex-nowrap;
-  }
-
-  .logo {
-    @apply hidden sm:flex items-center;
-  }
-
-  nav {
-    @apply w-full pt-2 pb-[34px] px-6 flex gap-6
-    sm:w-auto sm:p-0;
-
-    a {
-      @apply grow py-2 px-1 flex flex-col items-center justify-center gap-1 rounded-[8px]
-      sm:self-center sm:p-2;
-
-      &:hover {
-        @apply bg-gray-1;
-      }
-
-      img {
-        @apply w-8 h-8;
-        @apply sm:hidden;
-      }
-
-      p {
-        @apply text-gray-4 text-2xs font-bd;
-        @apply sm:text-gray-5 sm:text-bs sm:font-md;
-
-        &.active {
-          @apply text-gray-8;
-          @apply xs:font-bd;
-        }
-      }
+    & > .headerContainer {
+        @apply w-full h-full pb-8
+        flex items-end;
+        @apply sm:max-w-[80rem] sm:pb-0 
+        sm:justify-between sm:items-center;
     }
-  }
+
+    .logo {
+        @apply hidden;
+        @apply sm:block;
+    }
+
+    nav {
+        @apply w-full flex justify-between;
+        @apply sm:w-auto sm:gap-6;
+
+        a {
+            @apply flex flex-col gap-1 items-center
+            w-14 pt-2 rounded-lg;
+            @apply xs:w-16;
+            @apply sm:w-auto sm:pt-0;
+            //         @apply grow py-2 px-1 justify-center gap-1
+            //   sm:self-center sm:p-2;
+
+            &:hover {
+                @apply bg-gray-1;
+            }
+
+            img {
+                @apply w-8 h-8;
+                @apply sm:hidden;
+            }
+
+            p {
+                @apply text-gray-4 text-3xs font-bd;
+                @apply xs:text-2xs;
+                @apply sm:text-gray-5 sm:text-bs sm:font-md;
+
+                &.active {
+                    @apply text-gray-0;
+                    // @apply xs:font-bd;
+                }
+            }
+        }
+    }
 }

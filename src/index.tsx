@@ -6,12 +6,9 @@ import { Provider } from 'react-redux';
 import { store, persistor } from './store';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import './styles/index.scss';
+import './styles/styles.scss';
 
 const rootElement = document.getElementById('root') as HTMLElement;
-
-// if (rootElement) {}
-
 const root = ReactDOM.createRoot(rootElement);
 
 root.render(

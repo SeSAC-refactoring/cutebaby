@@ -1,0 +1,53 @@
+@import '../abstracts/_colors'; // 색상변수 import
+
+// 전체 reset
+* {
+    @apply box-border;
+
+    &:focus-visible {
+        outline: none;
+    }
+}
+
+// body
+body {
+    @apply w-full min-w-[320px] h-[100vh] flex flex-col;
+
+    font-family: 'Pretendard';
+    @apply text-gray-0 text-bs font-rg;
+    @apply sm:bg-yellow-1;
+}
+
+// root div // 화면 전체 영역
+#root {
+    @apply w-full flex flex-col-reverse grow relative;
+    @apply sm:flex-col;
+}
+
+// main // header footer 제외 영역
+main {
+    @apply w-full h-full flex justify-center relative;
+    @apply sm:mt-12 sm:h-auto;
+}
+
+// 제목 태그
+h2,
+h3,
+h4 {
+    @apply font-bd;
+}
+
+h2 {
+    @apply text-2xl;
+}
+h3 {
+    @apply text-md;
+}
+h4 {
+    @apply text-bs text-gray-8;
+}
+
+// a 태그
+a {
+    cursor: pointer;
+}

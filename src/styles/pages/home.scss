@@ -1,2 +1,7 @@
 @import '../components/home-page/home_userArea.scss';
 @import '../components/home-page/home_chatbotArea.scss';
+
+.centerWrapper {
+    @apply min-w-[390px] max-w-[1280px] w-full min-h-0 h-full grow flex gap-0
+sm:px-6 sm:gap-6;
+}

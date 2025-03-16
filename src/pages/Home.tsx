@@ -17,39 +17,33 @@ export default function Home() {
 
     return (
         <main className="home relative mt-0 sm:mt-12">
-            <div className="centerWrapper">
-                {/* 로딩 창 */}
-                {loading && <Loading />}
+            {/* 로딩 창 */}
+            {loading && <Loading />}
 
-                {/* 모달 */}
-                {openCentersModal && (
-                    <VaccinationCenters
+            {/* 모달 */}
+            {openCentersModal && (
+                <VaccinationCenters setOpenCentersModal={setOpenCentersModal} />
+            )}
+            {openDetailsModal && (
+                <VaccinationDetails setOpenDetailsModal={setOpenDetailsModal} />
+            )}
+
+            <section className="userArea min-h-0 grow flex flex-col">
+                <TopArea />
+                <section className="dashboard">
+                    {/* 성장그래프 영역 */}
+                    <GrowthDiaryArea setLoading={setLoading} />
+
+                    {/* 예방접종관련 배너 영역 */}
+                    <VaccinationArea
+                        setOpenDetailsModal={setOpenDetailsModal}
                         setOpenCentersModal={setOpenCentersModal}
                     />
-                )}
-                {openDetailsModal && (
-                    <VaccinationDetails
-                        setOpenDetailsModal={setOpenDetailsModal}
-                    />
-                )}
-
-                <section className="userArea min-h-0 grow flex flex-col">
-                    <TopArea />
-                    <section className="dashboard">
-                        {/* 성장그래프 영역 */}
-                        <GrowthDiaryArea setLoading={setLoading} />
-
-                        {/* 예방접종관련 배너 영역 */}
-                        <VaccinationArea
-                            setOpenDetailsModal={setOpenDetailsModal}
-                            setOpenCentersModal={setOpenCentersModal}
-                        />
-                    </section>
                 </section>
+            </section>
 
-                {/* 챗봇 */}
-                <ChatbotArea />
-            </div>
+            {/* 챗봇 */}
+            <ChatbotArea />
             <button className="sm:hidden btnShowChatbot absolute bottom-6 right-6 w-16 h-16 bg-orange-6 border-2 border-gray-6 rounded-2xl shadow-md">
                 <img
                     src="img/icons/i-chatbot-solid-s36.svg"
