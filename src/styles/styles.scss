@@ -12,7 +12,7 @@
 
 // styles import
 // global
-@import './global.scss'; // 스타일초기화, root div, main 태그 설정
+@import './base/global.scss'; // 스타일초기화, root div, main 태그 style
 
 // component
 @import './components/header.scss'; // header style
@@ -28,4 +28,4 @@
 @import './pages/vaccination.scss'; // 예방접종페이지 style
 @import './pages/growthDiary.scss'; // 성장일지페이지 style
 @import './pages/mypage.scss'; // 마이페이지 style
-@import './pages/login.scss';
+@import './pages/login.scss'; // 로그인페이지 style

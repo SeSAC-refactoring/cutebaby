@@ -71,52 +71,50 @@ export default function Vaccination() {
                 <VaccineInfo setOpenInfoModal={setOpenInfoModal} />
             )}
 
-            <div>
-                <div className="whitebox">
-                    <div className="flex justify-between w-full">
-                        <div className="title">
-                            <h2>예방접종 관리</h2>
-                            <p className="vaccination">
-                                <strong>표준 예방접종 일정표</strong>를 기준으로
-                                관리할 수 있어요:)
-                            </p>
-                        </div>
-                        <div className="ml-4 flex gap-2">
-                            <button
-                                className="w-full button button-yellow button-xs"
-                                onClick={() => setOpenCentersModal(true)}
-                            >
-                                위탁의료기관{' '}
-                                <img
-                                    src="img/icons/i-search-s20.svg"
-                                    alt="성장일지 이미지"
-                                />
-                            </button>
-                            <button
-                                className="w-full button button-yellow button-xs"
-                                onClick={() => setOpenDetailsModal(true)}
-                            >
-                                감염병 정보
-                            </button>
-                            <button
-                                className="w-full button button-yellow button-xs"
-                                onClick={() => setOpenInfoModal(true)}
-                            >
-                                백신 정보
-                            </button>
-                        </div>
+            <div className="whitebox">
+                <div className="flex justify-between w-full">
+                    <div className="title">
+                        <h2>예방접종 관리</h2>
+                        <p className="vaccination">
+                            <strong>표준 예방접종 일정표</strong>를 기준으로
+                            관리할 수 있어요:)
+                        </p>
                     </div>
-
-                    <div>
-                        <BabyList
-                            babyInfo={babyInfo}
-                            handleSelectBaby={handleSelectBaby}
-                            selectedBabyId={selectedBabyId}
-                        />
+                    <div className="ml-4 flex gap-2">
+                        <button
+                            className="w-full button button-yellow button-xs"
+                            onClick={() => setOpenCentersModal(true)}
+                        >
+                            위탁의료기관{' '}
+                            <img
+                                src="img/icons/i-search-s20.svg"
+                                alt="성장일지 이미지"
+                            />
+                        </button>
+                        <button
+                            className="w-full button button-yellow button-xs"
+                            onClick={() => setOpenDetailsModal(true)}
+                        >
+                            감염병 정보
+                        </button>
+                        <button
+                            className="w-full button button-yellow button-xs"
+                            onClick={() => setOpenInfoModal(true)}
+                        >
+                            백신 정보
+                        </button>
                     </div>
-
-                    <VaccinationTable selectedBabyId={selectedBabyId} />
                 </div>
+
+                <div>
+                    <BabyList
+                        babyInfo={babyInfo}
+                        handleSelectBaby={handleSelectBaby}
+                        selectedBabyId={selectedBabyId}
+                    />
+                </div>
+
+                <VaccinationTable selectedBabyId={selectedBabyId} />
             </div>
         </main>
     );

@@ -1,1 +1,69 @@
-@import "../components/login-page/login_btn.scss";
+main {
+    .centerWrapper {
+        @apply justify-center max-md:overflow-x-hidden max-md:overflow-y-scroll;
+
+        // 기본 main
+        .contentsWrap {
+            @apply w-full min-h-0 grow px-6 pt-10 pb-6 flex flex-col gap-6 items-center
+      sm:bg-white sm:border-2 sm:border-gray-6 sm:rounded-3xl sm:p-10;
+            h2 {
+                @apply self-start;
+            }
+
+            .contentsArea {
+                @apply grow w-full flex flex-col flex-nowrap overflow-y-auto;
+            }
+
+            .confirmBtnArea {
+                @apply w-full flex;
+
+                .buttonsWrap {
+                    @apply w-full grid grid-cols-2 gap-4;
+                }
+            }
+        }
+
+        .loginSignupWrap,
+        .loginFormWrap,
+        .signupFormWrap {
+            background-image: var(--gradient-w-y-1);
+            @apply sm:max-w-[35rem] sm:bg-none;
+        }
+
+        // 로그인, 회원가입 선택
+        .loginSignupWrap {
+            @apply pb-10;
+            .contentsArea {
+                @apply flex-wrap overflow-y-hidden;
+
+                .loginSignupVisualArea {
+                    @apply grow;
+                }
+            }
+
+            .loginSignupConfirmBtnArea {
+                @apply w-full flex flex-col items-center gap-8;
+
+                .buttonsWrap {
+                    @apply w-full flex flex-col gap-0;
+
+                    a:last-child button {
+                        @apply mt-2;
+                    }
+                }
+            }
+        }
+
+        // 이메일 회원가입 폼
+        .signupFormWrap {
+            .contentsArea {
+                @apply gap-6;
+            }
+
+            .confirmBtnArea {
+                .buttonsWrap {
+                }
+            }
+        }
+    }
+}
