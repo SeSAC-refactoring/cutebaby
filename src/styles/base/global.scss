@@ -12,7 +12,6 @@
 // body
 body {
     @apply w-full min-w-[320px] h-[100vh] flex flex-col;
-
     font-family: 'Pretendard';
     @apply text-gray-0 text-bs font-rg;
     @apply sm:bg-yellow-1;
@@ -20,14 +19,15 @@ body {
 
 // root div // 화면 전체 영역
 #root {
-    @apply w-full flex flex-col-reverse grow relative;
-    @apply sm:flex-col;
+    @apply w-full flex flex-col grow relative;
+    // @apply sm:flex-col;
 }
 
 // main // header footer 제외 영역
 main {
-    @apply w-full h-full flex justify-center relative;
-    @apply sm:mt-12 sm:h-auto;
+    @apply w-full h-[calc(100%-6.625rem)] mb-[6.625rem]
+    flex justify-center relative;
+    @apply sm:mb-0 sm:mt-10 sm:h-auto;
 }
 
 // 제목 태그

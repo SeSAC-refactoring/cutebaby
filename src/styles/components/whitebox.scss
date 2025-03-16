@@ -1,5 +1,5 @@
 .whitebox {
-    // 모바일일 떄 여백 390이하는 16px , 이상은 24px
+    // 모바일일 떄 여백 390이하는 16px , 이상은 24px // py-6 // h-[44rem] // 제목은 24px, 안에 내용은 16px gap
     @apply w-full h-auto flex flex-col gap-6 rounded-[40px];
     @apply xs:bg-white xs:p-[3rem_3.5rem] xs:w-[1280px];
     @apply sm:border-2 sm:border-gray-6;
