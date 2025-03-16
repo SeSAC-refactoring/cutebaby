@@ -93,8 +93,8 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
   };
 
   return (
-    <div onClick={onClose}>
-      <div onClick={(e) => e.stopPropagation()}>
+    <div onClick={onClose} className="modalBg">
+      <div onClick={(e) => e.stopPropagation()} className="mediumModal">
         <div>
           <div>기록 수정</div>
           <div onClick={onClose}>

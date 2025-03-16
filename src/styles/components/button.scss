@@ -136,7 +136,7 @@ button,
 }
 
 .button-lg {
-    @include button-size(64px, 22px, 6px, 18px, 28px);
+    @include button-size(64px, 22px, 6px, 18px, 24px);
     @apply text-md;
 }
 
