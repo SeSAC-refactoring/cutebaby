@@ -16,10 +16,10 @@ export const RecentGrowthRecord: React.FC<RecentGrowthRecordProps> = ({
   setOpenAddModal,
 }) => {
   return (
-    <div className="w-[30%]">
-      <div className="gird grid-cols-1">
-        <span>가장 최근 기록</span>
-        <span>
+    <div className="sm:w-[30%] flex flex-col p-8 gap-4 rounded-2xl border-[3px] border-blue-3">
+      <div className="gird grid-cols-1 flex flex-col gap-4">
+        <span className="text-sm font-bd">가장 최근 기록</span>
+        <span className="text-xs font-md text-gray-7">
           {new Date(growData[0].inputData).toLocaleDateString("ko-KR", {
             year: "numeric",
             month: "long",
@@ -28,21 +28,23 @@ export const RecentGrowthRecord: React.FC<RecentGrowthRecordProps> = ({
         </span>
       </div>
       <div>
-        <div>
-          <div>
-            키 <span>{growData[0].height} cm</span>
+        <div className="flex flex-col gap-4">
+          <div className="flex p-[14px_26px] justify-center items-center gap-[10px] self-stretch rounded-lg bg-orange-3 text-bs font-rg h-[80px]">
+            키 <span className="text-bs font-bd">{growData[0].height} cm</span>
           </div>
-          <div>
-            몸무게 <span>{growData[0].weight} kg</span>
+          <div className="flex p-[14px_26px] justify-center items-center gap-[10px] self-stretch rounded-lg bg-green-3 text-bs font-rg h-[80px]">
+            몸무게{" "}
+            <span className="text-bs font-bd">{growData[0].weight} kg</span>
           </div>
-          <div>
-            머리 둘레 <span>{growData[0].head} cm</span>
+          <div className="flex p-[14px_26px] justify-center items-center gap-[10px] self-stretch rounded-lg bg-purple-3 text-bs font-rg h-[80px]">
+            머리 둘레{" "}
+            <span className="text-bs font-bd">{growData[0].head} cm</span>
           </div>
         </div>
       </div>
-      <div>
+      {/* <div>
         <button onClick={() => setOpenAddModal(true)}>성장기록 보러가기</button>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -25,14 +25,14 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
   return (
     <div>
       <div className="flex justify-between">
-        <h2 className="sm:text-4xl text-2xl font-bd mb-4">성장기록</h2>
+        {/* <h2 className="sm:text-4xl text-2xl font-bd mb-4">성장기록</h2>
         <div
           onClick={() => {
             setOpenAddModal(false);
           }}
         >
           <img src="/img/icons/i-modal-close-s32.svg" alt="" />
-        </div>
+        </div> */}
       </div>
       <article className="inputArea">
         <div className="forms">
@@ -123,10 +123,10 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
           </button>
         </div>
       </article>
-      <p>
+      {/* <p>
         백분위수란 같은 성별과 연령을 가진 100명을 오름차순으로 나열했을 때 이
         중 몇 번째에 해당되는지를 의미합니다. (예: 97%는 상위 3%를 의미)
-      </p>
+      </p> */}
     </div>
   );
 };

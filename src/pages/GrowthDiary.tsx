@@ -118,17 +118,30 @@ export default function GrowthDiary() {
               <strong>우리 아이의 성장</strong>을 기록하고 상태를 확인해보세요:)
             </p>
           </div>
+          <div className="flex gap-[8px]">
+            <button
+              className=" button-yellow button-xs"
+              onClick={() => setOpenCalModal(true)}
+            >
+              <p>성장기록</p>
+              {/* <img src="../img/icons/i-chevron-right-s20.svg" alt="*" /> */}
+            </button>
 
-          <button
-            className="ml-4 button-yellow button-xs"
-            onClick={() => setOpenCalModal(true)}
-          >
-            <p>성장상태 계산</p>
-            <img src="../img/icons/i-chevron-right-s20.svg" alt="*" />
-          </button>
+            <button
+              className="button-yellow button-xs"
+              onClick={() => setOpenCalModal(true)}
+            >
+              <p>성장상태 계산</p>
+              <img src="../img/icons/i-chevron-right-s20.svg" alt="*" />
+            </button>
+          </div>
         </div>
 
         <div>
+          {/* <DiaryInputArea
+            setOpenAddModal={setOpenAddModal}
+            selectedBabyId={selectedBabyId}
+          /> */}
           {babyInfo.length > 0 && (
             <>
               <BabyList
@@ -136,22 +149,26 @@ export default function GrowthDiary() {
                 handleSelectBaby={handleSelectBaby}
                 selectedBabyId={selectedBabyId}
               />
+              <DiaryInputArea
+                setOpenAddModal={setOpenAddModal}
+                selectedBabyId={selectedBabyId}
+              />
 
               {/* 성장기록 그래프 */}
 
               {growData.length > 0 ? (
                 <>
-                  <div className="flex justify-between gap-[2rem] w-full">
-                    <div className="border-[3px] border-blue-3 w-[70%]">
-                      <div>우리 아이 성장 추이</div>
-                      <div className="graphArea min-h-[10vh] max-h-[50vh]">
-                        <DiaryChart growData={growData} />
-                      </div>
-                    </div>
+                  <div className="flex justify-between gap-[2rem] w-full mt-6 flex-col sm:flex-row">
                     <RecentGrowthRecord
                       growData={growData}
                       setOpenAddModal={setOpenAddModal}
                     />
+                    <div className="border-[3px] border-blue-3 w-[70%] rounded-2xl gap-2 p-[32px_40px]">
+                      <div className="text-sm font-bd">우리 아이 성장 추이</div>
+                      <div className="graphArea min-h-[10vh] max-h-[50vh] h-[320px]">
+                        <DiaryChart growData={growData} />
+                      </div>
+                    </div>
                   </div>
                 </>
               ) : (
