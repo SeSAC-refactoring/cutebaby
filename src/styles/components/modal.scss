@@ -3,9 +3,9 @@
     @apply backdrop-blur-sm z-30;
 
     .whiteboxModal {
-        @apply bg-white w-full min-w-80 h-full px-6 pt-6;
-        @apply flex flex-col gap-6 justify-start;
-
+        @apply bg-white w-full min-w-80 h-full px-4 pt-6
+        flex flex-col gap-6 justify-start;
+        @apply xs:px-6;
         @apply sm:absolute sm:top-0 sm:gap-12;
         @apply sm:border-2 sm:border-gray-6 sm:rounded-3xl sm:p-20;
         // 반응형 width height 재설정 필요 // whitebox 클래스랑 같게

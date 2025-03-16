@@ -11,7 +11,7 @@
 
 // body
 body {
-    @apply h-[100vh] min-h-[844px] flex flex-col;
+    @apply w-full min-w-[320px] h-[100vh] flex flex-col;
 
     font-family: 'Pretendard';
     @apply text-gray-0 text-bs font-rg;
@@ -20,13 +20,13 @@ body {
 
 // root div // 화면 전체 영역
 #root {
-    @apply flex flex-col-reverse grow;
+    @apply w-full flex flex-col-reverse grow relative;
     @apply sm:flex-col;
 }
 
 // main // header footer 제외 영역
 main {
-    @apply w-full flex justify-center relative h-full;
+    @apply w-full h-full flex justify-center relative;
     @apply sm:mt-12 sm:h-auto;
 }
 

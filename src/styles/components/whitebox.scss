@@ -1,4 +1,5 @@
 .whitebox {
+    // 모바일일 떄 여백 390이하는 16px , 이상은 24px
     @apply w-full h-auto flex flex-col gap-6 rounded-[40px];
     @apply xs:bg-white xs:p-[3rem_3.5rem] xs:w-[1280px];
     @apply sm:border-2 sm:border-gray-6;
