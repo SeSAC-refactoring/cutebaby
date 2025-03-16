@@ -28,7 +28,7 @@ export default function Header() {
 
                 {/* 로그인 안했을 때 메뉴*/}
                 {!Logined ? (
-                    <nav>
+                    <nav className="notLogined">
                         <Link to="/">
                             <img
                                 src={
