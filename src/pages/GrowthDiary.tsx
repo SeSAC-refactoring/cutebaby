@@ -162,16 +162,16 @@ export default function GrowthDiary() {
                 <></>
               ) : (
                 <>
-                  {/* <div style={{ marginTop: "32px" }}></div> */}
-                  <div
-                    style={{
-                      height: "512px",
-                      bottom: "512px",
-                    }}
-                  >
-                    <div>
+                  <div className="w-[70rem] flex justify-between">
+                    <div className="w-[50.5rem] h-[30rem] bg-gray-1 rounded-[2rem]"></div>
+                    <div className="w-[17.5rem] h-[30rem] bg-gray-1 rounded-[2rem]"></div>
+                  </div>
+                  <div className="w-[70rem] h-[35.625rem] relative bottom-[35.625rem] flex justify-center items-center backdrop-blur-sm mt-20">
+                    <div className="flex flex-col items-center z-[100] gap-6 pb-20">
                       <img src="/img/Ggoggo-002.png" />
-                      <div>등록된 기록이 없습니다!</div>
+                      <div className="text-xl font-md text-gray-6">
+                        등록된 기록이 없습니다!
+                      </div>
 
                       <button
                         className="button-black button-md"
