@@ -3,7 +3,7 @@ header {
     w-full h-[6.625rem] px-4
     bg-white border-t-2 border-gray-6;
     @apply xs:px-6;
-    @apply sm:static sm:flex sm:justify-center sm:h-20 sm:border-t-0 sm:border-b-2;
+    @apply sm:static sm:flex sm:justify-center sm:h-16 sm:border-t-0 sm:border-b-2;
 
     & > .headerContainer {
         @apply w-full h-full pb-8
@@ -29,8 +29,6 @@ header {
             w-14 pt-2 rounded-lg;
             @apply xs:w-16;
             @apply sm:w-auto sm:pt-0;
-            //         @apply grow py-2 px-1 justify-center gap-1
-            //   sm:self-center sm:p-2;
 
             &:hover {
                 @apply bg-gray-1;
@@ -48,7 +46,6 @@ header {
 
                 &.active {
                     @apply text-gray-0;
-                    // @apply xs:font-bd;
                 }
             }
         }
