@@ -80,20 +80,20 @@ export default function Vaccination() {
           </div>
           <div className="ml-4 flex gap-2 max-sm:ml-0 mt-6">
             <button
-              className="w-full button button-yellow button-xs"
+              className="w-full button button-yellow button-xs  max-sm:button-xm"
               onClick={() => setOpenCentersModal(true)}
             >
               위탁의료기관{" "}
               <img src="img/icons/i-search-s20.svg" alt="성장일지 이미지" />
             </button>
             <button
-              className="w-full button button-yellow button-xs"
+              className="w-full button button-yellow button-xs max-sm:button-xm"
               onClick={() => setOpenDetailsModal(true)}
             >
               감염병 정보
             </button>
             <button
-              className="w-full button button-yellow button-xs"
+              className="w-full button button-yellow button-xs  max-sm:button-xm"
               onClick={() => setOpenInfoModal(true)}
             >
               백신 정보
