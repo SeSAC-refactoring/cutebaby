@@ -160,7 +160,6 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
       // console.error("정보 수정 오류:", error);
     }
   };
-  console.log(messages);
   return (
     <div onClick={modalState} className="modalBg">
       <div onClick={(e) => e.stopPropagation()} className="mediumModal">

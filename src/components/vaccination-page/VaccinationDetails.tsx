@@ -69,8 +69,6 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
     [expandItems, diseaseInfo]
   );
 
-  console.log(diseaseInfo);
-
   return (
     <div
       onClick={() => {

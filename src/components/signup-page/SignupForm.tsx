@@ -124,7 +124,6 @@ const SignupForm: React.FC = () => {
       alert(response.message);
     }
   };
-  console.log(messages);
   return (
     <main>
       {/* <div className="centerWrapper"> */}
