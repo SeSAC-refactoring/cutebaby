@@ -6,6 +6,7 @@ import { VaccinationData } from "../types";
 import { InputVac } from "./vaccination-table/InputVac";
 import { DelVac } from "./vaccination-table/DelVac";
 import { UpdateVac } from "./vaccination-table/UpdateVac";
+import { Input } from "../commons/Input";
 
 // import { DateCompleteInput } from '../commons/Input';
 
@@ -167,11 +168,12 @@ export const VaccinationModalDateRecord: React.FC<
   console.log(lastDose);
   return (
     <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "24px",
-      }}
+      className="flex flex-col gap-6"
+      // style={{
+      //   display: "flex",
+      //   flexDirection: "column",
+      //   gap: "24px",
+      // }}
     >
       {Array.from({ length: dosenumber }, (_, i) => {
         const doseNum = i + 1; // 1차, 2차 ... 보여줄 것
@@ -193,86 +195,99 @@ export const VaccinationModalDateRecord: React.FC<
         const isDisabled = doseNum > 1 && !prevDose;
 
         return (
-          <div key={i}>
+          <div key={i} className="font-bd text-xs">
             {/* 왼쪽 날짜나 미접종을 보여주는 부분 // input 창 */}
-            <div>
-              <p>
-                {vaccinationid === 8
-                  ? "고위험군에 한하여 접종"
-                  : vaccinationid === 4
-                  ? "6차"
-                  : dosenumber === 1
-                  ? `${doseNum}회`
-                  : `${doseNum}차`}
-              </p>
+
+            <p>
+              {vaccinationid === 8
+                ? "고위험군에 한하여 접종"
+                : vaccinationid === 4
+                ? "6차"
+                : dosenumber === 1
+                ? `${doseNum}회`
+                : `${doseNum}차`}
+            </p>
+
+            <div className="flex justify-between items-center gap-2 h-[3.5rem]">
               {selectedDose === doseNum ? (
                 // [입력하기]/[수정] 버튼을 눌렀을 때
-                <input
+                <Input
                   type="date"
                   id={String(doseNum)}
                   value={doseDate}
                   onChange={(e) => setDoseDate(e.target.value)}
+                  className="pr-2 w-full"
                 />
               ) : (
                 // 첫 화면 // [입력하기]/[수정] 버튼 누르기 전
+
                 <div
-                // className={
-                //   matchedDose
-                //     ? `
-                //     : `
-                // }
+                  className={`w-full h-full flex pl-4 items-center py-1 rounded-[1rem] gap-1 ${
+                    matchedDose
+                      ? "bg-green-1 text-green-7"
+                      : "bg-gray-1 text-gray-4"
+                  }`}
                 >
-                  {matchedDose ? `${matchedDose.dosedate} 완료` : "미접종"}
+                  {matchedDose ? (
+                    <img alt="a" src="/img/icons/i-check-broken-s24.svg" />
+                  ) : null}
+
+                  {matchedDose ? `${matchedDose.dosedate}  완료` : "미접종"}
+                </div>
+              )}
+
+              {/* 버튼 */}
+              {selectedDose === doseNum ? (
+                // [입력하기] 버튼을 눌렀을 때
+                <div className="flex gap-1">
+                  <button
+                    className="button button-md button-coral"
+                    onClick={() => setSelectedDose(null)}
+                  >
+                    취소
+                  </button>
+                  <button
+                    onClick={() =>
+                      matchedDose
+                        ? handleupDate(doseNum, lastDose)
+                        : handleSaveData(doseNum)
+                    }
+                    className="button-md button-blue"
+                  >
+                    완료
+                  </button>
+                </div>
+              ) : // 첫 화면
+              matchedDose ? (
+                <div style={{ display: "flex" }} className="gap-1">
+                  <button
+                    onClick={() => handleDeleteData(doseNum)}
+                    disabled={doseNum !== lastDose}
+                    className="button button-md button-yellow"
+                  >
+                    삭제
+                  </button>
+                  <button
+                    onClick={() =>
+                      handleOpenInput(doseNum, matchedDose.dosedate)
+                    }
+                    className="button button-md button-blue"
+                  >
+                    수정
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <button
+                    onClick={() => handleOpenInput(doseNum, null)}
+                    disabled={isDisabled}
+                    className="button-md button-blue"
+                  >
+                    입력하기
+                  </button>
                 </div>
               )}
             </div>
-
-            {/* 버튼 */}
-            {selectedDose === doseNum ? (
-              // [입력하기] 버튼을 눌렀을 때
-              <div>
-                <button
-                  //
-
-                  onClick={() => setSelectedDose(null)}
-                >
-                  취소
-                </button>
-                <button
-                  onClick={() =>
-                    matchedDose
-                      ? handleupDate(doseNum, lastDose)
-                      : handleSaveData(doseNum)
-                  }
-                >
-                  완료
-                </button>
-              </div>
-            ) : // 첫 화면
-            matchedDose ? (
-              <div style={{ display: "flex" }}>
-                <button
-                  onClick={() => handleDeleteData(doseNum)}
-                  disabled={doseNum !== lastDose}
-                >
-                  삭제
-                </button>
-                <button
-                  onClick={() => handleOpenInput(doseNum, matchedDose.dosedate)}
-                >
-                  수정
-                </button>
-              </div>
-            ) : (
-              <div>
-                <button
-                  onClick={() => handleOpenInput(doseNum, null)}
-                  disabled={isDisabled}
-                >
-                  입력하기
-                </button>
-              </div>
-            )}
           </div>
         );
       })}
