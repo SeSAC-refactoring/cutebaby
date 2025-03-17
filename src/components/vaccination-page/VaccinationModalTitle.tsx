@@ -9,12 +9,12 @@ export const VaccinationModalTitle: React.FC<VaccinationModalTitleProps> = ({
   setIsOpen,
 }) => {
   return (
-    <div>
+    <div className="flex justify-between items-center mb-4">
       {/* Title // 백신이름 */}
-      <div>
+      <h3>
         {vaccinesData[vaccinationid - 1]?.name}
         {vaccinationid !== 17 && " 실접종일 입력"}
-      </div>
+      </h3>
 
       {/* x 버튼 */}
       <div
