@@ -12,8 +12,8 @@ export const TopArea = () => {
                 안녕하세요👋🏼
             </div>
             <div className="description">
-                우리아이 예방접종을 관리하고, <br />
-                성장일지를 기록해보세요:)
+                <p>우리아이 예방접종을 관리하고,</p>
+                <p>성장일지를 기록해보세요:)</p>
             </div>
         </section>
     );

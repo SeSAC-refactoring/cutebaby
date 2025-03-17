@@ -8,19 +8,19 @@ main.home section.HomeTopArea {
         var(--gradient-w-y-2);
     background-size: 9.375rem auto;
     @apply xs:px-6;
-    // @apply sm:mt-0 sm:pl-0 sm:pr-0 sm:pt-0 sm:pb-8;
+    @apply sm:p-0 sm:h-[9rem];
 
     // 768px 이상일 때
-    // @media (min-width: 768px) {
-    //     background-size: 168px, 0;
-    //     background-position:
-    //         right calc(100% + 24px),
-    //         center;
-    // }
+    @media (min-width: 768px) {
+        background-size: 168px, 0;
+        background-position:
+            right calc(100% + 24px),
+            center;
+    }
 
     & .greeting {
         @apply text-xl font-md;
-        // @apply sm:text-2xl;
+        @apply sm:text-2xl;
 
         strong {
             @apply font-bd;
@@ -28,8 +28,10 @@ main.home section.HomeTopArea {
     }
 
     & .description {
-        @apply w-[50vw] min-w-[14rem]
+        @apply flex flex-col
+        w-[50vw] min-w-[14rem]
         text-gray-7 text-bs font-rg;
-        // @apply sm:w-auto;
+        @apply sm:flex-row sm:gap-1 sm:w-auto
+        sm:text-sm;
     }
 }

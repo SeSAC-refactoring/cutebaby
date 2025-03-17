@@ -2,5 +2,6 @@
 @import '../components/home-page/home_chatbotArea.scss';
 
 main.home {
-    // @apply mt-0 sm:mt-12;;
+    @apply sm:max-w-[80rem] sm:px-6
+    sm:flex sm:gap-6;
 }

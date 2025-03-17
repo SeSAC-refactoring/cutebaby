@@ -43,12 +43,12 @@ export default function Home() {
 
             {/* 챗봇 */}
             <ChatbotArea />
-            {/* <button className="sm:hidden btnShowChatbot absolute bottom-6 right-6 w-16 h-16 bg-orange-6 border-2 border-gray-6 rounded-2xl shadow-md">
+            <button className="sm:hidden btnShowChatbot absolute bottom-6 right-6 w-16 h-16 bg-orange-6 border-2 border-gray-6 rounded-2xl shadow-md">
                 <img
                     src="img/icons/i-chatbot-solid-s36.svg"
                     alt="입력 아이콘"
                 />
-            </button> */}
+            </button>
         </main>
 
         // <GrowthDiary />

@@ -17,8 +17,7 @@ body {
 
 // root div // 화면 전체 영역
 #root {
-    @apply w-full flex flex-col grow relative;
-    // @apply sm:flex-col;
+    @apply w-full flex flex-col items-center grow relative;
 }
 
 // main // header footer 제외 영역

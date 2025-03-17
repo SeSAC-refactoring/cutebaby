@@ -4,9 +4,8 @@
 .dashboard {
     @apply flex flex-col gap-6
     w-full px-6 py-6;
-    // items-center;
-    // min-h-0 grow;
-    // @apply sm:bg-white sm:border-2 sm:border-gray-6 sm:rounded-[32px] sm:p-6;
+    @apply sm:h-[35rem] sm:p-6
+    sm:bg-white sm:border-2 sm:border-gray-6 sm:rounded-[2rem];
 
     article {
         @apply flex flex-col;

@@ -2,6 +2,8 @@
 
 article.growthDiaryArea {
     @apply w-full;
+    @apply sm:h-[25rem];
+    @apply sm:overflow-hidden; // 여긴 지우기
 
     & figure.noBabyList {
         @apply mt-4 
@@ -10,17 +12,25 @@ article.growthDiaryArea {
 
     & figure.GrowData {
         @apply flex flex-col
-        w-full;
+        w-full h-full;
 
         & .graphArea {
             @apply relative w-full
+            flex justify-center items-center
             bg-white border-2 border-blue-3 rounded-2xl p-2;
+            @apply sm:h-0 sm:grow;
         }
     }
 
     .chartImgWrapper {
         @apply w-full relative
         flex justify-center items-center
-        bg-white border-2 border-blue-3 rounded-2xl;
+        bg-white border-2 border-blue-3 rounded-2xl p-2;
+        @apply sm:h-0 sm:grow;
+
+        & img {
+            @apply w-full aspect-[2/1];
+            @apply sm:h-full;
+        }
     }
 }
