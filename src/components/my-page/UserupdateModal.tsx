@@ -50,7 +50,7 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
       setMessages((prev) => ({
         ...prev,
         email: emailRegex.test(formData.email)
-          ? "중복 체크를 해주세요!"
+          ? "중복체크를 눌러주세요!"
           : "이메일 형식이 올바르지 않습니다!",
       }));
       setEmailCheck(false);
@@ -160,7 +160,7 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
       // console.error("정보 수정 오류:", error);
     }
   };
-
+  console.log(messages);
   return (
     <div onClick={modalState} className="modalBg">
       <div onClick={(e) => e.stopPropagation()} className="mediumModal">
@@ -201,7 +201,15 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
                   중복 체크
                 </button>
               </div>
-              <p>{messages.email}</p>
+              {messages.email ? (
+                messages.email !== "사용 가능한 이메일입니다!" ? (
+                  <p className="text-red-6">{messages.email}</p>
+                ) : (
+                  <p className="text-gray-8">{messages.email}</p>
+                )
+              ) : (
+                <p className="text-red-6">중복체크를 눌러주세요!</p>
+              )}
             </div>
             {/* </label> */}
 

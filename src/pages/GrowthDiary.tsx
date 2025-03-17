@@ -12,6 +12,7 @@ import { RecentGrowthRecord } from "../components/growth-diary-page/RecentGrowth
 import { Link, useNavigate } from "react-router-dom";
 import { GrowRewriteModal } from "../components/growth-diary-page/GrowRewriteModal";
 import { GrowDelModal } from "../components/growth-diary-page/GrowDelModal";
+import { BabyInputPlus } from "../components/my-page/BabyInputPlus";
 
 export default function GrowthDiary() {
   const [openCalModal, setOpenCalModal] = useState<boolean>(false);
@@ -21,6 +22,7 @@ export default function GrowthDiary() {
   const [openRewriteModal, setOpenRewriteModal] = useState<boolean>(false);
   const [openDelModal, setOpenDelModal] = useState<boolean>(false);
   const [selectedGrowId, setSelectedGrowId] = useState<number | null>(null);
+  const [babyPlus, setBabyPlus] = useState<boolean>(false); // 아이 등록 모달 상태
 
   const { babyInfo, nothingBaby } = useSelector(
     (state: RootState) => state.baby
@@ -123,6 +125,16 @@ export default function GrowthDiary() {
           growData={growData}
           onClose={() => setOpenDelModal(false)}
         />
+      )}
+
+      {/* 아기 등록 모달 */}
+      {babyPlus && (
+        <div onClick={() => setBabyPlus(false)} style={{ right: "0px" }}>
+          <BabyInputPlus
+            onClose={() => setBabyPlus(false)}
+            babyInfo={babyInfo}
+          />
+        </div>
       )}
 
       <div className="whitebox">
@@ -241,13 +253,16 @@ export default function GrowthDiary() {
                     등록된 아이가 없습니다!
                   </div>
 
-                  <Link to="/Mypage" className="button button-black button-lg">
+                  <button
+                    onClick={() => setBabyPlus(true)}
+                    className="button button-black button-lg"
+                  >
                     아이 등록하기
                     <img
                       src="../img/icons/i-chevron-right-s28.svg"
                       alt="바로가기 아이콘"
                     />
-                  </Link>
+                  </button>
                 </div>
               </div>
             </>
