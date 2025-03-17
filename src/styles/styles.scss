@@ -14,7 +14,11 @@
 // global
 @import './base/global.scss'; // 스타일초기화, root div, main 태그 style
 
-// component
+// abstracts
+@import './abstracts/_colors'; // 색상변수 import
+@import './abstracts/mixins'; // mixin import
+
+// components
 @import './components/header.scss'; // header style
 @import './components/footer.scss'; // footer style
 @import './components/button.scss'; // buttons style

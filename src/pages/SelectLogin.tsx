@@ -89,7 +89,7 @@ export default function SelectLogin() {
                                 className="button button-black button-lg w-full"
                             >
                                 <img src="/img/icons/i-mail-s32.svg"></img>
-                                이메일로 회원가입하기
+                                이메일로 회원가입하기기
                             </Link>
                         )}
 
@@ -101,14 +101,14 @@ export default function SelectLogin() {
                             {!selectSignup ? (
                                 <button className="button-kakao button-lg w-full">
                                     <img src="/img/icons/i-kakaotalk-s32.svg"></img>
-                                    카카오톡으로 로그인하기
+                                    카카오톡으로 로그인하기기
                                 </button>
                             ) : (
                                 ''
                             )}
                         </a>
                     </div>
-                    <div className="flex gap-1 text-gray-8">
+                    <div className="flex gap-1 text-gray-8 text-xs">
                         {!selectSignup
                             ? '가입하지 않으셨나요?'
                             : '계정이 있으신가요?'}
