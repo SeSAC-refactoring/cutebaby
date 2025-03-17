@@ -1,66 +1,66 @@
 section.authWrap {
-    background-image: var(--gradient-w-y-1);
-    @apply w-full px-4 py-6
+  background-image: var(--gradient-w-y-1);
+  @apply w-full px-4 py-6
     flex flex-col;
-    @apply xs:px-6;
-    @apply sm:bg-white sm:border-2 sm:border-gray-6 sm:rounded-3xl 
+  @apply xs:px-6;
+  @apply sm:bg-white sm:border-2 sm:border-gray-6 sm:rounded-3xl 
     sm:p-10 sm:w-[32.5rem] sm:h-[44rem];
 
-    // 로그인, 회원가입 선택
-    & .contentsArea {
-        @apply flex flex-col justify-center items-center;
+  // 로그인, 회원가입 선택
+  & .contentsArea {
+    @apply flex flex-col justify-center items-center;
 
-        & img {
-            @apply w-[80%];
-        }
+    & img {
+      @apply w-[80%];
     }
+  }
 
-    & .confirmBtnArea {
-        @apply w-full h-[12.5rem] mb-4
+  & .confirmBtnArea {
+    @apply w-full h-[12.5rem] mb-4
         flex flex-col gap-10 justify-end items-center;
-        @apply sm:h-[12.25rem] sm:mb-0;
+    @apply sm:h-[12.25rem] sm:mb-0;
 
-        & .buttonsWrap {
-            @apply w-full flex flex-col gap-2;
-        }
+    & .buttonsWrap {
+      @apply w-full flex flex-col gap-2;
     }
+  }
 }
 
 // 로그인, 회원가입 선택
 section.loginSignupWrap {
-    @apply justify-between;
+  @apply justify-between;
 }
 
 // 로그인 폼 // 회원가입 폼
 section.loginFormWrap,
 section.signupFormWrap {
-    @apply gap-6;
+  @apply gap-6;
 
-    & .formContentsArea {
-        @apply w-full h-full
+  & .formContentsArea {
+    @apply w-full h-full
         flex flex-col justify-between;
 
-        & .inputArea {
-            @apply flex flex-col gap-4;
+    & .inputArea {
+      @apply flex flex-col gap-4;
 
-            & > p {
-                // 로그인폼의 유효성 검사 메세지 스타일
-                @apply pl-1 text-red-5;
-            }
+      & > p {
+        // 로그인폼의 유효성 검사 메세지 스타일
+        @apply pl-1 text-red-5;
+      }
 
-            & > .inputItem {
-                @apply flex flex-col gap-2; // min-h-[calc(100% + 1.75rem)];
-                min-height: calc(auto + 28px);
+      & > .inputItem {
+        @apply flex flex-col gap-2; // min-h-[calc(100% + 1.75rem)];
+        min-height: calc(auto + 28px);
 
-                & p {
-                    // 회원가입폼의 유효성 검사 메세지 스타일
-                    @apply pl-1 text-gray-8;
-                }
-            }
-        }
-
-        & .formBtnArea {
-            @apply flex gap-4;
-        }
+        // & p {
+        //   // 회원가입폼의 유효성 검사 메세지 스타일
+        //   @apply pl-1 text-gray-8;
+        // }
+      }
     }
+
+    & .formBtnArea {
+      @apply flex gap-4;
+    }
+  }
 }

@@ -124,7 +124,7 @@ const SignupForm: React.FC = () => {
       alert(response.message);
     }
   };
-
+  console.log(messages);
   return (
     <main>
       {/* <div className="centerWrapper"> */}
@@ -145,11 +145,13 @@ const SignupForm: React.FC = () => {
                 }}
               />
               {messages.name ? (
-                <p>{messages.name}</p>
+                messages.name === "이름은 2글자 이상 입력해주세요!" ? (
+                  <p className="text-red-6">{messages.name}</p>
+                ) : (
+                  <p className="text-gray-8">{messages.name}</p>
+                )
               ) : (
-                <div className="text-red-6">
-                  이름은 2글자 이상 입력해주세요!
-                </div>
+                <p className="text-red-6">이름은 2글자 이상 입력해주세요!</p>
               )}
             </div>
 
@@ -171,9 +173,13 @@ const SignupForm: React.FC = () => {
                 </button>
               </div>
               {messages.email ? (
-                <p>{messages.email}</p>
+                messages.email !== "사용가능한 이메일 입니다!" ? (
+                  <p className="text-red-6">{messages.email}</p>
+                ) : (
+                  <p className="text-gray-8">{messages.email}</p>
+                )
               ) : (
-                <div className="text-red-6">중복체크를 눌러주세요!</div>
+                <p className="text-red-6">중복체크를 눌러주세요!</p>
               )}
             </div>
 
@@ -190,11 +196,16 @@ const SignupForm: React.FC = () => {
                 }}
               />
               {messages.password ? (
-                <p>{messages.password}</p>
+                messages.password ===
+                "숫자, 영문자, 특수문자 조합으로 8자리 이상 입력해주세요!" ? (
+                  <p className="text-red-6">{messages.password}</p>
+                ) : (
+                  <p className="text-gray-8">{messages.password}</p>
+                )
               ) : (
-                <div className="text-red-6">
+                <p className="text-red-6">
                   숫자, 영문자, 특수문자 조합으로 8자리 이상 입력해주세요!
-                </div>
+                </p>
               )}
             </div>
 
@@ -210,7 +221,19 @@ const SignupForm: React.FC = () => {
                   inputRef.current.checkPassword = el;
                 }}
               />
-              {messages.confirmPassword && <p>{messages.confirmPassword}</p>}
+              {/* {messages.confirmPassword && (
+                <p className="text-red-6">{messages.confirmPassword}</p>
+              )} */}
+
+              {messages.confirmPassword ? (
+                messages.confirmPassword === "비밀번호가 일치하지 않습니다." ? (
+                  <p className="text-red-6">{messages.confirmPassword}</p>
+                ) : (
+                  <p className="text-gray-8">{messages.confirmPassword}</p>
+                )
+              ) : (
+                <p></p>
+              )}
             </div>
           </div>
 
