@@ -1,3 +1,6 @@
 @import './home_topArea.scss';
 @import './home_dashboard.scss';
 
+main.home .userArea {
+    @apply w-full;
+}

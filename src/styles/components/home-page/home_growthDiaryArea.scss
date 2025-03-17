@@ -1,46 +1,26 @@
-.growthDiaryArea {
-  @apply min-h-0 grow;
+@import './home_buttonArea.scss';
 
-  figure.noBabyList {
-    @apply relative
-    flex justify-center items-center
-    bg-white border-2 border-blue-3 rounded-2xl;
-  }
+article.growthDiaryArea {
+    @apply w-full;
 
-  figure.noBabyList,
-  .graphBtnArea {
-    @apply grow flex flex-wrap flex-col justify-center gap-2 overflow-hidden
-    min-h-0;
+    & figure.noBabyList {
+        @apply mt-4 
+        flex justify-center items-center;
+    }
+
+    & figure.GrowData {
+        @apply flex flex-col
+        w-full;
+
+        & .graphArea {
+            @apply relative w-full
+            bg-white border-2 border-blue-3 rounded-2xl p-2;
+        }
+    }
 
     .chartImgWrapper {
-      @apply min-h-0 flex sm:self-start;
-
-      img {
-        @apply min-h-56 w-full h-full object-fill;
-      }
+        @apply w-full relative
+        flex justify-center items-center
+        bg-white border-2 border-blue-3 rounded-2xl;
     }
-  }
-
-  .graphArea {
-    @apply bg-green-1 rounded-2xl;
-  }
-
-  figure.GrowData {
-    @apply flex flex-col gap-4;
-  }
-
-  .buttonArea {
-    @apply absolute w-full h-full p-6
-    flex flex-col justify-center items-center gap-4
-    bg-white/10 backdrop-blur-[2px] border border-gray-1 rounded-2xl 
-    xs:top-6 xs:right-6 xs:w-auto xs:h-auto xs:items-end xs:backdrop-blur-[4px] xs:shadow-md;
-
-    p {
-      @apply text-gray-8 drop-shadow-sm;
-
-      span {
-        @apply font-bd text-green-7;
-      }
-    }
-  }
 }
