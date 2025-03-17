@@ -78,6 +78,21 @@ export default function GrowthDiary() {
             className="whiteboxModal growthCalculate"
           >
             <div>
+              <div className="flex justify-between">
+                <h2 className="sm:text-4xl text-2xl font-bd mb-4">성장기록</h2>
+                <div
+                  onClick={() => {
+                    setOpenAddModal(false);
+                  }}
+                >
+                  <img
+                    className="cursor-pointer"
+                    src="/img/icons/i-modal-close-s32.svg"
+                    alt=""
+                  />
+                </div>
+              </div>
+
               <DiaryInputArea
                 setOpenAddModal={setOpenAddModal}
                 selectedBabyId={selectedBabyId}
@@ -121,7 +136,7 @@ export default function GrowthDiary() {
           <div className="flex gap-[0.5rem]">
             <button
               className=" button-yellow button-xs"
-              onClick={() => setOpenCalModal(true)}
+              onClick={() => setOpenAddModal(true)}
             >
               <p>성장기록</p>
               {/* <img src="../img/icons/i-chevron-right-s20.svg" alt="*" /> */}

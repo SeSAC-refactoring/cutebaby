@@ -39,12 +39,22 @@ export const GrowDelModal: React.FC<GrowDelModalProps> = ({
   };
 
   return (
-    <div>
-      <div>
-        <p>정말 삭제하시겠습니까?</p>
-        <div>
-          <button onClick={onClose}>아니오</button>
-          <button onClick={onDelGrow}>예</button>
+    <div onClick={onClose} className="modalBg">
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="mediumModal flex flex-col justify-center items-center"
+      >
+        <p className="text-xl sm:text-2xl font-bd">정말 삭제하시겠습니까?</p>
+        <div className="flex gap-4">
+          <button
+            onClick={onClose}
+            className="button button-yellow button-lg w-full"
+          >
+            아니오
+          </button>
+          <button onClick={onDelGrow} className="button-black button-lg w-full">
+            예
+          </button>
         </div>
       </div>
     </div>

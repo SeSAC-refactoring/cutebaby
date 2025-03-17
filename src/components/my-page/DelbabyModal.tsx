@@ -41,7 +41,7 @@ export const DelbabyModal: React.FC<DelbabyProps> = ({
   };
 
   return (
-    <div style={{ left: "0" }} onClick={goBack} className="modalBg">
+    <div onClick={goBack} className="modalBg">
       <div className="smallModal">
         <div className="flex flex-col justify-center items-center gap-8">
           <div className="text-xl sm:text-2xl font-bd">

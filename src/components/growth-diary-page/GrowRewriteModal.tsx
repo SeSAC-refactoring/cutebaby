@@ -95,15 +95,19 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
   return (
     <div onClick={onClose} className="modalBg">
       <div onClick={(e) => e.stopPropagation()} className="mediumModal">
-        <div>
-          <div>기록 수정</div>
+        <div className="flex justify-between">
+          <div className="text-2xl font-bd">기록 수정</div>
           <div onClick={onClose}>
-            <img src="/img/icons/i-modal-close-s32.svg" alt="" />
+            <img
+              className="cursor-pointer"
+              src="/img/icons/i-modal-close-s32.svg"
+              alt=""
+            />
           </div>
         </div>
         <div>
           <div>
-            <div>
+            <div className="flex flex-col gap-4">
               <div>
                 <Input
                   label="측정날짜"
@@ -113,7 +117,7 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
                   onChange={handleInputChange}
                 />
               </div>
-              <div>
+              <div className="flex items-center gap-2">
                 <Input
                   label="키"
                   id="height"
@@ -126,7 +130,7 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
                 />
                 <span>cm</span>
               </div>
-              <div>
+              <div className="flex items-center gap-2">
                 <Input
                   label="몸무게"
                   id="weight"
@@ -139,7 +143,7 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
                 />
                 <span>kg</span>
               </div>
-              <div>
+              <div className="flex items-center gap-2">
                 {/* <label>머리둘레</label> */}
                 <Input
                   label="머리둘레"
@@ -154,17 +158,19 @@ export const GrowRewriteModal: React.FC<GrowRewriteModalProps> = ({
               </div>
             </div>
           </div>
-          <div>
+          <div className="flex gap-4 mt-12">
             <button
               // ${modal.modal_cancel_button}`}
 
               onClick={onClose}
+              className="button button-yellow button-lg w-full"
             >
               취소
             </button>
             <button
               onClick={handleRewrite}
               // ${modal.modal_done_button}`}
+              className="button-black button-lg w-full"
             >
               완료
             </button>
