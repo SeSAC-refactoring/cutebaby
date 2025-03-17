@@ -34,7 +34,7 @@ export const VaccineType: React.FC<VaccineTypeProps> = ({
         onClick={handleOpenModal}
         disabled={vaccineIds.length === 0} // 백신 없으면 비활성화
       >
-        <img src="/img/icons/i-chevron-right-s14.svg" />
+        <img src="/img/icons/i-edit-s12.svg" />
       </button>
 
       {isOpen && selectedVaccineId !== null && (
