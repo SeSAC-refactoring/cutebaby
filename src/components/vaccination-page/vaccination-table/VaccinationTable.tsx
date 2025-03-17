@@ -14,6 +14,7 @@ import {
 import { VaccineType } from "./VaccineType";
 import { VaccinationSchedule } from "./VaccinationSchedule";
 import { VaccinationScheduleName } from "./VaccinationScheduleName";
+import { VaccinationModal } from "../VaccinationModal";
 
 interface VaccinationTableProps {
   selectedBabyId: number | null;
@@ -81,6 +82,22 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
   });
 
   // console.log("matchedVaccineList >>", matchedVaccineList);
+  // 모달 상태 관리
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedVaccineId, setSelectedVaccineId] = useState<number | null>(
+    null
+  );
+  const [selectedDoseNumber, setSelectedDoseNumber] = useState<number>(1);
+
+  // 모달 열기 함수
+  const handleOpenModal = (vaccineId: number) => {
+    const doseValue = doses[vaccineId - 1] || "1";
+    const doseNumber = doseValue === "-" ? 1 : Number(doseValue);
+
+    setSelectedVaccineId(vaccineId);
+    setSelectedDoseNumber(doseNumber);
+    setIsOpen(true);
+  };
 
   return (
     <div className="flex flex-col w-full ">
@@ -235,7 +252,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                     acc.push(
                       <tr
                         key={`${diseaseIndex}-${vaccine.vaccinationid}`}
-                        className={` ${rowColor} h-[2.125rem]`}
+                        className={` ${rowColor} h-[2.125rem] hover:bg-blue-3 transition`}
                       >
                         {/* 첫 번째 백신에서만 감염병 이름 출력 & rowSpan 설정 */}
                         {index === 0 ? (
@@ -248,29 +265,44 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                         ) : null}
 
                         {/* 백신 이름 */}
-                        <td className="p-2 w-[30%] border-r-0 border border-blue-3">
+                        <td
+                          onClick={() => handleOpenModal(vaccine.vaccinationid)}
+                          className="p-2 w-[30%] border-r-0 border border-blue-3 cursor-pointer"
+                        >
                           {vaccine.name}
                         </td>
                         {/* 최근 접종 일자 */}
-                        <td className="w-[20%] border-x-0 border border-blue-3 text-center">
+                        <td
+                          onClick={() => handleOpenModal(vaccine.vaccinationid)}
+                          className="w-[20%] border-x-0 border border-blue-3 text-center cursor-pointer"
+                        >
                           <VaccinationSchedule
                             matchedVaccineList={matchedVaccineList}
                             vaccinationid={vaccine.vaccinationid}
                           />
                         </td>
                         {/* 권장횟수 */}
-                        <td className="text-center w-[8%] border-x-0 border border-blue-3">
+                        <td
+                          onClick={() => handleOpenModal(vaccine.vaccinationid)}
+                          className="text-center w-[8%] border-x-0 border border-blue-3 cursor-pointer"
+                        >
                           {vaccine.doses}
                         </td>
                         {/* 완료횟수 */}
-                        <td className="text-center w-[8%] border-x-0 border border-blue-3">
+                        <td
+                          onClick={() => handleOpenModal(vaccine.vaccinationid)}
+                          className="text-center w-[8%] border-x-0 border border-blue-3 cursor-pointer"
+                        >
                           <VaccinationScheduleName
                             matchedVaccineList={matchedVaccineList}
                             vaccinationid={vaccine.vaccinationid}
                           />
                         </td>
                         {/* 관리버튼 */}
-                        <td className="w-[8%] rounded-r-[0.5rem] border-l-0 border border-blue-3">
+                        <td
+                          onClick={() => handleOpenModal(vaccine.vaccinationid)}
+                          className="w-[8%] rounded-r-[0.5rem] border-l-0 border border-blue-3 cursor-pointer"
+                        >
                           <div className="flex justify-center items-center h-full">
                             <VaccineType
                               selectedBabyId={selectedBabyId}
@@ -303,6 +335,14 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
           </tbody>
         </table>
       </section>
+      {isOpen && selectedVaccineId !== null && (
+        <VaccinationModal
+          setIsOpen={setIsOpen}
+          vaccinationid={selectedVaccineId}
+          dosenumber={selectedDoseNumber}
+          selectedBabyId={selectedBabyId}
+        />
+      )}
     </div>
   );
 };
