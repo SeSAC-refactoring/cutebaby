@@ -1,13 +1,13 @@
 header {
     @apply fixed bottom-0 z-50
-    w-full h-[6.625rem] px-4
+    w-full h-20 px-4
     bg-white border-t-2 border-gray-6;
     @apply xs:px-6;
     @apply sm:static sm:flex sm:justify-center sm:h-16 sm:border-t-0 sm:border-b-2;
 
     & > .headerContainer {
-        @apply w-full h-full pb-8
-        flex justify-center items-end;
+        @apply w-full h-full 
+        flex justify-center items-center;
         @apply sm:max-w-[80rem] sm:pb-0 
         sm:justify-between sm:items-center;
     }
@@ -26,7 +26,7 @@ header {
 
         a {
             @apply flex flex-col gap-1 items-center
-            w-14 pt-2 rounded-lg;
+            w-14 rounded-lg;
             @apply xs:w-16;
             @apply sm:w-auto sm:pt-0;
 

@@ -6,9 +6,6 @@ import { TopArea } from '../components/home-page/TopArea';
 import { GrowthDiaryArea } from '../components/home-page/GrowthDiaryArea';
 import { VaccinationArea } from '../components/home-page/VaccinationArea';
 import { ChatbotArea } from '../components/home-page/ChatbotArea';
-import Mypage from './Mypage';
-import { GrowthCalculate } from '../components/growth-diary-page/GrowthCalculate';
-import GrowthDiary from './GrowthDiary';
 
 export default function Home() {
     const [openCentersModal, setOpenCentersModal] = useState<boolean>(false);
