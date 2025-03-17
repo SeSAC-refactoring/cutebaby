@@ -29,14 +29,14 @@ export const RecentGrowthRecord: React.FC<RecentGrowthRecordProps> = ({
       </div>
       <div>
         <div className="flex flex-col gap-4">
-          <div className="flex p-[14px_26px] justify-center items-center gap-[10px] self-stretch rounded-lg bg-orange-3 text-bs font-rg h-[80px]">
+          <div className="flex p-[0.875rem_1.625rem] justify-center items-center gap-[0.625rem] self-stretch rounded-lg bg-orange-3 text-bs font-rg h-[5rem]">
             키 <span className="text-bs font-bd">{growData[0].height} cm</span>
           </div>
-          <div className="flex p-[14px_26px] justify-center items-center gap-[10px] self-stretch rounded-lg bg-green-3 text-bs font-rg h-[80px]">
+          <div className="flex p-[0.875rem_1.625rem] justify-center items-center gap-[0.625rem] self-stretch rounded-lg bg-green-3 text-bs font-rg h-[5rem]">
             몸무게{" "}
             <span className="text-bs font-bd">{growData[0].weight} kg</span>
           </div>
-          <div className="flex p-[14px_26px] justify-center items-center gap-[10px] self-stretch rounded-lg bg-purple-3 text-bs font-rg h-[80px]">
+          <div className="flex p-[0.875rem_1.625rem] justify-center items-center gap-[0.625rem] self-stretch rounded-lg bg-purple-3 text-bs font-rg h-[5rem]">
             머리 둘레{" "}
             <span className="text-bs font-bd">{growData[0].head} cm</span>
           </div>
