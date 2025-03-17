@@ -101,7 +101,18 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
 
   return (
     <div className="flex flex-col w-full ">
-      <section className="flex gap-2 w-full">
+      <div className="sm:hidden max-sm:absolute top-6 right-6 h-[2rem] z-50">
+        {" "}
+        {/* 767px 이하에서만 보이게 */}
+        <button
+          className="p-2 border border-gray-300 rounded-lg flex items-center gap-2 h-full"
+          // onClick={() => setFilterOpen(!isFilterOpen)}
+        >
+          {/* <Filter className="w-5 h-5" /> */}
+          <span>필터</span>
+        </button>
+      </div>
+      <section className="flex gap-2 w-full max-sm:hidden">
         {/* 개월 수 필터 */}
         <select
           className="w-full"

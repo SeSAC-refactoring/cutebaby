@@ -22,7 +22,7 @@ export const VaccinationModalTitle: React.FC<VaccinationModalTitleProps> = ({
           setIsOpen(false);
         }}
       >
-        <img src="/img/icons/i-modal-close-s32.svg" alt="" />
+        <img src="/img/Button-close.png" alt="" />
       </div>
     </div>
   );
