@@ -93,7 +93,7 @@ export const vaccinationScheduleData: VaccinationScheduleData[] = [
 
   { text: "DTaP 5차", vaccinationid: 3, dosenumber: 5, colSpan: 2 },
 
-  { text: "Tdap/Td 6차", vaccinationid: 4, dosenumber: 6, colSpan: 2 },
+  { text: "Tdap/Td 6차", vaccinationid: 4, dosenumber: 1, colSpan: 2 },
 
   { text: "IPV 1차", vaccinationid: 5, dosenumber: 1, colSpan: 1 },
   { text: "IPV 2차", vaccinationid: 5, dosenumber: 2, colSpan: 1 },
