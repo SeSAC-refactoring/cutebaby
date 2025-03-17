@@ -15,7 +15,7 @@ export default function Home() {
     const [loading, setLoading] = useState<boolean>(true); // 로딩 상태 관리
 
     return (
-        <main className="home ">
+        <main className="home">
             {/* 로딩 창 */}
             {loading && <Loading />}
 
@@ -27,7 +27,7 @@ export default function Home() {
                 <VaccinationDetails setOpenDetailsModal={setOpenDetailsModal} />
             )}
 
-            <section className="userArea min-h-0 grow flex flex-col">
+            <section className="userArea">
                 <TopArea />
                 <section className="dashboard">
                     {/* 성장그래프 영역 */}
@@ -43,12 +43,12 @@ export default function Home() {
 
             {/* 챗봇 */}
             <ChatbotArea />
-            <button className="sm:hidden btnShowChatbot absolute bottom-6 right-6 w-16 h-16 bg-orange-6 border-2 border-gray-6 rounded-2xl shadow-md">
+            {/* <button className="sm:hidden btnShowChatbot absolute bottom-6 right-6 w-16 h-16 bg-orange-6 border-2 border-gray-6 rounded-2xl shadow-md">
                 <img
                     src="img/icons/i-chatbot-solid-s36.svg"
                     alt="입력 아이콘"
                 />
-            </button>
+            </button> */}
         </main>
 
         // <GrowthDiary />
