@@ -7,7 +7,8 @@ article.growthDiaryArea {
 
     & figure.noBabyList {
         @apply mt-4 
-        flex justify-center items-center;
+        flex flex-col justify-center items-center;
+        @apply sm:h-full;
     }
 
     & figure.GrowData {
