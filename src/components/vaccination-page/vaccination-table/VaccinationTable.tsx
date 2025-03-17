@@ -100,7 +100,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
   };
 
   return (
-    <div className="flex flex-col w-full ">
+    <div className="flex flex-col w-full">
       <div className="sm:hidden max-sm:absolute top-6 right-6 h-[2rem] z-50">
         {" "}
         {/* 767px 이하에서만 보이게 */}
@@ -174,8 +174,8 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
         </select>
       </section>
 
-      <section className="w-full block overflow-y-auto h-[50vh] scrollbar-hidden">
-        <table className="w-full mt-6  border-separate border-spacing-0 border-spacing-y-1">
+      <section className="w-full block overflow-y-auto h-full scrollbar-hidden">
+        <table className="w-full mt-6  border-separate border-spacing-0 border-spacing-y-1 max-sm:mt-0">
           <thead className=" bg-blue-3 text-blue-8 w-full sticky top-0">
             <tr className="w-full">
               <th className="text-left p-4 rounded-l-[0.5rem] w-[20%]">
