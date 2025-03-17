@@ -13,8 +13,10 @@
     // px-4 xs:px-6 // py-6 // h-[44rem] // 제목내용 gap-6 // 내용안 gap-4
 
     @apply flex flex-col gap-6
-    w-full h-auto px-4 py-6;
+    w-full h-full px-4 py-6 bg-white;
     @apply xs:px-6;
-    @apply sm:bg-white sm:rounded-[2.5rem] sm:border-2 sm:border-gray-6
-    sm:max-w-[80rem] sm:h-[44rem] mx-14 px-14 py-12;
+    @apply sm:rounded-[2.5rem] sm:border-2 sm:border-gray-6
+    sm:max-w-[80rem] sm:min-w-[45rem] sm:h-[44rem] sm:px-10 sm:py-10 sm:mx-6;
+    @apply md:px-12 md:py-12;
+    @apply lg:px-14 lg:py-12;
 }

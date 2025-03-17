@@ -4,6 +4,7 @@
 
     .whiteboxModal {
         @include whitebox-style;
+        @apply absolute top-0;
 
         // 모달의 타이틀과 x 버튼 스타일
         & > .topArea {
