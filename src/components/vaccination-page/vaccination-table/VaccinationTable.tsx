@@ -174,7 +174,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
         </select>
       </section>
 
-      <section className="w-full block overflow-y-auto h-full scrollbar-hidden">
+      <section className="w-full block overflow-y-auto max-sm:h-full h-[23.75rem] scrollbar-hidden">
         <table className="w-full mt-6  border-separate border-spacing-0 border-spacing-y-1 max-sm:mt-0">
           <thead className=" bg-blue-3 text-blue-8 w-full sticky top-0">
             <tr className="w-full">
