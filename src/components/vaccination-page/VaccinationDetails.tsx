@@ -114,7 +114,7 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
               </div>
             </div>
           ) : (
-            <>
+            <div className="h-full flex flex-col gap-8">
               <div className="flex flex-wrap gap-2">
                 {diseaseList.map((disease, idx) => (
                   <button
@@ -154,7 +154,7 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
                   </div>
                 )}
               </div>
-            </>
+            </div>
           )}
         </>
       </div>
