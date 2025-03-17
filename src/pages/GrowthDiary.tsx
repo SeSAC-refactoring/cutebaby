@@ -196,11 +196,11 @@ export default function GrowthDiary() {
                 <></>
               ) : (
                 <>
-                  <div className="w-[70rem] flex justify-between">
+                  <div className="sm:w-[70rem] flex justify-between mt-8">
                     <div className="w-[50.5rem] h-[30rem] bg-gray-1 rounded-[2rem]"></div>
-                    <div className="w-[17.5rem] h-[30rem] bg-gray-1 rounded-[2rem]"></div>
+                    <div className="w-[17.5rem] h-[30rem] bg-gray-1 rounded-[2rem] hidden sm:block"></div>
                   </div>
-                  <div className="w-[70rem] h-[35.625rem] relative bottom-[35.625rem] flex justify-center items-center backdrop-blur-sm mt-20">
+                  <div className="sm:w-[70rem] h-[35.625rem] relative bottom-[35.625rem] flex justify-center items-center backdrop-blur-sm mt-20">
                     <div className="flex flex-col items-center z-[100] gap-6 pb-20">
                       <img src="/img/Ggoggo-002.png" />
                       <div className="text-xl font-md text-gray-6">
@@ -227,14 +227,14 @@ export default function GrowthDiary() {
           )}
           {babyInfo.length === 0 && (
             <>
-              <div className="flex flex-col justify-between w-[70rem] h-[35.625rem] mt-[1.75rem]">
-                <div className="w-full h-[4rem] bg-gray-1 rounded-[2rem]"></div>
-                <div className="flex justify-between w-[70rem]">
+              <div className="flex flex-col justify-between sm:w-[70rem] h-[35.625rem] mt-[1.75rem]">
+                <div className="h-[4rem] bg-gray-1 rounded-[2rem]"></div>
+                <div className="flex justify-between sm:w-[70rem]">
                   <div className="w-[50.5rem] h-[30rem] bg-gray-1 rounded-[2rem]"></div>
-                  <div className="w-[17.5rem] h-[30rem] bg-gray-1 rounded-[2rem]"></div>
+                  <div className="w-[17.5rem] h-[30rem] bg-gray-1 rounded-[2rem] hidden sm:block"></div>
                 </div>
               </div>
-              <div className="w-[70rem] h-[35.625rem] relative bottom-[35.625rem] flex justify-center items-center backdrop-blur-sm">
+              <div className="sm:w-[70rem] h-[35.625rem] relative bottom-[35.625rem] flex justify-center items-center backdrop-blur-sm">
                 <div className="flex flex-col items-center z-[100] gap-6 ">
                   <img src="/img/Ggoggo-002.png" />
                   <div className="text-xl font-md text-gray-6 ">
