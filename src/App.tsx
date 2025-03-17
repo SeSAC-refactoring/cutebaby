@@ -30,15 +30,14 @@ function App() {
         <>
             <Header />
             <Routes>
-                <Route path="/" element={<Home />}></Route>
-                <Route path="/oauth/callback/kakao" element={<KakaoLogin />} />
-                <Route path="/GrowthDiary" element={<GrowthDiary />} />
-                <Route path="/Home" element={<Home />} />
-                <Route path="/Login" element={<Login />} />
-                <Route path="/Mypage" element={<Mypage />} />
-                <Route path="/Signup" element={<Signup />} />
-                <Route path="/Vaccination" element={<Vaccination />} />
                 <Route path="/SelectLogin" element={<SelectLogin />} />
+                <Route path="/Login" element={<Login />} />
+                <Route path="/oauth/callback/kakao" element={<KakaoLogin />} />
+                <Route path="/Signup" element={<Signup />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/GrowthDiary" element={<GrowthDiary />} />
+                <Route path="/Vaccination" element={<Vaccination />} />
+                <Route path="/Mypage" element={<Mypage />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />

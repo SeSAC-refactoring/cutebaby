@@ -1,5 +1,3 @@
-@import '../abstracts/_colors'; // 색상변수 import
-
 // 전체 reset
 * {
     @apply box-border;
@@ -25,9 +23,9 @@ body {
 
 // main // header footer 제외 영역
 main {
-    @apply w-full h-[calc(100%-6.625rem)] mb-[6.625rem]
+    @apply w-full h-[calc(100%-5rem)] mb-[5rem]
     flex justify-center relative;
-    @apply sm:mb-0 sm:mt-10 sm:h-auto;
+    @apply sm:h-auto sm:mb-0 sm:mt-10;
 }
 
 // 제목 태그

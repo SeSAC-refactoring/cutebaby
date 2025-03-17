@@ -6,9 +6,8 @@ import { TopArea } from '../components/home-page/TopArea';
 import { GrowthDiaryArea } from '../components/home-page/GrowthDiaryArea';
 import { VaccinationArea } from '../components/home-page/VaccinationArea';
 import { ChatbotArea } from '../components/home-page/ChatbotArea';
-import Mypage from './Mypage';
-import { GrowthCalculate } from '../components/growth-diary-page/GrowthCalculate';
 import GrowthDiary from './GrowthDiary';
+import Vaccination from './Vaccination';
 
 export default function Home() {
     const [openCentersModal, setOpenCentersModal] = useState<boolean>(false);
@@ -16,7 +15,7 @@ export default function Home() {
     const [loading, setLoading] = useState<boolean>(true); // 로딩 상태 관리
 
     return (
-        <main className="home relative mt-0 sm:mt-12">
+        <main className="home ">
             {/* 로딩 창 */}
             {loading && <Loading />}
 
@@ -51,5 +50,8 @@ export default function Home() {
                 />
             </button>
         </main>
+
+        // <GrowthDiary />
+        // <Vaccination />
     );
 }

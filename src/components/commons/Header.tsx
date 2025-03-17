@@ -50,7 +50,8 @@ export default function Header() {
                         <Link to="/SelectLogin">
                             <img
                                 src={
-                                    location.pathname === '/SelectLogin'
+                                    location.pathname === '/SelectLogin' ||
+                                    location.pathname === '/Login'
                                         ? '/img/icons/i-login-s32-active.svg'
                                         : '/img/icons/i-login-s32.svg'
                                 }
@@ -58,7 +59,8 @@ export default function Header() {
                             />
                             <p
                                 className={
-                                    location.pathname === '/SelectLogin'
+                                    location.pathname === '/SelectLogin' ||
+                                    location.pathname === '/Login'
                                         ? 'active'
                                         : ''
                                 }

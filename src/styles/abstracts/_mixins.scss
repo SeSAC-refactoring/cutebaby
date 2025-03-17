@@ -7,3 +7,14 @@
     background-position: calc(100% - 24px) 12px;
     background-size: 88px;
 }
+
+// whitebox 스타일
+@mixin whitebox-style {
+    // px-4 xs:px-6 // py-6 // h-[44rem] // 제목내용 gap-6 // 내용안 gap-4
+
+    @apply flex flex-col gap-6
+    w-full h-auto px-4 py-6;
+    @apply xs:px-6;
+    @apply sm:bg-white sm:rounded-[2.5rem] sm:border-2 sm:border-gray-6
+    sm:max-w-[80rem] sm:h-[44rem] mx-14 px-14 py-12;
+}
