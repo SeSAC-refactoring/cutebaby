@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 
@@ -32,6 +32,15 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
   const [selectedDis, setDis] = useState<number | undefined>(); // 선택감염병 상태관리
   const [selectedDose, setDose] = useState<number | undefined>();
   const [isFilterModalOpen, setFilterModalOpen] = useState(false); // 모바일 모달 상태관리
+
+  //모달열었을때 배경이 스크롤되는거 방지하기
+  useEffect(() => {
+    if (isOpen || isFilterModalOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }, [isFilterModalOpen]);
 
   // 선택한 개월 수에 따라 감염병 목록 필터링 (선택 안함 시 모든 데이터 표시)
   const filteredDiseases =
@@ -195,7 +204,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
             <tr className="h-2 invisible"></tr>
           </thead>
 
-          <tbody className="w-full overflow-y-auto min-h-[40vh] max-h-[50vh]">
+          <tbody className="w-full  min-h-[40vh] max-h-[50vh]">
             {(() => {
               let hasResults = false; // 결과가 있는지 확인하기위한 변수선언
 
