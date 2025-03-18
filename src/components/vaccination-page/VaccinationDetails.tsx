@@ -113,7 +113,7 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
             </div>
           ) : (
             <div className="h-full flex flex-col gap-8">
-              <div className="flex flex-wrap gap-2">
+              <div className="flex gap-2 overflow-x-auto sm:flex-wrap">
                 {diseaseList.map((disease, idx) => (
                   <button
                     key={disease.cd}
@@ -122,7 +122,7 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
                       setOnClickDis(disease.cd);
                       fetchDiseaseInfo(disease.cd);
                     }}
-                    className={`min-w-20 ${
+                    className={` ${
                       focus === idx
                         ? " chip-button-blue chip-button-sm selected"
                         : " chip-button-blue chip-button-sm"
