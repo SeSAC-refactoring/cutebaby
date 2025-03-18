@@ -90,7 +90,7 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
             }}
             className="close"
           >
-            <img src="/img/icons/i-modal-close-s32.svg" alt="" />
+            <img src="/img/Button-close.png" alt="" />
           </div>
         </div>
 

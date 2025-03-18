@@ -62,7 +62,7 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
               setOpenCentersModal(false);
             }}
           >
-            <img src="/img/icons/i-modal-close-s32.svg" alt="닫기" />
+            <img src="/img/Button-close.png" alt="닫기" />
           </div>
         </section>
         {/* <div>
@@ -77,35 +77,32 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                         확인하시기 바랍니다.
                     </p>
                 </div> */}
-                <section className="contentsArea">
-                    {/* 데이터를 불러오는 로딩 화면 */}
-                    {isFirstLoading && (
-                        <div className="response-state">
-                            <img
-                                src="/img/visuals/visual_loading_ggomul_04.svg"
-                                alt=""
-                            />
-                            <div className="text">
-                                <p>자료를 가져오고 있어요..</p>
-                                <p>조금만 기다려주세요..</p>
-                            </div>
-                        </div>
-                    )}
-                    {/* 지역(시/도) 선택 드롭다운 */}
-                    <article className="formArea">
-                        <select
-                            ref={refs.province}
-                            value={selectedLocation.province}
-                            disabled={isFirstLoading} // 데이터 불러오는 동안은 드롭다운으로 지역 선택 불가
-                            onChange={handleProvinceSelect}
-                        >
-                            <option value="">시/도</option>
-                            {provinces.map((province) => (
-                                <option key={province.cd} value={province.cd}>
-                                    {province.cdNm}
-                                </option>
-                            ))}
-                        </select>
+        <section className="contentsArea">
+          {/* 데이터를 불러오는 로딩 화면 */}
+          {isFirstLoading && (
+            <div className="response-state">
+              <img src="/img/visuals/visual_loading_ggomul_04.svg" alt="" />
+              <div className="text">
+                <p>자료를 가져오고 있어요..</p>
+                <p>조금만 기다려주세요..</p>
+              </div>
+            </div>
+          )}
+          {/* 지역(시/도) 선택 드롭다운 */}
+          <article className="formArea">
+            <select
+              ref={refs.province}
+              value={selectedLocation.province}
+              disabled={isFirstLoading} // 데이터 불러오는 동안은 드롭다운으로 지역 선택 불가
+              onChange={handleProvinceSelect}
+            >
+              <option value="">시/도</option>
+              {provinces.map((province) => (
+                <option key={province.cd} value={province.cd}>
+                  {province.cdNm}
+                </option>
+              ))}
+            </select>
 
             {/* 도시(시/군/구) 선택 드롭다운 (지역이 선택되지 않으면 disabled) */}
             <select

@@ -71,7 +71,7 @@ export const vaccinesData = [
     name: "IIV",
     months: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
     vaccinationid: 17,
-    doses: "7",
+    doses: "-",
   },
 ];
 
