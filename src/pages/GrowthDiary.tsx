@@ -249,12 +249,12 @@ export default function GrowthDiary() {
               {growData.length > 0 ? (
                 <></>
               ) : (
-                <>
-                  <div className="sm:w-[70rem] flex justify-between mt-8 h-[18.75rem]">
-                    <div className="w-[50.5rem] bg-gray-1 rounded-[2rem] h-[28rem] "></div>
+                <div className=" w-full ">
+                  <div className="w-full gap-3 flex justify-between mt-8 h-[18.75rem] ">
+                    <div className="w-[53.5rem] bg-gray-1 rounded-[2rem] h-[28rem] "></div>
                     <div className="w-[17.5rem] bg-gray-1 rounded-[2rem] hidden sm:block h-[28rem]"></div>
                   </div>
-                  <div className="sm:w-[70rem] h-[31.25rem] relative bottom-[18.75rem] flex justify-center items-center backdrop-blur-sm ">
+                  <div className="w-full h-[31.25rem] relative bottom-[18.75rem] flex justify-center items-center backdrop-blur-sm ">
                     <div className="flex flex-col items-center z-[100] gap-6 pb-20">
                       <img src="/img/Ggoggo-002.png" />
                       <div className="text-xl font-md text-gray-6">
@@ -275,20 +275,20 @@ export default function GrowthDiary() {
                       </button>
                     </div>
                   </div>
-                </>
+                </div>
               )}
             </>
           )}
           {babyInfo.length === 0 && (
-            <>
-              <div className="flex flex-col gap-2 sm:w-[70rem] h-[38.75rem]">
+            <div className=" w-full ">
+              <div className="flex flex-col gap-2  w-full  h-[38.75rem]">
                 <div className="h-[4rem] bg-gray-1 rounded-[2rem]"></div>
-                <div className="flex justify-between sm:w-[70rem]">
-                  <div className="w-[50.5rem] h-[30rem] bg-gray-1 rounded-[2rem]"></div>
+                <div className="flex justify-between w-full gap-3">
+                  <div className="w-[53.5rem] h-[30rem] bg-gray-1 rounded-[2rem]"></div>
                   <div className="w-[17.5rem] h-[30rem] bg-gray-1 rounded-[2rem] hidden sm:block"></div>
                 </div>
               </div>
-              <div className="sm:w-[70rem] h-[31.25rem] relative bottom-[35.625rem] flex justify-center items-center backdrop-blur-sm">
+              <div className="w-full h-[34.75rem] relative bottom-[38.75rem] flex justify-center items-center backdrop-blur-sm ">
                 <div className="flex flex-col items-center z-[100] gap-6 ">
                   <img src="/img/Ggoggo-002.png" />
                   <div className="text-xl font-md text-gray-6 ">
@@ -307,7 +307,7 @@ export default function GrowthDiary() {
                   </button>
                 </div>
               </div>
-            </>
+            </div>
           )}
         </div>
       </div>
