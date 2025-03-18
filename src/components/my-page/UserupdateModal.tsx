@@ -173,7 +173,7 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
             <img src="img/Button-close.png" alt="" />
           </div>
         </div>
-        <div className="flex flex-col h-full   w-full">
+        <div className="flex flex-col h-full w-full">
           <div className="gap-2 mb-6 flex flex-col">
             {/* 이름 입력 */}
             <Input
@@ -186,7 +186,7 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
             <p>{messages.name}</p>
 
             {/* 이메일 입력 */}
-            <div>
+            <div className="flex flex-col gap-2">
               <div className="flex items-end gap-4">
                 <Input
                   label="이메일"
