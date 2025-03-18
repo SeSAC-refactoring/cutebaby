@@ -1,0 +1,41 @@
+// topWrap
+aside.chatbotArea > .topWrap {
+    @apply flex flex-col gap-4
+    z-10
+    px-4 pb-4 xs:px-6 
+    border-b-2 border-gray-6
+    backdrop-blur-[10px];
+
+    // 날짜와 닫기 버튼
+    & > .dateArea {
+        @apply flex justify-between
+        pt-6;
+
+        & p {
+            @apply text-gray-6 text-sm font-md;
+        }
+
+        & button {
+            @apply cursor-pointer;
+
+            img {
+                @apply w-8 h-8;
+                // @apply sm:w-12 sm:h-12;;
+            }
+        }
+    }
+
+    // 가이드 부분
+    & > .guideArea {
+        @apply p-4 flex items-center gap-3 
+        bg-orange-2 rounded-3xl;
+
+        img {
+            @apply p-2 bg-orange-4 rounded-2xl;
+        }
+
+        .textWrap {
+            @apply flex flex-col gap-1;
+        }
+    }
+}
