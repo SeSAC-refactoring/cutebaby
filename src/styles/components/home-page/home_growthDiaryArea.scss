@@ -12,7 +12,7 @@ article.growthDiaryArea {
     }
 
     & figure.GrowData {
-        @apply flex flex-col
+        @apply flex flex-col 
         w-full h-full;
 
         & .graphArea {

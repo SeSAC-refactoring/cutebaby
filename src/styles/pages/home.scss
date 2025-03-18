@@ -2,47 +2,19 @@
 @import '../components/home-page/home_chatbotArea.scss';
 
 main.home {
-    @apply sm:max-w-[80rem] sm:px-6
-    sm:flex sm:gap-6;
+    @apply sm:max-w-[80rem] sm:w-full sm:px-6
+    sm:flex sm:gap-6 sm:gap-4;
 }
 
-// .chatbotArea {
-//     @apply flex flex-col overflow-y-hidden relative
-//     sm:w-[25rem] sm:bg-white sm:border-2 sm:border-gray-6 sm:rounded-[32px]
-//     lg:w-[400px];
-
-//     .topWrap {
-//         @apply absolute w-full pt-6 px-6 pb-2 flex flex-col gap-2 z-[10] backdrop-blur-[10px];
-
-//         .guideArea {
-//             @apply p-5 flex items-center gap-3 bg-orange-2 rounded-3xl;
-
-//             img {
-//                 @apply p-2 bg-orange-4 rounded-2xl;
-//             }
-
-//             .textWrap {
-//                 @apply flex flex-col gap-1;
-//             }
-//         }
-
-//         .dateArea {
-//             @apply flex justify-center text-xs text-gray-6;
-//         }
-//     }
-
-//     // AiChatComponent.tsx ////////////////
 .chatbotMsgAreaWrap {
     @apply w-full h-[calc(100%-4.875rem)]
-    flex flex-col;
-    // absolute bottom-0
+    flex flex-col-reverse;
 
     // Ai, 사용자 메세지(말풍선) 노출 영역
     .msgAreaWrap {
         @apply w-full pb-4
         flex flex-col-reverse
         overflow-y-scroll;
-        // absolute bottom-[5.25rem]
 
         // 스크롤 숨기기
         -ms-overflow-style: none; // for IE, Edge
@@ -84,7 +56,6 @@ main.home {
 
     .inputArea {
         @apply w-full px-6 pb-6 flex gap-2;
-        // absolute bottom-0
 
         .inputWrap {
             @apply gap-0 w-full;

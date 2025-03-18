@@ -89,6 +89,7 @@ export const GrowthDiaryArea: React.FC<GrowthDiaryAreaProps> = ({
                         handleSelectBaby={handleSelectBaby}
                         selectedBabyId={selectedBabyId}
                     />
+
                     {growData.length === 0 ? (
                         <div className="chartImgWrapper">
                             <img

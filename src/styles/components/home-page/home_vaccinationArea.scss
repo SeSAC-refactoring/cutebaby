@@ -4,13 +4,16 @@
     @apply w-full flex-col gap-4;
 
     .bannerArea {
-        @apply grid gap-4;
-        @apply sm:grid-cols-2;
+        @apply flex flex-col gap-4;
+        @apply sm:flex-row justify-between
+        // @apply grid gap-4;
+        // @apply sm:grid-cols-2;;;;;;
     }
 
     .banner {
         @apply flex flex-col gap-1;
         @apply px-6 py-4 h-[6rem] rounded-3xl border-2 border-blue-3;
+        @apply sm:flex-1;
 
         &.banner_first {
             @include banner-style('first');

@@ -1,9 +1,10 @@
 // 챗봇 기능 플로팅 버튼
 button.floatingBtn {
-    @apply md:hidden;
-    @apply absolute bottom-6 right-6 
+    @apply fixed bottom-[6.5rem] right-6 
     w-16 h-16 
     bg-orange-6 border-2 border-gray-6 rounded-2xl shadow-md;
+    @apply sm:bottom-12 sm:right-12;
+    @apply md:hidden;
 }
 
 aside.chatbotArea {
@@ -11,12 +12,8 @@ aside.chatbotArea {
     flex flex-col
     w-full h-full bg-white;
     @apply sm:rounded-[2.5rem] sm:border-2 sm:border-gray-6
-        sm:max-w-[80rem] sm:min-w-[45rem] sm:h-[44rem];
-    // sm:px-10 sm:py-10 sm:mx-6;
-    // @apply md:px-12 md:py-12;
-    // @apply lg:px-14 lg:py-12;
-
-    // sm:bg-white sm:border-2 sm:border-gray-6 sm:rounded-[32px]
+    sm:w-[calc(100vw-3rem)] sm:min-w-[45rem] sm:h-[44rem];
+    @apply md:static md:min-w-[25rem] md:max-w-[25rem];
 
     // topWrap
     & > .topWrap {
@@ -47,7 +44,7 @@ aside.chatbotArea {
 
         // 가이드 부분
         & > .guideArea {
-            @apply p-5 flex items-center gap-3 
+            @apply p-4 flex items-center gap-3 
             bg-orange-2 rounded-3xl;
 
             img {

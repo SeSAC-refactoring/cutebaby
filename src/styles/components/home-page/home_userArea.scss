@@ -3,4 +3,5 @@
 
 main.home .userArea {
     @apply w-full;
+    @apply md:w-0 md:grow;
 }
