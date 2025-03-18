@@ -57,9 +57,17 @@ export const VaccinationModalDateRecord: React.FC<
 
   if (vaccinationid === 17)
     return (
-      <div>
-        <p>매년 접종하세요</p>
-        <button onClick={() => setIsOpen(false)}>확인</button>
+      <div className="flex flex-col items-center gap-4">
+        <h3>매년 접종 대상입니다.</h3>
+
+        <img src="/img/Ggoggo-003.svg" className="w-[50%]" />
+
+        <button
+          className="button button-blue button-md"
+          onClick={() => setIsOpen(false)}
+        >
+          확인
+        </button>
       </div>
     );
 

@@ -291,7 +291,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                         {/* 백신 이름 */}
                         <td
                           onClick={() => handleOpenModal(vaccine.vaccinationid)}
-                          className="p-2 w-[30%] border-r-0 border border-blue-3 cursor-pointer"
+                          className="p-2 w-[30%] border-r-0 border border-blue-3 cursor-pointer max-sm:w-[20%]"
                         >
                           {vaccine.name}
                         </td>
