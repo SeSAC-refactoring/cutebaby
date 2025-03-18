@@ -123,7 +123,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
           <img src="img/icons/i-search-s20.svg" alt="성장일지 이미지" />
         </button>
       </div>
-      <section className="flex gap-2 w-full max-sm:hidden">
+      <section className="flex gap-2 w-full max-sm:hidden mb-2">
         {/* 개월 수 필터 */}
         <select
           className="w-full"
@@ -186,7 +186,10 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
       </section>
 
       <section className="w-full block overflow-y-auto max-sm:h-full h-[23.75rem] scrollbar-hidden">
-        <table className="w-full mt-6  border-separate border-spacing-0 border-spacing-y-1 max-sm:mt-0">
+        <table
+          className="w-full 
+          border-separate border-spacing-0 max-sm:mt-0"
+        >
           <thead className=" bg-blue-3 text-blue-8 w-full sticky top-0">
             <tr className="w-full">
               <th className="text-left p-4 rounded-l-[0.5rem] w-[20%]">
