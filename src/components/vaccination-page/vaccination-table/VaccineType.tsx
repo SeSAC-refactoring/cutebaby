@@ -5,11 +5,13 @@ import { doses, vaccinesData } from "./VaccinationTableData";
 interface VaccineTypeProps {
   selectedBabyId: number | null;
   vaccineIds: number[]; // 감염병에 해당하는 백신 ID 리스트
+  matchedVaccineList: any[];
 }
 
 export const VaccineType: React.FC<VaccineTypeProps> = ({
   selectedBabyId,
   vaccineIds,
+  matchedVaccineList,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedVaccineId, setSelectedVaccineId] = useState<number | null>(
@@ -43,6 +45,7 @@ export const VaccineType: React.FC<VaccineTypeProps> = ({
           vaccinationid={selectedVaccineId}
           dosenumber={selectedDoseNumber}
           selectedBabyId={selectedBabyId}
+          matchedVaccineList={matchedVaccineList}
         />
       )}
     </>
