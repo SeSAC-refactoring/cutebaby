@@ -7,6 +7,7 @@
     .whiteboxModal {
         @include whitebox-style;
         @apply absolute top-0;
+        max-width: min(calc(100% - 1.5rem), 80rem);
 
         // 모달의 타이틀과 x 버튼 스타일
         & > .topArea {
