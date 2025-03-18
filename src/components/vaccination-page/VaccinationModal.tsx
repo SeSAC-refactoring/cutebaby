@@ -28,7 +28,7 @@ export const VaccinationModal: React.FC<VaccinationModalProps> = ({
       }}
       className="modalBg"
     >
-      <div onClick={(e) => e.stopPropagation()} className="smallModal">
+      <div onClick={(e) => e.stopPropagation()} className="mediumModal">
         {/* 🌟 모달 제목 */}
         <VaccinationModalTitle
           vaccinationid={vaccinationid}
