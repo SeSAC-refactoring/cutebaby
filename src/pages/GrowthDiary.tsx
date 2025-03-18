@@ -129,7 +129,7 @@ export default function GrowthDiary() {
 
       {/* 아기 등록 모달 */}
       {babyPlus && (
-        <div onClick={() => setBabyPlus(false)} style={{ right: "0px" }}>
+        <div onClick={() => setBabyPlus(false)}>
           <BabyInputPlus
             onClose={() => setBabyPlus(false)}
             babyInfo={babyInfo}
@@ -165,10 +165,6 @@ export default function GrowthDiary() {
         </div>
 
         <div>
-          {/* <DiaryInputArea
-            setOpenAddModal={setOpenAddModal}
-            selectedBabyId={selectedBabyId}
-          /> */}
           {babyInfo.length > 0 && (
             <>
               <BabyList
@@ -176,25 +172,24 @@ export default function GrowthDiary() {
                 handleSelectBaby={handleSelectBaby}
                 selectedBabyId={selectedBabyId}
               />
-              <DiaryInputArea
-                setOpenAddModal={setOpenAddModal}
-                selectedBabyId={selectedBabyId}
-              />
 
               {/* 성장기록 그래프 */}
-
               {growData.length > 0 ? (
                 <>
-                  <div className="flex justify-between gap-[2rem] w-full mt-6 flex-col sm:flex-row">
+                  <DiaryInputArea
+                    setOpenAddModal={setOpenAddModal}
+                    selectedBabyId={selectedBabyId}
+                  />
+                  <div className="flex justify-between gap-[2rem] w-full mt-6 flex-col sm:flex-row h-[21.875rem]">
                     <RecentGrowthRecord
                       growData={growData}
                       setOpenAddModal={setOpenAddModal}
                     />
-                    <div className="border-[3px] border-blue-3 sm:w-[70%] rounded-2xl gap-2 sm:p-[2rem_2.5rem] p-[2rem_0.3rem]">
+                    <div className="border-[3px] border-blue-3 sm:w-[70%] rounded-2xl gap-2 sm:p-[1rem_1.5rem] p-[2rem_0.3rem] ">
                       <div className="text-sm font-bd p-[1rem_2.5rem]">
                         우리 아이 성장 추이
                       </div>
-                      <div className="graphArea min-h-[10vh] max-h-[50vh] h-[20rem]">
+                      <div className="graphArea min-h-[10vh] max-h-[50vh] h-[16.875rem] flex justify-center">
                         <DiaryChart growData={growData} />
                       </div>
                     </div>
@@ -208,11 +203,11 @@ export default function GrowthDiary() {
                 <></>
               ) : (
                 <>
-                  <div className="sm:w-[70rem] flex justify-between mt-8">
-                    <div className="w-[50.5rem] h-[30rem] bg-gray-1 rounded-[2rem]"></div>
-                    <div className="w-[17.5rem] h-[30rem] bg-gray-1 rounded-[2rem] hidden sm:block"></div>
+                  <div className="sm:w-[70rem] flex justify-between mt-8 h-[18.75rem]">
+                    <div className="w-[50.5rem] bg-gray-1 rounded-[2rem] h-[28rem] "></div>
+                    <div className="w-[17.5rem] bg-gray-1 rounded-[2rem] hidden sm:block h-[28rem]"></div>
                   </div>
-                  <div className="sm:w-[70rem] h-[35.625rem] relative bottom-[35.625rem] flex justify-center items-center backdrop-blur-sm mt-20">
+                  <div className="sm:w-[70rem] h-[31.25rem] relative bottom-[18.75rem] flex justify-center items-center backdrop-blur-sm ">
                     <div className="flex flex-col items-center z-[100] gap-6 pb-20">
                       <img src="/img/Ggoggo-002.png" />
                       <div className="text-xl font-md text-gray-6">
@@ -239,14 +234,14 @@ export default function GrowthDiary() {
           )}
           {babyInfo.length === 0 && (
             <>
-              <div className="flex flex-col justify-between sm:w-[70rem] h-[35.625rem] mt-[1.75rem]">
+              <div className="flex flex-col gap-2 sm:w-[70rem] h-[38.75rem]">
                 <div className="h-[4rem] bg-gray-1 rounded-[2rem]"></div>
                 <div className="flex justify-between sm:w-[70rem]">
                   <div className="w-[50.5rem] h-[30rem] bg-gray-1 rounded-[2rem]"></div>
                   <div className="w-[17.5rem] h-[30rem] bg-gray-1 rounded-[2rem] hidden sm:block"></div>
                 </div>
               </div>
-              <div className="sm:w-[70rem] h-[35.625rem] relative bottom-[35.625rem] flex justify-center items-center backdrop-blur-sm">
+              <div className="sm:w-[70rem] h-[31.25rem] relative bottom-[35.625rem] flex justify-center items-center backdrop-blur-sm">
                 <div className="flex flex-col items-center z-[100] gap-6 ">
                   <img src="/img/Ggoggo-002.png" />
                   <div className="text-xl font-md text-gray-6 ">

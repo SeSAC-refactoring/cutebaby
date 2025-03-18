@@ -28,7 +28,7 @@ export const RecentGrowthRecord: React.FC<RecentGrowthRecordProps> = ({
         </span>
       </div>
       <div>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4  h-[12.5rem]">
           <div className="flex p-[0.875rem_1.625rem] justify-center items-center gap-[0.625rem] self-stretch rounded-lg bg-orange-3 text-bs font-rg h-[5rem]">
             키 <span className="text-bs font-bd">{growData[0].height} cm</span>
           </div>
