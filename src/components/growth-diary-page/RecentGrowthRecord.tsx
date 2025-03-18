@@ -17,7 +17,7 @@ export const RecentGrowthRecord: React.FC<RecentGrowthRecordProps> = ({
 }) => {
   return (
     <div className="sm:w-[30%] flex flex-col p-8 gap-4 rounded-2xl border-[3px] border-blue-3">
-      <div className="gird grid-cols-1 flex flex-col gap-4">
+      <div className="flex flex-col gap-4">
         <span className="text-sm font-bd">가장 최근 기록</span>
         <span className="text-xs font-md text-gray-7">
           {new Date(growData[0].inputData).toLocaleDateString("ko-KR", {
@@ -27,16 +27,16 @@ export const RecentGrowthRecord: React.FC<RecentGrowthRecordProps> = ({
           })}
         </span>
       </div>
-      <div>
-        <div className="flex flex-col gap-4  h-[12.5rem]">
-          <div className="flex p-[0.875rem_1.625rem] justify-center items-center gap-[0.625rem] self-stretch rounded-lg bg-orange-3 text-bs font-rg h-[5rem]">
+      <div className="h-full">
+        <div className="flex flex-col h-full justify-between gap-3 sm:gap-0">
+          <div className="flex p-[0.875rem_1.625rem] justify-center items-center gap-[0.625rem] self-stretch rounded-lg bg-orange-3 text-bs font-rg sm:h-[5.625rem]">
             키 <span className="text-bs font-bd">{growData[0].height} cm</span>
           </div>
-          <div className="flex p-[0.875rem_1.625rem] justify-center items-center gap-[0.625rem] self-stretch rounded-lg bg-green-3 text-bs font-rg h-[5rem]">
+          <div className="flex p-[0.875rem_1.625rem] justify-center items-center gap-[0.625rem] self-stretch rounded-lg bg-green-3 text-bs font-rg sm:h-[5.625rem]">
             몸무게{" "}
             <span className="text-bs font-bd">{growData[0].weight} kg</span>
           </div>
-          <div className="flex p-[0.875rem_1.625rem] justify-center items-center gap-[0.625rem] self-stretch rounded-lg bg-purple-3 text-bs font-rg h-[5rem]">
+          <div className="flex p-[0.875rem_1.625rem] justify-center items-center gap-[0.625rem] self-stretch rounded-lg bg-purple-3 text-bs font-rg sm:h-[5.625rem]">
             머리 둘레{" "}
             <span className="text-bs font-bd">{growData[0].head} cm</span>
           </div>

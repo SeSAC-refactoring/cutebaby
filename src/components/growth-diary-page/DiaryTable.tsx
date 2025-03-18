@@ -13,7 +13,7 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({
   onDelete,
 }) => {
   return (
-    <div className="min-h-0 flex flex-col sm:w-full">
+    <div className="min-h-0 flex flex-col sm:w-full h-full">
       <div className="flex-grow overflow-y-scroll pb-[3.5rem] text-lg font-rg">
         {growData.length > 0 ? (
           <>
