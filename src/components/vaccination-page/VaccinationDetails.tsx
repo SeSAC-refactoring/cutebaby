@@ -74,20 +74,15 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
       onClick={() => {
         setOpenDetailsModal(false);
       }}
-      // className=" w-full h-full absolute top-0 left-0 flex flex-col backdrop-blur-sm z-30"
       className="modalBg"
     >
       <div
         onClick={(e) => {
           e.stopPropagation();
         }}
-        // className="bg-white border-2 border-gray-6 rounded-[40px] p-10 absolute z-50 top-36"
         className="whiteboxModal"
       >
-        <div
-          // className="flex justify-between"
-          className="topArea"
-        >
+        <div className="topArea">
           <h2>예방접종 대상 감염병 정보</h2>
           <div
             onClick={() => {
@@ -101,10 +96,7 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
 
         <>
           {isLoading ? (
-            <div
-              // className="flex flex-col justify-center items-center mt-4"
-              className="response-state"
-            >
+            <div className="response-state">
               <img src="/img/visuals/visual_loading_ggomul_04.svg" alt="" />
               <div className="text">
                 <p>자료를 가져오고 있어요..</p>
@@ -113,30 +105,29 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
             </div>
           ) : (
             <div className="h-full flex flex-col gap-8">
-              <div className="flex gap-2 overflow-x-auto sm:flex-wrap">
-                {diseaseList.map((disease, idx) => (
-                  <button
-                    key={disease.cd}
-                    onClick={() => {
-                      setFocus(idx);
-                      setOnClickDis(disease.cd);
-                      fetchDiseaseInfo(disease.cd);
-                    }}
-                    className={` ${
-                      focus === idx
-                        ? " chip-button-blue chip-button-sm selected"
-                        : " chip-button-blue chip-button-sm"
-                    }`}
-                  >
-                    {disease.cdNm.split(" ")[0]}
-                  </button>
-                ))}
-              </div>
-
               <div>
+                <div className="flex gap-2 overflow-x-auto sm:flex-wrap">
+                  {diseaseList.map((disease, idx) => (
+                    <button
+                      key={disease.cd}
+                      onClick={() => {
+                        setFocus(idx);
+                        setOnClickDis(disease.cd);
+                        fetchDiseaseInfo(disease.cd);
+                      }}
+                      className={` ${
+                        focus === idx
+                          ? " chip-button-blue chip-button-sm selected"
+                          : " chip-button-blue chip-button-sm"
+                      }`}
+                    >
+                      {disease.cdNm.split(" ")[0]}
+                    </button>
+                  ))}
+                </div>
                 {diseaseInfo[onClickDis] && (
-                  <div className="h-full">
-                    <div className="flex gap-4 items-center border-b-2 border-gray-3 pb-6 ">
+                  <div className="h-full mt-8">
+                    <div className="flex gap-4 items-center border-b-2 border-gray-3 pb-6">
                       <span className="text-xl font-bd">
                         {diseaseInfo[onClickDis].title.split("(")[0]}
                       </span>
