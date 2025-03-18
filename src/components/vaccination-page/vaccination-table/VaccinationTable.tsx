@@ -119,7 +119,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
           className="flex items-center gap-2 h-full button button-xs button-purple"
           onClick={() => setFilterModalOpen(true)}
         >
-          <span>검색</span>
+          <span>검색 필터</span>
           <img src="img/icons/i-search-s20.svg" alt="성장일지 이미지" />
         </button>
       </div>
@@ -139,7 +139,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
           <option value="" disabled hidden selected>
             개월 수 선택
           </option>
-          <option value="">선택 안함</option>
+          <option value="">전체</option>
           {DoseDate.map((id, i) => (
             <option key={i} value={i}>
               {id}
@@ -158,7 +158,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
           <option value="" disabled hidden selected>
             접종여부
           </option>
-          <option value="">선택 안함</option>
+          <option value="">전체</option>
           <option value="1">접종완료</option>
           <option value="2">미접종</option>
           <option value="3">접종진행</option>
@@ -176,7 +176,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
           <option value="" disabled hidden selected>
             대상 감염병
           </option>
-          <option value="">선택 안함</option>
+          <option value="">전체</option>
           {filteredDiseases.map((diseaseIndex) => (
             <option key={diseaseIndex} value={diseaseIndex}>
               {diseasesData[diseaseIndex].name}

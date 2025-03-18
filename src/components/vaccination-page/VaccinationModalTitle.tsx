@@ -24,6 +24,7 @@ export const VaccinationModalTitle: React.FC<VaccinationModalTitleProps> = ({
         onClick={() => {
           setIsOpen(false);
         }}
+        className="cursor-pointer"
       >
         <img src="/img/Button-close.png" alt="" />
       </div>
