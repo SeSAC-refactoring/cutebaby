@@ -216,7 +216,7 @@ export const VaccinationModalDateRecord: React.FC<
                   id={String(doseNum)}
                   value={doseDate}
                   onChange={(e) => setDoseDate(e.target.value)}
-                  className="pr-2 w-full"
+                  className="pr-2"
                 />
               ) : (
                 // 첫 화면 // [입력하기]/[수정] 버튼 누르기 전
@@ -239,7 +239,7 @@ export const VaccinationModalDateRecord: React.FC<
               {/* 버튼 */}
               {selectedDose === doseNum ? (
                 // [입력하기] 버튼을 눌렀을 때
-                <div className="flex gap-1">
+                <div className="flex gap-2">
                   <button
                     className="button button-md button-coral"
                     onClick={() => setSelectedDose(null)}
@@ -259,7 +259,7 @@ export const VaccinationModalDateRecord: React.FC<
                 </div>
               ) : // 첫 화면
               matchedDose ? (
-                <div style={{ display: "flex" }} className="gap-1">
+                <div className="gap-2 flex">
                   <button
                     onClick={() => handleDeleteData(doseNum)}
                     disabled={doseNum !== lastDose}
@@ -277,11 +277,11 @@ export const VaccinationModalDateRecord: React.FC<
                   </button>
                 </div>
               ) : (
-                <div>
+                <div className="">
                   <button
                     onClick={() => handleOpenInput(doseNum, null)}
                     disabled={isDisabled}
-                    className="button-md button-blue"
+                    className="button-md button-blue w-full"
                   >
                     입력하기
                   </button>

@@ -33,15 +33,6 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
   const [selectedDose, setDose] = useState<number | undefined>();
   const [isFilterModalOpen, setFilterModalOpen] = useState(false); // 모바일 모달 상태관리
 
-  //모달열었을때 배경이 스크롤되는거 방지하기
-  useEffect(() => {
-    if (isOpen || isFilterModalOpen) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
-  }, [isFilterModalOpen]);
-
   // 선택한 개월 수에 따라 감염병 목록 필터링 (선택 안함 시 모든 데이터 표시)
   const filteredDiseases =
     selectedMonth !== undefined
@@ -99,6 +90,15 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
     null
   );
   const [selectedDoseNumber, setSelectedDoseNumber] = useState<number>(1);
+
+  //모달열었을때 배경이 스크롤되는거 방지하기
+  useEffect(() => {
+    if (isOpen || isFilterModalOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }, [isOpen, isFilterModalOpen]);
 
   // 모달 열기 함수
   const handleOpenModal = (vaccineId: number) => {
@@ -331,6 +331,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                             <VaccineType
                               selectedBabyId={selectedBabyId}
                               vaccineIds={[vaccine.vaccinationid]} // 개별적으로 백신 ID 전달
+                              matchedVaccineList={matchedVaccineList}
                             />
                           </div>
                         </td>
@@ -365,6 +366,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
           vaccinationid={selectedVaccineId}
           dosenumber={selectedDoseNumber}
           selectedBabyId={selectedBabyId}
+          matchedVaccineList={matchedVaccineList}
         />
       )}
 
