@@ -52,7 +52,7 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({
                   <div className="flex sm:w-[12.5rem] h-full sm:ml-4 sm:px-[1.75rem] py-[0.875rem] items-center justify-center gap-[0.125rem] sm:gap-2">
                     <button
                       onClick={() => onEdit(info.id)}
-                      className="sm:h-[3rem] rounded-[0.75rem] text-xs font-rg sm:text-bs sm:font-bd flex bg-blue-4 justify-center items-center sm:p-[0.875rem_1.125rem] p-[0.125rem_0.125rem]"
+                      className="sm:h-[3rem] rounded-[0.75rem] text-xs font-rg sm:text-bs sm:font-bd flex bg-blue-4 sm:gap-1 justify-center items-center sm:p-[0.875rem_1.125rem] p-[0.125rem_0.125rem]"
                     >
                       수정
                       <img
