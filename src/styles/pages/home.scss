@@ -5,3 +5,126 @@ main.home {
     @apply sm:max-w-[80rem] sm:px-6
     sm:flex sm:gap-6;
 }
+
+// .chatbotArea {
+//     @apply flex flex-col overflow-y-hidden relative
+//     sm:w-[25rem] sm:bg-white sm:border-2 sm:border-gray-6 sm:rounded-[32px]
+//     lg:w-[400px];
+
+//     .topWrap {
+//         @apply absolute w-full pt-6 px-6 pb-2 flex flex-col gap-2 z-[10] backdrop-blur-[10px];
+
+//         .guideArea {
+//             @apply p-5 flex items-center gap-3 bg-orange-2 rounded-3xl;
+
+//             img {
+//                 @apply p-2 bg-orange-4 rounded-2xl;
+//             }
+
+//             .textWrap {
+//                 @apply flex flex-col gap-1;
+//             }
+//         }
+
+//         .dateArea {
+//             @apply flex justify-center text-xs text-gray-6;
+//         }
+//     }
+
+//     // AiChatComponent.tsx ////////////////
+.chatbotMsgAreaWrap {
+    @apply w-full h-[calc(100%-4.875rem)]
+    flex flex-col;
+    // absolute bottom-0
+
+    // Ai, 사용자 메세지(말풍선) 노출 영역
+    .msgAreaWrap {
+        @apply w-full pb-4
+        flex flex-col-reverse
+        overflow-y-scroll;
+        // absolute bottom-[5.25rem]
+
+        // 스크롤 숨기기
+        -ms-overflow-style: none; // for IE, Edge
+        scrollbar-width: none; // for Firefox
+        &::-webkit-scrollbar {
+            display: none; // for Chrome, Safari, and Opera
+        }
+
+        .msgArea {
+            @apply grow px-6 flex flex-col gap-4;
+
+            // 말풍선 공통 스타일
+            .msgWrap {
+                @apply max-w-[65%] p-4 flex flex-col gap-2 border-2 border-gray-6;
+            }
+
+            // ai 말풍선
+            .AiMsg {
+                @apply self-start bg-white shadow-[-4px_4px_0px_0px_#e1e1e5] rounded-[0px_14px_14px_14px];
+            }
+
+            // 사용자 말풍선
+            .userMsg {
+                @apply self-end text-white bg-orange-6 shadow-[4px_4px_0px_0px_#e1e1e5] rounded-[14px_0px_14px_14px];
+            }
+
+            // 질문 입력 후 로딩 메세지
+            .loadingMsg {
+                @apply w-full p-4 flex justify-center text-gray-6 bg-gray-1 backdrop-blur-[10px] border-2 border-gray-2 rounded-2xl;
+            }
+
+            // 메세지 스타일
+            .msgContents {
+                white-space: normal; // 연속된 공백은 한 개의 공백으로, 컨테이너 크기를 넘어가는 경우 자동으로 줄바꿈, 긴 단어 자체는 줄바꿈되지 않음
+                overflow-wrap: break-word; // 컨테이너 크기를 넘어가는 긴 단어가 있을 경우 강제 개행
+            }
+        }
+    }
+
+    .inputArea {
+        @apply w-full px-6 pb-6 flex gap-2;
+        // absolute bottom-0
+
+        .inputWrap {
+            @apply gap-0 w-full;
+
+            label {
+                display: none;
+            }
+
+            label::after {
+                display: none;
+            }
+        }
+
+        // 전송 버튼
+        button {
+            @apply min-w-14 min-h-14
+            flex justify-center items-center
+            bg-orange-6 rounded-2xl;
+
+            &:disabled {
+                @apply bg-orange-3;
+            }
+
+            // 전송 버튼 클릭 후 로딩 애니메이션
+            .btnLoading {
+                @apply w-8 h-8 relative inline-block align-middle bg-white rounded-full;
+                animation: 0.4s infinite ease-in-out;
+                animation-name: Loading;
+
+                @keyframes Loading {
+                    from {
+                        transform: scale(0);
+                        opacity: 1;
+                    }
+                    to {
+                        transform: scale(1);
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+    }
+}

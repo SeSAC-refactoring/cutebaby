@@ -6,13 +6,12 @@ import { TopArea } from '../components/home-page/TopArea';
 import { GrowthDiaryArea } from '../components/home-page/GrowthDiaryArea';
 import { VaccinationArea } from '../components/home-page/VaccinationArea';
 import { ChatbotArea } from '../components/home-page/ChatbotArea';
-import GrowthDiary from './GrowthDiary';
-import Vaccination from './Vaccination';
 
 export default function Home() {
+    const [loading, setLoading] = useState<boolean>(true); // 로딩 상태 관리
     const [openCentersModal, setOpenCentersModal] = useState<boolean>(false);
     const [openDetailsModal, setOpenDetailsModal] = useState<boolean>(false);
-    const [loading, setLoading] = useState<boolean>(true); // 로딩 상태 관리
+    const [openChatbot, setOpenChatbot] = useState<boolean>(false); // 챗봇 영역 관리
 
     return (
         <main className="home">
@@ -42,16 +41,16 @@ export default function Home() {
             </section>
 
             {/* 챗봇 */}
-            <ChatbotArea />
-            <button className="sm:hidden btnShowChatbot absolute bottom-6 right-6 w-16 h-16 bg-orange-6 border-2 border-gray-6 rounded-2xl shadow-md">
+            {openChatbot && <ChatbotArea setOpenChatbot={setOpenChatbot} />}
+            <button
+                className="floatingBtn"
+                onClick={() => setOpenChatbot(true)}
+            >
                 <img
                     src="img/icons/i-chatbot-solid-s36.svg"
                     alt="입력 아이콘"
                 />
             </button>
         </main>
-
-        // <GrowthDiary />
-        // <Vaccination />
     );
 }
