@@ -31,7 +31,7 @@ export const MobileFilterModal: React.FC<FilterModalProps> = ({
     <div className="modalBg" onClick={onClose}>
       <div className="smallModal" onClick={(e) => e.stopPropagation()}>
         <div className="flex justify-between items-end">
-          <h3 className="pb-8">검색</h3>{" "}
+          <h3 className="pb-8">검색</h3>
           <div onClick={onClose} className="text-right">
             <img
               className="w-[1.5rem] inline-block pb-4"

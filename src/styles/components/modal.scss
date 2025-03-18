@@ -1,7 +1,8 @@
 .modalBg {
   @apply absolute inset-0 flex justify-center items-center;
   @apply backdrop-blur-sm z-30;
-  @apply max-sm:z-50 max-sm:fixed;
+  @apply max-sm:z-50 max-sm:fixed max-sm:items-start max-sm:backdrop-blur-none;
+  @apply max-sm:h-[calc(100vh-5rem)]; /* PC에서는 헤더 높이(64px) 제외 */
 
   .whiteboxModal {
     @include whitebox-style;
@@ -40,11 +41,12 @@
   }
 
   .mediumModal {
-    @apply bg-white w-full min-w-80 h-full px-14 py-12;
+    @apply bg-white w-full min-w-80 h-full px-14 z-30 py-12;
+
     @apply flex flex-col gap-6;
     @apply sm:w-[32.5rem] sm:h-auto;
     @apply sm:border-2 sm:border-gray-6 sm:rounded-[2.5rem];
-    @apply max-sm:px-6 max-sm:py-0 max-sm:gap-14;
+    @apply max-sm:px-6 max-sm:py-6 max-sm:gap-14 max-sm:z-30  max-sm:top-0;
   }
 
   .smallModal {

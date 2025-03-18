@@ -110,8 +110,8 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
           className="flex items-center gap-2 h-full button button-xs button-purple"
           onClick={() => setFilterModalOpen(true)}
         >
-          {/* <Filter className="w-5 h-5" /> */}
           <span>검색</span>
+          <img src="img/icons/i-search-s20.svg" alt="성장일지 이미지" />
         </button>
       </div>
       <section className="flex gap-2 w-full max-sm:hidden">
