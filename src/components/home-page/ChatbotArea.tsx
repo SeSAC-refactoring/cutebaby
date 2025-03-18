@@ -28,7 +28,10 @@ export const ChatbotArea = ({ setOpenChatbot }: chatbotAreaProps) => {
 
                     <button
                         className="close"
-                        onClick={() => setOpenChatbot(false)}
+                        onClick={() => {
+                            setOpenChatbot(false);
+                            console.log('끄는 버튼 누름');
+                        }}
                     >
                         <img
                             src="img/Button-close.png"

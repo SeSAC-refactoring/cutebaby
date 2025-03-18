@@ -41,15 +41,13 @@ export default function Home() {
             </section>
 
             {/* 챗봇 */}
-            {openChatbot && (
-                <div className="modalBg">
-                    <ChatbotArea setOpenChatbot={setOpenChatbot} />
-                </div>
-            )}
-            <div className="hidden md:block md:w-[25rem]">
+            <div
+                className={`${openChatbot ? 'block modalBg' : 'hidden'} hidden md:block md:w-[25rem]`}
+            >
                 <ChatbotArea setOpenChatbot={setOpenChatbot} />
             </div>
 
+            {/* 플로팅버튼 */}
             <button
                 className="floatingBtn"
                 onClick={() => setOpenChatbot(true)}
