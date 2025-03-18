@@ -31,10 +31,18 @@ export const MobileFilterModal: React.FC<FilterModalProps> = ({
     <div className="modalBg" onClick={onClose}>
       <div className="smallModal" onClick={(e) => e.stopPropagation()}>
         <div className="flex justify-between items-end">
-          <h3 className="pb-4">검색</h3>{" "}
-          <p className="text-2xs pb-4 text-gray-4">
-            *선택 안 함 선택 시 전체 선택됩니다.
-          </p>
+          <h3 className="pb-8">검색</h3>{" "}
+          <div onClick={onClose} className="text-right">
+            <img
+              className="w-[1.5rem] inline-block pb-4"
+              src="/img/Button-close.png"
+              alt=""
+            />
+
+            <p className="text-2xs text-gray-4">
+              *선택 안 함 선택 시 전체 선택됩니다.
+            </p>
+          </div>
         </div>
         <div className="flex flex-col gap-4">
           {/* 개월 수 필터 */}
