@@ -45,6 +45,15 @@ export default function Vaccination() {
     }
   }, [dispatch, babyId]);
 
+  //모달열었을때 배경 스크롤방지
+  useEffect(() => {
+    if (openDetailsModal || openInfoModal || openCentersModal) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }, [openCentersModal, openDetailsModal, openInfoModal]);
+
   // useEffect(
   //     () =>
   //         console.log(
