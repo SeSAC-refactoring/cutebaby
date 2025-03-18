@@ -15,6 +15,7 @@ import { VaccineType } from "./VaccineType";
 import { VaccinationSchedule } from "./VaccinationSchedule";
 import { VaccinationScheduleName } from "./VaccinationScheduleName";
 import { VaccinationModal } from "../VaccinationModal";
+import { MobileFilterModal } from "./MobileFilterModal";
 
 interface VaccinationTableProps {
   selectedBabyId: number | null;
@@ -30,6 +31,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
   const [selectedMonth, setMonth] = useState<number | undefined>(); //선택개월수 상태관리
   const [selectedDis, setDis] = useState<number | undefined>(); // 선택감염병 상태관리
   const [selectedDose, setDose] = useState<number | undefined>();
+  const [isFilterModalOpen, setFilterModalOpen] = useState(false); // 모바일 모달 상태관리
 
   // 선택한 개월 수에 따라 감염병 목록 필터링 (선택 안함 시 모든 데이터 표시)
   const filteredDiseases =
@@ -101,15 +103,15 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
 
   return (
     <div className="flex flex-col w-full">
-      <div className="sm:hidden max-sm:absolute top-6 right-6 h-[2rem] z-50">
+      <div className="sm:hidden max-sm:absolute top-6 right-6 h-[2rem] z-10">
         {" "}
         {/* 767px 이하에서만 보이게 */}
         <button
-          className="p-2 border border-gray-300 rounded-lg flex items-center gap-2 h-full"
-          // onClick={() => setFilterOpen(!isFilterOpen)}
+          className="flex items-center gap-2 h-full button button-xs button-purple"
+          onClick={() => setFilterModalOpen(true)}
         >
           {/* <Filter className="w-5 h-5" /> */}
-          <span>필터</span>
+          <span>검색</span>
         </button>
       </div>
       <section className="flex gap-2 w-full max-sm:hidden">
@@ -182,10 +184,12 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                 대상 감염병
               </th>
               <th className="text-left w-[20%] p-2">백신 종류</th>
-              <th className="text-center w-[20%]">최근 접종 일자</th>
-              <th className="w-[8%]">권장횟수</th>
-              <th className="w-[8%]">완료횟수</th>
-              <th className="rounded-r-[0.5rem] w-[8%]">관리</th>
+              <th className="text-center w-[20%] max-sm:hidden">
+                최근 접종 일자
+              </th>
+              <th className="w-[8%] max-sm:hidden">권장횟수</th>
+              <th className="w-[8%] max-sm:hidden">완료횟수</th>
+              <th className="rounded-r-[0.5rem] w-[8%] ">관리</th>
             </tr>
             {/* 테이블 사이 넓히는 용도 */}
             <tr className="h-2 invisible"></tr>
@@ -285,7 +289,7 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                         {/* 최근 접종 일자 */}
                         <td
                           onClick={() => handleOpenModal(vaccine.vaccinationid)}
-                          className="w-[20%] border-x-0 border border-blue-3 text-center cursor-pointer"
+                          className="max-sm:hidden w-[20%] border-x-0 border border-blue-3 text-center cursor-pointer"
                         >
                           <VaccinationSchedule
                             matchedVaccineList={matchedVaccineList}
@@ -295,14 +299,14 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                         {/* 권장횟수 */}
                         <td
                           onClick={() => handleOpenModal(vaccine.vaccinationid)}
-                          className="text-center w-[8%] border-x-0 border border-blue-3 cursor-pointer"
+                          className="max-sm:hidden text-center w-[8%] border-x-0 border border-blue-3 cursor-pointer"
                         >
                           {vaccine.doses}
                         </td>
                         {/* 완료횟수 */}
                         <td
                           onClick={() => handleOpenModal(vaccine.vaccinationid)}
-                          className="text-center w-[8%] border-x-0 border border-blue-3 cursor-pointer"
+                          className="max-sm:hidden text-center w-[8%] border-x-0 border border-blue-3 cursor-pointer"
                         >
                           <VaccinationScheduleName
                             matchedVaccineList={matchedVaccineList}
@@ -352,6 +356,18 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
           vaccinationid={selectedVaccineId}
           dosenumber={selectedDoseNumber}
           selectedBabyId={selectedBabyId}
+        />
+      )}
+
+      {isFilterModalOpen && (
+        <MobileFilterModal
+          selectedMonth={selectedMonth}
+          selectedDis={selectedDis}
+          selectedDose={selectedDose}
+          setMonth={setMonth}
+          setDis={setDis}
+          setDose={setDose}
+          onClose={() => setFilterModalOpen(false)}
         />
       )}
     </div>

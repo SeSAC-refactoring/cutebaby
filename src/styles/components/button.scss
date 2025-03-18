@@ -62,6 +62,17 @@ button,
   );
 }
 
+.button-purple {
+  @include button-color(
+    --color-purple-3,
+    --color-gray-0,
+    --color-purple-3,
+    --color-gray-4,
+    --color-purple-6,
+    --color-purple-7
+  );
+}
+
 .button-coral {
   @include button-color(
     --color-coral-4,
