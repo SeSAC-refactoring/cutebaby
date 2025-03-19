@@ -115,34 +115,39 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
                         <div className="item-value">{babyMonths}</div>
                     </div>
 
-                    <div className="item">
-                        <div className="item-label">성별</div>
-                        <div className="item-value">
-                            {selectedBaby.gender === 'boy' ? '남아' : '여아'}
+                    <div className="itemBtns">
+                        <div className="item">
+                            <div className="item-label">성별</div>
+                            <div className="item-value">
+                                {selectedBaby.gender === 'boy'
+                                    ? '남아'
+                                    : '여아'}
+                            </div>
+                        </div>
+                        <div className="buttons">
+                            <button onClick={() => setDelModal(true)}>
+                                삭제
+                            </button>
+                            {delModal && (
+                                <DelbabyModal
+                                    handleSelectBaby={selectedBaby.babyid}
+                                    babyInfo={babyInfo}
+                                    onClose={() => setDelModal(false)}
+                                />
+                            )}
+
+                            <button onClick={() => setUpdateBaby(true)}>
+                                수정
+                                <img alt="수정 아이콘" src="/img/edit-01.png" />
+                            </button>
+                            {updateBaby && (
+                                <UpdateBaby
+                                    selectedBaby={selectedBaby}
+                                    onClose={() => setUpdateBaby(false)}
+                                />
+                            )}
                         </div>
                     </div>
-                </div>
-
-                <div className="buttons">
-                    <button onClick={() => setDelModal(true)}>삭제</button>
-                    {delModal && (
-                        <DelbabyModal
-                            handleSelectBaby={selectedBaby.babyid}
-                            babyInfo={babyInfo}
-                            onClose={() => setDelModal(false)}
-                        />
-                    )}
-
-                    <button onClick={() => setUpdateBaby(true)}>
-                        수정
-                        <img alt="수정 아이콘" src="/img/edit-01.png" />
-                    </button>
-                    {updateBaby && (
-                        <UpdateBaby
-                            selectedBaby={selectedBaby}
-                            onClose={() => setUpdateBaby(false)}
-                        />
-                    )}
                 </div>
             </div>
 

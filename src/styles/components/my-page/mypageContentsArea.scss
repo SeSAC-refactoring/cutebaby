@@ -44,7 +44,7 @@
         @apply sm:h-full;
 
         & .babyInfo {
-            @apply w-full flex flex-col gap-4 relative;
+            @apply w-full flex flex-col gap-4;
             @apply ssm:flex-row ssm:gap-6;
             @apply ssm:bg-white ssm:border-[3px] ssm:border-blue-3 ssm:rounded-[2rem]
             ssm:p-6;
@@ -73,14 +73,19 @@
 
             & .items {
                 @apply flex flex-col gap-4
-                p-4 bg-white border-[3px] border-blue-3 rounded-[2rem];
+                w-full p-4 bg-white border-[3px] border-blue-3 rounded-[2rem];
                 @apply ssm:p-0 ssm:bg-none ssm:border-none;
+                @apply sm:justify-between;
+            }
+
+            & .itemBtns {
+                @apply flex justify-between items-end;
             }
 
             & .buttons {
-                @apply flex gap-2
-                absolute bottom-4 right-4;
-                @apply ssm:bottom-6 ssm:right-6;
+                @apply flex gap-2;
+                // absolute bottom-4 right-4;
+                // @apply ssm:bottom-6 ssm:right-6;
 
                 & button {
                     @apply button-xs;
