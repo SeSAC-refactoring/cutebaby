@@ -18,7 +18,7 @@ export const RecentGrowthRecord: React.FC<RecentGrowthRecordProps> = ({
     return (
         <div className="recentGrowthRecord">
             <div className="titleArea">
-                <span className="title">가장 최근 기록</span>
+                <h3>가장 최근 기록</h3>
                 <span className="recentDate">
                     {new Date(growData[0].inputData).toLocaleDateString(
                         'ko-KR',

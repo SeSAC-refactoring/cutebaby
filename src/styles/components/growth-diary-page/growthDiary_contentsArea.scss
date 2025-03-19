@@ -1,8 +1,9 @@
 @import './growthDiary_recnetGrowthRecord.scss';
+@import './growthDiary_graphArea.scss';
 
 .growthDiaryContentsArea {
     @apply flex flex-col gap-4;
-    @apply sm:h-full;
+    @apply sm:h-full sm:w-full;
 
     & > .diaryInputArea-wrap {
         @apply hidden md:block;
@@ -11,6 +12,6 @@
     & > .recent-graph-wrap {
         @apply flex flex-col gap-4 
         w-full;
-        @apply sm:flex-row sm:h-full;
+        @apply sm:flex-row sm:gap-6 sm:h-0 sm:grow sm:w-full;
     }
 }

@@ -1,0 +1,16 @@
+.growthDiaryContentsArea .recent-graph-wrap .graphArea {
+    @apply flex flex-col gap-4;
+    @apply sm:gap-0
+    sm:h-full sm:w-0 sm:grow sm:p-8
+    sm:border-[3px] sm:border-blue-3 sm:bg-white sm:rounded-[2rem];
+
+    & > h3 {
+        @apply px-6 pt-6;
+        @apply sm:px-0 sm:pt-0;
+    }
+    & > .graph-wrap {
+        @apply flex justify-center items-center
+        min-h-[15rem];
+        @apply sm:h-0 sm:grow;
+    }
+}

@@ -3,15 +3,10 @@
     p-6 bg-yellow-1 rounded-2xl;
     @apply sm:p-8 sm:rounded-[2rem] sm:h-full;
     @apply md:border-[3px] md:border-blue-3 md:bg-white;
-    // @apply sm:w-[17rem];
 
     & > .titleArea {
         @apply flex justify-between;
         @apply sm:flex-col sm:gap-4;
-
-        & > span.title {
-            @apply text-sm font-bd;
-        }
 
         & > span.recentDate {
             @apply text-gray-7 text-xs font-md;
@@ -25,7 +20,7 @@
         & > .item {
             @apply flex flex-row gap-2 justify-center items-center
             w-full p-4 rounded-lg;
-            @apply sm:flex-1;
+            @apply sm:p-0 sm:flex-1;
 
             & > span:first-child {
                 @apply font-rg;

@@ -261,11 +261,9 @@ export default function GrowthDiary() {
                                             setOpenAddModal={setOpenAddModal}
                                         />
 
-                                        <div className="border-[3px] border-blue-3 sm:w-[70%] rounded-2xl gap-2 sm:p-[1rem_1.5rem] p-[2rem_0.3rem]">
-                                            <div className="text-sm font-bd p-[1rem_2.5rem]">
-                                                우리 아이 성장 추이
-                                            </div>
-                                            <div className="graphArea min-h-[10vh] max-h-[50vh] flex justify-center items-center">
+                                        <div className="graphArea">
+                                            <h3>우리 아이 성장 추이</h3>
+                                            <div className="graph-wrap">
                                                 <DiaryChart
                                                     growData={growData}
                                                 />
