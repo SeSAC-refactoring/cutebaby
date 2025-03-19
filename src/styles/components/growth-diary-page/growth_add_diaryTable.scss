@@ -2,16 +2,13 @@
     @apply flex flex-col 
     w-full
     overflow-y-scroll;
-    // @apply min-h-0 sm:w-full h-full;
-    // @apply flex-grow pb-[3.5rem] text-lg font-rg;
 
     & > .tableTitle {
         @apply flex 
         bg-blue-3 rounded-[1rem]
         w-full
         px-2 py-4
-        grid grid-cols-5; // 여기 수정해보기
-        // @apply h-[3.5rem] sm:pl-[3.125rem] pr-[3.125rem] items-center gap-4;
+        grid grid-cols-5;
         @apply sm:px-6 sm:py-4;
 
         & > div {
@@ -20,7 +17,6 @@
             @apply xs:text-xs;
             @apply ssm:flex-row;
             @apply sm:text-bs;
-            // @apply sm:w-[12.375rem] w-[6.25rem] h-[3.5rem];
         }
     }
 
@@ -33,10 +29,8 @@
             @apply flex 
             even:bg-blue-1 rounded-[1rem]
             px-2 py-4 w-full
-            grid grid-cols-5; // 여기 수정해보기
+            grid grid-cols-5;
             @apply sm:px-6 sm:py-4;
-
-            // @apply h-[4.5rem] sm:pl-[3.125rem] sm:justify-start justify-around;
 
             & > div.value {
                 @apply text-xs
@@ -48,7 +42,6 @@
                 @apply flex flex-col gap-1;
                 @apply ssm:flex-row;
                 @apply sm:gap-2;
-                // @apply flex sm:w-[12.5rem] h-full sm:ml-4 sm:px-[1.75rem] py-[0.875rem] items-center justify-center gap-[0.125rem];
 
                 & > button {
                     @apply button-2xs;
