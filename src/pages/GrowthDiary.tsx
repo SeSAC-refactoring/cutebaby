@@ -82,9 +82,7 @@ export default function GrowthDiary() {
                     >
                         <div>
                             <div className="flex justify-between">
-                                <h2 className="sm:text-4xl text-2xl font-bd mb-4">
-                                    성장기록 추가
-                                </h2>
+                                <h2 className="mb-6">성장기록 추가</h2>
                                 <div
                                     onClick={() => {
                                         setOpenAppendModal(false);
@@ -119,29 +117,26 @@ export default function GrowthDiary() {
                         onClick={(e) => e.stopPropagation()}
                         className="whiteboxModal growthCalculate"
                     >
-                        <div>
-                            <div className="flex justify-between">
-                                <h2 className="sm:text-4xl text-2xl font-bd mb-4">
-                                    성장기록
-                                </h2>
-                                <div
-                                    onClick={() => {
-                                        setOpenAddModal(false);
-                                    }}
-                                >
-                                    <img
-                                        className="cursor-pointer"
-                                        src="/img/icons/i-modal-close-s32.svg"
-                                        alt=""
-                                    />
-                                </div>
+                        <div className="flex justify-between">
+                            <h2>성장기록</h2>
+                            <div
+                                onClick={() => {
+                                    setOpenAddModal(false);
+                                }}
+                            >
+                                <img
+                                    className="cursor-pointer"
+                                    src="/img/icons/i-modal-close-s32.svg"
+                                    alt=""
+                                />
                             </div>
-
-                            <DiaryInputArea
-                                setOpenAddModal={setOpenAddModal}
-                                selectedBabyId={selectedBabyId}
-                            />
                         </div>
+
+                        <DiaryInputArea
+                            setOpenAddModal={setOpenAddModal}
+                            selectedBabyId={selectedBabyId}
+                        />
+
                         <DiaryTable
                             growData={growData}
                             onEdit={handleEdit}
