@@ -121,6 +121,7 @@ const SignupForm: React.FC = () => {
       navigate("/Home", { state: formData });
       window.location.reload();
     } else {
+      console.log(response);
       alert(response.message);
     }
   };
@@ -133,24 +134,24 @@ const SignupForm: React.FC = () => {
           <div className="inputArea">
             <div className="inputItem">
               <Input
-                label="이름"
+                label="닉네임"
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                placeholder="이름을 입력해주세요."
+                placeholder="닉네임을 입력해주세요."
                 ref={(el) => {
                   inputRef.current.name = el;
                 }}
               />
               {messages.name ? (
-                messages.name === "이름은 2글자 이상 입력해주세요!" ? (
+                messages.name === "닉네임은 2글자 이상 입력해주세요!" ? (
                   <p className="text-red-6">{messages.name}</p>
                 ) : (
-                  <p className="text-gray-8">{messages.name}</p>
+                  <p>{messages.name}</p>
                 )
               ) : (
-                <p className="text-red-6">이름은 2글자 이상 입력해주세요!</p>
+                <p className="whitespace-pre">&nbsp;</p>
               )}
             </div>
 
@@ -178,7 +179,7 @@ const SignupForm: React.FC = () => {
                   <p className="text-gray-8">{messages.email}</p>
                 )
               ) : (
-                <p className="text-red-6">중복체크를 눌러주세요!</p>
+                <p className="whitespace-pre">&nbsp;</p>
               )}
             </div>
 
@@ -199,12 +200,10 @@ const SignupForm: React.FC = () => {
                 "숫자, 영문자, 특수문자 조합으로 8자리 이상 입력해주세요!" ? (
                   <p className="text-red-6">{messages.password}</p>
                 ) : (
-                  <p className="text-gray-8">{messages.password}</p>
+                  <p>{messages.password}</p>
                 )
               ) : (
-                <p className="text-red-6">
-                  숫자, 영문자, 특수문자 조합으로 8자리 이상 입력해주세요!
-                </p>
+                <p className="whitespace-pre">&nbsp;</p>
               )}
             </div>
 
@@ -231,7 +230,7 @@ const SignupForm: React.FC = () => {
                   <p className="text-gray-8">{messages.confirmPassword}</p>
                 )
               ) : (
-                <p></p>
+                <p className="whitespace-pre">&nbsp;</p>
               )}
             </div>
           </div>
