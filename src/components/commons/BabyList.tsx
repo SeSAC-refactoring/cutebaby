@@ -31,7 +31,7 @@ export const BabyList: React.FC<BabyListProps> = ({
                 {onOpenModal && (
                     <div className="flex gap-2">
                         <button
-                            className="w-[84px] button-blue button-xs"
+                            className="button-blue button-xs"
                             onClick={onOpenModal}
                         >
                             아이 등록

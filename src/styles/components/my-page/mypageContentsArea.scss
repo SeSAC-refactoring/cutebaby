@@ -80,22 +80,20 @@
 
             & .itemBtns {
                 @apply flex justify-between items-end;
-            }
 
-            & .buttons {
-                @apply flex gap-2;
-                // absolute bottom-4 right-4;
-                // @apply ssm:bottom-6 ssm:right-6;
+                & .buttons {
+                    @apply flex gap-2;
 
-                & button {
-                    @apply button-xs;
-                }
+                    & > button {
+                        @apply button-xs;
+                    }
 
-                & button:first-child {
-                    @apply button-coral;
-                }
-                & button:last-child {
-                    @apply button-yellow;
+                    & > button:first-child {
+                        @apply button-coral;
+                    }
+                    & > button:last-child {
+                        @apply button-yellow;
+                    }
                 }
             }
         }

@@ -59,17 +59,17 @@ export default function Mypage() {
 
     return (
         <main>
-            {babyPlus && (
+            {/* {babyPlus && (
                 <div
                     onClick={() => setBabyPlus(false)}
-                    style={{ right: '0px', top: '70px' }}
+                    // style={{ right: '0px', top: '70px' }}
                 >
                     <BabyInputPlus
                         onClose={() => setBabyPlus(false)}
                         babyInfo={babyInfo}
                     />
                 </div>
-            )}
+            )} */}
 
             {/* 수정 모달 */}
             {updateModal && (
