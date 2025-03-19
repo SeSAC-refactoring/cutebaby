@@ -43,5 +43,5 @@ export const validateName = (name: string) => {
 
   return name.length >= 2
     ? { isValid: true, message: "사용가능한 닉네임입니다." }
-    : { isValid: false, message: "이름은 2글자 이상 입력해주세요!" };
+    : { isValid: false, message: "닉네임은 2글자 이상 입력해주세요!" };
 };
