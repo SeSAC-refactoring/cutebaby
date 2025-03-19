@@ -91,43 +91,6 @@ export default function GrowthDiary() {
                 />
             )}
 
-            {/* 성장기록 추가하기 모달 */}
-            {openAppendModal && (
-                <div
-                    onClick={() => {
-                        setOpenAppendModal(false);
-                    }}
-                    className="modalBg"
-                >
-                    <div
-                        onClick={(e) => e.stopPropagation()}
-                        className="whiteboxModal growthCalculate"
-                    >
-                        <div className="flex flex-col gap-6">
-                            <div className="flex justify-between">
-                                <h2>성장기록 추가</h2>
-                                <div
-                                    onClick={() => {
-                                        setOpenAppendModal(false);
-                                    }}
-                                >
-                                    <img
-                                        className="cursor-pointer"
-                                        src="/img/icons/i-modal-close-s32.svg"
-                                        alt=""
-                                    />
-                                </div>
-                            </div>
-
-                            <DiaryInputArea
-                                setOpenAddModal={setOpenAddModal}
-                                selectedBabyId={selectedBabyId}
-                            />
-                        </div>
-                    </div>
-                </div>
-            )}
-
             {/* 성장기록 보러가기 모달 */}
             {openAddModal && (
                 <div
@@ -138,10 +101,23 @@ export default function GrowthDiary() {
                 >
                     <div
                         onClick={(e) => e.stopPropagation()}
-                        className="whiteboxModal growthCalculate"
+                        className="whiteboxModal"
                     >
                         <div className="flex justify-between">
-                            <h2>성장기록</h2>
+                            <div className="flex gap-4 items-end">
+                                <h2>성장기록</h2>
+                                <button
+                                    className="md:hidden button-yellow button-xs"
+                                    onClick={() => setOpenAppendModal(true)}
+                                >
+                                    <p>성장기록 추가</p>
+                                    <img
+                                        src="../img/icons/i-chevron-right-s20.svg"
+                                        alt="*"
+                                    />
+                                </button>
+                            </div>
+
                             <div
                                 onClick={() => {
                                     setOpenAddModal(false);
@@ -167,6 +143,43 @@ export default function GrowthDiary() {
                             onEdit={handleEdit}
                             onDelete={handleDelete}
                         />
+                    </div>
+                </div>
+            )}
+
+            {/* 성장기록 추가하기 모달 */}
+            {openAppendModal && (
+                <div
+                    onClick={() => {
+                        setOpenAppendModal(false);
+                    }}
+                    className="modalBg"
+                >
+                    <div
+                        onClick={(e) => e.stopPropagation()}
+                        className="whiteboxModal"
+                    >
+                        <div className="flex flex-col gap-6">
+                            <div className="flex justify-between">
+                                <h2>성장기록 추가</h2>
+                                <div
+                                    onClick={() => {
+                                        setOpenAppendModal(false);
+                                    }}
+                                >
+                                    <img
+                                        className="cursor-pointer"
+                                        src="/img/icons/i-modal-close-s32.svg"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+
+                            <DiaryInputArea
+                                setOpenAddModal={setOpenAddModal}
+                                selectedBabyId={selectedBabyId}
+                            />
+                        </div>
                     </div>
                 </div>
             )}
