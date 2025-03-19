@@ -9,7 +9,7 @@
 
 // body
 body {
-    @apply w-full min-w-[320px] h-[100vh] flex flex-col;
+    @apply w-full min-w-[320px] h-[100dvh] flex flex-col;
     font-family: 'Pretendard';
     @apply text-gray-0 text-bs font-rg;
     @apply sm:bg-yellow-1;
