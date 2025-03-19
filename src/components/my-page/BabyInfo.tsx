@@ -78,7 +78,7 @@ export const BabyInfo: React.FC<BabyInputProps> = ({ babyInfo }) => {
                 onOpenModal={() => setBabyPlus(true)}
             />
 
-            <div className="babyInfo">
+            <div className="babyInfo hidden">
                 {/* 사진 */}
                 <div className="pictureArea">
                     <div className="picture">
