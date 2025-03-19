@@ -1,6 +1,5 @@
 import { DiaryChart } from '../components/growth-diary-page/DiaryChart';
 import { GrowthCalculate } from '../components/growth-diary-page/GrowthCalculate';
-import { DiaryTable } from '../components/growth-diary-page/DiaryTable';
 import { BabyList } from '../components/commons/BabyList';
 import { DiaryInputArea } from '../components/growth-diary-page/DiaryInputArea';
 import { useSelector } from 'react-redux';
@@ -14,6 +13,7 @@ import { GrowRewriteModal } from '../components/growth-diary-page/GrowRewriteMod
 import { GrowDelModal } from '../components/growth-diary-page/GrowDelModal';
 import { BabyInputPlus } from '../components/my-page/BabyInputPlus';
 import { GrowthAddModal } from '../components/growth-diary-page/GrowthAddModal';
+import { GrowthAppendModal } from '../components/growth-diary-page/GrowthAppendModal';
 
 export default function GrowthDiary() {
     const [openCalModal, setOpenCalModal] = useState<boolean>(false);
@@ -26,9 +26,7 @@ export default function GrowthDiary() {
     const [selectedGrowId, setSelectedGrowId] = useState<number | null>(null);
     const [babyPlus, setBabyPlus] = useState<boolean>(false); // 아이 등록 모달 상태
 
-    const { babyInfo, nothingBaby } = useSelector(
-        (state: RootState) => state.baby
-    );
+    const { babyInfo } = useSelector((state: RootState) => state.baby);
 
     //  로그인 안했을 시 // 로그인 페이지로 리디렉션
     const user = sessionStorage.getItem('user');
@@ -88,45 +86,15 @@ export default function GrowthDiary() {
                     setOpenAddModal={setOpenAddModal}
                     setOpenAppendModal={setOpenAppendModal}
                     setOpenDelModal={setOpenDelModal}
-                    // growId={selectedGrowId}
                 />
             )}
 
             {/* 성장기록 추가하기 모달 */}
             {openAppendModal && (
-                <div
-                    onClick={() => {
-                        setOpenAppendModal(false);
-                    }}
-                    className="modalBg"
-                >
-                    <div
-                        onClick={(e) => e.stopPropagation()}
-                        className="whiteboxModal"
-                    >
-                        <div className="flex flex-col gap-6">
-                            <div className="flex justify-between">
-                                <h2>성장기록 추가</h2>
-                                <div
-                                    onClick={() => {
-                                        setOpenAppendModal(false);
-                                    }}
-                                >
-                                    <img
-                                        src="/img/Button-close.png"
-                                        alt="닫기"
-                                        className="cursor-pointer"
-                                    />
-                                </div>
-                            </div>
-
-                            <DiaryInputArea
-                                setOpenAddModal={setOpenAddModal}
-                                selectedBabyId={selectedBabyId}
-                            />
-                        </div>
-                    </div>
-                </div>
+                <GrowthAppendModal
+                    setOpenAppendModal={setOpenAppendModal}
+                    setOpenAddModal={setOpenAddModal}
+                />
             )}
 
             {/* 수정 모달 */}
