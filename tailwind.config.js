@@ -7,6 +7,7 @@ export default {
                 lg: '1280px',
                 md: '1024px', // 768px 이상일 때 적용
                 sm: '768px', // 768px 이상일 때 적용
+                ssm: '640px', // 640px 이상일 때 적용
                 xs: '390px', // 390px 이상일 때 적용
                 'max-lg': { max: '1279px' }, // 1279px 이하
                 'max-md': { max: '1023px' }, // 1023px 이하

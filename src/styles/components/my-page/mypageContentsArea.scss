@@ -1,98 +1,98 @@
 .mypageContentsArea {
-  @apply w-full 
+    @apply w-full 
     flex flex-col gap-4;
-  // @apply sm:h-full:
+    @apply sm:h-full;
 
-  // 사용자정보, 아기정보 공통 스타일
-  & .userArea,
-  & .babyArea {
-    @apply bg-yellow-1 rounded-[2rem]
+    // 사용자정보, 아기정보 공통 스타일
+    & .userArea,
+    & .babyArea {
+        @apply bg-yellow-1 rounded-[2rem]
         w-full p-6
         flex flex-col gap-4;
-    // @apply sm:p-8;
+        @apply sm:p-8;
 
-    & .item {
-      @apply flex flex-col gap-1;
+        & .item {
+            @apply flex flex-col gap-1;
 
-      & .item-label {
-        @apply text-gray-8 text-xs font-bd;
-      }
+            & .item-label {
+                @apply text-gray-8 text-xs font-bd;
+            }
 
-      & .item-value {
-        @apply font-md;
-      }
-    }
-  }
-
-  // 사용자 정보 수정
-  & .userArea {
-    & .topArea {
-      @apply w-full flex justify-between items-start;
-
-      & button {
-        @apply button-yellow button-xs;
-      }
-    }
-
-    & .userInfo {
-      @apply flex flex-col gap-4;
-    }
-  }
-
-  // 아기 정보 수정
-  & .babyArea {
-    @apply h-full;
-    // @apply sm:h-0 sm:grow;
-
-    & .babyInfo {
-      @apply w-full flex flex-col gap-4 relative;
-      @apply xs:flex-row;
-      @apply xs:bg-white xs:border-[3px] xs:border-blue-3 xs:rounded-[2rem]
-            xs:p-6;
-      // @apply sm:h-full;
-
-      & .pictureArea {
-        @apply flex justify-center w-full;
-        @apply xs:justify-start xs:w-[10rem] xs:aspect-square;
-
-        & .picture {
-          @apply overflow-hidden 
-                bg-white border-2 border-gray-2 rounded-2xl
-                flex justify-center items-center;
-          @apply w-[10rem] aspect-square;
-          @apply h-[10rem] xs:aspect-square;
-          // @apply h-full aspect-square;
-
-          & img {
-            // @apply w-full h-full;
-          }
-
-          // @apply sm:w-1/5;
+            & .item-value {
+                @apply font-md;
+            }
         }
-      }
+    }
 
-      & .items {
-        @apply flex flex-col gap-4
+    // 사용자 정보 수정
+    & .userArea {
+        & .topArea {
+            @apply w-full flex justify-between items-start;
+
+            & button {
+                @apply button-yellow button-xs;
+            }
+        }
+
+        & .userInfo {
+            @apply grid grid-cols-2;
+        }
+    }
+
+    // 아기 정보 수정
+    & .babyArea {
+        @apply sm:h-full;
+
+        & .babyInfo {
+            @apply w-full flex flex-col gap-4 relative;
+            @apply ssm:flex-row ssm:gap-6;
+            @apply ssm:bg-white ssm:border-[3px] ssm:border-blue-3 ssm:rounded-[2rem]
+            ssm:p-6;
+            @apply sm:h-full;
+
+            & .pictureArea {
+                @apply flex justify-center w-full;
+                @apply ssm:justify-start ssm:w-fit;
+                @apply sm:h-full;
+
+                & .picture {
+                    @apply overflow-hidden relative
+                  bg-white border-2 border-gray-2 rounded-2xl
+                    flex justify-center items-center;
+                    @apply h-[10rem] w-[10rem];
+                    @apply sm:h-full sm:w-full sm:aspect-square;
+
+                    & img.uploaded {
+                        @apply w-full h-full object-cover absolute;
+                    }
+                    & img.default {
+                        @apply w-[70%] h-auto;
+                    }
+                }
+            }
+
+            & .items {
+                @apply flex flex-col gap-4
                 p-4 bg-white border-[3px] border-blue-3 rounded-[2rem];
-        @apply xs:p-0 xs:bg-none xs:border-none;
-      }
+                @apply ssm:p-0 ssm:bg-none ssm:border-none;
+            }
 
-      & .buttons {
-        @apply flex gap-2
+            & .buttons {
+                @apply flex gap-2
                 absolute bottom-4 right-4;
-        @apply xs:bottom-6 xs:right-6;
+                @apply ssm:bottom-6 ssm:right-6;
 
-        & button {
-          @apply button-2xs;
-        }
+                & button {
+                    @apply button-2xs;
+                }
 
-        & button:first-child {
-          @apply button-coral;
+                & button:first-child {
+                    @apply button-coral;
+                }
+                & button:last-child {
+                    @apply button-yellow;
+                }
+            }
         }
-        & button:last-child {
-          @apply button-yellow;
-        }
-      }
     }
-  }
 }
