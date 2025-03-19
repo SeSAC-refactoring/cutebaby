@@ -126,12 +126,12 @@ export default function VaccinationDetails({ setOpenDetailsModal }: any) {
                   ))}
                 </div>
                 {diseaseInfo[onClickDis] && (
-                  <div className="h-full mt-8">
+                  <div className=" mt-8 mb-12">
                     <div className="flex gap-4 items-center border-b-2 border-gray-3 pb-6">
                       <span className="text-xl font-bd">
                         {diseaseInfo[onClickDis].title.split("(")[0]}
                       </span>
-                      <span className="text-sm font-md text-gray-6">
+                      <span className="text-sm h-full font-md text-gray-6">
                         {diseaseInfo[onClickDis].title
                           .split("(")[1]
                           .slice(0, -1)}
