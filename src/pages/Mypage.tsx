@@ -94,9 +94,9 @@ export default function Mypage() {
             <div className="w-full flex flex-col items-center justify-center  ">
                 <div className="whitebox">
                     <h2>마이페이지</h2>
-                    <div className="w-full flex flex-col gap-6">
+                    <div className="w-full flex flex-col gap-6 sm:h-0 sm:grow">
                         {/* 사용자 정보 출력하기 */}
-                        <div className="w-full flex flex-col items-start gap-4 pt-5 px-6 pb-6 self-stretch bg-yellow-1 rounded-[24px]">
+                        <div className="w-full flex flex-col items-start gap-4 pt-5 px-6 pb-6 self-stretch bg-yellow-1 rounded-[2rem]">
                             <div className=" flex justify-between w-full">
                                 <div className="text-md font-bd">내 정보</div>
                                 <button

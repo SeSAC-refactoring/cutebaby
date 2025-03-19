@@ -25,8 +25,8 @@ export const BabyList: React.FC<BabyListProps> = ({
 
     return (
         // 마이페이지의 babylist 스타일의 경우 아이 등록 버튼까지 감는 div
-        <div className="w-full overflow-x-auto">
-            <div className="flex gap-2 py-4">
+        <div className="h-10 w-full overflow-x-auto flex items-center">
+            <div className="flex gap-2 h-8">
                 {/* 마이페이지의 경우에만 아이등록 버튼 생김 */}
                 {onOpenModal && (
                     <div className=" flex gap-2">

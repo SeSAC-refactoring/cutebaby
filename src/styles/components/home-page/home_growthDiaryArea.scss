@@ -1,7 +1,7 @@
 @import './home_buttonArea.scss';
 
 article.growthDiaryArea {
-    @apply w-full;
+    @apply w-full flex flex-col gap-4;
     @apply sm:h-[25rem];
     @apply sm:overflow-hidden; // 여긴 지우기
 
@@ -12,7 +12,7 @@ article.growthDiaryArea {
     }
 
     & figure.GrowData {
-        @apply flex flex-col 
+        @apply flex flex-col gap-4
         w-full h-full;
 
         & .graphArea {

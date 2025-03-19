@@ -2,7 +2,7 @@ import { ChartOptions } from 'chart.js';
 
 export const diaryChartOptions: ChartOptions<'line'> = {
     responsive: true, // 차트를 반응형으로 설정
-    maintainAspectRatio: true, // 차트의 가로세로비 유지함
+    maintainAspectRatio: false, // 차트의 가로세로비 유지함
 
     scales: {
         // X축 동작 설정
