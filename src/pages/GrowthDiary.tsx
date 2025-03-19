@@ -9,7 +9,7 @@ import { useSelectBaby } from '../hooks/useSelectBaby';
 import { useEffect, useState } from 'react';
 import { useGrowData } from '../components/growth-diary-page/hooks/useGrowData';
 import { RecentGrowthRecord } from '../components/growth-diary-page/RecentGrowthRecord';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { GrowRewriteModal } from '../components/growth-diary-page/GrowRewriteModal';
 import { GrowDelModal } from '../components/growth-diary-page/GrowDelModal';
 import { BabyInputPlus } from '../components/my-page/BabyInputPlus';
@@ -57,6 +57,29 @@ export default function GrowthDiary() {
         setOpenDelModal(true);
     };
 
+    //모달 열었을때 배경 스크롤방지
+    useEffect(() => {
+        if (
+            openCalModal ||
+            openAppendModal ||
+            openAddModal ||
+            openRewriteModal ||
+            openDelModal ||
+            babyPlus
+        ) {
+            document.body.classList.add('overflow-hidden');
+        } else {
+            document.body.classList.remove('overflow-hidden');
+        }
+    }, [
+        openCalModal,
+        openAppendModal,
+        openAddModal,
+        openRewriteModal,
+        openDelModal,
+        babyPlus,
+    ]);
+
     return (
         <main className="grow">
             {/* 성장 계산기 모달 */}
@@ -80,9 +103,9 @@ export default function GrowthDiary() {
                         onClick={(e) => e.stopPropagation()}
                         className="whiteboxModal growthCalculate"
                     >
-                        <div>
+                        <div className="flex flex-col gap-6">
                             <div className="flex justify-between">
-                                <h2 className="mb-6">성장기록 추가</h2>
+                                <h2>성장기록 추가</h2>
                                 <div
                                     onClick={() => {
                                         setOpenAppendModal(false);
@@ -136,7 +159,6 @@ export default function GrowthDiary() {
                             setOpenAddModal={setOpenAddModal}
                             selectedBabyId={selectedBabyId}
                         />
-
                         <DiaryTable
                             growData={growData}
                             onEdit={handleEdit}
@@ -209,7 +231,7 @@ export default function GrowthDiary() {
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-6 h-full">
+                <div>
                     {babyInfo.length > 0 && (
                         <>
                             <BabyList
@@ -225,16 +247,16 @@ export default function GrowthDiary() {
                     setOpenAddModal={setOpenAddModal}
                     selectedBabyId={selectedBabyId}
                   /> */}
-                                    <div className="flex justify-between gap-6 w-full flex-col sm:flex-row sm:h-full">
+                                    <div className="flex justify-between gap-[2rem] w-full mt-6 flex-col sm:flex-row ">
                                         <RecentGrowthRecord
                                             growData={growData}
                                             setOpenAddModal={setOpenAddModal}
                                         />
-                                        <div className="border-[3px] border-blue-3 sm:w-0 sm:grow rounded-[2rem] flex flex-col gap-2">
-                                            <div className="text-sm font-bd mx-6 mt-6 sm:mx-8 sm:mt-8">
+                                        <div className="border-[3px] border-blue-3 sm:w-[70%] rounded-2xl gap-2 sm:p-[1rem_1.5rem] p-[2rem_0.3rem]">
+                                            <div className="text-sm font-bd p-[1rem_2.5rem]">
                                                 우리 아이 성장 추이
                                             </div>
-                                            <div className="flex justify-center items-center w-full h-full min-h-[14rem] max-h-[80%] xs:px-2 sm:px-8">
+                                            <div className="graphArea min-h-[10vh] max-h-[50vh] flex justify-center items-center">
                                                 <DiaryChart
                                                     growData={growData}
                                                 />

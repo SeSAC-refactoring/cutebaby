@@ -1,12 +1,13 @@
 .modalBg {
-    @apply absolute fixed inset-0 flex justify-center items-center;
-    @apply backdrop-blur-sm z-30;
+    @apply absolute fixed inset-0 flex justify-center items-center
+    backdrop-blur-sm z-30;
     @apply max-sm:z-50 max-sm:fixed;
     @apply max-sm:h-[calc(100vh-5rem)]; /* PC에서는 헤더 높이(64px) 제외 */
     // @apply max-sm:overflow-none;
 
     .whiteboxModal {
         @include whitebox-style;
+        @apply sm:w-[calc(100%-1.5rem)];
         @apply absolute top-0 justify-start;
 
         // 모달의 타이틀과 x 버튼 스타일
