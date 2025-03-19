@@ -113,7 +113,7 @@ export default function GrowthDiary() {
                                     <p>성장기록 추가</p>
                                     <img
                                         src="../img/icons/i-chevron-right-s20.svg"
-                                        alt="*"
+                                        alt=">"
                                     />
                                 </button>
                             </div>
@@ -124,9 +124,9 @@ export default function GrowthDiary() {
                                 }}
                             >
                                 <img
+                                    src="/img/Button-close.png"
+                                    alt="닫기"
                                     className="cursor-pointer"
-                                    src="/img/icons/i-modal-close-s32.svg"
-                                    alt=""
                                 />
                             </div>
                         </div>
@@ -168,9 +168,9 @@ export default function GrowthDiary() {
                                     }}
                                 >
                                     <img
+                                        src="/img/Button-close.png"
+                                        alt="닫기"
                                         className="cursor-pointer"
-                                        src="/img/icons/i-modal-close-s32.svg"
-                                        alt=""
                                     />
                                 </div>
                             </div>
