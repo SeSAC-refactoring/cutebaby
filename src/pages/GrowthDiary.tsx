@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { GrowRewriteModal } from '../components/growth-diary-page/GrowRewriteModal';
 import { GrowDelModal } from '../components/growth-diary-page/GrowDelModal';
 import { BabyInputPlus } from '../components/my-page/BabyInputPlus';
+import { GrowthAddModal } from '../components/growth-diary-page/GrowthAddModal';
 
 export default function GrowthDiary() {
     const [openCalModal, setOpenCalModal] = useState<boolean>(false);
@@ -44,18 +45,6 @@ export default function GrowthDiary() {
 
     // console.log('애기 성장정보 입니다 >>>>', growInfo);
     // console.log('selectedBabyId에 따른 성장정보 입니다 >>>>', growData);
-
-    // 수정 모달 열기
-    const handleEdit = (growId: number) => {
-        setSelectedGrowId(growId);
-        setOpenRewriteModal(true);
-    };
-
-    // 삭제 모달 열기
-    const handleDelete = (growId: number) => {
-        setSelectedGrowId(growId);
-        setOpenDelModal(true);
-    };
 
     //모달 열었을때 배경 스크롤방지
     useEffect(() => {
@@ -93,58 +82,14 @@ export default function GrowthDiary() {
 
             {/* 성장기록 보러가기 모달 */}
             {openAddModal && (
-                <div
-                    onClick={() => {
-                        setOpenAddModal(false);
-                    }}
-                    className="modalBg"
-                >
-                    <div
-                        onClick={(e) => e.stopPropagation()}
-                        className="whiteboxModal"
-                    >
-                        <div className="flex justify-between">
-                            <div className="flex gap-4 items-end">
-                                <h2>성장기록</h2>
-                                <button
-                                    className="md:hidden button-yellow button-xs"
-                                    onClick={() => setOpenAppendModal(true)}
-                                >
-                                    <p>성장기록 추가</p>
-                                    <img
-                                        src="../img/icons/i-chevron-right-s20.svg"
-                                        alt=">"
-                                    />
-                                </button>
-                            </div>
-
-                            <div
-                                onClick={() => {
-                                    setOpenAddModal(false);
-                                }}
-                            >
-                                <img
-                                    src="/img/Button-close.png"
-                                    alt="닫기"
-                                    className="cursor-pointer"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="hidden md:block">
-                            <DiaryInputArea
-                                setOpenAddModal={setOpenAddModal}
-                                selectedBabyId={selectedBabyId}
-                            />
-                        </div>
-
-                        <DiaryTable
-                            growData={growData}
-                            onEdit={handleEdit}
-                            onDelete={handleDelete}
-                        />
-                    </div>
-                </div>
+                <GrowthAddModal
+                    setSelectedGrowId={setSelectedGrowId}
+                    setOpenRewriteModal={setOpenRewriteModal}
+                    setOpenAddModal={setOpenAddModal}
+                    setOpenAppendModal={setOpenAppendModal}
+                    setOpenDelModal={setOpenDelModal}
+                    // growId={selectedGrowId}
+                />
             )}
 
             {/* 성장기록 추가하기 모달 */}
