@@ -87,7 +87,7 @@ export default function Vaccination() {
               있어요:)
             </p>
           </div>
-          <div className="ml-4 flex gap-2 max-sm:ml-0 mt-6">
+          <div className="ml-4 flex gap-2 max-sm:ml-0 ">
             <button
               className="w-full button button-yellow button-xs  max-sm:button-xm"
               onClick={() => setOpenCentersModal(true)}
