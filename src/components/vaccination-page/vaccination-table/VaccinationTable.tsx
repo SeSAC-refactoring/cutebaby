@@ -400,14 +400,14 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                           onMouseEnter={() => {
                             document
                               .querySelectorAll(
-                                `[data-vaccine="${vaccine.vaccinationid}"]`
+                                `[data-vaccine~="${vaccine.vaccinationid}"]`
                               )
                               .forEach((el) => el.classList.add("bg-blue-3"));
                           }}
                           onMouseLeave={() => {
                             document
                               .querySelectorAll(
-                                `[data-vaccine="${vaccine.vaccinationid}"]`
+                                `[data-vaccine~="${vaccine.vaccinationid}"]`
                               )
                               .forEach((el) =>
                                 el.classList.remove("bg-blue-3")
