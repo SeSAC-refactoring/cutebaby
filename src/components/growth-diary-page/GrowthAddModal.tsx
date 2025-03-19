@@ -12,6 +12,7 @@ interface GrowthAddModalProps {
     setOpenDelModal: React.Dispatch<React.SetStateAction<boolean>>;
     setOpenAddModal: React.Dispatch<React.SetStateAction<boolean>>;
     setOpenAppendModal: React.Dispatch<React.SetStateAction<boolean>>;
+    selectedGrowId: number | null;
 }
 
 export const GrowthAddModal = ({
@@ -20,6 +21,7 @@ export const GrowthAddModal = ({
     setOpenDelModal,
     setOpenAddModal,
     setOpenAppendModal,
+    selectedGrowId,
 }: GrowthAddModalProps) => {
     const { babyInfo, nothingBaby } = useSelector(
         (state: RootState) => state.baby
@@ -29,14 +31,14 @@ export const GrowthAddModal = ({
     const { growData } = useGrowData(growInfo, selectedBabyId);
 
     // 수정 모달 열기
-    const handleEdit = (growId: number) => {
-        setSelectedGrowId(growId);
+    const handleEdit = (selectedGrowId: number) => {
+        setSelectedGrowId(selectedGrowId);
         setOpenRewriteModal(true);
     };
 
     // 삭제 모달 열기
-    const handleDelete = (growId: number) => {
-        setSelectedGrowId(growId);
+    const handleDelete = (selectedGrowId: number) => {
+        setSelectedGrowId(selectedGrowId);
         setOpenDelModal(true);
     };
 

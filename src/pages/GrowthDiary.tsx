@@ -86,6 +86,7 @@ export default function GrowthDiary() {
                     setOpenAddModal={setOpenAddModal}
                     setOpenAppendModal={setOpenAppendModal}
                     setOpenDelModal={setOpenDelModal}
+                    selectedGrowId={selectedGrowId}
                 />
             )}
 

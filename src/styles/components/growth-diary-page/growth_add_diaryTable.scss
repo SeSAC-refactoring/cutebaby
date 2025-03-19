@@ -1,0 +1,62 @@
+.diaryTable {
+    @apply flex flex-col 
+    w-full
+    overflow-y-scroll;
+    // @apply min-h-0 sm:w-full h-full;
+    // @apply flex-grow pb-[3.5rem] text-lg font-rg;
+
+    & > .tableTitle {
+        @apply flex 
+        bg-blue-3 rounded-[1rem]
+        w-full
+        px-2 py-4
+        grid grid-cols-5; // 여기 수정해보기
+        // @apply h-[3.5rem] sm:pl-[3.125rem] pr-[3.125rem] items-center gap-4;
+        @apply sm:px-6 sm:py-4;
+
+        & > div {
+            @apply text-gray-8 text-2xs font-bd
+            flex flex-col items-center justify-center;
+            @apply xs:text-xs;
+            @apply ssm:flex-row;
+            @apply sm:text-bs;
+            // @apply sm:w-[12.375rem] w-[6.25rem] h-[3.5rem];
+        }
+    }
+
+    & > ul {
+        // @apply text-lg font-rg;
+        @apply flex flex-col
+        w-full;
+
+        & > li {
+            @apply flex 
+            even:bg-blue-1 rounded-[1rem]
+            px-2 py-4 w-full
+            grid grid-cols-5; // 여기 수정해보기
+            @apply sm:px-6 sm:py-4;
+
+            // @apply h-[4.5rem] sm:pl-[3.125rem] sm:justify-start justify-around;
+
+            & > div.value {
+                @apply text-xs
+                flex items-center justify-center;
+                @apply sm:text-bs;
+            }
+
+            & > div.buttons {
+                @apply flex flex-col gap-1;
+                @apply ssm:flex-row;
+                @apply sm:gap-2;
+                // @apply flex sm:w-[12.5rem] h-full sm:ml-4 sm:px-[1.75rem] py-[0.875rem] items-center justify-center gap-[0.125rem];
+
+                & > button {
+                    @apply button-2xs;
+                    @screen ssm {
+                        @apply button-xs;
+                    }
+                }
+            }
+        }
+    }
+}
