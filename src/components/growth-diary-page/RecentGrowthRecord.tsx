@@ -16,10 +16,10 @@ export const RecentGrowthRecord: React.FC<RecentGrowthRecordProps> = ({
     setOpenAddModal,
 }) => {
     return (
-        <div className="sm:w-[17rem] flex flex-col p-6 sm:p-8 gap-6 rounded-[2rem] border-[3px] border-blue-3">
-            <div className="flex flex-col gap-4">
-                <span className="text-sm font-bd">가장 최근 기록</span>
-                <span className="text-xs font-md text-gray-7">
+        <div className="recentGrowthRecord">
+            <div className="titleArea">
+                <span className="title">가장 최근 기록</span>
+                <span className="recentDate">
                     {new Date(growData[0].inputData).toLocaleDateString(
                         'ko-KR',
                         {
@@ -30,26 +30,19 @@ export const RecentGrowthRecord: React.FC<RecentGrowthRecordProps> = ({
                     )}
                 </span>
             </div>
-            <div className="h-full">
-                <div className="flex flex-col h-full justify-between gap-3 sm:gap-0">
-                    <div className="flex p-[0.875rem_1.625rem] justify-center items-center gap-[0.625rem] self-stretch rounded-lg bg-orange-3 text-bs font-rg sm:h-[5.625rem]">
-                        키{' '}
-                        <span className="text-bs font-bd">
-                            {growData[0].height} cm
-                        </span>
-                    </div>
-                    <div className="flex p-[0.875rem_1.625rem] justify-center items-center gap-[0.625rem] self-stretch rounded-lg bg-green-3 text-bs font-rg sm:h-[5.625rem]">
-                        몸무게{' '}
-                        <span className="text-bs font-bd">
-                            {growData[0].weight} kg
-                        </span>
-                    </div>
-                    <div className="flex p-[0.875rem_1.625rem] justify-center items-center gap-[0.625rem] self-stretch rounded-lg bg-purple-3 text-bs font-rg sm:h-[5.625rem]">
-                        머리 둘레{' '}
-                        <span className="text-bs font-bd">
-                            {growData[0].head} cm
-                        </span>
-                    </div>
+
+            <div className="items">
+                <div className="item height">
+                    <span>키</span>
+                    <span className="item-value">{growData[0].height} cm</span>
+                </div>
+                <div className="item weight">
+                    <span>몸무게</span>
+                    <span className="item-value">{growData[0].weight} kg</span>
+                </div>
+                <div className="item head">
+                    <span>머리둘레</span>
+                    <span className="item-value">{growData[0].head} cm</span>
                 </div>
             </div>
             {/* <div>

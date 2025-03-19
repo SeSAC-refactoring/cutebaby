@@ -1,0 +1,16 @@
+@import './growthDiary_recnetGrowthRecord.scss';
+
+.growthDiaryContentsArea {
+    @apply flex flex-col gap-4;
+    @apply sm:h-full;
+
+    & > .diaryInputArea-wrap {
+        @apply hidden md:block;
+    }
+
+    & > .recent-graph-wrap {
+        @apply flex flex-col gap-4 
+        w-full;
+        @apply sm:flex-row sm:h-full;
+    }
+}

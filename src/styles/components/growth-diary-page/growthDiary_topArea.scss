@@ -1,0 +1,22 @@
+.growthDiaryTopArea {
+    @apply flex flex-col gap-6 
+    w-full;
+    @apply sm:flex-row sm:justify-between;
+
+    & > .buttons {
+        @apply flex gap-2;
+
+        & > button {
+            @apply button-yellow button-xs flex-1;
+
+            & > img {
+                @apply hidden xs:block;
+            }
+        }
+
+        // 성장기록 추가 버튼은 모바일일때만 보여주기
+        & > button:first-child {
+            @apply md:hidden;
+        }
+    }
+}

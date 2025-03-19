@@ -155,10 +155,13 @@ export default function GrowthDiary() {
                             </div>
                         </div>
 
-                        <DiaryInputArea
-                            setOpenAddModal={setOpenAddModal}
-                            selectedBabyId={selectedBabyId}
-                        />
+                        <div className="hidden md:block">
+                            <DiaryInputArea
+                                setOpenAddModal={setOpenAddModal}
+                                selectedBabyId={selectedBabyId}
+                            />
+                        </div>
+
                         <DiaryTable
                             growData={growData}
                             onEdit={handleEdit}
@@ -197,7 +200,7 @@ export default function GrowthDiary() {
             )}
 
             <div className="whitebox">
-                <div className="flex justify-between w-full">
+                <div className="growthDiaryTopArea">
                     <div className="title">
                         <h2>성장일지</h2>
                         <p className="growthDiary">
@@ -205,33 +208,35 @@ export default function GrowthDiary() {
                             확인해보세요:)
                         </p>
                     </div>
-                    <div className="flex gap-[0.5rem]  justify-end w-1/2">
-                        <button
-                            className="button-yellow button-2xs sm:button-sm"
-                            onClick={() => setOpenAddModal(true)}
-                        >
-                            <p>성장기록</p>
-                            {/* <img src="../img/icons/i-chevron-right-s20.svg" alt="*" /> */}
-                        </button>
-                        <button
-                            className=" button-yellow button-2xs sm:button-sm"
-                            onClick={() => setOpenAppendModal(true)}
-                        >
+
+                    <div className="buttons">
+                        <button onClick={() => setOpenAppendModal(true)}>
                             <p>성장기록 추가</p>
-                            {/* <img src="../img/icons/i-chevron-right-s20.svg" alt="*" /> */}
+                            <img
+                                src="../img/icons/i-chevron-right-s20.svg"
+                                alt="*"
+                            />
                         </button>
 
-                        <button
-                            className="button-yellow button-2xs sm:button-sm"
-                            onClick={() => setOpenCalModal(true)}
-                        >
+                        <button onClick={() => setOpenAddModal(true)}>
+                            <p>성장기록</p>
+                            <img
+                                src="../img/icons/i-chevron-right-s20.svg"
+                                alt="*"
+                            />
+                        </button>
+
+                        <button onClick={() => setOpenCalModal(true)}>
                             <p>성장상태 계산</p>
-                            {/* <img src="../img/icons/i-chevron-right-s20.svg" alt="*" /> */}
+                            <img
+                                src="../img/icons/i-chevron-right-s20.svg"
+                                alt="*"
+                            />
                         </button>
                     </div>
                 </div>
 
-                <div>
+                <div className="growthDiaryContentsArea">
                     {babyInfo.length > 0 && (
                         <>
                             <BabyList
@@ -243,15 +248,19 @@ export default function GrowthDiary() {
                             {/* 성장기록 그래프 */}
                             {growData.length > 0 ? (
                                 <>
-                                    {/* <DiaryInputArea
-                    setOpenAddModal={setOpenAddModal}
-                    selectedBabyId={selectedBabyId}
-                  /> */}
-                                    <div className="flex justify-between gap-[2rem] w-full mt-6 flex-col sm:flex-row ">
+                                    <div className="diaryInputArea-wrap">
+                                        <DiaryInputArea
+                                            setOpenAddModal={setOpenAddModal}
+                                            selectedBabyId={selectedBabyId}
+                                        />
+                                    </div>
+
+                                    <div className="recent-graph-wrap">
                                         <RecentGrowthRecord
                                             growData={growData}
                                             setOpenAddModal={setOpenAddModal}
                                         />
+
                                         <div className="border-[3px] border-blue-3 sm:w-[70%] rounded-2xl gap-2 sm:p-[1rem_1.5rem] p-[2rem_0.3rem]">
                                             <div className="text-sm font-bd p-[1rem_2.5rem]">
                                                 우리 아이 성장 추이
@@ -268,6 +277,7 @@ export default function GrowthDiary() {
                                 <></>
                             )}
 
+                            {/* 해당 아기의 성장 기록이 없을 때 */}
                             {growData.length > 0 ? (
                                 <></>
                             ) : (
@@ -301,9 +311,11 @@ export default function GrowthDiary() {
                             )}
                         </>
                     )}
+
+                    {/* 등록된 아기가 없을 때 화면 */}
                     {babyInfo.length === 0 && (
                         <div className=" w-full ">
-                            <div className="flex flex-col gap-2  w-full  h-[38.75rem]">
+                            <div className="flex flex-col gap-2 w-full h-[38.75rem]">
                                 <div className="h-[4rem] bg-gray-1 rounded-[2rem]"></div>
                                 <div className="flex justify-between w-full gap-3">
                                     <div className="w-[53.5rem] h-[30rem] bg-gray-1 rounded-[2rem]"></div>
