@@ -1,62 +1,62 @@
 .modalBg {
-    @apply absolute fixed inset-0 flex justify-center items-center
+  @apply absolute fixed inset-0 flex justify-center items-center
     backdrop-blur-sm z-30;
-    @apply max-sm:z-50 max-sm:fixed;
-    @apply max-sm:h-[calc(100vh-5rem)]; /* PC에서는 헤더 높이(64px) 제외 */
-    // @apply max-sm:overflow-none;
+  @apply max-sm:z-50 max-sm:fixed;
+  @apply max-sm:h-[calc(100dvh-5rem)]; /* PC에서는 헤더 높이(64px) 제외 */
+  // @apply max-sm:overflow-none;
 
-    .whiteboxModal {
-        @include whitebox-style;
-        @apply sm:w-[calc(100%-1.5rem)];
-        @apply fixed top-0 justify-start;
+  .whiteboxModal {
+    @include whitebox-style;
+    @apply sm:w-[calc(100%-1.5rem)];
+    @apply fixed top-0 justify-start;
 
-        // 모달의 타이틀과 x 버튼 스타일
-        & > .topArea {
-            @apply flex justify-between min-w-[17rem];
+    // 모달의 타이틀과 x 버튼 스타일
+    & > .topArea {
+      @apply flex justify-between min-w-[17rem];
 
-            // 타이틀
-            & > div.title {
-                @apply flex gap-4 items-end w-full;
+      // 타이틀
+      & > div.title {
+        @apply flex gap-4 items-end w-full;
 
-                & > h2 {
-                    @apply w-full max-w-[calc(100%)];
-                    @apply whitespace-nowrap overflow-hidden text-ellipsis;
-                    @apply sm:w-auto;
-                }
-
-                & > p {
-                    @apply hidden text-gray-5;
-                    @apply sm:block;
-                }
-            }
-
-            // x 버튼
-            & > div.close {
-                @apply cursor-pointer;
-
-                img {
-                    @apply min-w-8 min-h-8 ml-1;
-                    // @apply sm:w-12 sm:h-12;;
-                }
-            }
+        & > h2 {
+          @apply w-full max-w-[calc(100%)];
+          @apply whitespace-nowrap overflow-hidden text-ellipsis;
+          @apply sm:w-auto;
         }
-    }
 
-    .mediumModal {
-        @apply bg-white w-full min-w-80 h-full px-14 z-30 py-12;
-        @apply max-sm:overflow-y-auto;
-        @apply flex flex-col gap-6;
-        @apply sm:w-[32.5rem] sm:h-auto;
-        @apply sm:border-2 sm:border-gray-6 sm:rounded-[2.5rem];
-        @apply max-sm:px-6 max-sm:py-6 max-sm:z-30  max-sm:top-0;
-    }
+        & > p {
+          @apply hidden text-gray-5;
+          @apply sm:block;
+        }
+      }
 
-    .smallModal {
-        @apply bg-white p-10 w-full min-w-80 h-full;
-        @apply max-lg:w-[27.5rem] max-lg:h-auto;
-        @apply w-[27.5rem] h-auto;
-        @apply max-sm:mx-[10%];
-        @apply border-2 border-gray-6 rounded-[2rem];
-        @apply max-sm:items-center;
+      // x 버튼
+      & > div.close {
+        @apply cursor-pointer;
+
+        img {
+          @apply min-w-8 min-h-8 ml-1;
+          // @apply sm:w-12 sm:h-12;;
+        }
+      }
     }
+  }
+
+  .mediumModal {
+    @apply bg-white w-full min-w-80 h-full px-14 z-30 py-12;
+    @apply max-sm:overflow-y-auto;
+    @apply flex flex-col gap-6;
+    @apply sm:w-[32.5rem] sm:h-auto;
+    @apply sm:border-2 sm:border-gray-6 sm:rounded-[2.5rem];
+    @apply max-sm:px-6 max-sm:py-6 max-sm:z-30  max-sm:top-0;
+  }
+
+  .smallModal {
+    @apply bg-white p-10 w-full min-w-80 h-full;
+    @apply max-lg:w-[27.5rem] max-lg:h-auto;
+    @apply w-[27.5rem] h-auto;
+    @apply max-sm:mx-[10%];
+    @apply border-2 border-gray-6 rounded-[2rem];
+    @apply max-sm:items-center;
+  }
 }
