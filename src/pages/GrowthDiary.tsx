@@ -187,40 +187,58 @@ export default function GrowthDiary() {
                                     </div>
                                 </>
                             ) : (
-                                <></>
-                            )}
-
-                            {/* 해당 아기의 성장 기록이 없을 때 */}
-                            {growData.length > 0 ? (
-                                <></>
-                            ) : (
-                                <div className=" w-full ">
-                                    <div className="w-full gap-3 flex justify-between mt-8 h-[18.75rem] ">
-                                        <div className="w-[53.5rem] bg-gray-1 rounded-[2rem] h-[28rem] "></div>
-                                        <div className="w-[17.5rem] bg-gray-1 rounded-[2rem] hidden sm:block h-[28rem]"></div>
+                                // 해당 아기의 성장 기록이 없을 때
+                                <div
+                                    className="flex flex-col gap-6 justify-center items-center
+                                    h-full p-20 z-[100]
+                                  bg-gray-1 rounded-3xl"
+                                >
+                                    <img src="/img/Ggoggo-002.png" />
+                                    <div className="text-lg font-md text-gray-6">
+                                        등록된 기록이 없습니다!
                                     </div>
-                                    <div className="w-full h-[31.25rem] relative bottom-[18.75rem] flex justify-center items-center backdrop-blur-sm ">
-                                        <div className="flex flex-col items-center z-[100] gap-6 pb-20">
-                                            <img src="/img/Ggoggo-002.png" />
-                                            <div className="text-xl font-md text-gray-6">
-                                                등록된 기록이 없습니다!
-                                            </div>
 
-                                            <button
-                                                className="button-black button-md"
-                                                onClick={() => {
-                                                    setOpenAddModal(true);
-                                                }}
-                                            >
-                                                성장기록 등록하기
-                                                <img
-                                                    src="../img/icons/i-chevron-right-s28.svg"
-                                                    alt=">"
-                                                />
-                                            </button>
-                                        </div>
-                                    </div>
+                                    <button
+                                        className="button-black button-md"
+                                        onClick={() => {
+                                            setOpenAddModal(true);
+                                        }}
+                                    >
+                                        성장기록 등록하기
+                                        <img
+                                            src="../img/icons/i-chevron-right-s28.svg"
+                                            alt=">"
+                                        />
+                                    </button>
                                 </div>
+
+                                // <div className=" w-full ">
+                                //     <div className="w-full gap-3 flex justify-between mt-8 h-[18.75rem] ">
+                                //         <div className="w-[53.5rem] bg-gray-1 rounded-[2rem] h-[28rem] "></div>
+                                //         <div className="w-[17.5rem]  hidden sm:block h-[28rem]"></div>
+                                //     </div>
+                                //     <div className="w-full h-[31.25rem] relative bottom-[18.75rem] flex justify-center items-center backdrop-blur-sm ">
+                                //         <div className="flex flex-col items-center z-[100] gap-6 pb-20">
+                                //             <img src="/img/Ggoggo-002.png" />
+                                //             <div className="text-xl font-md text-gray-6">
+                                //                 등록된 기록이 없습니다!
+                                //             </div>
+
+                                //             <button
+                                //                 className="button-black button-md"
+                                //                 onClick={() => {
+                                //                     setOpenAddModal(true);
+                                //                 }}
+                                //             >
+                                //                 성장기록 등록하기
+                                //                 <img
+                                //                     src="../img/icons/i-chevron-right-s28.svg"
+                                //                     alt=">"
+                                //                 />
+                                //             </button>
+                                //         </div>
+                                //     </div>
+                                // </div>
                             )}
                         </>
                     )}

@@ -22,11 +22,8 @@ export default function Vaccination() {
     const { babyInfo } = useSelector((state: RootState) => state.baby);
     // const { vaccinationData } = useSelector(
     //     (state: RootState) => state.vaccination
-    // );
-
-    // 훅 사용
+    // );z
     const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
-
     const user = sessionStorage.getItem('user');
     const babyId: number = selectedBabyId ?? 0;
     // console.log("👼👼👼👼👼👼user", user);
