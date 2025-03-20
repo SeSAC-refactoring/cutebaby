@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
 import { ImageUploader } from "./ImageUploader";
@@ -16,15 +16,18 @@ interface UpdateBabyProps {
     birthday: string;
     picture: string | null;
   };
+  isOpen: boolean;
 }
 
 export const UpdateBaby: React.FC<UpdateBabyProps> = ({
   onClose,
   selectedBaby,
+  isOpen,
 }) => {
   const dispatch = useDispatch<AppDispatch>();
   const { requestbaby } = useBabyUpdate();
-  const [defaultImg, setDefaultImg] = useState(true);
+  const [defaultImg, setDefaultImg] = useState<boolean>(true);
+  const [previewUrl, setPreviewUrl] = useState<boolean>(false);
 
   //기존 데이터를 유지하면서 변경 가능하도록 설정
   const [rewriteData, setRewriteData] = useState({
@@ -33,6 +36,16 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
     birthday: selectedBaby.birthday,
     picture: selectedBaby.picture as string | File | null,
   });
+  useEffect(() => {
+    if (rewriteData.picture !== "data:image/jpeg;base64,") {
+      setDefaultImg(false);
+    } else {
+      setDefaultImg(true);
+    }
+  }, [isOpen]); // `isOpen`이 변경될 때 실행
+  useEffect(() => {
+    setPreviewUrl(true);
+  }, [rewriteData.picture]);
 
   // 력값이 변경될 때 `rewriteData`를 업데이트
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,10 +66,19 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
   const handleImageSelect = (file: File | null) => {
     setRewriteData((prev) => ({
       ...prev,
-      picture: file ? file : prev.picture, // 새 이미지가 없으면 기존 이미지 유지
+      picture: file as string | File | null,
     }));
+    setDefaultImg(!file); // 새 이미지가 있으면 기본 이미지 해제
   };
 
+  const handleImageRemove = () => {
+    setRewriteData((prev) => ({
+      ...prev,
+      picture: null, //이미지 제거
+    }));
+    setPreviewUrl(false); // 미리보기 이미지 제거
+    setDefaultImg(true); // 기본 이미지 활성화
+  };
   // 변경된 값만 FormData에 추가하여 서버로 전송
   const rewrite = async () => {
     const formData = new FormData();
@@ -66,7 +88,14 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
     const babyname = rewriteData.babyname || selectedBaby.babyname;
     const birthday = rewriteData.birthday || selectedBaby.birthday;
     const gender = rewriteData.gender || selectedBaby.gender;
-    const picture = rewriteData.picture || selectedBaby.picture;
+    let picture = rewriteData.picture || selectedBaby.picture;
+
+    if (!previewUrl) {
+      picture = rewriteData.picture || selectedBaby.picture;
+    } else {
+      picture = "/img/Profile.png";
+    }
+    console.log(picture);
 
     formData.append("babyname", babyname);
     formData.append("birthday", birthday);
@@ -78,9 +107,7 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
     } else if (typeof picture === "string") {
       formData.append("existingPicture", picture); // 기존 이미지 URL을 서버에 전달
     }
-
-    // console.log("📦 서버로 전송할 변경된 데이터:", [...formData.entries()]);
-
+    console.log();
     try {
       await requestbaby(formData);
       alert("아이 정보가 수정되었습니다!");
@@ -90,6 +117,7 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
       // console.error("업데이트 오류:", error);
     }
   };
+
   const [selectedGender, setSelectedGender] = useState(rewriteData.gender);
 
   return (
@@ -105,12 +133,26 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
         <div>
           <div className="w-full flex justify-center flex-col items-center">
             <div>
-              {defaultImg && (
-                <img
-                  src="/img/Profile.png"
-                  alt="아기 사진"
-                  className="w-[140px] h-[140px]"
-                />
+              <img
+                src={
+                  defaultImg
+                    ? "/img/Profile.png" // 기본 이미지
+                    : typeof rewriteData.picture === "string"
+                    ? rewriteData.picture // 기존 URL
+                    : rewriteData.picture
+                    ? URL.createObjectURL(rewriteData.picture) // 새로 업로드한 파일
+                    : "/img/Profile.png" // 기본 이미지
+                }
+                alt="아기 사진"
+                className="w-[140px] h-[140px] rounded-[0.5rem]"
+              />
+              {previewUrl && (
+                <button
+                  onClick={handleImageRemove}
+                  className="absolute top-1 right-1 bg-gray-700 text-white p-1 rounded-full"
+                >
+                  ✖
+                </button>
               )}
               <div className="relative bottom-[45px] left-[8px]">
                 <ImageUploader
