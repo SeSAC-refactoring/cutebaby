@@ -1,10 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { DiaryInputArea } from './DiaryInputArea';
 import { DiaryTable } from './DiaryTable';
-import { useSelectBaby } from '../../hooks/useSelectBaby';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
-import { useGrowData } from './hooks/useGrowData';
+
+import { newGrowData } from '../types';
 
 interface GrowthAddModalProps {
     setSelectedGrowId: React.Dispatch<React.SetStateAction<number | null>>;
@@ -12,7 +10,8 @@ interface GrowthAddModalProps {
     setOpenDelModal: React.Dispatch<React.SetStateAction<boolean>>;
     setOpenAddModal: React.Dispatch<React.SetStateAction<boolean>>;
     setOpenAppendModal: React.Dispatch<React.SetStateAction<boolean>>;
-    selectedGrowId: number | null;
+    selectedBabyId: number | null;
+    growData: newGrowData[];
 }
 
 export const GrowthAddModal = ({
@@ -21,18 +20,9 @@ export const GrowthAddModal = ({
     setOpenDelModal,
     setOpenAddModal,
     setOpenAppendModal,
-    selectedGrowId,
+    selectedBabyId,
+    growData,
 }: GrowthAddModalProps) => {
-    const { babyInfo, nothingBaby } = useSelector(
-        (state: RootState) => state.baby
-    );
-    const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
-    const growInfo = useSelector((state: RootState) => state.babygrow.growInfo);
-    const { growData } = useGrowData(growInfo, selectedBabyId);
-    useEffect(() => {
-        console.log('growData', growData);
-    }, [growData]);
-
     // 수정 모달 열기
     const handleEdit = (selectedGrowId: number) => {
         setSelectedGrowId(selectedGrowId);
