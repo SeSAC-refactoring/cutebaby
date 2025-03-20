@@ -147,7 +147,7 @@ const EmailLogin: React.FC = () => {
             <section className="authWrap loginFormWrap">
                 <h2>이메일로 로그인하기</h2>
                 <section onKeyDown={enter} className="formContentsArea">
-                    <div className="inputArea">
+                    <form className="inputArea">
                         <Input
                             label="이메일"
                             type="email"
@@ -163,7 +163,7 @@ const EmailLogin: React.FC = () => {
                             placeholder="비밀번호를 입력해주세요."
                         />
                         {error && <p>{error}</p>}
-                    </div>
+                    </form>
 
                     <div className="formBtnArea">
                         <Link

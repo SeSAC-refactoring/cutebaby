@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { DiaryInputArea } from './DiaryInputArea';
 import { DiaryTable } from './DiaryTable';
 import { useSelectBaby } from '../../hooks/useSelectBaby';
@@ -29,6 +29,9 @@ export const GrowthAddModal = ({
     const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
     const growInfo = useSelector((state: RootState) => state.babygrow.growInfo);
     const { growData } = useGrowData(growInfo, selectedBabyId);
+    useEffect(() => {
+        console.log('growData', growData);
+    }, [growData]);
 
     // 수정 모달 열기
     const handleEdit = (selectedGrowId: number) => {

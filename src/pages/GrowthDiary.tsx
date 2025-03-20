@@ -190,7 +190,7 @@ export default function GrowthDiary() {
                                 // 해당 아기의 성장 기록이 없을 때
                                 <div
                                     className="flex flex-col gap-6 justify-center items-center
-                                    h-full p-20
+                                    h-full 
                                   bg-gray-1 rounded-3xl"
                                 >
                                     <img src="/img/Ggoggo-002.png" />

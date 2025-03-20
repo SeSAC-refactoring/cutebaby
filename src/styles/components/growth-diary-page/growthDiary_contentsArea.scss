@@ -2,8 +2,9 @@
 @import './growthDiary_graphArea.scss';
 
 .growthDiaryContentsArea {
-    @apply flex flex-col gap-4;
-    @apply sm:h-full sm:w-full;
+    @apply flex flex-col gap-4 
+    h-full;
+    @apply sm:w-full;
 
     & > .diaryInputArea-wrap {
         @apply hidden md:block;
