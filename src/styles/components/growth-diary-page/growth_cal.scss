@@ -1,10 +1,2 @@
 @import './growth_cal_inputArea.scss';
 @import './growth_cal_resultArea.scss';
-
-.growthCalculate {
-    @apply pb-6;
-
-    & .contentsArea {
-        @apply sm:gap-12;
-    }
-}

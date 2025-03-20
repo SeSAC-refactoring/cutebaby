@@ -23,7 +23,7 @@ export const GrowthAppendModal = ({
             className="modalBg"
         >
             <div onClick={(e) => e.stopPropagation()} className="whiteboxModal">
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-6 grow">
                     <div className="flex justify-between">
                         <h2>성장기록 추가</h2>
                         <div

@@ -57,7 +57,7 @@ export const GrowthCalculate: React.FC<GrowthCalculateProps> = ({
                 onClick={(e) => {
                     e.stopPropagation();
                 }}
-                className="whiteboxModal growthCalculate"
+                className="whiteboxModal"
             >
                 <section className="topArea">
                     <div className="title">
