@@ -136,31 +136,16 @@ export default function GrowthDiary() {
                         </p>
                     </div>
 
-                    <div className="buttons">
-                        <button onClick={() => setOpenAppendModal(true)}>
-                            <p>성장기록 추가</p>
-                            <img
-                                src="../img/icons/i-chevron-right-s20.svg"
-                                alt="*"
-                            />
-                        </button>
-
-                        <button onClick={() => setOpenAddModal(true)}>
-                            <p>성장기록</p>
-                            <img
-                                src="../img/icons/i-chevron-right-s20.svg"
-                                alt="*"
-                            />
-                        </button>
-
-                        <button onClick={() => setOpenCalModal(true)}>
-                            <p>성장상태 계산</p>
-                            <img
-                                src="../img/icons/i-chevron-right-s20.svg"
-                                alt="*"
-                            />
-                        </button>
-                    </div>
+                    <button
+                        onClick={() => setOpenCalModal(true)}
+                        className="button-xs button-yellow"
+                    >
+                        <p>성장상태 계산</p>
+                        <img
+                            src="../img/icons/i-chevron-right-s20.svg"
+                            alt="*"
+                        />
+                    </button>
                 </div>
 
                 <div className="growthDiaryContentsArea">
@@ -186,6 +171,9 @@ export default function GrowthDiary() {
                                         <RecentGrowthRecord
                                             growData={growData}
                                             setOpenAddModal={setOpenAddModal}
+                                            setOpenAppendModal={
+                                                setOpenAppendModal
+                                            }
                                         />
 
                                         <div className="graphArea">

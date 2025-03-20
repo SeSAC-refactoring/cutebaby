@@ -4,41 +4,54 @@
     @apply sm:p-8 sm:rounded-[2rem] sm:h-full;
     @apply md:border-[3px] md:border-blue-3 md:bg-white;
 
-    & > .titleArea {
-        @apply flex justify-between;
-        @apply sm:flex-col sm:gap-4;
+    & > .buttons {
+        @apply flex gap-2 justify-end;
 
-        & > span.recentDate {
-            @apply text-gray-7 text-xs font-md;
+        // 성장기록 추가 버튼은 모바일일때만 보여주기
+        & > button:first-child {
+            @apply md:hidden;
         }
     }
 
-    & > .items {
-        @apply flex flex-col gap-4;
-        @apply sm:w-[12rem] sm:h-full sm:justify-between;
+    & > .valueArea {
+        @apply flex flex-col gap-4  h-full;
 
-        & > .item {
-            @apply flex flex-row gap-2 justify-center items-center
-            w-full p-4 rounded-lg;
-            @apply sm:p-0 sm:flex-1;
+        & > .titleArea {
+            @apply flex justify-between;
+            @apply sm:flex-col sm:gap-4;
 
-            & > span:first-child {
-                @apply font-rg;
-            }
-
-            & > span.item-value {
-                @apply font-bd;
+            & > span.recentDate {
+                @apply text-gray-7 text-2xs font-md;
+                @apply xs:text-xs;
             }
         }
 
-        & > .item.height {
-            @apply bg-orange-3;
-        }
-        & > .item.weight {
-            @apply bg-green-3;
-        }
-        & > .item.head {
-            @apply bg-purple-3;
+        & > .items {
+            @apply flex flex-col gap-4;
+            @apply sm:w-[16rem] sm:h-full sm:justify-between;
+
+            & > .item {
+                @apply flex flex-row gap-2 justify-center items-center
+                w-full p-4 rounded-lg;
+                @apply sm:p-0 sm:flex-1;
+
+                & > span:first-child {
+                    @apply font-rg;
+                }
+                & > span.item-value {
+                    @apply font-bd;
+                }
+            }
+
+            & > .item.height {
+                @apply bg-orange-3;
+            }
+            & > .item.weight {
+                @apply bg-green-3;
+            }
+            & > .item.head {
+                @apply bg-purple-3;
+            }
         }
     }
 }
