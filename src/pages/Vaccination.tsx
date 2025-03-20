@@ -26,10 +26,6 @@ export default function Vaccination() {
 
     // 훅 사용
     const { selectedBabyId, handleSelectBaby } = useSelectBaby(babyInfo);
-    // const { selectedBabyVaccinationData } = useVaccinationData(
-    //     vaccinationData,
-    //     selectedBabyId
-    // ); // selectedBabyVaccinationData = vaccinationData selectedBabyId에 따라 필터링 // selectedBabyId가 변경될 때 vaccinationData 업데이트
 
     const user = sessionStorage.getItem('user');
     const babyId: number = selectedBabyId ?? 0;

@@ -34,7 +34,7 @@ function App() {
         };
 
         handleResize();
-        window.addEventListener('resize', handleResize); // 윈도우 크기 변경 감지 (키보드가 올라오거나 화면이 변경될 때)
+        window.addEventListener('resize', handleResize); // 윈도우 크기 변경 감지 // 키보드가 올라오거나 화면이 변경될 때
 
         return () => window.removeEventListener('resize', handleResize);
     }, []);
