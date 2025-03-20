@@ -12,6 +12,6 @@
     & > .recent-graph-wrap {
         @apply flex flex-col gap-4 
         w-full;
-        @apply sm:flex-row sm:gap-6 sm:h-0 sm:grow sm:w-full;
+        @apply sm:flex-row-reverse sm:gap-6 sm:h-0 sm:grow sm:w-full;
     }
 }
