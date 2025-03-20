@@ -26,6 +26,19 @@ function App() {
         // .catch((error) => console.error("Kakao SDK 로드 실패:", error));
     }, []);
 
+    // 모바일일 때 키보드가 올라오면 그만큼 화면높이 줄이기
+    useEffect(() => {
+        const handleResize = () => {
+            // body의 height 값을 window.innerHeight로 설정
+            document.body.style.height = `${window.innerHeight}px`;
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize); // 윈도우 크기 변경 감지 (키보드가 올라오거나 화면이 변경될 때)
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <>
             <Header />
