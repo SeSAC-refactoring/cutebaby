@@ -2,7 +2,7 @@
     @apply absolute fixed inset-0 flex justify-center items-center
     backdrop-blur-sm z-30;
     @apply max-sm:z-50 max-sm:fixed;
-    @apply max-sm:h-[calc(100vh-5rem)]; /* PC에서는 헤더 높이(64px) 제외 */
+    @apply max-sm:h-[calc(100dvh-5rem)]; /* PC에서는 헤더 높이(64px) 제외 */
     // @apply max-sm:overflow-none;
 
     .whiteboxModal {
@@ -36,7 +36,6 @@
 
                 img {
                     @apply min-w-8 min-h-8 ml-1;
-
                     // @apply sm:w-12 sm:h-12;;
                 }
             }

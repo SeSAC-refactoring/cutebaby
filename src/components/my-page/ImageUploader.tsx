@@ -96,40 +96,8 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
     }
   };
 
-  // ✅ 이미지 취소 처리
-  const handleCancelImage = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (imagePreview) {
-      URL.revokeObjectURL(imagePreview); // 메모리 누수 방지
-    }
-    setDefaultImg(true);
-    setImagePreview(null);
-    onImageSelect(null);
-  };
-
-  // ✅ 외부에서 resetTrigger가 변경되면 이미지 초기화
-  useEffect(() => {
-    if (resetTrigger) {
-      if (imagePreview) {
-        URL.revokeObjectURL(imagePreview); // 메모리 해제
-      }
-      setImagePreview(null);
-    }
-  }, [resetTrigger]);
-
   return (
     <div className="flex flex-col items-center">
-      {imagePreview && (
-        <div className="h-[240px] top-[60px] right-[30px] relative">
-          <img src={imagePreview} alt="아기 사진 미리보기" />
-          <button
-            className="text-bs relative bottom-[200px] left-[186px] font-bd"
-            onClick={handleCancelImage}
-          >
-            X
-          </button>
-        </div>
-      )}
       {!imagePreview && (
         <>
           <input

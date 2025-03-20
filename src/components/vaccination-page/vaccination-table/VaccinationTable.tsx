@@ -200,9 +200,12 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                 대상 감염병
               </th>
               <th className="text-left w-[20%] p-2">백신 종류</th>
+              <th className="w-[8%] max-sm:hidden">진행도</th>
+
               <th className="text-center w-[20%] max-sm:hidden">
                 최근 접종 일자
               </th>
+
               <th className="w-[8%] max-sm:hidden">권장횟수</th>
               <th className="w-[8%] max-sm:hidden">완료횟수</th>
               <th className="rounded-r-[0.5rem] w-[8%] ">관리</th>
@@ -285,6 +288,10 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                       ? disease.vaccinationid // 배열 그대로 사용
                       : [disease.vaccinationid]; // 단일 값도 배열로 변환
 
+                    const completedDoses = matchedVaccineList.filter(
+                      (v) => v?.vaccinationid === vaccine.vaccinationid
+                    ).length;
+
                     acc.push(
                       <tr
                         key={`${diseaseIndex}-${vaccine.vaccinationid}`}
@@ -362,6 +369,60 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                           className="p-2 w-[30%] border-r-0 border border-blue-3 cursor-pointer max-sm:w-[20%]"
                         >
                           {vaccine.name}
+                        </td>
+                        {/* 진행도 TD */}
+                        <td
+                          data-disease={diseaseIndex}
+                          data-vaccine={vaccine.vaccinationid}
+                          onMouseEnter={() => {
+                            document
+                              .querySelectorAll(
+                                `[data-vaccine~="${vaccine.vaccinationid}"]`
+                              )
+                              .forEach((el) => el.classList.add("bg-blue-3"));
+                          }}
+                          onMouseLeave={() => {
+                            document
+                              .querySelectorAll(
+                                `[data-vaccine~="${vaccine.vaccinationid}"]`
+                              )
+                              .forEach((el) =>
+                                el.classList.remove("bg-blue-3")
+                              );
+                          }}
+                          onClick={() => handleOpenModal(vaccine.vaccinationid)}
+                          className="max-sm:hidden min-w-[5rem] text-center border-x-0 border border-blue-3 cursor-pointer px-3 py-2 whitespace-nowrap"
+                        >
+                          {vaccine.doses === "-" ? (
+                            <span className="bg-purple-2 inline-flex items-center justify-center px-1 py-2 min-w-[5rem] rounded-lg">
+                              <img
+                                src="/img/icons/i-plus-s12.svg"
+                                className="mr-1"
+                              />
+                              선택접종
+                            </span>
+                          ) : completedDoses === 0 ? (
+                            <span className="bg-coral-2 inline-flex items-center justify-center px-3 py-2 min-w-[5rem] rounded-lg">
+                              <img
+                                src="/img/icons/i-x-s12.svg"
+                                className="mr-1"
+                              />
+                              미접종
+                            </span>
+                          ) : completedDoses === vaccine.doses ? (
+                            <span className="bg-gray-1 inline-flex items-center gap-2 justify-center px-2 py-2 min-w-[5rem] rounded-lg">
+                              <img
+                                src="/img/icons/i-check-s12.svg"
+                                className="mr-1"
+                              />
+                              완료
+                            </span>
+                          ) : (
+                            <span className="bg-coral-2 inline-flex items-center justify-center px-3 py-2 min-w-[5rem] rounded-lg">
+                              <span>{vaccine.name}</span>
+                              <span className="ml-1">{completedDoses}차</span>
+                            </span>
+                          )}
                         </td>
 
                         {/* 최근 접종 일자 */}
