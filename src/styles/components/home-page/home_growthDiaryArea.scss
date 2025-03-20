@@ -16,9 +16,9 @@ article.growthDiaryArea {
         w-full h-full;
 
         & .graphArea {
-            @apply relative w-full
+            @apply relative w-full h-[16.625rem]
             flex justify-center items-center
-            bg-white border-2 border-blue-3 rounded-2xl p-2;
+            bg-white border-2 border-blue-3 rounded-3xl p-2;
             @apply sm:h-0 sm:grow;
         }
     }
@@ -26,7 +26,7 @@ article.growthDiaryArea {
     .chartImgWrapper {
         @apply w-full relative
         flex justify-center items-center
-        bg-white border-2 border-blue-3 rounded-2xl p-2;
+        bg-white border-2 border-blue-3 rounded-3xl p-2;
         @apply sm:h-0 sm:grow;
 
         & img {
