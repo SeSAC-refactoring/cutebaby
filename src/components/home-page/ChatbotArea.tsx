@@ -98,16 +98,16 @@ export const ChatbotArea = ({ setOpenChatbot }: chatbotAreaProps) => {
                                 <strong>
                                     {msg.role === 'user' ? '나' : '팀 꼬물'}
                                 </strong>
-                                <p className="msgContents">
+                                <span className="msgContents">
                                     <ReactMarkdown>{`${msg.content}`}</ReactMarkdown>
-                                </p>
+                                </span>
                             </div>
                         ))}
                         {isLoading && (
-                            <p className="loadingMsg">
+                            <span className="loadingMsg">
                                 답변을 기다리고 있어요,
                                 <br /> 조금만 기다려주세요..
-                            </p>
+                            </span>
                         )}
                     </div>
                 </div>
