@@ -7,6 +7,7 @@ import { useHandleSearch } from "./hooks/useHandleSearch";
 import { useRefs } from "../../hooks/useRefs";
 import { PagenationBtns } from "./PagenationBtns";
 import { CenterList } from "./CenterList";
+import Loading from "../home-page/Loading";
 
 export default function VaccinationCenters({ setOpenCentersModal }: any) {
   // hook 사용
@@ -79,17 +80,20 @@ export default function VaccinationCenters({ setOpenCentersModal }: any) {
                 </div> */}
         <section className="contentsArea">
           {/* 데이터를 불러오는 로딩 화면 */}
-          {isFirstLoading && (
-            <div className="response-state">
-              <img src="/img/visuals/visual_loading_ggomul_04.svg" alt="" />
-              <div className="text ">
-                <p>자료를 가져오고 있어요..</p>
-                <p>조금만 기다려주세요..</p>
-              </div>
+
+          {/* {isFirstLoading && ( */}
+          {/* <div className="response-state absolute z-50 flex items-center fixed inset-0">
+            <img src="/img/visuals/visual_loading_ggomul_04.svg" alt="" />
+            <div className="text ">
+              <p>자료를 가져오고 있어요..</p>
+              <p>조금만 기다려주세요..</p>
             </div>
-          )}
+          </div> */}
+          {/* // )} */}
           {/* 지역(시/도) 선택 드롭다운 */}
           <article className="formArea">
+            {isFirstLoading && <Loading />}
+
             <select
               ref={refs.province}
               value={selectedLocation.province}

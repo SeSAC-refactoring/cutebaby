@@ -4,7 +4,6 @@ import { VaccinationData } from "../../types";
 
 interface VaccinationScheduleProps {
   matchedVaccineList: (VaccinationData | null)[];
-
   vaccinationid: number | number[];
 }
 
