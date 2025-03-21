@@ -150,24 +150,6 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
           ))}
         </select>
 
-        {/* 접종 여부 필터 */}
-        <select
-          className="w-full"
-          value={selectedDose === undefined ? "" : selectedDose} // 선택된 값이 없으면 기본값 표시
-          onChange={(e) =>
-            setDose(e.target.value === "" ? undefined : Number(e.target.value))
-          }
-        >
-          <option value="" disabled hidden selected>
-            접종여부
-          </option>
-          <option value="">전체</option>
-          <option value="1">접종완료</option>
-          <option value="2">미접종</option>
-          <option value="3">접종진행</option>
-          <option value="4">선택접종</option>
-        </select>
-
         {/* 대상 감염병 필터 (개월 수에 따라 목록 필터링) */}
         <select
           className="w-full"
@@ -185,6 +167,24 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
               {diseasesData[diseaseIndex].name}
             </option>
           ))}
+        </select>
+
+        {/* 접종 여부 필터 */}
+        <select
+          className="w-full"
+          value={selectedDose === undefined ? "" : selectedDose} // 선택된 값이 없으면 기본값 표시
+          onChange={(e) =>
+            setDose(e.target.value === "" ? undefined : Number(e.target.value))
+          }
+        >
+          <option value="" disabled hidden selected>
+            접종여부
+          </option>
+          <option value="">전체</option>
+          <option value="1">접종완료</option>
+          <option value="2">미접종</option>
+          <option value="3">접종진행</option>
+          <option value="4">선택접종</option>
         </select>
       </section>
 

@@ -66,6 +66,23 @@ export const MobileFilterModal: React.FC<FilterModalProps> = ({
               </option>
             ))}
           </select>
+          {/* 대상 감염병 필터 */}
+          <select
+            value={selectedDis ?? ""}
+            onChange={(e) =>
+              setDis(e.target.value === "" ? undefined : Number(e.target.value))
+            }
+          >
+            <option value="" disabled hidden>
+              대상 감염병
+            </option>
+            <option value="">선택 안함</option>
+            {filteredDiseases.map((diseaseIndex) => (
+              <option key={diseaseIndex} value={diseaseIndex}>
+                {diseasesData[diseaseIndex].name}
+              </option>
+            ))}
+          </select>
 
           {/* 접종 여부 필터 */}
           <select
@@ -84,24 +101,6 @@ export const MobileFilterModal: React.FC<FilterModalProps> = ({
             <option value="2">미접종</option>
             <option value="3">접종진행</option>
             <option value="4">선택접종</option>
-          </select>
-
-          {/* 대상 감염병 필터 */}
-          <select
-            value={selectedDis ?? ""}
-            onChange={(e) =>
-              setDis(e.target.value === "" ? undefined : Number(e.target.value))
-            }
-          >
-            <option value="" disabled hidden>
-              대상 감염병
-            </option>
-            <option value="">선택 안함</option>
-            {filteredDiseases.map((diseaseIndex) => (
-              <option key={diseaseIndex} value={diseaseIndex}>
-                {diseasesData[diseaseIndex].name}
-              </option>
-            ))}
           </select>
         </div>
         {/* 닫기 버튼 */}
