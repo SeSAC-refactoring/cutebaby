@@ -128,7 +128,7 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
         </div>
         <div>
           <div className="w-full flex justify-center flex-col items-center">
-            <div>
+            <div className="flex flex-col items-center justify-center w-full">
               <img
                 src={
                   defaultImg
@@ -140,23 +140,27 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
                     : "/img/Profile.png" // 기본 이미지
                 }
                 alt="아기 사진"
-                className="w-[140px] h-[140px] rounded-[0.5rem]"
+                className="w-[10.5rem] rounded-[0.5rem] mb-2"
               />
-
-              <div className="relative bottom-[45px] left-[8px]">
-                <ImageUploader
-                  setDefaultImg={setDefaultImg}
-                  onImageSelect={handleImageSelect}
-                  resetTrigger={false}
-                />
-              </div>
-              {imgDel ? (
+              <div className="flex gap-1">
+                {imgDel ? (
+                  <button
+                    className="button button-coral button-xs"
+                    onClick={handleImageRemove}
+                  >
+                    삭제
+                  </button>
+                ) : (
+                  ""
+                )}
                 <div>
-                  <button onClick={handleImageRemove}>삭제버튼</button>
+                  <ImageUploader
+                    setDefaultImg={setDefaultImg}
+                    onImageSelect={handleImageSelect}
+                    resetTrigger={false}
+                  />
                 </div>
-              ) : (
-                ""
-              )}
+              </div>
             </div>
             <div className="w-full flex flex-col gap-6">
               <Input
