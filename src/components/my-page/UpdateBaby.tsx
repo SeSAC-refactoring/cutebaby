@@ -27,7 +27,7 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
   const dispatch = useDispatch<AppDispatch>();
   const { requestbaby } = useBabyUpdate();
   const [defaultImg, setDefaultImg] = useState<boolean>(true);
-  const [previewUrl, setPreviewUrl] = useState<boolean>(false);
+  const [imgDel, setImgDel] = useState<boolean>(false);
 
   //기존 데이터를 유지하면서 변경 가능하도록 설정
   const [rewriteData, setRewriteData] = useState({
@@ -37,15 +37,17 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
     picture: selectedBaby.picture as string | File | null,
   });
   useEffect(() => {
-    if (rewriteData.picture !== "data:image/jpeg;base64,") {
+    console.log(rewriteData.picture);
+    if (
+      rewriteData.picture !== "data:image/jpeg;base64," ||
+      rewriteData.picture == null
+    ) {
       setDefaultImg(false);
+      setImgDel(true);
     } else {
       setDefaultImg(true);
     }
   }, [isOpen]); // `isOpen`이 변경될 때 실행
-  useEffect(() => {
-    setPreviewUrl(true);
-  }, [rewriteData.picture]);
 
   // 력값이 변경될 때 `rewriteData`를 업데이트
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,7 +78,6 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
       ...prev,
       picture: null, //이미지 제거
     }));
-    setPreviewUrl(false); // 미리보기 이미지 제거
     setDefaultImg(true); // 기본 이미지 활성화
   };
   // 변경된 값만 FormData에 추가하여 서버로 전송
@@ -88,14 +89,7 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
     const babyname = rewriteData.babyname || selectedBaby.babyname;
     const birthday = rewriteData.birthday || selectedBaby.birthday;
     const gender = rewriteData.gender || selectedBaby.gender;
-    let picture = rewriteData.picture || selectedBaby.picture;
-
-    if (!previewUrl) {
-      picture = rewriteData.picture || selectedBaby.picture;
-    } else {
-      picture = "/img/Profile.png";
-    }
-    console.log(picture);
+    const picture = rewriteData.picture || selectedBaby.picture;
 
     formData.append("babyname", babyname);
     formData.append("birthday", birthday);
@@ -106,6 +100,8 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
       formData.append("picture", picture);
     } else if (typeof picture === "string") {
       formData.append("existingPicture", picture); // 기존 이미지 URL을 서버에 전달
+    } else {
+      formData.append("existingPicture", "");
     }
     console.log();
     try {
@@ -146,14 +142,7 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
                 alt="아기 사진"
                 className="w-[140px] h-[140px] rounded-[0.5rem]"
               />
-              {previewUrl && (
-                <button
-                  onClick={handleImageRemove}
-                  className="absolute top-1 right-1 bg-gray-700 text-white p-1 rounded-full"
-                >
-                  ✖
-                </button>
-              )}
+
               <div className="relative bottom-[45px] left-[8px]">
                 <ImageUploader
                   setDefaultImg={setDefaultImg}
@@ -161,6 +150,13 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
                   resetTrigger={false}
                 />
               </div>
+              {imgDel ? (
+                <div>
+                  <button onClick={handleImageRemove}>삭제버튼</button>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
             <div className="w-full flex flex-col gap-6">
               <Input
