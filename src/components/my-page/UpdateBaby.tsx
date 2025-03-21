@@ -76,11 +76,12 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
   const handleImageRemove = () => {
     setRewriteData((prev) => ({
       ...prev,
-      picture: null, //이미지 제거
+      picture: "data:image/jpeg;base64,", // 기본 이미지로 표시할 수 있도록 고정
     }));
     setDefaultImg(true); // 기본 이미지 활성화
   };
   // 변경된 값만 FormData에 추가하여 서버로 전송
+
   const rewrite = async () => {
     const formData = new FormData();
     formData.append("babyid", String(selectedBaby.babyid));
@@ -89,20 +90,19 @@ export const UpdateBaby: React.FC<UpdateBabyProps> = ({
     const babyname = rewriteData.babyname || selectedBaby.babyname;
     const birthday = rewriteData.birthday || selectedBaby.birthday;
     const gender = rewriteData.gender || selectedBaby.gender;
-    const picture = rewriteData.picture || selectedBaby.picture;
-
+    const picture = rewriteData.picture;
+    console.log("picture에 어떤게 들어갔는지", picture);
     formData.append("babyname", babyname);
     formData.append("birthday", birthday);
     formData.append("gender", gender);
 
     // 기존 이미지 유지 또는 새 이미지 추가
     if (picture instanceof File) {
-      formData.append("picture", picture);
+      formData.append("picture", picture); // 새 이미지 업로드
     } else if (typeof picture === "string") {
-      formData.append("existingPicture", picture); // 기존 이미지 URL을 서버에 전달
-    } else {
-      formData.append("existingPicture", "");
+      formData.append("existingPicture", picture); // 기존 이미지 or 기본 이미지용 텍스트
     }
+
     console.log();
     try {
       await requestbaby(formData);
