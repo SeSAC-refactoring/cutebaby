@@ -68,7 +68,7 @@ export default function GrowthDiary() {
     ]);
 
     return (
-        <main className="grow">
+        <main>
             {/* 성장 계산기 모달 */}
             {openCalModal && (
                 <GrowthCalculate
