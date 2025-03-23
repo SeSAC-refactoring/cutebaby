@@ -49,6 +49,10 @@
         @apply sm:w-[32.5rem] sm:h-auto;
         @apply sm:border-2 sm:border-gray-6 sm:rounded-[2.5rem];
         @apply max-sm:px-6 max-sm:py-6 max-sm:z-30  max-sm:top-0;
+
+        img.close {
+            @apply cursor-pointer;
+        }
     }
 
     .smallModal {
@@ -58,5 +62,9 @@
         @apply max-sm:mx-[10%];
         @apply border-2 border-gray-6 rounded-[2rem];
         @apply max-sm:items-center;
+
+        img.close {
+            @apply cursor-pointer;
+        }
     }
 }
