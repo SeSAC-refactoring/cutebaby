@@ -96,7 +96,7 @@ export const ChatbotArea = ({ setOpenChatbot }: chatbotAreaProps) => {
                                 }}
                             >
                                 <strong>
-                                    {msg.role === 'user' ? '나' : '팀 꼬물'}
+                                    {msg.role === 'user' ? '나' : '챗봇'}
                                 </strong>
                                 <span className="msgContents">
                                     <ReactMarkdown>{`${msg.content}`}</ReactMarkdown>
