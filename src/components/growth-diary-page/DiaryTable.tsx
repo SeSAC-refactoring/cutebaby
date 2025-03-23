@@ -67,12 +67,12 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({
                     </ul>
                 </>
             ) : (
-                <div className="bg-gray-1 rounded-[2rem] h-full">
-                    <div className="h-[35rem] sm:h-[20rem] bottom-0 sm:bottom-[1rem] flex justify-center items-center backdrop-blur-sm">
-                        <div className="flex flex-col items-center justify-center z-[100] gap-6 pb-25">
+                <div className="bg-gray-1 rounded-[2rem] p-6 sm:h-0 sm:grow">
+                    <div className="h-[35rem] sm:h-full bottom-0 flex justify-center items-center backdrop-blur-sm">
+                        <div className="flex flex-col items-center justify-center gap-6">
                             <img src="/img/Ggoggo-003-2.svg" />
-                            <div className="sm:text-xl text-sm font-md text-gray-6">
-                                입력하고 <strong>추가하기</strong>를 눌러보세요!{' '}
+                            <div className="sm:text-lg text-sm font-md text-gray-6">
+                                <strong>성장기록</strong>을 추가해보세요!
                                 <br /> 우리 아이의 성장기록을 보여드려요:)
                             </div>
                         </div>

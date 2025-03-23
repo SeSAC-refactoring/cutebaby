@@ -2,6 +2,7 @@
     @apply flex flex-col 
     w-full
     overflow-y-scroll;
+    @apply sm:h-full;
 
     & > .tableTitle {
         @apply flex 

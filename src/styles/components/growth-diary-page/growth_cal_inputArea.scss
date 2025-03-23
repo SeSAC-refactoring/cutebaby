@@ -20,11 +20,13 @@ article.inputArea {
     }
 
     & .btns {
-        @apply flex gap-4;
+        @apply flex gap-4 w-full;
+        @apply sm:w-auto;
 
         & button {
-            @apply button-lg;
-            @apply max-sm:w-[10rem];
+            @apply button-lg
+            flex-1;
+            @apply sm:max-sm:w-[10rem];
 
             @screen sm {
                 @apply button-sm;
@@ -32,6 +34,10 @@ article.inputArea {
 
             & p {
                 @apply max-lg:hidden max-md:block;
+            }
+
+            & img {
+                @apply hidden xs:block;
             }
         }
     }
