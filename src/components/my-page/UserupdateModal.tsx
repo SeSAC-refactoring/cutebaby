@@ -177,12 +177,9 @@ export const UserupdateModal: React.FC<UserupdateProps> = ({ modalState }) => {
                         onClick={() => {
                             modalState();
                         }}
+                        className="cursor-pointer"
                     >
-                        <img
-                            className="close"
-                            src="img/Button-close.png"
-                            alt="닫기"
-                        />
+                        <img src="img/Button-close.png" alt="닫기" />
                     </div>
                 </div>
                 <div className="flex flex-col h-full w-full">

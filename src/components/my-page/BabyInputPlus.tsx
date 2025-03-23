@@ -98,13 +98,8 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
             <div onClick={(e) => e.stopPropagation()} className="mediumModal">
                 <div className="flex justify-between">
                     <div className="text-2xl font-bd mb-10">아이 정보 등록</div>
-                    <div onClick={onClose}>
-                        {/* <img src="/img/icons/i-modal-close-s32.svg" alt="" /> */}
-                        <img
-                            className="close"
-                            src="img/Button-close.png"
-                            alt="닫기"
-                        />
+                    <div onClick={onClose} className="cursor-pointer">
+                        <img src="img/Button-close.png" alt="닫기" />
                     </div>
                 </div>
                 <div>
@@ -152,7 +147,6 @@ export const BabyInputPlus: React.FC<BabyInputProps> = ({ onClose }) => {
                                 }}
                             ></Input>
                             <section>
-                                {/* <label>성별</label> */}
                                 <div className="flex gap-1">
                                     <label className="text-xs font-bd text-gray-8 mb-[6px]">
                                         성별
