@@ -68,15 +68,14 @@
 
 - 우측 채팅창은 구글ai와 채팅할 수 있는 영역으로, ai에게 질문하는 용도로 구현했습니다.
 
-<div >
-  ![alt text](2025-02-194.43.21-ezgif.com-video-to-gif-converter.gif)
-</div>
   <div align=center>
     <img height="500" src="https://github.com/user-attachments/assets/b6e51577-a659-44f9-9651-36452b358de4">
 </div>
 
 - 로그인은 mysql과 연동하여 로그인이 진행되게 구현했습니다. 일반 로그인 및 카카오 로그인 성공시 **홈화면으로 이동**되게 됩니다.
 - 회원가입시 **유효성 검사와 이메일 이메일 중복체크**를 진행하며, **모두 완료되어야 완료버튼이 활성화** 됩니다.
+![로그인 회원가입반응형](https://github.com/user-attachments/assets/ac2398c6-a35d-4434-aec6-dcd35a1685dc)
+
 <div align=center>
 
 | 로그인          | 카카오 로그인     | 회원가입     |
