@@ -74,9 +74,9 @@
   </div>
 
 - 로그인 회원가입 페이지 모두 **반응형**으로 제작하여 다양한 기기에 최적화 하였습니다.
-  
+ 
   <div align=center>
-    ![로그인 회원가입반응형](https://github.com/user-attachments/assets/ac2398c6-a35d-4434-aec6-dcd35a1685dc)
+    ![image](https://github.com/user-attachments/assets/d2f40164-f46e-4f07-b327-6144095106f8)
   </div>
 
 - 로그인은 mysql과 연동하여 로그인이 진행되게 구현했습니다. 일반 로그인 및 카카오 로그인 성공시 **홈화면으로 이동**되게 됩니다.
@@ -86,7 +86,7 @@
     
     | 로그인          | 카카오 로그인     | 회원가입     |
     | --------------- | ----------------- | ------------ |
-    | ![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/1fda5e9f-667e-4f38-bc23-f62cd1292686)| ![2025-03-262 27 10-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/bfff83fa-7b8c-4063-9816-ea0745c8e6e4) | ![2025-03-262 35 44-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/8f24c276-a303-408c-8305-82670ea4d60f)
+    | ![로그인](https://github.com/user-attachments/assets/1fda5e9f-667e-4f38-bc23-f62cd1292686)| ![카카오 로그인](https://github.com/user-attachments/assets/bfff83fa-7b8c-4063-9816-ea0745c8e6e4) | ![회원가입](https://github.com/user-attachments/assets/8f24c276-a303-408c-8305-82670ea4d60f)
   </div>
 
 ### [초기화면_로그인 이후]
@@ -95,27 +95,27 @@
 - 헤더의 메뉴들도 로그인 상태에 맞춰 변경됩니다.
 
   <div align=center>  
-    ![ezgif com-video-to-gif-converter (1)](https://github.com/user-attachments/assets/01dd9fc1-d4c0-4757-954b-42d8e4b74521)
+    ![image](https://github.com/user-attachments/assets/90084393-ee25-4972-8b03-1ddbfa7b707f)
   </div>
 
 ### [예방접종 페이지]
 - 예방접종페이지의 주요 기능은 **아이 예방 접종 일정 관리(CRUD)** 입니다.
 - 3개의 드롭다운을 이용해 **필터링이 가능**하며, 관리버튼을 클릭하여 해당 백신의 **접종 일자와 횟수를 관리**할 수 있습니다.
 
-  <div align=center>    
-    ![예방접종 관리](https://github.com/user-attachments/assets/2490e0c0-d761-4688-9fd5-95b3a1ee6d18)
+  <div align=center>
+    ![image](https://github.com/user-attachments/assets/fe04e83a-642d-4de3-8f25-3d660da0812c)
   </div>
 
 - **외부 API를 연동**하여 **예방접종 백신 상세정보와 감염병 정보**를 제공합니다.
 
   <div align=center>
-    ![감염병정보](https://github.com/user-attachments/assets/5da8143e-abee-4382-a8ae-47ecc0cb8414)
+    ![image](https://github.com/user-attachments/assets/c8ad248b-17fe-48b6-89b8-63007ffd6d2c)
   </div>
 
 - **외부 API를 연동**하여 **예방접종 위탁의료기관 검색 기능**을 제공하고 페이지네이션 기능을 추가하였습니다.
 
-  <div align=center>  
-    ![2025-03-263 31 55-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/2fd99311-cecf-451c-a8bd-03f7e00b8da4)
+  <div align=center> 
+    ![image](https://github.com/user-attachments/assets/fbc55664-c479-4512-8728-d12ca608430f)
   </div>
 
 ### [성장일지 페이지]
@@ -124,7 +124,7 @@
 - 측정 날짜, 키, 몸무게, 머리둘레를 입력하여 저장하고 성장기록 모달에서 **누적된 기록을 조회/추가/수정/삭제**를 할 수 있습니다.
 
   <div align=center>  
-    ![2025-03-263 51 34-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/c9e70d20-9a10-460b-a92b-539482641301)
+    ![image](https://github.com/user-attachments/assets/9ed41c53-78b0-4414-b7f6-e836abdd9e17)
   </div>
 
 - 성장상태 측정계산기
@@ -133,8 +133,10 @@
   - **외부 API를 연동**하여 WHO 기준에 따른 LMS 값을 가져온 후, 이를 **Z-score로 변환**하여 이를 다시 외부 API에서 얻은 데이터를 사용하여 **백분위 수치로 환산**합니다. 상한선 및 하한선 정보도 함께 그래프로 시각화됩니다.
   - **측정 날짜는 필수 입력값**입니다.미입력 시 **오늘 날짜 기준**으로 자동 계산됩니다.
   - 키, 몸무게, 머리둘레 중  **최소 하나 이상의 값이 입력되어야** 해당 항목의 그래프가 생성됩니다. 값이 입력되지 않은 상태에서 계산하기 버튼을 누르면 **입력창이 포커스**됩니다.
-
-  https://github.com/user-attachments/assets/5f17c9d3-8156-43ce-b81f-3aecee35376a
+  
+  <div align=center>
+    ![Image](https://github.com/user-attachments/assets/7fac63a8-d541-4099-8165-2f67c8710573)
+  </div>
 
 ### [마이페이지]
 - 마이페이지에서는 **사용자의 정보를 수정**하거나 **아이 정보를 추가/수정/삭제**를 할 수 있습니다.
