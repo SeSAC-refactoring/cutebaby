@@ -74,13 +74,14 @@
 
 - 로그인은 mysql과 연동하여 로그인이 진행되게 구현했습니다. 일반 로그인 및 카카오 로그인 성공시 **홈화면으로 이동**되게 됩니다.
 - 회원가입시 **유효성 검사와 이메일 이메일 중복체크**를 진행하며, **모두 완료되어야 완료버튼이 활성화** 됩니다.
+
 ![로그인 회원가입반응형](https://github.com/user-attachments/assets/ac2398c6-a35d-4434-aec6-dcd35a1685dc)
 
 <div align=center>
 
 | 로그인          | 카카오 로그인     | 회원가입     |
 | --------------- | ----------------- | ------------ |
-| 로그인 화면 gif | 카카오 로그인 gif | 회원가입 gif |
+| ![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/1fda5e9f-667e-4f38-bc23-f62cd1292686)| 카카오 로그인 gif | 회원가입 gif |
 
 </div>
 
