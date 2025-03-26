@@ -118,7 +118,7 @@ const SignupForm: React.FC = () => {
       sessionStorage.setItem("username", user.name);
 
       alert("회원가입이 완료되었습니다!");
-      navigate("/Home", { state: formData });
+      navigate("/", { state: formData });
       window.location.reload();
     } else {
       console.log(response);
