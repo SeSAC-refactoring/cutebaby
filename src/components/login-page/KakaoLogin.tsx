@@ -26,7 +26,7 @@ const KakaoLogin = (): React.ReactElement => {
     if (babyInfo && babyInfo.length > 0) {
       dispatch(fetchgrowInfo(babyInfo))
         .then(() => {
-          navigate("/Home", { state: babyInfo });
+          navigate("/", { state: babyInfo });
         })
         .catch((error) => {
           // console.error("성장 정보 요청 실패:", error);
