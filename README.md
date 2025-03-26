@@ -116,12 +116,21 @@
 
   </div>
 
-- **외부 API를 연동**하여 **예방접종 백신 상세정보**를 제공합니다.
+- **외부 API를 연동**하여 **예방접종 백신 상세정보와 감염병 정보**를 제공합니다.
 
-- **외부 API를 연동**하여 **예방접종 대상 감염병 정보**를 제공합니다.
+<div align=center>
+
+![감염병정보](https://github.com/user-attachments/assets/5da8143e-abee-4382-a8ae-47ecc0cb8414)
+
+</div>
 
 - **외부 API를 연동**하여 **예방접종 위탁의료기관 검색 기능**을 제공하고 페이지네이션 기능을 추가하였습니다.
 
+<div align=center>
+  
+![2025-03-263 31 55-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/2fd99311-cecf-451c-a8bd-03f7e00b8da4)
+
+</div>
 
 
 ### [성장일지 페이지]
