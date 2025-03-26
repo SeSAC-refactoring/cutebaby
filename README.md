@@ -72,17 +72,26 @@
     <img height="500" src="https://github.com/user-attachments/assets/b6e51577-a659-44f9-9651-36452b358de4">
 </div>
 
-- 로그인은 mysql과 연동하여 로그인이 진행되게 구현했습니다. 일반 로그인 및 카카오 로그인 성공시 **홈화면으로 이동**되게 됩니다.
-- 회원가입시 **유효성 검사와 이메일 이메일 중복체크**를 진행하며, **모두 완료되어야 완료버튼이 활성화** 됩니다.
+
+
+- 로그인 회원가입 페이지는 모두 **반응형**으로 제작하여 다양한 기기에 최적화 하였습니다.
+  
+<div align=center>
 
 ![로그인 회원가입반응형](https://github.com/user-attachments/assets/ac2398c6-a35d-4434-aec6-dcd35a1685dc)
 
+</div>
+
+
+- 로그인은 mysql과 연동하여 로그인이 진행되게 구현했습니다. 일반 로그인 및 카카오 로그인 성공시 **홈화면으로 이동**되게 됩니다.
+- 회원가입시 **유효성 검사와 이메일 이메일 중복체크**를 진행하며, **모두 완료되어야 완료버튼이 활성화** 됩니다.
+  
 <div align=center>
 
 | 로그인          | 카카오 로그인     | 회원가입     |
 | --------------- | ----------------- | ------------ |
-| ![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/1fda5e9f-667e-4f38-bc23-f62cd1292686)| ![2025-03-262 27 10-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/bfff83fa-7b8c-4063-9816-ea0745c8e6e4) | 회원가
-입 gif |
+| ![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/1fda5e9f-667e-4f38-bc23-f62cd1292686)| ![2025-03-262 27 10-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/bfff83fa-7b8c-4063-9816-ea0745c8e6e4) | ![2025-03-262 35 44-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/8f24c276-a303-408c-8305-82670ea4d60f)
+ |
 
 </div>
 
