@@ -14,6 +14,7 @@
 - 사용기술
 - 주요기능
 - 트러블 슈팅
+<br/>
 
 ## 개요
 
@@ -22,7 +23,7 @@
 - 팀프로젝트 : 디자인+퍼블리싱(2명), 프론트엔드+백엔드(2명)
 - 프로젝트 기획 목적 : 아기의 첫시작이 담긴 아기수첩, **데이터의 디지털화를 통해 안전하게 보관** 하고
   누적된 데이터를 보기쉽게 **시각화**하여 **아기기록을 쉽게 관리**한다.
-  <br/>
+<br/>
 
 ## 팀원소개
 
@@ -53,8 +54,7 @@
 <div align=center>
   <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
   <img src="https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=github&logoColor=white">
-    <img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
-
+  <img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
 </div>
 <br/>
 
@@ -62,94 +62,79 @@
 
 ### [초기화면]
 
-- 서비스 접속 시 초기화면으로 로그인이 진행되어있지 않으면 "방문자님, 안녕하세요" 문구가 출력 되며
-  상단 헤더 탭에 홈, 로그인 탭만 출력하게 됩니다.
-  <img width="1076" alt="스크린샷 2025-02-19 오후 4 38 06" src="https://github.com/user-attachments/assets/14a4fa6a-9ff8-4d44-a475-d3f7b36e8d9d" />
+- 서비스 접속 시 초기화면으로 로그인이 진행되어있지 않으면 **예시 성장추이 그래프**를 통해 서비스의 주요 기능을 미리 보여주고, 사용자의 **로그인을 유도**합니다.
+- 위탁의료기관 검색 모달과 예방접종 대상 감염병 정보를 확인할 수 있는 **모달로 연결**되는 카드가 제공됩니다.
 
-- 우측 채팅창은 구글ai와 채팅할 수 있는 영역으로, ai에게 질문하는 용도로 구현했습니다.
+  <img width="1268" alt="Image" src="https://github.com/user-attachments/assets/95604ab7-7b0d-495e-b142-63fb05961443" />
+
+- 우측 채팅창은 구글AI와 채팅할 수 있는 영역으로, **AI 챗봇**을 통해 궁금한 점을 실시간으로 물어볼 수 있습니다.
 
   <div align=center>
     <img height="500" src="https://github.com/user-attachments/assets/b6e51577-a659-44f9-9651-36452b358de4">
-</div>
-
-
+  </div>
 
 - 로그인 회원가입 페이지 모두 **반응형**으로 제작하여 다양한 기기에 최적화 하였습니다.
   
-<div align=center>
-
-![로그인 회원가입반응형](https://github.com/user-attachments/assets/ac2398c6-a35d-4434-aec6-dcd35a1685dc)
-
-</div>
-
+  <div align=center>
+    ![로그인 회원가입반응형](https://github.com/user-attachments/assets/ac2398c6-a35d-4434-aec6-dcd35a1685dc)
+  </div>
 
 - 로그인은 mysql과 연동하여 로그인이 진행되게 구현했습니다. 일반 로그인 및 카카오 로그인 성공시 **홈화면으로 이동**되게 됩니다.
 - 회원가입시 **유효성 검사와 이메일 이메일 중복체크**를 진행하며, **모두 완료되어야 완료버튼이 활성화** 됩니다.
-
   
-<div align=center>
-
-| 로그인          | 카카오 로그인     | 회원가입     |
-| --------------- | ----------------- | ------------ |
-| ![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/1fda5e9f-667e-4f38-bc23-f62cd1292686)| ![2025-03-262 27 10-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/bfff83fa-7b8c-4063-9816-ea0745c8e6e4) | ![2025-03-262 35 44-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/8f24c276-a303-408c-8305-82670ea4d60f)
- 
-
-</div>
+  <div align=center>  
+    
+    | 로그인          | 카카오 로그인     | 회원가입     |
+    | --------------- | ----------------- | ------------ |
+    | ![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/1fda5e9f-667e-4f38-bc23-f62cd1292686)| ![2025-03-262 27 10-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/bfff83fa-7b8c-4063-9816-ea0745c8e6e4) | ![2025-03-262 35 44-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/8f24c276-a303-408c-8305-82670ea4d60f)
+  </div>
 
 ### [초기화면_로그인 이후]
 
-- 로그인 이후 초기 페이지에서는 등록된 아이들의 리스트와 성장기록,위탁의료기관 목록, 감염병 정보, ai챗봇을 사용할 수 있으며, 헤더의 목록이 변경됩니다.
+- 로그인 이후 초기 페이지에서는 **등록된 아이들의 리스트**와 해당 아이의 **성장추이 그래프**를 보여줍니다.
+- 헤더의 메뉴들도 로그인 상태에 맞춰 변경됩니다.
 
-<div align=center>
-  
-![ezgif com-video-to-gif-converter (1)](https://github.com/user-attachments/assets/01dd9fc1-d4c0-4757-954b-42d8e4b74521)
-
-</div>
+  <div align=center>  
+    ![ezgif com-video-to-gif-converter (1)](https://github.com/user-attachments/assets/01dd9fc1-d4c0-4757-954b-42d8e4b74521)
+  </div>
 
 ### [예방접종 페이지]
 - 예방접종페이지의 주요 기능은 **아이 예방 접종 일정 관리(CRUD)** 입니다.
 - 3개의 드롭다운을 이용해 **필터링이 가능**하며, 관리버튼을 클릭하여 해당 백신의 **접종 일자와 횟수를 관리**할 수 있습니다.
 
-  <div align=center>
-    
-  ![예방접종 관리](https://github.com/user-attachments/assets/2490e0c0-d761-4688-9fd5-95b3a1ee6d18)
-
+  <div align=center>    
+    ![예방접종 관리](https://github.com/user-attachments/assets/2490e0c0-d761-4688-9fd5-95b3a1ee6d18)
   </div>
 
 - **외부 API를 연동**하여 **예방접종 백신 상세정보와 감염병 정보**를 제공합니다.
 
-<div align=center>
-
-![감염병정보](https://github.com/user-attachments/assets/5da8143e-abee-4382-a8ae-47ecc0cb8414)
-
-</div>
+  <div align=center>
+    ![감염병정보](https://github.com/user-attachments/assets/5da8143e-abee-4382-a8ae-47ecc0cb8414)
+  </div>
 
 - **외부 API를 연동**하여 **예방접종 위탁의료기관 검색 기능**을 제공하고 페이지네이션 기능을 추가하였습니다.
 
-<div align=center>
-  
-![2025-03-263 31 55-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/2fd99311-cecf-451c-a8bd-03f7e00b8da4)
-
-</div>
-
+  <div align=center>  
+    ![2025-03-263 31 55-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/2fd99311-cecf-451c-a8bd-03f7e00b8da4)
+  </div>
 
 ### [성장일지 페이지]
-- 성장일지 페이지의 주요기능은 **아이 성장 기록 관리 및 성장 추이 그래프 기능** 입니다.
-- 성장기록은 측정 날짜, 키, 몸무게, 머리둘레를 입력하여 저장하고 성장기록 모달에서 **누적된 기록을 조회/추가/수정/삭제**를 할 수 있습니다.
+: 성장일지 페이지의 주요기능은 **아이 성장 기록 관리** 와 **성장추이 그래프** 제공, **성장상태 측정계산기** 입니다.
+- chart.js를 이용하여 아이의 저장된 성장기록 데이터를 시각화하여 성장추이 그래프를 제공합니다.
+- 측정 날짜, 키, 몸무게, 머리둘레를 입력하여 저장하고 성장기록 모달에서 **누적된 기록을 조회/추가/수정/삭제**를 할 수 있습니다.
 
-<div align=center>
-  
-  ![2025-03-263 51 34-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/c9e70d20-9a10-460b-a92b-539482641301)
+  <div align=center>  
+    ![2025-03-263 51 34-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/c9e70d20-9a10-460b-a92b-539482641301)
+  </div>
 
-</div>
+- 성장상태 측정계산기
+  - 키, 몸무게, 머리둘레를 WHO 성장 기준과 비교하여 **아기의 성장 상태를 분석**할 수 있습니다.
+  - 입력된 측정 날짜, 키, 몸무게, 머리둘레 정보를 바탕으로, 해당 아이의 개월 수와 성별을 반영한 **성장 위치를 그래프 상에 시각화**하고, 백분위수로 정확한 수치를 알려줍니다. 사용자가 이해하기 쉽게 또래 대비 어디에 있는지 설명해줍니다.
+  - **외부 API를 연동**하여 WHO 기준에 따른 LMS 값을 가져온 후, 이를 **Z-score로 변환**하여 이를 다시 외부 API에서 얻은 데이터를 사용하여 **백분위 수치로 환산**합니다. 상한선 및 하한선 정보도 함께 그래프로 시각화됩니다.
+  - **측정 날짜는 필수 입력값**입니다.미입력 시 **오늘 날짜 기준**으로 자동 계산됩니다.
+  - 키, 몸무게, 머리둘레 중  **최소 하나 이상의 값이 입력되어야** 해당 항목의 그래프가 생성됩니다. 값이 입력되지 않은 상태에서 계산하기 버튼을 누르면 **입력창이 포커스**됩니다.
 
-
-- 성장일지
-  - 아이의 키, 몸무게, 머리둘레 기록 관리 (CRUD)
-  - 아이의 성장 추이 그래프로 확인
-  - 성장상태 측정 계산기 : 키, 체중, 머리둘레를 WHO 성장 기준과 비교하여 아기의 성장 상태 분석 가능
-    - 성장곡선 그래프로 제공: 외부 API 연동하여 값을 얻어 그래프로 변환
-    - 백분위로 정확한 수치 제공: 외부 API를 연동하여 LMS 값을 얻어 z-score로 변환하고 이를 다시 외부 API에서 얻은 데이터를 사용하여 백분위로 변환
+  https://github.com/user-attachments/assets/5f17c9d3-8156-43ce-b81f-3aecee35376a
 
 ### [마이페이지]
 - 마이페이지에서는 **사용자의 정보를 수정**하거나 **아이 정보를 추가/수정/삭제**를 할 수 있습니다.
@@ -158,7 +143,7 @@
 | -- | -- |
 | ![사용자정보수정](https://github.com/user-attachments/assets/fe351799-bd6a-464d-8a5f-c106d9741670) | ![아이정보수정](https://github.com/user-attachments/assets/86ee37e4-a7fe-464a-b8c0-b8c4a0c96018) |
 
-  <br/>
+<br/>
 
 ## 트러블슈팅
 
