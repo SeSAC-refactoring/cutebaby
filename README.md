@@ -74,7 +74,7 @@
 - 로그인 회원가입 페이지 모두 **반응형**으로 제작하여 다양한 기기에 최적화 하였습니다. 
   <div align=center>
     
-    ![image](https://github.com/user-attachments/assets/d2f40164-f46e-4f07-b327-6144095106f8)
+    ![로그인 회원가입반응형](https://github.com/user-attachments/assets/ac2398c6-a35d-4434-aec6-dcd35a1685dc)
   
   </div>
 - 로그인은 mysql과 연동하여 로그인이 진행되게 구현했습니다. 일반 로그인 및 카카오 로그인 성공시 **홈화면으로 이동**되게 됩니다.
@@ -93,7 +93,7 @@
 - 헤더의 메뉴들도 로그인 상태에 맞춰 변경됩니다.
   <div align=center>  
     
-    ![image](https://github.com/user-attachments/assets/90084393-ee25-4972-8b03-1ddbfa7b707f)
+    ![초기화면_로그인 이후](https://github.com/user-attachments/assets/01dd9fc1-d4c0-4757-954b-42d8e4b74521)
   
   </div>
 
@@ -102,19 +102,19 @@
 - 3개의 드롭다운을 이용해 **필터링이 가능**하며, 관리버튼을 클릭하여 해당 백신의 **접종 일자와 횟수를 관리**할 수 있습니다.
   <div align=center>
     
-    ![image](https://github.com/user-attachments/assets/fe04e83a-642d-4de3-8f25-3d660da0812c)
+    ![예방접종 관리](https://github.com/user-attachments/assets/2490e0c0-d761-4688-9fd5-95b3a1ee6d18)
   
   </div>
 - **외부 API를 연동**하여 **예방접종 백신 상세정보와 감염병 정보**를 제공합니다.
   <div align=center>
     
-    ![image](https://github.com/user-attachments/assets/c8ad248b-17fe-48b6-89b8-63007ffd6d2c)
+    ![감염병정보](https://github.com/user-attachments/assets/5da8143e-abee-4382-a8ae-47ecc0cb8414)
     
   </div>
 - **외부 API를 연동**하여 **예방접종 위탁의료기관 검색 기능**을 제공하고 페이지네이션 기능을 추가하였습니다.
   <div align=center> 
     
-    ![image](https://github.com/user-attachments/assets/fbc55664-c479-4512-8728-d12ca608430f)
+    ![위탁의료기관 검색](https://github.com/user-attachments/assets/2fd99311-cecf-451c-a8bd-03f7e00b8da4)
   
   </div>
 
@@ -124,7 +124,7 @@
 - 측정 날짜, 키, 몸무게, 머리둘레를 입력하여 저장하고 성장기록 모달에서 **누적된 기록을 조회/추가/수정/삭제**를 할 수 있습니다.
   <div align=center>  
     
-    ![image](https://github.com/user-attachments/assets/e9d9669d-c928-48dc-8db5-15976a126026)
+    ![성장일지](https://github.com/user-attachments/assets/c9e70d20-9a10-460b-a92b-539482641301)
   
   </div>
 - 성장상태 측정계산기
