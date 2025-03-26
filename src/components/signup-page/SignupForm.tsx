@@ -121,7 +121,7 @@ const SignupForm: React.FC = () => {
       navigate("/", { state: formData });
       window.location.reload();
     } else {
-      console.log(response);
+      // console.log(response);
       alert(response.message);
     }
   };
