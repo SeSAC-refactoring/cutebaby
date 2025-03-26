@@ -81,7 +81,8 @@
 
 | 로그인          | 카카오 로그인     | 회원가입     |
 | --------------- | ----------------- | ------------ |
-| ![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/1fda5e9f-667e-4f38-bc23-f62cd1292686)| 카카오 로그인 gif | 회원가입 gif |
+| ![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/1fda5e9f-667e-4f38-bc23-f62cd1292686)| ![2025-03-262 27 10-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/bfff83fa-7b8c-4063-9816-ea0745c8e6e4) | 회원가
+입 gif |
 
 </div>
 
