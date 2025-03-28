@@ -206,8 +206,8 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                 최근 접종 일자
               </th>
 
-              <th className="w-[10%] max-sm:hidden">완료횟수</th>
               <th className="w-[10%] max-sm:hidden">권장횟수</th>
+              <th className="w-[10%] max-sm:hidden">완료횟수</th>
               <th className="rounded-r-[0.5rem] w-[10%] ">관리</th>
             </tr>
             {/* 테이블 사이 넓히는 용도 */}
