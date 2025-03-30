@@ -83,10 +83,10 @@ export const VaccinationModalDateRecord: React.FC<
   // 신규 데이터 등록
   const handleSaveData = async (doseNum: number) => {
     // console.log('등록할때',filterDoseDate[...prev , 1])
-    console.log(doseDate);
+    // console.log(doseDate);
 
     if (doseDate < filterDoseDate[filterDoseDate.length - 1]) {
-      console.log("야야 전에꺼보다 더 적게 입력했다.");
+      // console.log("야야 전에꺼보다 더 적게 입력했다.");
     } else {
       try {
         await requestVac({
@@ -140,21 +140,21 @@ export const VaccinationModalDateRecord: React.FC<
 
   // 기존 데이터 수정
   const handleupDate = async (doseNum: number, lastDose: number) => {
-    console.log("dosenum", doseNum);
-    console.log("lastDose", lastDose);
-    console.log("doseDate", doseDate);
-    console.log("filterDoseDate>>", filterDoseDate);
+    // console.log("dosenum", doseNum);
+    // console.log("lastDose", lastDose);
+    // console.log("doseDate", doseDate);
+    // console.log("filterDoseDate>>", filterDoseDate);
 
     filterDoseDate[doseNum - 1] = doseDate;
 
     const dateCheck = filterDoseDate.filter((data) => {
       return data < doseDate;
     });
-    console.log("date Check", dateCheck);
+    // console.log("date Check", dateCheck);
     if (dateCheck.length == 0) {
       upDateVac(doseNum);
     } else {
-      console.log("날짜를 확인하세요");
+      // console.log("날짜를 확인하세요");
     }
 
     // if(doseDate.length-1 == lastDose) {// 마지막 인덱스인지 확인하기
@@ -173,7 +173,7 @@ export const VaccinationModalDateRecord: React.FC<
   const lastDose =
     existingDoses.length > 0 ? existingDoses[existingDoses.length - 1] : 0;
 
-  console.log(lastDose);
+  // console.log(lastDose);
   return (
     <div
       className="flex flex-col gap-6"
