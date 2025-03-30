@@ -6,7 +6,6 @@ import { TopArea } from '../components/home-page/TopArea';
 import { GrowthDiaryArea } from '../components/home-page/GrowthDiaryArea';
 import { VaccinationArea } from '../components/home-page/VaccinationArea';
 import { ChatbotArea } from '../components/home-page/ChatbotArea';
-import GrowthDiary from './GrowthDiary';
 
 export default function Home() {
     const [loading, setLoading] = useState<boolean>(true); // 로딩 상태 관리
@@ -15,50 +14,49 @@ export default function Home() {
     const [openChatbot, setOpenChatbot] = useState<boolean>(false); // 챗봇 영역 관리
 
     return (
-        // <main className="home">
-        //     {/* 로딩 창 */}
-        //     {loading && <Loading />}
+        <main className="home">
+            {/* 로딩 창 */}
+            {loading && <Loading />}
 
-        //     {/* 모달 */}
-        //     {openCentersModal && (
-        //         <VaccinationCenters setOpenCentersModal={setOpenCentersModal} />
-        //     )}
-        //     {openDetailsModal && (
-        //         <VaccinationDetails setOpenDetailsModal={setOpenDetailsModal} />
-        //     )}
+            {/* 모달 */}
+            {openCentersModal && (
+                <VaccinationCenters setOpenCentersModal={setOpenCentersModal} />
+            )}
+            {openDetailsModal && (
+                <VaccinationDetails setOpenDetailsModal={setOpenDetailsModal} />
+            )}
 
-        //     <section className="userArea">
-        //         <TopArea />
-        //         <section className="dashboard">
-        //             {/* 성장그래프 영역 */}
-        //             <GrowthDiaryArea setLoading={setLoading} />
+            <section className="userArea">
+                <TopArea />
+                <section className="dashboard">
+                    {/* 성장그래프 영역 */}
+                    <GrowthDiaryArea setLoading={setLoading} />
 
-        //             {/* 예방접종관련 배너 영역 */}
-        //             <VaccinationArea
-        //                 setOpenDetailsModal={setOpenDetailsModal}
-        //                 setOpenCentersModal={setOpenCentersModal}
-        //             />
-        //         </section>
-        //     </section>
+                    {/* 예방접종관련 배너 영역 */}
+                    <VaccinationArea
+                        setOpenDetailsModal={setOpenDetailsModal}
+                        setOpenCentersModal={setOpenCentersModal}
+                    />
+                </section>
+            </section>
 
-        //     {/* 챗봇 */}
-        //     <div
-        //         className={`${openChatbot ? 'block modalBg' : 'hidden'} hidden md:block md:w-[25rem]`}
-        //     >
-        //         <ChatbotArea setOpenChatbot={setOpenChatbot} />
-        //     </div>
+            {/* 챗봇 */}
+            <div
+                className={`${openChatbot ? 'block modalBg' : 'hidden'} hidden md:block md:w-[25rem]`}
+            >
+                <ChatbotArea setOpenChatbot={setOpenChatbot} />
+            </div>
 
-        //     {/* 플로팅버튼 */}
-        //     <button
-        //         className="floatingBtn"
-        //         onClick={() => setOpenChatbot(true)}
-        //     >
-        //         <img
-        //             src="img/icons/i-chatbot-solid-s36.svg"
-        //             alt="입력 아이콘"
-        //         />
-        //     </button>
-        // </main>
-        <GrowthDiary />
+            {/* 플로팅버튼 */}
+            <button
+                className="floatingBtn"
+                onClick={() => setOpenChatbot(true)}
+            >
+                <img
+                    src="img/icons/i-chatbot-solid-s36.svg"
+                    alt="입력 아이콘"
+                />
+            </button>
+        </main>
     );
 }
