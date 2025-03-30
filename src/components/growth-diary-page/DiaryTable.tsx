@@ -73,7 +73,7 @@ export const DiaryTable: React.FC<DiaryTableProps> = ({
                             <img src="/img/Ggoggo-003-2.svg" />
                             <div className="sm:text-lg text-sm font-md text-gray-6">
                                 <strong>성장기록</strong>을 추가해보세요!
-                                <br /> 우리 아이의 성장기록을 보여드려요:)
+                                <br /> 우리아이의 성장기록을 보여드려요:)
                             </div>
                         </div>
                     </div>

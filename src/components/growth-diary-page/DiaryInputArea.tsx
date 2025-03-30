@@ -24,14 +24,6 @@ export const DiaryInputArea: React.FC<DiaryInputAreaProps> = ({
 
     return (
         <>
-            {/* <h2 className="sm:text-4xl text-2xl font-bd mb-4">성장기록</h2>
-        <div
-          onClick={() => {
-            setOpenAddModal(false);
-          }}
-        >
-          <img src="/img/icons/i-modal-close-s32.svg" alt="" />
-        </div> */}
             <article className="inputArea">
                 <div className="forms">
                     <Input

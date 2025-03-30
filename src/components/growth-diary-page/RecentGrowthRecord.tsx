@@ -59,7 +59,7 @@ export const RecentGrowthRecord = ({
             <div className="buttons">
                 <button
                     onClick={() => setOpenAppendModal(true)}
-                    className="button-xs button-black"
+                    className="button-xs button-yellow"
                 >
                     <p>성장기록 추가</p>
                     <img src="../img/icons/i-chevron-right-s28.svg" alt="*" />

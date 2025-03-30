@@ -205,7 +205,7 @@ export default function GrowthDiary() {
                                             setOpenAddModal(true);
                                         }}
                                     >
-                                        성장기록 등록하기
+                                        성장기록 추가하기
                                         <img
                                             src="../img/icons/i-chevron-right-s28.svg"
                                             alt=">"
