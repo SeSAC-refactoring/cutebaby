@@ -62,7 +62,7 @@ export const RecentGrowthRecord = ({
                     className="button-xs button-yellow"
                 >
                     <p>성장기록 추가</p>
-                    <img src="../img/icons/i-chevron-right-s28.svg" alt="*" />
+                    <img src="../img/icons/i-chevron-right-s20.svg" alt="*" />
                 </button>
 
                 <button
