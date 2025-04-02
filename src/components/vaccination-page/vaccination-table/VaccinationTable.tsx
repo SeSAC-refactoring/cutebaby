@@ -420,7 +420,8 @@ export const VaccinationTable: React.FC<VaccinationTableProps> = ({
                             </span>
                           ) : (
                             <span className="bg-blue-3 inline-flex items-center justify-center px-3 py-2 min-w-[5rem] rounded-lg">
-                              <span>{vaccine.name}</span>
+                              <span>{vaccine.name}</span>{" "}
+                              {/*여기가 이름 나오게 하기 */}
                               <span className="ml-1">{completedDoses}차</span>
                             </span>
                           )}
